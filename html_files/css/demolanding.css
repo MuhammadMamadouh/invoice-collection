@@ -1,0 +1,239 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+/*google font*/
+.cairo-uniquifier {
+    font-family: "Cairo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+    "slnt" 0;
+  }
+
+/*google font*/
+body{
+    background: #d3c0be;
+}
+
+
+/*navbar*/
+
+.nav-demo {
+    background:#fff;
+    text-transform: capitalize;
+    font-size: 18px;
+}
+.nav-demo .nav-link {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.nav-demo .nav-item1 .nav-link {
+    color:  blue;
+    border: 2px solid blue;
+    border-radius: 23px;
+    padding: 10px 20px;
+    position: relative;
+    right: 5px;
+}
+.nav-demo .nav-item2 .nav-link {
+    color: #fff;
+    background-color: #0000ff;
+    border: 2px solid blue;
+    border-radius: 23px;
+    padding: 10px 20px;
+}
+.nav-demo .nav-item1 .nav-link span {
+    font-size: 12px;
+    padding-right: 10px;
+    display: inline-block;
+}
+.nav-demo .nav-item2 .nav-link span {
+    font-size: 12px;
+    padding-right: 10px;
+    display: inline-block;
+}
+.nav-demo .nav-item3 .nav-link {
+    color: #fff;
+    background-color: #88cf38;
+    border: 2px solid ;
+    border-radius: 23px;
+    padding: 8px 20px;
+
+}
+.nav-demo .navbar-brand img {
+    width: 100px;
+}
+.line {
+    display: inline-block;
+    border-left: 2px solid #000;
+    margin-left: 20px;
+}
+.nav-demo .nav-item4 .nav-link {
+    color: #0000ff;
+    border: 2px solid #0000ff;
+    border-radius: 23px;
+    padding: 10px 20px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-around;
+}
+/*navbar*/
+
+/*content deemo*/
+.content h4 {
+    text-transform: capitalize;
+    color: #8a3029;
+}
+@media (max-width:450px) {
+    .content h4 {
+        font-size: 16px;
+    }
+}
+.content a {
+    color: #fff;
+    background-color: #0000ff;
+    text-decoration: none;
+    text-transform: capitalize;
+    display: inline-block;
+    border: 2px solid blue;
+    padding: 10px 20px;
+}
+.content a:nth-child(2) {
+    background-color: #88cf38;
+    border: 2px solid #88cf38;
+}
+.message a {
+    background-color: #88cf38;
+    border: 2px solid #88cf38;
+    border-radius: 50%;
+    position: relative;
+    top: -50px;
+    padding: 10px 15px;
+}
+/*content deemo*/
+.log {
+    transition: 0.5s;
+    background: red;
+}
+
+.login-page {
+    display: flex;
+    margin: auto;
+    background:#000;
+    color:#fff;
+    width: 50%;
+    position: relative;
+    top: -50px;
+    display: none;
+}
+@media (max-width:850px) {
+    .login-page {
+        width: 100%;
+    }
+}
+ #close {
+    color: #fff;
+    background: #000;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+}
+.login-page input {
+    margin-left: 20px;
+    outline: none;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-page p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-log span {
+    color: #000;
+    cursor: pointer;
+    background: rgb(226,218,226);
+    padding: 5px 10px;
+    width: 35px;
+    height: 35px;
+    border: 2px solid rgb(226,218,226);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 1%;
+  }
+  .sign-in-button button{
+    color: #fff;
+    background-color: #88cf38;
+    border: 2px solid #88cf38;
+    text-decoration: none;
+    text-transform: capitalize;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+
+.forget-page {
+    display: flex;
+    margin: auto;
+    background:#000;
+    color:#fff;
+    width: 50%;
+    position: relative;
+    top: -50px;
+    display: none;
+}
+@media (max-width:850px) {
+    .forget-page {
+        width: 100%;
+    }
+}
+ #close {
+    color: #fff;
+    background: #000;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+}
+#close-2 {
+    color: #fff;
+    background: #000;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+}
+.forget-page input {
+    margin-left: 20px;
+    outline: none;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.forget-page p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+  .submit-button button{
+    color: #fff;
+    background-color: #88cf38;
+    border: 2px solid #88cf38;
+    text-decoration: none;
+    text-transform: capitalize;
+    display: inline-block;
+    padding: 10px 20px;
+}
