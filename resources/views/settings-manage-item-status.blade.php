@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
   <div class="overlay d-none" style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;background-color: rgba(0, 0, 0, 0.418);z-index: 9;"></div>
   <div class="position-fixed new-status-div d-none w-75" style="top:10% ;left: 50%;transform: translate(-50%);z-index: 10;">
@@ -1169,14 +1169,4 @@
 
 
 <!--end-desc-->
-
-  <script src="../js/bootstrap.bundle.min.js"></script>
-  <script src="../js/wow.min.js"></script>
-  <!--  <script src="../js/main.js"></script> -->
-  <script src="./js/searchBar.js"></script>
-  <script>
-    new WOW().init();
-  </script>
-</body>
-
-</html>
+@endsection

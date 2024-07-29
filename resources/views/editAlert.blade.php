@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
     <!--navbar-site-->
     <div class="navbar-all-site cairo-uniquifier">
@@ -647,17 +647,4 @@
     </section>
 
     <!--scirpt Files-->
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/wow.min.js"></script>
-    <script>
-      new WOW().init();
-    </script>
-    <script src="js/all.min.js"></script>
-    <script src="./js/risk.js"></script>
-    <script src="js/searchBar.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/maxshuty/accessible-web-components@latest/dist/simpleRange.min.js"></script>
-    <!-- <script src="js/main.js" ></script> -->
-    <!--scirpt Files-->
-  </body>
-</html>
+    @endsection

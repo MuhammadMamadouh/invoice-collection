@@ -111,10 +111,4 @@
       </div>
       </div>
     </section>
-  </body>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/wow.min.js"></script>
-  <script src="js/searchBar.js"></script>
-  <script>new WOW().init();</script>
-  <script src="js/all.min.js"></script>
-</html>
+    @endsection

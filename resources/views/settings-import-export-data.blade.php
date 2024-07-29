@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
 
 
@@ -507,13 +507,4 @@
 
   </div>
   <!--select the-file-->
-  <script src="../js/bootstrap.bundle.min.js"></script>
-  <script src="../js/wow.min.js"></script>
-  <!-- <script src="../js/main.js"></script> -->
-  <script src="js/searchBar.js"></script>
-  <script>
-    new WOW().init();
-  </script>
-</body>
-
-</html>
+  @endsection

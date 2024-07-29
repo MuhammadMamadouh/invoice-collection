@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
     <div id="myModal" class="modal">
       <div class="modal-content">
@@ -614,25 +614,4 @@
     </div>
 
     <!--scirpt Files-->
-
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-piechart-outlabels"></script>
-
-    <!-- <script src="https://cdn.jsdelivr.net/gh/maxshuty/accessible-web-components@latest/dist/simpleRange.min.js"></script> -->
-    <script src="js/all.min.js"></script>
-    <script src="js/help.js"></script>
-    <script src="js/chart-5.js"></script>
-    <script src="js/chart-11.js"></script>
-    <script src="js/chart-3.js"></script>
-    <script src="js/chart-8.js"></script>
-    <script src="js/chart-6.js"></script>
-    <script src="js/searchBar.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-   
-    <!-- <script src="js/main.js" ></script> -->
-    <!--scirpt Files-->
-  </body>
-</html>
+    @endsection

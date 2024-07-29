@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
   <div class="nav-demo cairo-uniquifier">
     <nav class="navbar navbar-expand-lg">
@@ -159,9 +159,4 @@
  </div>
 </form>
  <!--six-inmputs-->
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/all.min.js"></script>
-    <script src="js/script-3.js"></script>
-    <script src="js/demo.js"></script>
-  </body>
-</html>
+ @endsection

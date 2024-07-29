@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
   <div class="overlay d-none"></div>
   <div class="position-fixed edit-assignment d-none w-75 " style="top:10% ;left: 50%;transform: translate(-50%);z-index: 10;">
@@ -373,20 +373,4 @@
   </div>
     </div><!--container-->
   </section><!--m-groups-->
-  <script src="../js/bootstrap.bundle.min.js"></script>
-  <script src="../js/wow.min.js"></script>
-  <!-- <script src="../js/main.js"></script> -->
-  <script src="js/searchBar.js"></script>
-  <script src="js/collection.js"></script>
-  <script src="../js/risk.js"></script>
-  <script>
-      function setFlag() {
-    localStorage.setItem('triggerButtonClick', 'true');
-}
-  </script>
-  <script>
-    new WOW().init();
-  </script>
-</body>
-
-</html>
+  @endsection

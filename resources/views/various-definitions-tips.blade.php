@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
 
 <body class="position-relative cairo-uniquifier">
@@ -760,3 +760,4 @@
     </section>
 
 
+@endsection

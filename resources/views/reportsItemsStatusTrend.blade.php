@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')  
 <body class="cairo-uniquifier position-relative">
   <div class="overlay d-none"></div>
@@ -6376,31 +6376,4 @@
 </div>
 </div>
 
-<!--texts-->
-   <!--scirpt Files-->
-   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/gh/maxshuty/accessible-web-components@latest/dist/simpleRange.min.js"></script>
-   <script src="./js/email.js"></script>
-   <script src="./js/hovers.js"></script>
-   <script src="./js/collection.js"></script>
-   <script src="js/chart-5.js"></script>
-   <script src="js/chart-8.js"></script>
-   <script src="js/chart-6.js"></script>
-   <script src="./js/chart.js"></script>
-   <script src="./js/chart-2.js"></script>
-   <script src="./js/chart-3.js"></script>
-   <script src="./js/chart-10.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-piechart-outlabels"></script>
-   <script src="js/chart-12.js"></script>
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <script src="./js/risk.js"></script>
-   <script src="js/wow.min.js"></script>
-   <script>new WOW().init();</script>
-   <script src="js/all.min.js"></script>
-   <script src="js/searchBar.js"></script>
-   <!-- <script src="js/main.js" ></script> -->
-   <!--scirpt Files-->
-</body>
-</html>
+@endsection

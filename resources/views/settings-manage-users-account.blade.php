@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
   <div class="overlay d-none" style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;background-color: rgba(0, 0, 0, 0.418);z-index: 9;"></div>
   <div class="position-fixed add-user-div w-75 pop-up d-none pt-4 pe-4" style="top:5% ;left: 50%;transform: translate(-50%);z-index: 10;height: 90vh; overflow-y: scroll;overflow-x: hidden;">
@@ -792,23 +792,4 @@
       }
     }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/js/OverlayScrollbars.min.js"></script>
-  <script>
-      // Initialize OverlayScrollbars on the table
-      OverlayScrollbars(document.querySelectorAll('#table-scroll'), { });
-  </script>
-  <script src="../js/bootstrap.bundle.min.js"></script>
-  <script src="../js/wow.min.js"></script>
-  <script src="js/scirpt.js"></script>
-  <script src="js/risk.js"></script>
-  <script src="js/searchBar.js"></script>
- 
-  <script>
-    new WOW().init();
-  </script>
-</body>
-
-</html>
+@endsection

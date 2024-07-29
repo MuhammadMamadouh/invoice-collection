@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
     <!--navbar-site-->
     <div class="navbar-all-site cairo-uniquifier">

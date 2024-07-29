@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
     <div class="overlay d-none"></div>
     <div class="company-details d-none">

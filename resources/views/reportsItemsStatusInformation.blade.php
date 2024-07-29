@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
     <section class="p-4">
         <h4>What is the items status report?</h4>
@@ -28,18 +28,4 @@
     </section>
 
 
-
-
-
-
-
-     <!--scirpt Files-->
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <script src="js/help.js"></script>
-   <script src="js/wow.min.js"></script>
-   <script>new WOW().init();</script>
-   <script src="js/all.min.js"></script>
-   <!-- <script src="js/main.js" ></script> -->
-   <!--scirpt Files-->
-</body>
-</html>
+    @endsection

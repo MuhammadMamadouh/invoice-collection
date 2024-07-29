@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
 
 <div class="create-c-i holap-second bg-light">
@@ -2309,28 +2309,4 @@
 <!--sec-3-->
 
 
-   <!--scirpt Files-->
-
-   <script src="js/bootstrap.bundle.min.js"></script>
-   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/gh/maxshuty/accessible-web-components@latest/dist/simpleRange.min.js"></script>
-   <script src="./js/hovers.js"></script>
-   <script src="./js/email.js"></script>
-   <script src="./js/collection.js"></script>
-   <script src="js/chart-5.js"></script>
-   <script src="js/chart-8.js"></script>
-   <script src="js/chart-6.js"></script>
-   <script src="./js/chart.js"></script>
-   <script src="./js/chart-2.js"></script>
-   <script src="./js/chart-3.js"></script>
-   <script src="./js/chart-10.js"></script>
-   <script src="js/searchBar.js"></script>
-   <script src="js/wow.min.js"></script>
-   <script>new WOW().init();</script>
-   <script src="js/all.min.js"></script>
-   <script src="./js/risk.js"></script>
-   <script src="https://cdn.jsdelivr.net/gh/maxshuty/accessible-web-components@latest/dist/simpleRange.min.js"></script>
-   <!-- <script src="js/main.js" ></script> -->
-   <!--scirpt Files-->
-</body>
-</html>
+@endsection

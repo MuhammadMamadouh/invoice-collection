@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
 
 
@@ -817,12 +817,4 @@
       </div> -->
       </div>
     </section>
-    <!--  End setting -->
-    <script src="js/scirpt.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/all.min.js"></script>
-    <script src="js/searchBar.js"></script>
-    <script>
-    </script>
-  </body>
-</html>
+    @endsection

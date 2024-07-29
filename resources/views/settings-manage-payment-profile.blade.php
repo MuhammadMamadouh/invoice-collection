@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')
   <div class="overlay d-none" style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;background-color: rgba(0, 0, 0, 0.418);z-index: 9;"></div>
   <div class="position-fixed payment-profile d-none w-75" style="top:10% ;left: 50%;transform: translate(-50%);z-index: 10;">
@@ -377,27 +377,4 @@
 
                                 </ul><!--list-state-->
                               </div><!--right-->
-
-                              <script src="js/bootstrap.bundle.min.js"></script>
-                              <script src="js/wow.min.js"></script>
-                              <script src="js/collection.js"></script>
-                              <script>
-                                new WOW().init();
-                              </script>
-                                  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                                  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-                                  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                                  <script>
-                                                                    document.getElementById('flag').addEventListener('click', function() {
-                                    document.getElementById('colorPicker').click();
-                                });
-
-                                document.getElementById('colorPicker').addEventListener('input', function() {
-                                    const color = this.value;
-                                    document.getElementById('colorHex').textContent = color;
-                                    document.getElementById('colorDisplay').style.backgroundColor = color;
-                                });
-                                  </script>
-</body>
-
-</html>
+                              @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('app')
 @section('content')  
 <body class="cairo-uniquifier position-relative">
     <section class="p-4">
