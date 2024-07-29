@@ -1,0 +1,71 @@
+var ctx = document.getElementById("myChart-102").getContext("2d");
+var data = {
+  labels: ["Feb 2024", "Nov 2024", "Apr 2024"],
+  datasets: [
+    {
+      type: "bar",
+      label: "E-mail",
+      data: [25,0,145],
+      backgroundColor: "#4A67FF",
+      barPercentage: window.innerWidth < 600 ? 0.5 : 0.8,
+      order:2,
+    },
+      {
+        type: "bar",
+        label: "Email (Automatic action)",
+        data: [0,20,0],
+        backgroundColor: "#007397",
+        barPercentage: window.innerWidth < 600 ? 0.5 : 0.8,
+        order:2,
+      },
+      {
+        type: "bar",
+        label: "Phone",
+        data: [0,25,0],
+        backgroundColor: "#C77A07",
+        barPercentage: window.innerWidth < 600 ? 0.5 : 0.8,
+        order:2,
+      },
+      {
+        type: "bar",
+        label: "Litigation",
+        data: [40,25,210],
+        backgroundColor: "#FF0081",
+        barPercentage: window.innerWidth < 600 ? 0.5 : 0.8,
+        order:2,
+      },
+  ],
+};
+var options = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: true,
+      position: "bottom",
+    },
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
+      ticks: {
+        min: 0,
+        max: 250,
+        stepSize: 50,
+        // callback: function (value) {
+        //   return (value / 1000).toFixed(3) + "k";
+        // },
+      },
+    },
+    x: {
+      grid: {
+        display: false,
+      },
+    },
+  },
+};
+var myChart = new Chart(ctx, {
+  type: "bar",
+  data: data,
+  options: options,
+});
