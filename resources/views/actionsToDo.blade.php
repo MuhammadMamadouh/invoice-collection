@@ -1,7 +1,6 @@
 @extends('app')
 @section('content')
-  <div class="overlay d-none"></div>
-  <div class="company-details d-none">
+@include('layouts.navbar')
     <div class="bg-light holap-first">
       <div class="row text-center m-0 p-3 w-100" style="background-color: #006bff">
         <div class="d-flex justify-content-between align-items-center">

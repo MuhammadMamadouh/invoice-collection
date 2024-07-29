@@ -1,11 +1,11 @@
     <!--scirpt Files-->
-
+    <script src="{{ asset('assets/js/show.js')}}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('assets/js/wow.min.js')}}"></script>
     <script>new WOW().init();</script>
     <script src="{{ asset('assets/js/all.min.js')}}"></script>
     <script src="{{ asset('assets/js/help.js')}}"></script>
-    <script src="{{ asset('assets/js/searchBar.js')}}"></script>
+   
     <script src="{{ asset('assets/js/validation.js')}}"></script>
     <script src="{{ asset('assets/js/popper.js')}}"></script>
     <script src="{{ asset('assets/js/manage.js')}}"></script>
@@ -15,6 +15,8 @@
     <script src="{{ asset('assets/js/email.js')}}"></script>
     <script src="{{ asset('assets/js/chart.js')}}"></script>
     <script src="{{ asset('assets/js/chrtslines.js')}}"></script>
+    <script src="{{ asset('assets/js/searchBar.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
@@ -27,6 +29,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.20/jspdf.plugin.autotable.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/js/OverlayScrollbars.min.js"></script>
+
   <script>
       // Initialize OverlayScrollbars on the table
       OverlayScrollbars(document.querySelectorAll('#table-scroll'), { });

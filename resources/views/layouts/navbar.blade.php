@@ -3,14 +3,14 @@
    <div class="container">
        <span class="inputicons"><i class="fa-solid fa-book"></i></span><input type="text" class="mt-2 mb-2" placeholder="Contact Us For Personalized Demo">
        <a href="settings.html" class="mt-4 mb-4"> <i class="fa-solid fa-house"></i><a href="settings.html"> My account</a></a>
-       <a href="settings.html"><img src="img/person2.jpg" class="img-fluid" alt=""></a>
+       <a href="settings.html"><img src="{{ asset('assets/img/person2.jpg')}}" class="img-fluid" alt=""></a>
       <span class="mt-4 mb-3"><i class="fa-solid fa-power-off"></i><a href="#"> sign out</a></span>
    
   </div>
  </div>
 <nav class="navbar navbar-expand-lg">
    <div class="container">
-     <a class="navbar-brand" href="#"><img src="img/logo.png" class="img-fluid" alt=""></a>
+     <a class="navbar-brand" href="#"><img src="{{ asset('assets/img/logo.png')}}" class="img-fluid" alt=""></a>
      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon">
        <span class="text-light"><i class="fa-solid fa-bars p-1"></i></span>

@@ -15,13 +15,15 @@
     <link rel="stylesheet" href="{{ asset('assets/css/seedemo.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/risk.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/style-2.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/search-bar.css') }}">
+    
     <link rel="stylesheet" href="{{ asset('assets/css/update.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/reportsPayment.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/reports.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/sitting.css') }}">
+   
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/search-bar.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/help.css') }}">
