@@ -1,0 +1,32 @@
+@media (max-width: 768px){
+   
+    .search-container {
+      position: absolute;
+        right: 10px; 
+        width: calc(100% - 20px); 
+        left: 10px; 
+    }
+
+}
+.search-container {
+display: none;
+position: absolute;
+top: 100%; 
+right: 10%; 
+background: white;
+border: 1px solid #ccc;
+padding: 10px;
+z-index: 1000; 
+}
+
+.search-input {
+width: 250px;
+padding: 5px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+
+.pop-up::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}

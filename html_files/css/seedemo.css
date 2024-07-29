@@ -1,0 +1,456 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.prev {
+    text-decoration: none;
+    border: 2px solid #efefef;
+    font-size: 10px;
+    padding: 3px;
+    cursor:not-allowed;
+    font-size: 13px;
+}
+.next {
+    text-decoration: none;
+    border: 2px solid #efefef;
+    font-size: 10px;
+    padding: 3px;
+    font-size: 13px;
+} 
+.change-pages  a {
+    text-decoration: none;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.change-pages span {
+    display: block;
+}
+.show-txt  {
+    display: none;
+    color: #fff;
+    background: #000;
+    border: 1 solid #000;
+    position: absolute;
+    left: 10%;
+    text-align: center;
+    padding: 10px;
+}
+.show-txt span {
+    font-size: 10px;
+}
+#aning-mouse {
+    cursor:alias;
+}
+.show-txt-2  {
+    display: none;
+    color: #fff;
+    background: #000;
+    border: 1 solid #000;
+    position: absolute;
+    left: 43%;
+    text-align: center;
+    padding: 10px;
+}
+.show-txt-2 span {
+    font-size: 10px;
+}
+
+.three-cont {
+    background: #efefef;
+    border-top: 2px solid #efefef;
+    border-bottom: 2px solid #efefef;
+}
+.three-cont ,.two-cont:hover {
+    background: #efefef;
+}
+@media (max-width:991px) {
+    .sec-1 h6,.sec-1 p {
+        font-size: 10px !important;
+    }
+    .left-sec span {
+        font-size: 10px;
+    }
+    .block-con span {
+        font-size: 10px !important;
+        padding: 1px !important;
+    }
+    .save-end button {
+        padding: 2px !important;
+    }
+    .end-con h4 {
+        font-size: 10px;
+    }
+    .two-content-show a,.two-content-show a span {
+        font-size: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .two-content-show h4 {
+        font-size: 5px !important;
+    }
+}
+.save-end  {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+}
+.save-end button {
+   padding: 2px 5px;
+   color: #fff;
+   border: 2px solid;
+   background: green;
+
+}
+.block-con span {
+    background: gray;
+    border: 2px solid gray;
+    border-radius: 12px;
+    padding: 6px;
+    font-size: 14px;
+    color: #fff;
+}
+.add-itemes button {
+    background: 0;
+    border: none;
+    color: blue;
+    text-transform: capitalize;
+}
+.add-itemes button:hover {
+    text-decoration: underline;
+    color: #001;
+}
+.add-itemes button span {
+    font-size: 15px;
+}
+.show-items button {
+    color: #fff;
+    background: blue;
+    font-size: 15px;
+    padding: 4px 10px;
+    border: 2px solid blue;
+    border-radius:3px ;
+}
+.show-items button:hover {
+    color: #fff;
+    text-decoration: none;
+    background: blue;
+    border: 2px solid blue;
+}
+#item-contents {
+    display: none;
+}
+.addimg img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+
+}
+.lights-tables span {
+    margin: 8px;
+}
+.new-score button {
+    color: #fff;
+    background: blue;
+    padding: 5px 10px;
+    border: 2px solid blue;
+    border-radius: 2px;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+.two-content-show  a {
+    text-decoration: none;
+}
+.two-content-show a:hover {
+    text-decoration: underline;
+}
+
+.show-credit h6 {
+    background: #3e7ea5;
+    color: #fff;
+    padding: 5px;
+    font-size: 13px;
+}
+.show-credit h6 span {
+    color: #3e7ea5;;
+    background: #fff;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    padding: 3px;
+    font-size: 4px;
+    margin-left: 6px;
+}
+.scroll-bars  {
+    overflow-y: scroll;
+    height: 100px;
+}
+.calc-score button {
+    color: #fff;
+    background: #3e7ea5;
+    padding: 5px 10px;
+    border: 2px solid #3e7ea5;
+    border-radius: 2px;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+.credit-limit-btn button {
+    color: #fff;
+    background: blue;
+    padding: 5px 10px;
+    border: 2px solid blue;
+    border-radius: 2px;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+.credit-limit  {
+    border: 2px solid #000;
+}
+.two-content-show p span {
+    color: blue;
+}
+.two-content-show p  {
+    font-size: 14px;
+}
+.two-content-show p span:hover {
+    text-decoration: underline;
+}
+.input-titles p {
+    background: #3e7ea5;
+    color: #fff;
+    padding: 5px;
+    font-size: 13px;
+}
+.input-titles p span {
+    color: #3e7ea5;;
+    background: #fff;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    padding: 3px;
+    font-size: 4px;
+    margin-left: 6px;
+}
+.input-titles input {
+    width: 100%;
+    outline: none;
+    border:2px solid #efefef;
+    border-radius: 2px;
+    transition: 0.5s;
+}
+.input-titles input:hover {
+    box-shadow: 0 0 8px #3e7ea5;
+}
+.clac-button-score button {
+    color: #fff;
+    background: #3e7ea5;
+    padding: 5px 10px;
+    border: 2px solid #3e7ea5;
+    border-radius: 2px;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+/*sec-2*/
+
+.pay-totals span {
+    color: #fff;
+    background: gray;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 10px;
+}
+.table-and-txt span {
+    color: #000;
+    font-weight: 700;
+    font-style: bold;
+}
+.four-cont-sec-2 {
+    background:#eeeeee;
+    border-bottom: 2px solid #eeeeee;;
+    border-top: 2px solid #ddd;
+    border-radius: 2px;
+}
+.four-cont-sec-2 span:nth-child(1) {
+    color: #eeeeee;
+    padding: 2px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.desc-and-cric span {
+    font-weight: 700;
+    font-style: bold;
+}
+.circ {
+    width: 250px;
+    height: 250px;
+    align-items: center;
+    display: flex;
+    margin: auto;
+    border-radius: 50%;
+    border: 50px solid #efefef;
+    cursor: pointer;
+}
+.display-data {
+    background: #ddd;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    min-height: 50vh;
+}
+.head-titels  {
+    display: flex;
+   justify-content:space-around;
+   text-transform: capitalize;
+   background: #eeeeee;
+   border: 2px solid #000;
+}
+.head-titels  p span {
+    background: #fff;
+    padding: 3px 5px;
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+    border-radius:12px;
+    font-size: 12px;
+}
+@media (max-width:991px) {
+    .head-titels  p{
+        font-size: 5px !important;
+    }
+    .head-titels  p span{
+        font-size: 2px !important;
+    }
+}
+/*sec-2*/
+
+/*sec-3*/
+
+.three-button button {
+    color: #fff;
+    background: #0d6efd;
+    border: none;
+    margin: 10px;
+    padding: 5px;
+    border: 1 solid #0d6efd;
+    text-transform: capitalize;
+    width: 100%;
+}
+@media (max-width:991px) {
+    .three-button button  {
+        font-size: 10px;
+    }
+    .three-button-collections {
+        font-size: 10px !important;
+    }
+    .tale-2 thead {
+        font-size: 2px !important;
+    }
+    .tale-2 tbody {
+        font-size: 2px !important;
+    }
+}
+tbody {
+    background: #efefef !important;
+}
+.page-not-found {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+.tale-2  tbody,.tale-2  thead {
+    font-size: 14px;
+    text-align: center;
+}
+.tale-2 .text-end,.tale-2 .numer-start {
+    color: blue;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.tale-2 .text-end:hover {
+  text-decoration: underline;
+}
+.tale-2 .numer-start:hover{
+    text-decoration: underline;
+}
+/*sec-3*/
+
+.showdesc {
+    color:#efefef;
+    background: #000;
+    font-size: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+.show-dec .ptwo {
+    font-size: 10px;
+    line-height: 10px;
+    position: absolute;
+    top: 5%;
+    left: 18%;
+    color: #fff;
+    background: #000;
+    padding: 5px;
+}
+
+@media (min-width:992px) {
+    .collection-table p,.collection-table span {
+        font-size: 13px;
+    }
+}
+ .conttt {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    font-size: 10px;
+    margin: 5px;
+    padding: 5px;
+    line-height: 10px;
+    left:18.5%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse {
+    color: #fff;
+    background: #000;
+    width: 14px;
+    height: 14px;
+    margin-top: 5px;
+    margin-left: 2px;
+    font-size: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+.conttt-2 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 10px;
+   margin: 5px;
+   margin-top: 5px;
+    padding: 5px;
+    line-height: 10px;
+    right: 15%;
+    text-transform: capitalize; 
+    display: none;
+}
+.onmouse-2 {
+    cursor: pointer;
+}

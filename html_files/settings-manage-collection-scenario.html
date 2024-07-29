@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seting</title>
+    <!--bootstrap-file-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--bootstrap-file-->
+    <!--fontawesome-file-->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!--fontawesome-file-->
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/risk.css">
+    <link rel="stylesheet" href="css/reports.css">
+    <link rel="stylesheet" href="css/style-2.css">
+    <link rel="stylesheet" href="css/search-bar.css">
+   
+    <!--icons-site-->
+    <link rel="icon" type="png" href="img/logo.png">
+    <!--icons-site-->
+    <!--google-font-->
+    <!--woow AnimateFiles Css-->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!--woow AnimateFiles Css-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <!--google-font-->
+</head>
+
+<body class="cairo-uniquifier">
+    <!--navbar-site-->
+    <div class="navbar-all-site cairo-uniquifier">
+        <div class="top-navbar ">
+         <div class="container">
+             <span class="inputicons"><i class="fa-solid fa-book"></i></span><input type="text" class="mt-2 mb-2" placeholder="Contact Us For Personalized Demo">
+             <a href="settings.html" class="mt-4 mb-4"> <i class="fa-solid fa-house"></i><a href="settings.html"> My account</a></a>
+             <a href="settings.html"><img src="img/person2.jpg" class="img-fluid" alt=""></a>
+            <span class="mt-4 mb-3"><i class="fa-solid fa-power-off"></i><a href="#"> sign out</a></span>
+         
+        </div>
+       </div>
+      <nav class="navbar navbar-expand-lg">
+         <div class="container">
+           <a class="navbar-brand" href="#"><img src="img/logo.png" class="img-fluid" alt=""></a>
+           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+             <span class="navbar-toggler-icon">
+             <span class="text-light"><i class="fa-solid fa-bars p-1"></i></span>
+             </span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <ul class="navbar-nav ms-auto text-center mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="globalView.html"><span><i class="fa-solid fa-eye"></i></span> global view</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="collection.html"><span><i class="fa-solid fa-clock"></i></span> collection</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="actionsToDo.html" >
+                  <span><i class="fa-solid fa-bolt "></i></span>risk
+                </a>
+              </li>
+             
+               <li class="nav-item">
+                 <a class="nav-link" href="allClients.html"><span><i class="fa-solid fa-globe"></i></span> clients</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="searchForAClient.html"><span><i class="fa-solid fa-magnifying-glass"></i></span> search</a>
+               </li>
+               <li class="nav-item dropdown">
+                 <a class="nav-link dropdown-toggle" id="reportsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" href="#"><span><i class="fa-solid fa-chart-simple"></i></span> reports</a>
+                 <ul class="dropdown-menu" aria-labelledby="reportsDropdown">
+                  <li><a class="dropdown-item text-primary" href="reportsAgingBalance.html"><i class="fa-solid fa-chart-simple "></i> Aging balance</a></li>
+                  <li><a class="dropdown-item text-primary" href="reportsOverdueTrend.html"><i class="fa-solid fa-clock-rotate-left"></i> Overdue trend</a></li>
+                  <li><a class="dropdown-item text-primary" href="reportsDSO.html"><i class="fa-solid fa-chart-line"></i> DSO</a></li>
+                  <li><a class="dropdown-item text-primary" href="reportsItemsStatus.html"><i class="fa-solid fa-chart-pie"></i> Items status</a></li>
+                  <li><a class="dropdown-item text-primary" href="reportsDisputes.html"><i class="fa-solid fa-handshake-simple"></i> Disputes</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item text-primary" href="reportsSales.html"><i class="fa-solid fa-signal"></i> Sales</a></li>
+                  <li><a class="dropdown-item text-primary" href="reportsCashReciepts.html"><i class="fa-solid fa-money-bill-1-wave"></i> Cash receipts</a></li>
+                  <li><a class="dropdown-item text-primary" href="reportsCashForecast.html"><i class="fa-solid fa-wand-magic-sparkles"></i> Cash Forecast</a></li>
+                  <li><a class="dropdown-item text-primary" href="reportsPaymentSchedule.html"><i class="fa-solid fa-table-cells"></i> Payment Schedule</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item text-primary" href="reportsRisk.html"><i class="fa-solid fa-bolt me-2"></i>Risk</a></li>
+                  <li><a class="dropdown-item text-primary" href="reportsPaymentProfile.html"><i class="fa-solid fa-flag me-2"></i>Payment profile</a></li>
+                </ul>
+               </li>
+               <li class="nav-item dropdown active">
+                 <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><span><i class="fa-solid fa-gear"></i></span> setting
+                 </a>
+                 <ul class="dropdown-menu" aria-labelledby="settingsDropdown">
+                  <li><a class="dropdown-item text-primary" href="settings-manage-users-account.html"><i class="fa-solid fa-users"></i> Manage users account</a></li>
+                  <li><a class="dropdown-item text-primary" href="settings-secure.html"><i class="fa-solid fa-lock"></i> Secure my account and user accounts</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item text-primary" href="settings-import-export-data.html"><i class="fa-solid fa-rotate"></i> Import / Export your data</a></li>
+                  <li><a class="dropdown-item text-primary" href="settings-manage-search.html"><i class="fa-solid fa-robot"></i> Manage search assign</a></li>
+                  <li><a class="dropdown-item text-primary" href="settings-create-client.html"><i class="fa-solid fa-plus"></i> Create a client</a></li>
+                  <li><a class="dropdown-item text-primary" href="settings-create-item.html"><i class="fa-solid fa-plus"></i> Create an item(invoice, credit note,...)</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item text-primary" href="settings-manage-clients-group.html"><i class="fa-regular fa-folder-open"></i> Manage clients group</a></li>
+                  <li><a class="dropdown-item text-primary" href="settings-manage-collection-scenario.html"><i class="fa-regular fa-clock"></i> Manage collection scenario</a></li>
+                  <li><a class="dropdown-item text-primary" href="settings-manage-item-status.html"><i class="fa-regular fa-square-check"></i> Manage item status</a></li>
+                  <li><a class="dropdown-item text-primary" href="settings-manage-payment-profile.html"><i class="fa-regular fa-flag"></i> Manage payment profiles</a></li>
+                  <li><a class="dropdown-item text-primary" href="settings-manage-risk-settings.html"><i class="fa-solid fa-bolt"></i> Manage risk</a></li>
+                  <li><a class="dropdown-item text-primary" href="settings-manage-validation.html"><i class="fa-solid fa-computer"></i>Manage credit limits validation</a></li>
+                </ul>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="help.html"><span><i class="fa-solid fa-circle-info"></i></span> helps</a>
+               </li>
+               <div class="icons-nav">
+                 <a href="insights.html"><i class="fa-solid fa-book"></i></a>
+                 <a class="position-relative" href="#" id="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
+                 <div class="search-container px-4 py-2 rounded" id="search-container">
+                  <p>Quick search :</p>
+                  <div class="input-group w-100 ">
+                      <input type="text" class="search-input form-control" placeholder="Search for a client / Search for an item (invoice, credit note, ...)...">
+                      <span class="input-group-text bg-primary"><a href="#"><i class="fa-solid fa-search text-white"></i></a></span>
+                    </div>
+                    <div class="d-flex "><input type="checkbox" class="mb-3 me-1 chec bg-body-tertiary">
+                      <p class="name-d">Include cleared items</p></div>
+                </div>
+               </div>
+               </ul>
+           </div>
+         </div>
+       </nav>
+      </div>
+    <!--navbar-site-->
+    <div class="our-titles mt-3 mb-0 text-capitalize text-center">
+        <div class="container">
+            <h4>mange collection scenarios</h4>
+        </div>
+    </div>
+    <div class="scenarios-and-setting-buttons d-flex">
+        <div class="container-fluid">
+            <div class="col-6">
+    
+                <button id="btnone" onclick="secOneOpeen()" class="scenarios-active m-3" style="padding: 5px 10px ;">collection scenarios</button>
+                <button id="btntwo" onclick="secTwoOpeen()" style="padding: 5px 10px";>setting</button>
+            </div>
+        </div>
+    </div>
+    <hr class="container-fluid">
+    <!--start-desc-->
+    <section class="sections-1 " id="sec-1">
+        <div class="flag-dropdown  mt-3 mb-3">
+            <div class="container-fluid d-flex justify-content-end ">
+            <button class="btn btn-primary "><i class="fa-solid fa-plus"></i> New collection scenario</button>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                   <span><i class="fa-solid fa-plus"></i></span> Add a pre-defined scenario 
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-light">
+                      <li class="d-flex"><a class="dropdown-item" href="#">Specific Actions <img src="img/united-states.png" class="img-fluid" alt=""> </a></li>
+                      <li><a class="dropdown-item" href="#">Standard Collection Scenario <img src="img/united-states.png" class="img-fluid" alt=""> </a></li>
+                      <li><a class="dropdown-item" href="#">Acciones específicas <img src="img/spain.png" class="img-fluid" alt=""> </a></li>
+                      <li><a class="dropdown-item" href="#">Escenario de reclamación estándar  <img src="img/spain.png" class="img-fluid" alt="">  </a></li>
+                      <li><a class="dropdown-item" href="#">Clients publics <img src="img/france.png" class="img-fluid" alt=""> </a></li>
+                      <li><a class="dropdown-item" href="#">Clients risqués <img src="img/france.png" class="img-fluid" alt=""> </a></li>
+                      <li><a class="dropdown-item" href="#">Modèles actions spécifiques <img src="img/france.png" class="img-fluid" alt=""> </a></li>
+                      <li><a class="dropdown-item" href="#">Scénario de relance standard <img src="img/france.png" class="img-fluid" alt=""> </a></li>
+                      <li><a class="dropdown-item" href="#">Azioni specifiche <img src="img/italy.png" class="img-fluid" alt=""> </a></li>
+                      <li><a class="dropdown-item" href="#">Scenario di sollecito standard <img src="img/italy.png" class="img-fluid" alt=""> </a></li>
+    
+                  </div>
+            </div>
+        </div>
+        <div class="two-contents mt-2 mb-4">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-md-2 col-3 text-center d-flex">
+                        <h6>collection scenarios</h6>
+                    </div>
+                    <div class="col-md-8 col-6 text-center">
+                        <h6>action of collection scenarios</h6>
+                    </div>
+                </div>
+                <div class="backg-content-2">
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="content-2-desc">
+                                <h6 class=" mt-3 mb-3">Scénario de relance standard</h6>
+                                <h6 class="txt-2-p mt-3 mb-3 text-black-50 text"><span class="text-black-50"><i class="fa-solid fa-star"></i></span>Default collection scenario</h6>
+                                <div class="open-serch">
+                                    <a href="" class="text-black-50 text-center ">576 clients use this collection
+                                        scenarioLink <span><i class="fa-regular fa-share-from-square"></i></span></a>
+                                </div>
+                                <div class="three-icons-in-action mt-3 mb-3">
+                                    <button class="text-black-50"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-sm-12 col-md-12 ">
+                            <div class="end-buttons text-end container">
+                                <div class="btn btn-primary text-capitalize mt-2"><span><i class="fa-solid fa-plus"></i></span>add a
+                                    criterion</div>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class="" ><a href="">1- Pré-relance par email</a></li>
+                                    <span>-10days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">2- Pré-relance par email</a></li>
+                                    
+                                    <span>+45days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">3- Relance téléphonique n°1</a></li>
+                                    <span> +7 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">4- Relance par email n°2</a></li>
+                                    <span>+14 days Français <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                 <span>@</span>
+                                    <li class=""><a href="">5- Demande de relance du commercial </a></li>
+                                    <span>+21 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">6- Relance téléphonique n°2</a></li>
+                                    <span> +28 days </span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">7- Activer les pénalités + Relance par e-mail n°3</a></li>
+                                    <span> +33 days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                 <span><i class="fa-solid fa-envelope"></i></span>
+                                    <li class=""><a href="">8- Courrier de mise en demeure </a></li>
+                                    <span>+43 days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-bolt"></i></span>
+                                    <li class=""><a href="">9- Contentieux</a></li>
+                                    <span> +50 days</span>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="two-contents mt-2 mb-4">
+            <div class="container-fluid">
+
+                <div class="backg-content-3">
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="content-2-desc">
+                                <h6 class=" mt-3 mb-3">Clients publics (FR)</h6>
+                                <div class="open-serch">
+                                    <a href="" class="text-black-50 text-center ">4 clients use this collection scenario<span><i class="fa-regular fa-share-from-square"></i></span></a>
+                                </div>
+                                <div class="three-icons-in-action mt-3 mb-3">
+                                    <button class="text-black-50"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-sm-12 col-md-12 ">
+                            <div class="end-buttons text-end container">
+                                <div class="btn btn-primary text-capitalize mt-2"><span><i class="fa-solid fa-plus"></i></span>add a
+                                    criterion</div>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">1- Pré-relance par email</a></li>
+                                    <span>-10days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">2- Pré-relance par email</a></li>
+                                    
+                                    <span>+45days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">3- Relance téléphonique n°1</a></li>
+                                    <span> +7 days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">4- Relance par email n°2</a></li>
+                                    <span>+14 days Français <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">5- Demande de relance du commercial </a></li>
+                                    <span>+21 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">6- Relance téléphonique n°2</a></li>
+                                    <span> +28 days </span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">7- Activer les pénalités + Relance par e-mail n°3</a></li>
+                                    <span> +33 days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-envelope"></i></span>
+                                    <li class=""><a href="">8- Courrier de mise en demeure </a></li>
+                                    <span>+43 days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="two-contents mt-2 mb-4">
+            <div class="container-fluid">
+                <div class="backg-content-2">
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="content-2-desc">
+                                <h6 class=" mt-3 mb-3">Clients risqués (FR)</h6>
+
+                                <div class="open-serch">
+                                    <a href="" class="text-black-50 text-center ">2 clients use this collection scenario<span><i class="fa-regular fa-share-from-square"></i></span></a>
+                                </div>
+                                <div class="three-icons-in-action mt-3 mb-3">
+                                    <button class="text-black-50"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-sm-12 col-md-12 ">
+                            <div class="end-buttons text-end container">
+                                <div class="btn btn-primary text-capitalize mt-2"><span><i class="fa-solid fa-plus"></i></span>add a
+                                    criterion</div>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">1- Pré-relance par email</a></li>
+                                    <span>-10days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">2- Pré-relance par email</a></li>
+                                    <span>+45days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">3- Relance téléphonique n°1</a></li>
+                                    <span> +7 days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-mobile"></i></span>
+                                    <li class=""><a href="">4- Relance par email n°2</a></li>
+                                    <span>+14 days Français <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-envelope"></i></span>
+                                    <li class=""><a href="">5- Demande de relance du commercial </a></li>
+                                    <span>+21 days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">6- Relance téléphonique n°2</a></li>
+                                    <span> +28 days <img src="img/france.png" alt=""> </span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-envelope"></i></span>
+                                    <li class=""><a href="">7- Activer les pénalités + Relance par e-mail n°3</a></li>
+                                    <span> +33 days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-bolt"></i></span>
+                                    <li class=""><a href="">8- Courrier de mise en demeure </a></li>
+                                    
+                                    <span>+43 days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="two-contents mt-2 mb-4">
+            <div class="container-fluid">
+
+                <div class="backg-content-3">
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="content-2-desc">
+                                <h6 class=" mt-3 mb-3">Key accounts scenario (EN)</h6>
+           
+                                <div class="open-serch">
+                                    <a href="" class="text-black-50 text-center ">85 clients use this collection scenarioLink<span><i class="fa-regular fa-share-from-square"></i></span></a>
+                                </div>
+                                <div class="three-icons-in-action mt-3 mb-3">
+                                    <button class="text-black-50"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-sm-12 col-md-12 ">
+                            <div class="end-buttons text-end container">
+                                <div class="btn btn-primary text-capitalize mt-2"><span><i class="fa-solid fa-plus"></i></span>add a
+                                    criterion</div>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                               <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">1- Pré-relance par email</a></li>
+                                    <span>-10days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">2- Pré-relance par email</a></li>
+                                    <span>+45days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">3- Relance téléphonique n°1</a></li>
+                                    <span> +7 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">4- Relance par email n°2</a></li>
+                                    <span>+14 days Français</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">5- Demande de relance du commercial </a></li>
+                                    <span>+21 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">6- Relance téléphonique n°2</a></li>
+                                    <span> +28 days </span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">7- Activer les pénalités + Relance par e-mail n°3</a></li>
+                                    <span> +33 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-envelope"></i></span>
+                                    <li class=""><a href="">8- Courrier de mise en demeure </a></li>
+                                    <span>+43 days</span>
+                                </ul>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="two-contents mt-2 mb-4">
+            <div class="container-fluid">
+                <div class="backg-content-2">
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="content-2-desc">
+                                <h6 class=" mt-3 mb-3">Modèles actions spécifiques</h6>
+                              
+                                <div class="open-serch">
+                                    <a href="" class="text-black-50 text-center ">0 client use this collection scenario <span><i class="fa-regular fa-share-from-square"></i></span></a>
+                                </div>
+                                <div class="three-icons-in-action mt-3 mb-3">
+                                    <button class="text-black-50"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-sm-12 col-md-12 ">
+                            <div class="end-buttons text-end container">
+                                <div class="btn btn-primary text-capitalize mt-2"><span><i class="fa-solid fa-plus"></i></span>add a
+                                    criterion</div>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">1- Pré-relance par email</a></li>
+                                    <span>-10days <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">2- Pré-relance par email</a></li>
+                                    <span>+45days  <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">3- Relance téléphonique n°1</a></li>
+                                    <span> +7 days  <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">4- Relance par email n°2</a></li>
+                                    <span>+14 days Français  <img src="img/france.png" alt=""></span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                 <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">5- Demande de relance du commercial </a></li>
+                                    <span>+21 days</span>
+                                </ul>
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="two-contents mt-2 mb-4">
+            <div class="container-fluid">
+
+                <div class="backg-content-3">
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="content-2-desc">
+                                <h6 class=" mt-3 mb-3">Risky clients (EN)</h6>
+                             
+                                <div class="open-serch">
+                                    <a href="" class="text-black-50 text-center ">11 clients use this collection scenarioLink<span><i class="fa-regular fa-share-from-square"></i></span></a>
+                                </div>
+                                <div class="three-icons-in-action mt-3 mb-3">
+                                    <button class="text-black-50"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-sm-12 col-md-12 ">
+                            <div class="end-buttons text-end container">
+                                <div class="btn btn-primary text-capitalize mt-2"><span><i class="fa-solid fa-plus"></i></span>add a
+                                    criterion</div>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                               <span>@</span>
+                                    <li class=""><a href="">1- Pré-relance par email</a></li>
+                                    <span><i class="fa-solid fa-retweet"></i></span>
+                                    <span>-10days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">2- Pré-relance par email</a></li>
+                                    <span>+45days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">3- Relance téléphonique n°1</a></li>
+                                    <span><i class="fa-solid fa-retweet"></i></span>
+                                    <span> +7 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">4- Relance par email n°2</a></li>
+                                    <span>+14 days Français</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-envelope"></i></span>
+                                    <li class=""><a href="">5- Demande de relance du commercial </a></li>
+                                    <span>+21 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-envelope"></i></span>
+                                    <li class=""><a href="">6- Relance téléphonique n°2</a></li>
+                                    <span> +28 days </span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-bolt"></i></span>
+                                    <li class=""><a href="">7- Activer les pénalités + Relance par e-mail n°3</a></li>
+                                    <span> +33 days</span>
+                                </ul>
+                            </div>
+                          
+                        
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="two-contents mt-2 mb-4">
+            <div class="container-fluid">
+
+                <div class="backg-content-2">
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="content-2-desc">
+                                <h6 class=" mt-3 mb-3">Standard Collection Scenario</h6>
+
+                                <div class="open-serch">
+                                    <a href="" class="text-black-50 text-center ">967 clients use this collection scenarioLink <span><i class="fa-regular fa-share-from-square"></i></span></a>
+                                </div>
+                                <div class="three-icons-in-action mt-3 mb-3">
+                                    <button class="text-black-50"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-sm-12 col-md-12 ">
+                            <div class="end-buttons text-end container">
+                                <div class="btn btn-primary text-capitalize mt-2"><span><i class="fa-solid fa-plus"></i></span>add a
+                                    criterion</div>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">1- Pré-relance par email</a></li>
+                                    <span><i class="fa-solid fa-retweet"></i></span>
+                                    <span>-10days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">2- Pré-relance par email</a></li>
+                                    <span><i class="fa-solid fa-retweet"></i></span>
+                                    <span>+45days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">3- Relance téléphonique n°1</a></li>
+                                    <span> +7 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">4- Relance par email n°2</a></li>
+                                    <span>+14 days Français</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">5- Demande de relance du commercial </a></li>
+                                    <span>+21 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-phone"></i></span>
+                                    <li class=""><a href="">6- Relance téléphonique n°2</a></li>
+                                    <span> +28 days </span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span>@</span>
+                                    <li class=""><a href="">7- Activer les pénalités + Relance par e-mail n°3</a></li>
+                                    <span> +33 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-envelope"></i></span>
+                                    <li class=""><a href="">8- Courrier de mise en demeure </a></li>
+                                    <span>+43 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <span><i class="fa-solid fa-bolt"></i></span>
+                                    <li class=""><a href="">9- Contentieux</a></li>
+                                    <span> +50 days</span>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="two-contents mt-2 mb-4">
+            <div class="container-fluid">
+
+                <div class="backg-content-3">
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="content-2-desc">
+                                <h6 class=" mt-3 mb-3">Templates specific actions</h6>
+                                
+                                <div class="open-serch">
+                                    <a href="" class="text-black-50 text-center ">0 client use this collection scenario<span><i class="fa-regular fa-share-from-square"></i></span></a>
+                                </div>
+                                <div class="three-icons-in-action mt-3 mb-3">
+                                    <button class="text-black-50"><i class="fa-solid fa-pen"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="text-black-50"><i class="fa-solid fa-copy"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-sm-12 col-md-12 ">
+                            <div class="end-buttons text-end container">
+                                <div class="btn btn-primary text-capitalize mt-2"><span><i class="fa-solid fa-plus"></i></span>add a
+                                    criterion</div>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+
+                                    <li class=""><a href="">1- Reminder by e-mail No. 1 </a></li>
+                                    <span>-1 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <li class=""><a href="">2- Promise to pay follow up </a></li>
+                                    <span>+2 days</span>
+                                </ul>
+                            </div>
+                            <div class="content-text-2">
+                                <ul class="d-flex">
+                                    <li class=""><a href="">2- Dispute follow-up</a></li>
+                                    <span>+3 days</span>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <section class="sections-2 d-none" id="sec-2">
+        <div class="four-inputs">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="firt d-flex justify-content-around mt-3 mb-3">
+                            <label>Minimum amount for collection :</label>
+                            <input type="text" placeholder="50">
+                            <span>€</span>
+                        </div>
+                        <div class="firt d-flex justify-content-around mt-3 mb-3">
+                            <label>Ignore transactions whose amount is less than :</label>
+                            <input type="text" placeholder="50">
+                            <span>€</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 mt-3 mb-3">
+                            <div class="automatic-between d-flex align-items-center">
+                                <h6>Automatic action between </h6>
+                                <select name="relance_auto_horaire_min" style="font-size: 12px;" class="">
+                                    <option value="1">1:00</option>
+                                    <option value="2">2:00</option>
+                                    <option value="3">3:00</option>
+                                    <option value="4">4:00</option>
+                                    <option value="5">5:00</option>
+                                    <option value="6">6:00</option>
+                                    <option value="7">7:00</option>
+                                    <option value="8" selected>8:00</option>
+                                    <option value="9">9:00</option>
+                                    <option value="10">10:00</option>
+                                    <option value="11">11:00</option>
+                                    <option value="12">12:00</option>
+                                    <option value="13">13:00</option>
+                                    <option value="14">14:00</option>
+                                    <option value="15">15:00</option>
+                                    <option value="16">16:00</option>
+                                    <option value="17">17:00</option>
+                                    <option value="18">18:00</option>
+                                    <option value="19">19:00</option>
+                                    <option value="20">20:00</option>
+                                    <option value="21">21:00</option>
+                                    <option value="22">22:00</option>
+                                    <option value="23">23:00</option>
+                                    <option value="24">24:00</option>
+                                </select>
+                                <h6 style="margin: 5px;">and</h6>
+                                <select name="relance_auto_horaire_min" style="font-size: 12px;" class="">
+                                    <option value="1">1:00</option>
+                                    <option value="2">2:00</option>
+                                    <option value="3">3:00</option>
+                                    <option value="4">4:00</option>
+                                    <option value="5">5:00</option>
+                                    <option value="6">6:00</option>
+                                    <option value="7">7:00</option>
+                                    <option value="8" selected>8:00</option>
+                                    <option value="9">9:00</option>
+                                    <option value="10">10:00</option>
+                                    <option value="11">11:00</option>
+                                    <option value="12">12:00</option>
+                                    <option value="13">13:00</option>
+                                    <option value="14">14:00</option>
+                                    <option value="15">15:00</option>
+                                    <option value="16">16:00</option>
+                                    <option value="17">17:00</option>
+                                    <option value="18">18:00</option>
+                                    <option value="19">19:00</option>
+                                    <option value="20">20:00</option>
+                                    <option value="21">21:00</option>
+                                    <option value="22">22:00</option>
+                                    <option value="23">23:00</option>
+                                    <option value="24">24:00</option>
+                                </select>
+                            </div>                            
+                        </div>
+                        <div class="col-lg-6   mt-3 mb-3 d-flex align-items-center justify-content-center">
+                            <div class="radi-inputs d-flex">
+                                <input type="checkbox" name="inputs-group" id="Sun">
+                                <label for="Sun">Sun</label>            
+                            </div>
+                            <div class="radi-inputs d-flex">
+                                <input type="checkbox" name="inputs-group" id="Mon">
+                                <label for="Mon">Mon</label>            
+                            </div>
+                            <div class="radi-inputs d-flex">
+                                <input type="checkbox" name="inputs-group" id="Tue">
+                                <label for="Tue">Tue</label>            
+                            </div>
+                            <div class="radi-inputs d-flex">
+                                <input type="checkbox" name="inputs-group" id="Wed">
+                                <label for="Wed">Wed</label>            
+                            </div>
+                            <div class="radi-inputs d-flex">
+                                <input type="checkbox" name="inputs-group" id="Thu">
+                                <label for="Thu">Thu</label>            
+                            </div>
+                            <div class="radi-inputs d-flex">
+                                <input type="checkbox" name="inputs-group" id="Fri">
+                                <label for="Fri">Fri</label>            
+                            </div>
+                            <div class="radi-inputs d-flex">
+                                <input type="checkbox" name="inputs-group" id="Sat">
+                                <label for="Sat">Sat</label>            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="editor mt-3 mb-3 ">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <p class="my-3">Common signature ( #my_company_signature ):</p>
+                        <a href="#" class="mt-3 mb-2">Incorporate dynamic content in your emails with #Hashtag</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="editor-container mb-1">
+                            <div class="toolbar">
+                              <button onclick="execCmd('bold')"><i class="fas fa-bold"></i></button>
+                              <button onclick="execCmd('italic')"><i class="fas fa-italic"></i></button>
+                              <button onclick="execCmd('underline')"><i class="fas fa-underline"></i></button>
+                              <button onclick="execCmd('strikeThrough')"><i class="fas fa-strikethrough"></i></button>
+                              <button onclick="execCmd('justifyLeft')"><i class="fas fa-align-left"></i></button>
+                              <button onclick="execCmd('justifyCenter')"><i class="fas fa-align-center"></i></button>
+                              <button onclick="execCmd('justifyRight')"><i class="fas fa-align-right"></i></button>
+                              <button onclick="execCmd('justifyFull')"><i class="fas fa-align-justify"></i></button>
+                              <button onclick="execCmd('insertUnorderedList')"><i class="fas fa-list-ul"></i></button>
+                              <button onclick="execCmd('insertOrderedList')"><i class="fas fa-list-ol"></i></button>
+                              <button onclick="execCmd('createLink', prompt('Enter the URL:', 'http://'))"><i
+                                  class="fas fa-link"></i></button>
+                              <button onclick="execCmd('unlink')"><i class="fas fa-unlink"></i></button>
+                              <button onclick="insertImage()"><i class="fas fa-image"></i></button>
+                              <button onclick="insertTable()"><i class="fas fa-table"></i></button>
+                              <button onclick="toggleHTML()">Toggle HTML</button>
+                            </div>
+                            <div id="editor" style="height:150px ;" class="form-control" contenteditable="true">
+                              Start typing here...
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--scirpt Files-->
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script>new WOW().init();</script>
+    <script src="js/all.min.js"></script>
+    <script src="js/searchBar.js"></script>
+    <script src="./js/risk.js"></script>
+    <script src="js/mange.js" ></script>
+    <script src="js/email.js"></script>
+    <!--scirpt Files-->
+</body>
+
+</html>

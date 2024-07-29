@@ -1,0 +1,910 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+    font-weight: bold !important;
+}
+
+.nav-item.active{
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  .nav-item.active .nav-link{
+    color: #0d6efd;
+    font-weight: bold;
+  }
+
+/*start m-groups*/
+.t-manage {
+    position: relative;
+}
+
+.t-manage p {
+    font-size: 2rem;
+    color: #575757;
+    position: relative;
+    display: inline-block;
+}
+
+
+.create {
+    display: flex;
+    justify-content: flex-end;
+    /* يجعل العناصر يظهرون على اليمين */
+}
+
+.create .btn {
+    background-color: #006BFF;
+    color: white;
+    border: solid 1px #006BFF;
+}
+
+.create .btn:hover {
+    background-color: white;
+    color: #006BFF;
+
+}
+
+.check-name {
+    display: flex;
+    align-items: center;
+    /* يضمن وضع العناصر بشكل مركزي عمودياً */
+}
+
+.check-name p {
+    margin-left: 2rem;
+}
+
+.num-p {
+    padding-left: 6rem;
+}
+
+.name-d {
+    margin-top: .7rem;
+}
+
+.name-d .edite-groups {
+    background-color: blue;
+    color: white;
+    padding: 4px 5px;
+    border: solid 1px blue;
+}
+
+
+
+.name-d .delete-groups  {
+    color: #fff;
+    background-color: #dc3545 !important;
+    padding: 4px 5px;
+    border: solid 1px #dc3545 !important;
+}
+
+
+@media (max-width: 768px) {
+    .name-d .edite-groups {
+        background-color: blue;
+        color: white;
+        padding: 4px 5px;
+    }
+
+    .name-d .delete-groups {
+        background-color: black;
+        color: white;
+    }
+
+    .num-p {
+        padding-left: 2rem;
+    }
+}
+
+/*screen*/
+/* .delete-g .btn {
+    background-color: #D9D9D9;
+    color: black;
+    border: solid 1px #777676;
+}
+
+.delete-g .btn:hover {
+    background-color: white;
+    color: #575757;
+
+} */
+
+/*end m-groups*/
+/*start c-client*/
+.ring-info {
+    text-align: center;
+    background-color: #A1CBFD;
+}
+
+.ring-info button {
+    background-color: #4351D8;
+    color: white;
+
+}
+
+.ring-info button:hover {
+    background-color: white;
+    color: #4351D8;
+
+}
+
+.create-c-i {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.form-check-input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #555353;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+
+    margin-right: 1rem;
+}
+
+.form-check-input[type="checkbox"]:checked::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 20px;
+    color: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+}
+
+#exampleCheckbox1 {
+    margin-left: 2rem;
+}
+
+
+
+/*end c-client*/
+/*start im&ex*/
+
+
+.tit-select {
+    font-size: 2rem;
+}
+
+.input-file {
+    font-size: 1.5rem;
+    margin-left: 4rem;
+}
+
+.c-who {
+    font-size: 1.5rem;
+}
+
+.for-check-input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #555353;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    background-color: #ccc9c9;
+
+}
+
+.for-check-input[type="checkbox"]:checked::before {
+    content: "\2713";
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 20px;
+    color: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+
+}
+
+.p-up {
+    font-size: 1.3rem;
+}
+
+.btn-up {
+    border: solid 1px #002ED2;
+    background-color: #002ED2;
+    color: white;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 3rem;
+}
+
+.btn-up:hover {
+    border: solid 1px #002ED2;
+    background-color: white;
+    color: #002ED2;
+}
+
+.link-la a {
+    margin-right: 4rem;
+}
+
+.jsjsj {
+    margin-left: 20rem;
+}
+
+@media (max-width: 768px) {
+    .jsjsj {
+        margin-left: 2rem;
+    }
+}
+
+/*screen*/
+
+/*end im&ex*/
+/*start sequre*/
+.secure-info h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.secure-info p {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.secure-allow {
+    background-color: rgba(0, 107, 255, 0.18);
+    padding-top: .3rem;
+    padding-bottom: 1rem;
+    padding-left: 3rem;
+    padding-right: 1rem;
+    border-radius: 5px;
+}
+
+.che {
+    transform: scale(1.5);
+}
+
+.secure-allow p {
+    font-weight: bold !important;
+    color: blue;
+}
+.m-groups p,.m-groups h5 ,.secure-info h3  {
+    font-size: 18px;
+}
+@media (max-width:560px) {
+    .m-groups p,.m-groups h5 ,.secure-info h3  {
+        font-size: 13px;
+    }
+
+}
+.secure-allow h5 {
+    color: rgba(73, 69, 255, 1);
+    text-transform: capitalize;
+    margin-top: 2rem;
+}
+
+.secure-allo {
+    background-color: rgba(0, 107, 255, 0.18);
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    padding-left: 3rem;
+    padding-right: 1rem;
+    border-radius: 5px;
+}
+
+.secure-allo h5 {
+    color:
+        rgba(73, 69, 255, 1);
+    margin-top: 2rem;
+}
+
+.secure-allo h5 span {
+    font-weight: bold;
+    color: rgba(3, 0, 131, 1);
+}
+
+/*end sequre*/
+/*start mange i*/
+/* .new-st .btn {
+    background-color: #D9D9D9;
+    color: black;
+    border: solid 1px #777676;
+} */
+@media (max-width:991px) {
+    .new-st button {
+        font-size: 10px !important;
+    }
+    .b-btm {
+        padding: 5px !important;
+        font-size: 10px !important;
+    }
+}
+.s-button a:nth-child(2) {
+   border: 2px solid blue;
+   padding: 5px 10px;
+}
+.new-st .btn:hover {
+    background-color: white;
+    color: #575757;
+}
+
+.w-info {
+    background-color: white;
+
+}
+
+.w-info p {
+    font-weight: bold;
+    margin-left: 2rem;
+}
+
+.g-info {
+    background-color:
+        rgba(246, 246, 246, 1);
+    border-top: solid 3px rgba(0, 0, 0, 0.25);
+}
+
+.g-info p {
+    font-weight: bold;
+    margin-left: 2rem;
+}
+
+.list-stat {
+    list-style: none;
+    /* Remove default list style */
+    padding: 0;
+    /* Remove default padding */
+}
+
+.bullet {
+    display: inline-block;
+    width: 5px;
+    /* Adjust the width of the bullet point */
+    height: 5px;
+    /* Adjust the height of the bullet point */
+    background-color: black;
+    /* Color of the bullet point */
+    border-radius: 50%;
+    /* Shape the bullet point into a circle */
+    margin-right: 5px;
+    /* Adjust the space between the bullet point and the text */
+    margin-top: -8px;
+}
+
+
+.list-stat li {
+
+    margin-bottom: 1rem;
+    display:inline-flex;
+    /* Use flexbox for alignment */
+    align-items: center;
+    /* Align items vertically */
+}
+
+.list-stat li a {
+    text-decoration: none;
+}
+
+.list-stat li h6 {
+    color: rgba(73, 69, 255, 1);
+    /* margin-right: .5rem; */
+}
+
+.lssl {
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .list-stat li {
+        display: flex;
+        margin-bottom: 1rem;
+        font-size: .5rem;
+    }
+
+    .list-stat li h6 {
+        color: rgba(73, 69, 255, 1);
+        font-size: .6rem;
+    }
+
+    .bullet {
+        display: inline-block;
+        width: 3px;
+        /* Adjust the width of the bullet point */
+        height: 3px;
+        /* Adjust the height of the bullet point */
+        background-color: black;
+        /* Color of the bullet point */
+        border-radius: 50%;
+        /* Shape the bullet point into a circle */
+        margin-right: 5px;
+        /* Adjust the space between the bullet point and the text */
+
+    }
+
+    .lssl {
+        margin-top: 2rem;
+    }
+}
+
+/*end mange i*/
+/*start manage risk*/
+/* .b-btm {
+    color: #006BFF;
+    padding: 10px;
+    border: solid 1px #4990f3;
+    
+    border-radius: 5px;
+} */
+
+.d-btm {
+    border: solid 1px rgb(250, 249, 249);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.d-btm:hover {
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.g-inf {
+    background-color:
+        rgba(208, 208, 208, 1);
+    border-top: solid 3px rgba(0, 0, 0, 0.25);
+    height: 50vh;
+}
+
+.f-sec {
+    margin-left: 2rem;
+
+}
+
+.f-sec h3 {
+    color: rgba(16, 13, 167, 1);
+}
+
+.f-sec h4 {
+    color: rgba(112, 112, 112, 1);
+}
+
+.f-sec-btn button {
+    background: rgba(113, 127, 250, 1);
+    color: white;
+    border: solid black;
+
+    margin-left: 1rem;
+}
+
+.list-sta li {
+
+    margin-bottom: 1rem;
+    display: flex;
+    /* Use flexbox for alignment */
+    align-items: center;
+    /* Align items vertically */
+}
+
+.list-sta li h6 {
+    color: rgba(73, 69, 255, 1);
+    margin-right: .5rem;
+}
+
+.t-sec button {
+    background-color: rgba(48, 47, 141, 1);
+    color: white;
+    padding: 1rem;
+}
+
+.t-sec button:hover {
+    background-color: white;
+    color: rgba(48, 47, 141, 1);
+    padding: 1rem;
+}
+
+@media (max-width: 768px) {
+    .g-inf {
+        height: auto;
+    }
+}
+
+/*end manage risk*/
+/*start payment*/
+
+
+.inpoot input {
+    border: solid 1px #aaa6a6;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.remo {
+    border-right: none !important;
+}
+
+/*end payment*/
+/*start manage-u*/
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 3rem;
+}
+
+.search-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.f-searsh select {
+    width: 20rem;
+}
+
+
+.my-txt p {
+    display: flex;
+}
+
+.s-not button   {
+    padding: 15px 10px !important;
+    width: 100%;
+    margin: 10px;
+  }
+  .ser-button {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+    text-transform: capitalize;
+  }
+  .ser-button:hover {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+  }
+  .white-c {
+    color: #000;
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .red-c {
+    color: #fff;
+    background: #cc190d;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+  }
+  @media (max-width:991px) {
+    .s-not button {
+      font-size: 12px;
+    }
+    .my-text {
+        display: block !important;
+        text-align: center;
+    }
+  }
+ .my-text {
+    display: flex;
+    justify-content: space-around;
+ }
+.main-tab img {
+    width: 25px;
+    /* يمكنك تعيين الحجم الذي تريده هنا */
+    height: 25px;
+    /* يمكنك تعيين الحجم الذي تريده هنا */
+    border-radius: 50%;
+    /* لتحويل الصورة إلى شكل دائري */
+}
+
+.main-colr {
+    background-color: rgba(220, 221, 246, 1);
+}
+
+.sec-colr {
+    background-color: rgba(238, 220, 246, 1);
+}
+
+.lock-btn {
+    color: black;
+    background-color: white;
+    border: solid 1px white;
+
+}
+
+
+.edt-btn,.lock-btn  {
+    color: #fff;
+    background-color: #0d6efd;
+    border: 2px solid #0d6efd;
+
+}
+
+
+.del-btn {
+    background-color: #dc3545;
+    color:#fff;
+    border: 2px solid #dc3535;
+
+}
+
+
+/* .dropbtn {
+    background-color: rgba(207, 204, 242, 1);
+    border: solid 1px rgb(107, 107, 110);
+    color: black;
+    cursor: pointer;
+} */
+/* 
+.dropbtn:hover {
+    color: rgba(207, 204, 242, 1);
+    border: solid 1px rgba(207, 204, 242, 1);
+    background-color: black;
+} */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    z-index: 1;
+    border: solid 1px black;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(95, 130, 255, 1);
+}
+
+.show {
+    display: block;
+}
+
+/*end manage-u*/
+/*start manage validation*/
+.aked button {
+    background-color: rgba(125, 125, 125, 1);
+    border: solid 1px rgba(125, 125, 125, 1);
+    color: white;
+
+}
+
+.main-col {
+    background-color: rgba(233, 233, 233, 1);
+}
+
+@media (max-width: 768px) {
+    .hide {
+        display: none;
+    }
+
+    .aked button {
+        background-color: rgba(125, 125, 125, 1);
+        border: solid 1px rgba(125, 125, 125, 1);
+        color: white;
+        padding: 5px;
+        margin-bottom: 5px;
+
+    }
+}
+
+/*end manage validation*/
+/*start search*/
+
+
+.bbdd button {
+    width: 100%;
+    background-color: rgba(233, 233, 233, 1);
+    height: 70px;
+}
+
+.bbdd button:hover {
+    width: 100%;
+    background-color: rgba(233, 233, 233, 1);
+    height: 70px;
+}
+
+.bbdd button span {
+    margin-right: 1rem;
+    padding: 2px;
+    border-radius: 50%;
+    width: 20px;
+}
+
+.btnn {
+    background-color: rgba(11, 8, 155, 0.85);
+    color: white;
+}
+
+.btnn:hover {
+    border: solid 1px rgba(11, 8, 155, 0.85);
+    color: rgba(11, 8, 155, 0.85);
+    background-color: white;
+}
+
+/*end search*/
+/* خطوط بين checkboxes وزر Create a group */
+.line-container .line {
+    position: relative;
+}
+
+
+@media (min-width:592px) and (max-width:767px){
+    .line-container .line {
+        width:2px;
+       height: 70%;
+       left: 10.5%;
+       top: 45%;
+    }
+    .line-container .arrow {
+        top: 100% !important;
+    }
+}
+@media (min-width:320px) and (max-width:450px) {
+    .line-container .line {
+        width:2px;
+       height: 85%;
+       left: 6%;
+       top: 45%;
+    }
+  
+}
+@media (min-width:451px) and (max-width:591px) {
+    .line-container .line {
+        width:2px;
+       height: 85%;
+       left: 6%;
+       top: 45%;
+    }
+  
+}
+.line-container .arrow {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid gray;
+}
+
+/* تخصيص الخطوط والأسهم */
+
+.line-2 {
+    top: 150px;
+    left: 13px;
+    height: 26rem;
+}
+
+.line-2 .arrow {
+    top: 26rem;
+    left: -8px;
+}
+
+@media (max-width: 768px) {
+    .line-2 {
+        top: 150px;
+        left: 13px;
+        height: 100%;
+        position: absolute;
+    }
+
+    .line-2 .arrow {
+        top: 35rem;
+        left: -8px;
+    }
+
+    .main-col a {
+        font-size: 10px;
+    }
+}
+
+
+/* استهداف زر Create a group */
+.target-button {
+    position: relative;
+}
+
+.target-button:before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid gray;
+}
+
+input {
+    z-index: 1;
+}
+
+.form-check-inpu {
+    z-index: 1;
+}
+
+
+.groups-t:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 15px; /* Adjust this value according to your desired margin width */
+    top: 0px; /* Adjust this value according to your desired margin */
+    bottom: -30px; /* Adjust this value according to your desired margin */
+    width: 1px; /* Adjust this value according to your desired margin width */
+    background-color: gray; /* Adjust this value according to your desired border color */
+}
+
+.groups-t:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: 15px; /* Align with the left border */
+    bottom: -30px; /* Adjust this value according to your desired margin */
+    width: 30px; /* Adjust this value according to your desired margin width */
+    height: 1px; /* Adjust this value according to your desired border thickness */
+    background-color: gray; /* Adjust this value according to your desired border color */
+}
+
+.arrow{
+    position: absolute;
+    z-index: -1;
+    left: 45px; /* Adjust this value according to your desired margin width */
+    bottom: -34px; /* Adjust this value according to your desired margin */
+    width: 40px; /* Adjust this value according to your desired arrow width */
+    height: 1px; /* Adjust this value according to your desired border thickness */
+    
+    /* Create the arrow */
+    border: 5px solid transparent;
+    border-left-color: gray; /* Adjust this value according to your desired arrow color */
+}
+
