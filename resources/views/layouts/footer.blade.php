@@ -17,6 +17,8 @@
     <script src="{{ asset('assets/js/chrtslines.js')}}"></script>
     <script src="{{ asset('assets/js/searchBar.js')}}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('assets/js/scirpt.js')}}"></script>
+    <script src="{{ asset('assets/js/risk.js')}}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>

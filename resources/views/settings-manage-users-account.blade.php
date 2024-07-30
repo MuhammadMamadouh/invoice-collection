@@ -56,14 +56,14 @@
         </div>
 
  
-
+{{-- 
         <div class="col-md-3 mb-3">
           <small class="">phone:</small>
         </div>
 
         <div class="col-md-9 mb-3">
           <input  type="text" class="form-control" />
-        </div>
+        </div> --}}
 
         <div class="col-md-3 mb-3">
           <small class="">Fax:</small>
@@ -90,7 +90,7 @@
           <input  type="text" class="form-control" />
         </div>
 
-        <div class="col-md-3 mb-3">
+        {{-- <div class="col-md-3 mb-3">
           <small class=""><a href="">Role</a> <a href="DSOInformation.html"><i class="fa-solid fa-question bg-primary text-light p-1" style="border-radius: 50%;width: 15px;height: 18px;font-size: 12px;"></i></a> :</small>
         </div>
 
@@ -110,7 +110,7 @@
             <option value="2">Romanian</option>
             <option value="2">Turkish</option>
           </select>
-        </div>
+        </div> --}}
         <div class="col-md-3 mb-3">
           <small class="">Active account :</small>
         </div>
@@ -139,7 +139,7 @@
                   <input  type="text" class="form-control" />
                 </div>
 
-                <div class="col-md-3 mb-3">
+                {{-- <div class="col-md-3 mb-3">
                   <small class="">Import data in My DSO Manager?</small>
                 </div>
         
@@ -154,10 +154,10 @@
                       <label for="no">No</label>
                     </div>
                   </div>
-                </div>
+                </div> --}}
 
                 <div class="col-md-3 mb-3">
-                  <small class="">Language :</small>
+                  <small class="">Role :</small>
                 </div>
                 <div class="col-md-9 mb-3">
                   <select class="form-select" aria-label="Default select example">
@@ -237,14 +237,14 @@
         </div>
 
  
-
+{{-- 
         <div class="col-md-3 mb-3">
           <small class="">phone:</small>
         </div>
 
         <div class="col-md-9 mb-3">
           <input  type="text" class="form-control" />
-        </div>
+        </div> --}}
 
         <div class="col-md-3 mb-3">
           <small class="">Fax:</small>
@@ -271,7 +271,7 @@
           <input  type="text" class="form-control" />
         </div>
 
-        <div class="col-md-3 mb-3">
+        {{-- <div class="col-md-3 mb-3">
           <small class=""><a href="">Role</a> <a href="DSOInformation.html"><i class="fa-solid fa-question bg-primary text-light p-1" style="border-radius: 50%;width: 15px;height: 18px;font-size: 12px;"></i></a> :</small>
         </div>
 
@@ -291,7 +291,7 @@
             <option value="2">Romanian</option>
             <option value="2">Turkish</option>
           </select>
-        </div>
+        </div> --}}
         <div class="col-md-3 mb-3">
           <small class="">Active account :</small>
         </div>
@@ -319,13 +319,13 @@
                 <div class="col-md-9 mb-3">
                   <input  type="text" class="form-control" />
                 </div>
-                <div class="col-12 ">
+                {{-- <div class="col-12 ">
                   <div class="my-1 d-flex gap-2 text-black-50">
                   <input class="form-check" type="checkbox" id="password">
                   <label class="form-check-label" for="password">Force password change on next login</label>
                   <i class="fa-solid fa-lock mt-1"></i>
-                </div></div>
-                <div class="col-md-3 mb-3">
+                </div></div> --}}
+                {{-- <div class="col-md-3 mb-3">
                   <small class="">Import data in My DSO Manager?</small>
                 </div>
         
@@ -340,10 +340,10 @@
                       <label for="no">No</label>
                     </div>
                   </div>
-                </div>
+                </div> --}}
 
                 <div class="col-md-3 mb-3">
-                  <small class="">Language :</small>
+                  <small class="">Role :</small>
                 </div>
                 <div class="col-md-9 mb-3">
                   <select class="form-select" aria-label="Default select example">
@@ -739,11 +739,10 @@
         </button>
       </div><!--create-->
     </div><!--tab-btm-->
-    <div class="container text-center my-5 ">
-      <div class="btn btn-success my-1 btn-add-i" onclick="exportTableToPDF()">  Export these data to Excel     <i
-          class="fa-solid fa-arrow-up-from-bracket"></i></div>
+    <div class="container text-center my-5">
+      <button class="btn btn-success my-1 btn-add-i" onclick="exportTableToPDF()">Export these data to Excel <i class="fa-solid fa-arrow-up-from-bracket"></i></button>
     </div>
-
+    
    
   </section><!--m-groups-->
 
@@ -772,7 +771,10 @@
         background-color: white;
         font-weight: bold;
     }
-
+    .btn-add-i {
+        width: auto;
+        display: inline-block;
+      }
     @media (max-width: 768px) {
         .table td {
             font-size: 10px;

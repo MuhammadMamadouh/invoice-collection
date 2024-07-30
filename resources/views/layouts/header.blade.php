@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/help.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/mains.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/settings.css') }}">
     <!--icons-site-->
     <link rel="icon" type="png" href="{{ asset('assets/img/logo.png') }}" />
     <!--icons-site-->
@@ -40,6 +41,8 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap"
       rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/css/OverlayScrollbars.min.css" />
+
     <!--google-font-->
   </head>
   <body class="cairo-uniquifier position-relative">

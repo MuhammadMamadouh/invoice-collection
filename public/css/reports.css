@@ -1,0 +1,230 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.title-risk  button {
+    border-radius:10px ;
+    padding: 10px 30px;
+    font-size: 18px;
+    background: none;
+    color: #387bd3;
+    margin-bottom: 5px;
+}
+/* @media (max-width:560px) {
+  .title-risk  button {
+    padding: 2px 10px !important;
+    font-size: 13px !important;
+  }
+} */
+.title-risk  h4 span {
+    color:#387bd3 ;
+    margin-right: 10px;
+}
+
+.rikss-input input{
+  margin: 10px;
+  width: 100%;
+  border: 2px solid #387bd3;
+  outline: none;
+  border-radius: 4px;
+  padding: 3px;
+  opacity: 0.7;
+}
+.rikss-input input::placeholder {
+  color: #000;
+  padding-left: 10px;
+}
+.the-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: #387bd3;
+  padding: 10px;
+  border: 2px solid #387bd3;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.add h6 {
+  color: #fff;
+  padding: 10px;
+}
+
+.input-add input {
+  outline: none;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  width: 100%; opacity: .8;
+}
+.weeaks .dropdown  {
+display: block;
+float: right;
+
+}
+@media (max-width:450px) {
+  .weeaks .dropdown {
+    margin-top: -4px;
+  }
+}
+.weeaks .dropdown-toggle {
+  padding: 2px 5px;
+  outline: none;
+  border: 2px solid #387bd3;
+  color: gray;
+  background: #fff;
+}
+.weeaks .dropdown-item {
+  color: gray;
+}
+.two-button .btn-group {
+  display: flex;
+  justify-content: space-between;
+}
+.two-button .dropdown-toggle {
+  padding: 2px 50px;
+  outline: none;
+  border: 2px solid #387bd3;
+  color: gray;
+  background: #fff;
+}
+.two-button .dropdown-item {
+  color: gray;
+}
+.two-button .btn-group input {
+  opacity: .6;
+  outline: none;
+  padding: 10px;
+  border: 2px solid #387bd3;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.two-button .btn-group input::placeholder {
+  text-align: center;
+}
+
+.texts .text-heading {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* reports-2-page*/
+.cash  h4 {
+  border: 2px solid gray;
+  border-radius:10px ;
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 18px;
+}
+.cash  h4 span {
+  color:#387bd3 ;
+  margin-right: 10px;
+}
+
+/* reports-2-page*/
+
+
+/*report page 5*/
+.header-reports-5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-reports-5 span {
+  background: #387bd3;
+  color: #fff;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border-radius: 50%;
+  font-size: 15px;
+  color: #0c148898;
+}
+
+/*report page 5*/
+
+.input-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+#textDate {
+    border: 1px solid #387bd3;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #387bd3;
+}
+
+@media (max-width:992px) {
+  .responive-report-5{
+    font-size: 10px;
+  }
+  
+}
+@media (max-width:767px) {
+  .responive-report-5{
+    font-size: 16px;
+  }
+  
+}
+
+.fa-question{
+  cursor: pointer;
+  transition:all 0.2s;
+}
+
+.fa-question:hover{
+  opacity: 0.8;
+}
+
+.table-custom {
+width: 100%;
+text-align: center;
+}
+.table-custom thead th {
+background-color: #f8f9fa;
+font-weight: bold;
+vertical-align: middle;
+}
+.table-custom tbody td {
+  vertical-align: middle;
+}
+.status-very-good {
+  background-color: rgb(39, 173, 198) !important;
+  color: #fff;
+}
+.pagination {
+  justify-content: center;
+}
+.gray-color-tables {
+  box-shadow: inset 0 0 0 9999px  #efefef !important ;
+}
+tr a{
+  text-decoration: none !important;
+  color: #337ab7;
+}
+tr a:hover {
+  text-decoration: underline !important;
+}
+.pagination .page-item a {
+background: #c7c7c7!important;
+border: 2px solid #efefef;
+color: #fff;
+}
+.pagination .page-item {
+  background: #ccc;
+}
+.page-item .active {
+  border: 1pc solid #c7c7c7 !important;
+}
+
+.table-responsive::-webkit-scrollbar{
+  display: none;
+}
