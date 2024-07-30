@@ -24,6 +24,6 @@ class ActionTypesSeeder extends Seeder
 
 
         ];
-        DB::table('actions')->insert($actions);
+        DB::table('action_types')->insert($actions);
     }
 }
