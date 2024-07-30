@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.table-custom th,
+.table-custom td {
+  text-align: center;
+  vertical-align: middle;
+}
+.table-responsive::-webkit-scrollbar{
+    display: none !important;
+}
+.table-custom td {
+  padding: 0.75rem;
+}
+.tabel-payemnt thead,
+.tabel-payemnt tbody  {
+    font-size: 14px;
+}
+.tabel-payemnt thead {
+    border-bottom: 2px solid #efefef;
+}
+tbody {
+    background: #fff !important;
+}
+.bg-tabels-payemnt {
+    background: #efefef;
+}
+th p {
+    font-size: 12px !important;
+    text-align: center;
+}
+.bg-tables {
+    background: aliceblue !important;
+    border-right: 2px solid #bfe0ec;
+    border-left: 2px solid #bfe0ec;
+    border-bottom: 2px solid #bfe0ec;
+    opacity: .9;
+}
+.top-elemnt {
+    padding-bottom: 43px !important;
+}
+.tabel-payemnt-two thead  {
+    font-size: 13px;
+}
+.tabel-payemnt-two thead {
+    border-bottom: 2px solid #efefef;
+}
+.tabel-payemnt-two a {
+    color: #337ab7;
+    text-decoration: none;
+}
+.tabel-payemnt-two a:hover {
+    text-decoration: underline;
+}
+.tabel-payemnt-two tbody  {
+    font-size: 15px;
+}
+.tabel-payemnt-two a span {
+    font-size: 14px;
+    color: #ffb500 !important;
+}
