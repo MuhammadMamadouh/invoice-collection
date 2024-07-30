@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->nullable();//
             $table->string('function')->nullable();
-            $table->string('role');
+            $table->foreignId('role_id')->constrained('roles');
             $table->string('picture')->nullable();//
             $table->string('fax')->nullable();
             $table->string('id_number')->nullable();

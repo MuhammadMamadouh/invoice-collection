@@ -30,7 +30,7 @@ class StoreUserRequest extends FormRequest
             'fax' => 'nullable|string|max:255',
             'function' => 'nullable|string|max:255',
             'id_number' => 'nullable|string|max:255',
-            'role' => 'required|string|max:255',
+            'role_id' => 'required|string|max:255',
             'active' => 'required|boolean',
 
         ];

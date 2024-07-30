@@ -120,13 +120,14 @@
                     <small class="">{{ __('Role :') }}</small>
                 </div>
                 <div class="col-md-9 mb-3">
-                    <select class="form-select" name="role" aria-label="Default select example">
+                    <select class="form-select" name="role_id" aria-label="Default select example">
                         @foreach ($roles as $role)
-                            <option value="{{ $role->name }}" {{ old('role') == $role->name ? 'selected' : '' }}>
-                                {{ $role->name }}</option>
+                            <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>
+                                {{ $role->name }}
+                            </option>
                         @endforeach
                     </select>
-                    @error('role')
+                    @error('role_id')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>

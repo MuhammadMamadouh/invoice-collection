@@ -242,7 +242,7 @@
                                 <p class="mt-3">{{ $user->function ?? __('None') }}</p>
                             </td>
                             <td>
-                                <p class="mt-3">{{ $user->role }}</p>
+                                <p class="mt-3">{{ $user->role->name }}</p>
                             </td>
                             <td>
                                 <button class="lock-btn rounded mt-3"><i class="fa-solid fa-lock"></i></button>
