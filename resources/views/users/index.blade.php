@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.dashboard.app')
 @section('content')
     <div class="overlay d-none"
         style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;background-color: rgba(0, 0, 0, 0.418);z-index: 9;">
@@ -12,7 +12,7 @@
                 style="border-radius:50%;top: -20px;right: -20px;"><i class="fa-solid fa-close"></i></span>
             <div class="row align-items-center">
                 <div class="col-md-3 mb-3">
-                    <small class="">E-Mail *:</small>
+                    <small class="">{{ __('E-Mail *:') }}</small>
                 </div>
                 <div class="col-md-9 mb-3">
                     <input required type="email" class="form-control" />
@@ -20,7 +20,7 @@
 
 
                 <div class="col-md-3 mb-3">
-                    <small class="">Username *:</small>
+                    <small class="">{{ __('Username *:') }}</small>
                 </div>
 
                 <div class="col-md-9 mb-3">
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="col-md-3 mb-3">
-                    <small class="">Full Name *:</small>
+                    <small class="">{{ __('Full Name *:') }}</small>
                 </div>
 
                 <div class="col-md-9 mb-3">
@@ -37,14 +37,14 @@
 
 
                 <div class="col-md-3 mb-3">
-                    <small class="">Images Of Account:</small>
+                    <small class="">{{ __('Images Of Account:') }}</small>
                 </div>
 
                 <div class="col-md-9 mb-3 mb-3">
                     <div class="change-img text-center ">
                         <img src="img/download.png" id="changeimg" class="img-fluid" alt="">
                         <div class="upload" id="uploads">
-                            <label for="upload" class="text-center">Upload</label>
+                            <label for="upload" class="text-center">{{ __('Upload') }}</label>
                             <input type="file" id="upload">
                         </div>
                     </div>
@@ -53,7 +53,7 @@
 
 
                 <div class="col-md-3 mb-3">
-                    <small class="">phone:</small>
+                    <small class="">{{ __('Phone:') }}</small>
                 </div>
 
                 <div class="col-md-9 mb-3">
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="col-md-3 mb-3">
-                    <small class="">Fax:</small>
+                    <small class="">{{ __('Fax:') }}</small>
                 </div>
 
                 <div class="col-md-9 mb-3">
@@ -70,7 +70,7 @@
 
 
                 <div class="col-md-3 mb-3">
-                    <small class="">Function:</small>
+                    <small class="">{{ __('Function:') }}</small>
                 </div>
 
                 <div class="col-md-9 mb-3">
@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="col-md-3 mb-3">
-                    <small class="">ID number:</small>
+                    <small class="">{{ __('ID number:') }}</small>
                 </div>
 
                 <div class="col-md-9 mb-3">
@@ -86,45 +86,45 @@
                 </div>
 
                 <div class="col-md-3 mb-3">
-                    <small class="">Active account :</small>
+                    <small class="">{{ __('Active account:') }}</small>
                 </div>
 
                 <div class="col-md-9 mb-3">
-                    <div class=" checks-bx d-flex gap-3">
+                    <div class="checks-bx d-flex gap-3">
                         <div>
                             <input type="radio" name="active" id="yes">
-                            <label for="yes">Yes</label>
+                            <label for="yes">{{ __('Yes') }}</label>
                         </div>
                         <div>
                             <input type="radio" name="active" id="no">
-                            <label for="no">No</label>
+                            <label for="no">{{ __('No') }}</label>
                         </div>
                     </div>
                 </div>
 
-                <div class=" px-4">
+                <div class="px-4">
                     <div class="bg-light p-4">
                         <div class="row align-items-center">
                             <div class="col-md-3 mb-3">
-                                <small class="">Username :</small>
+                                <small class="">{{ __('Username:') }}</small>
                             </div>
 
                             <div class="col-md-9 mb-3">
                                 <input type="text" class="form-control" />
                             </div>
                             <div class="col-md-3 mb-3">
-                                <small class="">Role :</small>
+                                <small class="">{{ __('Role:') }}</small>
                             </div>
                             <div class="col-md-9 mb-3">
                                 <select class="form-select" aria-label="Default select example">
-                                    <option value="1" selected>Sales Administration</option>
-                                    <option value="2">Credit manager</option>
-                                    <option value="2">Collector</option>
-                                    <option value="2">Sales manager</option>
-                                    <option value="1">Administrator</option>
-                                    <option value="2">Financial controller</option>
-                                    <option value="2">Executive Officer</option>
-                                    <option value="2">Guest</option>
+                                    <option value="1" selected>{{ __('Sales Administration') }}</option>
+                                    <option value="2">{{ __('Credit manager') }}</option>
+                                    <option value="2">{{ __('Collector') }}</option>
+                                    <option value="2">{{ __('Sales manager') }}</option>
+                                    <option value="1">{{ __('Administrator') }}</option>
+                                    <option value="2">{{ __('Financial controller') }}</option>
+                                    <option value="2">{{ __('Executive Officer') }}</option>
+                                    <option value="2">{{ __('Guest') }}</option>
                                 </select>
                             </div>
 
@@ -135,27 +135,25 @@
 
             </div>
             <div class="text-center mt-3">
-                <div class="btn btn-success"><i class="fa-solid fa-check"></i> Modify</div>
+                <div class="btn btn-success"><i class="fa-solid fa-check"></i> {{ __('Modify') }}</div>
             </div>
         </div>
     </div>
-@include('users.navbar-site')
 
     <section class="ring-info text-center">
 
-        <p class="mt-3 py-5"><i class="fa-regular fa-star px-3"></i>Allow other people to use your account MY DSO
-            MANAGER for your company <span class="fw-bold">Business Solutions</span></p>
+        <p class="mt-3 py-5"><i class="fa-regular fa-star px-3"></i>{{ __('Allow other people to use your account MY DSO MANAGER for your company') }} <span class="fw-bold">{{ __('Business Solutions') }}</span></p>
     </section><!--reing-info-->
     <section class="m-groups my-5">
         <div class="container-fluid">
             <div class="t-manage text-center text-capitalize">
-                <h4 class="">Manage users account</h4>
+                <h4 class="">{{ __('Manage users account') }}</h4>
             </div><!--t-manage-->
             <div class="row justify-content-end">
                 <div class="col-auto">
                     <div class="new-s mt-5">
                         <button class="btn btn-primary py-3" onclick="showAddUserDiv()">
-                            <i class="fa-solid fa-plus"></i> Add a user
+                            <i class="fa-solid fa-plus"></i> {{ __('Add a user') }}
                         </button>
                     </div><!--row-->
                 </div><!--new-st-->
@@ -165,17 +163,17 @@
             <div class="row justify-content-end">
                 <div class="col-auto">
                     <div class="f-searsh d-flex my-3 ">
-                        <select class="form-select  " id="inputname0">
-                            <option value="" selected disabled>Role</option>
-                            <option value="">Role :</option>
-                            <option value="">Collector</option>
-                            <option value="">Credit Manager</option>
-                            <option value="">Executive officer</option>
-                            <option value="">Sales administration</option>
-                            <option value="">Sales manager</option>
+                        <select class="form-select" id="inputname0">
+                            <option value="" selected disabled>{{ __('Role') }}</option>
+                            <option value="">{{ __('Role:') }}</option>
+                            <option value="">{{ __('Collector') }}</option>
+                            <option value="">{{ __('Credit Manager') }}</option>
+                            <option value="">{{ __('Executive officer') }}</option>
+                            <option value="">{{ __('Sales administration') }}</option>
+                            <option value="">{{ __('Sales manager') }}</option>
                         </select>
                         <div class="d-flex ms-2">
-                            <input type="text" placeholder="search" style="border-radius:5px 0 0  5px;"
+                            <input type="text" placeholder="{{ __('Search') }}" style="border-radius:5px 0 0  5px;"
                                 class="form-control">
                             <div class="btn btn-secondary p-2 px-3" style="border-radius: 0 5px 5px 0 ;"><i
                                     class="fas pt-1 fa-search"></i></div>
@@ -185,7 +183,7 @@
                     <div class="row mt-3">
                         <div class="form-group d-flex justify-content-end">
                             <input type="text" class="form-control w-auto p-3" aria-describedby="emailHelp"
-                                placeholder="Multi-columns search" />
+                                placeholder="{{ __('Multi-columns search') }}" />
                         </div>
                     </div>
                 </div>
@@ -194,7 +192,7 @@
                 <div class="col-auto">
 
                     <div class="search-container">
-                        <input type="text" placeholder="multi colmn search" class="search-input">
+                        <input type="text" placeholder="{{ __('Multi-column search') }}" class="search-input">
 
                     </div>
 
@@ -211,7 +209,7 @@
                             <th>
                                 <div class="d-flex align-items-center justify-content-center gap-1">
                                     <i class="fa-solid fa-sort mb-2" style="cursor:pointer"></i>
-                                    <h6>{{ $column }}</h6>
+                                    <h6>{{ __($column) }}</h6>
                                 </div>
                             </th>
                         @endforeach
@@ -238,10 +236,10 @@
                                     <p class="mt-3">{{ $user->email }}</p>
                                 </a></td>
                             <td>
-                                <p class="mt-3">{{ $user->phone ?? 'None' }}</p>
+                                <p class="mt-3">{{ $user->phone ?? __('None') }}</p>
                             </td>
                             <td>
-                                <p class="mt-3">{{ $user->function ?? 'None' }}</p>
+                                <p class="mt-3">{{ $user->function ?? __('None') }}</p>
                             </td>
                             <td>
                                 <p class="mt-3">{{ $user->role }}</p>
@@ -262,7 +260,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="9" class="text-center">No users found.</td>
+                            <td colspan="9" class="text-center">{{ __('No users found.') }}</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -271,29 +269,29 @@
 
 
         <div class="tab-btm my-3 container d-flex">
-            <div class=" my-5 px-3">
+            <div class="my-5 px-3">
                 <button id="dropbtn" class="btn btn-primary dropbtn" id="roleDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fas fa-pen px-3"></i>Role<i class="fas fa-arrow-down px-3"></i>
+                    <i class="fas fa-pen px-3"></i>{{ __('Role') }}<i class="fas fa-arrow-down px-3"></i>
                 </button>
                 <ul class="dropdown-menu p-3" aria-labelledby="roleDropdown">
-                    <li><a class="text-decoration-none text-dark" href="">Credit Manager</a></li>
-                    <li><a class="text-decoration-none text-dark" href="">Collector</a></li>
-                    <li><a class="text-decoration-none text-dark" href="">Sales manager</a></li>
-                    <li><a class="text-decoration-none text-dark" href="">Sales administration</a></li>
-                    <li><a class="text-decoration-none text-dark" href="">Financial controller</a></li>
-                    <li><a class="text-decoration-none text-dark" href="">Executive officer</a></li>
-                    <li><a class="text-decoration-none text-dark" href="">Guest</a></li>
+                    <li><a class="text-decoration-none text-dark" href="">{{ __('Credit Manager') }}</a></li>
+                    <li><a class="text-decoration-none text-dark" href="">{{ __('Collector') }}</a></li>
+                    <li><a class="text-decoration-none text-dark" href="">{{ __('Sales manager') }}</a></li>
+                    <li><a class="text-decoration-none text-dark" href="">{{ __('Sales administration') }}</a></li>
+                    <li><a class="text-decoration-none text-dark" href="">{{ __('Financial controller') }}</a></li>
+                    <li><a class="text-decoration-none text-dark" href="">{{ __('Executive officer') }}</a></li>
+                    <li><a class="text-decoration-none text-dark" href="">{{ __('Guest') }}</a></li>
                 </ul>
             </div><!--create-->
             <div class="delete-g my-5">
                 <button class="btn btn-danger text-light">
-                    <i class="fas fa-trash"></i> Delete All
+                    <i class="fas fa-trash"></i> {{ __('Delete All') }}
                 </button>
             </div><!--create-->
         </div><!--tab-btm-->
         <div class="container text-center my-5">
-            <button class="btn btn-success my-1 btn-add-i" onclick="exportTableToPDF()">Export these data to Excel <i
+            <button class="btn btn-success my-1 btn-add-i" onclick="exportTableToPDF()">{{ __('Export these data to Excel') }} <i
                     class="fa-solid fa-arrow-up-from-bracket"></i></button>
         </div>
 
