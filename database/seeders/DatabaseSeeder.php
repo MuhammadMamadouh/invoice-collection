@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemSeeder::class);
         $this->call(ScenarioSeeder::class);
         $this->call(ActionTypesSeeder::class);
+        $this->call(PermissionTableSeeder::class);
         // User::factory(10)->create()
 
         User::factory()->create([

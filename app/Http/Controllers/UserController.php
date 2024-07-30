@@ -6,14 +6,18 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
     public function index()
     {
         $users = User::all();
-        return view('users.index', compact('users'));
+        $roles=Permission::all();
+
+        return view('users.index', compact('users', 'roles'));
     }
     public function store(StoreUserRequest $request)
     {
@@ -41,23 +45,30 @@ class UserController extends Controller
     //     }else{
     //            $data = $request->except('password');
     //        }
-    //     // Handling photo upload
-    //     if ($request->hasFile('photo')) {
-    //         if(isset($user->photo)){
-    //          Storage::disk('public')->delete($user->photo);
+    //     // Handling picture upload
+    //     if ($request->hasFile('picture')) {
+    //         if(isset($user->picture)){
+    //          Storage::disk('public')->delete($user->picture);
     //         }
-    //         // Store new photo
-    //         $data['photo'] = $request->file('photo')->store('users', 'public');
+    //         // Store new picture
+    //         $data['picture'] = $request->file('picture')->store('users', 'public');
     //     }
     //     $user->update($data);
     //     return redirect()->route('users.index')->with('success', 'Data saved successfully.');
     // }
-
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return redirect()->route('users.index')->with('success', 'User deleted successfully');
+        DB::transaction(function () use ($id) {
+            $user = User::findOrFail($id);
+    
+            if ($user->picture) {
+                Storage::disk('public')->delete($user->picture);
+            }
+    
+            $user->delete();
+        });
+    
+        return redirect()->route('users.index')->with('success', __('User deleted successfully'));
     }
 
 

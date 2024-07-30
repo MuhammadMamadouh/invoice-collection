@@ -116,22 +116,24 @@
                     @enderror
                 </div>
 
-                {{-- <div class="col-md-3 mb-3">
-      <small class="">{{ __('Role :') }}</small>
-  </div>
-  <div class="col-md-9 mb-3">
-      <select class="form-select" name="role" aria-label="Default select example">
-          @foreach ($roles as $role)
-              <option value="{{ $role->name }}" {{ old('role') == $role->name ? 'selected' : '' }}>{{ $role->name }}</option>
-          @endforeach
-      </select>
-      @error('role')
-          <div class="text-danger">{{ $message }}</div>
-      @enderror
-  </div> --}}
+                <div class="col-md-3 mb-3">
+                    <small class="">{{ __('Role :') }}</small>
+                </div>
+                <div class="col-md-9 mb-3">
+                    <select class="form-select" name="role" aria-label="Default select example">
+                        @foreach ($roles as $role)
+                            <option value="{{ $role->name }}" {{ old('role') == $role->name ? 'selected' : '' }}>
+                                {{ $role->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('role')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
             <div class="text-center mt-3">
-                <button type="submit" class="btn btn-success"><i class="fa-solid fa-plus"></i> {{ __('Add') }}</button>
+                <button type="submit" class="btn btn-success"><i class="fa-solid fa-plus"></i>
+                    {{ __('Add') }}</button>
             </div>
         </form>
     </div>
