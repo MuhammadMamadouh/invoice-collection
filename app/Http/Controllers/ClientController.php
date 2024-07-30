@@ -32,13 +32,10 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
-        try {
+
             Client::create($request->all());
             return to_route('clients.index')->with(['message' => 'success']);
-        }catch (Exception $e) {
-            Log::info($e->getMessage());
-            return to_route('clients.index')->with(['message' => $e->getMessage()]);
-        }
+
     }
 
     /**
@@ -52,24 +49,38 @@ class ClientController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Client $client)
+    public function edit($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return view('clients.edit', compact('client'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Client $client)
+    public function update(ClientRequest $request, $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        try {
+            $client->update($request->all());
+            return to_route('clients.index')->with(['message' => 'success']);
+        }catch (Exception $e) {
+            Log::info($e->getMessage());
+            return to_route('clients.index')->with(['message' => $e->getMessage()]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Client $client)
+    public function destroy($id)
     {
-        //
+        try {
+            Client::findOrFail($id)->delete();
+            return to_route('clients.index')->with(['message' => 'success']);
+        }catch (Exception $e) {
+            Log::info($e->getMessage());
+            return to_route('clients.index')->with(['message' => $e->getMessage()]);
+        }
     }
 }

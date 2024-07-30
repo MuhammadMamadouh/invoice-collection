@@ -11,7 +11,7 @@ class ClientRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class ClientRequest extends FormRequest
             'website' => "nullable|string|max:255",
             'payment_term' => "nullable|string|max:255",
             'payment_mean' => "nullable|string|max:255",
-            'insurer_guarantee' => "nullable|numeric", 
+            'insurer_guarantee' => "nullable|numeric",
             'other_guarantees' => "nullable|numeric",
             'credit_limit' => "nullable|numeric",
             'late_payment_penalties' => "nullable|boolean",
