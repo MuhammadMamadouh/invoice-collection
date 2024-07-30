@@ -27,5 +27,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
+Route::get('/item', function () {
+    return view('settings-create-item');
+});
+Route::get('/clue', function () {
+    return view('settings-manage-clients-group');
+});
 require __DIR__.'/auth.php';

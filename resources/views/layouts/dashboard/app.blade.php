@@ -15,6 +15,16 @@
     <link rel="stylesheet" href="css/seedemo.css" />
     <link rel="stylesheet" href="css/help.css" />
     <link rel="stylesheet" href="css/search-bar.css">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+  <link rel="stylesheet" href="../css/animate.css">
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/search-bar.css">
+  <link rel="stylesheet" href="css/update.css">
     <!--icons-site-->
     <link rel="icon" type="png" href="img/logo.png" />
     <!--icons-site-->
@@ -53,6 +63,13 @@
     <script src="js/chart-6.js"></script>
     <script src="js/searchBar.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
+   
+  <script src="../js/wow.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="js/searchBar.js"></script>
+  <script>
+    new WOW().init();
+  </script>
    
     @stack('scripts')
     <!-- <script src="js/main.js" ></script> -->
