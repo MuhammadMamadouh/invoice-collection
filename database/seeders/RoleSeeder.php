@@ -5,8 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
-class PermissionTableSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -29,7 +30,7 @@ class PermissionTableSeeder extends Seeder
 
         // Create new roles
         foreach ($roles as $role) {
-            Permission::create(['name' => $role]);
+            Role::create(['name' => $role]);
         }
     }
 }
