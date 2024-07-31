@@ -19,11 +19,12 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemSeeder::class);
         $this->call(ScenarioSeeder::class);
         $this->call(ActionTypesSeeder::class);
+        $this->call(RoleSeeder::class);
         // User::factory(10)->create()
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'first_name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
     }
 }

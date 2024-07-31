@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\StoreActionRequest;
 use App\Models\Action;
 use App\Models\ActionType;
 use Illuminate\Http\Request;
@@ -24,26 +26,19 @@ class ActionController extends Controller
     public function create()
     {
         $actionTypes = ActionType::get();
-        return view('dashboard.actionCreate', compact('actionTypes'));
+        return view('dashboard.action.actionCreate', compact('actionTypes'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreActionRequest $request)
     {
-        $messages = $this->messages();
-        $data = $request->validate(
-            [
-                'en_name'        => 'required',
-                'number_of_days' => 'required',
-                'actionType_id'  => 'required',
-            ]
-            , $messages);
 
+        $data = $request->validated();
         Action::create($data);
 
-        return "action stored successfully";
+        return __('message.action_stored');
     }
 
     /**
@@ -78,12 +73,5 @@ class ActionController extends Controller
         //
     }
 
-    public function messages()
-    {
-        return [
-            'en_name.required' => 'Please enter action name',
-            'number_of_days.required' => 'Please enter no. of days',
-            'actionType_id.required' => 'please enter action type',
-        ];
-    }
+
 }
