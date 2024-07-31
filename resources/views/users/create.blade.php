@@ -8,16 +8,6 @@
             @csrf
             <div class="row align-items-center">
                 <div class="col-md-3 mb-3">
-                    <small class="">{{ __('E-Mail *:') }}</small>
-                </div>
-                <div class="col-md-9 mb-3">
-                    <input required type="email" name="email" class="form-control" value="{{ old('email') }}" />
-                    @error('email')
-                        <div class="text-danger">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="col-md-3 mb-3">
                     <small class="">{{ __('First name *:') }}</small>
                 </div>
                 <div class="col-md-9 mb-3">
@@ -35,6 +25,35 @@
                     <input required type="text" name="last_name" class="form-control"
                         value="{{ old('last_name') }}" />
                     @error('last_name')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <small class="">{{ __('E-Mail *:') }}</small>
+                </div>
+                <div class="col-md-9 mb-3">
+                    <input required type="email" name="email" class="form-control" value="{{ old('email') }}" />
+                    @error('email')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-md-3 mb-3">
+                    <small class="">{{ __('Password *:') }}</small>
+                </div>
+                <div class="col-md-9 mb-3">
+                    <input required type="password" name="password" class="form-control" />
+                    @error('password')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <small class="">{{ __('Confirm Password *:') }}</small>
+                </div>
+                <div class="col-md-9 mb-3">
+                    <input required type="password" name="password_confirmation" class="form-control" />
+                    @error('password_confirmation')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>

@@ -31,7 +31,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+
 Route::resource('users', UserController::class);
+
+Route::post('/users/{user}/regenerate-password', [UserController::class, 'regeneratePassword'])->name('users.regenerate-password');
+
 
 require __DIR__.'/auth.php';
 
