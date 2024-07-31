@@ -14,4 +14,8 @@ class CollectionScenario extends Model
     public function ActionScenarios(){
         return $this->hasMany(ActionsCollectionScenario::class, 'collection_scenarios_id');
     }
+
+    public function client(){
+        return $this->hasMany(Client::class);
+    }
 }

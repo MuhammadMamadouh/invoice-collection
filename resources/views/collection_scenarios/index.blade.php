@@ -117,7 +117,7 @@
                                                         <div class="col-10">
                                                             <div class="input-group">
                                                                 <input type="text" name="name" class="form-control"
-                                                                    id="inputname18" style="width: 355px;">
+                                                                    id="inputname18" style="width: 355px;" value="{{old('name', $collection->name)}}">
                                                                 @error('name')
                                                                     <div class="alert text-danger" style="font-weight: bold;">
                                                                         {{ $message }}</div>

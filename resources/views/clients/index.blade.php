@@ -59,17 +59,10 @@
                     <div class="form-group col-md-4 col-sm-6">
                         <select name="onlyScenario" class="m-2 form-select" data-placeholder="Collection scenario:"
                             title="Collection scenario">
-                            <option value="0" selected disabled>
-                                Collection scenario :
-                            </option>
-                            <option value="3">Clients publics (FR)</option>
-                            <option value="2">Clients risqués (FR)</option>
-                            <option value="7">Key accounts scenario (EN)</option>
-                            <option value="6580">Modèles actions spécifiques</option>
-                            <option value="6">Risky clients (EN)</option>
-                            <option value="24678">Scénario de relance standard</option>
-                            <option value="24679">Standard Collection Scenario</option>
-                            <option value="1405">Templates specific actions</option>
+                                <option selected disabled>Select One</option>
+                                @foreach($collections as $collection)
+                                    <option value="{{$collection->id}}">{{$collection->name}}</option>
+                                @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
@@ -311,15 +304,7 @@
                                 <div class="col-md-3 hide">
                                     <div class=" w-100 mb-3">
                                         <select class="form-select" id="inputname19">
-                                            <option value="" selected disabled>scenario do relance standare</option>
-                                            <option value="">Clients publics (FR)</option>
-                                            <option value="">Clients risqués (FR)</option>
-                                            <option value="">Key accounts scenario (EN)</option>
-                                            <option value="">Modèles actions spécifiques</option>
-                                            <option value="">Risky clients (EN)</option>
-                                            <option value="">Scénario de relance standard (by default)</option>
-                                            <option value="">Standard Collection Scenario</option>
-                                            <option value="">Templates specific actions</option>
+                                            <option selected disabled>{{$client->collectionScenarios->name ?? '1'}}</option>
                                         </select>
                                     </div>
                                 </div>

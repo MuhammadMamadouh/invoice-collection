@@ -228,11 +228,10 @@
                         </div>
                         <div class="col-7 ">
                             <select name="collector_id" class="form-select" id="inputname19">
-                                <option value="1" selected disabled>Nicolas Grayson (collestor)</option>
-                                <option value="2">Mike Anderson (Collector)</option>
-                                <option value="3">Nicolas Grayson (Collector)</option>
-                                <option value="4">Paul Mayer (Administrator)</option>
-                                <option value=5>Véronique Miguet (Credit Manager)</option>
+                                <option selected disabled>Select One</option>
+                                @foreach($collectors as $collector)
+                                    <option value={{$collector->id}}>{{$collector->first_name}}</option>
+                                @endforeach
                             </select>
                             @error('collector_id')
                                 <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
@@ -273,15 +272,10 @@
                         </div>
                         <div class="col-7 ">
                             <select name='collection_scenario_id' class="form-select" id="inputname19">
-                                <option value="1" selected disabled>scenario do relance standare</option>
-                                <option value="2">Clients publics (FR)</option>
-                                <option value="3">Clients risqués (FR)</option>
-                                <option value="4">Key accounts scenario (EN)</option>
-                                <option value="5">Modèles actions spécifiques</option>
-                                <option value="6">Risky clients (EN)</option>
-                                <option value="7">Scénario de relance standard (by default)</option>
-                                <option value="8">Standard Collection Scenario</option>
-                                <option value="9">Templates specific actions</option>
+                                <option selected disabled>Select One</option>
+                                @foreach($collections as $collection)
+                                    <option value={{$collection->id}}>{{$collection->name}}</option>
+                                @endforeach
                             </select>
                             @error('collection_scenario_id')
                                 <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>

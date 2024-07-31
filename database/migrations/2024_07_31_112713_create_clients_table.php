@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('legal_id')->nullable();
             $table->string('vat_number')->nullable();
             $table->string('business_line')->nullable();
-            $table->bigInteger('collector_id');
-            $table->bigInteger('collection_scenario_id');
+            $table->foreignId('collector_id')->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('collection_scenario_id')->constrained('collection_scenarios')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('address')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('post_office_box')->nullable();

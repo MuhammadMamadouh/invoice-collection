@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientRequest;
 use App\Models\Client;
+use App\Models\CollectionScenario;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -16,7 +18,8 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::paginate(10);
-        return view('clients.index', compact('clients'));
+        $collections = CollectionScenario::all();
+        return view('clients.index', compact('clients', 'collections'));
     }
 
     /**
@@ -24,7 +27,9 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('clients.create');
+        $collections = CollectionScenario::all();
+        $collectors = User::where('role_id', 2)->get();
+        return view('clients.create', compact('collections', 'collectors'));
     }
 
     /**
