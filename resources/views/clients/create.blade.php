@@ -1,12 +1,12 @@
 @extends('layouts.dashboard.app')
 @section('content')
     <section class="ring-info">
-        <button class=" btn my-4 px-5 ">Use rather the import module to create your customers and invoices</button>
+        <button class=" btn my-4 px-5 ">{{__("Use rather the import module to create your customers and invoices")}}</button>
     </section><!--reing-info-->
     <section class="m-groups my-2">
         <div class="container-fluid">
             <div class="t-manage text-center text-capitalize">
-                <h4 class="mt-3 mb-3">Create a client</h4>
+                <h4 class="mt-3 mb-3">{{__("Create a client")}}</h4>
             </div><!--t-manage-->
         </div><!--container-->
         <form class="d-flex" action="{{ route('clients.store') }}" method="POST">
@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-md-4  my-2">
                         <div class="col-5 ">
-                            <label for="inputname0">Company / Business name * : </label>
+                            <label for="inputname0">{{ __("Company / Business name ") }}* : </label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname0" name='company_name'>
@@ -26,7 +26,7 @@
                     </div><!--1-->
                     <div div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname2">Address :</label>
+                            <label for="inputname2">{{__("Address")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname2" name='address'>
@@ -37,7 +37,7 @@
                     </div><!--2-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname1">Payment term :</label>
+                            <label for="inputname1">{{__("Payment term")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname1" name="payment_term">
@@ -48,7 +48,7 @@
                     </div><!--3-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname4">Trading name :</label>
+                            <label for="inputname4">{{__("Trading name")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname4" name="trading_name">
@@ -59,7 +59,7 @@
                     </div><!--4-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname5"> ZIP (or Postal) Code :</label>
+                            <label for="inputname5"> {{__("ZIP (or Postal) Code")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname5" name="postal_code">
@@ -70,7 +70,7 @@
                     </div><!--5-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname6"> Payment mean :</label>
+                            <label for="inputname6"> {{__("Payment mean")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname6" name='payment_mean'>
@@ -81,7 +81,7 @@
                     </div><!--6-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname7"> Company code * :</label>
+                            <label for="inputname7"> {{__("Company code")}} * :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname7" name='company_code'>
@@ -92,7 +92,7 @@
                     </div><!--7-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname8"> Post Office Box :</label>
+                            <label for="inputname8"> {{__("Post Office Box")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname8" name='post_office_box'>
@@ -103,7 +103,7 @@
                     </div><!--8-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname9"> Insurer guarantee :</label>
+                            <label for="inputname9"> {{__("Insurer guarantee")}} :</label>
                         </div>
                         <div class="col-7">
                             <div class="input-group">
@@ -117,7 +117,7 @@
                     </div><!--9-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname10"> Legal ID :</label>
+                            <label for="inputname10"> {{__("Legal ID")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname10" name='legal_id'>
@@ -128,7 +128,7 @@
                     </div><!--10-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname11"> City :</label>
+                            <label for="inputname11"> {{__("City")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname11" name="city">
@@ -139,7 +139,7 @@
                     </div><!--11-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname12"> Other guarantees :</label>
+                            <label for="inputname12"> {{__("Other guarantees")}} :</label>
                         </div>
                         <div class="input-group">
                             <input type="number" class="form-control" id="inputname12" name='other_guarantees'>
@@ -151,7 +151,7 @@
                     </div><!--12-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname13"> VAT Number :</label>
+                            <label for="inputname13"> {{__("VAT Number")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname13" name='vat_number'>
@@ -162,7 +162,7 @@
                     </div><!--13-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname14"> State / Province :</label>
+                            <label for="inputname14"> {{__("State / Province")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname14" name='state'>
@@ -173,8 +173,7 @@
                     </div><!--14-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname15">
-                                Credit Limit :</label>
+                            <label for="inputname15">{{__("Credit Limit")}} :</label>
                         </div>
                         <div class="input-group">
                             <input type="number" class="form-control" id="inputname15" name='credit_limit'>
@@ -186,7 +185,7 @@
                     </div><!--15-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname16"> Business line :</label>
+                            <label for="inputname16"> {{__("Business line")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname16" name='business_line'>
@@ -197,7 +196,7 @@
                     </div><!--16-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname17"> Country :  </label>
+                            <label for="inputname17"> {{__("Country")}} :  </label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname17" name='country'>
@@ -208,7 +207,7 @@
                     </div><!--17-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname18"> Late payment penalties?</label>
+                            <label for="inputname18"> {{__("Late payment penalties?")}}</label>
                         </div>
                         <div class="col-7 d-flex justify-content-between align-items-center ">
                             <div class="form-check">
@@ -225,7 +224,7 @@
                     </div><!--18-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname19"> Collector :</label>
+                            <label for="inputname19"> {{__("Collector")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <select name="collector_id" class="form-select" id="inputname19">
@@ -242,7 +241,7 @@
                     </div><!--19-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname20"> Website :</label>
+                            <label for="inputname20"> {{__("Website")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname20" name='website'>
@@ -253,7 +252,7 @@
                     </div><!--20-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname21"> Recovery cost?</label>
+                            <label for="inputname21"> {{__("Recovery cost?")}}</label>
                         </div>
                         <div class="col-7 d-flex justify-content-between ">
                             <div class="form-check">
@@ -270,7 +269,7 @@
                     </div><!--21-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname22"> Collection scenario :</label>
+                            <label for="inputname22"> {{__("Collection scenario")}} :</label>
                         </div>
                         <div class="col-7 ">
                             <select name='collection_scenario_id' class="form-select" id="inputname19">
@@ -299,9 +298,9 @@
                     </div><!--23-->
                     <div class="col-md-4 my-2">
                         <div class="col-5 ">
-                            <label for="inputname24">Interactive emails?</label>
+                            <label for="inputname24">{{__("Interactive emails?")}}</label>
                         </div>
-                        <div class="col-7 d-flex justify-content-between  ">
+                        <div class="col-7 d-flex justify-content-between">
                             <div class="form-check ">
                                 <input class="form-check-input" type="checkbox" id="exampleCheckbox1">
                                 <label class="form-check-label" for="exampleCheckbox1" name="interactive_emails" value="1">Yes</label>
@@ -365,7 +364,7 @@
 
             </div><!--row-->
             <div class="container text-center">
-                <button type="submit" class="btn btn-primary my-5 btn-add-i">+ ADD</button>
+                <button type="submit" class="btn btn-primary my-5 btn-add-i">{{__("+ ADD")}}</button>
             </div>
             </div>
         </form><!--create-c-i-->

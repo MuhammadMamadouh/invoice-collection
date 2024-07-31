@@ -5,21 +5,19 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a href="allClients.html" class="m-1 w-100 btn btn-primary p-3">
-                        <i class="fa-solid fa-earth-asia"></i> &ensp; All clients &ensp;
+                        <i class="fa-solid fa-earth-asia"></i> &ensp; {{__("All clients")}} &ensp;
                         <span class="badge bg-white text-primary">184</span>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a href="myClients.html" class="m-1 w-100 btn btn-outline-primary text-secondary p-3" id="actionButton">
-                        <i class="fa-solid fa-building text-primary"></i> &ensp; My
-                        clients &ensp;
+                        <i class="fa-solid fa-building text-primary"></i> &ensp; {{__("My clients")}} &ensp;
                         <span class="badge bg-primary">4</span>
                     </a>
                 </div>
                 <a href="searchForAClient.html" class="col-lg-3 col-md-4 col-sm-6">
                     <div class="m-1 w-100 btn btn-light text-secondary p-3">
-                        <i class="fa-solid fa-magnifying-glass"></i> &ensp; Search for
-                        client
+                        <i class="fa-solid fa-magnifying-glass"></i> &ensp; {{__("Search for client")}}
                     </div>
                 </a>
             </div>
@@ -242,49 +240,49 @@
                         <div class="col-4 col-md-1">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">Flag</p>
+                                <p class="fw-bold">{{__("Flag")}}</p>
                             </div>
                         </div>
                         <div class="col-4 col-md-1">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">Company code</p>
+                                <p class="fw-bold">{{__("Company code")}}</p>
                             </div>
                         </div>
                         <div class="col-1 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">Business name</p>
+                                <p class="fw-bold">{{__("Business name")}}</p>
                             </div>
                         </div>
                         <div class="col-3 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">Collection scenario</p>
+                                <p class="fw-bold">{{__("Collection scenario")}}</p>
                             </div>
                         </div>
                         <div class="col-2 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">Group</p>
+                                <p class="fw-bold">{{__("Group")}}</p>
                             </div>
                         </div>
                         <div class="col-1 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">Receivable</p>
+                                <p class="fw-bold">{{__("Receivable")}}</p>
                             </div>
                         </div>
                         <div class="col-1 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">Overdue</p>
+                                <p class="fw-bold">{{__("Overdue")}}</p>
                             </div>
                         </div>
                         <div class="col-1 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">Overdue +60d</p>
+                                <p class="fw-bold">{{__("Overdue +60d")}}</p>
                             </div>
                         </div>
                         <div class="col-3 tavle-dropdown-icon"></div>
@@ -384,7 +382,7 @@
                         @empty
                             <div class="row d-none text-center">
                                 <p class="p-1 mt-3">
-                                    No clients has been found
+                                    {{__("No clients has been found")}}
                                 </p>
                             </div>
                         @endforelse
@@ -584,9 +582,8 @@
     <script src="{{ asset('js/risk.js') }}"></script>
     <script src="{{ asset('js/email.js') }}"></script>
     <script src="{{ asset('js/hovers.js') }}"></script>
-    <script src="{{ asset('js/collection.js') }}">
-        < script src = "{{ asset('js/chart.js') }}" >
-    </>
+    <script src="{{ asset('js/collection.js') }}"></script>
+    <script src = "{{ asset('js/chart.js') }}" ></script>
     <script src="{{ asset('js/chart-2.js') }}"></script>
     <script src="{{ asset('js/chart-10.js') }}"></script>
 @endpush

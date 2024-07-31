@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CollectionScenarioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,17 @@ Route::middleware('auth')->group(function () {
 Route::resource('users', UserController::class);
 
 
+//-----------------clients--------------------------------
 Route::resource("/clients", ClientController::class);
+
+
+//-----------------CollectionScenarios--------------------------------
+Route::post('/collection_scenarios/duplicate/{id}', [CollectionScenarioController::class, 'duplicateScenario'])->name('collection.duplicateScenario');
+Route::post('/collection_scenarios/actions', [CollectionScenarioController::class, 'storeAction'])->name('collection.storeAction');
+Route::resource("/collection_scenarios", CollectionScenarioController::class);
+
+
+
+
 
 require __DIR__.'/auth.php';

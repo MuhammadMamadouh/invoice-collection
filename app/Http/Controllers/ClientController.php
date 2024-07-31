@@ -15,7 +15,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
+        $clients = Client::paginate(10);
         return view('clients.index', compact('clients'));
     }
 
@@ -32,10 +32,13 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
-
-            Client::create($request->all());
+        try{
+            Client::create($request->validated());
             return to_route('clients.index')->with(['message' => 'success']);
-
+        }catch (Exception $e) {
+            Log::info($e->getMessage());
+            return to_route('clients.index')->with(['message' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -62,7 +65,7 @@ class ClientController extends Controller
     {
         $client = Client::findOrFail($id);
         try {
-            $client->update($request->all());
+            $client->update($request->validated());
             return to_route('clients.index')->with(['message' => 'success']);
         }catch (Exception $e) {
             Log::info($e->getMessage());
