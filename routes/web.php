@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CollectionScenarioController;
+use App\Http\Controllers\ActionController;
+
 use App\Http\Controllers\UserController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,3 +50,7 @@ Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
 
 require __DIR__.'/auth.php';
+
+
+Route::get('actions/create', [ActionController::class,'create']);
+Route::post('actions', [ActionController::class,'store'])->name('actions.store');
