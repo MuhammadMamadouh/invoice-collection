@@ -6,7 +6,7 @@
     <title>Create Action</title>
 </head>
 <body>
-    <h1>Create Action</h1>
+    <h1>{{__('message.create_action')}}</h1>
     <form action="{{ route('actions.store') }}" method="POST">
         @csrf
         <label for="en_name">{{ __('message.action_name') }}:</label>
