@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Dashboard\UniqueItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,10 +27,13 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/item', function () {
-    return view('settings-create-item');
-});
+
 Route::get('/clue', function () {
     return view('settings-manage-clients-group');
 });
+
+
+Route::get('/item', [UniqueItemController::class, 'showItemsForm']);
+
+Route::post('/item', [UniqueItemController::class, 'store'])->name('items.store');
 require __DIR__.'/auth.php';

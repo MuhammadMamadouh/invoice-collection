@@ -133,41 +133,46 @@
     </div><!--container-->
     <div class="create-c-i my-2">
       <div class="row">
+        <form action="{{route('items.store')}}"  method="POST"
+        enctype="multipart/form-data">
+        @csrf
+      
+          
+   
         <div class="col-md-6  my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname0">ltem type * :</label>
 
             </div>
             <div class="col-7 ">
-              <select class="form-select" id="inputname0">
-                <option value="" selected disabled>invoice</option>
-                <option value="">Credit note</option>
-                <option value="">Downpayment request</option>
-                <option value="">Draft</option>
-                <option value="">Invoice</option>
-                <option value="">Miscellaneous transaction</option>
-                <option value="">Payment</option>
+              <select class="form-select" id="inputname0" name="item_type">
+              @foreach($items as $item)
+          <option value="{{ $item->id }}">{{ $item->en_name }}</option>
+        @endforeach
               </select>
+              @error('item_type')
+        {{ $message }}
+        @enderror
             </div>
-          </form>
-
+</div>
         </div><!--1-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
-            <div class="col-5 ">
+       <div class="d-flex">
+       <div class="col-5 ">
               <label for="inputname2">Order date :</label>
 
             </div>
             <div class="input-group">
-              <input type="text" class="form-control" id="inputname2">
+              <input type="date" class="form-control" id="inputname2" name="Order_date">
               <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
             </div>
-          </form>
-
+       </div>
+        
+     
         </div><!--2-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname1">Trans NO :</label>
 
@@ -175,30 +180,30 @@
             <div class="col-7 ">
               <input type="text" class="form-control" id="inputname1">
             </div>
-          </form>
+        </div>
 
         </div><!--3-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname4">Issue date * :</label>
 
             </div>
             <div class="input-group">
-              <input type="text" class="form-control" id="inputname4">
+              <input type="date" class="form-control" id="inputname4" name="Issue_date">
               <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
             </div>
-          </form>
+        </div>
 
         </div><!--4-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname5">Company code / company :</label>
 
             </div>
             <div class="col-7 ">
-              <select class="form-select" id="inputname5">
+              <select class="form-select" id="inputname5" name="Company_code">
                 <option value="" selected disabled></option>
                 <option value="4084893">0Z60M / Hinchingbrooke Health Care Trust</option>
                 <option value="11029939">100048 / IDEX ENERGIES</option>
@@ -1849,201 +1854,197 @@
 
               </select>
             </div>
-          </form>
+        </div>
 
         </div><!--5-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname6">Due date * :</label>
 
             </div>
             <div class="input-group">
-              <input type="text" class="form-control" id="inputname6">
+              <input type="date" class="form-control" id="inputname6" name="Due_date">
               <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
             </div>
-          </form>
+        </div>
 
         </div><!--6-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname7"> PO NO :</label>
 
             </div>
             <div class="col-7 ">
-              <input type="text" class="form-control" id="inputname7">
+              <input type="text" class="form-control" id="inputname7" name="PO_NO">
             </div>
-          </form>
+        </div>
 
         </div><!--7-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname8"> Payment date :</label>
 
             </div>
             <div class="input-group">
-              <input type="text" class="form-control" id="inputname8">
+              <input type="date" class="form-control" id="inputname8" name="Payment_date">
               <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
             </div>
-          </form>
+      
+        </div>
 
         </div><!--8-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname9"> File NO :</label>
 
             </div>
             <div class="col-7">
 
-              <input type="text" class="form-control" id="inputname9">
+              <input type="text" class="form-control" id="inputname9" name="File_NO">
 
             </div>
 
-          </form>
+        </div>
 
         </div><!--9-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname10">Currency * :</label>
 
             </div>
             <div class="col-7 ">
-              <select class="form-select" id="inputname10">
-                <option value="" selected disabled>EUR € </option>
-                <option value="">EUR €</option>
-                <option value="">AUD $A</option>
-                <option value="">BRL</option>
-                <option value="">CAD $C</option>
-                <option value="">CHF</option>
-                <option value="">GBP £</option>
-                <option value="">USD $</option>
-                <option value="">ZAR</option>
-                <option value="">+ New currency</option>
+              <select class="form-select" id="inputname10" name="Currency">
+              @foreach($currencies as $currency)
+          <option value="{{ $currency->id }}">{{ $currency->en_name }}</option>
+        @endforeach
+      
               </select>
+       
             </div>
-          </form>
+        </div>
 
         </div><!--10-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname11">
                 ERP item type :</label>
 
             </div>
             <div class="col-7 ">
-              <input type="text" class="form-control" id="inputname11">
+              <input type="text" class="form-control" id="inputname11" name="ERP_item_type">
             </div>
-          </form>
+        </div>
 
         </div><!--11-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname12"> Initial amount exc. Tax :</label>
             </div>
             <div class="input-group">
-              <input type="text" class="form-control" id="inputname12">
+              <input type="text" class="form-control" id="inputname12" name="Initial_amount_exc_Tax">
               <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
             </div>
-          </form>
+        </div>
 
         </div><!--12-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname13">Business case :</label>
 
             </div>
             <div class="col-7 ">
-              <input type="text" class="form-control" id="inputname13">
+              <input type="text" class="form-control" id="inputname13" name="Business_case">
             </div>
-          </form>
+        </div>
 
         </div><!--13-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname14"> Initial amount inc. Tax * :</label>
 
             </div>
             <div class="input-group">
-              <input type="text" class="form-control" id="inputname14">
+              <input type="text" class="form-control" id="inputname14" name="Initial_amount_inc_Tax">
               <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
             </div>
-          </form>
+        </div>
 
         </div><!--14-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname15">
                 Sales manager :</label>
 
             </div>
             <div class="col-7 ">
-              <input type="text" class="form-control" id="inputname15">
+              <input type="text" class="form-control" id="inputname15" name="Sales_manager">
             </div>
-          </form>
+        </div>
 
         </div><!--15-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname16">Remaining amount exc. Tax :</label>
 
             </div>
             <div class="input-group">
-              <input type="text" class="form-control" id="inputname16">
+              <input type="text" class="form-control" id="inputname16" name="Remaining_amount_exc_Tax">
               <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
             </div>
-          </form>
+        </div>
 
         </div><!--16-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname17"> Sales adrninistative :</label>
 
             </div>
             <div class="col-7 ">
-              <input type="text" class="form-control" id="inputname17">
+              <input type="text" class="form-control" id="inputname17" name="Sales_adrninistative">
             </div>
-          </form>
+        </div>
 
         </div><!--17-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname18">Remaining amount inc. Tax :</label>
 
             </div>
             <div class="input-group">
-              <input type="text" class="form-control" id="inputname18">
+              <input type="text" class="form-control" id="inputname18" name="Remaining_amount_inc_Tax">
               <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
             </div>
-          </form>
+        </div>
 
         </div><!--18-->
 
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname27">Customer custom field #1:</label>
 
             </div>
             <div class="col-7 ">
-              <input type="text" class="form-control" id="inputname27">
+              <input type="text" class="form-control" id="inputname27" name="Customer_custom_field_1">
             </div>
-          </form>
+        </div>
 
         </div><!--27-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname17"></label>
 
@@ -2051,21 +2052,21 @@
             <div class="col-7 ">
               <input type="text" class="form-control visually-hidden" id="inputname17">
             </div>
-          </form>
+        </div>
 
         </div><!--17-->
         <div class="col-md-6 my-2">
-          <form class="d-flex">
+         <div class="d-flex">
             <div class="col-5 ">
               <label for="inputname30">Customer custom field #2:</label>
 
             </div>
             <div class="col-7 ">
-              <input type="text" class="form-control" id="inputname30">
+              <input type="text" class="form-control" id="inputname30" name="Customer_custom_field_2">
             </div>
-          </form>
+        </div>
           <div class="col-md-6 my-2">
-            <form class="d-flex">
+           <div class="d-flex">
               <div class="col-5 ">
                 <label for="inputname17"></label>
 
@@ -2073,15 +2074,16 @@
               <div class="col-7 ">
                 <input type="text" class="form-control visually-hidden" id="inputname17">
               </div>
-            </form>
+          </div>
 
           </div><!--17-->
 
 
         </div><!--30-->
         <div class="container text-center">
-          <button class="btn btn-primary my-1 btn-add-i">+ ADD</button>
+          <button class="btn btn-primary my-1 btn-add-i" type="submit">+ ADD</button>
         </div>
+        </form>
       </div><!--row-->
     </div><!--create-c-i-->
 

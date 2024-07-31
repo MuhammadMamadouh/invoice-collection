@@ -13,28 +13,26 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            
-            $table->string('ltem_type');
+            $table->foreignId('item_type')->constrained('item_types')->onDelete('cascade'); // Foreign key to item_types table
             $table->string('Company_code');
-            $table->string('PO_NO ');
-            $table->string('File_NO ');
+            $table->string('PO_NO');
+            $table->string('File_NO');
             $table->string('ERP_item_type');
             $table->string('Business_case');
             $table->string('Sales_manager');
-            $table->string('Sales_adrninistative');
-            $table->string('Customer_custom_field#1');
-            $table->string('Customer_custom_field#2');
+            $table->string('Sales_adrninistative'); // Check if this should be 'Sales_administrative'
+            $table->string('Customer_custom_field_1');
+            $table->string('Customer_custom_field_2');
             $table->string('Order_date');
             $table->string('Issue_date');
             $table->string('Due_date');
             $table->string('Payment_date');
-            $table->string('Currency');
-            $table->string('Initial_amount_exc.Tax ');
-            $table->string('Initial_amount_inc.Tax');
-            $table->string('Remaining_amount_exc.Tax');
-            $table->string('Remaining_amount_inc.Tax');
+            $table->foreignId('Currency')->constrained('currencies')->onDelete('cascade'); // Foreign key to currencies table
+            $table->string('Initial_amount_exc_Tax');
+            $table->string('Initial_amount_inc_Tax');
+            $table->string('Remaining_amount_exc_Tax');
+            $table->string('Remaining_amount_inc_Tax');
             $table->timestamps();
-
         });
     }
 
