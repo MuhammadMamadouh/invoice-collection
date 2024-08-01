@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('ERP_item_type');
             $table->string('Business_case');
             $table->string('Sales_manager');
-            $table->string('Sales_adrninistative'); // Check if this should be 'Sales_administrative'
+            $table->string('Sales_administrative'); // Check if this should be 'Sales_administrative'
             $table->string('Customer_custom_field_1');
             $table->string('Customer_custom_field_2');
             $table->string('Order_date');

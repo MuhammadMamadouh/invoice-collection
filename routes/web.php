@@ -3,7 +3,8 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Dashboard\UniqueItemController;
+use App\Http\Controllers\Dashboard\ItemsController;
+use App\Http\Controllers\Dashboard\StatusItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,12 +31,13 @@ Route::middleware('auth')->group(function () {
 });
 Route::resource('users', UserController::class);
 
-Route::get('/clue', function () {
-    return view('settings-manage-clients-group');
-});
 
 
-Route::get('/item', [UniqueItemController::class, 'showItemsForm']);
 
-Route::post('/item', [UniqueItemController::class, 'store'])->name('items.store');
+Route::get('/item', [ItemsController::class, 'showItemsForm'])->name('items.show');
+
+Route::post('/item', [ItemsController::class, 'store'])->name('items.store');
+Route::get('/status', [StatusItemController::class,'showStatusItemsForm']);
+Route::post('/status', [StatusItemController::class,'store'])->name('status.store');
+
 require __DIR__.'/auth.php';

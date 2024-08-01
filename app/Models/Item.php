@@ -19,7 +19,7 @@ class Item extends Model
         'ERP_item_type',
         'Business_case',
         'Sales_manager',
-        'Sales_adrninistative', // Check if this should be 'Sales_administrative'
+        'Sales_administrative', // Check if this should be 'Sales_administrative'
         'Customer_custom_field_1',
         'Customer_custom_field_2',
         'Order_date',
