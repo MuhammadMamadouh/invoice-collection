@@ -75,9 +75,9 @@
                         <h6>{{ __('action of collection scenarios') }}</h6>
                     </div>
                 </div>
-                <div class="backg-content-2">
-                    <div class="row ">
-                        @forelse ($collections as $key => $collection)
+                <div class="">
+                    @forelse ($collections as $key => $collection)
+                        <div class="row" style=" {{$key % 2 == 0 ? 'background-color:#f2f2f2; border: 1px solid #cfcbcb;' : 'background-color:#ffffff'}}">
                             <div class="col-lg-4">
                                 <div class="content-2-desc">
                                     <h6 class="mt-3 mb-3">{{ $collection->name }}</h6>
@@ -87,7 +87,8 @@
                                     </h6>
                                     <div class="open-serch">
                                         <a href="" class="text-black-50 text-center">
-                                            {{ __('576 clients use this collection') }} {{ __('scenarioLink') }}
+                                            {{ $collection->client->count() }} {{ __('clients use this collection') }}
+                                            {{ __('scenarioLink') }}
                                             <span><i class="fa-regular fa-share-from-square"></i></span>
                                         </a>
                                     </div>
@@ -117,7 +118,8 @@
                                                         <div class="col-10">
                                                             <div class="input-group">
                                                                 <input type="text" name="name" class="form-control"
-                                                                    id="inputname18" style="width: 355px;" value="{{old('name', $collection->name)}}">
+                                                                    id="inputname18" style="width: 355px;"
+                                                                    value="{{ old('name', $collection->name) }}">
                                                                 @error('name')
                                                                     <div class="alert text-danger" style="font-weight: bold;">
                                                                         {{ $message }}</div>
@@ -140,7 +142,7 @@
                                             @method('delete')
                                             <button class="text-black-50"><i class="fa-solid fa-trash"></i></button>
                                         </form>
-                                        <form action="{{route('collection.duplicateScenario', $collection->id )}}"
+                                        <form action="{{ route('collection.duplicateScenario', $collection->id) }}"
                                             method="POST">
                                             @csrf
                                             <button class="text-black-50"><i class="fa-solid fa-copy"></i></button>
@@ -246,16 +248,15 @@
                                     </div>
                                 @endforeach
                             </div>
-                        @empty
-                            <p>No scenarios Yet....</p>
-                        @endforelse
-
                         </div>
-                    </div>
+                    @empty
+                        <p>No scenarios Yet....</p>
+                    @endforelse
                 </div>
             </div>
-        </section>
-        {{-- <section class="sections-2 d-none" id="sec-2">
+        </div>
+    </section>
+    {{-- <section class="sections-2 d-none" id="sec-2">
         <div class="four-inputs">
             <div class="container-fluid">
                 <div class="row">
@@ -405,13 +406,13 @@
             </div>
         </div>
     </section> --}}
-    @endsection
-    @push('scripts')
-        <script src="js/wow.min.js"></script>
-        <script>
-            new WOW().init();
-        </script>
-        <script src="./js/risk.js"></script>
-        <script src="js/mange.js"></script>
-        <script src="js/email.js"></script>
-    @endpush
+@endsection
+@push('scripts')
+    <script src="{{asset('js/wow.min.js')}}"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src="{{asset('js/risk.js')}}"></script>
+    <script src="{{asset('js/mange.js')}}"></script>
+    <script src="{{asset('js/email.js')}}"></script>
+@endpush

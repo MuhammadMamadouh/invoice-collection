@@ -37,7 +37,7 @@ class Client extends Model
 
     public function collectionScenarios()
     {
-        return $this->belongsTo(CollectionScenario::class);
+        return $this->belongsTo(CollectionScenario::class, 'collection_scenario_id');
     }
 
     public function collector()

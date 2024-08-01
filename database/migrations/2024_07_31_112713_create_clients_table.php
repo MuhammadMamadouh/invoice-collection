@@ -33,9 +33,9 @@ return new class extends Migration
             $table->decimal('insurer_guarantee', 10, 2)->nullable();
             $table->decimal('other_guarantees', 10, 2)->nullable();
             $table->decimal('credit_limit', 10, 2)->nullable();
-            $table->boolean('late_payment_penalties')->default(false);
-            $table->boolean('recovery_cost')->default(false);
-            $table->boolean('interactive_emails')->default(false);
+            $table->boolean('late_payment_penalties')->default(0);
+            $table->boolean('recovery_cost')->default(0);
+            $table->boolean('interactive_emails')->default(0);
             $table->timestamps();
         });
     }

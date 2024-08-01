@@ -5,19 +5,19 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a href="allClients.html" class="m-1 w-100 btn btn-primary p-3">
-                        <i class="fa-solid fa-earth-asia"></i> &ensp; {{__("All clients")}} &ensp;
+                        <i class="fa-solid fa-earth-asia"></i> &ensp; {{ __('All clients') }} &ensp;
                         <span class="badge bg-white text-primary">184</span>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a href="myClients.html" class="m-1 w-100 btn btn-outline-primary text-secondary p-3" id="actionButton">
-                        <i class="fa-solid fa-building text-primary"></i> &ensp; {{__("My clients")}} &ensp;
+                        <i class="fa-solid fa-building text-primary"></i> &ensp; {{ __('My clients') }} &ensp;
                         <span class="badge bg-primary">4</span>
                     </a>
                 </div>
                 <a href="searchForAClient.html" class="col-lg-3 col-md-4 col-sm-6">
                     <div class="m-1 w-100 btn btn-light text-secondary p-3">
-                        <i class="fa-solid fa-magnifying-glass"></i> &ensp; {{__("Search for client")}}
+                        <i class="fa-solid fa-magnifying-glass"></i> &ensp; {{ __('Search for client') }}
                     </div>
                 </a>
             </div>
@@ -57,22 +57,20 @@
                         </select>
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
-                        <select name="onlyScenario" class="m-2 form-select" data-placeholder="Collection scenario:"
-                            title="Collection scenario">
-                                <option selected disabled>Select One</option>
-                                @foreach($collections as $collection)
-                                    <option value="{{$collection->id}}">{{$collection->name}}</option>
-                                @endforeach
+                        <select name="collection_scenario_id" class="m-2 form-select"
+                            data-placeholder="Collection scenario:" title="Collection scenario">
+                            <option selected disabled>{{ __('Collection Scenarios') }}</option>
+                            @foreach ($collectionsScenario as $collection)
+                                <option value="{{ $collection->id }}">{{ $collection->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
-                        <select class="form-select m-2" aria-label="Default select example">
-                            <option selected disabled>Collector :</option>
-                            <option value="1">Mike Anderson(Collector)</option>
-                            <option value="1">Nicolas Grayson(Collector)</option>
-                            <option value="1">Paul Mayer(Administrator)</option>
-                            <option value="1">Veronique Miguet(Credit Manager)</option>
-                            <option value="1">[None]</option>
+                        <select name='collector_id' class="form-select m-2" aria-label="Default select example">
+                            <option selected disabled>collectors</option>
+                            @foreach ($collectors as $collector)
+                                <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
@@ -233,56 +231,56 @@
                         <div class="col-4 col-md-1">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">{{__("Flag")}}</p>
+                                <p class="fw-bold">{{ __('Flag') }}</p>
                             </div>
                         </div>
                         <div class="col-4 col-md-1">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">{{__("Company code")}}</p>
+                                <p class="fw-bold">{{ __('Company code') }}</p>
                             </div>
                         </div>
                         <div class="col-1 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">{{__("Business name")}}</p>
+                                <p class="fw-bold">{{ __('Business name') }}</p>
                             </div>
                         </div>
                         <div class="col-3 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">{{__("Collection scenario")}}</p>
+                                <p class="fw-bold">{{ __('Collection scenario') }}</p>
                             </div>
                         </div>
                         <div class="col-2 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">{{__("Group")}}</p>
+                                <p class="fw-bold">{{ __('Group') }}</p>
                             </div>
                         </div>
                         <div class="col-1 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">{{__("Receivable")}}</p>
+                                <p class="fw-bold">{{ __('Receivable') }}</p>
                             </div>
                         </div>
                         <div class="col-1 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">{{__("Overdue")}}</p>
+                                <p class="fw-bold">{{ __('Overdue') }}</p>
                             </div>
                         </div>
                         <div class="col-1 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">{{__("Overdue +60d")}}</p>
+                                <p class="fw-bold">{{ __('Overdue +60d') }}</p>
                             </div>
                         </div>
                         <div class="col-3 tavle-dropdown-icon"></div>
                     </div>
                     <div class="text-center mb-3 p-2 p-md-4 table-container">
                         @forelse($clients as $key => $client)
-                            <div class="row align-items-center pt-3" style="background-color: #006bff14">
+                            <div class="row align-items-center pt-3" style="background-color: {{$key % 2 == 0 ? '#006bff14' : '#ffffff'  }}">
                                 <div class="col-1">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
@@ -296,15 +294,19 @@
                                             +28days (< 10days) </span>
                                 </div>
                                 <div class="col-4 col-md-1">
-                                    <p class="fw-bold">{{$client->company_code}}</p>
+                                    <p class="fw-bold">{{ $client->company_code }}</p>
                                 </div>
                                 <div class="col-1 hide">
-                                    <p class="fw-bold"><a href="#" onclick="showHolap()">{{$client->company_name}}</a></p>
+                                    <p class="fw-bold"><a href="#"
+                                            onclick="showHolap()">{{ $client->company_name }}</a></p>
                                 </div>
                                 <div class="col-md-3 hide">
                                     <div class=" w-100 mb-3">
                                         <select class="form-select" id="inputname19">
-                                            <option selected disabled>{{$client->collectionScenarios->name ?? '1'}}</option>
+                                            <option selected disabled>{{ $client->collectionScenarios->name }}</option>
+                                            @foreach ($collectionsScenario as $collection)
+                                                <option value="{{ $collection->id }}">{{ $collection->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -331,17 +333,13 @@
                                     <div class="d-flex bg-light">
                                         <p class="fw-bold">Collection scenario:</p>
                                         <div class="">
-                                            <select class="form-select" id="inputname19">
-                                                <option value="" selected disabled>scenario do relance standare
+                                            <select name="collection_scenario_id" class="form-select" id="inputname19">
+                                                <option value="" selected disabled>{{ __('Collection Scenarios') }}
                                                 </option>
-                                                <option value="">Clients publics (FR)</option>
-                                                <option value="">Clients risqués (FR)</option>
-                                                <option value="">Key accounts scenario (EN)</option>
-                                                <option value="">Modèles actions spécifiques</option>
-                                                <option value="">Risky clients (EN)</option>
-                                                <option value="">Scénario de relance standard (by default)</option>
-                                                <option value="">Standard Collection Scenario</option>
-                                                <option value="">Templates specific actions</option>
+                                                @foreach ($collectionsScenario as $collection)
+                                                    <option value="{{ $collection->id }}">{{ $collection->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -367,7 +365,7 @@
                         @empty
                             <div class="row d-none text-center">
                                 <p class="p-1 mt-3">
-                                    {{__("No clients has been found")}}
+                                    {{ __('No clients has been found') }}
                                 </p>
                             </div>
                         @endforelse
@@ -407,29 +405,20 @@
                             </select>
                         </div>
                         <div class="form-group col-md-4 col-6">
-                            <select name="onlyScenario" class="m-2 form-select" data-placeholder="Collection scenario:"
-                                title="Collection scenario">
-                                <option value="0" selected disabled>
-                                    Collection scenario :
-                                </option>
-                                <option value="3">Clients publics (FR)</option>
-                                <option value="2">Clients risqués (FR)</option>
-                                <option value="7">Key accounts scenario (EN)</option>
-                                <option value="6580">Modèles actions spécifiques</option>
-                                <option value="6">Risky clients (EN)</option>
-                                <option value="24678">Scénario de relance standard</option>
-                                <option value="24679">Standard Collection Scenario</option>
-                                <option value="1405">Templates specific actions</option>
+                            <select name="collection_scenario_id" class="m-2 form-select"
+                                data-placeholder="Collection scenario:" title="Collection scenario">
+                                <option value="" selected disabled>{{ __('Collection Scenarios') }}</option>
+                                @foreach ($collectionsScenario as $collection)
+                                    <option value="{{ $collection->id }}">{{ $collection->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-4 col-6">
                             <select class="form-select m-2" aria-label="Default select example">
-                                <option selected disabled>Collector :</option>
-                                <option value="1">Mike Anderson(Collector)</option>
-                                <option value="1">Nicolas Grayson(Collector)</option>
-                                <option value="1">Paul Mayer(Administrator)</option>
-                                <option value="1">Veronique Miguet(Credit Manager)</option>
-                                <option value="1">[None]</option>
+                                <option selected disabled>{{ __('Collectors') }}</option>
+                                @foreach ($collectors as $collector)
+                                    <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-4 col-6">
@@ -480,15 +469,16 @@
                 </div>
             </div>
             <div class="justify-content-end gap-1 d-flex mb-2">
-                <div class="btn btn-outline-primary">Previus</div>
+                {{-- <div class="btn btn-outline-primary">Previus</div>
                 <div class="btn btn-primary">1</div>
                 <div class="btn btn-outline-primary">2</div>
                 <div class="btn btn-outline-primary">3</div>
                 <div class="btn btn-outline-primary">4</div>
                 <div class="btn btn-outline-primary">5</div>
                 <div class="btn btn-outline-primary">6</div>
-                <div class="btn btn-outline-primary">Next</div>
+                <div class="btn btn-outline-primary">Next</div> --}}
             </div>
+                {{$clients->links('pagination::bootstrap-5')}}
             <div class="text-center mb-2">
                 <div class="this-buttons">
                     <div class="">
@@ -568,7 +558,7 @@
     <script src="{{ asset('js/email.js') }}"></script>
     <script src="{{ asset('js/hovers.js') }}"></script>
     <script src="{{ asset('js/collection.js') }}"></script>
-    <script src = "{{ asset('js/chart.js') }}" ></script>
+    <script src="{{ asset('js/chart.js') }}"></script>
     <script src="{{ asset('js/chart-2.js') }}"></script>
     <script src="{{ asset('js/chart-10.js') }}"></script>
 @endpush

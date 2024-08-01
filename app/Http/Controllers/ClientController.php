@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\Role;
+use App\Enum\RoleEnum;
 use App\Http\Requests\ClientRequest;
 use App\Models\Client;
 use App\Models\CollectionScenario;
@@ -17,9 +19,10 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::paginate(10);
-        $collections = CollectionScenario::all();
-        return view('clients.index', compact('clients', 'collections'));
+        $clients = Client::with('collectionScenarios')->paginate(2);
+        $collectionsScenario = CollectionScenario::all();
+        $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
+        return view('clients.index', compact('clients', 'collectionsScenario', 'collectors'));
     }
 
     /**
@@ -28,7 +31,7 @@ class ClientController extends Controller
     public function create()
     {
         $collections = CollectionScenario::all();
-        $collectors = User::where('role_id', 2)->get();
+        $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
         return view('clients.create', compact('collections', 'collectors'));
     }
 

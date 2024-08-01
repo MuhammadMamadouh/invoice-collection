@@ -22,7 +22,7 @@ class CollectionScenarioController extends Controller
         for ($i = -90; $i <= 365; $i++) {
             $days[] = $i;
         }
-        $collections = CollectionScenario::with('ActionScenarios')->get();
+        $collections = CollectionScenario::with('ActionScenarios', 'client')->get();
         $actionTypes = ActionType::all();
         return view('collection_scenarios.index', compact('collections', 'actionTypes', 'days'));
     }
@@ -85,5 +85,4 @@ class CollectionScenarioController extends Controller
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
         }
     }
-
 }

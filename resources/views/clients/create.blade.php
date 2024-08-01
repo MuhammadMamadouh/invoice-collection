@@ -211,14 +211,12 @@
                         </div>
                         <div class="col-7 d-flex justify-content-between align-items-center ">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="exampleCheckbox1">
-                                <label class="form-check-label" for="exampleCheckbox1" name="late_payment_penalties"
-                                    value='1'>Yes</label>
+                                <input class="form-check-input" name="late_payment_penalties" type="checkbox" value='1' id="exampleCheckbox1">
+                                <label class="form-check-label" for="exampleCheckbox1">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="exampleCheckbox2">
-                                <label class="form-check-label" for="exampleCheckbox2" name="late_payment_penalties"
-                                    value='0'>No</label>
+                                <input class="form-check-input" name="late_payment_penalties" type="checkbox" value='0' id="exampleCheckbox2">
+                                <label class="form-check-label" for="exampleCheckbox2">No</label>
                             </div>
                         </div>
                     </div><!--18-->
@@ -255,14 +253,14 @@
                         </div>
                         <div class="col-7 d-flex justify-content-between ">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="exampleCheckbox1">
-                                <label class="form-check-label" for="exampleCheckbox1" name="recovery_cost"
-                                    value='1'>Yes</label>
+                                <input class="form-check-input" type="checkbox" name="recovery_cost" value='1' id="exampleCheckbox1">
+                                <label class="form-check-label" for="exampleCheckbox1" 
+                                    >Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="exampleCheckbox2">
-                                <label class="form-check-label" for="exampleCheckbox2" name="recovery_cost"
-                                    value='0'>No</label>
+                                <input class="form-check-input" type="checkbox" name="recovery_cost" value='0' id="exampleCheckbox2">
+                                <label class="form-check-label" for="exampleCheckbox2" 
+                                    >No</label>
                             </div>
                         </div>
                     </div><!--21-->
@@ -296,12 +294,12 @@
                         </div>
                         <div class="col-7 d-flex justify-content-between">
                             <div class="form-check ">
-                                <input class="form-check-input" type="checkbox" id="exampleCheckbox1">
-                                <label class="form-check-label" for="exampleCheckbox1" name="interactive_emails" value="1">Yes</label>
+                                <input class="form-check-input" type="checkbox" id="exampleCheckbox1" name="interactive_emails" value="1">
+                                <label class="form-check-label" for="exampleCheckbox1"  >Yes</label>
                             </div>
                             <div class="form-check d-flex">
-                                <input class="form-check-input" type="checkbox" id="exampleCheckbox2">
-                                <label class="form-check-label " for="exampleCheckbox2" name="interactive_emails" value="0">No</label>
+                                <input class="form-check-input" type="checkbox" id="exampleCheckbox2" name="interactive_emails" value="0">
+                                <label class="form-check-label " for="exampleCheckbox2" name="interactive_emails" >No</label>
                             </div>
                         </div>
                     </div><!--24-->
