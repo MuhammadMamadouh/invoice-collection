@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientsGroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,13 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/clients-group', [ClientsGroupController::class, 'index'])->name('clients-group');
+Route::post('store-client-group', [ClientsGroupController::class, 'store'])->name('store-client-group');
+Route::get('/delete-client-group/{id}', [ClientsGroupController::class, 'destroy'])->name('delete-client-group');
+Route::post('/clients-group/delete-all', [ClientsGroupController::class, 'deleteAll'])->name('clients-group.delete-all');
+Route::get('/get-client-group/{id}', [ClientsGroupController::class, 'getGroup'])->name('get-client-group');
+Route::post('/update-client-group/{id}', [ClientsGroupController::class, 'update'])->name('update-client-group');
+
+
+
