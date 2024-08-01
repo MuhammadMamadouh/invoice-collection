@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CollectionScenarioController;
 use App\Http\Controllers\ActionController;
-
+use App\Http\Controllers\ActionsCollectionScenarioController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\ProfileController;
@@ -35,7 +37,18 @@ Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edi
 
 Route::resource('users', UserController::class);
 
-Route::post('/users/{user}/regenerate-password', [UserController::class, 'regeneratePassword'])->name('users.regenerate-password');
+
+//-----------------clients--------------------------------
+Route::resource("/clients", ClientController::class);
+
+
+//-----------------CollectionScenarios--------------------------------
+Route::post('/collection_scenarios/actions', [ActionsCollectionScenarioController::class, 'store'])->name('collection.storeAction');
+Route::post('/collection_scenarios/duplicate/{id}', [CollectionScenarioController::class, 'duplicateScenario'])->name('collection.duplicateScenario');
+Route::resource("/collection_scenarios", CollectionScenarioController::class);
+
+
+
 
 
 require __DIR__.'/auth.php';
