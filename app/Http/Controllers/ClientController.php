@@ -19,7 +19,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::with('collectionScenarios')->paginate(2);
+        $clients = Client::with('collectionScenarios')->paginate(30);
         $collectionsScenario = CollectionScenario::all();
         $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
         return view('clients.index', compact('clients', 'collectionsScenario', 'collectors'));
