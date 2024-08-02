@@ -8,7 +8,8 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Dashboard\ItemsController;
+use App\Http\Controllers\Dashboard\StatusItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,3 +57,18 @@ require __DIR__.'/auth.php';
 
 Route::get('actions/create', [ActionController::class,'create']);
 Route::post('actions', [ActionController::class,'store'])->name('actions.store');
+
+
+Route::get('actions/create', [ActionController::class,'create']);
+Route::post('actions', [ActionController::class,'store'])->name('actions.store');
+
+
+Route::get('actions/create', [ActionController::class,'create']);
+Route::post('actions', [ActionController::class,'store'])->name('actions.store');
+
+
+Route::get('/item', [ItemsController::class, 'showItemsForm'])->name('items.show');
+
+Route::post('/item', [ItemsController::class, 'store'])->name('items.store');
+Route::get('/status', [StatusItemController::class,'showStatusItemsForm']);
+Route::post('/status', [StatusItemController::class,'store'])->name('status.store');
