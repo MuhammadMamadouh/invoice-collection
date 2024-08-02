@@ -21,8 +21,6 @@ class ActionTypesSeeder extends Seeder
             ['en_name'=>'Fax'],
             ['en_name'=>'SMS'],
             ['en_name'=>'Phone'],
-
-
         ];
         DB::table('action_types')->insert($actions);
     }

@@ -25,12 +25,13 @@ class StoreUserRequest extends FormRequest
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10000',
             'phone' => 'nullable|string|max:255',
             'fax' => 'nullable|string|max:255',
             'function' => 'nullable|string|max:255',
             'id_number' => 'nullable|string|max:255',
-            'role_id' => 'required|string|max:255',
+            'role_id' => 'required|exists:roles,id',
             'active' => 'required|boolean',
 
         ];
