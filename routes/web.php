@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientsGroupController;
 use App\Http\Controllers\Dashboard\ItemsController;
 use App\Http\Controllers\Dashboard\StatusItemController;
 /*
@@ -72,3 +73,13 @@ Route::get('/item', [ItemsController::class, 'showItemsForm'])->name('items.show
 Route::post('/item', [ItemsController::class, 'store'])->name('items.store');
 Route::get('/status', [StatusItemController::class,'showStatusItemsForm']);
 Route::post('/status', [StatusItemController::class,'store'])->name('status.store');
+
+Route::get('/clients-group', [ClientsGroupController::class, 'index'])->name('clients-group');
+Route::post('store-client-group', [ClientsGroupController::class, 'store'])->name('store-client-group');
+Route::get('/delete-client-group/{id}', [ClientsGroupController::class, 'destroy'])->name('delete-client-group');
+Route::post('/clients-group/delete-all', [ClientsGroupController::class, 'deleteAll'])->name('clients-group.delete-all');
+Route::get('/get-client-group/{id}', [ClientsGroupController::class, 'getGroup'])->name('get-client-group');
+Route::post('/update-client-group/{id}', [ClientsGroupController::class, 'update'])->name('update-client-group');
+
+
+
