@@ -17,7 +17,7 @@
               @foreach($statuses as $status)
           <option value="{{ $status->id }}">{{ $status->en_name }}</option>
         @endforeach
-            
+
               </select>
           </div>
 </div>
@@ -28,20 +28,20 @@
             <label for="inputname18"> {{__'Status'}}:</label>
           </div>
           <div class="col-8">
-            <div class="input-group">    
+            <div class="input-group">
               <input type="text" class="form-control " name="status" id="inputname18">
             </div>
           </div>
 </div>
       </div><!--24-->
-  
+
       <div class="my-2">
         <div class="d-flex align-items-center">
           <div class="col-4 ">
             <label for="inputname20">{{__'No. Of Days Follow-Up Action'}} <a href="DSOInformation.html"><i class="fa-solid fa-question bg-primary text-light p-1" style="border-radius: 50%;width: 18px;height: 22px;"></i></a>:</label>
           </div>
           <div class="col-8">
-            <select id="inputname20" class="form-select" name="no_of_days_follow_up_action">
+            <select id="inputname20" class="form-select" name="follow_up_days">
               <option value="1">+ 1 days</option>
               <option value="2">+ 2 days</option>
               <option value="3">+ 3 days</option>
@@ -443,13 +443,13 @@
             <label for="inputname18"> Status:</label>
           </div>
           <div class="col-8">
-            <div class="input-group">    
+            <div class="input-group">
               <input type="text" class="form-control " id="inputname18">
             </div>
           </div>
         </form>
       </div><!--24-->
-  
+
       <div class="my-2">
         <form class="d-flex align-items-center">
           <div class="col-4 ">
@@ -951,7 +951,7 @@
           <span>(follow-up action +7 days)</span>
         </ul>
       </div>
-    
+
     </div>
     </div>
   </div>
@@ -984,7 +984,7 @@
 </div>
 </div> -->
 
-<!-- 
+<!--
 <div class="two-contents mt-2 mb-3 text-capitalize">
   <div class="container-fluid">
     <div class="dirc">
@@ -1072,21 +1072,21 @@
 <div class="container">
   <div class="row">
   <div class="col-6">
-        <p>Type of status </p>   
-        </div>   
-           
-           <div class="col-6">                
+        <p>Type of status </p>
+        </div>
+
+           <div class="col-6">
             <p>Status</p>
-            </div> 
+            </div>
   @foreach ($statusItems as $item)
         <div class="col-6">
-        <p>{{ $item->statusType ? $item->statusType->en_name : 'N/A' }}</p>   
-        </div>   
+        <p>{{ $item->statusType ? $item->statusType->en_name : 'N/A' }}</p>
+        </div>
            <!-- <p>{{ $item->id }}</p> -->
-           <div class="col-6">                
+           <div class="col-6">
             <li>{{ $item->status }}</li>
-            </div> 
-   
+            </div>
+
    @endforeach
   </div>
 </div>

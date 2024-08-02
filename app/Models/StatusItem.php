@@ -11,12 +11,7 @@ class StatusItem extends Model
     protected $table = 'status_of_items';
 
     // The attributes that are mass assignable
-    protected $fillable = [
-'type_of_status',
-'status',
-'no_of_days_follow_up_action'
-
-    ];
+    protected $fillable = ['type_of_status', 'status','follow_up_days'];
     public function statusType()
     {
         return $this->belongsTo(StatusType::class , 'type_of_status');

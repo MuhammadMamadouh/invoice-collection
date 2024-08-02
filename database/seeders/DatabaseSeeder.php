@@ -13,11 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(DaySeeder::class);
         $this->call(CurrencySeeder::class);
         $this->call(StatusSeeder::class);
         $this->call(ItemSeeder::class);
-        $this->call(ScenarioSeeder::class);
         $this->call(ActionTypesSeeder::class);
         $this->call(RoleSeeder::class);
         // User::factory(10)->create()

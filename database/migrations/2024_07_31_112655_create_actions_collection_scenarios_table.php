@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('actions_collection_scenarios', function (Blueprint $table) {
+        Schema::create('collection_scenarios_actions', function (Blueprint $table) {
             $table->id();
             $table->string('action_name');
             $table->smallInteger('number_of_days');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('actions_collection_scenarios');
+        Schema::dropIfExists('collection_scenarios_actions');
     }
 };

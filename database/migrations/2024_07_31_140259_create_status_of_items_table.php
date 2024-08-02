@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('status_of_items', function (Blueprint $table) { 
+        Schema::create('status_of_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('type_of_status')->constrained('types_of_status')->onDelete('cascade'); // Foreign key to item_types table
             $table->string('status');
-            $table->string('no_of_days_follow_up_action');
+            $table->integer('follow_up_days');
             $table->timestamps();
         });
     }

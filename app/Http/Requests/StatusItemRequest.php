@@ -22,9 +22,9 @@ class StatusItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type_of_status' => 'required|exists:types_of_status,id',
-            'status' => 'required|string|max:255',
-            'no_of_days_follow_up_action' => 'required|integer|min:1',
+            'type_of_status'    => 'required|exists:types_of_status,id',
+            'status'            => 'required|string|max:255',
+            'follow_up_days'    => 'required|integer|min:1',
         ];
     }
 }
