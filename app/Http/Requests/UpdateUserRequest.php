@@ -33,11 +33,10 @@ class UpdateUserRequest extends FormRequest
             ],
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10000',
             'phone' => 'nullable|string|max:255',
-            'mobile_phone' => 'nullable|string|max:255',
             'fax' => 'nullable|string|max:255',
             'function' => 'nullable|string|max:255',
             'id_number' => 'nullable|string|max:255',
-            'role' => 'required|string|max:255',
+            'role_id' => 'required|exists:roles,id',
             'active' => 'required|boolean',  
         ];
     }
