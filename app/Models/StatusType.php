@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class StatusType extends Model
 {
     use HasFactory;
-    protected $table = 'item_types';
+    protected $table = 'types_of_status';
     protected $fillable = [
         'en_name',
     ];

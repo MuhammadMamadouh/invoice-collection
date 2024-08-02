@@ -20,6 +20,6 @@ class StatusSeeder extends Seeder
             ['en_name'=>'promise to pay'],
 
         ];
-        DB::table('statuses')->insert($statuses);
+        DB::table('types_of_status')->insert($statuses);
     }
 }
