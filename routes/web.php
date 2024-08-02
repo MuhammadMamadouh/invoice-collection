@@ -37,7 +37,7 @@ Route::resource('users', UserController::class);
 Route::get('/item', [ItemsController::class, 'showItemsForm'])->name('items.show');
 
 Route::post('/item', [ItemsController::class, 'store'])->name('items.store');
-Route::get('/status', [StatusItemController::class,'showStatusItemsForm']);
+Route::get('/status', [StatusItemController::class,'showStatusItemsForm'])->name('status.show');
 Route::post('/status', [StatusItemController::class,'store'])->name('status.store');
 
 require __DIR__.'/auth.php';

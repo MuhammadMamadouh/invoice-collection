@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class StatusItem extends Model
 {
     use HasFactory;
-    protected $table = 'items';
+    protected $table = 'status_of_items';
 
     // The attributes that are mass assignable
     protected $fillable = [
@@ -19,6 +19,6 @@ class StatusItem extends Model
     ];
     public function statusType()
     {
-        return $this->belongsTo(StatusType::class);
+        return $this->belongsTo(StatusType::class , 'type_of_status');
     }
 }
