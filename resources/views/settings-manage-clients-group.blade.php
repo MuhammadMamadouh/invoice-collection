@@ -149,7 +149,7 @@
             $('#name').val(response.name);
             // $('#editClients').val(response.clients);
             // $('#editAssociated').val(response.associated);
-            
+
             // Show the edit form
             $('.edit-group-div').removeClass('d-none');
         },
@@ -163,7 +163,7 @@ function hideEditGroupDiv() {
     $('.edit-group-div').addClass('d-none'); // Hide the edit form
 }
 
-    
+
 </script>
 
 
@@ -175,7 +175,7 @@ function hideEditGroupDiv() {
            <a href="settings.html" class="mt-4 mb-4"> <i class="fa-solid fa-house"></i><a href="settings.html">My account</a></a>
            <a href="settings.html"><img src="img/person2.jpg" class="img-fluid" alt=""></a>
           <span class="mt-4 mb-3"><i class="fa-solid fa-power-off"></i><a href="#">sign out</a></span>
-       
+
       </div>
      </div>
     <nav class="navbar navbar-expand-lg">
@@ -199,7 +199,7 @@ function hideEditGroupDiv() {
                 <span><i class="fa-solid fa-bolt "></i></span>risk
               </a>
             </li>
-           
+
              <li class="nav-item">
                <a class="nav-link" href="allClients.html"><span><i class="fa-solid fa-globe"></i></span>clients</a>
              </li>
@@ -285,7 +285,7 @@ function hideEditGroupDiv() {
     <div class="form-group d-flex align-items-center">
         {{ __("display") }}
         <form action="{{ route('clients-group') }}" method="GET">
-            <select name="per_page" class="form-select w-auto m-2" onchange="this.form.submit()">              
+            <select name="per_page" class="form-select w-auto m-2" onchange="this.form.submit()">
                 <option value="25" {{ request('per_page') == 25 ? 'selected' : '' }}>25</option>
                 <option value="50" {{ request('per_page') == 50 ? 'selected' : '' }}>50</option>
                 <option value="100" {{ request('per_page') == 100 ? 'selected' : '' }}>100</option>
@@ -322,7 +322,7 @@ function hideEditGroupDiv() {
               <div class="d-flex align-items-center justify-content-start gap-1 ">
                 <i class="fa-solid fa-sort mb-2" style="cursor:pointer"></i>
                 <p class="pris-d name-d fw-bold">
-                 {{_("No . of clients in the group")}} 
+                 {{_("No . of clients in the group")}}
                 </p>
               </div>
 
@@ -334,7 +334,7 @@ function hideEditGroupDiv() {
             </td>
 
           </tr>
-          
+
           <!--who-->
           @foreach($clientsGroups as $clientsGroup)
           <tr class="kall">
@@ -342,24 +342,24 @@ function hideEditGroupDiv() {
               <input type="checkbox" class="chec bg-body-tertiary">
               <p class="name-d">{{ $clientsGroup->name }}</p>
             </td>
-            <td class="border-0"> 
+            <td class="border-0">
               <p class="pris-d name-d text-primary num-p">
               {{ $clientsGroup->clients }}
               </p>
             </td>
             <td class="border-0">
               <p class="operate name-d ">
-              
+
                 <a href="get-client-group/{{ $clientsGroup->id}}" onclick="showEditGroupDiv({{ $clientsGroup->id }})" class="text-decoration-none edite-groups rounded">
                 <i class="fa-solid fa-pen"></i>
-              
+
                 <a href="delete-client-group/{{ $clientsGroup->id}}" class="text-decoration-none delete-groups rounded" onclick="return confirm('Are you sure you want to delete this client group?')"><i
-                class="fa-solid fa-trash-can trash-d"></i></a> 
+                class="fa-solid fa-trash-can trash-d"></i></a>
               </p>
             </td>
 
           </tr>
-          
+
           @endforeach
         </table>
 
@@ -370,8 +370,8 @@ function hideEditGroupDiv() {
          </button>
        </form>
 
-        
-        
+
+
       </div><!--create-->
     </div><!--container-->
 
@@ -384,7 +384,7 @@ function hideEditGroupDiv() {
   <script>
     new WOW().init();
   </script>
- 
+
 </body>
 
 </html>
