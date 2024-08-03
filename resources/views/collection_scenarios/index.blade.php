@@ -37,9 +37,9 @@
                                 </div>
                                 <div class="col-10">
                                     <div class="input-group">
-                                        <input type="text" name="name" class="form-control " id="inputname18"
+                                        <input type="text" name="en_name" class="form-control " id="inputname18"
                                             style="width: 355px;">
-                                        @error('name')
+                                        @error('en_name')
                                             <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -58,8 +58,17 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-light">
                         @foreach ($collections as $collection)
-                            <li class="d-flex"><a class="dropdown-item" href="#">{{ $collection->name }}<img
-                                        src="img/united-states.png" class="img-fluid" alt=""> </a></li>
+                            <li class="d-flex">
+                                <form action="{{ route('collection.duplicateScenario', $collection->id) }}" method="POST"
+                                    class="d-flex w-100">
+                                    @csrf
+                                    <button type="submit"
+                                        class="dropdown-item d-flex w-100 justify-content-between align-items-center">
+                                        {{ $collection->en_name }}
+                                        <img src="img/united-states.png" class="img-fluid" alt="">
+                                    </button>
+                                </form>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -77,10 +86,11 @@
                 </div>
                 <div class="">
                     @forelse ($collections as $key => $collection)
-                        <div class="row" style=" {{$key % 2 == 0 ? 'background-color:#f2f2f2; border: 1px solid #cfcbcb;' : 'background-color:#ffffff'}}">
+                        <div class="row"
+                            style=" {{ $key % 2 == 0 ? 'background-color:#f2f2f2; border: 1px solid #cfcbcb;' : 'background-color:#ffffff' }}">
                             <div class="col-lg-4">
                                 <div class="content-2-desc">
-                                    <h6 class="mt-3 mb-3">{{ $collection->name }}</h6>
+                                    <h6 class="mt-3 mb-3">{{ $collection->en_name }}</h6>
                                     <h6 class="txt-2-p mt-3 mb-3 text-black-50 text">
                                         <span class="text-black-50"><i class="fa-solid fa-star"></i></span>
                                         {{ __('Default collection scenario') }}
@@ -117,10 +127,10 @@
                                                         </div>
                                                         <div class="col-10">
                                                             <div class="input-group">
-                                                                <input type="text" name="name" class="form-control"
+                                                                <input type="text" name="en_name" class="form-control"
                                                                     id="inputname18" style="width: 355px;"
-                                                                    value="{{ old('name', $collection->name) }}">
-                                                                @error('name')
+                                                                    value="{{ old('en_name', $collection->en_name) }}">
+                                                                @error('en_name')
                                                                     <div class="alert text-danger" style="font-weight: bold;">
                                                                         {{ $message }}</div>
                                                                 @enderror
@@ -258,14 +268,13 @@
             </div>
         </div>
     </section>
-   
 @endsection
 @push('scripts')
-    <script src="{{asset('js/wow.min.js')}}"></script>
+    <script src="{{ asset('js/wow.min.js') }}"></script>
     <script>
         new WOW().init();
     </script>
-    <script src="{{asset('js/risk.js')}}"></script>
-    <script src="{{asset('js/mange.js')}}"></script>
-    <script src="{{asset('js/email.js')}}"></script>
+    <script src="{{ asset('js/risk.js') }}"></script>
+    <script src="{{ asset('js/mange.js') }}"></script>
+    <script src="{{ asset('js/email.js') }}"></script>
 @endpush

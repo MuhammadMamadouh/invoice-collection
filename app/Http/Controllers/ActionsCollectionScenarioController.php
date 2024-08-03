@@ -20,12 +20,17 @@ class ActionsCollectionScenarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'action_name'               => 'required|string|max:255',
-            'number_of_days'            => 'required|numeric',
-            'action_type'               => 'required|exists:action_types,id',
-            'collection_scenario_id'    => 'required|exists:collection_scenarios,id',
+            'action_name' => 'required|string|max:255',
+            'number_of_days' => 'required|numeric',
+            'action_type' => 'required|exists:action_types,id',
+            'collection_scenario_id' => 'required|exists:collection_scenarios,id',
         ]);
-        ActionsCollectionScenario::create($request->all());
+        ActionsCollectionScenario::create([
+            'action_name' => $request->action_name,
+            'action_type' => $request->action_type,
+            'number_of_days' => $request->number_of_days,
+            'collection_scenario_id' => $request->collection_scenario_id,
+        ]);
         return to_route('collection_scenarios.index')->with(['message' => 'created successfully']);
     }
 
