@@ -17,27 +17,16 @@ class ActionsCollectionScenarioController extends Controller
         //
     }
 
-
     public function store(Request $request)
     {
         $request->validate([
-            'action_name' => 'required|string|max:255',
-            'number_of_days' => 'required|numeric',
-            'action_type' => 'required|string',
-            'collection_scenarios_id' => 'required|exists:collection_scenarios,id',
+            'action_name'               => 'required|string|max:255',
+            'number_of_days'            => 'required|numeric',
+            'action_type'               => 'required|exists:action_types,id',
+            'collection_scenario_id'    => 'required|exists:collection_scenarios,id',
         ]);
-        try{
-            ActionsCollectionScenario::create([
-                'action_name' => $request->action_name,
-                'action_type' => $request->action_type,
-                'number_of_days' => $request->number_of_days,
-                'collection_scenarios_id' => $request->collection_scenarios_id,
-            ]);
-            return to_route('collection_scenarios.index')->with(['message' => 'created successfully']);
-        }catch(Exception $e){
-            Log::info($e->getMessage());
-            return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
-        }
+        ActionsCollectionScenario::create($request->all());
+        return to_route('collection_scenarios.index')->with(['message' => 'created successfully']);
     }
 
     public function update(Request $request, $id)
@@ -46,18 +35,18 @@ class ActionsCollectionScenarioController extends Controller
             'action_name' => 'required|string|max:255',
             'number_of_days' => 'required|numeric',
             'action_type' => 'required|string',
-            'collection_scenarios_id' => 'required|exists:collection_scenarios,id',
+            'collection_scenario_id' => 'required|exists:collection_scenarios,id',
         ]);
         $collection = ActionsCollectionScenario::findOrFail($id);
-        try{
+        try {
             $collection->update([
                 'action_name' => $request->action_name,
                 'action_type' => $request->action_type,
                 'number_of_days' => $request->number_of_days,
-                'collection_scenarios_id' => $request->collection_scenarios_id,
+                'collection_scenario_id' => $request->collection_scenario_id,
             ]);
             return to_route('collection_scenarios.index')->with(['message' => 'edited successfully']);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
         }
@@ -65,10 +54,10 @@ class ActionsCollectionScenarioController extends Controller
 
     public function destroy($id)
     {
-        try{
+        try {
             ActionsCollectionScenario::findOrFail($id)->delete();
             return to_route('collection_scenarios.index')->with(['message' => 'deleted successflly']);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
         }

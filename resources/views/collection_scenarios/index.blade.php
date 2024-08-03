@@ -170,7 +170,7 @@
                                                 <i class="fa-solid fa-close"></i>
                                             </span>
                                             @csrf
-                                            <input type="hidden" name="collection_scenarios_id" class="form-control"
+                                            <input type="hidden" name="collection_scenario_id" class="form-control"
                                                 style="width: 355px;" value="{{ $collection->id }}">
                                             <div class="my-2">
                                                 <h3 class="text-center mb-3">{{ __('Create An Action') }}</h3>
@@ -241,9 +241,11 @@
                                     <div class="content-text-2">
                                         <ul class="d-flex">
                                             <span>@</span>
-                                            <li><a href="">{{ $ActionScenario->action_name }}</a></li>
-                                            <span>{{ $ActionScenario->number_of_days }} <img src="img/france.png"
-                                                    alt=""></span>
+                                            <li><a href="">{{ $ActionScenario->action_name }}</a>
+                                            </li>
+                                            <span>{{ $ActionScenario->number_of_days }} day(s)
+                                                {{-- <img src="img/france.png"alt=""> --}}
+                                            </span>
                                         </ul>
                                     </div>
                                 @endforeach
@@ -256,156 +258,7 @@
             </div>
         </div>
     </section>
-    {{-- <section class="sections-2 d-none" id="sec-2">
-        <div class="four-inputs">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="firt d-flex justify-content-around mt-3 mb-3">
-                            <label>Minimum amount for collection :</label>
-                            <input type="text" placeholder="50">
-                            <span>€</span>
-                        </div>
-                        <div class="firt d-flex justify-content-around mt-3 mb-3">
-                            <label>Ignore transactions whose amount is less than :</label>
-                            <input type="text" placeholder="50">
-                            <span>€</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6 mt-3 mb-3">
-                            <div class="automatic-between d-flex align-items-center">
-                                <h6>Automatic action between </h6>
-                                <select name="relance_auto_horaire_min" style="font-size: 12px;" class="">
-                                    <option value="1">1:00</option>
-                                    <option value="2">2:00</option>
-                                    <option value="3">3:00</option>
-                                    <option value="4">4:00</option>
-                                    <option value="5">5:00</option>
-                                    <option value="6">6:00</option>
-                                    <option value="7">7:00</option>
-                                    <option value="8" selected>8:00</option>
-                                    <option value="9">9:00</option>
-                                    <option value="10">10:00</option>
-                                    <option value="11">11:00</option>
-                                    <option value="12">12:00</option>
-                                    <option value="13">13:00</option>
-                                    <option value="14">14:00</option>
-                                    <option value="15">15:00</option>
-                                    <option value="16">16:00</option>
-                                    <option value="17">17:00</option>
-                                    <option value="18">18:00</option>
-                                    <option value="19">19:00</option>
-                                    <option value="20">20:00</option>
-                                    <option value="21">21:00</option>
-                                    <option value="22">22:00</option>
-                                    <option value="23">23:00</option>
-                                    <option value="24">24:00</option>
-                                </select>
-                                <h6 style="margin: 5px;">and</h6>
-                                <select name="relance_auto_horaire_min" style="font-size: 12px;" class="">
-                                    <option value="1">1:00</option>
-                                    <option value="2">2:00</option>
-                                    <option value="3">3:00</option>
-                                    <option value="4">4:00</option>
-                                    <option value="5">5:00</option>
-                                    <option value="6">6:00</option>
-                                    <option value="7">7:00</option>
-                                    <option value="8" selected>8:00</option>
-                                    <option value="9">9:00</option>
-                                    <option value="10">10:00</option>
-                                    <option value="11">11:00</option>
-                                    <option value="12">12:00</option>
-                                    <option value="13">13:00</option>
-                                    <option value="14">14:00</option>
-                                    <option value="15">15:00</option>
-                                    <option value="16">16:00</option>
-                                    <option value="17">17:00</option>
-                                    <option value="18">18:00</option>
-                                    <option value="19">19:00</option>
-                                    <option value="20">20:00</option>
-                                    <option value="21">21:00</option>
-                                    <option value="22">22:00</option>
-                                    <option value="23">23:00</option>
-                                    <option value="24">24:00</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6   mt-3 mb-3 d-flex align-items-center justify-content-center">
-                            <div class="radi-inputs d-flex">
-                                <input type="checkbox" name="inputs-group" id="Sun">
-                                <label for="Sun">Sun</label>
-                            </div>
-                            <div class="radi-inputs d-flex">
-                                <input type="checkbox" name="inputs-group" id="Mon">
-                                <label for="Mon">Mon</label>
-                            </div>
-                            <div class="radi-inputs d-flex">
-                                <input type="checkbox" name="inputs-group" id="Tue">
-                                <label for="Tue">Tue</label>
-                            </div>
-                            <div class="radi-inputs d-flex">
-                                <input type="checkbox" name="inputs-group" id="Wed">
-                                <label for="Wed">Wed</label>
-                            </div>
-                            <div class="radi-inputs d-flex">
-                                <input type="checkbox" name="inputs-group" id="Thu">
-                                <label for="Thu">Thu</label>
-                            </div>
-                            <div class="radi-inputs d-flex">
-                                <input type="checkbox" name="inputs-group" id="Fri">
-                                <label for="Fri">Fri</label>
-                            </div>
-                            <div class="radi-inputs d-flex">
-                                <input type="checkbox" name="inputs-group" id="Sat">
-                                <label for="Sat">Sat</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-        </div>
-        </div>
-
-        <div class="editor mt-3 mb-3 ">
-            <div class="container-fluid">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <p class="my-3">Common signature ( #my_company_signature ):</p>
-                        <a href="#" class="mt-3 mb-2">Incorporate dynamic content in your emails with
-                            #Hashtag</a>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="editor-container mb-1">
-                            <div class="toolbar">
-                                <button onclick="execCmd('bold')"><i class="fas fa-bold"></i></button>
-                                <button onclick="execCmd('italic')"><i class="fas fa-italic"></i></button>
-                                <button onclick="execCmd('underline')"><i class="fas fa-underline"></i></button>
-                                <button onclick="execCmd('strikeThrough')"><i class="fas fa-strikethrough"></i></button>
-                                <button onclick="execCmd('justifyLeft')"><i class="fas fa-align-left"></i></button>
-                                <button onclick="execCmd('justifyCenter')"><i class="fas fa-align-center"></i></button>
-                                <button onclick="execCmd('justifyRight')"><i class="fas fa-align-right"></i></button>
-                                <button onclick="execCmd('justifyFull')"><i class="fas fa-align-justify"></i></button>
-                                <button onclick="execCmd('insertUnorderedList')"><i class="fas fa-list-ul"></i></button>
-                                <button onclick="execCmd('insertOrderedList')"><i class="fas fa-list-ol"></i></button>
-                                <button onclick="execCmd('createLink', prompt('Enter the URL:', 'http://'))"><i
-                                        class="fas fa-link"></i></button>
-                                <button onclick="execCmd('unlink')"><i class="fas fa-unlink"></i></button>
-                                <button onclick="insertImage()"><i class="fas fa-image"></i></button>
-                                <button onclick="insertTable()"><i class="fas fa-table"></i></button>
-                                <button onclick="toggleHTML()">Toggle HTML</button>
-                            </div>
-                            <div id="editor" style="height:150px ;" class="form-control" contenteditable="true">
-                                Start typing here...
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
+   
 @endsection
 @push('scripts')
     <script src="{{asset('js/wow.min.js')}}"></script>

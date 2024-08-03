@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Action</title>
+    <title>{{__('Create Action')}}</title>
 </head>
 <body>
-    <h1>Create Action</h1>
+    <h1>{{__('Create Action')}}</h1>
     <form action="{{ route('actions.store') }}" method="POST">
         @csrf
         <label for="en_name">{{ __('message.action_name') }}:</label>
-        <input type="text" id="en_name" name="en_name" >
+        <input type="text" id="en_name" name="en_name">
         @error('en_name')
         {{ $message }}
         @enderror

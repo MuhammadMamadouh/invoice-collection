@@ -11,16 +11,14 @@ class UniqueItemController extends Controller
 {
     public function showItemsForm()
     {
-        $items = ItemType::all(); 
+        $items = ItemType::all();
         $currencies = Currency::all();// Fetch all items from the database
         return view('settings-create-item', compact('items' ,'currencies')); // Pass items to the view
     }
-  
+
     public function store(Request $request)
     {
-       
-        // dd($request);
-     $request->validate([
+    $request->validate([
             'item_type' => 'required|exists:item_types,id',
             'Company_code' => 'required|string|max:255',
             'PO_NO' => 'required|string|max:255',
@@ -48,6 +46,6 @@ class UniqueItemController extends Controller
         // Redirect or return a response
         return "good";
     }
- 
+
 
 }

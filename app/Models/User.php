@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enum\RoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,8 +22,19 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'picture', 'phone', 'mobile_phone', 'fax', 'function', 'id_number',  'active','role_id','password',
+        'first_name', 'last_name', 'email', 'picture',
+        'phone', 'mobile_phone', 'fax', 'function',
+        'id_number',  'active','role_id','password',
+        'is_super_admin','email_verified_at'
     ];
+
+    // scope users by role
+    public function scopeCollectors($query)
+    {
+        return $query->where('role_id', RoleEnum::COLLECTOR);
+    }
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,7 +58,7 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasMany(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     public function client(){

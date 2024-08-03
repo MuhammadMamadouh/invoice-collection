@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types_of_status', function (Blueprint $table) {
+        Schema::create('item_status_type', function (Blueprint $table) {
             $table->id();
             $table->string('en_name');
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('types_of_status');
+        Schema::dropIfExists('item_status_type');
     }
 };

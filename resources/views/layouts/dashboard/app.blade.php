@@ -49,15 +49,15 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-piechart-outlabels"></script>
 
     <!-- <script src="https://cdn.jsdelivr.net/gh/maxshuty/accessible-web-components@latest/dist/simpleRange.min.js"></script> -->
-    <script src="js/all.min.js"></script>
-    <script src="js/help.js"></script>
-    <script src="js/chart-5.js"></script>
-    <script src="js/chart-11.js"></script>
-    <script src="js/chart-3.js"></script>
-    <script src="js/chart-8.js"></script>
-    <script src="js/chart-6.js"></script>
-    <script src="js/searchBar.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('js/all.min.js')}}"></script>
+    <script src="{{asset('js/help.js')}}"></script>
+    <script src="{{asset('js/chart-5.js')}}"></script>
+    <script src="{{asset('js/chart-11.js')}}"></script>
+    <script src="{{asset('js/chart-3.js')}}"></script>
+    <script src="{{asset('js/chart-8.js')}}"></script>
+    <script src="{{asset('js/chart-6.js')}}"></script>
+    <script src="{{asset('js/searchBar.js')}}"></script>
+    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
     @stack('scripts')
     <!-- <script src="js/main.js"></script> -->

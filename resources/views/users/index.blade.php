@@ -3,10 +3,11 @@
     <div class="overlay d-none"
         style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;background-color: rgba(0, 0, 0, 0.418);z-index: 9;">
     </div>
+
     @include('users.create')
     {{-- ----------------------------------------------------- --}}
     @include('users.edit')
-   {{-- ----------------------------------------------------- --}}
+    {{-- ----------------------------------------------------- --}}
     <section class="ring-info text-center">
 
         <p class="mt-3 py-5"><i
@@ -34,7 +35,7 @@
                     <div class="f-searsh d-flex my-3 ">
                         <select class="form-select" id="inputname0">
                             <option value="" selected disabled>{{ __('Role') }}</option>
-                            <option value="">{{ __('Role:') }}</option>
+                            <option value="">{{ __('Role') }}</option>
                             <option value="">{{ __('Collector') }}</option>
                             <option value="">{{ __('Credit Manager') }}</option>
                             <option value="">{{ __('Executive officer') }}</option>
@@ -295,7 +296,7 @@
             document.querySelector('#edit_id_number').value = data.id_number;
             document.querySelector(`#edit_${data.active ? 'yes' : 'no'}`).checked = true;
             document.querySelector('#edit_role_id').value = data.role_id;
-            document.querySelector('#edit_changeimg').src = data.picture ? `/storage/${data.picture}` : 'img/download.png';
+            document.querySelector('#edit_changeimg').src = data.picture ? `{{asset('/storage/${data.picture}')}}` : '{{asset("img/download.png")}}';
             document.querySelector('.edit-user-div').classList.remove('d-none');
         })
         .catch(error => console.error('Error:', error));

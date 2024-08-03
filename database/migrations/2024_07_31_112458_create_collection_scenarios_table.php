@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('collection_scenarios', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('en_name');
             $table->timestamps();
         });
     }

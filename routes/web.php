@@ -10,7 +10,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsGroupController;
 use App\Http\Controllers\Dashboard\ItemsController;
-use App\Http\Controllers\Dashboard\StatusItemController;
+use App\Http\Controllers\Dashboard\ItemStatusController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,8 @@ use App\Http\Controllers\Dashboard\StatusItemController;
 Route::get('/', function () {
     return view('dashboard.index');
 });
+
+require __DIR__.'/auth.php';
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -53,9 +56,6 @@ Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
 
 
-require __DIR__.'/auth.php';
-
-
 Route::get('actions/create', [ActionController::class,'create']);
 Route::post('actions', [ActionController::class,'store'])->name('actions.store');
 
@@ -68,18 +68,17 @@ Route::get('actions/create', [ActionController::class,'create']);
 Route::post('actions', [ActionController::class,'store'])->name('actions.store');
 
 
-Route::get('/item', [ItemsController::class, 'showItemsForm'])->name('items.show');
+Route::resource('items', ItemsController::class);
+Route::get('item-status', [ItemStatusController::class,'showStatusItemsForm'])->name('item-status.index');
+Route::post('item-status', [ItemStatusController::class,'store'])->name('item-status.store');
 
-Route::post('/item', [ItemsController::class, 'store'])->name('items.store');
-Route::get('/status', [StatusItemController::class,'showStatusItemsForm'])->name('status.show');
-Route::post('/status', [StatusItemController::class,'store'])->name('status.store');
-
-Route::get('/clients-group', [ClientsGroupController::class, 'index'])->name('clients-group');
-Route::post('store-client-group', [ClientsGroupController::class, 'store'])->name('store-client-group');
-Route::get('/delete-client-group/{id}', [ClientsGroupController::class, 'destroy'])->name('delete-client-group');
+Route::resource('/clients-group', ClientsGroupController::class);
+// Route::get('/clients-group', [ClientsGroupController::class, 'index'])->name('clients-group');
+// Route::post('store-client-group', [ClientsGroupController::class, 'store'])->name('store-client-group');
+// Route::get('/delete-client-group/{id}', [ClientsGroupController::class, 'destroy'])->name('delete-client-group');
 Route::post('/clients-group/delete-all', [ClientsGroupController::class, 'deleteAll'])->name('clients-group.delete-all');
-Route::get('/get-client-group/{id}', [ClientsGroupController::class, 'getGroup'])->name('get-client-group');
-Route::post('/update-client-group/{id}', [ClientsGroupController::class, 'update'])->name('update-client-group');
+// Route::get('/get-client-group/{id}', [ClientsGroupController::class, 'getGroup'])->name('get-client-group');
+// Route::post('/update-client-group/{id}', [ClientsGroupController::class, 'update'])->name('update-client-group');
 
 
 

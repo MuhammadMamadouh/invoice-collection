@@ -9,10 +9,12 @@ class CollectionScenario extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    public $table = 'collection_scenarios';
+
+    protected $fillable = ['en_name'];
 
     public function ActionScenarios(){
-        return $this->hasMany(ActionsCollectionScenario::class, 'collection_scenarios_id');
+        return $this->hasMany(ActionsCollectionScenario::class, 'collection_scenario_id');
     }
 
     public function client(){

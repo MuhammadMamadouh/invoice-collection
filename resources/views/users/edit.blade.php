@@ -95,7 +95,7 @@ style="top:5% ;left: 50%;transform: translate(-50%);z-index: 10;height: 90vh; ov
             </div>
 
             <div class="col-md-3 mb-3">
-                <small class="">{{ __('Active account :') }}</small>
+                <small class="">{{ __('Active account') }} :</small>
             </div>
             <div class="col-md-9 mb-3">
                 <div class="checks-bx d-flex gap-3">

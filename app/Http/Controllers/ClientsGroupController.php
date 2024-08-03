@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClientsGroup;
+use Exception;
 use Illuminate\Http\Request;
 
 
 class ClientsGroupController extends Controller
 {
-   
+
     public function index(Request $request)
     {
-        $perPage = $request->get('per_page', 25); 
+        $perPage = $request->get('per_page', 25);
         $clientsGroups = ClientsGroup::paginate($perPage);
-
-        return view('settings-manage-clients-group', compact('clientsGroups'));
+        return view('clients-group.index', compact('clientsGroups'));
     }
 
 
@@ -35,7 +35,7 @@ class ClientsGroupController extends Controller
     $clientsGroup = ClientsGroup::findOrFail($id);
     return response()->json($clientsGroup);
 }
-  
+
 
 public function update(Request $request, $id)
 {
@@ -48,29 +48,19 @@ public function update(Request $request, $id)
     return response()->json(['message' => 'Client group updated successfully']);
 }
 
-       
+
 
     public function destroy($id)
     {
-        try {
-            ClientsGroup::findOrFail($id)->delete();
-            return to_route('clients-group')->with(['message' => 'success']);
-        }catch (Exception $e) {
-            Log::info($e->getMessage());
-            return to_route('clients-group')->with(['message' => $e->getMessage()]);
-        }
+        ClientsGroup::findOrFail($id)->delete();
+        return to_route('clients-group')->with(['message' => 'success']);
+
     }
 
     public function deleteAll(Request $request)
     {
-        try {
-            ClientsGroup::truncate();
-            return to_route('clients-group')->with(['message' => 'success', 'All client groups deleted successfully.']);
-        }catch (Exception $e) {
-            Log::info($e->getMessage());
-            return to_route('clients-group')->with(['message' => $e->getMessage()]);
-        }
-
+        ClientsGroup::truncate();
+        return to_route('clients-group')->with(['message' => 'success', 'All client groups deleted successfully.']);
     }
 
 
@@ -81,6 +71,6 @@ public function update(Request $request, $id)
             'name.required' => 'The group name is required.',
             'name.string' => 'The group name must be a string.',
             'name.max' => 'The group name may not be greater than 255 characters.',
-        ]; 
+        ];
     }
 }

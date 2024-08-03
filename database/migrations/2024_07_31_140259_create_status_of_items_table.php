@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('status_of_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type_of_status')->constrained('types_of_status')->onDelete('cascade'); // Foreign key to item_types table
+            $table->bigInteger('type_of_status');
             $table->string('status');
             $table->integer('follow_up_days');
             $table->timestamps();

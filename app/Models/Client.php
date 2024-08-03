@@ -32,7 +32,9 @@ class Client extends Model
         'credit_limit',
         'late_payment_penalties',
         'recovery_cost',
-        'interactive_emails'
+        'interactive_emails',
+        'customer_custom_field_1',
+        'customer_custom_field_2'
     ];
 
     public function collectionScenarios()

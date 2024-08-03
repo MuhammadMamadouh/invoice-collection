@@ -12,25 +12,25 @@ class Item extends Model
 
     // The attributes that are mass assignable
     protected $fillable = [
-        'item_type',
-        'Company_code',
-        'PO_NO',
-        'File_NO',
-        'ERP_item_type',
-        'Business_case',
-        'Sales_manager',
-        'Sales_administrative', // Check if this should be 'Sales_administrative'
-        'Customer_custom_field_1',
-        'Customer_custom_field_2',
-        'Order_date',
-        'Issue_date',
-        'Due_date',
-        'Payment_date',
-        'Currency',
-        'Initial_amount_exc_Tax',
-        'Initial_amount_inc_Tax',
-        'Remaining_amount_exc_Tax',
-        'Remaining_amount_inc_Tax',
+        'item_type_id',
+        'company_id',
+        'po_no',
+        'file_no',
+        'erp_item_type',
+        'business_case',
+        'sales_manager',
+        'sales_administrative', // Check if this should be 'Sales_administrative'
+        'customer_custom_field_1',
+        'customer_custom_field_2',
+        'order_date',
+        'issue_date',
+        'due_date',
+        'payment_date',
+        'currency_id',
+        'initial_amount_exc_tax',
+        'initial_amount_inc_tax',
+        'remaining_amount_exc_tax',
+        'remaining_amount_inc_tax',
     ];
 
     // The attributes that should be cast to native types
@@ -47,5 +47,11 @@ class Item extends Model
     public function currency()
     {
         return $this->belongsTo(Currency::class);
+    }
+
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
 }

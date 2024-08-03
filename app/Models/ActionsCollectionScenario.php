@@ -9,7 +9,9 @@ class ActionsCollectionScenario extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['action_name', 'number_of_days', 'action_type', 'collection_scenarios_id'];
+    public $table = 'collection_scenario_actions';
+
+    protected $fillable = ['action_name', 'number_of_days', 'action_type', 'collection_scenario_id'];
 
     public function Collection(){
         return $this->belongsTo(CollectionScenario::class);

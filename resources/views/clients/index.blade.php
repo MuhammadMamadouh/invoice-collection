@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="allClients.html" class="m-1 w-100 btn btn-primary p-3">
+                    <a href="{{route('clients.index')}}" class="m-1 w-100 btn btn-primary p-3">
                         <i class="fa-solid fa-earth-asia"></i> &ensp; {{ __('All clients') }} &ensp;
                         <span class="badge bg-white text-primary">184</span>
                     </a>

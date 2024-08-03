@@ -13,25 +13,25 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_type')->constrained('item_types')->onDelete('cascade'); // Foreign key to item_types table
-            $table->string('Company_code');
-            $table->string('PO_NO');
-            $table->string('File_NO');
-            $table->string('ERP_item_type');
-            $table->string('Business_case');
-            $table->string('Sales_manager');
-            $table->string('Sales_administrative'); // Check if this should be 'Sales_administrative'
-            $table->string('Customer_custom_field_1');
-            $table->string('Customer_custom_field_2');
-            $table->string('Order_date');
-            $table->string('Issue_date');
-            $table->string('Due_date');
-            $table->string('Payment_date');
-            $table->foreignId('Currency')->constrained('currencies')->onDelete('cascade'); // Foreign key to currencies table
-            $table->string('Initial_amount_exc_Tax');
-            $table->string('Initial_amount_inc_Tax');
-            $table->string('Remaining_amount_exc_Tax');
-            $table->string('Remaining_amount_inc_Tax');
+            $table->bigInteger('item_type_id');
+            $table->string('company_id');
+            $table->string('po_no');
+            $table->string('file_no');
+            $table->string('erp_item_type');
+            $table->string('business_case');
+            $table->string('sales_manager');
+            $table->string('sales_administrative');
+            $table->string('customer_custom_field_1');
+            $table->string('customer_custom_field_2');
+            $table->string('order_date');
+            $table->string('issue_date');
+            $table->string('due_date');
+            $table->string('payment_date');
+            $table->bigInteger('currency_id');
+            $table->string('initial_amount_exc_tax');
+            $table->string('initial_amount_inc_tax');
+            $table->string('remaining_amount_exc_tax');
+            $table->string('remaining_amount_inc_tax');
             $table->timestamps();
         });
     }
