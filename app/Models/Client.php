@@ -47,5 +47,9 @@ class Client extends Model
         return $this->belongsTo(User::class, 'collector_id');
     }
 
+    public function clientsGroups()
+    {
+        return $this->belongsToMany(ClientsGroup::class, 'clients_groups_pivot', 'client_id', 'clients_group_id');
+    }
 
 }

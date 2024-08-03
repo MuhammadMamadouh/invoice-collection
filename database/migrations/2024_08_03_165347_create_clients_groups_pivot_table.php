@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clients_groups', function (Blueprint $table) {
+        Schema::create('clients_groups_pivot', function (Blueprint $table) {
             $table->id();
-            $table->string('en_name');
-            $table->timestamps();
+            $table->foreignId('client_id')->constrained('clients');
+            $table->foreignId('clients_group_id')->constrained('clients_groups');
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients_groups');
+        Schema::dropIfExists('clients_groups_pivot');
     }
 };
