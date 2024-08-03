@@ -61,7 +61,7 @@
                             data-placeholder="Collection scenario:" title="Collection scenario">
                             <option selected disabled>{{ __('Collection Scenarios') }}</option>
                             @foreach ($collectionsScenario as $collection)
-                                <option value="{{ $collection->id }}">{{ $collection->name }}</option>
+                                <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -303,9 +303,9 @@
                                 <div class="col-md-3 hide">
                                     <div class=" w-100 mb-3">
                                         <select class="form-select" id="inputname19">
-                                            <option selected disabled>{{ $client->collectionScenarios->name }}</option>
+                                            <option selected disabled>{{ $client->collectionScenarios->en_name }}</option>
                                             @foreach ($collectionsScenario as $collection)
-                                                <option value="{{ $collection->id }}">{{ $collection->name }}</option>
+                                                <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -337,7 +337,7 @@
                                                 <option value="" selected disabled>{{ __('Collection Scenarios') }}
                                                 </option>
                                                 @foreach ($collectionsScenario as $collection)
-                                                    <option value="{{ $collection->id }}">{{ $collection->name }}
+                                                    <option value="{{ $collection->id }}">{{ $collection->en_name }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -409,7 +409,7 @@
                                 data-placeholder="Collection scenario:" title="Collection scenario">
                                 <option value="" selected disabled>{{ __('Collection Scenarios') }}</option>
                                 @foreach ($collectionsScenario as $collection)
-                                    <option value="{{ $collection->id }}">{{ $collection->name }}</option>
+                                    <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
                                 @endforeach
                             </select>
                         </div>

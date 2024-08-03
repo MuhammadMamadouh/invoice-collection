@@ -30,22 +30,27 @@ class CollectionScenarioController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'en_name' => 'required|string|max:255',
         ]);
-        CollectionScenario::create([
-            'name' => $request->name,
-        ]);
-        return to_route('collection_scenarios.index')->with(['message' => 'created successfully']);
+        try {
+            CollectionScenario::create([
+                'en_name' => $request->en_name,
+            ]);
+            return to_route('collection_scenarios.index')->with(['message' => 'created successfully']);
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
+        }
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'en_name' => 'required|string|max:255',
         ]);
         $collection = CollectionScenario::findOrFail($id);
         $collection->update([
-            'name' => $request->name,
+            'en_name' => $request->en_name,
         ]);
         return to_route('collection_scenarios.index')->with(['message' => 'edited successfully']);
     }
@@ -67,7 +72,7 @@ class CollectionScenarioController extends Controller
         try {
             $copyScenario = CollectionScenario::findOrFail($id);
             CollectionScenario::create([
-                'name' => $copyScenario->name . ' (Copy)',
+                'en_name' => $copyScenario->en_name . ' (Copy)',
             ]);
             return to_route('collection_scenarios.index')->with(['message' => '{{__(Action scenario duplicated successfully)}}']);
         } catch (Exception $e) {
