@@ -32,15 +32,10 @@ class CollectionScenarioController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
-        try {
-            CollectionScenario::create([
-                'name' => $request->name,
-            ]);
-            return to_route('collection_scenarios.index')->with(['message' => 'created successfully']);
-        } catch (Exception $e) {
-            Log::info($e->getMessage());
-            return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
-        }
+        CollectionScenario::create([
+            'name' => $request->name,
+        ]);
+        return to_route('collection_scenarios.index')->with(['message' => 'created successfully']);
     }
 
     public function update(Request $request, $id)
@@ -49,15 +44,10 @@ class CollectionScenarioController extends Controller
             'name' => 'required|string|max:255',
         ]);
         $collection = CollectionScenario::findOrFail($id);
-        try {
-            $collection->update([
-                'name' => $request->name,
-            ]);
-            return to_route('collection_scenarios.index')->with(['message' => 'edited successfully']);
-        } catch (Exception $e) {
-            Log::info($e->getMessage());
-            return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
-        }
+        $collection->update([
+            'name' => $request->name,
+        ]);
+        return to_route('collection_scenarios.index')->with(['message' => 'edited successfully']);
     }
 
 

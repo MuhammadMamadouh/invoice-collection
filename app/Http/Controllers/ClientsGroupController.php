@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use App\Models\ClientsGroup;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,8 +14,9 @@ class ClientsGroupController extends Controller
     public function index(Request $request)
     {
         $perPage = $request->get('per_page', 25);
-        $clientsGroups = ClientsGroup::paginate($perPage);
-        return view('clients-group.index', compact('clientsGroups'));
+        $clientsGroups = ClientsGroup::with(['clients'])->withCount('clients')->paginate($perPage);
+        $clients = Client::all();
+        return view('clients-group.index', compact('clientsGroups', 'clients'));
     }
 
 
@@ -22,17 +24,17 @@ class ClientsGroupController extends Controller
     {
         $messages = $this->messages();
         $data = $request->validate([
-            'name' => 'required|string|max:255',
+            'en_name' => 'required|string|max:255',
         ], $messages);
+        $groupClient = ClientsGroup::create($data);
+        $groupClient->clients()->sync($request->group_clients);
 
-        ClientsGroup::create($data);
-
-        return redirect()->route('clients-group')->with('success', 'Client group created successfully.');
+        return redirect()->route('clients-group.index')->with('success', __('created successfully'));
     }
 
-    public function getGroup($id)
+    public function show($id)
 {
-    $clientsGroup = ClientsGroup::findOrFail($id);
+    $clientsGroup = ClientsGroup::with(['clients:id,company_code,company_name'])->findOrFail($id);
     return response()->json($clientsGroup);
 }
 
@@ -40,12 +42,10 @@ class ClientsGroupController extends Controller
 public function update(Request $request, $id)
 {
     $group = ClientsGroup::findOrFail($id);
-    $group->name = $request->input('name');
-    // $group->clients = $request->input('clients');
-    // $group->associated = $request->input('associated');
+    $group->en_name = $request->input('en_name');
     $group->save();
-
-    return response()->json(['message' => 'Client group updated successfully']);
+    $group->clients()->sync($request->group_clients);
+    return response()->json(['message' => 'updated successfully']);
 }
 
 

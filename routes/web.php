@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsGroupController;
 use App\Http\Controllers\Dashboard\ItemsController;
 use App\Http\Controllers\Dashboard\ItemStatusController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,32 @@ use App\Http\Controllers\Dashboard\ItemStatusController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/migrataion', function () {
+    Artisan::call('migrate');
+    return 'migrate';
+});
+Route::get('/seed', function () {
+    Artisan::call('db:seed');
+    return 'seed';
+});
+
+Route::get('/clear', function () {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+    return 'clear';
+});
+Route::get('/link', function () {
+    Artisan::call('storage:link');
+    return 'link';
+});
+Route::get('migrate-refresh-seed', function () {
+    Artisan::call('migrate:refresh --seed');
+    return 'migrate:refresh --seed';
+});
+
 
 Route::get('/', function () {
     return view('dashboard.index');

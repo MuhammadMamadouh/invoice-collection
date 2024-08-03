@@ -42,7 +42,6 @@
 
     <!--scirpt Files-->
 
-
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
@@ -58,8 +57,26 @@
     <script src="{{asset('js/chart-6.js')}}"></script>
     <script src="{{asset('js/searchBar.js')}}"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Move selected clients to the right list
+        $('.fa-circle-arrow-right').click(function() {
+            $('#clients-select option:selected').each(function() {
+                $(this).remove().appendTo('#group-clients-select');
+            });
+        });
 
-    @stack('scripts')
+        // Move selected clients to the left list
+        $('.fa-circle-arrow-left').click(function() {
+            $('#group-clients-select option:selected').each(function() {
+                $(this).remove().appendTo('#clients-select');
+            });
+        });
+    });
+    </script>
+    @yield('scripts')
+    {{-- @stack('scripts') --}}
     <!-- <script src="js/main.js"></script> -->
     <!--scirpt Files-->
 </body>

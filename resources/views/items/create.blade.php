@@ -1,9 +1,9 @@
 @extends('layouts.dashboard.app')
 @section('content')
 <!--navbar-site-->
-
+{{-- 
 <!--navbar-site-->
-</section>
+</section> --}}
 <section class="ring-info">
     <button class=" btn my-4 px-5 ">Use rather the import module to create your customers and invoices</button>
 </section>

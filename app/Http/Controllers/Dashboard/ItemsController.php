@@ -23,7 +23,6 @@ class ItemsController extends Controller
     public function store(ItemRequest $request)
     {
         $validatedData = $request->all();
-        // dd($validatedData);
         Item::create($validatedData);
         return redirect()->back()->with('success', __('created successfully'));
     }
