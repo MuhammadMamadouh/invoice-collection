@@ -212,11 +212,11 @@
                         <div class="col-7 d-flex justify-content-between align-items-center ">
                             <div class="form-check">
                                 <input class="form-check-input" name="late_payment_penalties" type="checkbox" value='1' id="exampleCheckbox1">
-                                <label class="form-check-label" for="exampleCheckbox1">Yes</label>
+                                <label class="form-check-label" for="exampleCheckbox1">{{__("Yes")}}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" name="late_payment_penalties" type="checkbox" value='0' id="exampleCheckbox2">
-                                <label class="form-check-label" for="exampleCheckbox2">No</label>
+                                <label class="form-check-label" for="exampleCheckbox2">{{__("No")}}</label>
                             </div>
                         </div>
                     </div><!--18-->
@@ -226,7 +226,7 @@
                         </div>
                         <div class="col-7 ">
                             <select name="collector_id" class="form-select" id="inputname19">
-                                <option selected disabled>Select One</option>
+                                <option selected disabled>{{__("Select One")}}</option>
                                 @foreach($collectors as $collector)
                                     <option value={{$collector->id}}>{{$collector->first_name}}</option>
                                 @endforeach
@@ -255,12 +255,12 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="recovery_cost" value='1' id="exampleCheckbox1">
                                 <label class="form-check-label" for="exampleCheckbox1" 
-                                    >Yes</label>
+                                    >{{__("Yes")}}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="recovery_cost" value='0' id="exampleCheckbox2">
                                 <label class="form-check-label" for="exampleCheckbox2" 
-                                    >No</label>
+                                    >{{__("No")}}</label>
                             </div>
                         </div>
                     </div><!--21-->
@@ -270,9 +270,9 @@
                         </div>
                         <div class="col-7 ">
                             <select name='collection_scenario_id' class="form-select" id="inputname19">
-                                <option selected disabled>Select One</option>
+                                <option selected disabled>{{__("Select One")}}</option>
                                 @foreach($collections as $collection)
-                                    <option value={{$collection->id}}>{{$collection->name}}</option>
+                                    <option value={{$collection->id}}>{{$collection->en_name}}</option>
                                 @endforeach
                             </select>
                             @error('collection_scenario_id')
@@ -295,11 +295,11 @@
                         <div class="col-7 d-flex justify-content-between">
                             <div class="form-check ">
                                 <input class="form-check-input" type="checkbox" id="exampleCheckbox1" name="interactive_emails" value="1">
-                                <label class="form-check-label" for="exampleCheckbox1"  >Yes</label>
+                                <label class="form-check-label" for="exampleCheckbox1">{{__("Yes")}}</label>
                             </div>
                             <div class="form-check d-flex">
                                 <input class="form-check-input" type="checkbox" id="exampleCheckbox2" name="interactive_emails" value="0">
-                                <label class="form-check-label " for="exampleCheckbox2" name="interactive_emails" >No</label>
+                                <label class="form-check-label " for="exampleCheckbox2" name="interactive_emails">{{__("No")}}</label>
                             </div>
                         </div>
                     </div><!--24-->
