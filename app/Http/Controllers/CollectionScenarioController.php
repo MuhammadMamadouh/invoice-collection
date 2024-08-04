@@ -74,7 +74,7 @@ class CollectionScenarioController extends Controller
             CollectionScenario::create([
                 'en_name' => $copyScenario->en_name . ' (Copy)',
             ]);
-            return to_route('collection_scenarios.index')->with(['message' => '{{__(Action scenario duplicated successfully)}}']);
+            return to_route('collection_scenarios.index')->with(['message' => __(' duplicated successfully')]);
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);

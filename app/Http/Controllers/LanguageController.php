@@ -2,19 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreActionRequest;
-use App\Models\Action;
-use App\Models\ActionType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
-class ActionController extends Controller
+class LanguageController extends Controller
 {
-     private $column =[
-     'en_name',
-     'number_of_days',
-     'actionType_id',
-    ];
 
+    public function switchLanguage($locale)
+    {
+        if (in_array($locale, ['en', 'ar'])) {
+            App::setLocale($locale);
+            Session::put('locale', $locale);
+        }
+
+        return Redirect::back();
+    }
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         //
@@ -25,20 +32,15 @@ class ActionController extends Controller
      */
     public function create()
     {
-        $actionTypes = ActionType::get();
-        return view('dashboard.action.actionCreate', compact('actionTypes'));
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreActionRequest $request)
+    public function store(Request $request)
     {
-
-        $data = $request->validated();
-        Action::create($data);
-
-        return __('created successfully');
+        //
     }
 
     /**
@@ -72,6 +74,4 @@ class ActionController extends Controller
     {
         //
     }
-
-
 }
