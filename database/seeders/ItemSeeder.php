@@ -20,6 +20,6 @@ class ItemSeeder extends Seeder
             ['en_name'=>'Miscellaneous transaction'],
             ['en_name'=>'Payment'],
         ];
-        DB::table('items')->insert($items);
+        DB::table('item_types')->insert($items);
     }
 }

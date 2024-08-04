@@ -3,146 +3,16 @@
     <div class="overlay d-none"
         style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;background-color: rgba(0, 0, 0, 0.418);z-index: 9;">
     </div>
+
     @include('users.create')
-    {{-- ////////////////////////// --}}
-    <div class="position-fixed edit-user-div w-75 pop-up d-none pt-4 pe-4"
-        style="top:5% ;left: 50%;transform: translate(-50%);z-index: 10;height: 90vh; overflow-y: scroll;overflow-x: hidden;">
-        <div class="bg-white m-auto p-4 shadow-sm position-relative" style="border-radius: 10px;">
-            <span class="btn btn-secondary position-absolute" onclick="hideAddUserDiv()"
-                style="border-radius:50%;top: -20px;right: -20px;"><i class="fa-solid fa-close"></i></span>
-            <div class="row align-items-center">
-                <div class="col-md-3 mb-3">
-                    <small class="">{{ __('E-Mail *:') }}</small>
-                </div>
-                <div class="col-md-9 mb-3">
-                    <input required type="email" class="form-control" />
-                </div>
-
-
-                <div class="col-md-3 mb-3">
-                    <small class="">{{ __('Username *:') }}</small>
-                </div>
-
-                <div class="col-md-9 mb-3">
-                    <input required type="text" class="form-control" />
-                </div>
-
-                <div class="col-md-3 mb-3">
-                    <small class="">{{ __('Full Name *:') }}</small>
-                </div>
-
-                <div class="col-md-9 mb-3">
-                    <input required type="text" class="form-control" />
-                </div>
-
-
-                <div class="col-md-3 mb-3">
-                    <small class="">{{ __('Images Of Account:') }}</small>
-                </div>
-
-                <div class="col-md-9 mb-3 mb-3">
-                    <div class="change-img text-center ">
-                        <img src="img/download.png" id="changeimg" class="img-fluid" alt="">
-                        <div class="upload" id="uploads">
-                            <label for="upload" class="text-center">{{ __('Upload') }}</label>
-                            <input type="file" id="upload">
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="col-md-3 mb-3">
-                    <small class="">{{ __('Phone:') }}</small>
-                </div>
-
-                <div class="col-md-9 mb-3">
-                    <input type="text" class="form-control" />
-                </div>
-
-                <div class="col-md-3 mb-3">
-                    <small class="">{{ __('Fax:') }}</small>
-                </div>
-
-                <div class="col-md-9 mb-3">
-                    <input type="text" class="form-control" />
-                </div>
-
-
-                <div class="col-md-3 mb-3">
-                    <small class="">{{ __('Function:') }}</small>
-                </div>
-
-                <div class="col-md-9 mb-3">
-                    <input type="text" class="form-control" />
-                </div>
-
-                <div class="col-md-3 mb-3">
-                    <small class="">{{ __('ID number:') }}</small>
-                </div>
-
-                <div class="col-md-9 mb-3">
-                    <input type="text" class="form-control" />
-                </div>
-
-                <div class="col-md-3 mb-3">
-                    <small class="">{{ __('Active account:') }}</small>
-                </div>
-
-                <div class="col-md-9 mb-3">
-                    <div class="checks-bx d-flex gap-3">
-                        <div>
-                            <input type="radio" name="active" id="yes">
-                            <label for="yes">{{ __('Yes') }}</label>
-                        </div>
-                        <div>
-                            <input type="radio" name="active" id="no">
-                            <label for="no">{{ __('No') }}</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="px-4">
-                    <div class="bg-light p-4">
-                        <div class="row align-items-center">
-                            <div class="col-md-3 mb-3">
-                                <small class="">{{ __('Username:') }}</small>
-                            </div>
-
-                            <div class="col-md-9 mb-3">
-                                <input type="text" class="form-control" />
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <small class="">{{ __('Role:') }}</small>
-                            </div>
-                            <div class="col-md-9 mb-3">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option value="1" selected>{{ __('Sales Administration') }}</option>
-                                    <option value="2">{{ __('Credit manager') }}</option>
-                                    <option value="2">{{ __('Collector') }}</option>
-                                    <option value="2">{{ __('Sales manager') }}</option>
-                                    <option value="1">{{ __('Administrator') }}</option>
-                                    <option value="2">{{ __('Financial controller') }}</option>
-                                    <option value="2">{{ __('Executive Officer') }}</option>
-                                    <option value="2">{{ __('Guest') }}</option>
-                                </select>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="text-center mt-3">
-                <div class="btn btn-success"><i class="fa-solid fa-check"></i> {{ __('Modify') }}</div>
-            </div>
-        </div>
-    </div>
-
+    {{-- ----------------------------------------------------- --}}
+    @include('users.edit')
+    {{-- ----------------------------------------------------- --}}
     <section class="ring-info text-center">
 
-        <p class="mt-3 py-5"><i class="fa-regular fa-star px-3"></i>{{ __('Allow other people to use your account MY DSO MANAGER for your company') }} <span class="fw-bold">{{ __('Business Solutions') }}</span></p>
+        <p class="mt-3 py-5"><i
+                class="fa-regular fa-star px-3"></i>{{ __('Allow other people to use your account MY DSO MANAGER for your company') }}
+            <span class="fw-bold">{{ __('Business Solutions') }}</span></p>
     </section><!--reing-info-->
     <section class="m-groups my-5">
         <div class="container-fluid">
@@ -165,7 +35,7 @@
                     <div class="f-searsh d-flex my-3 ">
                         <select class="form-select" id="inputname0">
                             <option value="" selected disabled>{{ __('Role') }}</option>
-                            <option value="">{{ __('Role:') }}</option>
+                            <option value="">{{ __('Role') }}</option>
                             <option value="">{{ __('Collector') }}</option>
                             <option value="">{{ __('Credit Manager') }}</option>
                             <option value="">{{ __('Executive officer') }}</option>
@@ -245,19 +115,56 @@
                                 <p class="mt-3">{{ $user->role->name }}</p>
                             </td>
                             <td>
-                                <button class="lock-btn rounded mt-3"><i class="fa-solid fa-lock"></i></button>
-                                <button class="edt-btn rounded mt-3" onclick="showEditUserDiv({{ $user->id }})"><i
+                                {{-- <button class="lock-btn rounded mt-3"><i class="fa-solid fa-lock"></i></button> --}}
+                                <button class="lock-btn rounded mt-3"
+                                    onclick="showRegeneratePasswordModal({{ $user->id }})"><i
+                                        class="fa-solid fa-lock"></i></button>
+                                <button class="edt-btn rounded mt-3" style="color:blue" onclick="showEditUserDiv({{ $user->id }})"><i
                                         class="fa-solid fa-pen"></i></button>
                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST"
                                     style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="del-btn rounded mt-3">
+                                    <button type="submit" class="del-btn rounded mt-3" style="color:red">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </form>
                             </td>
                         </tr>
+                        <!-- Password Regeneration Modal -->
+                        <div class="modal fade" id="regeneratePasswordModal" tabindex="-1"
+                            aria-labelledby="regeneratePasswordModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="regeneratePasswordModalLabel">
+                                            {{ __('Regenerate Password') }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="regeneratePasswordForm" action="" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="user_id" id="modal_user_id">
+                                            <div class="mb-3">
+                                                <label for="password" class="form-label">{{ __('New Password') }}</label>
+                                                <input type="password" class="form-control" id="password"
+                                                    name="password" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="password_confirmation"
+                                                    class="form-label">{{ __('Confirm New Password') }}</label>
+                                                <input type="password" class="form-control" id="password_confirmation"
+                                                    name="password_confirmation" required>
+                                            </div>
+                                            <button type="submit"
+                                                class="btn btn-primary">{{ __('Regenerate') }}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     @empty
                         <tr>
                             <td colspan="9" class="text-center">{{ __('No users found.') }}</td>
@@ -278,8 +185,10 @@
                     <li><a class="text-decoration-none text-dark" href="">{{ __('Credit Manager') }}</a></li>
                     <li><a class="text-decoration-none text-dark" href="">{{ __('Collector') }}</a></li>
                     <li><a class="text-decoration-none text-dark" href="">{{ __('Sales manager') }}</a></li>
-                    <li><a class="text-decoration-none text-dark" href="">{{ __('Sales administration') }}</a></li>
-                    <li><a class="text-decoration-none text-dark" href="">{{ __('Financial controller') }}</a></li>
+                    <li><a class="text-decoration-none text-dark" href="">{{ __('Sales administration') }}</a>
+                    </li>
+                    <li><a class="text-decoration-none text-dark" href="">{{ __('Financial controller') }}</a>
+                    </li>
                     <li><a class="text-decoration-none text-dark" href="">{{ __('Executive officer') }}</a></li>
                     <li><a class="text-decoration-none text-dark" href="">{{ __('Guest') }}</a></li>
                 </ul>
@@ -291,13 +200,13 @@
             </div><!--create-->
         </div><!--tab-btm-->
         <div class="container text-center my-5">
-            <button class="btn btn-success my-1 btn-add-i" onclick="exportTableToPDF()">{{ __('Export these data to Excel') }} <i
+            <button class="btn btn-success my-1 btn-add-i"
+                onclick="exportTableToPDF()">{{ __('Export these data to Excel') }} <i
                     class="fa-solid fa-arrow-up-from-bracket"></i></button>
         </div>
 
 
     </section><!--m-groups-->
-
     <style>
         .table-responsive {
             overflow: hidden;
@@ -330,6 +239,14 @@
             display: inline-block;
         }
 
+        .modal-content {
+            border-radius: 10px;
+        }
+
+        .modal-backdrop {
+            display: none
+        }
+
         @media (max-width: 768px) {
             .table td {
                 font-size: 10px;
@@ -353,3 +270,41 @@
         }
     </style>
 @endsection
+@push('scripts')
+    <script>
+        function showRegeneratePasswordModal(userId) {
+            const modal = new bootstrap.Modal(document.getElementById('regeneratePasswordModal'));
+            const form = document.getElementById('regeneratePasswordForm');
+            form.action = `/users/${userId}/regenerate-password`; // Adjust the URL according to your route
+            document.getElementById('modal_user_id').value = userId;
+            modal.show();
+        }
+    </script>
+    <script>
+        function showEditUserDiv(userId) {
+    fetch(`/users/${userId}/edit`)
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('#editUserForm').action = `/users/${userId}`;
+            document.querySelector('#edit_id').value = data.id;
+            document.querySelector('#edit_first_name').value = data.first_name;
+            document.querySelector('#edit_last_name').value = data.last_name;
+            document.querySelector('#edit_email').value = data.email;
+            document.querySelector('#edit_phone').value = data.phone;
+            document.querySelector('#edit_fax').value = data.fax;
+            document.querySelector('#edit_function').value = data.function;
+            document.querySelector('#edit_id_number').value = data.id_number;
+            document.querySelector(`#edit_${data.active ? 'yes' : 'no'}`).checked = true;
+            document.querySelector('#edit_role_id').value = data.role_id;
+            document.querySelector('#edit_changeimg').src = data.picture ? `{{asset('/storage/${data.picture}')}}` : '{{asset("img/download.png")}}';
+            document.querySelector('.edit-user-div').classList.remove('d-none');
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function hideEditUserDiv() {
+    document.querySelector('.edit-user-div').classList.add('d-none');
+}
+
+    </script>
+@endpush

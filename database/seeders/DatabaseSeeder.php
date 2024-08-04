@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Enum\RoleEnum;
+use App\Models\CollectionScenario;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,18 +15,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(DaySeeder::class);
+
+        CollectionScenario::create([
+            'en_name' => 'Default',
+        ]);
         $this->call(CurrencySeeder::class);
-        $this->call(StatusSeeder::class);
+        $this->call(ItemStatusTypeSeeder::class);
         $this->call(ItemSeeder::class);
-        $this->call(ScenarioSeeder::class);
         $this->call(ActionTypesSeeder::class);
         $this->call(RoleSeeder::class);
-        // User::factory(10)->create()
+        $this->call(AdminSeeder::class);
+        User::factory(50)->create([
+            'is_super_admin'    => 0,
+            'role_id'           => RoleEnum::COLLECTOR,
+        ]);
+        $this->call(ClientSeeder::class); // faker to remove in production
 
-        // User::factory()->create([
-        //     'first_name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
+
     }
 }

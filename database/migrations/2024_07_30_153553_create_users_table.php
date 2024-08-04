@@ -17,13 +17,16 @@ return new class extends Migration
             $table->string('last_name');//
             $table->boolean('active');
             $table->string('email')->unique();
+            $table->string('password');
             $table->string('phone')->nullable();//
+            $table->string('mobile_phone')->nullable();
             $table->string('function')->nullable();
             $table->foreignId('role_id')->constrained('roles');
             $table->string('picture')->nullable();//
             $table->string('fax')->nullable();
             $table->string('id_number')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->tinyInteger('is_super_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

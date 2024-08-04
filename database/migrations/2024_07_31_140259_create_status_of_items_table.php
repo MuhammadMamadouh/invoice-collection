@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('days', function (Blueprint $table) {
+        Schema::create('status_of_items', function (Blueprint $table) {
             $table->id();
-            $table->string('en_name');
+            $table->bigInteger('type_of_status');
+            $table->string('status');
+            $table->integer('follow_up_days');
             $table->timestamps();
         });
     }
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('days');
+        Schema::dropIfExists('status_of_items');
     }
 };

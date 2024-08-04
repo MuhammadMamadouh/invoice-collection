@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -18,11 +19,21 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'first_name'            => fake()->name(),
+            'last_name'             => fake()->name(),
+            'email'                 => fake()->unique()->safeEmail(),
+            'email_verified_at'     => now(),
+            'password'              => bcrypt('123445678'),
+            'remember_token'        => Str::random(10),
+            'picture'               => fake()->imageUrl(),
+            'phone'                 => fake()->phoneNumber(),
+            'mobile_phone'          => fake()->phoneNumber(),
+            'fax'                   => fake()->phoneNumber(),
+            'function'              => fake()->text(30),
+            'id_number'             => fake()->numberBetween(100000, 999999),
+            'active'                => fake()->boolean(),
+            'role_id'               => Role::all()->random()->id,
+            'is_super_admin'        => 0,
         ];
     }
 
@@ -33,7 +44,7 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }
