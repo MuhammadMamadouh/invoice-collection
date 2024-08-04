@@ -370,15 +370,29 @@
         <div class="col-6">
             <p>Status</p>
         </div>
-        @foreach ($statusItems as $item)
-        <div class="col-6">
-            <p>{{ $item->statusType ? $item->statusType->en_name : 'N/A' }}</p>
         </div>
-        <!-- <p>{{ $item->id }}</p> -->
-        <div class="col-6">
-            <li>{{ $item->status }}</li>
+       @php $count = 0; @endphp
+        @foreach ($groupedStatusItems as $typeOfStatus => $items)
+        @if($count%2 == 0)
+        <div class="backg-content">
+             <div class="row">
+        @else
+        <div>
+             <div class="row">
+        @endif
+        <div class="col-4">
+            <p>{{ $typeOfStatus? \App\Models\ItemStatusType::where('id',$typeOfStatus)->first()->en_name : 'N/A'}}</p>
         </div>
-
+      
+        <div class="col-8">
+            @foreach ($items as $item)
+            <li>{{ $item->status }} (follow-up action +{{$item->follow_up_days}} days)</li>
+            @endforeach
+          
+        </div>
+        </div> 
+        </div> <br/><br/>
+        @php $count++; @endphp
         @endforeach
     </div>
 </div>

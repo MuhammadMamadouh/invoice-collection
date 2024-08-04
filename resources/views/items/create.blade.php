@@ -49,10 +49,9 @@
                             <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                         </div>
                     </div>
-                    @error('order_date')
-                    {{ $message }}
-                    @enderror
-
+                     <div class="col-12">
+                        <span class="text-danger pull-right"> @error('order_date') {{ $message }}  @enderror </span>
+                    </div>
                 </div>
                 <!--2-->
                 <div class="col-md-6 my-2">
@@ -78,9 +77,9 @@
                             <input type="date" class="form-control" id="inputname4" name="issue_date">
                             <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                         </div>
-                        @error('issue_date')
-                        {{ $message }}
-                        @enderror
+                    </div>
+                    <div class="col-12">
+                        <span class="text-danger pull-right"> @error('issue_date') {{ $message }}  @enderror </span>
                     </div>
                 </div>
                 <!--4-->
@@ -112,9 +111,9 @@
                             <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                         </div>
                     </div>
-                    @error('due_date')
-                    {{ $message }}
-                    @enderror
+                    <div class="col-12">
+                        <span class="text-danger pull-right"> @error('due_date') {{ $message }}  @enderror </span>
+                    </div>
                 </div>
                 <!--6-->
                 <div class="col-md-6 my-2">
@@ -127,9 +126,9 @@
                             <input type="text" class="form-control" id="po_no" name="po_no">
                         </div>
                     </div>
-                    @error('po_no')
-                    {{ $message }}
-                    @enderror
+                      <div class="col-12">
+                        <span class="text-danger pull-right"> @error('po_no') {{ $message }}  @enderror </span>
+                    </div>
                 </div>
                 <!--7-->
                 <div class="col-md-6 my-2">
@@ -155,7 +154,9 @@
                             <input type="text" class="form-control" id="file_no" name="file_no">
                         </div>
                     </div>
-                    @error('file_no') {{ $message }}  @enderror
+                    <div class="col-12">
+                        <span class="text-danger pull-right"> @error('file_no') {{ $message }}  @enderror </span>
+                    </div>
                 </div>
                 <!--9-->
                 <div class="col-md-6 my-2">
@@ -169,8 +170,10 @@
                                 <option value="{{ $currency->id }}">{{ $currency->en_name }}</option>
                                 @endforeach
                             </select>
-                            @error('currency_id') {{ $message }}  @enderror
                         </div>
+                    </div>
+                     <div class="col-12">
+                        <span class="text-danger pull-right"> @error('currency_id') {{ $message }}  @enderror </span>
                     </div>
                 </div>
                 <!--10-->
@@ -184,7 +187,9 @@
                             <input type="text" class="form-control" id="erp_item_type" name="erp_item_type">
                         </div>
                     </div>
-                    @error('erp_item_type') {{ $message }}  @enderror
+                     <div class="col-12">
+                        <span class="text-danger pull-right"> @error('erp_item_type') {{ $message }}  @enderror </span>
+                    </div>
 
                 </div>
                 <!--11-->
@@ -198,8 +203,9 @@
                             <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
                         </div>
                     </div>
-                    @error('Initial_amount_exc_tax') {{ $message }}  @enderror
-
+                     <div class="col-12">
+                        <span class="text-danger pull-right"> @error('Initial_amount_exc_tax') {{ $message }}  @enderror </span>
+                    </div>
                 </div>
                 <!--12-->
                 <div class="col-md-6 my-2">
@@ -211,7 +217,9 @@
                             <input type="text" class="form-control" id="inputname13" name="business_case">
                         </div>
                     </div>
-                    @error('business_case') {{ $message }}  @enderror
+                    <div class="col-12">
+                        <span class="text-danger pull-right"> @error('business_case') {{ $message }}  @enderror </span>
+                    </div>
                 </div>
                 <!--13-->
                 <div class="col-md-6 my-2">
@@ -225,7 +233,9 @@
                             <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
                         </div>
                     </div>
-                    @error('initial_amount_inc_tax') {{ $message }}  @enderror
+                    <div class="col-12">
+                        <span class="text-danger pull-right"> @error('initial_amount_inc_tax') {{ $message }}  @enderror </span>
+                    </div>
                 </div>
                 <!--14-->
                 <div class="col-md-6 my-2">
@@ -239,7 +249,9 @@
                             <input type="text" class="form-control" id="sales_manager" name="sales_manager">
                         </div>
                     </div>
-                    @error('sales_manager') {{ $message }}  @enderror
+                     <div class="col-12">
+                        <span class="text-danger pull-right"> @error('sales_manager') {{ $message }}  @enderror </span>
+                    </div>
                 </div>
                 <!--15-->
                 <div class="col-md-6 my-2">
@@ -252,7 +264,9 @@
                             <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
                         </div>
                     </div>
-                    @error('remaining_amount_exc_tax') {{ $message }}  @enderror
+                    <div class="col-12">
+                        <span class="text-danger pull-right"> @error('remaining_amount_exc_tax') {{ $message }}  @enderror </span>
+                    </div>
                 </div>
                 <!--16-->
                 <div class="col-md-6 my-2">
@@ -264,7 +278,9 @@
                             <input type="text" class="form-control" id="sales_administrative" name="sales_administrative">
                         </div>
                     </div>
-                    @error('sales_administrative') {{ $message }}  @enderror
+                     <div class="col-12">
+                        <span class="text-danger pull-right"> @error('sales_administrative') {{ $message }}  @enderror </span>
+                    </div>
                 </div>
                 <!--17-->
                 <div class="col-md-6 my-2">
