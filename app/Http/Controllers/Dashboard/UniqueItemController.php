@@ -44,7 +44,7 @@ class UniqueItemController extends Controller
         Item::create($request->all());
 
         // Redirect or return a response
-        return "good";
+        return __('created successfully');
     }
 
 

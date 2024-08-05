@@ -1,19 +1,19 @@
 @extends('layouts.dashboard.app')
 @section('content')
     <section class="ring-info">
-        <button class=" btn my-4 px-5 ">{{__("Use rather the import module to create your customers and invoices")}}</button>
+        <button class="px-5 my-4 btn">{{__("Use rather the import module to create your customers and invoices")}}</button>
     </section><!--reing-info-->
-    <section class="m-groups my-2">
+    <section class="my-2 m-groups">
         <div class="container-fluid">
-            <div class="t-manage text-center text-capitalize">
+            <div class="text-center t-manage text-capitalize">
                 <h4 class="mt-3 mb-3">{{__("Create a client")}}</h4>
             </div><!--t-manage-->
         </div><!--container-->
         <form class="d-flex" action="{{ route('clients.store') }}" method="POST">
             @csrf
-            <div class="create-c-i my-2">
+            <div class="my-2 create-c-i">
                 <div class="row">
-                    <div class="col-md-4  my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname0">{{ __("Company / Business name ") }}* : </label>
                         </div>
@@ -24,7 +24,7 @@
                             @enderror
                         </div>
                     </div><!--1-->
-                    <div div class="col-md-4 my-2">
+                    <div div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname2">{{__("Address")}} :</label>
                         </div>
@@ -35,7 +35,7 @@
                             @enderror
                         </div>
                     </div><!--2-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname1">{{__("Payment term")}} :</label>
                         </div>
@@ -46,7 +46,7 @@
                             @enderror
                         </div>
                     </div><!--3-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname4">{{__("Trading name")}} :</label>
                         </div>
@@ -57,7 +57,7 @@
                             @enderror
                         </div>
                     </div><!--4-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname5"> {{__("ZIP (or Postal) Code")}} :</label>
                         </div>
@@ -68,7 +68,7 @@
                             @enderror
                         </div>
                     </div><!--5-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname6"> {{__("Payment mean")}} :</label>
                         </div>
@@ -79,7 +79,7 @@
                             @enderror
                         </div>
                     </div><!--6-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname7"> {{__("Company code")}} * :</label>
                         </div>
@@ -90,7 +90,7 @@
                             @enderror
                         </div>
                     </div><!--7-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname8"> {{__("Post Office Box")}} :</label>
                         </div>
@@ -101,7 +101,7 @@
                             @enderror
                         </div>
                     </div><!--8-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname9"> {{__("Insurer guarantee")}} :</label>
                         </div>
@@ -115,7 +115,7 @@
                             </div>
                         </div>
                     </div><!--9-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname10"> {{__("Legal ID")}} :</label>
                         </div>
@@ -126,7 +126,7 @@
                             @enderror
                         </div>
                     </div><!--10-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname11"> {{__("City")}} :</label>
                         </div>
@@ -137,7 +137,7 @@
                             @enderror
                         </div>
                     </div><!--11-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname12"> {{__("Other guarantees")}} :</label>
                         </div>
@@ -149,7 +149,7 @@
                             @enderror
                         </div>
                     </div><!--12-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname13"> {{__("VAT Number")}} :</label>
                         </div>
@@ -160,7 +160,7 @@
                             @enderror
                         </div>
                     </div><!--13-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname14"> {{__("State / Province")}} :</label>
                         </div>
@@ -171,7 +171,7 @@
                             @enderror
                         </div>
                     </div><!--14-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname15">{{__("Credit Limit")}} :</label>
                         </div>
@@ -183,7 +183,7 @@
                             @enderror
                         </div>
                     </div><!--15-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname16"> {{__("Business line")}} :</label>
                         </div>
@@ -194,7 +194,7 @@
                             @enderror
                         </div>
                     </div><!--16-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname17"> {{__("Country")}} :  </label>
                         </div>
@@ -205,7 +205,7 @@
                             @enderror
                         </div>
                     </div><!--17-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname18"> {{__("Late payment penalties?")}}</label>
                         </div>
@@ -220,7 +220,7 @@
                             </div>
                         </div>
                     </div><!--18-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname19"> {{__("Collector")}} :</label>
                         </div>
@@ -236,7 +236,7 @@
                             @enderror
                         </div>
                     </div><!--19-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname20"> {{__("Website")}} :</label>
                         </div>
@@ -247,24 +247,24 @@
                             @enderror
                         </div>
                     </div><!--20-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname21"> {{__("Recovery cost?")}}</label>
                         </div>
                         <div class="col-7 d-flex justify-content-between ">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="recovery_cost" value='1' id="exampleCheckbox1">
-                                <label class="form-check-label" for="exampleCheckbox1" 
+                                <label class="form-check-label" for="exampleCheckbox1"
                                     >{{__("Yes")}}</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" name="recovery_cost" value='0' id="exampleCheckbox2">
-                                <label class="form-check-label" for="exampleCheckbox2" 
+                                <label class="form-check-label" for="exampleCheckbox2"
                                     >{{__("No")}}</label>
                             </div>
                         </div>
                     </div><!--21-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname22"> {{__("Collection scenario")}} :</label>
                         </div>
@@ -280,7 +280,7 @@
                             @enderror
                         </div>
                     </div><!--22-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname23"></label>
                         </div>
@@ -288,7 +288,7 @@
                             <input type="text" class="form-control visually-hidden" id="inputname23">
                         </div>
                     </div><!--23-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname24">{{__("Interactive emails?")}}</label>
                         </div>
@@ -303,7 +303,7 @@
                             </div>
                         </div>
                     </div><!--24-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname25"> </label>
                         </div>
@@ -311,7 +311,7 @@
                             <input type="text" class="form-control visually-hidden" id="inputname25">
                         </div>
                     </div><!--25-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname25"> </label>
                         </div>
@@ -319,15 +319,15 @@
                             <input type="text" class="form-control visually-hidden" id="inputname25">
                         </div>
                     </div><!--26-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
-                            <label for="inputname27">Customer custom field #1:</label>
+                            <label for="inputname27">{{__('Customer custom field #1:')}}</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname27">
                         </div>
                     </div><!--27-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname25"> </label>
                         </div>
@@ -335,7 +335,7 @@
                             <input type="text" class="form-control visually-hidden" id="inputname25">
                         </div>
                     </div><!--25-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
                             <label for="inputname25"> </label>
                         </div>
@@ -343,9 +343,9 @@
                             <input type="text" class="form-control visually-hidden" id="inputname25">
                         </div>
                     </div><!--26-->
-                    <div class="col-md-4 my-2">
+                    <div class="my-2 col-md-4">
                         <div class="col-5 ">
-                            <label for="inputname30">Customer custom field #2:</label>
+                            <label for="inputname30">{{__('Customer custom field #2:')}}</label>
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control" id="inputname30">
@@ -356,7 +356,7 @@
 
             </div><!--row-->
             <div class="container text-center">
-                <button type="submit" class="btn btn-primary my-5 btn-add-i">{{__("+ ADD")}}</button>
+                <button type="submit" class="my-5 btn btn-primary btn-add-i">{{__("+ ADD")}}</button>
             </div>
             </div>
         </form><!--create-c-i-->

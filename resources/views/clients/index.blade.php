@@ -7,11 +7,11 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a href="{{ route('clients.index') }}" class="m-1 w-100 btn btn-primary p-3">
                         <i class="fa-solid fa-earth-asia"></i> &ensp; {{ __('All clients') }} &ensp;
-                        <span class="badge bg-white text-primary">184</span>
+                        <span class="badge bg-white text-primary">{{\App\Models\Client::count()}}</span>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="myClients.html" class="m-1 w-100 btn btn-outline-primary text-secondary p-3" id="actionButton">
+                    <a href="#" class="m-1 w-100 btn btn-outline-primary text-secondary p-3" id="actionButton">
                         <i class="fa-solid fa-building text-primary"></i> &ensp; {{ __('My clients') }} &ensp;
                         <span class="badge bg-primary">4</span>
                     </a>

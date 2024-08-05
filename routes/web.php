@@ -5,6 +5,7 @@ use App\Http\Controllers\CollectionScenarioController;
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\ActionsCollectionScenarioController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LanguageController;
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -109,3 +110,4 @@ Route::post('/clients-group/delete-all', [ClientsGroupController::class, 'delete
 
 
 
+Route::get('switch-language/{locale}', [LanguageController::class, 'switchLanguage'])->name('switch.language');

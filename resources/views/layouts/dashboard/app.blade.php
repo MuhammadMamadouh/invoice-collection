@@ -10,23 +10,23 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
     <!--bootstrap-file-->
     <!--fontawesome-file-->
-    <link rel="stylesheet" href="{{asset('css/all.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/all.min.css')}}" >
     <!--fontawesome-file-->
     <link rel="stylesheet" href="{{asset('css/reports.css')}}">
     <link rel="stylesheet" href="{{asset('css/style-2.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/update.css')}}">
-    <link rel="stylesheet" href="{{asset('css/risk.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/navbar.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/seedemo.css')}}" />
-    <link rel="stylesheet" href="{{asset('css/help.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/risk.css')}}" >
+    <link rel="stylesheet" href="{{asset('css/navbar.css')}}" >
+    <link rel="stylesheet" href="{{asset('css/seedemo.css')}}" >
+    <link rel="stylesheet" href="{{asset('css/help.css')}}" >
     <link rel="stylesheet" href="{{asset('css/search-bar.css')}}">
     <!--icons-site-->
-    <link rel="icon" type="png" href="{{asset('img/logo.png')}}" />
+    <link rel="icon" type="png" href="{{asset('img/logo.png')}}" >
     <!--icons-site-->
     <!--google-font-->
     <!--woow AnimateFiles Css-->
-    <link rel="stylesheet" href="{{asset('css/all.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('/all.min.css')}}" />
     <!--woow AnimateFiles Css-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

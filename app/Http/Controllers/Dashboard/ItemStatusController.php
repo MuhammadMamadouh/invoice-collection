@@ -13,9 +13,22 @@ class ItemStatusController extends Controller
     public function showStatusItemsForm()
     {
         $statusItems = ItemStatus::with('statusType')->get();
-    $statuses = ItemStatusType::all();
+        $groupedStatusItems = [];
 
-    return view('item-status.index', compact('statuses', 'statusItems'));
+        foreach ($statusItems as $item) {
+            $typeOfStatus = $item->type_of_status;
+            
+        
+            if (!isset($groupedStatusItems[$typeOfStatus])) {
+                $groupedStatusItems[$typeOfStatus] = [];
+            }
+        
+            $groupedStatusItems[$typeOfStatus][] = $item;
+        }
+        //dd($groupedStatusItems);
+       $statuses = ItemStatusType::all();
+
+    return view('item-status.index', compact('statuses', 'statusItems','groupedStatusItems'));
     }
     public function store(StatusItemRequest $request)
     {
@@ -23,6 +36,6 @@ class ItemStatusController extends Controller
         $validatedData = $request->validated();
 
         ItemStatus::create($validatedData);
-        return redirect()->back()->with('success', 'Status item created successfully.');
+        return redirect()->back()->with('success', __('created successfully'));
     }
 }

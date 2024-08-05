@@ -31,7 +31,7 @@ class ActionsCollectionScenarioController extends Controller
             'number_of_days' => $request->number_of_days,
             'collection_scenario_id' => $request->collection_scenario_id,
         ]);
-        return to_route('collection_scenarios.index')->with(['message' => 'created successfully']);
+        return to_route('collection_scenarios.index')->with(['message' => __('created successfully')]);
     }
 
     public function update(Request $request, $id)
@@ -50,7 +50,7 @@ class ActionsCollectionScenarioController extends Controller
                 'number_of_days' => $request->number_of_days,
                 'collection_scenario_id' => $request->collection_scenario_id,
             ]);
-            return to_route('collection_scenarios.index')->with(['message' => 'edited successfully']);
+            return to_route('collection_scenarios.index')->with(['message' => __('edited successfully')]);
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
@@ -61,7 +61,7 @@ class ActionsCollectionScenarioController extends Controller
     {
         try {
             ActionsCollectionScenario::findOrFail($id)->delete();
-            return to_route('collection_scenarios.index')->with(['message' => 'deleted successflly']);
+            return to_route('collection_scenarios.index')->with(['message' => __('deleted successfully')]);
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);

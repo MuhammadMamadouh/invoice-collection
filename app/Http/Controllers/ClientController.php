@@ -42,7 +42,7 @@ class ClientController extends Controller
     {
         try{
             Client::create($request->validated());
-            return to_route('clients.index')->with(['message' => 'success']);
+            return to_route('clients.index')->with(['message' => __('created successfully')]);
         }catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('clients.index')->with(['message' => $e->getMessage()]);
@@ -74,7 +74,7 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
         try {
             $client->update($request->validated());
-            return to_route('clients.index')->with(['message' => 'success']);
+            return to_route('clients.index')->with(['message' => __('edited successfully')]);
         }catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('clients.index')->with(['message' => $e->getMessage()]);
@@ -88,7 +88,7 @@ class ClientController extends Controller
     {
         try {
             Client::findOrFail($id)->delete();
-            return to_route('clients.index')->with(['message' => 'success']);
+            return to_route('clients.index')->with(['message' => __('deleted successfully')]);
         }catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('clients.index')->with(['message' => $e->getMessage()]);
