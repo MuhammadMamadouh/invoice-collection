@@ -36,7 +36,7 @@ class CollectionScenarioController extends Controller
             CollectionScenario::create([
                 'en_name' => $request->en_name,
             ]);
-            return to_route('collection_scenarios.index')->with(['message' => 'created successfully']);
+            return to_route('collection_scenarios.index')->with(['message' => __('created successfully')]);
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
@@ -52,7 +52,7 @@ class CollectionScenarioController extends Controller
         $collection->update([
             'en_name' => $request->en_name,
         ]);
-        return to_route('collection_scenarios.index')->with(['message' => 'edited successfully']);
+        return to_route('collection_scenarios.index')->with(['message' => __('edited successfully')]);
     }
 
 
@@ -60,7 +60,7 @@ class CollectionScenarioController extends Controller
     {
         try {
             CollectionScenario::findOrFail($id)->delete();
-            return to_route('collection_scenarios.index')->with(['message' => 'deleted successflly']);
+            return to_route('collection_scenarios.index')->with(['message' => __('deleted successfully')]);
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
@@ -74,7 +74,7 @@ class CollectionScenarioController extends Controller
             CollectionScenario::create([
                 'en_name' => $copyScenario->en_name . ' (Copy)',
             ]);
-            return to_route('collection_scenarios.index')->with(['message' => '{{__(Action scenario duplicated successfully)}}']);
+            return to_route('collection_scenarios.index')->with(['message' => __(' duplicated successfully')]);
         } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);

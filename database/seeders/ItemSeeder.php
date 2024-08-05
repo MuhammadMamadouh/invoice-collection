@@ -1,10 +1,11 @@
 <?php
 
 namespace Database\Seeders;
-
+use Illuminate\Support\Facades\DB; 
+use App\Models\Item;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+
 class ItemSeeder extends Seeder
 {
     /**
@@ -12,14 +13,13 @@ class ItemSeeder extends Seeder
      */
     public function run(): void
     {
-        $items = [
-            ['en_name'=>'Credit note'],
-            ['en_name'=>'Downpayment request'],
-            ['en_name'=>'Draft'],
-            ['en_name'=>'Invoice'],
-            ['en_name'=>'Miscellaneous transaction'],
-            ['en_name'=>'Payment'],
-        ];
-        DB::table('item_types')->insert($items);
+        DB::transaction(function () {
+            $batchSize = 1000;
+            $totalRecords = 50000;
+
+            for ($i = 0; $i < $totalRecords / $batchSize; $i++) {
+                Item::factory()->count($batchSize)->create();
+            }
+        });
     }
 }

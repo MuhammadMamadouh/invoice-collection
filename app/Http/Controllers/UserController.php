@@ -54,7 +54,7 @@ class UserController extends Controller
             $data['picture'] = $request->file('picture')->store('users', 'public');
         }
         $user->update($data);
-        return redirect()->route('users.index')->with('success', 'Data saved successfully.');
+        return redirect()->route('users.index')->with('success', __('edited successfully'));
     }
     public function destroy($id)
     {
@@ -68,7 +68,7 @@ class UserController extends Controller
             $user->delete();
         });
 
-        return redirect()->route('users.index')->with('success', __('User deleted successfully'));
+        return redirect()->route('users.index')->with('success', __('deleted successfully'));
     }
 
 
@@ -81,7 +81,7 @@ class UserController extends Controller
     $user->password = Hash::make($request->password);
     $user->save();
 
-    return redirect()->route('users.index')->with('success', 'Password regenerated successfully.');
+    return redirect()->route('users.index')->with('success', __('Password regenerated successfully.'));
 }
 
 
