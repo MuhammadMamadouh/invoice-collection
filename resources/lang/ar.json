@@ -1,4 +1,10 @@
 {
+    "language" : "اللغة",
+    "number_of_days"  : "عدد الايام",
+    "action_type"  : "نوع الحدث",
+    "action_name" : "ِاسم الحدث",
+    "Create Action":"انشاء حدث",
+
     "created successfully":"تم الادخال بنجاح",
     "verification-link-sent": "تم إرسال رابط التحقق إلى عنوان بريدك الإلكتروني.",
     "password-updated": "تم تحديث كلمة المرور الخاصة بك.",
@@ -6,7 +12,7 @@
     "deleted successfully": "تم الحذف بنجاح.",
     "duplicated successfully": "تم النسخ بنجاح.",
     "profile-updated": "تم تحديث الملف الشخصي بنجاح.",
-    "Password regenerated successfully.": "تم إعادة إنشاء كلمة المرور بنجاح.",
-    
+    "Password regenerated successfully.": "تم إعادة إنشاء كلمة المرور بنجاح."
+
 
 }

@@ -29,18 +29,9 @@
 
         </div>
     </div>
-    {{-- language drop down start --}}
+  
     <nav class="navbar navbar-expand-lg">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ __('Language') }}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                <a class="dropdown-item" href="{{ route('switch.language', ['locale' => 'en']) }}">English</a>
-                <a class="dropdown-item" href="{{ route('switch.language', ['locale' => 'ar']) }}">العربية</a>
-            </div>
-        </div>
-    {{-- language drop down end --}}
+
 
        <div class="container">
          <a class="navbar-brand" href="#"><img src="/public/img/logo.png" class="img-fluid" alt=""></a>

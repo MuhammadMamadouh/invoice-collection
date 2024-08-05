@@ -1,4 +1,11 @@
 {
+    "language" :"Language",
+
+    "number_of_days"  : "Number of Days",
+    "action_type"  : "Action Type",
+    "action_name" : "ِAction Name",
+    "Create Action":"Create Action",
+
     "created successfully":"created successfully",
     "verification-link-sent": "A verification link has been sent to your email address.",
     "password-updated": "Your password has been updated.",
@@ -6,6 +13,6 @@
     "deleted successfully": "Deleted successfully.",
     "duplicated successfully": "Duplicated successfully.",
     "profile-updated": "Profile updated successfully.",
-    "Password regenerated successfully.": "Password regenerated successfully.",
+    "Password regenerated successfully.": "Password regenerated successfully."
 
 }
