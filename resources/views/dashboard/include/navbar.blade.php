@@ -1,6 +1,8 @@
 <div class="navbar-all-site cairo-uniquifier">
     <div class="mb-0 top-navbar ">
+        @include('dashboard.include.translationDropdown')
         <div class="container">
+
             <span class="inputicons"><svg class="svg-inline--fa fa-book" aria-hidden="true" focusable="false"
                     data-prefix="fas" data-icon="book" role="img" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 448 512" data-fa-i2svg="">
@@ -17,7 +19,7 @@
                     </path>
                 </svg><!-- <i class="fa-solid fa-house"></i> Font Awesome fontawesome.com --></a><a
                 href="#"> {{__("My account")}}</a>
-            <a href="#"><img src="/public/img/person2.jpg" class="img-fluid" alt=""></a>
+            <a href="#"><img src="{{asset('img/person2.jpg')}}" class="img-fluid" alt=""></a>
             <span class="mt-4 "><svg class="svg-inline--fa fa-power-off" aria-hidden="true" focusable="false"
                     data-prefix="fas" data-icon="power-off" role="img" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512" data-fa-i2svg="">
@@ -29,12 +31,12 @@
 
         </div>
     </div>
-  
+
     <nav class="navbar navbar-expand-lg">
 
 
        <div class="container">
-         <a class="navbar-brand" href="#"><img src="/public/img/logo.png" class="img-fluid" alt=""></a>
+         <a class="navbar-brand" href="#"><img src="{{ asset('img/logo.png')}}" class="img-fluid" alt=""></a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
            <span class="navbar-toggler-icon">
            <span class="text-light"><svg class="p-1 svg-inline--fa fa-bars" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"></path></svg><!-- <i class="p-1 fa-solid fa-bars"></i> Font Awesome fontawesome.com --></span>
