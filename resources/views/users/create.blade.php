@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-9 mb-3">
                     <input required type="text" name="first_name" class="form-control"
-                        value="{{ old('first_name') }}" />
+                        value="" />
                     @error('first_name')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror

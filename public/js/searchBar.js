@@ -136,12 +136,34 @@ function showAddUserDiv() {
     document.querySelector(".add-user-div").classList.remove("d-none");
     document.querySelector(".overlay").classList.remove("d-none");
 }
-function showEditUserDiv() {
-    document.querySelector(".edit-user-div").classList.remove("d-none");
-    document.querySelector(".overlay").classList.remove("d-none");
-}
 function hideAddUserDiv() {
     document.querySelector(".add-user-div").classList.add("d-none");
-    document.querySelector(".edit-user-div").classList.add("d-none");
     document.querySelector(".overlay").classList.add("d-none");
 }
+function showEditUserDiv(userId) {
+    document.getElementById(`edit-user-div-${userId}`).classList.remove("d-none");
+    document.querySelector(".overlay").classList.remove("d-none");
+}
+function hideEditUserDiv(userId){
+    document.getElementById(`edit-user-div-${userId}`).classList.add("d-none");
+    document.querySelector(".overlay").classList.add("d-none");
+}
+
+function showHolap(clientId) {
+    document.getElementById(`company-detail-${clientId}`).classList.remove("d-none");
+
+  }
+  
+  function closeHolap(clientId) {
+      document.getElementById(`company-detail-${clientId}`).classList.add("d-none");
+
+  }
+  function EditHolap() {
+    document.querySelector(".holap-first").classList.add("d-none");
+    document.querySelector(".holap-second").classList.remove("d-none");
+  }
+  
+  function closeEditHolap() {
+    document.querySelector(".holap-first").classList.remove("d-none");
+    document.querySelector(".holap-second").classList.add("d-none");
+  }

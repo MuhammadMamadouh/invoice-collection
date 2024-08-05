@@ -44,7 +44,7 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
             $data = $request->all();
-            $user=User::find($request->id);
+            $user = User::find($request->id);
         // Handling picture upload
         if ($request->hasFile('picture')) {
             if(isset($user->picture)){
@@ -56,6 +56,8 @@ class UserController extends Controller
         $user->update($data);
         return redirect()->route('users.index')->with('success', 'Data saved successfully.');
     }
+
+
     public function destroy($id)
     {
         DB::transaction(function () use ($id) {
