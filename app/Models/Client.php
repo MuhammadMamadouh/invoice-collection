@@ -52,4 +52,9 @@ class Client extends Model
         return $this->belongsToMany(ClientsGroup::class, 'clients_groups_pivot', 'client_id', 'clients_group_id');
     }
 
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
 }

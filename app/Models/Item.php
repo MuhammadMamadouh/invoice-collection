@@ -13,7 +13,7 @@ class Item extends Model
     // The attributes that are mass assignable
     protected $fillable = [
         'item_type_id',
-        'company_id',
+        'client_id',
         'po_no',
         'file_no',
         'erp_item_type',
@@ -48,7 +48,6 @@ class Item extends Model
     {
         return $this->belongsTo(Currency::class);
     }
-
 
     public function client()
     {
