@@ -368,7 +368,6 @@
                             </div>
                             <div class="arrow-bottom"></div>
                             <div id="company-details-{{ $client->id }}">
-
                                 <div class="company-details d-none" id="company-detail-{{ $client->id }}">
                                     <div class="bg-light holap-first" id="company-details-{{ $client->id }}">
                                         <div class="row text-center m-0 p-3 w-100"
