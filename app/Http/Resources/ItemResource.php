@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,9 +15,12 @@ class ItemResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $dueDate = Carbon::parse($this->due_date);
+        $now = Carbon::now();
+        $overDueDays = $dueDate->isPast() ? $dueDate->diffInDays($now) : 0;
         return [
             'item_type_id' => $this->item_type_id,
-            'client_id' => $this->client_id,
+            'company_id' => $this->company_id,
             'po_no' => $this->po_no,
             'file_no' => $this->file_no,
             'erp_item_type' => $this->erp_item_type,
@@ -36,6 +40,8 @@ class ItemResource extends JsonResource
             'remaining_amount_inc_tax' => $this->remaining_amount_inc_tax,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+
+            'over_due' => $overDueDays,
         ];
     }
 }

@@ -13,7 +13,7 @@ class Item extends Model
     // The attributes that are mass assignable
     protected $fillable = [
         'item_type_id',
-        'client_id',
+        'company_id',
         'po_no',
         'file_no',
         'erp_item_type',

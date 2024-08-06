@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('action_name');
             $table->smallInteger('number_of_days');
             $table->string('action_type');
-            $table->foreignId('collection_scenario_id')->constrained('collection_scenario')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('collection_scenario_id')->constrained('collection_scenarios')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }

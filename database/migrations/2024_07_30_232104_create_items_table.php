@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('item_type_id')->constrained('clients')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('client_id')->constrained('clients')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->bigInteger('item_type_id');
+            $table->bigInteger('company_id');
             $table->string('po_no');
             $table->string('file_no');
             $table->string('erp_item_type');
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('issue_date');
             $table->string('due_date');
             $table->string('payment_date');
-            $table->foreignId('currency_id')->constrained('currencies')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->bigInteger('currency_id');
             $table->string('initial_amount_exc_tax');
             $table->string('initial_amount_inc_tax');
             $table->string('remaining_amount_exc_tax');

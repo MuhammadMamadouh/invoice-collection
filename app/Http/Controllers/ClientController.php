@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enum\Role;
 use App\Enum\RoleEnum;
 use App\Http\Requests\ClientRequest;
+use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use App\Models\CollectionScenario;
 use App\Models\User;
@@ -24,6 +25,7 @@ class ClientController extends Controller
         $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
         return view('clients.index', compact('clients', 'collectionsScenario', 'collectors'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -52,9 +54,10 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Client $client)
+    public function showClientData($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        return new ClientResource($client);
     }
 
     /**

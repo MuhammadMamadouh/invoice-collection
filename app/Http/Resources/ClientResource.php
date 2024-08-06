@@ -44,7 +44,7 @@ class ClientResource extends JsonResource
             'updated_at' => $this->updated_at,
 
             'items' => ItemResource::collection($this->items),
-            'collectionScenarios' => CollectionScenarioResource::collection($this->collectionScenarios),
+            'collectionScenarios' => new CollectionScenarioResource($this->collectionScenarios),
             'collector' => new UserResource($this->collector),
         ];
     }
