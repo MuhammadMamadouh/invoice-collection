@@ -8,7 +8,9 @@ use App\Http\Requests\ClientRequest;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use App\Models\CollectionScenario;
+use App\Models\Item;
 use App\Models\User;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -20,10 +22,29 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::with('collectionScenarios', 'clientsGroups', 'collector')->paginate(30);
+        $due_Date = "2023-09-15";
+
+        $clients = Client::with('collectionScenarios', 'clientsGroups', 'collector', 'items', 'items.itemStatus')->paginate(30);
         $collectionsScenario = CollectionScenario::all();
         $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
-        return view('clients.index', compact('clients', 'collectionsScenario', 'collectors'));
+
+        //overDue date calculation
+        foreach($clients as $client){
+            $dueDate = Carbon::parse($due_Date);
+            $now = Carbon::now();
+            $daysDifference = $dueDate->diffInDays($now);
+            if ($dueDate->isFuture()) {
+                $overDueDays = -$daysDifference;
+            } else {
+                $overDueDays = $daysDifference;
+            }
+
+            //total calculation
+            $total_InitialAmount = $client->items()->sum('initial_amount_inc_tax');
+            $total_RemainingAmount = $client->items()->sum('remaining_amount_inc_tax');
+        }
+        return view('clients.index', compact('clients', 'collectionsScenario', 'collectors', 
+        'overDueDays', 'total_RemainingAmount', 'total_InitialAmount'));
     }
     
 

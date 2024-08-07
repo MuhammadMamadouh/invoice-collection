@@ -15,9 +15,15 @@ class ItemResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+
         $dueDate = Carbon::parse($this->due_date);
         $now = Carbon::now();
-        $overDueDays = $dueDate->isPast() ? $dueDate->diffInDays($now) : 0;
+        $daysDifference = $dueDate->diffInDays($now);
+        if ($dueDate->isFuture()) {
+            $overDueDays = -$daysDifference;
+        } else {
+            $overDueDays = $daysDifference;
+        }
         return [
             'item_type_id' => $this->item_type_id,
             'company_id' => $this->company_id,

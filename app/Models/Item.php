@@ -14,6 +14,7 @@ class Item extends Model
     protected $fillable = [
         'item_type_id',
         'company_id',
+        'status_id',
         'po_no',
         'file_no',
         'erp_item_type',
@@ -51,6 +52,11 @@ class Item extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class, 'company_id');
+    }
+
+    public function itemStatus()
+    {
+        return $this->belongsTo(ItemStatus::class, 'status_id');
     }
 }

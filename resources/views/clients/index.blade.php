@@ -433,7 +433,7 @@
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Address') }}:</p>
                                                     <p class="">
-                                                        <a href="">{{ $client->address }}</a>
+                                                        <a href="">{{ $client->address }}, {{$client->city}}, {{$client->state}}, {{$client->country}}</a>
                                                     </p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
@@ -527,14 +527,14 @@
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">Last name:</p>
-                                                    <p class="">Accountant name</p>
+                                                    <p class="">{{ $client->collector->last_name }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
-                                                    @<a href="">training@mydsomanager.com</a>
+                                                    @<a href="">{{ $client->collector->email }}</a>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <i class="fa-solid fa-phone"></i> &nbsp; &nbsp;
-                                                    <a href=""> +33 01 01 01 01 01</a> &nbsp; (Phone)
+                                                    <a href=""> {{ $client->collector->mobile_phone }}</a> &nbsp; (Phone)
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <i class="fa-solid fa-star"></i> &nbsp; Contact for collection
@@ -1415,7 +1415,7 @@
                                             <div class="d-flex flex-wrap justify-content-between mt-3">
                                                 <div class="d-flex">
                                                     <h4>Statement of account of open items</h4>
-                                                    <div class="btn bg-light ms-2">No .of items: 4</div>
+                                                    <div class="btn bg-light ms-2">No .of items: {{$client->items->count()}}</div>
                                                 </div>
                                                 <div class="form-group position-relative">
                                                     <input type="text" class="form-control border-primary ps-5"
@@ -1442,49 +1442,49 @@
                                                 <div class="col">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Trans.no</p>
+                                                        <p class="fw-bold">{{__("Trans.no")}}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col hide">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Issue date</p>
+                                                        <p class="fw-bold">{{__("Issue date")}}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Due date</p>
+                                                        <p class="fw-bold">{{__("Due date")}}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col-1 hide">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Overdue</p>
+                                                        <p class="fw-bold">{{__("Overdue")}}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col hide">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Intial amount inc. Tax</p>
+                                                        <p class="fw-bold">{{__("Intial amount inc. Tax")}}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Remaining amount inc. Tax</p>
+                                                        <p class="fw-bold">{{__("Remaining amount inc. Tax")}}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col-3 hide">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Status</p>
+                                                        <p class="fw-bold">{{__("Status")}}</p>
                                                     </div>
 
                                                 </div>
@@ -1492,7 +1492,7 @@
                                             </div>
                                             <div class="text-center mb-3 table-container-2 p-2 px-md-4  ">
                                                 <div class="row align-items-center pt-3"
-                                                    style="background-color: #006bff14">
+                                                    style="{{$overDueDays >=  0 ?  'background-color: #e6d3d3' : 'background-color: #d9edf7'}}">
                                                     <div class="col-1" style="z-index: 999;">
                                                         <div class="form-check">
                                                             <input type="checkbox" class="form-check-input"
@@ -1503,271 +1503,38 @@
                                                         <p class="fw-bold"><a href=''
                                                                 onclick="showInvoice()"><img src="./img/pdficons.gif"
                                                                     class="mb-1" alt="">
-                                                                2401356</a></p>
+                                                                {{-- $client->items --}}</a></p>
 
                                                     </div>
                                                     <div class="col hide">
-                                                        <p class="fw-bold">13-5-2022</p>
+                                                        <p class="fw-bold">{{$client->items->issue_date = null ?? '0/0/0'}}</p>
                                                     </div>
                                                     <div class="col">
-                                                        <p class="fw-bold">13-5-2022</p>
+                                                        <p class="fw-bold">{{$client->items->due_date = null ?? '0/0/0'}}</p>
                                                     </div>
                                                     <div class="col-1 hide">
-                                                        <div class="badge bg-danger mb-2">46d</div>
+                                                        <div class="badge mb-2" style="{{$overDueDays >= 0 ? 'background-color: #d07471;' : 'background-color: gray'}}">{{$overDueDays}}d</div>
                                                     </div>
                                                     <div class="col hide">
-                                                        <p class="fw-bold">11,187.32 €</p>
+                                                        <p class="fw-bold">{{$client->items->initial_amount_inc_tax = null ?? '5555'}} €</p>
                                                     </div>
                                                     <div class="col">
-                                                        <p class="fw-bold">11,187.32 €</p>
+                                                        <p class="fw-bold">{{$client->items->remaining_amount_inc_tax = null ?? '5555'}} €</p>
                                                     </div>
                                                     <div class="col-3 hide">
-                                                        Envoi de duplicata de facture 2-12-2023
+                                                        @foreach($client->items as $item)
+                                                            {{$item->itemStatus->status = null ?? 'status1'}},{{$item->itemStatus->follow_up_days = null ?? +1}}
+                                                        @endforeach
                                                     </div>
                                                     <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
                                                         <i class="fa-solid fa-chevron-down"></i>
                                                     </div>
-                                                    <div class="hidden ms-2 d-none">
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Issue date:</p>
-                                                            <p>13-5-2022</p>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Overdue:</p>
-                                                            <div class="badge bg-danger mb-2">46d</div>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Intial amount inc. Tax:</p>
-                                                            <p class="fw-bold">11,187.32 €</p>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Status:</p>
-                                                            <p>Envoi de duplicata de facture 2-12-2023</p>
-                                                        </div>
-                                                    </div>
                                                 </div>
-                                                <div class="row align-items-center pt-3">
-                                                    <div class="col-1" style="z-index: 999;">
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                id="exampleCheck1" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold"><a href="#"
-                                                                onclick="showInvoice()"><img src="./img/pdficons.gif"
-                                                                    class="mb-1" alt="">
-                                                                2401356</a></p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">13-5-2022</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold">13-5-2022</p>
-                                                    </div>
-                                                    <div class="col-1 hide">
-                                                        <div class="badge bg-danger mb-2">46d</div>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">11,187.32 €</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold">11,187.32 €</p>
-                                                    </div>
-                                                    <div class="col-3 hide">
-                                                        Envoi de duplicata de facture 2-12-2023
-                                                    </div>
-                                                    <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
-                                                        <i class="fa-solid fa-chevron-down"></i>
-                                                    </div>
-                                                    <div class="hidden ms-2 d-none">
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Issue date:</p>
-                                                            <p>13-5-2022</p>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Overdue:</p>
-                                                            <div class="badge bg-danger mb-2">46d</div>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Intial amount inc. Tax:</p>
-                                                            <p class="fw-bold">11,187.32 €</p>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Status:</p>
-                                                            <p>Envoi de duplicata de facture 2-12-2023</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row align-items-center pt-3"
-                                                    style="background-color: #006bff14">
-                                                    <div class="col-1" style="z-index: 999;">
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                id="exampleCheck1" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold"><a href="#"
-                                                                onclick="showInvoice()"><img src="./img/pdficons.gif"
-                                                                    class="mb-1" alt="">
-                                                                2401356</a></p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">13-5-2022</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold">13-5-2022</p>
-                                                    </div>
-                                                    <div class="col-1 hide">
-                                                        <div class="badge bg-danger mb-2">46d</div>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">11,187.32 €</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold">11,187.32 €</p>
-                                                    </div>
-                                                    <div class="col-3 hide">
-                                                        Envoi de duplicata de facture 2-12-2023
-                                                    </div>
-                                                    <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
-                                                        <i class="fa-solid fa-chevron-down"></i>
-                                                    </div>
-                                                    <div class="hidden ms-2 d-none">
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Issue date:</p>
-                                                            <p>13-5-2022</p>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Overdue:</p>
-                                                            <div class="badge bg-danger mb-2">46d</div>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Intial amount inc. Tax:</p>
-                                                            <p class="fw-bold">11,187.32 €</p>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Status:</p>
-                                                            <p>Envoi de duplicata de facture 2-12-2023</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row align-items-center pt-3">
-
-                                                    <div class="col-1" style="z-index: 999;">
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                id="exampleCheck1" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold"><a href="#"
-                                                                onclick="showInvoice()"><img src="./img/pdficons.gif"
-                                                                    class="mb-1" alt="">
-                                                                2401356</a></p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">13-5-2022</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold">13-5-2022</p>
-                                                    </div>
-                                                    <div class="col-1 hide">
-                                                        <div class="badge bg-danger mb-2">46d</div>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">11,187.32 €</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold">11,187.32 €</p>
-                                                    </div>
-                                                    <div class="col-3 hide">
-                                                        Envoi de duplicata de facture 2-12-2023
-                                                    </div>
-                                                    <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
-                                                        <i class="fa-solid fa-chevron-down"></i>
-                                                    </div>
-                                                    <div class="hidden ms-2 d-none">
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Issue date:</p>
-                                                            <p>13-5-2022</p>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Overdue:</p>
-                                                            <div class="badge bg-danger mb-2">46d</div>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Intial amount inc. Tax:</p>
-                                                            <p class="fw-bold">11,187.32 €</p>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Status:</p>
-                                                            <p>Envoi de duplicata de facture 2-12-2023</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row align-items-center pt-3"
-                                                    style="background-color: #006bff14">
-                                                    <div class="col-1" style="z-index: 999;">
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                id="exampleCheck1" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold"><a href="#"
-                                                                onclick="showInvoice()"><img src="./img/pdficons.gif"
-                                                                    class="mb-1" alt="">
-                                                                2401356</a></p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">13-5-2022</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold">13-5-2022</p>
-                                                    </div>
-                                                    <div class="col-1 hide">
-                                                        <div class="badge bg-danger mb-2">46d</div>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">11,187.32 €</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold">11,187.32 €</p>
-                                                    </div>
-                                                    <div class="col-3 hide">
-                                                        Envoi de duplicata de facture 2-12-2023
-                                                    </div>
-                                                    <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
-                                                        <i class="fa-solid fa-chevron-down"></i>
-                                                    </div>
-                                                    <div class="hidden ms-2 d-none">
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Issue date:</p>
-                                                            <p>13-5-2022</p>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Overdue:</p>
-                                                            <div class="badge bg-danger mb-2">46d</div>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Intial amount inc. Tax:</p>
-                                                            <p class="fw-bold">11,187.32 €</p>
-                                                        </div>
-                                                        <div class="d-flex bg-white">
-                                                            <p class="fw-bold">Status:</p>
-                                                            <p>Envoi de duplicata de facture 2-12-2023</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="arrow-bottom-2"></div>
-
                                             </div>
                                             <div class="d-flex justify-content-center gap-5">
-                                                <p class="fw-bold">Total:</p>
-                                                <p class="fw-bold">45,342.75 €</p>
-                                                <p class="fw-bold">45,342.75 €</p>
+                                                <p class="fw-bold">{{__("Total")}}:</p>
+                                                <p class="fw-bold">{{$total_InitialAmount = null ?? 5555}} €</p>
+                                                <p class="fw-bold">{{$total_RemainingAmount = null ?? 5555}} €</p>
                                             </div>
                                         </div>
                                         <div class="row px-4 align-items-center m-0">
@@ -1889,7 +1656,7 @@
                                                                 </li>
                                                                 <li class="mt-3 "><button type="button"
                                                                         class="btn"
-                                                                        style="width: 100%;"><span><iclass="fa-solid
+                                                                        style="width: 100%;"><span><i class="fa-solid
                                                                                 fa-download"></i>&ensp;</span>download</button>
                                                                 </li>
                                                             </ul>
@@ -1899,8 +1666,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <!--sec-1-->
                                     <div class="sec-1 pb-5 bg-white text-capitalize d-none " id="riskDiv">
                                         <div class="container">
