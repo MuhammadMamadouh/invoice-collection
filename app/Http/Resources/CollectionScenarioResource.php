@@ -20,7 +20,7 @@ class CollectionScenarioResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
 
-            'ActionScenarios' => ScenarioActionResource::collection($this->ActionScenarios),
+            'scenariosActions' => ScenarioActionResource::collection($this->scenariosActions),
         ];
     }
 }

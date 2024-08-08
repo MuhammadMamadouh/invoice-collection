@@ -1,6 +1,5 @@
 @extends('layouts.dashboard.app')
 @section('content')
-
     <section class="mt-5">
         <div class="container-fluid">
             <div class="row">
@@ -336,7 +335,7 @@
                                         <p class="fw-bold">4Front</p>
                                     </div>
                                     <div class="d-flex bg-light">
-                                        <p class="fw-bold">{{__("Collection scenario")}}:</p>
+                                        <p class="fw-bold">{{ __('Collection scenario') }}:</p>
                                         <div class="">
                                             <select name="collection_scenario_id" class="form-select" id="inputname19">
                                                 <option value="" selected disabled>{{ __('Collection Scenarios') }}
@@ -369,17 +368,22 @@
                             <div class="arrow-bottom"></div>
                             <div id="company-details-{{ $client->id }}">
                                 <div class="company-details d-none" id="company-detail-{{ $client->id }}">
-                                    <div class="bg-light holap-first" id="company-details-{{ $client->id }}">
+                                    <div class="bg-light holap-first-{{ $client->id }}"
+                                        id="company-details-{{ $client->id }}">
                                         <div class="row text-center m-0 p-3 w-100"
                                             id="company-details-{{ $client->id }}" style="background-color: #006bff">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="d-flex w-25 gap-3" id="company-details-{{ $client->id }}">
                                                     <i class="fa-solid fa-flag text-warning" style="font-size: 25px"></i>
                                                     <p class="text-light">{{ __('Payeurs correct / Average payer') }}</p>
+
+                                                    {{-- ------------------- Client's Data Noftications------------------------------------------------ --}}
+
                                                     <div class="mb-3 alert-icon-container">
                                                         <i class="fa-solid fa-bell text-danger"
                                                             style="font-size: 25px"></i>
                                                         <span class="alert-counter">5</span>
+
                                                         <div class="alert-list">
                                                             <!-- List of alerts -->
                                                             <div class="alert-item">
@@ -400,12 +404,14 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    {{-- ------------------- End Client's Data Noftications------------------------------------------------ --}}
+
                                                 </div>
                                                 <h2 class="text-light w-50">{{ $client->company_name }}</h2>
                                                 <div class="d-flex justify-content-end gap-3 w-25">
                                                     <div class="icon-holab  ">
                                                         <i class="fa-solid fa-pen text-primary p-2 bg-light"
-                                                            onclick="EditHolap()"
+                                                            onclick="EditHolap({{ $client->id }})"
                                                             style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i>
                                                         <a href="holapDetails.html" target="_blank"><i
                                                                 class="fa-solid fa-maximize text-primary p-2 bg-light"style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i></a>
@@ -416,6 +422,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        {{-- ------------------- Client's Data ------------------------------------------------ --}}
                                         <div class="row m-0 p-3">
                                             <div class="col-lg-4 col-sm-6 text-start">
                                                 <div class="d-flex align-items-center justify-content-between">
@@ -433,7 +441,8 @@
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Address') }}:</p>
                                                     <p class="">
-                                                        <a href="">{{ $client->address }}, {{$client->city}}, {{$client->state}}, {{$client->country}}</a>
+                                                        <a href="">{{ $client->address }}, {{ $client->city }},
+                                                            {{ $client->state }}, {{ $client->country }}</a>
                                                     </p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
@@ -534,13 +543,18 @@
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <i class="fa-solid fa-phone"></i> &nbsp; &nbsp;
-                                                    <a href=""> {{ $client->collector->mobile_phone }}</a> &nbsp; (Phone)
+                                                    <a href=""> {{ $client->collector->mobile_phone }}</a> &nbsp;
+                                                    (Phone)
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <i class="fa-solid fa-star"></i> &nbsp; Contact for collection
                                                 </div>
                                             </div>
                                         </div>
+
+                                        {{-- -------------------End Client's Data ------------------------------------------------ --}}
+
+                                        {{-- ------------------- Client's Data Buttons------------------------------------------------ --}}
                                         <div class="row p-4 m-0">
                                             <div class="col-lg-4 col-sm-6">
                                                 <div class="m-1 w-100 btn btn-primary disputeButton"
@@ -567,734 +581,846 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        {{-- ------------------- End Client's Data Buttons------------------------------------------------ --}}
                                     </div>
-                                    <div class="create-c-i holap-second bg-light d-none">
-                                        <div class="d-flex gap-3 justify-content-end text-center m-0 mb-3 p-3 w-100"
-                                            style="background-color: #006bff">
-                                            <span class="btn text-light p-1 px-2 btn-danger" onclick="closeHolap()"><i
-                                                    class="fa-solid fa-trash" style="  font-size: 15px;"></i></span>
-                                            <span class="btn px-4 text-light p-1 btn-success"
-                                                onclick="closeEditHolap()"><i class="fa-solid fa-floppy-disk"
-                                                    style="  font-size: 15px;"></i> Save</span>
-                                            <span class="btn px-4 text-light p-1 btn-warning"
-                                                onclick="closeEditHolap()"><i class="fa-solid fa-reply"
-                                                    style="  font-size: 15px;"></i> Cancel</span>
-                                            <a href="editHolapDetails.html" class="btn px-2 text-primary p-1 btn-light"
-                                                target="_blank"><i
-                                                    class="fa-solid fa-maximize "style="  font-size: 15px;"></i></a>
-                                        </div>
-                                        <div class="row container-fluid">
-                                            <div class="col-md-4  my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname0">Company / Business
-                                                            name * : </label>
 
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname0">
-                                                    </div>
-                                                </form>
 
-                                            </div><!--1-->
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname1">Payment term :</label>
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname1">
-                                                    </div>
-                                                </form>
+                                    {{-- ------------------- Edit Client Data------------------------------------------------ --}}
+                                    <form action="{{ route('clients.edit', $client->id) }}" method="POST">
+                                        @csrf
+                                        <div class="create-c-i holap-second bg-light d-none"
+                                            id="edit-client-data-{{ $client->id }}">
+                                            <div class="d-flex gap-3 justify-content-end text-center m-0 mb-3 p-3 w-100"
+                                                style="background-color: #006bff">
+                                                <span class="btn text-light p-1 px-2 btn-danger" onclick="closeHolap()"><i
+                                                        class="fa-solid fa-trash" style="  font-size: 15px;"></i></span>
+                                                <span class="btn px-4 text-light p-1 btn-success"
+                                                    onclick="closeEditHolap({{ $client->id }})"><i
+                                                        class="fa-solid fa-floppy-disk" style="  font-size: 15px;"></i>
+                                                    {{ __('Save') }}</span>
+                                                <span class="btn px-4 text-light p-1 btn-warning"
+                                                    onclick="closeEditHolap({{ $client->id }})"><i
+                                                        class="fa-solid fa-reply" style="  font-size: 15px;"></i>
+                                                    {{ __('Cancel') }}</span>
+                                                <a href="editHolapDetails.html"
+                                                    class="btn px-2 text-primary p-1 btn-light" target="_blank"><i
+                                                        class="fa-solid fa-maximize "style="  font-size: 15px;"></i></a>
+                                            </div>
+                                            <div id="edit-client-data-{{ $client->id }}">
+                                                <div class="row container-fluid">
+                                                    <div class="col-md-4  my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label
+                                                                    for="inputname0">{{ __("Company / Business
+                                                                                                                                                                                                            name") }}
+                                                                    * :</label>
 
-                                            </div><!--3-->
-                                            <div class="col-md-4 my-2">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <select class="form-select m-auto w-75"
-                                                        aria-label="Default select example">
-                                                        <option selected disabled>Contact:</option>
-                                                        <option value="1">Clients risqués (FR)</option>
-                                                        <option value="1">Key accounts scenario (EN)</option>
-                                                        <option value="1">Modeles actions specifiques</option>
-                                                        <option value="1">Risky clients (En)</option>
-                                                        <option value="1">
-                                                            Scenario de relance standard (by default)
-                                                        </option>
-                                                        <option value="1">Standard collection scenario</option>
-                                                        <option value="1">Templates specific actions</option>
-                                                    </select>
-                                                </div>
-                                            </div><!--2-->
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname4">Trading name :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname4">
-                                                    </div>
-                                                </form>
-
-                                            </div><!--4-->
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname6"> Payment mean :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname6">
-                                                    </div>
-                                                </form>
-                                            </div><!--6-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname60"> Role * :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <select class="form-select w-100" id="inputname60"
-                                                            aria-label="Default select example">
-                                                            <option value="1">Accountant</option>
-                                                            <option value="1">Client</option>
-                                                            <option value="1">Company</option>
-                                                            <option value="1">Executive Officer</option>
-                                                            <option selected>Other</option>
-                                                        </select>
-                                                    </div>
-                                                </form>
-                                            </div><!--6-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname7"> Company code * :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname7">
-                                                    </div>
-                                                </form>
-
-                                            </div><!--7-->
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname50"> Insurer reference :</label>
-
-                                                    </div>
-                                                    <div class="col-7">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="inputname50">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div><!--9-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname9"> Title <span class="text-black-50">(Mr,
-                                                                Mrs ...)</span>
-                                                            :</label>
-
-                                                    </div>
-                                                    <div class="col-7">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="inputname9">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div><!--9-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname5"> Ultimate Parent Code :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname5">
-                                                    </div>
-                                                </form>
-
-                                            </div><!--5-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname9"> Insurer guarantee :</label>
-
-                                                    </div>
-                                                    <div class="col-7">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="inputname9">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa-solid fa-euro-sign"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div><!--9-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname100"> Last Name * :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname100">
-                                                    </div>
-                                                </form>
-                                            </div><!--10-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname10"> Legal ID :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname10">
-                                                    </div>
-                                                </form>
-                                            </div><!--10-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname91"> Temporary guarantee :</label>
-
-                                                    </div>
-                                                    <div class="col-7">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="inputname91">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa-solid fa-euro-sign"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div><!--9-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname101"> First Name * :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname101">
-                                                    </div>
-                                                </form>
-                                            </div><!--10-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname13"> VAT Number :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname13">
-                                                    </div>
-                                                </form>
-                                            </div><!--13-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname222">Start date :</label>
-
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="inputname222">
-                                                        <span class="input-group-text"><i
-                                                                class="fa-solid fa-calendar-days"></i></span>
-                                                    </div>
-                                                </form>
-                                            </div><!--2-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname555"> Email :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname555">
-                                                    </div>
-                                                </form>
-
-                                            </div><!--5-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname2">Address :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <textarea class="form-control" rows="3" id="inputname2"></textarea>
-                                                    </div>
-                                                </form>
-                                            </div><!--2-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname2222">End date :</label>
-
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="inputname2222">
-                                                        <span class="input-group-text"><i
-                                                                class="fa-solid fa-calendar-days"></i></span>
-                                                    </div>
-                                                </form>
-                                                <div class=" my-2">
-                                                    <form class="d-flex">
-                                                        <div class="col-5 ">
-                                                            <label for="inputname12"> Other guarantees :</label>
-
-                                                        </div>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="inputname12">
-                                                            <span class="input-group-text"><i
-                                                                    class="fa-solid fa-euro-sign"></i></span>
-                                                        </div>
-                                                    </form>
-                                                </div><!--12-->
-                                            </div><!--2-->
-
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex justify-content-center my-2">
-                                                    <div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                id="email">
-                                                            <label class="form-check-label" for="email">Email in
-                                                                copy in the automatic
-                                                                emails</label>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                <div class=" my-2">
-                                                    <form class="d-flex">
-                                                        <div class="col-5 ">
-                                                            <label for="inputname502"> Phone :</label>
-
-                                                        </div>
-                                                        <div class="col-7 ">
-                                                            <input type="text" class="form-control" id="inputname502">
-                                                        </div>
-                                                    </form>
-                                                </div><!--5-->
-                                            </div><!--5-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname8"> Post Office Box :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname8">
-                                                    </div>
-                                                </form>
-
-                                            </div><!--8-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname15">
-                                                            Credit Limit :</label>
-
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="inputname15">
-                                                        <span class="input-group-text"><i
-                                                                class="fa-solid fa-euro-sign"></i></span>
-                                                    </div>
-                                                </form>
-                                            </div><!--15-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname504">Mobile Phone :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname504">
-                                                    </div>
-                                                </form>
-                                            </div><!--5-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname5"> ZIP (or Postal) Code :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname5">
-                                                    </div>
-                                                </form>
-
-                                            </div><!--5-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname505"> Score :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname505">
-                                                    </div>
-                                                </form>
-
-                                            </div><!--5-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname506"> Fax :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname506">
-                                                    </div>
-                                                </form>
-
-                                            </div><!--5-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname11"> City :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname11">
-                                                    </div>
-                                                </form>
-                                                <div class=" my-2">
-                                                    <form class="d-flex">
-                                                        <div class="col-5 ">
-                                                            <label for="inputname14"> State / Province :</label>
-
-                                                        </div>
-                                                        <div class="col-7 ">
-                                                            <input type="text" class="form-control" id="inputname14">
-                                                        </div>
-                                                    </form>
-                                                </div><!--14-->
-                                                <div class=" my-2">
-                                                    <form class="d-flex">
-                                                        <div class="col-5 ">
-                                                            <label for="inputname17"> Country :  </label>
-
-                                                        </div>
-                                                        <div class="col-7 ">
-                                                            <input type="text" class="form-control" id="inputname17">
-                                                        </div>
-                                                    </form>
-                                                </div><!--17-->
-                                            </div><!--11-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname18"> <a href="">Late payment
-                                                                penalties?</a></label>
-
-                                                    </div>
-                                                    <div class="col-7 d-flex justify-content-between align-items-center ">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                id="exampleCheckbox1">
-                                                            <label class="form-check-label"
-                                                                for="exampleCheckbox1">Yes</label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio"
-                                                                id="exampleCheckbox2">
-                                                            <label class="form-check-label"
-                                                                for="exampleCheckbox2">No</label>
-                                                        </div>
-                                                    </div>
-
-                                                </form>
-                                                <div class=" my-2">
-                                                    <form class="d-flex">
-                                                        <div class="col-5 ">
-                                                            <label for="inputname21"> <a href="">Recovery
-                                                                    cost?</a></label>
-
-                                                        </div>
-                                                        <div class="col-7 d-flex justify-content-between ">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio"
-                                                                    id="exampleCheckbox1">
-                                                                <label class="form-check-label"
-                                                                    for="exampleCheckbox1">Yes</label>
                                                             </div>
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="radio"
-                                                                    id="exampleCheckbox2">
-                                                                <label class="form-check-label"
-                                                                    for="exampleCheckbox2">No</label>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="company_name"
+                                                                    value="{{ old('company_name', $client->company_name) }}"
+                                                                    class="form-control" id="inputname0">
                                                             </div>
                                                         </div>
-                                                    </form>
 
-                                                </div><!--21-->
-                                                <div class=" my-2">
-                                                    <form class="d-flex">
-                                                        <div class="col-5 ">
-                                                            <label for="inputname24"><a href="">Interactive
-                                                                    emails?</a></label>
-
-                                                        </div>
-                                                        <div class="col-7 d-flex justify-content-between  ">
-                                                            <div class="form-check ">
-                                                                <input class="form-check-input" type="radio"
-                                                                    id="exampleCheckbox1">
-                                                                <label class="form-check-label"
-                                                                    for="exampleCheckbox1">Yes</label>
+                                                    </div><!--1-->
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname1">{{ __('Payment term') }}:</label>
                                                             </div>
-                                                            <div class="form-check d-flex">
-                                                                <input class="form-check-input" type="radio"
-                                                                    id="exampleCheckbox2">
-                                                                <label class="form-check-label "
-                                                                    for="exampleCheckbox2">No</label>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="payment_term"
+                                                                    value="{{ old('payment_term', $client->payment_term) }}"
+                                                                    class="form-control" id="inputname1">
                                                             </div>
                                                         </div>
-                                                    </form>
-                                                </div><!--24-->
-                                            </div><!--18-->
 
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 mt-2">
-                                                        <label for="inputname2">Comments :</label>
+                                                    </div><!--3-->
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <select class="form-select m-auto w-75"
+                                                                aria-label="Default select example">
+                                                                <option selected disabled>Contact:</option>
+                                                                <option value="1">Clients risqués (FR)</option>
+                                                                <option value="1">Key accounts scenario (EN)</option>
+                                                                <option value="1">Modeles actions specifiques</option>
+                                                                <option value="1">Risky clients (En)</option>
+                                                                <option value="1">
+                                                                    Scenario de relance standard (by default)
+                                                                </option>
+                                                                <option value="1">Standard collection scenario
+                                                                </option>
+                                                                <option value="1">Templates specific actions</option>
+                                                            </select>
+                                                        </div>
+                                                    </div><!--2-->
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname4">{{ __('Trading name') }} :</label>
 
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <textarea class="form-control" rows="3" id="inputname2"></textarea>
-                                                        <p class="text-black-50 m-0">Comments should be factual,
-                                                            objective and non
-                                                            offensive
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name='trading_name'
+                                                                    value="{{ old('trading_name', $client->trading_name) }}"
+                                                                    class="form-control" id="inputname4">
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--4-->
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname6"> {{ __('Payment mean') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="payment_mean"
+                                                                    value="{{ old('payment_mean', $client->payment_mean) }}"
+                                                                    class="form-control" id="inputname6">
+                                                            </div>
+                                                        </div>
+                                                    </div><!--6-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname60"> {{ __('Role') }} * :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <select class="form-select w-100" id="inputname60"
+                                                                    aria-label="Default select example">
+                                                                    <option value="1">Accountant</option>
+                                                                    <option value="1">Client</option>
+                                                                    <option value="1">Company</option>
+                                                                    <option value="1">Executive Officer</option>
+                                                                    <option selected>Other</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--6-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname7"> {{ __('Company code') }} *
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="company_code"
+                                                                    value="{{ old('company_code', $client->company_code) }}"
+                                                                    class="form-control" id="inputname7">
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--7-->
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname50"> {{ __('Insurer reference') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7">
+                                                                <div class="input-group">
+                                                                    <input type="text" name="insurer_reference"
+                                                                        class="form-control" id="inputname50">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--9-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname9"> {{ __('Title') }} <span
+                                                                        class="text-black-50">{{ __("(Mr,
+                                                                                                                                                                                                                        Mrs ...)") }}</span>
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7">
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control"
+                                                                        id="inputname9">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--9-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname5"> {{ __('Ultimate Parent Code') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" class="form-control"
+                                                                    id="inputname5">
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--5-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname9"> {{ __('Insurer guarantee') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7">
+                                                                <div class="input-group">
+                                                                    <input type="number" name="insurer_guarantee"
+                                                                        value="{{ old('insurer_guarantee', $client->insurer_guarantee) }}"
+                                                                        class="form-control" id="inputname9">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fa-solid fa-euro-sign"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--9-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname100"> {{ __('Last Name') }} *
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" class="form-control"
+                                                                    id="inputname100">
+                                                            </div>
+                                                        </div>
+                                                    </div><!--10-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname10"> {{ __('Legal ID') }} :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="legal_id"
+                                                                    value="{{ old('legal_id', $client->legal_id) }}"
+                                                                    class="form-control" id="inputname10">
+                                                            </div>
+                                                        </div>
+                                                    </div><!--10-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname91"> {{ __('Temporary guarantee') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7">
+                                                                <div class="input-group">
+                                                                    <input type="number" name=""
+                                                                        class="form-control" id="inputname91">
+                                                                    <span class="input-group-text"><i
+                                                                            class="fa-solid fa-euro-sign"></i></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--9-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname101"> {{ __('First Name') }} *
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" class="form-control"
+                                                                    id="inputname101">
+                                                            </div>
+                                                        </div>
+                                                    </div><!--10-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname13"> {{ __('VAT Number') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="vat_number"
+                                                                    value="{{ old('vat_number', $client->vat_number) }}"
+                                                                    class="form-control" id="inputname13">
+                                                            </div>
+                                                        </div>
+                                                    </div><!--13-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname222">{{ __('Start date') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <input type="date" class="form-control"
+                                                                    id="inputname222">
+                                                                <span class="input-group-text"><i
+                                                                        class="fa-solid fa-calendar-days"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--2-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname555"> {{ __('Email') }} :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" class="form-control"
+                                                                    id="inputname555">
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--5-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname2">{{ __('Address') }} :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <textarea name="address" value="{{ old('address', $client->address) }}" class="form-control" rows="3"
+                                                                    id="inputname2"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--2-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname2222">{{ __('End date') }} :</label>
+
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control"
+                                                                    id="inputname2222">
+                                                                <span class="input-group-text"><i
+                                                                        class="fa-solid fa-calendar-days"></i></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" my-2">
+                                                            <div class="d-flex">
+                                                                <div class="col-5 ">
+                                                                    <label for="inputname12">
+                                                                        {{ __('Other guarantees') }} :</label>
+
+                                                                </div>
+                                                                <div class="input-group">
+                                                                    <input type="number" name="other_guarantees"
+                                                                        class="form-control" id="inputname12">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fa-solid fa-euro-sign"></i>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div><!--12-->
+                                                    </div><!--2-->
+
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex justify-content-center my-2">
+                                                            <div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="email" name="">
+                                                                    <label class="form-check-label"
+                                                                        for="email">{{ __("Email in
+                                                                                                                                                                                                                        copy in the automatic  emails") }}</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class=" my-2">
+                                                            <div class="d-flex">
+                                                                <div class="col-5 ">
+                                                                    <label for="inputname502"> {{ __('Phone') }}
+                                                                        :</label>
+
+                                                                </div>
+                                                                <div class="col-7 ">
+                                                                    <input type="text" name="phone"
+                                                                        class="form-control" id="inputname502">
+                                                                </div>
+                                                            </div>
+                                                        </div><!--5-->
+                                                    </div><!--5-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname8"> {{ __('Post Office Box') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="post_office_box"
+                                                                    value="{{ old('post_office_box', $client->post_office_box) }}"
+                                                                    class="form-control" id="inputname8">
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--8-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname15">
+                                                                    {{ __('Credit Limit') }} :</label>
+
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <input type="text" name="credit_limit"
+                                                                    value="{{ old('credit_limit', $client->credit_limit) }}"
+                                                                    class="form-control" id="inputname15">
+                                                                <span class="input-group-text"><i
+                                                                        class="fa-solid fa-euro-sign"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--15-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname504">{{ __('Mobile Phone') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="mobile_phone"
+                                                                    class="form-control" id="inputname504">
+                                                            </div>
+                                                        </div>
+                                                    </div><!--5-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname5"> {{ __('ZIP (or Postal) Code') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="postal_code"
+                                                                    value="{{ old('postal_code', $client->postal_code) }}"
+                                                                    class="form-control" id="inputname5">
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--5-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname505"> {{ __('Score') }} :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="score" class="form-control"
+                                                                    id="inputname505">
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--5-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname506"> {{ __('Fax') }} :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="fax" class="form-control"
+                                                                    id="inputname506">
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--5-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname11"> {{ __('City') }} :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name='city'
+                                                                    value="{{ old('city', $client->city) }}"
+                                                                    class="form-control" id="inputname11">
+                                                            </div>
+                                                        </div>
+                                                        <div class=" my-2">
+                                                            <div class="d-flex">
+                                                                <div class="col-5 ">
+                                                                    <label for="inputname14">
+                                                                        {{ __('State / Province') }} :</label>
+
+                                                                </div>
+                                                                <div class="col-7 ">
+                                                                    <input type="text" name="state"
+                                                                        value="{{ old('state', $client->state) }}"
+                                                                        class="form-control" id="inputname14">
+                                                                </div>
+                                                            </div>
+                                                        </div><!--14-->
+                                                        <div class=" my-2">
+                                                            <div class="d-flex">
+                                                                <div class="col-5 ">
+                                                                    <label for="inputname17"> {{ __('Country') }} :
+                                                                    </label>
+
+                                                                </div>
+                                                                <div class="col-7 ">
+                                                                    <input type="text" name="country"
+                                                                        value="{{ old('country', $client->country) }}"
+                                                                        class="form-control" id="inputname17">
+                                                                </div>
+                                                            </div>
+                                                        </div><!--17-->
+                                                    </div><!--11-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname18"> <a
+                                                                        href="">{{ __("Late payment
+                                                                                                                                                                                                                        penalties?") }}</a></label>
+
+                                                            </div>
+                                                            <div
+                                                                class="col-7 d-flex justify-content-between align-items-center ">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="late_payment_penalties" value='1'
+                                                                        {{ old('late_payment_penalties', $client->late_payment_penalties) == 1 ? 'checked' : '' }}
+                                                                        id="exampleCheckbox1">
+                                                                    <label class="form-check-label"
+                                                                        for="exampleCheckbox1">{{ __('Yes') }}</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        name="late_payment_penalties" value='0'
+                                                                        {{ old('late_payment_penalties', $client->late_payment_penalties) == 0 ? 'checked' : '' }}
+                                                                        id="exampleCheckbox2">
+                                                                    <label class="form-check-label"
+                                                                        for="exampleCheckbox2">{{ __('No') }}</label>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class=" my-2">
+                                                            <div class="d-flex">
+                                                                <div class="col-5 ">
+                                                                    <label for="inputname21"> <a
+                                                                            href="">{{ __("Recovery
+                                                                                                                                                                                                                                    cost?") }}</a></label>
+
+                                                                </div>
+                                                                <div class="col-7 d-flex justify-content-between ">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="recovery_cost" value='1'
+                                                                            {{ old('recovery_cost', $client->recovery_cost) == 1 ? 'checked' : '' }}
+                                                                            id="exampleCheckbox1">
+                                                                        <label class="form-check-label"
+                                                                            for="exampleCheckbox1">{{ __('Yes') }}</label>
+                                                                    </div>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="recovery_cost" value='0'
+                                                                            {{ old('recovery_cost', $client->recovery_cost) == 0 ? 'checked' : '' }}
+                                                                            id="exampleCheckbox2">
+                                                                        <label class="form-check-label"
+                                                                            for="exampleCheckbox2">{{ __('No') }}</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div><!--21-->
+                                                        <div class=" my-2">
+                                                            <div class="d-flex">
+                                                                <div class="col-5 ">
+                                                                    <label for="inputname24"><a
+                                                                            href="">{{ __("Interactive
+                                                                                                                                                                                                                                    emails") }}?</a></label>
+
+                                                                </div>
+                                                                <div class="col-7 d-flex justify-content-between  ">
+                                                                    <div class="form-check ">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="interactive_emails" value='1'
+                                                                            {{ old('interactive_emails', $client->interactive_emails) == 1 ? 'checked' : '' }}
+                                                                            id="exampleCheckbox1">
+                                                                        <label class="form-check-label"
+                                                                            for="exampleCheckbox1">{{ __('Yes') }}</label>
+                                                                    </div>
+                                                                    <div class="form-check d-flex">
+                                                                        <input class="form-check-input" type="radio"
+                                                                            name="interactive_emails" value='0'
+                                                                            {{ old('interactive_emails', $client->interactive_emails) == 0 ? 'checked' : '' }}
+                                                                            id="exampleCheckbox2">
+                                                                        <label class="form-check-label "
+                                                                            for="exampleCheckbox2">{{ __('No') }}</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><!--24-->
+                                                    </div><!--18-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 mt-2">
+                                                                <label for="inputname2">{{ __('Comments') }} :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <textarea class="form-control" rows="3" id="inputname2"></textarea>
+                                                                <p class="text-black-50 m-0">
+                                                                    {{ __("Comments should be factual,
+                                                                                                                                                                                                            objective and non
+                                                                                                                                                                                                            offensive") }}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--2-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname20"> {{ __('Website') }} :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" name="website"
+                                                                    value="{{ old('website', $client->website) }}"
+                                                                    class="form-control" id="inputname20">
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--20-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label
+                                                                    for="inputname27">{{ __('Customer custom field #1') }}:</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" class="form-control"
+                                                                    id="inputname27">
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--27-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex justify-content-center my-2">
+                                                            <div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="contact">
+                                                                    <label class="form-check-label"
+                                                                        for="contact">{{ __("Contact for
+                                                                                                                                                                                                                        collection?") }}</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--5-->
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname16"> {{ __('Business line') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" class="form-control"
+                                                                    id="inputname16">
+                                                            </div>
+                                                        </div>
+                                                    </div><!--16-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label
+                                                                    for="inputname30">{{ __('Customer custom field #2') }}:</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <input type="text" class="form-control"
+                                                                    id="inputname30">
+                                                            </div>
+                                                        </div>
+                                                    </div><!--30-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex justify-content-center">
+                                                            <div>
+                                                                <div class="btn btn-danger"><i
+                                                                        class="fa-solid fa-trash"></i>
+                                                                    {{ __('Delete this contact') }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--5-->
+
+
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname19"> {{ __('Collector') }} :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <select name="collector_id" class="form-select"
+                                                                    id="inputname19">
+                                                                    <option selected disabled>
+                                                                        {{ $client->collector->first_name }}</option>
+                                                                    @foreach ($collectors as $collector)
+                                                                        <option value={{ $collector->id }}>
+                                                                            {{ $collector->first_name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                    </div><!--19-->
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label for="inputname22"> {{ __('Collection scenario') }}
+                                                                    :</label>
+
+                                                            </div>
+                                                            <div class="col-7 ">
+                                                                <select name='collection_scenario_id' class="form-select"
+                                                                    id="inputname19">
+                                                                    <option selected disabled>
+                                                                        {{ $client->collectionScenarios->en_name }}
+                                                                    </option>
+                                                                    @foreach ($collectionsScenario as $collection)
+                                                                        <option value={{ $collection->id }}>
+                                                                            {{ $collection->en_name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--22-->
+
+                                                    <div class="col-md-4 my-2">
+                                                        <div class="d-flex">
+                                                            <div class="col-5 ">
+                                                                <label
+                                                                    for="inputname24">{{ __('Block this account') }}?</label>
+                                                            </div>
+                                                            <div class="col-7 d-flex justify-content-between">
+                                                                <div class="form-check ">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        id="block">
+                                                                    <label class="form-check-label"
+                                                                        for="block">{{ __('Yes') }}</label>
+                                                                </div>
+                                                                <div class="form-check d-flex">
+                                                                    <input class="form-check-input" type="radio"
+                                                                        id="block">
+                                                                    <label class="form-check-label "
+                                                                        for="block">{{ __('No') }}</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><!--24-->
+
+                                                    <div class="my-4 d-flex justify-content-center gap-3">
+                                                        <p class="text-black-50">
+                                                            {{ __('Creation date in MY DSO MANAGER') }} :
+                                                            {{ $client->created_at }} (G.M.T. +1)
                                                         </p>
+                                                        <p class="text-black-50">• {{ __('Modification date') }} :
+                                                            {{ $client->updated_at }}
+                                                            (G.M.T. +1)</p>
                                                     </div>
-                                                </form>
-                                            </div><!--2-->
 
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname20"> Website :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname20">
-                                                    </div>
-                                                </form>
-
-                                            </div><!--20-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname27">Customer custom field #1:</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname27">
-                                                    </div>
-                                                </form>
-
-                                            </div><!--27-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex justify-content-center my-2">
-                                                    <div>
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                id="contact">
-                                                            <label class="form-check-label" for="contact">Contact for
-                                                                collection?</label>
+                                                </div><!--row-->
+                                                <div class="row p-4 m-0 container-fluid">
+                                                    <div class="col-lg-4 col-sm-6">
+                                                        <div class="m-1 w-100 btn btn-primary disputeButton"
+                                                            onclick="disputeFun()">
+                                                            <i class="fa-solid fa-clock"></i>
+                                                            {{ __('collection& dispute management') }}
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div><!--5-->
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname16"> Business line :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname16">
-                                                    </div>
-                                                </form>
-                                            </div><!--16-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname30">Customer custom field #2:</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <input type="text" class="form-control" id="inputname30">
-                                                    </div>
-                                                </form>
-                                            </div><!--30-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex justify-content-center">
-                                                    <div>
-                                                        <div class="btn btn-danger"><i class="fa-solid fa-trash"></i>
-                                                            Delete this contact
+                                                    <div class="col-lg-2 col-sm-6">
+                                                        <div class="m-1 w-100 btn btn-outline-primary riskButton"
+                                                            onclick="riskFun()">
+                                                            <i class="fa-solid fa-bolt"></i> {{ __('Risk Report') }}
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div><!--5-->
-
-
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname19"> Collector :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <select class="form-select" id="inputname19">
-                                                            <option value="" selected disabled>Nicolas Grayson
-                                                                (collestor)
-                                                            </option>
-                                                            <option value="option1">Mike Anderson (Collector)</option>
-                                                            <option value="option1">Nicolas Grayson (Collector)
-                                                            </option>
-                                                            <option value="option1">Paul Mayer (Administrator)</option>
-                                                            <option value="">Véronique Miguet (Credit Manager)
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </form>
-
-                                            </div><!--19-->
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname22"> Collection scenario :</label>
-
-                                                    </div>
-                                                    <div class="col-7 ">
-                                                        <select class="form-select" id="inputname19">
-                                                            <option value="" selected disabled>scenario do
-                                                                relance standare</option>
-                                                            <option value="">Clients publics (FR)</option>
-                                                            <option value="">Clients risqués (FR)</option>
-                                                            <option value="">Key accounts scenario (EN)</option>
-                                                            <option value="">Modèles actions spécifiques</option>
-                                                            <option value="">Risky clients (EN)</option>
-                                                            <option value="">Scénario de relance standard (by
-                                                                default)</option>
-                                                            <option value="">Standard Collection Scenario
-                                                            </option>
-                                                            <option value="">Templates specific actions</option>
-                                                        </select>
-                                                    </div>
-                                                </form>
-                                            </div><!--22-->
-
-                                            <div class="col-md-4 my-2">
-                                                <form class="d-flex">
-                                                    <div class="col-5 ">
-                                                        <label for="inputname24">Block this account?</label>
-                                                    </div>
-                                                    <div class="col-7 d-flex justify-content-between  ">
-                                                        <div class="form-check ">
-                                                            <input class="form-check-input" type="radio"
-                                                                id="block">
-                                                            <label class="form-check-label" for="block">Yes</label>
-                                                        </div>
-                                                        <div class="form-check d-flex">
-                                                            <input class="form-check-input" type="radio"
-                                                                id="block">
-                                                            <label class="form-check-label " for="block">No</label>
+                                                    <div class="col-lg-3 col-sm-6">
+                                                        <div class="m-1 w-100 btn btn-outline-primary indicatorsButton"
+                                                            onclick="indicatorsFun()">
+                                                            <i class="fa-solid fa-chart-simple"></i>
+                                                            {{ __('Reports & Indicators') }}
                                                         </div>
                                                     </div>
-                                                </form>
-                                            </div><!--24-->
+                                                    <div class="col-lg-3 col-sm-6">
+                                                        <div class="m-1 w-100 btn scenariosActionsmary historyButton"
+                                                            onclick="historyFun()">
+                                                            <i class="fa-solid fa-bars-staggered"></i>
+                                                            {{ __('History') }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--create-c-i-->
+                                    </form>
 
-                                            <div class="my-4 d-flex justify-content-center gap-3">
-                                                <p class="text-black-50">Creation date in MY DSO MANAGER : 2020-03-02
-                                                    11:00:15 (G.M.T. +1)
-                                                </p>
-                                                <p class="text-black-50">• Modification date : 2020-03-11 16:59:24
-                                                    (G.M.T. +1)</p>
-                                            </div>
+                                    {{-- -------------------  End Edit Client Data------------------------------------------------ --}}
 
-                                        </div><!--row-->
-                                        <div class="row p-4 m-0 container-fluid">
-                                            <div class="col-lg-4 col-sm-6">
-                                                <div class="m-1 w-100 btn btn-primary disputeButton"
-                                                    onclick="disputeFun()">
-                                                    <i class="fa-solid fa-clock"></i> collection& dispute management
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-sm-6">
-                                                <div class="m-1 w-100 btn btn-outline-primary riskButton"
-                                                    onclick="riskFun()">
-                                                    <i class="fa-solid fa-bolt"></i> Risk Report
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="m-1 w-100 btn btn-outline-primary indicatorsButton"
-                                                    onclick="indicatorsFun()">
-                                                    <i class="fa-solid fa-chart-simple"></i> Reports & Indicators
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="m-1 w-100 btn btn-outline-primary historyButton"
-                                                    onclick="historyFun()">
-                                                    <i class="fa-solid fa-bars-staggered"></i> History
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!--create-c-i-->
-
+                                    {{-- ------------------- Dates Line ------------------------------------------------ --}}
                                     <div class="bg-white" id="disputeDiv">
                                         <div class="bg-white position-relative">
                                             <div
                                                 class="d-flex small-icons-big-container justify-content-between p-4 px-5 m-0">
                                                 <div class="text-center my-auto small-icons-container">
-                                                    Key accounts scenario (EN) :
+                                                    {{ __('Key accounts scenario') }} (EN) :
                                                 </div>
                                                 <div class="text-center small-icons-container" style="z-index: 2">
                                                     <span>-10d</span>
@@ -1358,64 +1484,69 @@
                                                 <div class="col fw-bold">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Action date</p>
+                                                        <p class="fw-bold">{{ __('Action date') }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col fw-bold">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Action type</p>
+                                                        <p class="fw-bold">{{ __('Action type') }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col fw-bold">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Action</p>
+                                                        <p class="fw-bold">{{ __('Action') }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col fw-bold">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Action amount inc. Tax</p>
+                                                        <p class="fw-bold">{{ __('Action amount inc. Tax') }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="col"></div>
                                             </div>
-                                            <div class="row mt-2 text-center p-2 align-items-center"
-                                                style="background-color: #006bff14;">
-                                                <div class="col fw-bold">13 - 5 - 2022</div>
-                                                <div class="col fw-bold">
-                                                    <div class="btn openModalBtn btn-primary">@ Email</div>
-                                                </div>
-                                                <div class="col fw-bold">Reminder by email No .2</div>
-                                                <div class="col fw-bold">100,000.00 €</div>
-                                                <div class="col">
-                                                    <div class="btn btn-primary">
-                                                        <i class="fa-solid fa-check"></i>
-                                                    </div>
-                                                    <div class="btn btn-outline-primary">
-                                                        <i class="fa-solid fa-calendar"></i>
-                                                    </div>
-                                                    <div class="btn btn-outline-primary">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </div>
-                                                </div>
+                                            <div
+                                                class="row mt-2 text-center p-2 align-items-center"style="background-color: #006bff14;">
+                                                    @php($firstDueItem = $client->firstDueItem())
+                                                        <div class="col fw-bold">{{$firstDueItem->due_date ?? '2/2/2'}}</div>
+                                                        <div class="col fw-bold">
+                                                            <div class="btn openModalBtn btn-primary">
+                                                                {{ optional($firstDueItem)->toTakeAction()->action_type ?? 'email' }}email</div>
+                                                        </div>
+                                                        <div class="col fw-bold">{{ optional($firstDueItem)->toTakeAction()->number_of_days }}2</div>
+                                                        <div class="col fw-bold">0000</div>
+                                                        <div class="col">
+                                                            <div class="btn btn-primary">
+                                                                <i class="fa-solid fa-check"></i>
+                                                            </div>
+                                                            <div class="btn btn-outline-primary">
+                                                                <i class="fa-solid fa-calendar"></i>
+                                                            </div>
+                                                            <div class="btn btn-outline-primary">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </div>
+                                                        </div>
                                             </div>
                                             <div class="row bg-light p-2 mt-3">
                                                 <div class="col-sm-4">
-                                                    Total Receivable:<span class="fw-bold">100,000.00 €</span>
+                                                    {{ __(' Total Receivable') }}:<span class="fw-bold">100,000.00
+                                                        €</span>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    Overdue:<span class="fw-bold">100,000.00 €</span>
+                                                    {{ __('Overdue') }}:<span class="fw-bold">100,000.00 €</span>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    Current Receivable:<span class="fw-bold">100,000.00 €</span>
+                                                    {{ __('Current Receivable') }}:<span class="fw-bold">100,000.00
+                                                        €</span>
                                                 </div>
                                             </div>
                                             <div class="d-flex flex-wrap justify-content-between mt-3">
                                                 <div class="d-flex">
-                                                    <h4>Statement of account of open items</h4>
-                                                    <div class="btn bg-light ms-2">No .of items: {{$client->items->count()}}</div>
+                                                    <h4>{{ __('Statement of account of open items') }}</h4>
+                                                    <div class="btn bg-light ms-2">{{ __('No .of items') }}:
+                                                        {{ $client->items->count() }}</div>
                                                 </div>
                                                 <div class="form-group position-relative">
                                                     <input type="text" class="form-control border-primary ps-5"
@@ -1432,6 +1563,8 @@
                                                 </div>
                                             </div>
                                             <!--start-->
+                                            {{-- ------------------- Items Table------------------------------------------------ --}}
+
                                             <div class="row mt-3 p-2 px-md-4 align-items-center text-center">
                                                 <div class="col-1" style="z-index: 999;">
                                                     <div class="form-check">
@@ -1442,49 +1575,49 @@
                                                 <div class="col">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{__("Trans.no")}}</p>
+                                                        <p class="fw-bold">{{ __('Trans.no') }}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col hide">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{__("Issue date")}}</p>
+                                                        <p class="fw-bold">{{ __('Issue date') }}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{__("Due date")}}</p>
+                                                        <p class="fw-bold">{{ __('Due date') }}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col-1 hide">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{__("Overdue")}}</p>
+                                                        <p class="fw-bold">{{ __('Overdue') }}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col hide">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{__("Intial amount inc. Tax")}}</p>
+                                                        <p class="fw-bold">{{ __('Intial amount inc. Tax') }}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{__("Remaining amount inc. Tax")}}</p>
+                                                        <p class="fw-bold">{{ __('Remaining amount inc. Tax') }}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="col-3 hide">
                                                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                                                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{__("Status")}}</p>
+                                                        <p class="fw-bold">{{ __('Status') }}</p>
                                                     </div>
 
                                                 </div>
@@ -1492,7 +1625,7 @@
                                             </div>
                                             <div class="text-center mb-3 table-container-2 p-2 px-md-4  ">
                                                 <div class="row align-items-center pt-3"
-                                                    style="{{$overDueDays >=  0 ?  'background-color: #e6d3d3' : 'background-color: #d9edf7'}}">
+                                                    style="{{ $overDueDays >= 0 ? 'background-color: #e6d3d3' : 'background-color: #d9edf7' }}">
                                                     <div class="col-1" style="z-index: 999;">
                                                         <div class="form-check">
                                                             <input type="checkbox" class="form-check-input"
@@ -1507,23 +1640,31 @@
 
                                                     </div>
                                                     <div class="col hide">
-                                                        <p class="fw-bold">{{$client->items->issue_date = null ?? '0/0/0'}}</p>
+                                                        <p class="fw-bold">
+                                                            {{ $client->items->issue_date = null ?? '0/0/0' }}</p>
                                                     </div>
                                                     <div class="col">
-                                                        <p class="fw-bold">{{$client->items->due_date = null ?? '0/0/0'}}</p>
+                                                        <p class="fw-bold">
+                                                            {{ $client->items->due_date = null ?? '0/0/0' }}</p>
                                                     </div>
                                                     <div class="col-1 hide">
-                                                        <div class="badge mb-2" style="{{$overDueDays >= 0 ? 'background-color: #d07471;' : 'background-color: gray'}}">{{$overDueDays}}d</div>
+                                                        <div class="badge mb-2"
+                                                            style="{{ $overDueDays >= 0 ? 'background-color: #d07471;' : 'background-color: gray' }}">
+                                                            {{ $overDueDays }}d</div>
                                                     </div>
                                                     <div class="col hide">
-                                                        <p class="fw-bold">{{$client->items->initial_amount_inc_tax = null ?? '5555'}} €</p>
+                                                        <p class="fw-bold">
+                                                            {{ $client->items->initial_amount_inc_tax = null ?? '5555' }}
+                                                            €</p>
                                                     </div>
                                                     <div class="col">
-                                                        <p class="fw-bold">{{$client->items->remaining_amount_inc_tax = null ?? '5555'}} €</p>
+                                                        <p class="fw-bold">
+                                                            {{ $client->items->remaining_amount_inc_tax = null ?? '5555' }}
+                                                            €</p>
                                                     </div>
                                                     <div class="col-3 hide">
-                                                        @foreach($client->items as $item)
-                                                            {{$item->itemStatus->status = null ?? 'status1'}},{{$item->itemStatus->follow_up_days = null ?? +1}}
+                                                        @foreach ($client->items as $item)
+                                                            {{-- $item->itemStatus->status --}},{{-- $item->itemStatus->follow_up_days --}}
                                                         @endforeach
                                                     </div>
                                                     <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
@@ -1532,10 +1673,12 @@
                                                 </div>
                                             </div>
                                             <div class="d-flex justify-content-center gap-5">
-                                                <p class="fw-bold">{{__("Total")}}:</p>
-                                                <p class="fw-bold">{{$total_InitialAmount = null ?? 5555}} €</p>
-                                                <p class="fw-bold">{{$total_RemainingAmount = null ?? 5555}} €</p>
+                                                <p class="fw-bold">{{ __('Total') }}:</p>
+                                                <p class="fw-bold">{{ $total_InitialAmount = null ?? 55955 }} €</p>
+                                                <p class="fw-bold">{{ $total_RemainingAmount = null ?? 5555 }} €</p>
                                             </div>
+
+                                            {{-- ------------------- End Items Table------------------------------------------------ --}}
                                         </div>
                                         <div class="row px-4 align-items-center m-0">
                                             <div class="col-lg-4 col-sm-6 col-12 mb-2">
@@ -1655,8 +1798,8 @@
                                                                 </select>
                                                                 </li>
                                                                 <li class="mt-3 "><button type="button"
-                                                                        class="btn"
-                                                                        style="width: 100%;"><span><i class="fa-solid
+                                                                        class="btn" style="width: 100%;"><span><i
+                                                                                class="fa-solid
                                                                                 fa-download"></i>&ensp;</span>download</button>
                                                                 </li>
                                                             </ul>
@@ -1666,20 +1809,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--sec-1-->
+
+                                    {{-- ------------------- End Dates Line ------------------------------------------------ --}}
+
+                                    {{-- ------------------- Actions Table ------------------------------------------------ --}}
                                     <div class="sec-1 pb-5 bg-white text-capitalize d-none " id="riskDiv">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="end-con d-flex justify-content-between">
                                                     <h4 class="mt-2 mb-2"><span><i
                                                                 class="fa-regular fa-hand-point-right"></i></span>
-                                                        Actions to
-                                                        do: <span>?
-                                                            readmore</span> </h4>
+                                                        {{ __("Actions to
+                                                                                                                                                                        do") }}:
+                                                        <span>?
+                                                            readmore</span>
+                                                    </h4>
                                                     <div class="">
                                                         <select class="form-select m-2 text-capitalize "
                                                             aria-label="Default select example">
-                                                            <option selected>New action</option>
+                                                            <option selected>{{ __('New action') }}</option>
                                                             <option value="1">send email</option>
                                                             <option value="1">send international interactive
                                                                 email </option>
@@ -3023,7 +3171,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--sec-1-->
+
+                                    {{-- ------------------- End Actions Table ------------------------------------------------ --}}
 
                                     <!--sec-2-->
 
@@ -3441,7 +3590,8 @@
                                                 </div>
 
                                                 <div class="page-not-found mt-3 mb-3 d-none" id="page-not-found">
-                                                    <h5 class="text-center mt-3 mb-3 p-4">No history found</h5>
+                                                    <h5 class="text-center mt-3 mb-3 p-4">{{ __('No history found') }}
+                                                    </h5>
                                                 </div>
 
                                                 <div class="tale-2 mt-3 border-none d-none" id="history-table">
@@ -3744,114 +3894,114 @@
                                 </div>
 
                             </div>
-                        @empty
-                            <div class="row d-none text-center">
-                                <p class="p-1 mt-3">
-                                    {{ __('No clients has been found') }}
-                                </p>
+                            @empty
+                                <div class="row d-none text-center">
+                                    <p class="p-1 mt-3">
+                                        {{ __('No clients has been found') }}
+                                    </p>
+                                </div>
+                            @endforelse
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-2 col-4"></div>
+                            <div class="form-group col-md-4 col-8">
+                                <select class="form-select m-2" onfocus="this.size=9;" onblur="this.size=1;"
+                                    onchange="this.size=1; this.blur();" aria-label=" Default select example">
+                                    <option value="" selected disabled>Add To Group :</option>
+                                    <option value="1">ATLANTIQue</option>
+                                    <option value="2">Central</option>
+                                    <option value="3">Clients douteux</option>
+                                    <option value="3">Clients France</option>
+                                    <option value="3">Clients Grands Comptes</option>
+                                    <option value="3">Clients Mass market</option>
+                                    <option value="3">Clients OSP</option>
+                                    <option value="3">Clients PME</option>
+                                    <option value="3">Clients Publics</option>
+                                    <option value="3">Clients Risques</option>
+                                    <option value="3">Clients Speciaux</option>
+                                    <option value="3">Clients VIP</option>
+                                    <option value="3">ClIENT_MEDIPREMA</option>
+                                    <option value="3">France Contentieux</option>
+                                    <option value="3">Group Alias</option>
+                                    <option value="3">Group Elec</option>
+                                    <option value="3">Group Imprimeurs</option>
+                                    <option value="3">Group Industrie</option>
+                                    <option value="3">Magasins de villa</option>
+                                    <option value="3">Market Place</option>
+                                    <option value="3">Public</option>
+                                    <option value="3">Relance team back office</option>
+                                    <option value="3">Retail</option>
+                                    <option value="3">Salomon</option>
+                                    <option value="3">Test 2</option>
+                                    <option value="3">US Clients</option>
+                                </select>
                             </div>
-                        @endforelse
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-2 col-4"></div>
-                        <div class="form-group col-md-4 col-8">
-                            <select class="form-select m-2" onfocus="this.size=9;" onblur="this.size=1;"
-                                onchange="this.size=1; this.blur();" aria-label=" Default select example">
-                                <option value="" selected disabled>Add To Group :</option>
-                                <option value="1">ATLANTIQue</option>
-                                <option value="2">Central</option>
-                                <option value="3">Clients douteux</option>
-                                <option value="3">Clients France</option>
-                                <option value="3">Clients Grands Comptes</option>
-                                <option value="3">Clients Mass market</option>
-                                <option value="3">Clients OSP</option>
-                                <option value="3">Clients PME</option>
-                                <option value="3">Clients Publics</option>
-                                <option value="3">Clients Risques</option>
-                                <option value="3">Clients Speciaux</option>
-                                <option value="3">Clients VIP</option>
-                                <option value="3">ClIENT_MEDIPREMA</option>
-                                <option value="3">France Contentieux</option>
-                                <option value="3">Group Alias</option>
-                                <option value="3">Group Elec</option>
-                                <option value="3">Group Imprimeurs</option>
-                                <option value="3">Group Industrie</option>
-                                <option value="3">Magasins de villa</option>
-                                <option value="3">Market Place</option>
-                                <option value="3">Public</option>
-                                <option value="3">Relance team back office</option>
-                                <option value="3">Retail</option>
-                                <option value="3">Salomon</option>
-                                <option value="3">Test 2</option>
-                                <option value="3">US Clients</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4 col-6">
-                            <select name="collection_scenario_id" class="m-2 form-select"
-                                data-placeholder="Collection scenario:" title="Collection scenario">
-                                <option value="" selected disabled>{{ __('Collection Scenarios') }}</option>
-                                @foreach ($collectionsScenario as $collection)
-                                    <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4 col-6">
-                            <select class="form-select m-2" aria-label="Default select example">
-                                <option selected disabled>{{ __('Collectors') }}</option>
-                                @foreach ($collectors as $collector)
-                                    <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4 col-6">
-                            <select class="form-select m-2" aria-label="Default select example">
-                                <option selected disabled>Associated a colleague :</option>
-                                <option value="1">Brad Jackson(Sales Manager)</option>
-                                <option value="1">Juse Durant(Sales Manager)</option>
-                                <option value="1">Paul Mayer(Sales Manager)</option>
-                                <option value="1">Thomas Smith(Executive Officer)</option>
-                                <option value="1">
-                                    Vironica Campbell(Sales Administration)
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4 col-6">
-                            <select class="form-select m-2" aria-label="Default select example">
-                                <option selected disabled>Interactive emails :</option>
-                                <option value="1">Yes</option>
-                                <option value="1">No</option>
-                                <option value="1" class="text-primary"><a href="#"> Read more</a>
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4 col-5">
-                            <select class="form-select m-2" aria-label="Default select example">
-                                <option selected disabled>Late payment penalties :</option>
-                                <option value="1">Yes</option>
-                                <option value="1">No</option>
-                                <option value="1" class="text-primary"><a href="#"> Read more</a>
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-4 col-5">
-                            <select class="form-select m-2" aria-label="Default select example">
-                                <option selected disabled>Recovery cost :</option>
-                                <option value="1">Yes</option>
-                                <option value="1">No</option>
-                                <option value="1" class="text-primary"><a href="#"> Read more</a>
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-2  ">
-                            <div class=" text-center m-auto align-items-center"><i
-                                    class="fa-solid fa-trash btn-danger mt-2 p-1 text-light"
-                                    style="font-size: 25px;cursor: pointer;border-radius: 5px;"></i></div>
+                            <div class="form-group col-md-4 col-6">
+                                <select name="collection_scenario_id" class="m-2 form-select"
+                                    data-placeholder="Collection scenario:" title="Collection scenario">
+                                    <option value="" selected disabled>{{ __('Collection Scenarios') }}</option>
+                                    @foreach ($collectionsScenario as $collection)
+                                        <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4 col-6">
+                                <select class="form-select m-2" aria-label="Default select example">
+                                    <option selected disabled>{{ __('Collectors') }}</option>
+                                    @foreach ($collectors as $collector)
+                                        <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4 col-6">
+                                <select class="form-select m-2" aria-label="Default select example">
+                                    <option selected disabled>Associated a colleague :</option>
+                                    <option value="1">Brad Jackson(Sales Manager)</option>
+                                    <option value="1">Juse Durant(Sales Manager)</option>
+                                    <option value="1">Paul Mayer(Sales Manager)</option>
+                                    <option value="1">Thomas Smith(Executive Officer)</option>
+                                    <option value="1">
+                                        Vironica Campbell(Sales Administration)
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4 col-6">
+                                <select class="form-select m-2" aria-label="Default select example">
+                                    <option selected disabled>Interactive emails :</option>
+                                    <option value="1">Yes</option>
+                                    <option value="1">No</option>
+                                    <option value="1" class="text-primary"><a href="#"> Read more</a>
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4 col-5">
+                                <select class="form-select m-2" aria-label="Default select example">
+                                    <option selected disabled>Late payment penalties :</option>
+                                    <option value="1">Yes</option>
+                                    <option value="1">No</option>
+                                    <option value="1" class="text-primary"><a href="#"> Read more</a>
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4 col-5">
+                                <select class="form-select m-2" aria-label="Default select example">
+                                    <option selected disabled>Recovery cost :</option>
+                                    <option value="1">Yes</option>
+                                    <option value="1">No</option>
+                                    <option value="1" class="text-primary"><a href="#"> Read more</a>
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-2  ">
+                                <div class=" text-center m-auto align-items-center"><i
+                                        class="fa-solid fa-trash btn-danger mt-2 p-1 text-light"
+                                        style="font-size: 25px;cursor: pointer;border-radius: 5px;"></i></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="justify-content-end gap-1 d-flex mb-2">
-                {{-- <div class="btn btn-outline-primary">Previus</div>
+                <div class="justify-content-end gap-1 d-flex mb-2">
+                    {{-- <div class="btn btn-outline-primary">Previus</div>
                 <div class="btn btn-primary">1</div>
                 <div class="btn btn-outline-primary">2</div>
                 <div class="btn btn-outline-primary">3</div>
@@ -3859,89 +4009,94 @@
                 <div class="btn btn-outline-primary">5</div>
                 <div class="btn btn-outline-primary">6</div>
                 <div class="btn btn-outline-primary">Next</div> --}}
-            </div>
-            {{ $clients->links('pagination::bootstrap-5') }}
-            <div class="text-center mb-2">
-                <div class="this-buttons">
-                    <div class="">
-                        <div class="btn-group">
-                            <button type="button" class="btn text-light"><span><i
-                                        class="fa-solid fa-download"></i>&ensp;</span>Export
-                                this data to excel</button>
-                            <button type="button" class="button-2 text-light btn dropdown-toggle dropdown-toggle-split"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <p>file fromat:</p>
-                                </li>
-                                <div class="radios-inp d-flex  justify-content-around">
-                                    <li class="dropdown-item d-flex"><input type="radio" name="fils"
-                                            id="csv"><label for="fils">csv</label></li>
-                                    <li class="dropdown-item d-flex"><input type="radio" name="fils"
-                                            id="xls"><label for="fils">xls</label>
+                </div>
+                {{ $clients->links('pagination::bootstrap-5') }}
+
+                {{-- ------------------- Excel button ------------------------------------------------ --}}
+
+                <div class="text-center mb-2">
+                    <div class="this-buttons">
+                        <div class="">
+                            <div class="btn-group">
+                                <button type="button" class="btn text-light"><span><i
+                                            class="fa-solid fa-download"></i>&ensp;</span>Export
+                                    this data to excel</button>
+                                <button type="button" class="button-2 text-light btn dropdown-toggle dropdown-toggle-split"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <p>file fromat:</p>
                                     </li>
-                                </div>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <p>encoding:</p>
-                                </li>
-                                <select name="" style="width: 100%; font-size: 12px;">
-                                    <option value="" selected>UTF-8 (Unicode / US format)</option>
-                                    <option value="ISO-8859-1">ISO-8859-1 (Western European format)</option>
-                                    <option value="ISO-8859-2">ISO-8859-2 (Central European format)</option>
-                                    <option value="ISO-8859-3">ISO-8859-3 (South European format)</option>
-                                    <option value="ISO-8859-4">ISO-8859-4 (North European format)</option>
-                                    <option value="ISO-8859-5">ISO-8859-5 (Cyrillic format)</option>
-                                    <option value="ISO-8859-6">ISO-8859-6 (Arabic format)</option>
-                                    <option value="ISO-8859-7">ISO-8859-7 (Greek format)</option>
-                                    <option value="ISO-8859-8">ISO-8859-8 (Hebrew format)</option>
-                                    <option value="ISO-8859-9">ISO-8859-9 (Turkish format)</option>
-                                    <option value="ISO-8859-10">ISO-8859-10 (Nordic format)</option>
-                                    <option value="ISO-8859-13">ISO-8859-13 (Baltic format)</option>
-                                    <option value="ISO-8859-14">ISO-8859-14 (Celtic format)</option>
-                                    <option value="ISO-8859-15">ISO-8859-15 (NEW Western European format)</option>
-                                    <option value="ISO-8859-16">ISO-8859-16 (Romanian format)</option>
-                                    <option value="ISO-2022-JP">ISO-2022-JP</option>
-                                    <option value="UTF-7">UTF-7</option>
-                                    <option value="ASCII">ASCII</option>
-                                    <option value="EUC-JP">EUC-JP</option>
-                                    <option value="EUC-KR">EUC-KR</option>
-                                    <option value="SJIS">SJIS</option>
-                                    <option value="EUCJP-WIN">EUCJP-WIN</option>
-                                    <option value="SJIS-WIN">SJIS-WIN</option>
-                                    <option value="JIS">JIS</option>
-                                    <option value="WINDOWS-1252">WINDOWS-1252</option>
-                                    <option value="WINDOWS-1251">WINDOWS-1251</option>
-                                    <option value="BIG-5">BIG-5</option>
-                                    <option value="KOI8-R">KOI8-R</option>
-                                </select>
-                                </li>
-                                <li class="mt-3 "><button type="button" class="btn"
-                                        style="width: 100%;"><span><i
-                                                class="fa-solidfa-download"></i>&ensp;</span>download</button>
-                                </li>
-                            </ul>
+                                    <div class="radios-inp d-flex  justify-content-around">
+                                        <li class="dropdown-item d-flex"><input type="radio" name="fils"
+                                                id="csv"><label for="fils">csv</label></li>
+                                        <li class="dropdown-item d-flex"><input type="radio" name="fils"
+                                                id="xls"><label for="fils">xls</label>
+                                        </li>
+                                    </div>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <p>encoding:</p>
+                                    </li>
+                                    <select name="" style="width: 100%; font-size: 12px;">
+                                        <option value="" selected>UTF-8 (Unicode / US format)</option>
+                                        <option value="ISO-8859-1">ISO-8859-1 (Western European format)</option>
+                                        <option value="ISO-8859-2">ISO-8859-2 (Central European format)</option>
+                                        <option value="ISO-8859-3">ISO-8859-3 (South European format)</option>
+                                        <option value="ISO-8859-4">ISO-8859-4 (North European format)</option>
+                                        <option value="ISO-8859-5">ISO-8859-5 (Cyrillic format)</option>
+                                        <option value="ISO-8859-6">ISO-8859-6 (Arabic format)</option>
+                                        <option value="ISO-8859-7">ISO-8859-7 (Greek format)</option>
+                                        <option value="ISO-8859-8">ISO-8859-8 (Hebrew format)</option>
+                                        <option value="ISO-8859-9">ISO-8859-9 (Turkish format)</option>
+                                        <option value="ISO-8859-10">ISO-8859-10 (Nordic format)</option>
+                                        <option value="ISO-8859-13">ISO-8859-13 (Baltic format)</option>
+                                        <option value="ISO-8859-14">ISO-8859-14 (Celtic format)</option>
+                                        <option value="ISO-8859-15">ISO-8859-15 (NEW Western European format)</option>
+                                        <option value="ISO-8859-16">ISO-8859-16 (Romanian format)</option>
+                                        <option value="ISO-2022-JP">ISO-2022-JP</option>
+                                        <option value="UTF-7">UTF-7</option>
+                                        <option value="ASCII">ASCII</option>
+                                        <option value="EUC-JP">EUC-JP</option>
+                                        <option value="EUC-KR">EUC-KR</option>
+                                        <option value="SJIS">SJIS</option>
+                                        <option value="EUCJP-WIN">EUCJP-WIN</option>
+                                        <option value="SJIS-WIN">SJIS-WIN</option>
+                                        <option value="JIS">JIS</option>
+                                        <option value="WINDOWS-1252">WINDOWS-1252</option>
+                                        <option value="WINDOWS-1251">WINDOWS-1251</option>
+                                        <option value="BIG-5">BIG-5</option>
+                                        <option value="KOI8-R">KOI8-R</option>
+                                    </select>
+                                    </li>
+                                    <li class="mt-3 "><button type="button" class="btn"
+                                            style="width: 100%;"><span><i
+                                                    class="fa-solidfa-download"></i>&ensp;</span>download</button>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                {{-- ------------------- End Excel button ------------------------------------------------ --}}
             </div>
-        </div>
-    </section>
-@endsection
-@push('scripts')
-    <script src="{{ asset('js/wow.min.js') }}"></script>
-    <script>
-        new WOW().init();
-    </script>
-    <script src="{{ asset('js/risk.js') }}"></script>
-    <script src="{{ asset('js/email.js') }}"></script>
-    <script src="{{ asset('js/hovers.js') }}"></script>
-    <script src="{{ asset('js/collection.js') }}"></script>
-    <script src="{{ asset('js/chart.js') }}"></script>
-    <script src="{{ asset('js/chart-2.js') }}"></script>
-    <script src="{{ asset('js/chart-10.js') }}"></script>
-@endpush
+        </section>
+    @endsection
+    @push('scripts')
+        <script src="{{ asset('js/wow.min.js') }}"></script>
+        <script>
+            new WOW().init();
+        </script>
+        <script src="{{ asset('js/risk.js') }}"></script>
+        <script src="{{ asset('js/email.js') }}"></script>
+        <script src="{{ asset('js/hovers.js') }}"></script>
+        <script src="{{ asset('js/collection.js') }}"></script>
+        <script src="{{ asset('js/chart.js') }}"></script>
+        <script src="{{ asset('js/chart-2.js') }}"></script>
+        <script src="{{ asset('js/chart-10.js') }}"></script>
+    @endpush

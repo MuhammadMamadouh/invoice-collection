@@ -23,13 +23,12 @@ class ClientController extends Controller
     public function index()
     {
         $due_Date = "2023-09-15";
-
-        $clients = Client::with('collectionScenarios', 'clientsGroups', 'collector', 'items', 'items.itemStatus')->paginate(30);
+        //to update after client 
+        $clients = Client::with('collectionScenarios.scenariosActions', 'clientsGroups', 'collector', 'items', 'items.itemStatus')->where('id', 1 )->paginate(30);
         $collectionsScenario = CollectionScenario::all();
         $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
-
         //overDue date calculation
-        foreach($clients as $client){
+        foreach ($clients as $client) {
             $dueDate = Carbon::parse($due_Date);
             $now = Carbon::now();
             $daysDifference = $dueDate->diffInDays($now);
@@ -43,10 +42,25 @@ class ClientController extends Controller
             $total_InitialAmount = $client->items()->sum('initial_amount_inc_tax');
             $total_RemainingAmount = $client->items()->sum('remaining_amount_inc_tax');
         }
-        return view('clients.index', compact('clients', 'collectionsScenario', 'collectors', 
-        'overDueDays', 'total_RemainingAmount', 'total_InitialAmount'));
+
+        // $clientrecours 
+        // $oneClient = Client::find(1);
+        // $firstItem = $oneClient->firstDueItem();
+        // $action = $firstItem->toTakeAction();
+        // dd("firstItem",$firstItem , "action",$action);
+
+
+        return view('clients.index', compact(
+            'clients',
+            'collectionsScenario',
+            'collectors',
+            'overDueDays',
+            'total_RemainingAmount',
+            'total_InitialAmount'
+        ));
+
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -63,10 +77,10 @@ class ClientController extends Controller
      */
     public function store(ClientRequest $request)
     {
-        try{
+        try {
             Client::create($request->validated());
             return to_route('clients.index')->with(['message' => __('created successfully')]);
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('clients.index')->with(['message' => $e->getMessage()]);
         }
@@ -99,7 +113,7 @@ class ClientController extends Controller
         try {
             $client->update($request->validated());
             return to_route('clients.index')->with(['message' => __('edited successfully')]);
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('clients.index')->with(['message' => $e->getMessage()]);
         }
@@ -113,7 +127,7 @@ class ClientController extends Controller
         try {
             Client::findOrFail($id)->delete();
             return to_route('clients.index')->with(['message' => __('deleted successfully')]);
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             Log::info($e->getMessage());
             return to_route('clients.index')->with(['message' => $e->getMessage()]);
         }

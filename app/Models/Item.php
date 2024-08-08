@@ -59,4 +59,24 @@ class Item extends Model
     {
         return $this->belongsTo(ItemStatus::class, 'status_id');
     }
+
+    public function takenActions()
+    {
+        return $this->belongsToMany(ActionsCollectionScenario::class, 'item_taken_actions',"scenario_action_id", 'item_id');
+    }
+
+    // public function toTakeAction()
+    // {
+    //     // get taken actions on first due item
+    //     $firstDueTakenAction = $this->firstDueItem()->takenActions()->pluck('collection_scenario_id');
+    //     return $this->collectionScenarios->scenariosActions()->whereNotIn('id', $firstDueTakenAction)
+    //     ->orderBy('number_of_days')->first();
+    // }
+
+    public function toTakeAction()
+    {
+        $action =  $this->takenActions()->pluck('collection_scenario_id');
+        return $this->client->collectionScenarios->scenariosActions()->whereNotIn('id',  $action)
+        ->orderBy('number_of_days')->first();
+    }
 }
