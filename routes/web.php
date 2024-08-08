@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsGroupController;
 use App\Http\Controllers\Dashboard\ItemsController;
 use App\Http\Controllers\Dashboard\ItemStatusController;
+use App\Http\Controllers\ImportExportController;
 use Illuminate\Support\Facades\Artisan;
 
 /*
@@ -80,10 +81,6 @@ Route::post('/collection_scenarios/actions', [ActionsCollectionScenarioControlle
 Route::post('/collection_scenarios/duplicate/{id}', [CollectionScenarioController::class, 'duplicateScenario'])->name('collection.duplicateScenario');
 Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
-
-
-
-
 Route::get('actions/create', [ActionController::class,'create']);
 Route::post('actions', [ActionController::class,'store'])->name('actions.store');
 
@@ -101,13 +98,10 @@ Route::get('item-status', [ItemStatusController::class,'showStatusItemsForm'])->
 Route::post('item-status', [ItemStatusController::class,'store'])->name('item-status.store');
 
 Route::resource('/clients-group', ClientsGroupController::class);
-// Route::get('/clients-group', [ClientsGroupController::class, 'index'])->name('clients-group');
-// Route::post('store-client-group', [ClientsGroupController::class, 'store'])->name('store-client-group');
-// Route::get('/delete-client-group/{id}', [ClientsGroupController::class, 'destroy'])->name('delete-client-group');
 Route::post('/clients-group/delete-all', [ClientsGroupController::class, 'deleteAll'])->name('clients-group.delete-all');
-// Route::get('/get-client-group/{id}', [ClientsGroupController::class, 'getGroup'])->name('get-client-group');
-// Route::post('/update-client-group/{id}', [ClientsGroupController::class, 'update'])->name('update-client-group');
-
 
 
 Route::get('switch-language/{locale}', [LanguageController::class, 'switchLanguage'])->name('switch.language');
+
+Route::get('import-export', [ImportExportController::class, 'importExportView'])->name('import-export');
+Route::post('import', [ImportExportController::class, 'import'])->name('import');

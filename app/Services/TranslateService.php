@@ -12,7 +12,7 @@ class TranslateService
 	 *
 	 * @return array
 	 */
-	public function getLocales()
+	public static function getLocales()
 	{
         return config('app.supported_languages');
 	}
@@ -24,9 +24,9 @@ class TranslateService
      * @param string $keyName
      * @return string
      */
-    public function getTranslatables($model, $keyName)
+    public static function getTranslatables($model, $keyName)
     {
-        $keyDictionary = $this->getTranslatableKeys($model);
+        $keyDictionary = self::getTranslatableKeys($model);
         $locale = app()->getLocale();
         return $keyDictionary[$keyName][$locale . '_' . $keyName];
     }
@@ -36,12 +36,12 @@ class TranslateService
      * @param Model $model
      * @return mixed
      */
-    public function getTranslatableKeys($model)
+    public static function getTranslatableKeys($model)
     {
-        $languages = $this->getLocales();
+        $languages = self::getLocales();
         $keyDictionary = [];
         foreach ($languages as $language) {
-            foreach($this->getTranslatableFields($model) as $translatable) {
+            foreach(self::getTranslatableFields($model) as $translatable) {
                 $langKey = $language . '_' . $translatable;
                 $keyDictionary[$translatable][$langKey] = $model->$langKey;
             }
@@ -51,16 +51,16 @@ class TranslateService
 
 
 
-    public function getTranslatableFields($model)
+    public static function getTranslatableFields($model)
     {
-        return $model::translatables;
+        return $model::getTranslatableFields();
     }
 
-    public function mapTranslatablestoData($model, $data)
+    public static function mapTranslatablestoData($model, $data)
     {
         $translations = [];
-        foreach ($this->getLocales() as $locale) {
-            foreach ($this->getTranslatableFields($model) as $field) {
+        foreach (self::getLocales() as $locale) {
+            foreach (self::getTranslatableFields($model) as $field) {
                 $translations[] = $locale . '_' . $field;
             }
         }

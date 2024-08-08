@@ -5,7 +5,6 @@
     "action_type"  : "Action Type",
     "action_name" : "ِAction Name",
     "Create Action":"Create Action",
-
     "created successfully":"created successfully",
     "verification-link-sent": "A verification link has been sent to your email address.",
     "password-updated": "Your password has been updated.",
@@ -13,6 +12,14 @@
     "deleted successfully": "Deleted successfully.",
     "duplicated successfully": "Duplicated successfully.",
     "profile-updated": "Profile updated successfully.",
-    "Password regenerated successfully.": "Password regenerated successfully."
+    "Password regenerated successfully.": "Password regenerated successfully.",
+    "Import and export your billing information": "Import and export your billing information",
+    "Import / Export your data": "Import / Export your data",
+    "After clicking on Submit, you can set up the import of these data.": "After clicking on Submit, you can set up the import of these data.",
+    "The file contains": "The file contains",
+    "Items (Invoices, ...)": "Items (Invoices, ...)",
+    "Clients": "Clients",
+    "Contacts": "Contacts",
+    "Users (Associates)": "Users (Associates)"
 
 }

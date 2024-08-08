@@ -12,7 +12,15 @@
     "deleted successfully": "تم الحذف بنجاح.",
     "duplicated successfully": "تم النسخ بنجاح.",
     "profile-updated": "تم تحديث الملف الشخصي بنجاح.",
-    "Password regenerated successfully.": "تم إعادة إنشاء كلمة المرور بنجاح."
+    "Import and export your billing information": "استيراد وتصدير معلومات الفوترة الخاصة بك",
+    "Import / Export your data": "استيراد / تصدير بياناتك",
+    "After clicking on Submit, you can set up the import of these data.": "بعد النقر على تقديم ، يمكنك إعداد استيراد هذه البيانات.",
+    "The file contains": "الملف يحتوي على",
+    "Items (Invoices, ...)": "العناصر (الفواتير ، ...)",
+    "Clients": "العملاء",
+    "Contacts": "جهات الاتصال",
+    "Users (Associates)": "المستخدمين (الشركاء)"
+
 
 
 }
