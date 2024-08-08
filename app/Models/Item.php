@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     use HasFactory;
-    protected $table = 'items';
+    // protected $table = 'items';
 
     // The attributes that are mass assignable
     protected $fillable = [
@@ -52,6 +52,6 @@ class Item extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class,'company_id');
     }
 }

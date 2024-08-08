@@ -17,7 +17,11 @@ return new class extends Migration
             $table->smallInteger('number_of_days');
             $table->string('action_type');
             $table->bigInteger('collection_scenario_id');
-            $table->timestamps();
+            $table->string('mail_subject')->nullable();
+            $table->string('mail_content')->nullable();
+            $table->string('language')->nullable();
+            $table->boolean('is_automatic_action')->nullable();
+            $table->timestamps(); 
         });
     }
 

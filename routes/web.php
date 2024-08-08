@@ -12,6 +12,7 @@ use App\Http\Controllers\ClientsGroupController;
 use App\Http\Controllers\Dashboard\ItemsController;
 use App\Http\Controllers\Dashboard\ItemStatusController;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\CollectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,7 +81,8 @@ Route::post('/collection_scenarios/duplicate/{id}', [CollectionScenarioControlle
 Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
 
-
+Route::get('collection', [CollectionController::class,'index'])->name('collection.automatic.actions');
+Route::get('collection-manual-actions', [CollectionController::class,'manualActions'])->name('collection.manual.actions'); 
 
 
 Route::get('actions/create', [ActionController::class,'create']);

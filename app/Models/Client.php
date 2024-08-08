@@ -37,7 +37,7 @@ class Client extends Model
         'customer_custom_field_2'
     ];
 
-    public function collectionScenarios()
+    public function collectionScenario()
     {
         return $this->belongsTo(CollectionScenario::class, 'collection_scenario_id');
     }

@@ -24,12 +24,19 @@ class ActionsCollectionScenarioController extends Controller
             'number_of_days' => 'required|numeric',
             'action_type' => 'required|exists:action_types,id',
             'collection_scenario_id' => 'required|exists:collection_scenarios,id',
-        ]);
+            'mail_subject'=>'nullable|string',
+            'mail_content'=>'nullable|string',
+            'language'=>'nullable|string',
+         ]);
         ActionsCollectionScenario::create([
             'action_name' => $request->action_name,
             'action_type' => $request->action_type,
             'number_of_days' => $request->number_of_days,
             'collection_scenario_id' => $request->collection_scenario_id,
+            'mail_subject'=>$request->mail_subject,
+            'mail_content'=>$request->mail_content,
+            'language'=>$request->language,
+            'is_automatic_action'=>$request->is_automatic_action? $request->is_automatic_action: 0,
         ]);
         return to_route('collection_scenarios.index')->with(['message' => 'created successfully']);
     }
@@ -41,6 +48,9 @@ class ActionsCollectionScenarioController extends Controller
             'number_of_days' => 'required|numeric',
             'action_type' => 'required|string',
             'collection_scenario_id' => 'required|exists:collection_scenarios,id',
+            'mail_subject'=>'nullable|string',
+            'mail_content'=>'nullable|string',
+            'language'=>'nullable|string',
         ]);
         $collection = ActionsCollectionScenario::findOrFail($id);
         try {
@@ -49,6 +59,10 @@ class ActionsCollectionScenarioController extends Controller
                 'action_type' => $request->action_type,
                 'number_of_days' => $request->number_of_days,
                 'collection_scenario_id' => $request->collection_scenario_id,
+                'mail_subject'=>$request->mail_subject,
+                'mail_content'=>$request->mail_content,
+                'language'=>$request->language,
+                'is_automatic_action'=>$request->is_automatic_action? $request->is_automatic_action: 0,
             ]);
             return to_route('collection_scenarios.index')->with(['message' => 'edited successfully']);
         } catch (Exception $e) {
