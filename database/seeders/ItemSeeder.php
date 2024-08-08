@@ -15,7 +15,7 @@ class ItemSeeder extends Seeder
     {
         DB::transaction(function () {
             $batchSize = 1000;
-            $totalRecords = 50000;
+            $totalRecords = 10000;
 
             for ($i = 0; $i < $totalRecords / $batchSize; $i++) {
                 Item::factory()->count($batchSize)->create();

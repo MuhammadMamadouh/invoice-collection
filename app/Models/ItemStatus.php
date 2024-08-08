@@ -16,4 +16,9 @@ class ItemStatus extends Model
     {
         return $this->belongsTo(ItemStatusType::class , 'type_of_status');
     }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class, 'status_id');
+    }
 }

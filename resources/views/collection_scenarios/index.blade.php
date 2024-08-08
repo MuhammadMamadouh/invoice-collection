@@ -247,7 +247,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                @foreach ($collection->ActionScenarios as $ActionScenario)
+                                @foreach ($collection->scenariosActionss as $ActionScenario)
                                     <div class="content-text-2">
                                         <ul class="d-flex">
                                             <span>@</span>
@@ -262,7 +262,7 @@
                             </div>
                         </div>
                     @empty
-                        <p>No scenarios Yet....</p>
+                        <p>{{ __('No scenarios Yet') }}....</p>
                     @endforelse
                 </div>
             </div>
