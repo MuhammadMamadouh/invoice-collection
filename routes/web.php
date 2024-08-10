@@ -73,6 +73,7 @@ Route::resource('users', UserController::class);
 
 
 //-----------------clients--------------------------------
+Route::get('/clients/client_data/{id}', [ClientController::class,'showClientData']);
 Route::resource("/clients", ClientController::class);
 
 

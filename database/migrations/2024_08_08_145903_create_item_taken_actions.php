@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('collection_scenario_actions', function (Blueprint $table) {
+        Schema::create('item_taken_actions', function (Blueprint $table) {
             $table->id();
-            $table->string('action_name');
-            $table->smallInteger('number_of_days');
-            $table->string('action_type');
-            $table->foreignId('collection_scenario_id')->constrained('collection_scenarios')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->bigInteger('item_id');
+            $table->bigInteger('scenario_action_id');
+            $table->date('action_date');
+            $table->bigInteger('taken_by');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('collection_scenario_actions');
+        Schema::dropIfExists('item_taken_actions');
     }
 };

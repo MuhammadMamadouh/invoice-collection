@@ -56,6 +56,7 @@
     <script src="{{asset('js/chart-8.js')}}"></script>
     <script src="{{asset('js/chart-6.js')}}"></script>
     <script src="{{asset('js/searchBar.js')}}"></script>
+    <script src="{{asset('js/client.js')}}"></script>
     <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
