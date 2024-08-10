@@ -25,14 +25,22 @@ class ImportExportController extends Controller
 
         $data = $request->validate([
             'file' => 'required|file',
+            'type_of_data' => 'required|in:'.implode(',', ExcelDataType::toArray())
         ]);
 
-        $import = new ClientImport;
-        Excel::import($import, request()->file('file'));
-        // $typeOfData = $request->type_of_data;
-        // Excel::toCollection(new ClientImport, $request->file('file')->store('temp'));
-        dd('Import');
-        // Excel::import(new ClientImport, $request->file('file')->store('temp'));
+        $import = ExcelDataType::getExcelClass($data['type_of_data']);
+
+        // try {
+            Excel::import($import, request()->file('file'));
+        // } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+        //     $failures = $e->failures();
+        //     foreach ($failures as $failure) {
+        //         $failure->row(); // row that went wrong
+        //         $failure->attribute(); // either heading key (if using heading row concern) or column index
+        //         $failure->errors(); // Actual error messages from Laravel validator
+        //         $failure->values(); // The values of the row that has failed.
+        //     }
+        // }
         return back();
     }
 }

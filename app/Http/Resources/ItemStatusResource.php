@@ -15,11 +15,9 @@ class ItemStatusResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'type_of_status' => $this->type_of_status,
-            'status' => $this->status,
-            'follow_up_days' => $this->follow_up_days,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'type_of_status'    => $this->type_of_status,
+            'status'            => $this->status,
+            'follow_up_days'    => $this->follow_up_days,
         ];
     }
 }

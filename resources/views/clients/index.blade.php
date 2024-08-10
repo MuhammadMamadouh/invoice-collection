@@ -6,7 +6,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a href="{{ route('clients.index') }}" class="m-1 w-100 btn btn-primary p-3">
                         <i class="fa-solid fa-earth-asia"></i> &ensp; {{ __('All clients') }} &ensp;
-                        <span class="badge bg-white text-primary">{{ \App\Models\Client::count() }}</span>
+                        {{-- <span class="badge bg-white text-primary">{{ \App\Models\Client::count() }}</span> --}}
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
@@ -32,26 +32,6 @@
                             <option value="2">Central</option>
                             <option value="3">Clients douteux</option>
                             <option value="3">Clients France</option>
-                            <option value="3">Clients Grands Comptes</option>
-                            <option value="3">Clients Mass market</option>
-                            <option value="3">Clients OSP</option>
-                            <option value="3">Clients PME</option>
-                            <option value="3">Clients Publics</option>
-                            <option value="3">Clients Risques</option>
-                            <option value="3">Clients Speciaux</option>
-                            <option value="3">Clients VIP</option>
-                            <option value="3">ClIENT_MEDIPREMA</option>
-                            <option value="3">France Contentieux</option>
-                            <option value="3">Group Alias</option>
-                            <option value="3">Group Elec</option>
-                            <option value="3">Group Imprimeurs</option>
-                            <option value="3">Group Industrie</option>
-                            <option value="3">Magasins de villa</option>
-                            <option value="3">Market Place</option>
-                            <option value="3">Public</option>
-                            <option value="3">Relance team back office</option>
-                            <option value="3">Retail</option>
-                            <option value="3">Salomon</option>
                             <option value="3">Test 2</option>
                             <option value="3">US Clients</option>
                         </select>
@@ -90,105 +70,7 @@
                             <option value="0" selected disabled>Country :</option>
                             <option value="1">Afghanistan</option>
                             <option value="2">Albania</option>
-                            <option value="3">Algeria</option>
-                            <option value="6">Angola</option>
-                            <option value="11">Armenia</option>
-                            <option value="13">Australia</option>
-                            <option value="14">Austria</option>
-                            <option value="15">Azerbaijan</option>
-                            <option value="20">Belarus</option>
-                            <option value="21">Belgium</option>
-                            <option value="23">Benin</option>
-                            <option value="27">Bosnia and Herzegovina</option>
-                            <option value="30">Brazil</option>
-                            <option value="33">Bulgaria</option>
-                            <option value="34">Burkina Faso</option>
-                            <option value="37">Cameroon</option>
-                            <option value="38">Canada</option>
-                            <option value="56">Ceska Republika</option>
-                            <option value="44">China</option>
-                            <option value="49">Congo</option>
-                            <option value="52">Costa Rica</option>
-                            <option value="53">Croatia (Hrvatska)</option>
-                            <option value="55">Cyprus</option>
-                            <option value="57">Denmark</option>
-                            <option value="63">Egypt</option>
-                            <option value="67">Estonia</option>
-                            <option value="72">Finland</option>
-                            <option value="73">France</option>
-                            <option value="80">Georgia</option>
-                            <option value="81">Germany</option>
-                            <option value="82">Ghana</option>
-                            <option value="83">Gibraltar</option>
-                            <option value="85">Greece</option>
-                            <option value="86">Greenland</option>
-                            <option value="88">Guadeloupe</option>
-                            <option value="90">Guatemala</option>
-                            <option value="98">Hungary</option>
-                            <option value="99">Iceland</option>
-                            <option value="100">India</option>
-                            <option value="104">Ireland</option>
-                            <option value="105">Israel</option>
-                            <option value="106">Italy</option>
-                            <option value="108">Japan</option>
-                            <option value="109">Jordan</option>
-                            <option value="110">Kazakhstan</option>
-                            <option value="111">Kenya</option>
-                            <option value="246">Kosovo</option>
-                            <option value="118">Latvia</option>
-                            <option value="119">Lebanon</option>
-                            <option value="122">Libya</option>
-                            <option value="124">Lithuania</option>
-                            <option value="125">Luxembourg</option>
-                            <option value="127">Macedonia</option>
-                            <option value="128">Madagascar</option>
-                            <option value="132">Mali</option>
-                            <option value="133">Malta</option>
-                            <option value="137">Mauritius</option>
-                            <option value="138">Mayotte</option>
-                            <option value="139">Mexico</option>
-                            <option value="141">Moldova</option>
-                            <option value="245">Montenegro</option>
-                            <option value="145">Morocco</option>
-                            <option value="151">Netherlands</option>
-                            <option value="157">Niger</option>
-                            <option value="158">Nigeria</option>
-                            <option value="162">Norway</option>
-                            <option value="167">Panama</option>
-                            <option value="171">Philippines</option>
-                            <option value="173">Poland</option>
-                            <option value="174">Portugal</option>
-                            <option value="175">Puerto Rico</option>
-                            <option value="176">Qatar</option>
-                            <option value="177">Reunion</option>
-                            <option value="178">Romania</option>
-                            <option value="179">Russian Federation</option>
-                            <option value="186">San Marino</option>
-                            <option value="188">Saudi Arabia</option>
-                            <option value="189">Senegal</option>
-                            <option value="190">Serbia</option>
-                            <option value="193">Singapore</option>
-                            <option value="194">Slovak Republic</option>
-                            <option value="195">Slovenia</option>
-                            <option value="198">South Africa</option>
-                            <option value="199">Spain</option>
-                            <option value="207">Sweden</option>
-                            <option value="208">Switzerland</option>
-                            <option value="211">Tajikistan</option>
-                            <option value="212">Tanzania</option>
-                            <option value="213">Thailand</option>
-                            <option value="214">Togo</option>
-                            <option value="218">Tunisia</option>
-                            <option value="219">Turkey</option>
-                            <option value="220">Turkmenistan</option>
-                            <option value="223">Uganda</option>
-                            <option value="224">Ukraine</option>
-                            <option value="225">United Arab Emirates</option>
-                            <option value="226">United Kingdom</option>
-                            <option value="227">United States</option>
-                            <option value="228">Uruguay</option>
-                            <option value="230">Uzbekistan</option>
-                            <option value="234">Viet Nam</option>
+
                             <option value="243">Zimbabwe</option>
                         </select>
                     </div>
@@ -280,6 +162,7 @@
                     </div>
                     <div class="text-center mb-3 p-2 p-md-4 table-container">
                         @forelse($clientResource as $key => $client)
+                        {{-- {{dd($client)}} --}}
                             <div class="row align-items-center pt-3"
                                 style="background-color: {{ $key % 2 == 0 ? '#006bff14' : '#ffffff' }}">
                                 <div class="col-1">
@@ -295,18 +178,19 @@
                                             +28days (< 10days) </span>
                                 </div>
                                 <div class="col-4 col-md-1">
-                                    <p class="fw-bold">{{ $client['company_code'] }}</p>
+                                    <p class="fw-bold">{{ $client->company_code }}</p>
                                 </div>
                                 <div class="col-1 hide">
                                     <p class="fw-bold"><a href="#"
-                                            onclick="showHolap({{ $client['id'] }})">{{ $client["company_name"] }}</a></p>
+                                            onclick="showHolap({{ $client->id }})">{{ $client->company_name }}</a></p>
                                 </div>
+                                {{-- {{dd($client->collectionScenarios->id)}} --}}
                                 <div class="col-md-3 hide">
                                     <div class=" w-100 mb-3">
                                         <select class="form-select" id="inputname19">
-                                            <option selected disabled>{{ $client['collectionScenarios']['en_name'] }}</option>
+                                            <option value="{{ $client->collectionScenarios->id ?? '' }}" selected disabled>{{ $client->collectionScenarios->en_name ?? ''}}</option>
                                             @foreach ($collectionsScenario as $collection)
-                                                <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
+                                                <option value="{{ $collection->id }}">{{ $collection->en_name ?? '' }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -341,7 +225,7 @@
                                                 <option value="" selected disabled>{{ __('Collection Scenarios') }}
                                                 </option>
                                                 @foreach ($collectionsScenario as $collection)
-                                                    <option value="{{ $collection->id }}">{{ $collection->en_name }}
+                                                    <option value="{{ $collection->id }}">{{ $collection->en_name  ?? ''}}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -366,14 +250,14 @@
                                 </div>
                             </div>
                             <div class="arrow-bottom"></div>
-                            <div id="company-details-{{ $client['id'] }}">
-                                <div class="company-details d-none" id="company-detail-{{ $client['id'] }}">
-                                    <div class="bg-light holap-first-{{ $client['id'] }}"
-                                        id="company-details-{{ $client['id'] }}">
+                            <div id="company-details-{{ $client->id }}">
+                                <div class="company-details d-none" id="company-detail-{{ $client->id }}">
+                                    <div class="bg-light holap-first-{{ $client->id }}"
+                                        id="company-details-{{ $client->id }}">
                                         <div class="row text-center m-0 p-3 w-100"
-                                            id="company-details-{{ $client['id'] }}" style="background-color: #006bff">
+                                            id="company-details-{{ $client->id }}" style="background-color: #006bff">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <div class="d-flex w-25 gap-3" id="company-details-{{ $client['id'] }}">
+                                                <div class="d-flex w-25 gap-3" id="company-details-{{ $client->id }}">
                                                     <i class="fa-solid fa-flag text-warning" style="font-size: 25px"></i>
                                                     <p class="text-light">{{ __('Payeurs correct / Average payer') }}</p>
 
@@ -407,16 +291,16 @@
                                                     {{-- ------------------- End Client's Data Noftications------------------------------------------------ --}}
 
                                                 </div>
-                                                <h2 class="text-light w-50">{{ $client["company_name"] }}</h2>
+                                                <h2 class="text-light w-50">{{ $client->company_name }}</h2>
                                                 <div class="d-flex justify-content-end gap-3 w-25">
                                                     <div class="icon-holab  ">
                                                         <i class="fa-solid fa-pen text-primary p-2 bg-light"
-                                                            onclick="EditHolap({{ $client['id'] }})"
+                                                            onclick="EditHolap({{ $client->id }})"
                                                             style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i>
                                                         <a href="holapDetails.html" target="_blank"><i
                                                                 class="fa-solid fa-maximize text-primary p-2 bg-light"style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i></a>
                                                         <i class="fa-solid fa-close text-light p-2 bg-danger"
-                                                            onclick="closeHolap({{ $client['id'] }})"
+                                                            onclick="closeHolap({{ $client->id }})"
                                                             style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i>
                                                     </div>
                                                 </div>
@@ -428,21 +312,21 @@
                                             <div class="col-lg-4 col-sm-6 text-start">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Copmany code') }}:</p>
-                                                    <p class="">{{ $client["company_code"] }}</p>
+                                                    <p class="">{{ $client->company_code }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Legal ID') }}:</p>
-                                                    <p class="">{{ $client['legal_id'] }}</p>
+                                                    <p class="">{{ $client->legal_id }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('VAT Number') }}:</p>
-                                                    <p class="">{{ $client['vat_number'] }}</p>
+                                                    <p class="">{{ $client->vat_number }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Address') }}:</p>
                                                     <p class="">
-                                                        <a href="">{{ $client['address'] }}, {{ $client['city'] }},
-                                                            {{ $client['state'] }}, {{ $client['country'] }}</a>
+                                                        <a href="">{{ $client->address }}, {{ $client->city }},
+                                                            {{ $client->state }}, {{ $client->country }}</a>
                                                     </p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
@@ -454,14 +338,14 @@
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Collector') }}:</p>
                                                     <p class=""><a
-                                                            href="">{{ $client['collector']['first_name'] }}</a></p>
+                                                            href="">{{ $client->collector->first_name ?? ''}}</a></p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Collection senario') }}:</p>
                                                     <select class="form-select m-2 w-100"
                                                         aria-label="Default select example">
                                                         <option selected disabled>
-                                                            {{ $client['collectionScenarios']['en_name'] }}
+                                                            {{ $client->collectionScenarios->en_name ?? '' }}
                                                         </option>
                                                         @foreach ($collectionsScenario as $collection)
                                                             <option value="{{ $collection->id }}">
@@ -474,24 +358,24 @@
                                             <div class="col-lg-4 col-sm-6 text-start">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Payment term') }}:</p>
-                                                    <p class="">{{ $client['payment_term'] }}</p>
+                                                    <p class="">{{ $client->payment_term }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Payment mean') }}:</p>
-                                                    <p class="">{{ $client['payment_mean'] }}</p>
+                                                    <p class="">{{ $client->payment_mean }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Guarantee World Insurer') }}:</p>
-                                                    <p class="">{{ $client['insurer_guarantee'] }}</p>
+                                                    <p class="">{{ $client->insurer_guarantee }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Other guarantees') }}:</p>
-                                                    <p class="">{{ $client['other_guarantees'] }}</p>
+                                                    <p class="">{{ $client->other_guarantees }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Credit Limit') }}:</p>
                                                     <div class="form-group">
-                                                        <input type="text" value="{{ $client['credit_limit'] }}"
+                                                        <input type="text" value="{{ $client->credit_limit }}"
                                                             class="form-control" />
                                                     </div>
                                                 </div>
@@ -500,22 +384,22 @@
                                                             href="">{{ __('Late payment penalties') }}</a>:
                                                     </p>
                                                     <p class="">
-                                                        {{ $client['late_payment_penalties'] == 1 ? 'Yes' : 'No' }}</p>
+                                                        {{ $client->late_payment_penalties == true ? 'Yes' : 'No' }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold"><a href="">{{ __('Recovery cost') }}</a>:
                                                     </p>
                                                     <p class="">
-                                                        {{ $client['recovery_cost'] == 1 ? 'Yes' : 'No' }}</p>
+                                                        {{ $client->recovery_cost == 1 ? 'Yes' : 'No' }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold"><a
                                                             href="">{{ __('Interactive emails') }}</a>:</p>
                                                     <p class="">
-                                                        {{ $client['interactive_emails'] == 1 ? 'Yes' : 'No' }}</p>
+                                                        {{ $client->interactive_emails == 1 ? 'Yes' : 'No' }}</p>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 text-start">
+                                            {{-- <div class="col-lg-4 text-start">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <select class="form-select m-auto w-50"
                                                         aria-label="Default select example">
@@ -536,20 +420,20 @@
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">Last name:</p>
-                                                    <p class="">{{ $client['collector']['last_name'] }}</p>
+                                                    <p class="">{{ $client->collector['last_name'] ?? ''}}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
-                                                    @<a href="">{{ $client['collector']['email'] }}</a>
+                                                    @<a href="">{{ $client->collector['email']?? '' }}</a>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <i class="fa-solid fa-phone"></i> &nbsp; &nbsp;
-                                                    <a href=""> {{ $client['collector']['mobile_phone'] }}</a> &nbsp;
+                                                    <a href=""> {{ $client->collector['mobile_phone']?? '' }}</a> &nbsp;
                                                     (Phone)
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <i class="fa-solid fa-star"></i> &nbsp; {{__("Contact for collection")}}
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
 
                                         {{-- -------------------End Client's Data ------------------------------------------------ --}}
@@ -587,7 +471,7 @@
 
 
                                     {{-- ------------------- Edit Client Data------------------------------------------------ --}}
-                                    {{-- <form action="{{ route('clients.edit', $client->id) }}" method="POST">
+                                    <form action="{{ route('clients.edit', $client->id) }}" method="POST">
                                         @csrf
                                         <div class="create-c-i holap-second bg-light d-none"
                                             id="edit-client-data-{{ $client->id }}">
@@ -1331,7 +1215,7 @@
                                                                 <select name='collection_scenario_id' class="form-select"
                                                                     id="inputname19">
                                                                     <option selected disabled>
-                                                                        {{ $client->collectionScenarios->en_name }}
+                                                                        {{ $client->collectionScenarios->en_name ?? '' }}
                                                                     </option>
                                                                     @foreach ($collectionsScenario as $collection)
                                                                         <option value={{ $collection->id }}>
@@ -1368,10 +1252,10 @@
                                                     <div class="my-4 d-flex justify-content-center gap-3">
                                                         <p class="text-black-50">
                                                             {{ __('Creation date in MY DSO MANAGER') }} :
-                                                            {{ $client->created_at }} (G.M.T. +1)
+                                                            {{-- {{ $client->created_at }} (G.M.T. +1) --}}
                                                         </p>
                                                         <p class="text-black-50">• {{ __('Modification date') }} :
-                                                            {{ $client->updated_at }}
+                                                            {{-- {{ $client->updated_at }} --}}
                                                             (G.M.T. +1)</p>
                                                     </div>
 
@@ -1407,7 +1291,7 @@
                                                 </div>
                                             </div>
                                         </div><!--create-c-i-->
-                                    </form> --}}
+                                    </form>
 
                                     {{-- -------------------  End Edit Client Data------------------------------------------------ --}}
 
@@ -1505,8 +1389,8 @@
                                                 <div class="col"></div>
                                             </div>
                                             <div class="row mt-2 text-center p-2 align-items-center"style="background-color: #006bff14;">
-                                                    @php($firstDueItem = $client['firstDueItem'])
-                                                        <div class="col fw-bold">{{$firstDueItem->due_date ?? '2/2/2'}}</div>
+                                                    @php($firstDueItem = $client->firstDueItem)
+                                                        <div class="col fw-bold">{{$firstDueItem->due_date ?? '-'}}</div>
                                                         <div class="col fw-bold">
                                                             <div class="btn openModalBtn btn-primary">
                                                                 {{--$firstDueItem->toTakeAction()->action_type ?? 'email' --}}</div>
@@ -1523,7 +1407,7 @@
                                                             <div class="btn btn-outline-primary">
                                                                 <i class="fa-solid fa-trash"></i>
                                                             </div>
-                                                        </div>  
+                                                        </div>
                                             </div>
                                             <div class="row bg-light p-2 mt-3">
                                                 <div class="col-sm-4">
@@ -1542,7 +1426,7 @@
                                                 <div class="d-flex">
                                                     <h4>{{ __('Statement of account of open items') }}</h4>
                                                     <div class="btn bg-light ms-2">{{ __('No .of items') }}:
-                                                        {{ $client['items']->count() }}</div>
+                                                       2000</div>
                                                 </div>
                                                 <div class="form-group position-relative">
                                                     <input type="text" class="form-control border-primary ps-5"
@@ -1620,55 +1504,63 @@
                                                 <div class="col-3 tavle-dropdown-icon"></div>
                                             </div>
                                             <div class="text-center mb-3 table-container-2 p-2 px-md-4  ">
-                                                <div class="row align-items-center pt-3"
-                                                    style="{{-- $client['items']['over_due'] >= 0 ? 'background-color: #e6d3d3' : 'background-color: #d9edf7' --}}">
-                                                    <div class="col-1" style="z-index: 999;">
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input"
-                                                                id="exampleCheck1" />
+                                                {{-- {{dd($client)}} --}}
+                                                @forelse ($client->items as $item)
+                                                {{-- <h1>{{$item->overdue}}</h1> --}}
+                                                {{-- {{dd($item->overdue)}} --}}
+                                                    <div class="row align-items-center pt-3"
+                                                        style="{{-- $client['items']['overdue'] >= 0 ? 'background-color: #e6d3d3' : 'background-color: #d9edf7' --}}">
+                                                        <div class="col-1" style="z-index: 999;">
+                                                            <div class="form-check">
+                                                                <input type="checkbox" class="form-check-input"
+                                                                    id="exampleCheck1" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p class="fw-bold"><a href=''
+                                                                    onclick="showInvoice()"><img src="./img/pdficons.gif"
+                                                                        class="mb-1" alt="">
+                                                                    {{$item->po_no  ?? '-'}}</a>
+
+                                                            </p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">
+                                                                {{ $item->issue_date ?? '-' }}</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p class="fw-bold">
+                                                                {{ $item->due_date ?? '-' }}</p>
+                                                        </div>
+                                                        <div class="col-1 hide">
+                                                            <div class="badge mb-2"
+                                                                style="  ">
+                                                                {{ $item->overdue ?? 0 }}d
+                                                            </div>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">
+                                                                {{ $item->total_InitialAmount ?? '0' }}
+                                                                €</p>
+                                                        </div>
+                                                        <div class="col">
+                                                            <p class="fw-bold">
+                                                                {{ $item->total_RemainingAmount ?? '0' }}
+                                                                €</p>
+                                                        </div>
+                                                        <div class="col-3 hide">
+                                                            {{-- @foreach ($client->items as $item)
+                                                                {{ $item->itemStatus->status ?? 'action1' }},{{ $item->itemStatus->follow_up_days ?? 1}}
+                                                            @endforeach --}}
+                                                        </div>
+                                                        <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
+                                                            <i class="fa-solid fa-chevron-down"></i>
                                                         </div>
                                                     </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold"><a href=''
-                                                                onclick="showInvoice()"><img src="./img/pdficons.gif"
-                                                                    class="mb-1" alt="">
-                                                                {{$client['items']['po_no']  = null ?? 12355}}</a>
-                                                                
-                                                        </p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">
-                                                            {{ $client['items']['issue_date'] = null ?? '0/0/0' }}</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold">
-                                                            {{ $client['items']['due_date'] = null ?? '0/0/0' }}</p>
-                                                    </div>
-                                                    <div class="col-1 hide">
-                                                        <div class="badge mb-2"
-                                                            style="{{--  $client['items']['over_due'] >= 0 ? 'background-color: #d07471;' : 'background-color: gray' --}}">
-                                                            {{--  $client['items']['over_due'] --}}d
-                                                        </div>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">
-                                                            {{ $client['items']['total_InitialAmount'] = null ?? '5555' }}
-                                                            €</p>
-                                                    </div>
-                                                    <div class="col">
-                                                        <p class="fw-bold">
-                                                            {{ $client['items']['total_RemainingAmount'] = null ?? '5555' }}
-                                                            €</p>
-                                                    </div>
-                                                    <div class="col-3 hide">
-                                                        {{-- @foreach ($client->items as $item)
-                                                            {{ $item->itemStatus->status = null ?? 'action1' }},{{ $item->itemStatus->follow_up_days = null ?? 1}}
-                                                        @endforeach --}}
-                                                    </div>
-                                                    <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
-                                                        <i class="fa-solid fa-chevron-down"></i>
-                                                    </div>
-                                                </div>
+                                                    @empty
+                                                    No Data
+                                                @endforelse
+
                                             </div>
                                             <div class="d-flex justify-content-center gap-5">
                                                 <p class="fw-bold">{{ __('Total') }}:</p>
@@ -4083,7 +3975,7 @@
                 {{-- ------------------- End Excel button ------------------------------------------------ --}}
             </div>
         </section>
-    @endsection
+@endsection
     @push('scripts')
         <script src="{{ asset('js/wow.min.js') }}"></script>
         <script>

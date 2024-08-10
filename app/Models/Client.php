@@ -57,11 +57,14 @@ class Client extends Model
         return $this->hasMany(Item::class, 'company_id');
     }
 
-    public function firstDueItem()
-    {
-        return $this->items()->orderBy('due_date')->first();
-    }
-
+    // public function firstDueItem()
+    // {
+    //     return $this->items()->orderBy('due_date')->first();
+    // }
+public function firstDueItem()
+{
+    return $this->hasOne(Item::class, 'company_id')->orderBy('due_date');
+}
     public function toTakeAction()
     {
         // get taken actions on first due item

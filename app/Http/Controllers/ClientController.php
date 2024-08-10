@@ -23,22 +23,14 @@ class ClientController extends Controller
     public function index()
     {
 
-        $clients = Client::all();
-        $clientResource = ClientResource::collection($clients)->toArray(request());
+        $clients = Client::paginate(30);
+        $clientResource = ClientResource::collection($clients)->response()->getData();
+        $clientResource = $clientResource->data;
+        // $item = Item::find(1);
+        // dd($clientResource);
         $collectionsScenario = CollectionScenario::all();
         $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
-
-        // $due_Date = "2023-09-15";
-        // foreach ($clients as $client) {
-        //     $dueDate = Carbon::parse($due_Date);
-        //     $now = Carbon::now();
-        //     $daysDifference = $dueDate->diffInDays($now);
-        //     if($dueDate->isFuture()) {
-        //         $overDueDays = -$daysDifference;
-        //     } else {
-        //         $overDueDays = $daysDifference;
-        //     }
-        // }
+        // return $clientResource;
         return view('clients.index', compact('clientResource', 'collectionsScenario', 'collectors'));
 
     }

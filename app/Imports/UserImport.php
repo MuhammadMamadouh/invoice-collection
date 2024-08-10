@@ -16,7 +16,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class ClientImport implements ToModel, WithHeadingRow,
+class UserImport implements ToModel, WithHeadingRow,
 // SkipsOnError,
 // SkipsOnFailure,
 // SkipsEmptyRows,
