@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItemType extends Model
+class TakenAction extends Model
 {
-
     use HasFactory;
-    protected $table = 'item_types';
+
+    public $table = 'item_taken_actions';
+
     protected $fillable = [
-        'en_name',
+    'item_id',
+    'scenario_action_id',
+    'action_date',
+    'taken_by'
     ];
 
-    public function items()
-    {
-        return $this->hasMany(Item::class);
-    }
+    
 }

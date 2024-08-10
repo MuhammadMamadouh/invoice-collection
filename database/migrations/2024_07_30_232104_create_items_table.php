@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('item_type_id');
-            $table->string('company_id');
+            $table->bigInteger('company_id');
             $table->string('po_no');
             $table->string('file_no');
             $table->string('erp_item_type');
