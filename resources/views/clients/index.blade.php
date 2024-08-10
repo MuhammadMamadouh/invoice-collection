@@ -279,7 +279,7 @@
                         <div class="col-3 tavle-dropdown-icon"></div>
                     </div>
                     <div class="text-center mb-3 p-2 p-md-4 table-container">
-                        @forelse($clients as $key => $client)
+                        @forelse($clientResource as $key => $client)
                             <div class="row align-items-center pt-3"
                                 style="background-color: {{ $key % 2 == 0 ? '#006bff14' : '#ffffff' }}">
                                 <div class="col-1">
@@ -295,16 +295,16 @@
                                             +28days (< 10days) </span>
                                 </div>
                                 <div class="col-4 col-md-1">
-                                    <p class="fw-bold">{{ $client->company_code }}</p>
+                                    <p class="fw-bold">{{ $client['company_code'] }}</p>
                                 </div>
                                 <div class="col-1 hide">
                                     <p class="fw-bold"><a href="#"
-                                            onclick="showHolap({{ $client->id }})">{{ $client->company_name }}</a></p>
+                                            onclick="showHolap({{ $client['id'] }})">{{ $client["company_name"] }}</a></p>
                                 </div>
                                 <div class="col-md-3 hide">
                                     <div class=" w-100 mb-3">
                                         <select class="form-select" id="inputname19">
-                                            <option selected disabled>{{ $client->collectionScenarios->en_name }}</option>
+                                            <option selected disabled>{{ $client['collectionScenarios']['en_name'] }}</option>
                                             @foreach ($collectionsScenario as $collection)
                                                 <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
                                             @endforeach
@@ -313,9 +313,9 @@
                                 </div>
                                 <div class="col-2 hide">
                                     <p class="fw-bold">{{ __('Group Industrie') }}</p>
-                                    @foreach ($client->clientsGroups as $group)
+                                    {{-- @foreach ($client->clientsGroups as $group)
                                         <p class=""><a href="#">{{ $group->en_name }}</a></p>
-                                    @endforeach
+                                    @endforeach --}}
                                 </div>
                                 <div class="col-1 hide">
                                     <p class="fw-bold">4Front</p>
@@ -366,14 +366,14 @@
                                 </div>
                             </div>
                             <div class="arrow-bottom"></div>
-                            <div id="company-details-{{ $client->id }}">
-                                <div class="company-details d-none" id="company-detail-{{ $client->id }}">
-                                    <div class="bg-light holap-first-{{ $client->id }}"
-                                        id="company-details-{{ $client->id }}">
+                            <div id="company-details-{{ $client['id'] }}">
+                                <div class="company-details d-none" id="company-detail-{{ $client['id'] }}">
+                                    <div class="bg-light holap-first-{{ $client['id'] }}"
+                                        id="company-details-{{ $client['id'] }}">
                                         <div class="row text-center m-0 p-3 w-100"
-                                            id="company-details-{{ $client->id }}" style="background-color: #006bff">
+                                            id="company-details-{{ $client['id'] }}" style="background-color: #006bff">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <div class="d-flex w-25 gap-3" id="company-details-{{ $client->id }}">
+                                                <div class="d-flex w-25 gap-3" id="company-details-{{ $client['id'] }}">
                                                     <i class="fa-solid fa-flag text-warning" style="font-size: 25px"></i>
                                                     <p class="text-light">{{ __('Payeurs correct / Average payer') }}</p>
 
@@ -407,16 +407,16 @@
                                                     {{-- ------------------- End Client's Data Noftications------------------------------------------------ --}}
 
                                                 </div>
-                                                <h2 class="text-light w-50">{{ $client->company_name }}</h2>
+                                                <h2 class="text-light w-50">{{ $client["company_name"] }}</h2>
                                                 <div class="d-flex justify-content-end gap-3 w-25">
                                                     <div class="icon-holab  ">
                                                         <i class="fa-solid fa-pen text-primary p-2 bg-light"
-                                                            onclick="EditHolap({{ $client->id }})"
+                                                            onclick="EditHolap({{ $client['id'] }})"
                                                             style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i>
                                                         <a href="holapDetails.html" target="_blank"><i
                                                                 class="fa-solid fa-maximize text-primary p-2 bg-light"style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i></a>
                                                         <i class="fa-solid fa-close text-light p-2 bg-danger"
-                                                            onclick="closeHolap({{ $client->id }})"
+                                                            onclick="closeHolap({{ $client['id'] }})"
                                                             style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i>
                                                     </div>
                                                 </div>
@@ -428,40 +428,40 @@
                                             <div class="col-lg-4 col-sm-6 text-start">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Copmany code') }}:</p>
-                                                    <p class="">{{ $client->company_code }}</p>
+                                                    <p class="">{{ $client["company_code"] }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Legal ID') }}:</p>
-                                                    <p class="">{{ $client->legal_id }}</p>
+                                                    <p class="">{{ $client['legal_id'] }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('VAT Number') }}:</p>
-                                                    <p class="">{{ $client->vat_number }}</p>
+                                                    <p class="">{{ $client['vat_number'] }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Address') }}:</p>
                                                     <p class="">
-                                                        <a href="">{{ $client->address }}, {{ $client->city }},
-                                                            {{ $client->state }}, {{ $client->country }}</a>
+                                                        <a href="">{{ $client['address'] }}, {{ $client['city'] }},
+                                                            {{ $client['state'] }}, {{ $client['country'] }}</a>
                                                     </p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Group') }}:</p>
-                                                    @foreach ($client->clientsGroups as $group)
+                                                    {{-- @foreach ($client->clientsGroups as $group)
                                                         <p class=""><a href="">{{ $group->en_name }}</a></p>
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Collector') }}:</p>
                                                     <p class=""><a
-                                                            href="">{{ $client->collector->first_name }}</a></p>
+                                                            href="">{{ $client['collector']['first_name'] }}</a></p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Collection senario') }}:</p>
                                                     <select class="form-select m-2 w-100"
                                                         aria-label="Default select example">
                                                         <option selected disabled>
-                                                            {{ $client->collectionScenarios->en_name }}
+                                                            {{ $client['collectionScenarios']['en_name'] }}
                                                         </option>
                                                         @foreach ($collectionsScenario as $collection)
                                                             <option value="{{ $collection->id }}">
@@ -474,24 +474,24 @@
                                             <div class="col-lg-4 col-sm-6 text-start">
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Payment term') }}:</p>
-                                                    <p class="">{{ $client->payment_term }}</p>
+                                                    <p class="">{{ $client['payment_term'] }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Payment mean') }}:</p>
-                                                    <p class="">{{ $client->payment_mean }}</p>
+                                                    <p class="">{{ $client['payment_mean'] }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Guarantee World Insurer') }}:</p>
-                                                    <p class="">{{ $client->insurer_guarantee }}</p>
+                                                    <p class="">{{ $client['insurer_guarantee'] }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Other guarantees') }}:</p>
-                                                    <p class="">{{ $client->other_guarantees }}</p>
+                                                    <p class="">{{ $client['other_guarantees'] }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Credit Limit') }}:</p>
                                                     <div class="form-group">
-                                                        <input type="text" value="{{ $client->credit_limit }}"
+                                                        <input type="text" value="{{ $client['credit_limit'] }}"
                                                             class="form-control" />
                                                     </div>
                                                 </div>
@@ -500,19 +500,19 @@
                                                             href="">{{ __('Late payment penalties') }}</a>:
                                                     </p>
                                                     <p class="">
-                                                        {{ $client->late_payment_penalties == 1 ? 'Yes' : 'No' }}</p>
+                                                        {{ $client['late_payment_penalties'] == 1 ? 'Yes' : 'No' }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold"><a href="">{{ __('Recovery cost') }}</a>:
                                                     </p>
                                                     <p class="">
-                                                        {{ $client->recovery_cost == 1 ? 'Yes' : 'No' }}</p>
+                                                        {{ $client['recovery_cost'] == 1 ? 'Yes' : 'No' }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold"><a
                                                             href="">{{ __('Interactive emails') }}</a>:</p>
                                                     <p class="">
-                                                        {{ $client->interactive_emails == 1 ? 'Yes' : 'No' }}</p>
+                                                        {{ $client['interactive_emails'] == 1 ? 'Yes' : 'No' }}</p>
                                                 </div>
                                             </div>
                                             <div class="col-lg-4 text-start">
@@ -536,18 +536,18 @@
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">Last name:</p>
-                                                    <p class="">{{ $client->collector->last_name }}</p>
+                                                    <p class="">{{ $client['collector']['last_name'] }}</p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
-                                                    @<a href="">{{ $client->collector->email }}</a>
+                                                    @<a href="">{{ $client['collector']['email'] }}</a>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
                                                     <i class="fa-solid fa-phone"></i> &nbsp; &nbsp;
-                                                    <a href=""> {{ $client->collector->mobile_phone }}</a> &nbsp;
+                                                    <a href=""> {{ $client['collector']['mobile_phone'] }}</a> &nbsp;
                                                     (Phone)
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-center">
-                                                    <i class="fa-solid fa-star"></i> &nbsp; Contact for collection
+                                                    <i class="fa-solid fa-star"></i> &nbsp; {{__("Contact for collection")}}
                                                 </div>
                                             </div>
                                         </div>
@@ -587,7 +587,7 @@
 
 
                                     {{-- ------------------- Edit Client Data------------------------------------------------ --}}
-                                    <form action="{{ route('clients.edit', $client->id) }}" method="POST">
+                                    {{-- <form action="{{ route('clients.edit', $client->id) }}" method="POST">
                                         @csrf
                                         <div class="create-c-i holap-second bg-light d-none"
                                             id="edit-client-data-{{ $client->id }}">
@@ -613,8 +613,7 @@
                                                         <div class="d-flex">
                                                             <div class="col-5 ">
                                                                 <label
-                                                                    for="inputname0">{{ __("Company / Business
-                                                                                                                                                                                                            name") }}
+                                                                    for="inputname0">{{ __("Company / Business name") }}
                                                                     * :</label>
 
                                                             </div>
@@ -742,8 +741,7 @@
                                                         <div class="d-flex">
                                                             <div class="col-5 ">
                                                                 <label for="inputname9"> {{ __('Title') }} <span
-                                                                        class="text-black-50">{{ __("(Mr,
-                                                                                                                                                                                                                        Mrs ...)") }}</span>
+                                                                        class="text-black-50">{{ __("(Mr, Mrs ...)") }}</span>
                                                                     :</label>
 
                                                             </div>
@@ -907,8 +905,8 @@
 
                                                             </div>
                                                             <div class="col-7 ">
-                                                                <textarea name="address" value="{{ old('address', $client->address) }}" class="form-control" rows="3"
-                                                                    id="inputname2"></textarea>
+                                                                <textarea name="address" value="" class="form-control" rows="3"
+                                                                    id="inputname2">{{ old('address', $client->address) }}</textarea>
                                                             </div>
                                                         </div>
                                                     </div><!--2-->
@@ -935,7 +933,7 @@
 
                                                                 </div>
                                                                 <div class="input-group">
-                                                                    <input type="number" name="other_guarantees"
+                                                                    <input type="number" name="other_guarantees" value="{{old('other_guarantees', $client->other_guarantees)}}"
                                                                         class="form-control" id="inputname12">
                                                                     <span class="input-group-text">
                                                                         <i class="fa-solid fa-euro-sign"></i>
@@ -954,8 +952,7 @@
                                                                     <input class="form-check-input" type="checkbox"
                                                                         id="email" name="">
                                                                     <label class="form-check-label"
-                                                                        for="email">{{ __("Email in
-                                                                                                                                                                                                                        copy in the automatic  emails") }}</label>
+                                                                        for="email">{{ __("Email in copy in the automatic  emails") }}</label>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -1270,7 +1267,7 @@
 
                                                             </div>
                                                             <div class="col-7 ">
-                                                                <input type="text" class="form-control"
+                                                                <input type="text" name="business_line" value="{{old('business_line', $client->business_line)}}" class="form-control"
                                                                     id="inputname16">
                                                             </div>
                                                         </div>
@@ -1410,7 +1407,7 @@
                                                 </div>
                                             </div>
                                         </div><!--create-c-i-->
-                                    </form>
+                                    </form> --}}
 
                                     {{-- -------------------  End Edit Client Data------------------------------------------------ --}}
 
@@ -1507,15 +1504,14 @@
                                                 </div>
                                                 <div class="col"></div>
                                             </div>
-                                            <div
-                                                class="row mt-2 text-center p-2 align-items-center"style="background-color: #006bff14;">
-                                                    @php($firstDueItem = $client->firstDueItem())
+                                            <div class="row mt-2 text-center p-2 align-items-center"style="background-color: #006bff14;">
+                                                    @php($firstDueItem = $client['firstDueItem'])
                                                         <div class="col fw-bold">{{$firstDueItem->due_date ?? '2/2/2'}}</div>
                                                         <div class="col fw-bold">
                                                             <div class="btn openModalBtn btn-primary">
-                                                                {{ optional($firstDueItem)->toTakeAction()->action_type ?? 'email' }}email</div>
+                                                                {{--$firstDueItem->toTakeAction()->action_type ?? 'email' --}}</div>
                                                         </div>
-                                                        <div class="col fw-bold">{{ optional($firstDueItem)->toTakeAction()->number_of_days }}2</div>
+                                                        <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' }} {{ optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
                                                         <div class="col fw-bold">0000</div>
                                                         <div class="col">
                                                             <div class="btn btn-primary">
@@ -1527,7 +1523,7 @@
                                                             <div class="btn btn-outline-primary">
                                                                 <i class="fa-solid fa-trash"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>  
                                             </div>
                                             <div class="row bg-light p-2 mt-3">
                                                 <div class="col-sm-4">
@@ -1546,7 +1542,7 @@
                                                 <div class="d-flex">
                                                     <h4>{{ __('Statement of account of open items') }}</h4>
                                                     <div class="btn bg-light ms-2">{{ __('No .of items') }}:
-                                                        {{ $client->items->count() }}</div>
+                                                        {{ $client['items']->count() }}</div>
                                                 </div>
                                                 <div class="form-group position-relative">
                                                     <input type="text" class="form-control border-primary ps-5"
@@ -1625,7 +1621,7 @@
                                             </div>
                                             <div class="text-center mb-3 table-container-2 p-2 px-md-4  ">
                                                 <div class="row align-items-center pt-3"
-                                                    style="{{ $overDueDays >= 0 ? 'background-color: #e6d3d3' : 'background-color: #d9edf7' }}">
+                                                    style="{{-- $client['items']['over_due'] >= 0 ? 'background-color: #e6d3d3' : 'background-color: #d9edf7' --}}">
                                                     <div class="col-1" style="z-index: 999;">
                                                         <div class="form-check">
                                                             <input type="checkbox" class="form-check-input"
@@ -1636,36 +1632,38 @@
                                                         <p class="fw-bold"><a href=''
                                                                 onclick="showInvoice()"><img src="./img/pdficons.gif"
                                                                     class="mb-1" alt="">
-                                                                {{-- $client->items --}}</a></p>
-
+                                                                {{$client['items']['po_no']  = null ?? 12355}}</a>
+                                                                
+                                                        </p>
                                                     </div>
                                                     <div class="col hide">
                                                         <p class="fw-bold">
-                                                            {{ $client->items->issue_date = null ?? '0/0/0' }}</p>
+                                                            {{ $client['items']['issue_date'] = null ?? '0/0/0' }}</p>
                                                     </div>
                                                     <div class="col">
                                                         <p class="fw-bold">
-                                                            {{ $client->items->due_date = null ?? '0/0/0' }}</p>
+                                                            {{ $client['items']['due_date'] = null ?? '0/0/0' }}</p>
                                                     </div>
                                                     <div class="col-1 hide">
                                                         <div class="badge mb-2"
-                                                            style="{{ $overDueDays >= 0 ? 'background-color: #d07471;' : 'background-color: gray' }}">
-                                                            {{ $overDueDays }}d</div>
+                                                            style="{{--  $client['items']['over_due'] >= 0 ? 'background-color: #d07471;' : 'background-color: gray' --}}">
+                                                            {{--  $client['items']['over_due'] --}}d
+                                                        </div>
                                                     </div>
                                                     <div class="col hide">
                                                         <p class="fw-bold">
-                                                            {{ $client->items->initial_amount_inc_tax = null ?? '5555' }}
+                                                            {{ $client['items']['total_InitialAmount'] = null ?? '5555' }}
                                                             €</p>
                                                     </div>
                                                     <div class="col">
                                                         <p class="fw-bold">
-                                                            {{ $client->items->remaining_amount_inc_tax = null ?? '5555' }}
+                                                            {{ $client['items']['total_RemainingAmount'] = null ?? '5555' }}
                                                             €</p>
                                                     </div>
                                                     <div class="col-3 hide">
-                                                        @foreach ($client->items as $item)
-                                                            {{-- $item->itemStatus->status --}},{{-- $item->itemStatus->follow_up_days --}}
-                                                        @endforeach
+                                                        {{-- @foreach ($client->items as $item)
+                                                            {{ $item->itemStatus->status = null ?? 'action1' }},{{ $item->itemStatus->follow_up_days = null ?? 1}}
+                                                        @endforeach --}}
                                                     </div>
                                                     <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
                                                         <i class="fa-solid fa-chevron-down"></i>
@@ -1674,8 +1672,8 @@
                                             </div>
                                             <div class="d-flex justify-content-center gap-5">
                                                 <p class="fw-bold">{{ __('Total') }}:</p>
-                                                <p class="fw-bold">{{ $total_InitialAmount = null ?? 55955 }} €</p>
-                                                <p class="fw-bold">{{ $total_RemainingAmount = null ?? 5555 }} €</p>
+                                                {{-- <p class="fw-bold">{{ $total_InitialAmount = null ?? 55955 }} €</p>
+                                                <p class="fw-bold">{{ $total_RemainingAmount = null ?? 5555 }} €</p> --}}
                                             </div>
 
                                             {{-- ------------------- End Items Table------------------------------------------------ --}}
@@ -1819,10 +1817,9 @@
                                                 <div class="end-con d-flex justify-content-between">
                                                     <h4 class="mt-2 mb-2"><span><i
                                                                 class="fa-regular fa-hand-point-right"></i></span>
-                                                        {{ __("Actions to
-                                                                                                                                                                        do") }}:
+                                                        {{ __("Actions to do") }}:
                                                         <span>?
-                                                            readmore</span>
+                                                            {{__("readmore")}}</span>
                                                     </h4>
                                                     <div class="">
                                                         <select class="form-select m-2 text-capitalize "
@@ -4010,7 +4007,7 @@
                 <div class="btn btn-outline-primary">6</div>
                 <div class="btn btn-outline-primary">Next</div> --}}
                 </div>
-                {{ $clients->links('pagination::bootstrap-5') }}
+                {{-- {{ $clientResource->links('pagination::bootstrap-5') }} --}}
 
                 {{-- ------------------- Excel button ------------------------------------------------ --}}
 

@@ -17,6 +17,7 @@ class ClientResource extends JsonResource
         return [
             'id' => $this->id,
             'company_name' => $this->company_name,
+            'company_code' => $this->company_code,
             'trading_name' => $this->trading_name,
             'legal_id' => $this->legal_id,
             'vat_number' => $this->vat_number,
@@ -46,6 +47,8 @@ class ClientResource extends JsonResource
             'items' => ItemResource::collection($this->items),
             'collectionScenarios' => new CollectionScenarioResource($this->collectionScenarios),
             'collector' => new UserResource($this->collector),
+            'clientsGroup' => new ClientGroupResource($this->clientsGroups),
+            'firstDueItem' => new ItemResource($this->firstDueItem()),
         ];
     }
 }

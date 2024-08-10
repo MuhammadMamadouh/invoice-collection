@@ -71,5 +71,4 @@ class Client extends Model
     }
 
 
-
 }

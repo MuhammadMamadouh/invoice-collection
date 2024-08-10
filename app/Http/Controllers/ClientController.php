@@ -22,42 +22,24 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $due_Date = "2023-09-15";
-        //to update after client 
-        $clients = Client::with('collectionScenarios.scenariosActions', 'clientsGroups', 'collector', 'items', 'items.itemStatus')->where('id', 1 )->paginate(30);
+
+        $clients = Client::all();
+        $clientResource = ClientResource::collection($clients)->toArray(request());
         $collectionsScenario = CollectionScenario::all();
         $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
-        //overDue date calculation
-        foreach ($clients as $client) {
-            $dueDate = Carbon::parse($due_Date);
-            $now = Carbon::now();
-            $daysDifference = $dueDate->diffInDays($now);
-            if ($dueDate->isFuture()) {
-                $overDueDays = -$daysDifference;
-            } else {
-                $overDueDays = $daysDifference;
-            }
 
-            //total calculation
-            $total_InitialAmount = $client->items()->sum('initial_amount_inc_tax');
-            $total_RemainingAmount = $client->items()->sum('remaining_amount_inc_tax');
-        }
-
-        // $clientrecours 
-        // $oneClient = Client::find(1);
-        // $firstItem = $oneClient->firstDueItem();
-        // $action = $firstItem->toTakeAction();
-        // dd("firstItem",$firstItem , "action",$action);
-
-
-        return view('clients.index', compact(
-            'clients',
-            'collectionsScenario',
-            'collectors',
-            'overDueDays',
-            'total_RemainingAmount',
-            'total_InitialAmount'
-        ));
+        // $due_Date = "2023-09-15";
+        // foreach ($clients as $client) {
+        //     $dueDate = Carbon::parse($due_Date);
+        //     $now = Carbon::now();
+        //     $daysDifference = $dueDate->diffInDays($now);
+        //     if($dueDate->isFuture()) {
+        //         $overDueDays = -$daysDifference;
+        //     } else {
+        //         $overDueDays = $daysDifference;
+        //     }
+        // }
+        return view('clients.index', compact('clientResource', 'collectionsScenario', 'collectors'));
 
     }
 

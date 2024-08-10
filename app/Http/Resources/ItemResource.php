@@ -47,7 +47,11 @@ class ItemResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
 
+            
+            'total_InitialAmount' => $this->sum($this->initial_amount_inc_tax),
+            'total_RemainingAmount' => $this->sum($this->remaining_amount_inc_tax),
             'over_due' => $overDueDays,
+            "itemStatus" => ItemStatusResource::collection($this->itemStatus)
         ];
     }
 }
