@@ -21,6 +21,7 @@ class ItemResource extends JsonResource
             'id'                        => $this->id,
             'item_type_id'              => $this->item_type_id,
             'company_id'                => $this->company_id,
+            'trans_no'                  => $this->trans_no,
             'po_no'                     => $this->po_no,
             'file_no'                   => $this->file_no,
             'erp_item_type'             => $this->erp_item_type,
@@ -38,9 +39,14 @@ class ItemResource extends JsonResource
             'initial_amount_inc_tax'    => $this->initial_amount_inc_tax,
             'remaining_amount_exc_tax'  => $this->remaining_amount_exc_tax,
             'remaining_amount_inc_tax'  => $this->remaining_amount_inc_tax,
+            'created_at'                => $this->created_at,
+            'updated_at'                => $this->updated_at,
             'overdue'                   => $over_due_days > 0 ? "+$over_due_days" : "$over_due_days",
             'is_overdue'                => now()->gt($this->due_date) ? true : false,
-            "itemStatus"                => new ItemStatusResource($this->itemStatus)
+            "itemStatus"                => new ItemStatusResource($this->itemStatus),
+            'itemType'                  => new ItemTypeResource($this->itemType),
+            'client'                    => $this->client,
+            'currency'                  => $this->currency,
         ];
     }
 }

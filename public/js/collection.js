@@ -331,24 +331,6 @@ function associatedFun() {
 };
 
 
-function showInvoice() {
-  document.querySelector(".overlay").classList.remove("d-none");
-  document.querySelector(".invoice").classList.remove("d-none");
-}
-
-function closeInvoice() {
-  document.querySelector(".overlay").classList.add("d-none");
-  document.querySelector(".invoice").classList.add("d-none");
-}
-function EditInvoice() {
-  document.querySelector(".invoice-first").classList.add("d-none");
-  document.querySelector(".invoice-second").classList.remove("d-none");
-}
-
-function closeEditInvoice() {
-  document.querySelector(".invoice-first").classList.remove("d-none");
-  document.querySelector(".invoice-second").classList.add("d-none");
-}
 
 
 function showInvioce2(){

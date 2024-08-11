@@ -8,7 +8,9 @@ use App\Http\Requests\ClientRequest;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use App\Models\CollectionScenario;
+use App\Models\Currency;
 use App\Models\Item;
+use App\Models\ItemType;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -29,9 +31,10 @@ class ClientController extends Controller
         // $item = Item::find(1);
         // dd($clientResource);
         $collectionsScenario = CollectionScenario::all();
+        $itemTypes = ItemType::all();
+        $currencies = Currency::all();
         $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
-        // return $clientResource;
-        return view('clients.index', compact('clientResource', 'collectionsScenario', 'collectors'));
+        return view('clients.index', compact('clientResource', 'collectionsScenario', 'collectors', 'itemTypes', 'clients', 'currencies'));
 
     }
 

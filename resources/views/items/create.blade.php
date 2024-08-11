@@ -23,7 +23,7 @@
                 <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
-                            <label for="item_type_id">{{__("ltem type")}}* :</label>
+                            <label for="item_type_id">{{__("Item type")}}* :</label>
                         </div>
                         <div class="col-7 ">
                             <select class="form-select" id="item_type_id" name="item_type_id">
