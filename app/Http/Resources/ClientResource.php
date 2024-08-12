@@ -44,7 +44,7 @@ class ClientResource extends JsonResource
             'interactive_emails'        => $this->interactive_emails,
             'customer_custom_field_1'   => $this->customer_custom_field_1,
             'customer_custom_field_2'   => $this->customer_custom_field_2,
-            'items'                     =>  ItemResource::collection($this->items),
+            'items'                     => ItemResource::collection($this->items),
             'collectionScenarios'       => $this->collectionScenarios ? CollectionScenarioResource::make($this->collectionScenarios) : [],
             'collector'                 => new UserResource($this->collector),
             'clientsGroup'              => ClientGroupResource::collection($this->clientsGroups)->toArray($request) ?? [],

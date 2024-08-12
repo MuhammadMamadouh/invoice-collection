@@ -102,7 +102,8 @@
                     </div>
                     <div id="selectedAlert" class="d-flex d-none justify-content-between align-items-center mb-4">
                         <p class="mt-1"></p>
-                        <a href="editAlert.html" class="btn btn-primary"><i class="fa-solid fa-pen"></i> Edit</a>
+                        <a href="editAlert.html" class="btn btn-primary"><i class="fa-solid fa-pen"></i>
+                            {{ __('Edit') }}</a>
                     </div>
                     <div class="row mt-2 align-items-center px-4 text-center">
                         <div class="col-1 col-md-1">
@@ -162,7 +163,7 @@
                     </div>
                     <div class="text-center mb-3 p-2 p-md-4 table-container">
                         @forelse($clientResource as $key => $client)
-                        {{-- {{dd($client)}} --}}
+                            {{-- {{dd($client)}} --}}
                             <div class="row align-items-center pt-3"
                                 style="background-color: {{ $key % 2 == 0 ? '#006bff14' : '#ffffff' }}">
                                 <div class="col-1">
@@ -188,9 +189,11 @@
                                 <div class="col-md-3 hide">
                                     <div class=" w-100 mb-3">
                                         <select class="form-select" id="inputname19">
-                                            <option value="{{ $client->collectionScenarios->id ?? '' }}" selected disabled>{{ $client->collectionScenarios->en_name ?? ''}}</option>
+                                            <option value="{{ $client->collectionScenarios->id ?? '' }}" selected
+                                                disabled>{{ $client->collectionScenarios->en_name ?? '' }}</option>
                                             @foreach ($collectionsScenario as $collection)
-                                                <option value="{{ $collection->id }}">{{ $collection->en_name ?? '' }}</option>
+                                                <option value="{{ $collection->id }}">{{ $collection->en_name ?? '' }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -199,7 +202,7 @@
                                     <p class="fw-bold">{{ __('Group Industrie') }}</p>
                                     {{-- @foreach ($client->clientsGroups as $group)
                                         <p class=""><a href="#">{{ $group->en_name }}</a></p>
-                                    @endforeach --}}
+                                    @endforeach  --}}
                                 </div>
                                 <div class="col-1 hide">
                                     <p class="fw-bold">4Front</p>
@@ -225,7 +228,8 @@
                                                 <option value="" selected disabled>{{ __('Collection Scenarios') }}
                                                 </option>
                                                 @foreach ($collectionsScenario as $collection)
-                                                    <option value="{{ $collection->id }}">{{ $collection->en_name  ?? ''}}
+                                                    <option value="{{ $collection->id }}">
+                                                        {{ $collection->en_name ?? '' }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -250,6 +254,7 @@
                                 </div>
                             </div>
                             <div class="arrow-bottom"></div>
+
                             <div id="company-details-{{ $client->id }}">
                                 <div class="company-details d-none" id="company-detail-{{ $client->id }}">
                                     <div class="bg-light holap-first-{{ $client->id }}"
@@ -262,32 +267,8 @@
                                                     <p class="text-light">{{ __('Payeurs correct / Average payer') }}</p>
 
                                                     {{-- ------------------- Client's Data Noftications------------------------------------------------ --}}
+                                                    @include('clients.data_notifactions')
 
-                                                    <div class="mb-3 alert-icon-container">
-                                                        <i class="fa-solid fa-bell text-danger"
-                                                            style="font-size: 25px"></i>
-                                                        <span class="alert-counter">5</span>
-
-                                                        <div class="alert-list">
-                                                            <!-- List of alerts -->
-                                                            <div class="alert-item">
-                                                                <a href="#">{{ __('Alert') }}:</a> Customer
-                                                                receivable above
-                                                                cridit
-                                                                limit
-                                                            </div>
-                                                            <div class="alert-item">
-                                                                <a href="#">Alert:</a> Customer receivable above
-                                                                cridit
-                                                                limit
-                                                            </div>
-                                                            <div class="alert-item">
-                                                                <a href="#">Alert:</a> Customer receivable above
-                                                                cridit
-                                                                limit
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     {{-- ------------------- End Client's Data Noftications------------------------------------------------ --}}
 
                                                 </div>
@@ -338,7 +319,8 @@
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Collector') }}:</p>
                                                     <p class=""><a
-                                                            href="">{{ $client->collector->first_name ?? ''}}</a></p>
+                                                            href="">{{ $client->collector->first_name ?? '' }}</a>
+                                                    </p>
                                                 </div>
                                                 <div class="d-flex align-items-center justify-content-between">
                                                     <p class="fw-bold">{{ __('Collection senario') }}:</p>
@@ -443,3337 +425,2201 @@
                                             <div class="col-lg-4 col-sm-6">
                                                 <div class="m-1 w-100 btn btn-primary disputeButton"
                                                     onclick="disputeFun()">
-                                                    <i class="fa-solid fa-clock"></i> collection& dispute management
+                                                    <i class="fa-solid fa-clock"></i>
+                                                    {{ __('collection& dispute management') }}
                                                 </div>
                                             </div>
                                             <div class="col-lg-2 col-sm-6">
                                                 <div class="m-1 w-100 btn btn-outline-primary riskButton"
                                                     onclick="riskFun()">
-                                                    <i class="fa-solid fa-bolt"></i> Risk Report
+                                                    <i class="fa-solid fa-bolt"></i> {{ __('Risk Report') }}
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-sm-6">
                                                 <div class="m-1 w-100 btn btn-outline-primary indicatorsButton"
                                                     onclick="indicatorsFun()">
-                                                    <i class="fa-solid fa-chart-simple"></i> Reports & Indicators
+                                                    <i class="fa-solid fa-chart-simple"></i>
+                                                    {{ __('Reports & Indicators') }}
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-sm-6">
                                                 <div class="m-1 w-100 btn btn-outline-primary historyButton"
                                                     onclick="historyFun()">
-                                                    <i class="fa-solid fa-bars-staggered"></i> History
+                                                    <i class="fa-solid fa-bars-staggered"></i> {{ __('History') }}
                                                 </div>
                                             </div>
                                         </div>
 
                                         {{-- ------------------- End Client's Data Buttons------------------------------------------------ --}}
                                     </div>
-
-
                                     {{-- ------------------- Edit Client Data------------------------------------------------ --}}
-                                    <form action="{{ route('clients.edit', $client->id) }}" method="POST">
-                                        @csrf
-                                        <div class="create-c-i holap-second bg-light d-none"
-                                            id="edit-client-data-{{ $client->id }}">
-                                            <div class="d-flex gap-3 justify-content-end text-center m-0 mb-3 p-3 w-100"
-                                                style="background-color: #006bff">
-                                                <span class="btn text-light p-1 px-2 btn-danger" onclick="closeHolap()"><i
-                                                        class="fa-solid fa-trash" style="  font-size: 15px;"></i></span>
-                                                <span class="btn px-4 text-light p-1 btn-success"
-                                                    onclick="closeEditHolap({{ $client->id }})"><i
-                                                        class="fa-solid fa-floppy-disk" style="  font-size: 15px;"></i>
-                                                    {{ __('Save') }}</span>
-                                                <span class="btn px-4 text-light p-1 btn-warning"
-                                                    onclick="closeEditHolap({{ $client->id }})"><i
-                                                        class="fa-solid fa-reply" style="  font-size: 15px;"></i>
-                                                    {{ __('Cancel') }}</span>
-                                                <a href="editHolapDetails.html"
-                                                    class="btn px-2 text-primary p-1 btn-light" target="_blank"><i
-                                                        class="fa-solid fa-maximize "style="  font-size: 15px;"></i></a>
-                                            </div>
-                                            <div id="edit-client-data-{{ $client->id }}">
-                                                <div class="row container-fluid">
-                                                    <div class="col-md-4  my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label
-                                                                    for="inputname0">{{ __("Company / Business name") }}
-                                                                    * :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="company_name"
-                                                                    value="{{ old('company_name', $client->company_name) }}"
-                                                                    class="form-control" id="inputname0">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--1-->
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname1">{{ __('Payment term') }}:</label>
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="payment_term"
-                                                                    value="{{ old('payment_term', $client->payment_term) }}"
-                                                                    class="form-control" id="inputname1">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--3-->
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex align-items-center justify-content-between">
-                                                            <select class="form-select m-auto w-75"
-                                                                aria-label="Default select example">
-                                                                <option selected disabled>Contact:</option>
-                                                                <option value="1">Clients risqués (FR)</option>
-                                                                <option value="1">Key accounts scenario (EN)</option>
-                                                                <option value="1">Modeles actions specifiques</option>
-                                                                <option value="1">Risky clients (En)</option>
-                                                                <option value="1">
-                                                                    Scenario de relance standard (by default)
-                                                                </option>
-                                                                <option value="1">Standard collection scenario
-                                                                </option>
-                                                                <option value="1">Templates specific actions</option>
-                                                            </select>
-                                                        </div>
-                                                    </div><!--2-->
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname4">{{ __('Trading name') }} :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name='trading_name'
-                                                                    value="{{ old('trading_name', $client->trading_name) }}"
-                                                                    class="form-control" id="inputname4">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--4-->
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname6"> {{ __('Payment mean') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="payment_mean"
-                                                                    value="{{ old('payment_mean', $client->payment_mean) }}"
-                                                                    class="form-control" id="inputname6">
-                                                            </div>
-                                                        </div>
-                                                    </div><!--6-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname60"> {{ __('Role') }} * :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <select class="form-select w-100" id="inputname60"
-                                                                    aria-label="Default select example">
-                                                                    <option value="1">Accountant</option>
-                                                                    <option value="1">Client</option>
-                                                                    <option value="1">Company</option>
-                                                                    <option value="1">Executive Officer</option>
-                                                                    <option selected>Other</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--6-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname7"> {{ __('Company code') }} *
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="company_code"
-                                                                    value="{{ old('company_code', $client->company_code) }}"
-                                                                    class="form-control" id="inputname7">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--7-->
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname50"> {{ __('Insurer reference') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7">
-                                                                <div class="input-group">
-                                                                    <input type="text" name="insurer_reference"
-                                                                        class="form-control" id="inputname50">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--9-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname9"> {{ __('Title') }} <span
-                                                                        class="text-black-50">{{ __("(Mr, Mrs ...)") }}</span>
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7">
-                                                                <div class="input-group">
-                                                                    <input type="text" class="form-control"
-                                                                        id="inputname9">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--9-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname5"> {{ __('Ultimate Parent Code') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" class="form-control"
-                                                                    id="inputname5">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--5-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname9"> {{ __('Insurer guarantee') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7">
-                                                                <div class="input-group">
-                                                                    <input type="number" name="insurer_guarantee"
-                                                                        value="{{ old('insurer_guarantee', $client->insurer_guarantee) }}"
-                                                                        class="form-control" id="inputname9">
-                                                                    <span class="input-group-text">
-                                                                        <i class="fa-solid fa-euro-sign"></i>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--9-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname100"> {{ __('Last Name') }} *
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" class="form-control"
-                                                                    id="inputname100">
-                                                            </div>
-                                                        </div>
-                                                    </div><!--10-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname10"> {{ __('Legal ID') }} :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="legal_id"
-                                                                    value="{{ old('legal_id', $client->legal_id) }}"
-                                                                    class="form-control" id="inputname10">
-                                                            </div>
-                                                        </div>
-                                                    </div><!--10-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname91"> {{ __('Temporary guarantee') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7">
-                                                                <div class="input-group">
-                                                                    <input type="number" name=""
-                                                                        class="form-control" id="inputname91">
-                                                                    <span class="input-group-text"><i
-                                                                            class="fa-solid fa-euro-sign"></i></span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--9-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname101"> {{ __('First Name') }} *
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" class="form-control"
-                                                                    id="inputname101">
-                                                            </div>
-                                                        </div>
-                                                    </div><!--10-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname13"> {{ __('VAT Number') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="vat_number"
-                                                                    value="{{ old('vat_number', $client->vat_number) }}"
-                                                                    class="form-control" id="inputname13">
-                                                            </div>
-                                                        </div>
-                                                    </div><!--13-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname222">{{ __('Start date') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="input-group">
-                                                                <input type="date" class="form-control"
-                                                                    id="inputname222">
-                                                                <span class="input-group-text"><i
-                                                                        class="fa-solid fa-calendar-days"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--2-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname555"> {{ __('Email') }} :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" class="form-control"
-                                                                    id="inputname555">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--5-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname2">{{ __('Address') }} :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <textarea name="address" value="" class="form-control" rows="3"
-                                                                    id="inputname2">{{ old('address', $client->address) }}</textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--2-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname2222">{{ __('End date') }} :</label>
-
-                                                            </div>
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control"
-                                                                    id="inputname2222">
-                                                                <span class="input-group-text"><i
-                                                                        class="fa-solid fa-calendar-days"></i></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class=" my-2">
-                                                            <div class="d-flex">
-                                                                <div class="col-5 ">
-                                                                    <label for="inputname12">
-                                                                        {{ __('Other guarantees') }} :</label>
-
-                                                                </div>
-                                                                <div class="input-group">
-                                                                    <input type="number" name="other_guarantees" value="{{old('other_guarantees', $client->other_guarantees)}}"
-                                                                        class="form-control" id="inputname12">
-                                                                    <span class="input-group-text">
-                                                                        <i class="fa-solid fa-euro-sign"></i>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div><!--12-->
-                                                    </div><!--2-->
-
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex justify-content-center my-2">
-                                                            <div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="email" name="">
-                                                                    <label class="form-check-label"
-                                                                        for="email">{{ __("Email in copy in the automatic  emails") }}</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class=" my-2">
-                                                            <div class="d-flex">
-                                                                <div class="col-5 ">
-                                                                    <label for="inputname502"> {{ __('Phone') }}
-                                                                        :</label>
-
-                                                                </div>
-                                                                <div class="col-7 ">
-                                                                    <input type="text" name="phone"
-                                                                        class="form-control" id="inputname502">
-                                                                </div>
-                                                            </div>
-                                                        </div><!--5-->
-                                                    </div><!--5-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname8"> {{ __('Post Office Box') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="post_office_box"
-                                                                    value="{{ old('post_office_box', $client->post_office_box) }}"
-                                                                    class="form-control" id="inputname8">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--8-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname15">
-                                                                    {{ __('Credit Limit') }} :</label>
-
-                                                            </div>
-                                                            <div class="input-group">
-                                                                <input type="text" name="credit_limit"
-                                                                    value="{{ old('credit_limit', $client->credit_limit) }}"
-                                                                    class="form-control" id="inputname15">
-                                                                <span class="input-group-text"><i
-                                                                        class="fa-solid fa-euro-sign"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--15-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname504">{{ __('Mobile Phone') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="mobile_phone"
-                                                                    class="form-control" id="inputname504">
-                                                            </div>
-                                                        </div>
-                                                    </div><!--5-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname5"> {{ __('ZIP (or Postal) Code') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="postal_code"
-                                                                    value="{{ old('postal_code', $client->postal_code) }}"
-                                                                    class="form-control" id="inputname5">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--5-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname505"> {{ __('Score') }} :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="score" class="form-control"
-                                                                    id="inputname505">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--5-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname506"> {{ __('Fax') }} :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="fax" class="form-control"
-                                                                    id="inputname506">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--5-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname11"> {{ __('City') }} :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name='city'
-                                                                    value="{{ old('city', $client->city) }}"
-                                                                    class="form-control" id="inputname11">
-                                                            </div>
-                                                        </div>
-                                                        <div class=" my-2">
-                                                            <div class="d-flex">
-                                                                <div class="col-5 ">
-                                                                    <label for="inputname14">
-                                                                        {{ __('State / Province') }} :</label>
-
-                                                                </div>
-                                                                <div class="col-7 ">
-                                                                    <input type="text" name="state"
-                                                                        value="{{ old('state', $client->state) }}"
-                                                                        class="form-control" id="inputname14">
-                                                                </div>
-                                                            </div>
-                                                        </div><!--14-->
-                                                        <div class=" my-2">
-                                                            <div class="d-flex">
-                                                                <div class="col-5 ">
-                                                                    <label for="inputname17"> {{ __('Country') }} :
-                                                                    </label>
-
-                                                                </div>
-                                                                <div class="col-7 ">
-                                                                    <input type="text" name="country"
-                                                                        value="{{ old('country', $client->country) }}"
-                                                                        class="form-control" id="inputname17">
-                                                                </div>
-                                                            </div>
-                                                        </div><!--17-->
-                                                    </div><!--11-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname18"> <a
-                                                                        href="">{{ __("Late payment
-                                                                                                                                                                                                                        penalties?") }}</a></label>
-
-                                                            </div>
-                                                            <div
-                                                                class="col-7 d-flex justify-content-between align-items-center ">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="late_payment_penalties" value='1'
-                                                                        {{ old('late_payment_penalties', $client->late_payment_penalties) == 1 ? 'checked' : '' }}
-                                                                        id="exampleCheckbox1">
-                                                                    <label class="form-check-label"
-                                                                        for="exampleCheckbox1">{{ __('Yes') }}</label>
-                                                                </div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="late_payment_penalties" value='0'
-                                                                        {{ old('late_payment_penalties', $client->late_payment_penalties) == 0 ? 'checked' : '' }}
-                                                                        id="exampleCheckbox2">
-                                                                    <label class="form-check-label"
-                                                                        for="exampleCheckbox2">{{ __('No') }}</label>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class=" my-2">
-                                                            <div class="d-flex">
-                                                                <div class="col-5 ">
-                                                                    <label for="inputname21"> <a
-                                                                            href="">{{ __("Recovery
-                                                                                                                                                                                                                                    cost?") }}</a></label>
-
-                                                                </div>
-                                                                <div class="col-7 d-flex justify-content-between ">
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio"
-                                                                            name="recovery_cost" value='1'
-                                                                            {{ old('recovery_cost', $client->recovery_cost) == 1 ? 'checked' : '' }}
-                                                                            id="exampleCheckbox1">
-                                                                        <label class="form-check-label"
-                                                                            for="exampleCheckbox1">{{ __('Yes') }}</label>
-                                                                    </div>
-                                                                    <div class="form-check">
-                                                                        <input class="form-check-input" type="radio"
-                                                                            name="recovery_cost" value='0'
-                                                                            {{ old('recovery_cost', $client->recovery_cost) == 0 ? 'checked' : '' }}
-                                                                            id="exampleCheckbox2">
-                                                                        <label class="form-check-label"
-                                                                            for="exampleCheckbox2">{{ __('No') }}</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div><!--21-->
-                                                        <div class=" my-2">
-                                                            <div class="d-flex">
-                                                                <div class="col-5 ">
-                                                                    <label for="inputname24"><a
-                                                                            href="">{{ __("Interactive
-                                                                                                                                                                                                                                    emails") }}?</a></label>
-
-                                                                </div>
-                                                                <div class="col-7 d-flex justify-content-between  ">
-                                                                    <div class="form-check ">
-                                                                        <input class="form-check-input" type="radio"
-                                                                            name="interactive_emails" value='1'
-                                                                            {{ old('interactive_emails', $client->interactive_emails) == 1 ? 'checked' : '' }}
-                                                                            id="exampleCheckbox1">
-                                                                        <label class="form-check-label"
-                                                                            for="exampleCheckbox1">{{ __('Yes') }}</label>
-                                                                    </div>
-                                                                    <div class="form-check d-flex">
-                                                                        <input class="form-check-input" type="radio"
-                                                                            name="interactive_emails" value='0'
-                                                                            {{ old('interactive_emails', $client->interactive_emails) == 0 ? 'checked' : '' }}
-                                                                            id="exampleCheckbox2">
-                                                                        <label class="form-check-label "
-                                                                            for="exampleCheckbox2">{{ __('No') }}</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div><!--24-->
-                                                    </div><!--18-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 mt-2">
-                                                                <label for="inputname2">{{ __('Comments') }} :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <textarea class="form-control" rows="3" id="inputname2"></textarea>
-                                                                <p class="text-black-50 m-0">
-                                                                    {{ __("Comments should be factual,
-                                                                                                                                                                                                            objective and non
-                                                                                                                                                                                                            offensive") }}
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--2-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname20"> {{ __('Website') }} :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="website"
-                                                                    value="{{ old('website', $client->website) }}"
-                                                                    class="form-control" id="inputname20">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--20-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label
-                                                                    for="inputname27">{{ __('Customer custom field #1') }}:</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" class="form-control"
-                                                                    id="inputname27">
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--27-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex justify-content-center my-2">
-                                                            <div>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        id="contact">
-                                                                    <label class="form-check-label"
-                                                                        for="contact">{{ __("Contact for
-                                                                                                                                                                                                                        collection?") }}</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--5-->
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname16"> {{ __('Business line') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" name="business_line" value="{{old('business_line', $client->business_line)}}" class="form-control"
-                                                                    id="inputname16">
-                                                            </div>
-                                                        </div>
-                                                    </div><!--16-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label
-                                                                    for="inputname30">{{ __('Customer custom field #2') }}:</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <input type="text" class="form-control"
-                                                                    id="inputname30">
-                                                            </div>
-                                                        </div>
-                                                    </div><!--30-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex justify-content-center">
-                                                            <div>
-                                                                <div class="btn btn-danger"><i
-                                                                        class="fa-solid fa-trash"></i>
-                                                                    {{ __('Delete this contact') }}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--5-->
-
-
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname19"> {{ __('Collector') }} :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <select name="collector_id" class="form-select"
-                                                                    id="inputname19">
-                                                                    <option selected disabled>
-                                                                        {{ $client->collector->first_name }}</option>
-                                                                    @foreach ($collectors as $collector)
-                                                                        <option value={{ $collector->id }}>
-                                                                            {{ $collector->first_name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                    </div><!--19-->
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label for="inputname22"> {{ __('Collection scenario') }}
-                                                                    :</label>
-
-                                                            </div>
-                                                            <div class="col-7 ">
-                                                                <select name='collection_scenario_id' class="form-select"
-                                                                    id="inputname19">
-                                                                    <option selected disabled>
-                                                                        {{ $client->collectionScenarios->en_name ?? '' }}
-                                                                    </option>
-                                                                    @foreach ($collectionsScenario as $collection)
-                                                                        <option value={{ $collection->id }}>
-                                                                            {{ $collection->en_name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--22-->
-
-                                                    <div class="col-md-4 my-2">
-                                                        <div class="d-flex">
-                                                            <div class="col-5 ">
-                                                                <label
-                                                                    for="inputname24">{{ __('Block this account') }}?</label>
-                                                            </div>
-                                                            <div class="col-7 d-flex justify-content-between">
-                                                                <div class="form-check ">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        id="block">
-                                                                    <label class="form-check-label"
-                                                                        for="block">{{ __('Yes') }}</label>
-                                                                </div>
-                                                                <div class="form-check d-flex">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        id="block">
-                                                                    <label class="form-check-label "
-                                                                        for="block">{{ __('No') }}</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div><!--24-->
-
-                                                    <div class="my-4 d-flex justify-content-center gap-3">
-                                                        <p class="text-black-50">
-                                                            {{ __('Creation date in MY DSO MANAGER') }} :
-                                                            {{-- {{ $client->created_at }} (G.M.T. +1) --}}
-                                                        </p>
-                                                        <p class="text-black-50">• {{ __('Modification date') }} :
-                                                            {{-- {{ $client->updated_at }} --}}
-                                                            (G.M.T. +1)</p>
-                                                    </div>
-
-                                                </div><!--row-->
-                                                <div class="row p-4 m-0 container-fluid">
-                                                    <div class="col-lg-4 col-sm-6">
-                                                        <div class="m-1 w-100 btn btn-primary disputeButton"
-                                                            onclick="disputeFun()">
-                                                            <i class="fa-solid fa-clock"></i>
-                                                            {{ __('collection& dispute management') }}
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-2 col-sm-6">
-                                                        <div class="m-1 w-100 btn btn-outline-primary riskButton"
-                                                            onclick="riskFun()">
-                                                            <i class="fa-solid fa-bolt"></i> {{ __('Risk Report') }}
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-sm-6">
-                                                        <div class="m-1 w-100 btn btn-outline-primary indicatorsButton"
-                                                            onclick="indicatorsFun()">
-                                                            <i class="fa-solid fa-chart-simple"></i>
-                                                            {{ __('Reports & Indicators') }}
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-sm-6">
-                                                        <div class="m-1 w-100 btn scenariosActionsmary historyButton"
-                                                            onclick="historyFun()">
-                                                            <i class="fa-solid fa-bars-staggered"></i>
-                                                            {{ __('History') }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div><!--create-c-i-->
-                                    </form>
+                                    @include('clients.edit_client_data')
 
                                     {{-- -------------------  End Edit Client Data------------------------------------------------ --}}
 
                                     {{-- ------------------- Dates Line ------------------------------------------------ --}}
-                                    <div class="bg-white" id="disputeDiv">
-                                        <div class="bg-white position-relative">
-                                            <div
-                                                class="d-flex small-icons-big-container justify-content-between p-4 px-5 m-0">
-                                                <div class="text-center my-auto small-icons-container">
-                                                    {{ __('Key accounts scenario') }} (EN) :
-                                                </div>
-                                                <div class="text-center small-icons-container" style="z-index: 2">
-                                                    <span>-10d</span>
-                                                    <div class="btn-warning small-icons text-light px-2 py-1">
-                                                        <i class="fa-solid fa-phone"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="text-center small-icons-container" style="z-index: 2">
-                                                    <span>+5d</span>
-                                                    <div class="btn-success small-icons text-light px-2 py-1">@</div>
-                                                </div>
-                                                <div class="text-center small-icons-container" style="z-index: 2">
-                                                    <span>+12d</span>
-                                                    <div class="btn-success small-icons text-light px-2 py-1">
-                                                        <i class="fa-solid fa-phone"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="text-center small-icons-container" style="z-index: 2">
-                                                    <span>+20d</span>
-                                                    <div class="btn-secondary small-icons text-light px-2 py-1">@</div>
-                                                </div>
-                                                <div class="text-center small-icons-container" style="z-index: 2">
-                                                    <span>+28d</span>
-                                                    <div class="btn-light small-icons text-dark px-2 py-1">
-                                                        <i class="fa-solid fa-phone"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="text-center small-icons-container" style="z-index: 2">
-                                                    <span>+38d</span>
-                                                    <div class="btn-light small-icons text-dark px-2 py-1">@</div>
-                                                </div>
-                                                <div class="text-center small-icons-container" style="z-index: 2">
-                                                    <span>+45d</span>
-                                                    <div class="btn-light small-icons text-dark px-2 py-1">
-                                                        <i class="fa-solid fa-phone"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="text-center small-icons-container" style="z-index: 2">
-                                                    <span>+60d</span>
-                                                    <div class="btn-light small-icons text-dark px-2 py-1">
-                                                        <i class="fa-solid fa-envelope"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="arrow-right"></div>
-                                            <div class="line-through-icons"></div>
-                                        </div>
-                                        <div class="d-flex justify-content-between flex-wrap p-4 m-0">
-                                            <h3>Action to do:</h3>
-                                            <select class="form-select w-auto" aria-label="Default select example">
-                                                <option selected disabled>New action:</option>
-                                                <option value="1">Send email</option>
-                                                <option value="1">Send internal interactive email</option>
-                                                <option value="1">Send a SMS</option>
-                                                <option value="1">Write a dunning letter</option>
-                                                <option value="1">Create a specific action</option>
-                                            </select>
-                                        </div>
-                                        <div class="p-4 m-0 actions-row">
-                                            <div class="row align-items-center text-center">
-                                                <div class="col fw-bold">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Action date') }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col fw-bold">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Action type') }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col fw-bold">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Action') }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col fw-bold">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Action amount inc. Tax') }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col"></div>
-                                            </div>
-                                            <div class="row mt-2 text-center p-2 align-items-center"style="background-color: #006bff14;">
-                                                    @php($firstDueItem = $client->firstDueItem)
-                                                        <div class="col fw-bold">{{$firstDueItem->due_date ?? '-'}}</div>
-                                                        <div class="col fw-bold">
-                                                            <div class="btn openModalBtn btn-primary">
-                                                                {{--$firstDueItem->toTakeAction()->action_type ?? 'email' --}}</div>
-                                                        </div>
-                                                        <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' }} {{ optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
-                                                        <div class="col fw-bold">0000</div>
-                                                        <div class="col">
-                                                            <div class="btn btn-primary">
-                                                                <i class="fa-solid fa-check"></i>
-                                                            </div>
-                                                            <div class="btn btn-outline-primary">
-                                                                <i class="fa-solid fa-calendar"></i>
-                                                            </div>
-                                                            <div class="btn btn-outline-primary">
-                                                                <i class="fa-solid fa-trash"></i>
-                                                            </div>
-                                                        </div>
-                                            </div>
-                                            <div class="row bg-light p-2 mt-3">
-                                                <div class="col-sm-4">
-                                                    {{ __(' Total Receivable') }}:<span class="fw-bold">100,000.00
-                                                        €</span>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    {{ __('Overdue') }}:<span class="fw-bold">100,000.00 €</span>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    {{ __('Current Receivable') }}:<span class="fw-bold">100,000.00
-                                                        €</span>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex flex-wrap justify-content-between mt-3">
-                                                <div class="d-flex">
-                                                    <h4>{{ __('Statement of account of open items') }}</h4>
-                                                    <div class="btn bg-light ms-2">{{ __('No .of items') }}:
-                                                       2000</div>
-                                                </div>
-                                                <div class="form-group position-relative">
-                                                    <input type="text" class="form-control border-primary ps-5"
-                                                        aria-describedby="emailHelp" placeholder="Search" />
-                                                    <i class="fa-solid fa-search text-secondary position-absolute"
-                                                        style="top: 50%; transform: translateY(-50%); left: 10px"></i>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-3">
-                                                <div class="form-group d-flex justify-content-end">
-                                                    <input type="text" class="form-control w-auto p-3"
-                                                        aria-describedby="emailHelp"
-                                                        placeholder="Multi-columns search" />
-                                                </div>
-                                            </div>
-                                            <!--start-->
-                                            {{-- ------------------- Items Table------------------------------------------------ --}}
-
-                                            <div class="row mt-3 p-2 px-md-4 align-items-center text-center">
-                                                <div class="col-1" style="z-index: 999;">
-                                                    <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input"
-                                                            id="exampleCheck1" />
-                                                    </div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Trans.no') }}</p>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col hide">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Issue date') }}</p>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Due date') }}</p>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-1 hide">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Overdue') }}</p>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col hide">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Intial amount inc. Tax') }}</p>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Remaining amount inc. Tax') }}</p>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-3 hide">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">{{ __('Status') }}</p>
-                                                    </div>
-
-                                                </div>
-                                                <div class="col-3 tavle-dropdown-icon"></div>
-                                            </div>
-                                            <div class="text-center mb-3 table-container-2 p-2 px-md-4  ">
-                                                {{-- {{dd($client)}} --}}
-                                                @forelse ($client->items as $item)
-                                                {{-- <h1>{{$item->overdue}}</h1> --}}
-                                                {{-- {{dd($item->overdue)}} --}}
-                                                    <div class="row align-items-center pt-3"
-                                                        style="{{-- $client['items']['overdue'] >= 0 ? 'background-color: #e6d3d3' : 'background-color: #d9edf7' --}}">
-                                                        <div class="col-1" style="z-index: 999;">
-                                                            <div class="form-check">
-                                                                <input type="checkbox" class="form-check-input"
-                                                                    id="exampleCheck1" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <p class="fw-bold"><a href=''
-                                                                    onclick="showInvoice()"><img src="./img/pdficons.gif"
-                                                                        class="mb-1" alt="">
-                                                                    {{$item->po_no  ?? '-'}}</a>
-
-                                                            </p>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <p class="fw-bold">
-                                                                {{ $item->issue_date ?? '-' }}</p>
-                                                        </div>
-                                                        <div class="col">
-                                                            <p class="fw-bold">
-                                                                {{ $item->due_date ?? '-' }}</p>
-                                                        </div>
-                                                        <div class="col-1 hide">
-                                                            <div class="badge mb-2"
-                                                                style="  ">
-                                                                {{ $item->overdue ?? 0 }}d
-                                                            </div>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <p class="fw-bold">
-                                                                {{ $item->total_InitialAmount ?? '0' }}
-                                                                €</p>
-                                                        </div>
-                                                        <div class="col">
-                                                            <p class="fw-bold">
-                                                                {{ $item->total_RemainingAmount ?? '0' }}
-                                                                €</p>
-                                                        </div>
-                                                        <div class="col-3 hide">
-                                                            {{-- @foreach ($client->items as $item)
-                                                                {{ $item->itemStatus->status ?? 'action1' }},{{ $item->itemStatus->follow_up_days ?? 1}}
-                                                            @endforeach --}}
-                                                        </div>
-                                                        <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
-                                                            <i class="fa-solid fa-chevron-down"></i>
-                                                        </div>
-                                                    </div>
-                                                    @empty
-                                                    No Data
-                                                @endforelse
-
-                                            </div>
-                                            <div class="d-flex justify-content-center gap-5">
-                                                <p class="fw-bold">{{ __('Total') }}:</p>
-                                                {{-- <p class="fw-bold">{{ $total_InitialAmount = null ?? 55955 }} €</p>
-                                                <p class="fw-bold">{{ $total_RemainingAmount = null ?? 5555 }} €</p> --}}
-                                            </div>
-
-                                            {{-- ------------------- End Items Table------------------------------------------------ --}}
-                                        </div>
-                                        <div class="row px-4 align-items-center m-0">
-                                            <div class="col-lg-4 col-sm-6 col-12 mb-2">
-                                                <div class="btn text-light btn-secondary px-2" onclick="showInvioce2()">
-                                                    <i class="fa-solid fa-pen-to-square"></i>&ensp;Change status >Add
-                                                    comment >Set next action
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-sm-3 col-6 mb-2">
-                                                <div class="btn text-light btn-primary px-2" onclick="associateFiles()">
-                                                    <i class="fa-solid fa-link"></i>&ensp;Associate File
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-sm-3 col-6 mb-2" onclick="payViaDirectLink()">
-                                                <div class="btn text-light btn-primary px-2">
-                                                    Pay via direct link
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-sm-3 col-6 mb-2">
-                                                <div class="btn text-dark btn-light px-2">
-                                                    Clear the transaction
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-sm-3 col-6 mb-2">
-                                                <select class="form-select bg-light"
-                                                    aria-label="Default select example">
-                                                    <option selected disabled>Ignore the transaction :</option>
-                                                    <option value="1">Yes</option>
-                                                    <option value="1">No</option>
-                                                    <option value="1" class="text-primary">
-                                                        <a href="#"> Read more</a>
-                                                    </option>
-                                                </select>
-                                            </div>
-                                            <div class="text-center mb-2 mt-2">
-                                                <div class="this-buttons">
-                                                    <div class="">
-                                                        <div class="btn-group">
-                                                            <button type="button" class="btn text-light"><span><i
-                                                                        class="fa-solid fa-download"></i>&ensp;</span>Export
-                                                                this data to
-                                                                excel</button>
-                                                            <button type="button"
-                                                                class="button-2 text-light btn dropdown-toggle dropdown-toggle-split"
-                                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                                <span class="visually-hidden">Toggle Dropdown</span>
-                                                            </button>
-                                                            <ul class="dropdown-menu">
-                                                                <li>
-                                                                    <p>file fromat:</p>
-                                                                </li>
-                                                                <div class="radios-inp d-flex  justify-content-around">
-                                                                    <li class="dropdown-item d-flex"><input
-                                                                            type="radio" name="fils"
-                                                                            id="csv"><label
-                                                                            for="fils">csv</label></li>
-                                                                    <li class="dropdown-item d-flex"><input
-                                                                            type="radio" name="fils"
-                                                                            id="xls"><label
-                                                                            for="fils">xls</label>
-                                                                    </li>
-                                                                </div>
-                                                                <li>
-                                                                    <hr class="dropdown-divider">
-                                                                </li>
-                                                                <li>
-                                                                    <p>encoding:</p>
-                                                                </li>
-                                                                <select name=""
-                                                                    style="width: 100%; font-size: 12px;">
-                                                                    <option value="" selected>UTF-8 (Unicode /
-                                                                        US format)</option>
-                                                                    <option value="ISO-8859-1">ISO-8859-1 (Western
-                                                                        European format)
-                                                                    </option>
-                                                                    <option value="ISO-8859-2">ISO-8859-2 (Central
-                                                                        European format)
-                                                                    </option>
-                                                                    <option value="ISO-8859-3">ISO-8859-3 (South
-                                                                        European format)</option>
-                                                                    <option value="ISO-8859-4">ISO-8859-4 (North
-                                                                        European format)</option>
-                                                                    <option value="ISO-8859-5">ISO-8859-5 (Cyrillic
-                                                                        format)</option>
-                                                                    <option value="ISO-8859-6">ISO-8859-6 (Arabic
-                                                                        format)</option>
-                                                                    <option value="ISO-8859-7">ISO-8859-7 (Greek
-                                                                        format)</option>
-                                                                    <option value="ISO-8859-8">ISO-8859-8 (Hebrew
-                                                                        format)</option>
-                                                                    <option value="ISO-8859-9">ISO-8859-9 (Turkish
-                                                                        format)</option>
-                                                                    <option value="ISO-8859-10">ISO-8859-10 (Nordic
-                                                                        format)</option>
-                                                                    <option value="ISO-8859-13">ISO-8859-13 (Baltic
-                                                                        format)</option>
-                                                                    <option value="ISO-8859-14">ISO-8859-14 (Celtic
-                                                                        format)</option>
-                                                                    <option value="ISO-8859-15">ISO-8859-15 (NEW
-                                                                        Western European format)
-                                                                    </option>
-                                                                    <option value="ISO-8859-16">ISO-8859-16 (Romanian
-                                                                        format)</option>
-                                                                    <option value="ISO-2022-JP">ISO-2022-JP</option>
-                                                                    <option value="UTF-7">UTF-7</option>
-                                                                    <option value="ASCII">ASCII</option>
-                                                                    <option value="EUC-JP">EUC-JP</option>
-                                                                    <option value="EUC-KR">EUC-KR</option>
-                                                                    <option value="SJIS">SJIS</option>
-                                                                    <option value="EUCJP-WIN">EUCJP-WIN</option>
-                                                                    <option value="SJIS-WIN">SJIS-WIN</option>
-                                                                    <option value="JIS">JIS</option>
-                                                                    <option value="WINDOWS-1252">WINDOWS-1252</option>
-                                                                    <option value="WINDOWS-1251">WINDOWS-1251</option>
-                                                                    <option value="BIG-5">BIG-5</option>
-                                                                    <option value="KOI8-R">KOI8-R</option>
-                                                                </select>
-                                                                </li>
-                                                                <li class="mt-3 "><button type="button"
-                                                                        class="btn" style="width: 100%;"><span><i
-                                                                                class="fa-solid
-                                                                                fa-download"></i>&ensp;</span>download</button>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    @include('clients.dates_line')
                                     {{-- ------------------- End Dates Line ------------------------------------------------ --}}
 
                                     {{-- ------------------- Actions Table ------------------------------------------------ --}}
-                                    <div class="sec-1 pb-5 bg-white text-capitalize d-none " id="riskDiv">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="end-con d-flex justify-content-between">
-                                                    <h4 class="mt-2 mb-2"><span><i
-                                                                class="fa-regular fa-hand-point-right"></i></span>
-                                                        {{ __("Actions to do") }}:
-                                                        <span>?
-                                                            {{__("readmore")}}</span>
-                                                    </h4>
-                                                    <div class="">
-                                                        <select class="form-select m-2 text-capitalize "
-                                                            aria-label="Default select example">
-                                                            <option selected>{{ __('New action') }}</option>
-                                                            <option value="1">send email</option>
-                                                            <option value="1">send international interactive
-                                                                email </option>
-                                                            <option value="1"> manul action</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="actions-row">
-                                                    <div class="row text-center p-2 align-items-center mt-2 mb-1">
-                                                        <div class="col-2">
-                                                            <h6>action to do</h6>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <h6>action type</h6>
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <h6 class="text-center">Description</h6>
-                                                        </div>
-                                                        <div class="col-2"></div>
-                                                    </div>
-                                                    <div class="row mt-2 text-center p-2 align-items-center"
-                                                        style="background-color: #006bff14;">
-                                                        <div class="col-2 fw-bold">13 - 5 - 2022</div>
-                                                        <div class="col-4 fw-bold">
-                                                            <div><i class="fa-solid fa-clock"></i> Credit limit review
-                                                            </div>
-                                                            <p class="text-black-50 m-0">Ignore this action until
-                                                                2022-08-15</p>
-                                                        </div>
-                                                        <div class="col-4 fw-bold">
-                                                            <p class="m-0">Credit Limit : 10 k€</p>
-                                                            <small class=" text-black-50">(Last modification of the
-                                                                credit limit :
-                                                                2016-02-02)</small>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <div class="btn btn-outline-primary">
-                                                                <i class="fa-solid fa-clock-rotate-left"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-1 text-center p-2 align-items-center"
-                                                        style="background-color: #006bff14;">
-                                                        <div class="col-2 fw-bold">13 - 5 - 2022</div>
-                                                        <div class="col-4 fw-bold">
-                                                            <div><i class="fa-solid fa-building"></i> Customer
-                                                                exceeding</div>
-                                                        </div>
-                                                        <div class="col-4 fw-bold">
-                                                            <p class="m-0">Total receivable (19.5 k€) >= 100 % of
-                                                                the credit limit (10
-                                                                k€)
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-2">
-                                                            <div class="btn btn-primary">
-                                                                <i class="fa-solid fa-check"></i>
-                                                            </div>
-                                                            <div class="btn btn-outline-primary">
-                                                                <i class="fa-solid fa-calendar"></i>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="container">
-                                                    <h6 class="mt-2"><i class="fa-solid fa-comments"
-                                                            style="margin-right: 10px;"></i>Credit
-                                                        analysis :</h6>
-                                                    <div class="container">
-                                                        <div class="col-12">
-                                                            <textarea
-                                                                style="width:100%; outline: none; padding: 5px; border: 2px solid #efefef; border-radius: 5px; resize: both;"></textarea>
-                                                        </div>
-                                                        <div class="save-end">
-                                                            <button class=""><span><i
-                                                                        class="fa-regular fa-floppy-disk"></i></span>save</button>
-                                                            <p class="bg-light">Comments should be factual, objective
-                                                                and non offensive
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="add-itemes mt-3 mb-3">
-                                                        <div class="container">
-                                                            <div class="col-12">
-                                                                <button class="mt-3" id="show-items-button"><span
-                                                                        class="text-black-50"><i
-                                                                            class="fa-solid fa-pen"></i></span> add
-                                                                    an
-                                                                    item</button>
-                                                                <div class="show-items  d-block bg-light"
-                                                                    style="font-size: 6px;">
-                                                                    <div id="item-contents">
-                                                                        <div class="addimg">
-                                                                            <img src="" alt=""
-                                                                                id="changeimgs">
-                                                                        </div>
-                                                                        <input id="inpchange" class="mt-3"
-                                                                            type="file" />
-                                                                        <p class=" mb-2" style="font-size: 14px;">
-                                                                            (.pdf or .docx or
-                                                                            .xlsx
-                                                                            or
-                                                                            .txt or .jpg or .png ...)•Max
-                                                                            size: 15 MB</p>
-                                                                        <textarea
-                                                                            style="width:100%; outline: none; padding: 5px; border: 2px solid #efefef; border-radius: 5px; resize: both;"></textarea>
-                                                                        <button class=""><i
-                                                                                class="fa-solid fa-plus"></i>
-                                                                            add</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="left-sec mt-2 mb-2">
-                                                        <div class="container">
-                                                            <div class="col-6">
-                                                                <h5>Credit insurance <span class="text-dark">World
-                                                                        Insurer</span>:</h5>
-                                                                <div
-                                                                    class="three-cont mt-2 mb-2 d-flex justify-content-between">
-                                                                    <span>Insurer guarantee :</span>
-                                                                    <span>10 k€</span>
-                                                                    <span>Modification date : 2020-03-02</span>
-                                                                </div>
-                                                                <div class="two-cont mt-2 mb-2 d-flex">
-                                                                    <span class="">Temporary guarantee :</span>
-                                                                    <span class="col-3 text-center">10 k€</span>
-                                                                </div>
-                                                                <div class="three-cont mt-2 mb-2 d-flex">
-                                                                    <span class="">Guarantee World Insurer :
-                                                                    </span>
-                                                                    <span class=" col-2 text-center">10 k€</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="block-con mt-3 ">
-                                                            <h6 class="container mt-2 mb-2">risk = <span>11.1k€</span>
-                                                            </h6>
-                                                            <h6 class="container mt-2 mb-2">Credit available = <span>0
-                                                                    €</span></h6>
-                                                        </div>
-                                                    </div>
-                                                    <div class="schedule-of-payment mt-2 mb-2">
-                                                        <h5 class="text-capitalize container mt-4 mb-2 "><span
-                                                                class="text-black-50"><i
-                                                                    class="fa-solid fa-calendar-days"></i></span>
-                                                            Schedule of payment:
-                                                        </h5>
-                                                    </div>
-                                                    <div class="tabels-of-payment" style="font-size: 12px;">
-                                                        <div class="row mt-3 px-4 align-items-center text-center">
-                                                            <div class="col-2 hide"></div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Total collectable
-                                                                        May 2024</p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Remains to collect
-                                                                        May 2024</p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Collection efficiency
-                                                                        May 2024</p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Total receivable</p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Overdue
-                                                                    </p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Current month
-                                                                        May 2024</p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Month M+1
-                                                                        June 2024</p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Month M+2
-                                                                        July 2024</p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Month M+3
-                                                                        August 2024</p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Month M>3
-                                                                    </p>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="col col-1 tavle-dropdown-icon"></div>
-                                                        </div>
-
-                                                        <div class="pt-1">
-                                                            <div class="row pt-3 px-4 align-items-center text-center"
-                                                                style="background-color:#006BFF14;">
-                                                                <div class="col-6 col-md-2">
-                                                                    <p class="fw-bold">Receviable</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">25 k€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">6.3 k€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">74.8 %</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">21.1 k€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">6.3 k€ </p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">14.8 k€ </p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col-6 tavle-dropdown-icon mb-3"
-                                                                    onclick="toggleFunction(this)">
-                                                                    <i class="fa-solid fa-chevron-down"></i>
-                                                                </div>
-                                                                <div class="hidden d-none bg-light">
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">
-                                                                            Total collectable
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">25 k€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Remains to collect
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">6.3 k€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Collection efficiency
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">74.8 %</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Total receviable:</p>
-                                                                        <p class="fw-bold">21.1 k€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Overdue:</p>
-                                                                        <p class="fw-bold">6.3 k€ </p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Current month
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+1
-                                                                            June 2024:</p>
-                                                                        <p class="fw-bold">14.8 k€ </p>
-                                                                    </div>
-
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+2
-                                                                            July 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+3
-                                                                            August 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M>3
-                                                                        </p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row pt-3 px-4 align-items-center text-center">
-                                                                <div class="col-6 col-md-2">
-                                                                    <p class="fw-bold">Unallocated payments</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-0.01 k€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-0.01 k€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">0 %</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-0.01 k€ </p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-0.01 k€ </p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-
-                                                                <div class="col-6 tavle-dropdown-icon mb-3"
-                                                                    onclick="toggleFunction(this)">
-                                                                    <i class="fa-solid fa-chevron-down"></i>
-                                                                </div>
-                                                                <div class="hidden d-none bg-light">
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">
-                                                                            Total collectable
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-0.01 k€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Remains to collect
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-0.01 k€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Collection efficiency
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">0 %</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Total receviable:</p>
-                                                                        <p class="fw-bold">-0.01 k€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Overdue:</p>
-                                                                        <p class="fw-bold">-0.01 k€ </p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Current month
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+1
-                                                                            June 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+2
-                                                                            July 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+3
-                                                                            August 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M>3
-                                                                        </p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row pt-3 px-4 align-items-center text-center"
-                                                                style="background-color:#006BFF14;">
-                                                                <div class="col-6 col-md-2">
-                                                                    <p class="fw-bold">Items in transit (drafts)</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">0€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-
-                                                                <div class="col-6 tavle-dropdown-icon mb-3"
-                                                                    onclick="toggleFunction(this)">
-                                                                    <i class="fa-solid fa-chevron-down"></i>
-                                                                </div>
-                                                                <div class="hidden d-none bg-light">
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">
-                                                                            Total collectable
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Remains to collect
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Collection efficiency
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Total receviable:</p>
-                                                                        <p class="fw-bold">-0€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Overdue:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Current month
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+1
-                                                                            June 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+2
-                                                                            July 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+3
-                                                                            August 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M>3
-                                                                        </p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="row pt-3 px-4 align-items-center text-center">
-                                                                <div class="col-6 col-md-2">
-                                                                    <p class="fw-bold">Order backlog
-                                                                    <p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">0€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-
-                                                                <div class="col-6 tavle-dropdown-icon mb-3"
-                                                                    onclick="toggleFunction(this)">
-                                                                    <i class="fa-solid fa-chevron-down"></i>
-                                                                </div>
-                                                                <div class="hidden d-none bg-light">
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">
-                                                                            Total collectable
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Remains to collect
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Collection efficiency
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Total receviable:</p>
-                                                                        <p class="fw-bold">-0€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Overdue:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Current month
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+1
-                                                                            June 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+2
-                                                                            July 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+3
-                                                                            August 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M>3
-                                                                        </p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row pt-3 px-4 align-items-center text-center"
-                                                                style="background-color:#006BFF14;">
-                                                                <div class="col-6 col-md-2">
-                                                                    <p class="fw-bold">Total:</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">25 k€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">6.3 k€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">74.8 %</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">21.1 k€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">6.3 k€ </p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">14.8 k€ </p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col-6 tavle-dropdown-icon mb-3"
-                                                                    onclick="toggleFunction(this)">
-                                                                    <i class="fa-solid fa-chevron-down"></i>
-                                                                </div>
-                                                                <div class="hidden d-none bg-light">
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">
-                                                                            Total collectable
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">25 k€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Remains to collect
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">6.3 k€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Collection efficiency
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">74.8 %</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Total receviable:</p>
-                                                                        <p class="fw-bold">21.1 k€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Overdue:</p>
-                                                                        <p class="fw-bold">6.3 k€ </p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Current month
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+1
-                                                                            June 2024:</p>
-                                                                        <p class="fw-bold">14.8 k€ </p>
-                                                                    </div>
-
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+2
-                                                                            July 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+3
-                                                                            August 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M>3
-                                                                        </p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row pt-3 px-4 align-items-center text-center">
-                                                                <div class="col-6 col-md-2">
-                                                                    <p class="fw-bold">Promise to pay
-                                                                    <p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">0€</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">-</p>
-                                                                </div>
-
-                                                                <div class="col-6 tavle-dropdown-icon mb-3"
-                                                                    onclick="toggleFunction(this)">
-                                                                    <i class="fa-solid fa-chevron-down"></i>
-                                                                </div>
-                                                                <div class="hidden d-none bg-light">
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">
-                                                                            Total collectable
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Remains to collect
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Collection efficiency
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Total receviable:</p>
-                                                                        <p class="fw-bold">-0€</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Overdue:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Current month
-                                                                            May 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+1
-                                                                            June 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+2
-                                                                            July 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M+3
-                                                                            August 2024:</p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">Month M>3
-                                                                        </p>
-                                                                        <p class="fw-bold">-</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-
-                                                <div class="new-score mt-3 mb-3 container">
-                                                    <h6>Credit notation:</h6>
-                                                    <button id="score-button"><span><i
-                                                                class="fa-solid fa-plus"></i></span>new
-                                                        score</button>
-                                                </div>
-                                                <div class="show-credit text-capitalize" id="show-score">
-                                                    <div class="container">
-                                                        <div class="d-flex justify-content-center gap-2">
-                                                            <div class="btn btn-success">Notation crédit</div>
-                                                            <div class="btn btn-outline-success">Scoring</div>
-                                                        </div>
-                                                        <div
-                                                            class="two-content-show mt-2 mb-2 d-flex justify-content-between">
-                                                            <h4>Notation crédit</h4>
-                                                            <a href="settings-manage-risk.html"
-                                                                class="text-black-50"><span><i
-                                                                        class="fa-solid fa-gear"></i></span>Custom
-                                                                scoring models</a>
-                                                        </div>
-                                                        <span class="text-black-50">Scoring par défaut</span>
-                                                        <div class="row">
-                                                            <div class="col-lg-4">
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">
-                                                                    Forme juridique
-                                                                    <span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class="text-capitalize">Nouvelle entreprise /
-                                                                        pas d'infos <br>
-                                                                        Société Anonyme et associées <br>
-                                                                        Propriétaire individuel (EURL) <br>
-                                                                        Coopérative <br>
-                                                                        Entreprise publique et affiliées
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">Age
-                                                                    de l'entreprise
-                                                                    <span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class=" text-capitalize">Nouvelle entreprise
-                                                                        <br>
-                                                                        <= 2 ans <br>
-                                                                            2 - 4 ans <br>
-                                                                            5 - 6 ans <br>
-                                                                            7 - 8 ans <br>
-                                                                            9 - 10 ans <br>
-                                                                            > 10 ans
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">
-                                                                    Comportement de paiement
-                                                                    <span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class="text-capitalize">> 30 jours de retard /
-                                                                        nouveau client <br>
-                                                                        20 - 30 jours de retard <br>
-                                                                        10 - 20 jours de retard <br>
-                                                                        7 - 10 jours de retard <br>
-                                                                        < 7 jours de retard <br>
-                                                                            Paiement à l'échéance <br>
-                                                                            Paie avant l'échéance
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">
-                                                                    Délai de paiement
-                                                                    accordé
-                                                                    <span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class="text-capitalize">> 120 jours <br>
-                                                                        91 - 120 jours <br>
-                                                                        61 - 90 jours <br>
-                                                                        31 - 60 jours <br>
-                                                                        10 - 30 jours <br>
-                                                                        < 10 jours <br>
-                                                                            Paiement à la commande
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">Avis
-                                                                    du Commercial
-                                                                    <span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class="text-capitalize">Négatif <br>
-                                                                        Moyen <br>
-                                                                        Bon <br>
-                                                                        Très bon
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">
-                                                                    Evolution des commandes
-                                                                    <span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class=" text-capitalize">Décline >50% ou
-                                                                        nouveau client <br>
-                                                                        Décline 20% - 50% <br>
-                                                                        Décline 0% - 20% <br>
-                                                                        Stagnant <br>
-                                                                        Augmente 0% - 20% <br>
-                                                                        Augmente 20% - 50% <br>
-                                                                        Augmente > 50%
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">
-                                                                    Résultat d'exploitation
-                                                                    <span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class="text-capitalize">Négatif<br>
-                                                                        0% - 3% <br>
-                                                                        3% - 6% <br>
-                                                                        6% - 10% <br>
-                                                                        10% - 15% <br>
-                                                                        15% - 20% <br>
-                                                                        > 20%
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">
-                                                                    Evolution du chiffre
-                                                                    d'affaires
-                                                                    / n-1<span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class=" text-capitalize">Baisse > 20% <br>
-                                                                        Baisse 10% - 20% <br>
-                                                                        Baisse 2% - 10% <br>
-                                                                        Stagne entre -2% et +2% <br>
-                                                                        Croissance 2% - 10% <br>
-                                                                        Croissance 10% - 20% <br>
-                                                                        Croissance > 20% <br>
-
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">
-                                                                    Fonds propres / Total
-                                                                    bilan<span>?</span></h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class="text-capitalize">0% - 10% <br>
-                                                                        10% - 15% <br>
-                                                                        15% - 20% <br>
-                                                                        20% - 25% <br>
-                                                                        25% - 30% <br>
-                                                                        > 30% <br>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">
-                                                                    Endettement MLT / Fonds
-                                                                    propres
-                                                                    <span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class="text-capitalize">> 1,5 <br>
-                                                                        1 - 1,5 <br>
-                                                                        0,8 - 1 <br>
-                                                                        0,6 - 0,8 <br>
-                                                                        0,4 - 0,6 <br>
-                                                                        0,2 - 0,4 <br>
-                                                                        < 0,2 <br>
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">
-                                                                    Fonds de roulement
-                                                                    (FR)
-                                                                    <span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class="text-capitalize">Négatif <br>
-                                                                        Positif
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-4">
-
-                                                                <h6 class="text-capitalize mt-2 mb-2 text-center">
-                                                                    Trésorerie (FR - BFR)
-                                                                    <span>?</span>
-                                                                </h6>
-                                                                <div class="scroll-bars">
-                                                                    <p class="text-capitalize">Négatif <br>
-                                                                        Positif
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="calc-score text-center mt-3 mb-3">
-                                                                <button
-                                                                    onclick="document.querySelector('.credit-notation-calc').classList.remove('d-none')"><span
-                                                                        class="fa-solid fa-check"></span> calc
-                                                                    score</button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row align-items-center d-none credit-notation-calc">
-                                                            <div class="col-lg-3 bg-light py-2 p-1">
-                                                                <div class="d-flex flex-column">
-                                                                    <label class="text-center">Model :</label>
-                                                                    <h4 class="text-dark text-center bg-white py-3">
-                                                                        Notation crédit</h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3 bg-light py-2 p-1">
-                                                                <div class="d-flex flex-column">
-                                                                    <label class="text-center">Score out of 10
-                                                                        :</label>
-                                                                    <h4 class="text-dark text-center bg-info py-3">0.2
-                                                                    </h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3 bg-light py-2 p-1">
-                                                                <div class="d-flex flex-column">
-                                                                    <label class="text-center">Risk category :</label>
-                                                                    <h4 class="text-dark text-center bg-danger py-3">D
-                                                                    </h4>
-                                                                    <span class="onmouse position-absolute px-1"
-                                                                        style="z-index: 10;transform: translate(160px,40px);">?</span>
-                                                                    <span class="conttt"
-                                                                        style="display: none;">title="Risk category D
-                                                                        →
-                                                                        Defaulted account or default imminent: company
-                                                                        whose financial
-                                                                        situation
-                                                                        is
-                                                                        very deteriorated which cannot meet its
-                                                                        commitments. The risk of
-                                                                        default
-                                                                        is
-                                                                        very high. Require payment guarantees if you
-                                                                        grant a credit or
-                                                                        request a
-                                                                        payment in advance (before the
-                                                                        delivery)."</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-3 text-center py-2 p-1">
-                                                                <div class="btn btn-success"><i
-                                                                        class="fa-solid fa-floppy-disk"
-                                                                        style="  font-size: 15px;"></i> Save these
-                                                                    results</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="credit-limit-btn mt-3 ">
-                                                    <h5 class="text-capitalize mt-2 mb-2">credit limit</h5>
-                                                    <button id="score-button-2"><span><i
-                                                                class="fa-solid fa-plus"></i></span>new
-                                                        score</button>
-                                                </div>
-                                                <div class="container credit-limit-first-section">
-                                                    <div class="credit-limit mt-3 mb-2" id="show-score-2">
-                                                        <div class="container">
-                                                            <div
-                                                                class="two-content-show mt-2 mb-2 d-flex align-items-center justify-content-between">
-                                                                <p>Risk category ( A, B, C or D - View <span>Credit
-                                                                        notation</span> ) :</p>
-                                                                <a href="#" class="text-black-50"
-                                                                    onclick="showSecondCreditLimit()"><span><i
-                                                                            class="fa-solid fa-gear"></i></span>Custom
-                                                                    scoring
-                                                                    models</a>
-                                                            </div>
-                                                            <div class="opis-limits col-2">
-                                                                <select class="form-select m-2"
-                                                                    aria-label="Default select example">
-                                                                    <option value="1" selected>A</option>
-                                                                    <option value="1">B</option>
-                                                                    <option value="1">C</option>
-                                                                    <option value="1">D</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="row">
-                                                                <h6 class="mt-3">Commercial information :</h6>
-                                                                <div class="col-lg-3 col-md-7 text-center">
-                                                                    <div class="input-titles">
-                                                                        <p class="text-center mb-0">Sales forecast
-                                                                            <span>?</span>
-                                                                        </p>
-                                                                        <input type="text">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-7 text-center">
-                                                                    <div class="input-titles">
-                                                                        <p class="text-center mb-0">Duration in months
-                                                                            of the period
-                                                                            <span>?</span>
-                                                                        </p>
-                                                                        <input type="text">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-7 text-center">
-                                                                    <div class="input-titles">
-                                                                        <p class="text-center mb-0">Payment term
-                                                                            <span>?</span>
-                                                                        </p>
-                                                                        <input type="text">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-7 text-center">
-                                                                    <div class="input-titles">
-                                                                        <p class="text-center mb-0">Tax rate
-                                                                            <span>?</span>
-                                                                        </p>
-                                                                        <input type="text">
-                                                                    </div>
-                                                                </div>
-                                                                <span class="mt-2">Financial informations :</span>
-                                                                <div class="col-lg-3 col-md-7 text-center mt-3">
-                                                                    <div class="input-titles">
-                                                                        <p class="text-center mb-0">Tangible Net Worth
-                                                                            <span>?</span>
-                                                                        </p>
-                                                                        <input type="text">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-3 col-md-7 text-center mt-3">
-                                                                    <div class="input-titles">
-                                                                        <p class="text-center mb-0">Sales
-                                                                            <span>?</span>
-                                                                        </p>
-                                                                        <input type="text">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clac-button-score mt-4 mb-4 text-center">
-                                                                    <button
-                                                                        onclick="document.querySelector('.credit-lemit-calc').classList.remove('d-none')"><span><i
-                                                                                class="fa-solid fa-check"></i></span>
-                                                                        calculate</button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row align-items-center d-none credit-lemit-calc">
-                                                                <div class="col-lg-4">
-                                                                    <div class="d-flex flex-column gap-2">
-                                                                        <label class="text-center">Need of credit
-                                                                            limit (Calculation of
-                                                                            need )
-                                                                            :</label>
-                                                                        <h4 class="text-dark text-center bg-info py-2">
-                                                                            2.10 €</h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4">
-                                                                    <div class="d-flex flex-column gap-2">
-                                                                        <label class="text-center">Acceptable credit
-                                                                            limit :</label>
-                                                                        <h4 class="text-dark text-center bg-info py-2">
-                                                                            2.10 €</h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4 text-center">
-                                                                    <div class="d-flex flex-column gap-4">
-                                                                        <label class="text-center"></label>
-                                                                        <div class="btn btn-success "><i
-                                                                                class="fa-solid fa-floppy-disk"
-                                                                                style="  font-size: 15px;"></i> Save
-                                                                            these results</div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--this click to show hide-scetions-->
-                                                <section
-                                                    class="button-to-back credit-limit-second-section credit-limit mt-2 d-none"
-                                                    id="showTwo">
-                                                    <div class="back-button container">
-                                                        <button class="mt-3 mb-3"
-                                                            onclick="showFirstCreditLimit()"><span><i
-                                                                    class="fa-solid fa-arrow-left"></i></span>
-                                                            back</button>
-                                                    </div>
-                                                    <div class="three-cont-section  mt-2  ">
-                                                        <div class="container">
-                                                            <div class="row">
-                                                                <div class="col-md-4"></div>
-                                                                <div class="col-md-4">
-                                                                    <div class="content-section-select">
-                                                                        <p class="text-center m-0">Criterion n°1</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="content-section-select">
-                                                                        <p class="text-center m-0">Criterion n°2</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row px-3 space-back">
-                                                                <div class="col-md-4 m-0 p-0">
-                                                                    <p class="m-0 mt-2">Description</p>
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <input type="text" class="form-control my-1"
-                                                                        value="Tangible Net Worth">
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <input type="text" class="form-control my-1"
-                                                                        value="Sales">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row px-3 space-pading">
-                                                                <div class="col-md-4 m-0 p-0">
-                                                                    <p class="m-0 mt-2">Detalied description</p>
-                                                                </div>
-                                                                <div class="col-md-4 m-0 pb-0 px-2">
-                                                                    <textarea class="form-control mt-1 mb-1" name="" id=""
-                                                                        placeholder="The TNW is calculated with balance sheet information: equity - untangible assets"></textarea>
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <textarea class="form-control mt-1 mb-1" name="" id=""
-                                                                        placeholder="The TNW is calculated with balance sheet information: equity - untangible assets"></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row px-3 space-back">
-                                                                <div class="col-md-4 m-0 p-0">
-                                                                    <p class="m-0 mt-2">max 5% if credit notatins
-                                                                        reuslt A</p>
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <input class="form-control my-1" type="text"
-                                                                        value="50">
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <input class="form-control my-1" type="text"
-                                                                        value="50">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row px-3 space-pading">
-                                                                <div class="col-md-4 m-0 p-0">
-                                                                    <p class="m-0 mt-2">max 5% if credit notatins
-                                                                        reuslt B</p>
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <input class="form-control my-1" type="text"
-                                                                        value="37.5">
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <input class="form-control my-1" type="text"
-                                                                        value="37.5">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row px-3 space-back">
-                                                                <div class="col-md-4 m-0 p-0">
-                                                                    <p class="m-0 mt-2">max 5% if credit notatins
-                                                                        reuslt C</p>
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <input class="form-control my-1" type="text"
-                                                                        value="50">
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <input class="form-control my-1" type="text"
-                                                                        value="50">
-                                                                </div>
-                                                            </div>
-                                                            <div class="row px-3 space-pading">
-                                                                <div class="col-md-4 m-0 p-0">
-                                                                    <p class="m-0 mt-2">max 5% if credit notatins
-                                                                        reuslt D</p>
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <input class="form-control my-1" type="text"
-                                                                        value="37.5">
-                                                                </div>
-                                                                <div class="col-md-4 m-0 px-2">
-                                                                    <input class="form-control my-1" type="text"
-                                                                        value="37.5">
-                                                                </div>
-                                                            </div>
-                                                            <div class="clac-button-score mt-4 mb-4 text-center">
-                                                                <button onclick="showFirstCreditLimit()"><span><i
-                                                                            class="fa-solid fa-check"></i></span>
-                                                                    Modify</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!--this click to show hide-scetions-->
-                                                </section>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                    @include('clients.items_actions_table')
                                     {{-- ------------------- End Actions Table ------------------------------------------------ --}}
 
-                                    <!--sec-2-->
-
-                                    <div class="d-none" id="indicatorsDiv">
-                                        <div class="sec-2 bg-white">
-                                            <div class="container">
-                                                <div class="row align-items-center pb-5">
-                                                    <div class="col-lg-6" style="height:300px ;">
-                                                        <div class="pay-totals mt-3 mb-3 fw-bold">
-                                                            <p>Total receivable :<span>21.1 k€</span></p>
-                                                            <p>Overdue: <span>6.3 k€</span></p>
-                                                            <p>Overdue % :<span>30 %</span></p>
-                                                            <p>Current receivable :<span>14.8 k€</span></p>
-                                                            <p>Promise to pay :<span>0 €</span></p>
-                                                        </div>
-                                                        <hr>
-                                                        <div class="table-and-txt">
-                                                            <p>Average time of payment :<span>+8 </span>days</p>
-                                                            <p>Average days beyond terms <span> +7 </span>days</p>
-                                                        </div>
-                                                        <div
-                                                            class="three-titels d-flex text-center justify-content-between align-items-center">
-                                                            <span></span>
-                                                            <span>Today</span>
-                                                            <span>April 2024</span>
-                                                            <span>March 2024</span>
-                                                        </div>
-                                                        <div class="four-cont-sec-2 d-flex justify-content-around  mt-3">
-                                                            <span>?</span>
-                                                            <span>+7d. <i class="fa-solid fa-flag"
-                                                                    style="color: green;"></i></span>
-                                                            <span class="text-black-50"><i
-                                                                    class="fa-solid fa-flag"></i></span>
-                                                            <span class=" text-black-50 "><i
-                                                                    class="fa-solid fa-flag"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6" style="height:300px ;">
-                                                        <h6 class="text-center text-black-50"> Aging balance</h6>
-                                                        <canvas id="myChart-5" width="200" height="200"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    {{-- ------------------- Items Table------------------------------------------------ --}}
+                                    @include('clients.items_table')
+                                    {{-- ------------------- End Items Table------------------------------------------------ --}}
+                                </div>
+                                <div class="row px-4 align-items-center m-0">
+                                    <div class="col-lg-4 col-sm-6 col-12 mb-2">
+                                        <div class="btn text-light btn-secondary px-2" onclick="showInvioce2()">
+                                            <i class="fa-solid fa-pen-to-square"></i>&ensp;{{__("Change status >Add
+                                            comment >Set next action")}}
                                         </div>
-
-                                        <div class="two-charts bg-white">
-                                            <div class="container">
-                                                <div class="row pb-3">
-                                                    <div class="col-lg-6" style="height:300px ;">
-                                                        <h6 class="text-black-50 text-center mt-3"> DSO trend</h6>
-                                                        <canvas id="myChart-8" width="200" height="200"></canvas>
-                                                    </div>
-                                                    <div class="col-lg-6" style="height:300px ;">
-                                                        <h6 class="text-black-50 text-center mt-3">Overdue trend</h6>
-                                                        <canvas id="myChart-6" width="200" height="200"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-3 col-6 mb-2">
+                                        <div class="btn text-light btn-primary px-2" onclick="associateFiles()">
+                                            <i class="fa-solid fa-link"></i>&ensp;{{__("Associate File")}}
                                         </div>
-
-                                        <div class="two-desc bg-white">
-                                            <div class="container">
-                                                <div class="row pb-5 align-items-center">
-                                                    <div class="col-lg-6 pt-5" style="height:500px ;">
-                                                        <div class="desc-and-cric mt-3 mb-3 text-center">
-                                                            <h5 class="text-capitalize mt-3 mb-3"> Pending disputes
-                                                            </h5>
-                                                            <p>No. of items in dispute:<span>0</span></p>
-                                                            <p>Disputed receivables amount :<span> 0 €</span></p>
-                                                            <p>Average time for dispute resolution : <span> ?</span></p>
-                                                        </div>
-                                                        <div class="circ">
-                                                            <span class="text-center text-capitalize"
-                                                                style="width: 100%; color: green;">nodata-update</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 m-auto pt-5" style="height:500px ;">
-                                                        <h5 class="mt-5 mb-3 text-center">Disputes / Trend</h5>
-                                                        <div class="display-data">
-                                                            <h6 class="text-center">No data to display</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-3 col-6 mb-2" onclick="payViaDirectLink()">
+                                        <div class="btn text-light btn-primary px-2">
+                                            {{__("Pay via direct link")}}
                                         </div>
-
-                                        <div class="two-charts-sales bg-white">
-                                            <div class="container">
-                                                <div class="row pb-5">
-                                                    <div class="col-lg-6" style="height:300px ;">
-                                                        <h6 class="text-black-50 text-center mt-3">Sales history</h6>
-                                                        <canvas id="myChart-1" width="350" height="200"></canvas>
-                                                    </div>
-                                                    <div class="col-lg-6" style="height:300px ;">
-                                                        <h6 class="text-black-50 text-center mt-3">Cash receipts
-                                                            history</h6>
-                                                        <canvas id="myChart-2" width="200" height="200"></canvas>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-3 col-6 mb-2">
+                                        <div class="btn text-dark btn-light px-2">
+                                            {{__("Clear the transaction")}}
                                         </div>
-                                        <div class="one-charts  bg-white">
-                                            <div class="container">
-                                                <div class="row pb-5 align-items-center" style="height:500px ;">
-                                                    <div class="col-lg-12">
-                                                        <div class="head-titels pt-3 text-black-50 mt-3 mb-3">
-                                                            <p class="">total sales<span>39.8 k€</span></p>
-                                                            <p>total cash receipts<span>18.7 k€</span></p>
-                                                            <p>total forecast<span>0€</span>+ amount off forecast</p>
+                                    </div>
+                                    <div class="col-lg-2 col-sm-3 col-6 mb-2">
+                                        <select class="form-select bg-light" aria-label="Default select example">
+                                            <option selected disabled>{{__("Ignore the transaction")}} :</option>
+                                            <option value="1">Yes</option>
+                                            <option value="1">No</option>
+                                            <option value="1" class="text-primary">
+                                                <a href="#"> {{__("Read more")}}</a>
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="text-center mb-2 mt-2">
+                                        <div class="this-buttons">
+                                            <div class="">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn text-light"><span><i
+                                                                class="fa-solid fa-download"></i>&ensp;</span>{{__("Export
+                                                        this data to
+                                                        excel")}}</button>
+                                                    <button type="button"
+                                                        class="button-2 text-light btn dropdown-toggle dropdown-toggle-split"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <span class="visually-hidden">{{__("Toggle Dropdown")}}</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <p>{{__("file fromat")}}:</p>
+                                                        </li>
+                                                        <div class="radios-inp d-flex  justify-content-around">
+                                                            <li class="dropdown-item d-flex"><input type="radio"
+                                                                    name="fils" id="csv"><label
+                                                                    for="fils">{{__("csv")}}</label></li>
+                                                            <li class="dropdown-item d-flex"><input type="radio"
+                                                                    name="fils" id="xls"><label
+                                                                    for="fils">{{__("xls")}}</label>
+                                                            </li>
                                                         </div>
-                                                    </div>
-                                                    <h5 class="text-dark text-center">Cash forecast</h5>
-                                                    <div style="height:300px ;">
-                                                        <canvas id="myChart-3" width="100" height="100"></canvas>
-                                                    </div>
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+                                                        <li>
+                                                            <p>{{__("encoding")}}:</p>
+                                                        </li>
+                                                        <select name="" style="width: 100%; font-size: 12px;">
+                                                            <option value="" selected>UTF-8 (Unicode /
+                                                                US format)</option>
+                                                            <option value="ISO-8859-1">ISO-8859-1 (Western
+                                                                European format)
+                                                            </option>
+                                                            <option value="ISO-8859-2">ISO-8859-2 (Central
+                                                                European format)
+                                                            </option>
+                                                            <option value="ISO-8859-3">ISO-8859-3 (South
+                                                                European format)</option>
+                                                            <option value="ISO-8859-4">ISO-8859-4 (North
+                                                                European format)</option>
+                                                            <option value="ISO-8859-5">ISO-8859-5 (Cyrillic
+                                                                format)</option>
+                                                            <option value="ISO-8859-6">ISO-8859-6 (Arabic
+                                                                format)</option>
+                                                            <option value="ISO-8859-7">ISO-8859-7 (Greek
+                                                                format)</option>
+                                                            <option value="ISO-8859-8">ISO-8859-8 (Hebrew
+                                                                format)</option>
+                                                            <option value="ISO-8859-9">ISO-8859-9 (Turkish
+                                                                format)</option>
+                                                            <option value="ISO-8859-10">ISO-8859-10 (Nordic
+                                                                format)</option>
+                                                            <option value="ISO-8859-13">ISO-8859-13 (Baltic
+                                                                format)</option>
+                                                            <option value="ISO-8859-14">ISO-8859-14 (Celtic
+                                                                format)</option>
+                                                            <option value="ISO-8859-15">ISO-8859-15 (NEW
+                                                                Western European format)
+                                                            </option>
+                                                            <option value="ISO-8859-16">ISO-8859-16 (Romanian
+                                                                format)</option>
+                                                            <option value="ISO-2022-JP">ISO-2022-JP</option>
+                                                            <option value="UTF-7">UTF-7</option>
+                                                            <option value="ASCII">ASCII</option>
+                                                            <option value="EUC-JP">EUC-JP</option>
+                                                            <option value="EUC-KR">EUC-KR</option>
+                                                            <option value="SJIS">SJIS</option>
+                                                            <option value="EUCJP-WIN">EUCJP-WIN</option>
+                                                            <option value="SJIS-WIN">SJIS-WIN</option>
+                                                            <option value="JIS">JIS</option>
+                                                            <option value="WINDOWS-1252">WINDOWS-1252</option>
+                                                            <option value="WINDOWS-1251">WINDOWS-1251</option>
+                                                            <option value="BIG-5">BIG-5</option>
+                                                            <option value="KOI8-R">KOI8-R</option>
+                                                        </select>
+                                                        </li>
+                                                        <li class="mt-3 "><button type="button" class="btn"
+                                                                style="width: 100%;"><span><i
+                                                                        class="fa-solid
+                                                                                fa-download"></i>&ensp;</span>{{__("download")}}</button>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--sec-2-->
-                                    <!--sec-3-->
-                                    <div class="three-button-collections pb-5 bg-white d-none" id="historyDiv">
+                                </div>
+                            </div>
+
+                            <div class="sec-1 pb-5 bg-white text-capitalize d-none " id="riskDiv">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="end-con d-flex justify-content-between">
+                                            <h4 class="mt-2 mb-2"><span><i
+                                                        class="fa-regular fa-hand-point-right"></i></span>
+                                                {{ __('Actions to do') }}:
+                                                <span>?
+                                                    {{ __('read more') }}</span>
+                                            </h4>
+                                            <div class="">
+                                                <select class="form-select m-2 text-capitalize "
+                                                    aria-label="Default select example">
+                                                    <option selected>{{ __('New action') }}</option>
+                                                    <option value="1">send email</option>
+                                                    <option value="1">send international interactive
+                                                        email </option>
+                                                    <option value="1"> manul action</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="actions-row">
+                                            <div class="row text-center p-2 align-items-center mt-2 mb-1">
+                                                <div class="col-2">
+                                                    <h6>action to do</h6>
+                                                </div>
+                                                <div class="col-4">
+                                                    <h6>action type</h6>
+                                                </div>
+                                                <div class="col-4">
+                                                    <h6 class="text-center">Description</h6>
+                                                </div>
+                                                <div class="col-2"></div>
+                                            </div>
+                                            <div class="row mt-2 text-center p-2 align-items-center"
+                                                style="background-color: #006bff14;">
+                                                <div class="col-2 fw-bold">13 - 5 - 2022</div>
+                                                <div class="col-4 fw-bold">
+                                                    <div><i class="fa-solid fa-clock"></i> Credit limit review
+                                                    </div>
+                                                    <p class="text-black-50 m-0">Ignore this action until
+                                                        2022-08-15</p>
+                                                </div>
+                                                <div class="col-4 fw-bold">
+                                                    <p class="m-0">Credit Limit : 10 k€</p>
+                                                    <small class=" text-black-50">(Last modification of the
+                                                        credit limit :
+                                                        2016-02-02)</small>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="btn btn-outline-primary">
+                                                        <i class="fa-solid fa-clock-rotate-left"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-1 text-center p-2 align-items-center"
+                                                style="background-color: #006bff14;">
+                                                <div class="col-2 fw-bold">13 - 5 - 2022</div>
+                                                <div class="col-4 fw-bold">
+                                                    <div><i class="fa-solid fa-building"></i> Customer
+                                                        exceeding</div>
+                                                </div>
+                                                <div class="col-4 fw-bold">
+                                                    <p class="m-0">Total receivable (19.5 k€) >= 100 % of
+                                                        the credit limit (10
+                                                        k€)
+                                                    </p>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="btn btn-primary">
+                                                        <i class="fa-solid fa-check"></i>
+                                                    </div>
+                                                    <div class="btn btn-outline-primary">
+                                                        <i class="fa-solid fa-calendar"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="container">
-                                            <div class="row">
-                                                <div class="col-lg-12">
+                                            <h6 class="mt-2"><i class="fa-solid fa-comments"
+                                                    style="margin-right: 10px;"></i>Credit
+                                                analysis :</h6>
+                                            <div class="container">
+                                                <div class="col-12">
+                                                    <textarea
+                                                        style="width:100%; outline: none; padding: 5px; border: 2px solid #efefef; border-radius: 5px; resize: both;"></textarea>
+                                                </div>
+                                                <div class="save-end">
+                                                    <button class=""><span><i
+                                                                class="fa-regular fa-floppy-disk"></i></span>save</button>
+                                                    <p class="bg-light">Comments should be factual, objective
+                                                        and non offensive
+                                                    </p>
+                                                </div>
+                                            </div>
 
+                                            <div class="add-itemes mt-3 mb-3">
+                                                <div class="container">
+                                                    <div class="col-12">
+                                                        <button class="mt-3" id="show-items-button"><span
+                                                                class="text-black-50"><i
+                                                                    class="fa-solid fa-pen"></i></span> add
+                                                            an
+                                                            item</button>
+                                                        <div class="show-items  d-block bg-light" style="font-size: 6px;">
+                                                            <div id="item-contents">
+                                                                <div class="addimg">
+                                                                    <img src="" alt="" id="changeimgs">
+                                                                </div>
+                                                                <input id="inpchange" class="mt-3" type="file" />
+                                                                <p class=" mb-2" style="font-size: 14px;">
+                                                                    (.pdf or .docx or
+                                                                    .xlsx
+                                                                    or
+                                                                    .txt or .jpg or .png ...)
+                                                                    •Max
+                                                                    size: 15 MB</p>
+                                                                <textarea
+                                                                    style="width:100%; outline: none; padding: 5px; border: 2px solid #efefef; border-radius: 5px; resize: both;"></textarea>
+                                                                <button class=""><i class="fa-solid fa-plus"></i>
+                                                                    add</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="left-sec mt-2 mb-2">
+                                                <div class="container">
+                                                    <div class="col-6">
+                                                        <h5>Credit insurance <span class="text-dark">World
+                                                                Insurer</span>:</h5>
+                                                        <div class="three-cont mt-2 mb-2 d-flex justify-content-between">
+                                                            <span>Insurer guarantee :</span>
+                                                            <span>10 k€</span>
+                                                            <span>Modification date : 2020-03-02</span>
+                                                        </div>
+                                                        <div class="two-cont mt-2 mb-2 d-flex">
+                                                            <span class="">Temporary guarantee :</span>
+                                                            <span class="col-3 text-center">10 k€</span>
+                                                        </div>
+                                                        <div class="three-cont mt-2 mb-2 d-flex">
+                                                            <span class="">Guarantee World Insurer :
+                                                            </span>
+                                                            <span class=" col-2 text-center">10 k€</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="block-con mt-3 ">
+                                                    <h6 class="container mt-2 mb-2">risk = <span>11.1k€</span>
+                                                    </h6>
+                                                    <h6 class="container mt-2 mb-2">Credit available = <span>0
+                                                            €</span></h6>
+                                                </div>
+                                            </div>
+                                            <div class="schedule-of-payment mt-2 mb-2">
+                                                <h5 class="text-capitalize container mt-4 mb-2 "><span
+                                                        class="text-black-50"><i
+                                                            class="fa-solid fa-calendar-days"></i></span>
+                                                    Schedule of payment:
+                                                </h5>
+                                            </div>
+                                            <div class="tabels-of-payment" style="font-size: 12px;">
+                                                <div class="row mt-3 px-4 align-items-center text-center">
+                                                    <div class="col-2 hide"></div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Total collectable
+                                                                May 2024</p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Remains to collect
+                                                                May 2024</p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Collection efficiency
+                                                                May 2024</p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Total receivable</p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Overdue
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Current month
+                                                                May 2024</p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Month M+1
+                                                                June 2024</p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Month M+2
+                                                                July 2024</p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Month M+3
+                                                                August 2024</p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Month M>3
+                                                            </p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col col-1 tavle-dropdown-icon"></div>
+                                                </div>
+
+                                                <div class="pt-1">
+                                                    <div class="row pt-3 px-4 align-items-center text-center"
+                                                        style="background-color:#006BFF14;">
+                                                        <div class="col-6 col-md-2">
+                                                            <p class="fw-bold">Receviable</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">25 k€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">6.3 k€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">74.8 %</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">21.1 k€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">6.3 k€ </p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">14.8 k€ </p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col-6 tavle-dropdown-icon mb-3"
+                                                            onclick="toggleFunction(this)">
+                                                            <i class="fa-solid fa-chevron-down"></i>
+                                                        </div>
+                                                        <div class="hidden d-none bg-light">
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">
+                                                                    Total collectable
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">25 k€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Remains to collect
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">6.3 k€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Collection efficiency
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">74.8 %</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Total receviable:</p>
+                                                                <p class="fw-bold">21.1 k€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Overdue:</p>
+                                                                <p class="fw-bold">6.3 k€ </p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Current month
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+1
+                                                                    June 2024:</p>
+                                                                <p class="fw-bold">14.8 k€ </p>
+                                                            </div>
+
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+2
+                                                                    July 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+3
+                                                                    August 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M>3
+                                                                </p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row pt-3 px-4 align-items-center text-center">
+                                                        <div class="col-6 col-md-2">
+                                                            <p class="fw-bold">Unallocated payments</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-0.01 k€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-0.01 k€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">0 %</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-0.01 k€ </p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-0.01 k€ </p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+
+                                                        <div class="col-6 tavle-dropdown-icon mb-3"
+                                                            onclick="toggleFunction(this)">
+                                                            <i class="fa-solid fa-chevron-down"></i>
+                                                        </div>
+                                                        <div class="hidden d-none bg-light">
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">
+                                                                    Total collectable
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-0.01 k€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Remains to collect
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-0.01 k€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Collection efficiency
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">0 %</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Total receviable:</p>
+                                                                <p class="fw-bold">-0.01 k€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Overdue:</p>
+                                                                <p class="fw-bold">-0.01 k€ </p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Current month
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+1
+                                                                    June 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+2
+                                                                    July 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+3
+                                                                    August 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M>3
+                                                                </p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row pt-3 px-4 align-items-center text-center"
+                                                        style="background-color:#006BFF14;">
+                                                        <div class="col-6 col-md-2">
+                                                            <p class="fw-bold">Items in transit (drafts)</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">0€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+
+                                                        <div class="col-6 tavle-dropdown-icon mb-3"
+                                                            onclick="toggleFunction(this)">
+                                                            <i class="fa-solid fa-chevron-down"></i>
+                                                        </div>
+                                                        <div class="hidden d-none bg-light">
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">
+                                                                    Total collectable
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Remains to collect
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Collection efficiency
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Total receviable:</p>
+                                                                <p class="fw-bold">-0€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Overdue:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Current month
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+1
+                                                                    June 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+2
+                                                                    July 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+3
+                                                                    August 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M>3
+                                                                </p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="row pt-3 px-4 align-items-center text-center">
+                                                        <div class="col-6 col-md-2">
+                                                            <p class="fw-bold">Order backlog
+                                                            <p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">0€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+
+                                                        <div class="col-6 tavle-dropdown-icon mb-3"
+                                                            onclick="toggleFunction(this)">
+                                                            <i class="fa-solid fa-chevron-down"></i>
+                                                        </div>
+                                                        <div class="hidden d-none bg-light">
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">
+                                                                    Total collectable
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Remains to collect
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Collection efficiency
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Total receviable:</p>
+                                                                <p class="fw-bold">-0€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Overdue:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Current month
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+1
+                                                                    June 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+2
+                                                                    July 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+3
+                                                                    August 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M>3
+                                                                </p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row pt-3 px-4 align-items-center text-center"
+                                                        style="background-color:#006BFF14;">
+                                                        <div class="col-6 col-md-2">
+                                                            <p class="fw-bold">Total:</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">25 k€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">6.3 k€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">74.8 %</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">21.1 k€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">6.3 k€ </p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">14.8 k€ </p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col-6 tavle-dropdown-icon mb-3"
+                                                            onclick="toggleFunction(this)">
+                                                            <i class="fa-solid fa-chevron-down"></i>
+                                                        </div>
+                                                        <div class="hidden d-none bg-light">
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">
+                                                                    Total collectable
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">25 k€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Remains to collect
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">6.3 k€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Collection efficiency
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">74.8 %</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Total receviable:</p>
+                                                                <p class="fw-bold">21.1 k€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Overdue:</p>
+                                                                <p class="fw-bold">6.3 k€ </p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Current month
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+1
+                                                                    June 2024:</p>
+                                                                <p class="fw-bold">14.8 k€ </p>
+                                                            </div>
+
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+2
+                                                                    July 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+3
+                                                                    August 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M>3
+                                                                </p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row pt-3 px-4 align-items-center text-center">
+                                                        <div class="col-6 col-md-2">
+                                                            <p class="fw-bold">Promise to pay
+                                                            <p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">0€</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">-</p>
+                                                        </div>
+
+                                                        <div class="col-6 tavle-dropdown-icon mb-3"
+                                                            onclick="toggleFunction(this)">
+                                                            <i class="fa-solid fa-chevron-down"></i>
+                                                        </div>
+                                                        <div class="hidden d-none bg-light">
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">
+                                                                    Total collectable
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Remains to collect
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Collection efficiency
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Total receviable:</p>
+                                                                <p class="fw-bold">-0€</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Overdue:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Current month
+                                                                    May 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+1
+                                                                    June 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+2
+                                                                    July 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M+3
+                                                                    August 2024:</p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">Month M>3
+                                                                </p>
+                                                                <p class="fw-bold">-</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="new-score mt-3 mb-3 container">
+                                            <h6>Credit notation:</h6>
+                                            <button id="score-button"><span><i class="fa-solid fa-plus"></i></span>new
+                                                score</button>
+                                        </div>
+                                        <div class="show-credit text-capitalize" id="show-score">
+                                            <div class="container">
+                                                <div class="d-flex justify-content-center gap-2">
+                                                    <div class="btn btn-success">Notation crédit</div>
+                                                    <div class="btn btn-outline-success">Scoring</div>
+                                                </div>
+                                                <div class="two-content-show mt-2 mb-2 d-flex justify-content-between">
+                                                    <h4>Notation crédit</h4>
+                                                    <a href="settings-manage-risk.html" class="text-black-50"><span><i
+                                                                class="fa-solid fa-gear"></i></span>Custom
+                                                        scoring models</a>
+                                                </div>
+                                                <span class="text-black-50">Scoring par défaut</span>
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">
+                                                            Forme juridique
+                                                            <span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class="text-capitalize">Nouvelle entreprise /
+                                                                pas d'infos <br>
+                                                                Société Anonyme et associées <br>
+                                                                Propriétaire individuel (EURL) <br>
+                                                                Coopérative <br>
+                                                                Entreprise publique et affiliées
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">Age
+                                                            de l'entreprise
+                                                            <span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class=" text-capitalize">Nouvelle entreprise
+                                                                <br>
+                                                                <= 2 ans <br>
+                                                                    2 - 4 ans <br>
+                                                                    5 - 6 ans <br>
+                                                                    7 - 8 ans <br>
+                                                                    9 - 10 ans <br>
+                                                                    > 10 ans
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">
+                                                            Comportement de paiement
+                                                            <span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class="text-capitalize">> 30 jours de retard /
+                                                                nouveau client <br>
+                                                                20 - 30 jours de retard <br>
+                                                                10 - 20 jours de retard <br>
+                                                                7 - 10 jours de retard <br>
+                                                                < 7 jours de retard <br>
+                                                                    Paiement à l'échéance <br>
+                                                                    Paie avant l'échéance
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">
+                                                            Délai de paiement
+                                                            accordé
+                                                            <span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class="text-capitalize">> 120 jours <br>
+                                                                91 - 120 jours <br>
+                                                                61 - 90 jours <br>
+                                                                31 - 60 jours <br>
+                                                                10 - 30 jours <br>
+                                                                < 10 jours <br>
+                                                                    Paiement à la commande
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">Avis
+                                                            du Commercial
+                                                            <span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class="text-capitalize">Négatif <br>
+                                                                Moyen <br>
+                                                                Bon <br>
+                                                                Très bon
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">
+                                                            Evolution des commandes
+                                                            <span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class=" text-capitalize">Décline >50% ou
+                                                                nouveau client <br>
+                                                                Décline 20% - 50% <br>
+                                                                Décline 0% - 20% <br>
+                                                                Stagnant <br>
+                                                                Augmente 0% - 20% <br>
+                                                                Augmente 20% - 50% <br>
+                                                                Augmente > 50%
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">
+                                                            Résultat d'exploitation
+                                                            <span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class="text-capitalize">Négatif<br>
+                                                                0% - 3% <br>
+                                                                3% - 6% <br>
+                                                                6% - 10% <br>
+                                                                10% - 15% <br>
+                                                                15% - 20% <br>
+                                                                > 20%
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">
+                                                            Evolution du chiffre
+                                                            d'affaires
+                                                            / n-1<span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class=" text-capitalize">Baisse > 20% <br>
+                                                                Baisse 10% - 20% <br>
+                                                                Baisse 2% - 10% <br>
+                                                                Stagne entre -2% et +2% <br>
+                                                                Croissance 2% - 10% <br>
+                                                                Croissance 10% - 20% <br>
+                                                                Croissance > 20% <br>
+
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">
+                                                            Fonds propres / Total
+                                                            bilan<span>?</span></h6>
+                                                        <div class="scroll-bars">
+                                                            <p class="text-capitalize">0% - 10% <br>
+                                                                10% - 15% <br>
+                                                                15% - 20% <br>
+                                                                20% - 25% <br>
+                                                                25% - 30% <br>
+                                                                > 30% <br>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">
+                                                            Endettement MLT / Fonds
+                                                            propres
+                                                            <span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class="text-capitalize">> 1,5 <br>
+                                                                1 - 1,5 <br>
+                                                                0,8 - 1 <br>
+                                                                0,6 - 0,8 <br>
+                                                                0,4 - 0,6 <br>
+                                                                0,2 - 0,4 <br>
+                                                                < 0,2 <br>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">
+                                                            Fonds de roulement
+                                                            (FR)
+                                                            <span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class="text-capitalize">Négatif <br>
+                                                                Positif
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+
+                                                        <h6 class="text-capitalize mt-2 mb-2 text-center">
+                                                            Trésorerie (FR - BFR)
+                                                            <span>?</span>
+                                                        </h6>
+                                                        <div class="scroll-bars">
+                                                            <p class="text-capitalize">Négatif <br>
+                                                                Positif
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="calc-score text-center mt-3 mb-3">
+                                                        <button
+                                                            onclick="document.querySelector('.credit-notation-calc').classList.remove('d-none')"><span
+                                                                class="fa-solid fa-check"></span> calc
+                                                            score</button>
+                                                    </div>
+                                                </div>
+                                                <div class="row align-items-center d-none credit-notation-calc">
+                                                    <div class="col-lg-3 bg-light py-2 p-1">
+                                                        <div class="d-flex flex-column">
+                                                            <label class="text-center">Model :</label>
+                                                            <h4 class="text-dark text-center bg-white py-3">
+                                                                Notation crédit</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 bg-light py-2 p-1">
+                                                        <div class="d-flex flex-column">
+                                                            <label class="text-center">Score out of 10
+                                                                :</label>
+                                                            <h4 class="text-dark text-center bg-info py-3">0.2
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 bg-light py-2 p-1">
+                                                        <div class="d-flex flex-column">
+                                                            <label class="text-center">Risk category :</label>
+                                                            <h4 class="text-dark text-center bg-danger py-3">D
+                                                            </h4>
+                                                            <span class="onmouse position-absolute px-1"
+                                                                style="z-index: 10;transform: translate(160px,40px);">?</span>
+                                                            <span class="conttt" style="display: none;">title="Risk
+                                                                category D
+                                                                →
+                                                                Defaulted account or default imminent: company
+                                                                whose financial
+                                                                situation
+                                                                is
+                                                                very deteriorated which cannot meet its
+                                                                commitments. The risk of
+                                                                default
+                                                                is
+                                                                very high. Require payment guarantees if you
+                                                                grant a credit or
+                                                                request a
+                                                                payment in advance (before the
+                                                                delivery)."</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 text-center py-2 p-1">
+                                                        <div class="btn btn-success"><i class="fa-solid fa-floppy-disk"
+                                                                style="  font-size: 15px;"></i> Save these
+                                                            results</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="credit-limit-btn mt-3 ">
+                                            <h5 class="text-capitalize mt-2 mb-2">credit limit</h5>
+                                            <button id="score-button-2"><span><i class="fa-solid fa-plus"></i></span>new
+                                                score</button>
+                                        </div>
+                                        <div class="container credit-limit-first-section">
+                                            <div class="credit-limit mt-3 mb-2" id="show-score-2">
+                                                <div class="container">
                                                     <div
-                                                        class="three-button align-items-center gap-2 mt-3 d-flex text-center justify-content-around">
-                                                        <div class="btn btn-primary w-100" id="show-table-one"
-                                                            onclick="fun1()">
-                                                            collection
-                                                            history</div>
-                                                        <div class="btn btn-outline-primary w-100" id="show-table-one-2"
-                                                            onclick="fun2()">
-                                                            Actions history (Risk)</div>
-                                                        <div class="btn btn-outline-primary w-100" id="show-history"
-                                                            onclick="fun3()">
-                                                            Items
-                                                            history</div>
-
+                                                        class="two-content-show mt-2 mb-2 d-flex align-items-center justify-content-between">
+                                                        <p>Risk category ( A, B, C or D - View <span>Credit
+                                                                notation</span> ) :</p>
+                                                        <a href="#" class="text-black-50"
+                                                            onclick="showSecondCreditLimit()"><span><i
+                                                                    class="fa-solid fa-gear"></i></span>Custom
+                                                            scoring
+                                                            models</a>
                                                     </div>
-                                                    <div class="search mt-3 mb-3 justify-content-end d-flex">
-                                                        <form action="">
-                                                            <div class="form-group col-12">
-
-                                                                <input type="text" class="form-control"
-                                                                    id="formGroupExampleInput"
-                                                                    placeholder="Multi-columns search">
-                                                        </form>
+                                                    <div class="opis-limits col-2">
+                                                        <select class="form-select m-2"
+                                                            aria-label="Default select example">
+                                                            <option value="1" selected>A</option>
+                                                            <option value="1">B</option>
+                                                            <option value="1">C</option>
+                                                            <option value="1">D</option>
+                                                        </select>
                                                     </div>
-                                                </div>
-
-                                                <div class="collection-table ">
-                                                    <div class="container">
-                                                        <div class="row mt-3 px-4 align-items-center text-center">
-                                                            <div class="col ">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Action date</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col ">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">Action type</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">trans no.</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">action amount inc. tax</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <div
-                                                                    class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                    <i class="fa-solid fa-sort mb-3"
-                                                                        style="cursor:pointer"></i>
-                                                                    <p class="fw-bold">action done by</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col  tavle-dropdown-icon"></div>
-                                                        </div>
-                                                        <div>
-                                                            <div class="row pt-3 px-4 align-items-center text-center"
-                                                                style="background-color:#006BFF14;">
-                                                                <div class="col">
-                                                                    <p class="fw-bold">2024-05-08 15:55</p>
-                                                                </div>
-                                                                <div class="col ">
-                                                                    <p class="fw-bold"><i class="fa-solid fa-phone"
-                                                                            style="font-size: 10px; margin-right: 5px;"></i>phone
-                                                                    </p>
-                                                                    <p class="fw-bold">Telephone reminder No. 1</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                        310636, ... [8]</p>
-
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">24,775.96 €</p>
-                                                                </div>
-                                                                <div class="col hide">
-
-                                                                    <div class="img-s-2 d-flex">
-                                                                        <img src="img/person2.jpg" class="img-fluid"
-                                                                            style="width: 30px; height: 30px; border-radius: 50%;"
-                                                                            alt=""><span> Paul Mayer
-                                                                            (Administrator)</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col tavle-dropdown-icon mb-3"
-                                                                    onclick="toggleFunction(this)"><i
-                                                                        class="fa-solid fa-chevron-down"></i></div>
-                                                                <div class="hidden d-none bg-light">
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">trans no:</p>
-                                                                        <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                            310636, ... [8]</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">action amount inc. tax:</p>
-                                                                        <p class="fw-bold">24,775.96 €</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">action done by:</p>
-                                                                        <div
-                                                                            class="img-s-2 d-flex justify-content-between">
-                                                                            <img src="img/person2.jpg" class="img-fluid"
-                                                                                style="width: 30px; height: 30px; border-radius: 50%; margin: -3px auto -2px;"
-                                                                                alt=""><span> Paul Mayer
-                                                                                (Administrator)</span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
+                                                    <div class="row">
+                                                        <h6 class="mt-3">Commercial information :</h6>
+                                                        <div class="col-lg-3 col-md-7 text-center">
+                                                            <div class="input-titles">
+                                                                <p class="text-center mb-0">Sales forecast
+                                                                    <span>?</span>
+                                                                </p>
+                                                                <input type="text">
                                                             </div>
                                                         </div>
-                                                        <div>
-                                                            <div class="row pt-3 px-4 align-items-center text-center">
-                                                                <div class="col">
-                                                                    <p class="fw-bold">2024-05-08 15:55</p>
-                                                                </div>
-                                                                <div class="col ">
-                                                                    <span class="btn btn btn-primary">@Email</span>
-                                                                    <p class="fw-bold">eminder by e-mail No. 1</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                        310636,</p>
-
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">24,775.96 €</p>
-                                                                </div>
-                                                                <div class="col hide">
-
-                                                                    <div class="img-s-2 d-flex">
-                                                                        <img src="img/person2.jpg" class="img-fluid"
-                                                                            style="width: 30px; height: 30px; border-radius: 50%;"
-                                                                            alt=""><span> Paul Mayer
-                                                                            (Administrator)</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col tavle-dropdown-icon mb-3"
-                                                                    onclick="toggleFunction(this)"><i
-                                                                        class="fa-solid fa-chevron-down"></i></div>
-                                                                <div class="hidden d-none bg-light">
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">trans no:</p>
-                                                                        <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                            310636,</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">action amount inc. tax:</p>
-                                                                        <p class="fw-bold">24,775.96 €</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">action done by:</p>
-                                                                        <div class="img-s-2 d-flex">
-                                                                            <img src="img/person2.jpg" class="img-fluid"
-                                                                                style="width: 30px; height: 30px; border-radius: 50%; margin: -2px auto 2px; "
-                                                                                alt=""><span> Paul Mayer
-                                                                                (Administrator)</span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
+                                                        <div class="col-lg-3 col-md-7 text-center">
+                                                            <div class="input-titles">
+                                                                <p class="text-center mb-0">Duration in months
+                                                                    of the period
+                                                                    <span>?</span>
+                                                                </p>
+                                                                <input type="text">
                                                             </div>
                                                         </div>
-                                                        <div>
-                                                            <div class="row pt-3 px-4 align-items-center text-center"
-                                                                style="background-color:#006BFF14;">
-                                                                <div class="col">
-                                                                    <p class="fw-bold">2024-05-08 15:55</p>
-                                                                </div>
-                                                                <div class="col ">
-                                                                    <p class="fw-bold"><i class="fa-solid fa-phone"
-                                                                            style="font-size: 10px; margin-right: 5px;"></i>phone
-                                                                    </p>
-                                                                    <p class="fw-bold">Telephone reminder No. 1</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                        310636, ... [8]</p>
-
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">24,775.96 €</p>
-                                                                </div>
-                                                                <div class="col hide">
-
-                                                                    <div class="img-s-2 d-flex">
-                                                                        <img src="img/person2.jpg" class="img-fluid"
-                                                                            style="width: 30px; height: 30px; border-radius: 50%;"
-                                                                            alt=""><span> Paul Mayer
-                                                                            (Administrator)</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col tavle-dropdown-icon mb-3"
-                                                                    onclick="toggleFunction(this)"><i
-                                                                        class="fa-solid fa-chevron-down"></i></div>
-                                                                <div class="hidden d-none bg-light">
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">trans no:</p>
-                                                                        <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                            310636, ... [8]</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">action amount inc. tax:</p>
-                                                                        <p class="fw-bold">24,775.96 €</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">action done by:</p>
-                                                                        <div
-                                                                            class="img-s-2 d-flex justify-content-between">
-                                                                            <img src="img/person2.jpg" class="img-fluid"
-                                                                                style="width: 30px; height: 30px; border-radius: 50%; margin: -3px auto -2px;"
-                                                                                alt=""><span> Paul Mayer
-                                                                                (Administrator)</span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
+                                                        <div class="col-lg-3 col-md-7 text-center">
+                                                            <div class="input-titles">
+                                                                <p class="text-center mb-0">Payment term
+                                                                    <span>?</span>
+                                                                </p>
+                                                                <input type="text">
                                                             </div>
                                                         </div>
-                                                        <div>
-                                                            <div class="row pt-3 px-4 align-items-center text-center">
-                                                                <div class="col">
-                                                                    <p class="fw-bold">2024-05-08 15:55</p>
-                                                                </div>
-                                                                <div class="col ">
-                                                                    <span class="btn btn btn-primary">@Email</span>
-                                                                    <p class="fw-bold">eminder by e-mail No. 1</p>
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                        310636,</p>
-
-                                                                </div>
-                                                                <div class="col hide">
-                                                                    <p class="fw-bold">24,775.96 €</p>
-                                                                </div>
-                                                                <div class="col hide">
-
-                                                                    <div class="img-s-2 d-flex">
-                                                                        <img src="img/person2.jpg" class="img-fluid"
-                                                                            style="width: 30px; height: 30px; border-radius: 50%;"
-                                                                            alt=""><span> Paul Mayer
-                                                                            (Administrator)</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col tavle-dropdown-icon mb-3"
-                                                                    onclick="toggleFunction(this)"><i
-                                                                        class="fa-solid fa-chevron-down"></i></div>
-                                                                <div class="hidden d-none bg-light">
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">trans no:</p>
-                                                                        <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                            310636,</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">action amount inc. tax:</p>
-                                                                        <p class="fw-bold">24,775.96 €</p>
-                                                                    </div>
-                                                                    <div class="d-flex">
-                                                                        <p class="fw-bold">action done by:</p>
-                                                                        <div class="img-s-2 d-flex">
-                                                                            <img src="img/person2.jpg" class="img-fluid"
-                                                                                style="width: 30px; height: 30px; border-radius: 50%; margin: -2px auto 2px; "
-                                                                                alt=""><span> Paul Mayer
-                                                                                (Administrator)</span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
+                                                        <div class="col-lg-3 col-md-7 text-center">
+                                                            <div class="input-titles">
+                                                                <p class="text-center mb-0">Tax rate
+                                                                    <span>?</span>
+                                                                </p>
+                                                                <input type="text">
+                                                            </div>
+                                                        </div>
+                                                        <span class="mt-2">Financial informations :</span>
+                                                        <div class="col-lg-3 col-md-7 text-center mt-3">
+                                                            <div class="input-titles">
+                                                                <p class="text-center mb-0">Tangible Net Worth
+                                                                    <span>?</span>
+                                                                </p>
+                                                                <input type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-7 text-center mt-3">
+                                                            <div class="input-titles">
+                                                                <p class="text-center mb-0">Sales
+                                                                    <span>?</span>
+                                                                </p>
+                                                                <input type="text">
+                                                            </div>
+                                                        </div>
+                                                        <div class="clac-button-score mt-4 mb-4 text-center">
+                                                            <button
+                                                                onclick="document.querySelector('.credit-lemit-calc').classList.remove('d-none')"><span><i
+                                                                        class="fa-solid fa-check"></i></span>
+                                                                calculate</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row align-items-center d-none credit-lemit-calc">
+                                                        <div class="col-lg-4">
+                                                            <div class="d-flex flex-column gap-2">
+                                                                <label class="text-center">Need of credit
+                                                                    limit (Calculation of
+                                                                    need )
+                                                                    :</label>
+                                                                <h4 class="text-dark text-center bg-info py-2">
+                                                                    2.10 €</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <div class="d-flex flex-column gap-2">
+                                                                <label class="text-center">Acceptable credit
+                                                                    limit :</label>
+                                                                <h4 class="text-dark text-center bg-info py-2">
+                                                                    2.10 €</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 text-center">
+                                                            <div class="d-flex flex-column gap-4">
+                                                                <label class="text-center"></label>
+                                                                <div class="btn btn-success "><i
+                                                                        class="fa-solid fa-floppy-disk"
+                                                                        style="  font-size: 15px;"></i> Save
+                                                                    these results</div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <!--this click to show hide-scetions-->
+                                        <section
+                                            class="button-to-back credit-limit-second-section credit-limit mt-2 d-none"
+                                            id="showTwo">
+                                            <div class="back-button container">
+                                                <button class="mt-3 mb-3" onclick="showFirstCreditLimit()"><span><i
+                                                            class="fa-solid fa-arrow-left"></i></span>
+                                                    back</button>
+                                            </div>
+                                            <div class="three-cont-section  mt-2  ">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-4"></div>
+                                                        <div class="col-md-4">
+                                                            <div class="content-section-select">
+                                                                <p class="text-center m-0">Criterion n°1</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="content-section-select">
+                                                                <p class="text-center m-0">Criterion n°2</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row px-3 space-back">
+                                                        <div class="col-md-4 m-0 p-0">
+                                                            <p class="m-0 mt-2">Description</p>
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <input type="text" class="form-control my-1"
+                                                                value="Tangible Net Worth">
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <input type="text" class="form-control my-1"
+                                                                value="Sales">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row px-3 space-pading">
+                                                        <div class="col-md-4 m-0 p-0">
+                                                            <p class="m-0 mt-2">Detalied description</p>
+                                                        </div>
+                                                        <div class="col-md-4 m-0 pb-0 px-2">
+                                                            <textarea class="form-control mt-1 mb-1" name="" id=""
+                                                                placeholder="The TNW is calculated with balance sheet information: equity - untangible assets"></textarea>
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <textarea class="form-control mt-1 mb-1" name="" id=""
+                                                                placeholder="The TNW is calculated with balance sheet information: equity - untangible assets"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row px-3 space-back">
+                                                        <div class="col-md-4 m-0 p-0">
+                                                            <p class="m-0 mt-2">max 5% if credit notatins
+                                                                reuslt A</p>
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <input class="form-control my-1" type="text"
+                                                                value="50">
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <input class="form-control my-1" type="text"
+                                                                value="50">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row px-3 space-pading">
+                                                        <div class="col-md-4 m-0 p-0">
+                                                            <p class="m-0 mt-2">max 5% if credit notatins
+                                                                reuslt B</p>
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <input class="form-control my-1" type="text"
+                                                                value="37.5">
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <input class="form-control my-1" type="text"
+                                                                value="37.5">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row px-3 space-back">
+                                                        <div class="col-md-4 m-0 p-0">
+                                                            <p class="m-0 mt-2">max 5% if credit notatins
+                                                                reuslt C</p>
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <input class="form-control my-1" type="text"
+                                                                value="50">
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <input class="form-control my-1" type="text"
+                                                                value="50">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row px-3 space-pading">
+                                                        <div class="col-md-4 m-0 p-0">
+                                                            <p class="m-0 mt-2">max 5% if credit notatins
+                                                                reuslt D</p>
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <input class="form-control my-1" type="text"
+                                                                value="37.5">
+                                                        </div>
+                                                        <div class="col-md-4 m-0 px-2">
+                                                            <input class="form-control my-1" type="text"
+                                                                value="37.5">
+                                                        </div>
+                                                    </div>
+                                                    <div class="clac-button-score mt-4 mb-4 text-center">
+                                                        <button onclick="showFirstCreditLimit()"><span><i
+                                                                    class="fa-solid fa-check"></i></span>
+                                                            Modify</button>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                <div class="page-not-found mt-3 mb-3 d-none" id="page-not-found">
-                                                    <h5 class="text-center mt-3 mb-3 p-4">{{ __('No history found') }}
+                                            <!--this click to show hide-scetions-->
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!--sec-2-->
+
+                            <div class="d-none" id="indicatorsDiv">
+                                <div class="sec-2 bg-white">
+                                    <div class="container">
+                                        <div class="row align-items-center pb-5">
+                                            <div class="col-lg-6" style="height:300px ;">
+                                                <div class="pay-totals mt-3 mb-3 fw-bold">
+                                                    <p>Total receivable :<span>21.1 k€</span></p>
+                                                    <p>Overdue: <span>6.3 k€</span></p>
+                                                    <p>Overdue % :<span>30 %</span></p>
+                                                    <p>Current receivable :<span>14.8 k€</span></p>
+                                                    <p>Promise to pay :<span>0 €</span></p>
+                                                </div>
+                                                <hr>
+                                                <div class="table-and-txt">
+                                                    <p>Average time of payment :<span>+8 </span>days</p>
+                                                    <p>Average days beyond terms <span> +7 </span>days</p>
+                                                </div>
+                                                <div
+                                                    class="three-titels d-flex text-center justify-content-between align-items-center">
+                                                    <span></span>
+                                                    <span>Today</span>
+                                                    <span>April 2024</span>
+                                                    <span>March 2024</span>
+                                                </div>
+                                                <div class="four-cont-sec-2 d-flex justify-content-around  mt-3">
+                                                    <span>?</span>
+                                                    <span>+7d. <i class="fa-solid fa-flag"
+                                                            style="color: green;"></i></span>
+                                                    <span class="text-black-50"><i class="fa-solid fa-flag"></i></span>
+                                                    <span class=" text-black-50 "><i
+                                                            class="fa-solid fa-flag"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6" style="height:300px ;">
+                                                <h6 class="text-center text-black-50"> Aging balance</h6>
+                                                <canvas id="myChart-5" width="200" height="200"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="two-charts bg-white">
+                                    <div class="container">
+                                        <div class="row pb-3">
+                                            <div class="col-lg-6" style="height:300px ;">
+                                                <h6 class="text-black-50 text-center mt-3"> DSO trend</h6>
+                                                <canvas id="myChart-8" width="200" height="200"></canvas>
+                                            </div>
+                                            <div class="col-lg-6" style="height:300px ;">
+                                                <h6 class="text-black-50 text-center mt-3">Overdue trend</h6>
+                                                <canvas id="myChart-6" width="200" height="200"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="two-desc bg-white">
+                                    <div class="container">
+                                        <div class="row pb-5 align-items-center">
+                                            <div class="col-lg-6 pt-5" style="height:500px ;">
+                                                <div class="desc-and-cric mt-3 mb-3 text-center">
+                                                    <h5 class="text-capitalize mt-3 mb-3"> Pending disputes
                                                     </h5>
+                                                    <p>No. of items in dispute:<span>0</span></p>
+                                                    <p>Disputed receivables amount :<span> 0 €</span></p>
+                                                    <p>Average time for dispute resolution : <span> ?</span></p>
                                                 </div>
+                                                <div class="circ">
+                                                    <span class="text-center text-capitalize"
+                                                        style="width: 100%; color: green;">nodata-update</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 m-auto pt-5" style="height:500px ;">
+                                                <h5 class="mt-5 mb-3 text-center">Disputes / Trend</h5>
+                                                <div class="display-data">
+                                                    <h6 class="text-center">No data to display</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                                <div class="tale-2 mt-3 border-none d-none" id="history-table">
-                                                    <div class="row mt-3 px-4 align-items-center text-center">
-                                                        <div class="col ">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                <i class="fa-solid fa-sort mb-3"
-                                                                    style="cursor:pointer"></i>
-                                                                <p class="fw-bold">Trans No</p>
-                                                            </div>
+                                <div class="two-charts-sales bg-white">
+                                    <div class="container">
+                                        <div class="row pb-5">
+                                            <div class="col-lg-6" style="height:300px ;">
+                                                <h6 class="text-black-50 text-center mt-3">Sales history</h6>
+                                                <canvas id="myChart-1" width="350" height="200"></canvas>
+                                            </div>
+                                            <div class="col-lg-6" style="height:300px ;">
+                                                <h6 class="text-black-50 text-center mt-3">Cash receipts
+                                                    history</h6>
+                                                <canvas id="myChart-2" width="200" height="200"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="one-charts  bg-white">
+                                    <div class="container">
+                                        <div class="row pb-5 align-items-center" style="height:500px ;">
+                                            <div class="col-lg-12">
+                                                <div class="head-titels pt-3 text-black-50 mt-3 mb-3">
+                                                    <p class="">total sales<span>39.8 k€</span></p>
+                                                    <p>total cash receipts<span>18.7 k€</span></p>
+                                                    <p>total forecast<span>0€</span>+ amount off forecast</p>
+                                                </div>
+                                            </div>
+                                            <h5 class="text-dark text-center">Cash forecast</h5>
+                                            <div style="height:300px ;">
+                                                <canvas id="myChart-3" width="100" height="100"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--sec-2-->
+                            <!--sec-3-->
+                            <div class="three-button-collections pb-5 bg-white d-none" id="historyDiv">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+
+                                            <div
+                                                class="three-button align-items-center gap-2 mt-3 d-flex text-center justify-content-around">
+                                                <div class="btn btn-primary w-100" id="show-table-one"
+                                                    onclick="fun1()">
+                                                    collection
+                                                    history</div>
+                                                <div class="btn btn-outline-primary w-100" id="show-table-one-2"
+                                                    onclick="fun2()">
+                                                    Actions history (Risk)</div>
+                                                <div class="btn btn-outline-primary w-100" id="show-history"
+                                                    onclick="fun3()">
+                                                    Items
+                                                    history</div>
+
+                                            </div>
+                                            <div class="search mt-3 mb-3 justify-content-end d-flex">
+                                                <form action="">
+                                                    <div class="form-group col-12">
+
+                                                        <input type="text" class="form-control"
+                                                            id="formGroupExampleInput"
+                                                            placeholder="Multi-columns search">
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                        <div class="collection-table ">
+                                            <div class="container">
+                                                <div class="row mt-3 px-4 align-items-center text-center">
+                                                    <div class="col ">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Action date</p>
                                                         </div>
-                                                        <div class="col ">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                <i class="fa-solid fa-sort mb-3"
-                                                                    style="cursor:pointer"></i>
-                                                                <p class="fw-bold">Po No.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col ">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                <i class="fa-solid fa-sort mb-3"
-                                                                    style="cursor:pointer"></i>
-                                                                <p class="fw-bold">Issue date</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                <i class="fa-solid fa-sort mb-3"
-                                                                    style="cursor:pointer"></i>
-                                                                <p class="fw-bold">Due data</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                <i class="fa-solid fa-sort mb-3"
-                                                                    style="cursor:pointer"></i>
-                                                                <p class="fw-bold">Payment date</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                <i class="fa-solid fa-sort mb-3"
-                                                                    style="cursor:pointer"></i>
-                                                                <p class="fw-bold">Overdue</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                <i class="fa-solid fa-sort mb-3"
-                                                                    style="cursor:pointer"></i>
-                                                                <p class="fw-bold">Amountexc. Tax</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <div
-                                                                class="d-flex align-items-center justify-content-center gap-1 ">
-                                                                <i class="fa-solid fa-sort mb-3"
-                                                                    style="cursor:pointer"></i>
-                                                                <p class="fw-bold">Amountexc. Tax</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col  tavle-dropdown-icon"></div>
                                                     </div>
-                                                    <div class="tables-backg ">
-                                                        <div class="row pt-3 px-4 align-items-center text-center"
-                                                            style="background: #006BFF14;">
-                                                            <div class="col">
-                                                                <p class="fw-bold">310712</p>
-                                                            </div>
-                                                            <div class="col ">
-                                                                <p class="fw-bold"></p>
-                                                            </div>
-                                                            <div class="col ">
-                                                                <p class="fw-bold"> 2024-05-15</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold"> 2024-05-15</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">
-                                                                    2024-05-22
-                                                                </p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">7 d</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">5,141.14 € </p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">5,141.14 € </p>
-                                                            </div>
-                                                            <div class="col tavle-dropdown-icon mb-3"
-                                                                onclick="toggleFunction(this)"><i
-                                                                    class="fa-solid fa-chevron-down"></i></div>
+                                                    <div class="col ">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">Action type</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">trans no.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">action amount inc. tax</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <div
+                                                            class="d-flex align-items-center justify-content-center gap-1 ">
+                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                            <p class="fw-bold">action done by</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col  tavle-dropdown-icon"></div>
+                                                </div>
+                                                <div>
+                                                    <div class="row pt-3 px-4 align-items-center text-center"
+                                                        style="background-color:#006BFF14;">
+                                                        <div class="col">
+                                                            <p class="fw-bold">2024-05-08 15:55</p>
+                                                        </div>
+                                                        <div class="col ">
+                                                            <p class="fw-bold"><i class="fa-solid fa-phone"
+                                                                    style="font-size: 10px; margin-right: 5px;"></i>phone
+                                                            </p>
+                                                            <p class="fw-bold">Telephone reminder No. 1</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">?, 310510, 310511, 310572,
+                                                                310636, ... [8]</p>
 
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">24,775.96 €</p>
+                                                        </div>
+                                                        <div class="col hide">
 
-                                                            <div class="hidden d-none bg-light">
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Due data:</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Payment date :</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Overdue :</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Amountexc. Tax :</p>
-                                                                    <p class="fw-bold">5,141.14 € </p>
-
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Amountexc. Tax :</p>
-                                                                    <p class="fw-bold"> 5,141.14 € </p>
+                                                            <div class="img-s-2 d-flex">
+                                                                <img src="img/person2.jpg" class="img-fluid"
+                                                                    style="width: 30px; height: 30px; border-radius: 50%;"
+                                                                    alt=""><span> Paul Mayer
+                                                                    (Administrator)</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col tavle-dropdown-icon mb-3"
+                                                            onclick="toggleFunction(this)"><i
+                                                                class="fa-solid fa-chevron-down"></i></div>
+                                                        <div class="hidden d-none bg-light">
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">trans no:</p>
+                                                                <p class="fw-bold">?, 310510, 310511, 310572,
+                                                                    310636, ... [8]</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">action amount inc. tax:</p>
+                                                                <p class="fw-bold">24,775.96 €</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">action done by:</p>
+                                                                <div class="img-s-2 d-flex justify-content-between">
+                                                                    <img src="img/person2.jpg" class="img-fluid"
+                                                                        style="width: 30px; height: 30px; border-radius: 50%; margin: -3px auto -2px;"
+                                                                        alt=""><span> Paul Mayer
+                                                                        (Administrator)</span>
                                                                 </div>
                                                             </div>
 
                                                         </div>
-                                                        <div class="row pt-3 px-4 align-items-center text-center">
-                                                            <div class="col">
-                                                                <p class="fw-bold">310712</p>
-                                                            </div>
-                                                            <div class="col ">
-                                                                <p class="fw-bold"></p>
-                                                            </div>
-                                                            <div class="col ">
-                                                                <p class="fw-bold"> 2024-05-15</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold"> 2024-05-15</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">
-                                                                    2024-05-22
-                                                                </p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">7 d</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">5,141.14 € </p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">5,141.14 € </p>
-                                                            </div>
-                                                            <div class="col tavle-dropdown-icon mb-3"
-                                                                onclick="toggleFunction(this)"><i
-                                                                    class="fa-solid fa-chevron-down"></i></div>
-                                                            <div class="hidden d-none bg-light">
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Due data:</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Payment date :</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Overdue :</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Amountexc. Tax :</p>
-                                                                    <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="row pt-3 px-4 align-items-center text-center">
+                                                        <div class="col">
+                                                            <p class="fw-bold">2024-05-08 15:55</p>
+                                                        </div>
+                                                        <div class="col ">
+                                                            <span class="btn btn btn-primary">@Email</span>
+                                                            <p class="fw-bold">eminder by e-mail No. 1</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">?, 310510, 310511, 310572,
+                                                                310636,</p>
 
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Amountexc. Tax :</p>
-                                                                    <p class="fw-bold"> 5,141.14 € </p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">24,775.96 €</p>
+                                                        </div>
+                                                        <div class="col hide">
+
+                                                            <div class="img-s-2 d-flex">
+                                                                <img src="img/person2.jpg" class="img-fluid"
+                                                                    style="width: 30px; height: 30px; border-radius: 50%;"
+                                                                    alt=""><span> Paul Mayer
+                                                                    (Administrator)</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col tavle-dropdown-icon mb-3"
+                                                            onclick="toggleFunction(this)"><i
+                                                                class="fa-solid fa-chevron-down"></i></div>
+                                                        <div class="hidden d-none bg-light">
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">trans no:</p>
+                                                                <p class="fw-bold">?, 310510, 310511, 310572,
+                                                                    310636,</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">action amount inc. tax:</p>
+                                                                <p class="fw-bold">24,775.96 €</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">action done by:</p>
+                                                                <div class="img-s-2 d-flex">
+                                                                    <img src="img/person2.jpg" class="img-fluid"
+                                                                        style="width: 30px; height: 30px; border-radius: 50%; margin: -2px auto 2px; "
+                                                                        alt=""><span> Paul Mayer
+                                                                        (Administrator)</span>
                                                                 </div>
                                                             </div>
 
                                                         </div>
-                                                        <div class="row pt-3 px-4 align-items-center text-center"
-                                                            style="background: #006BFF14;">
-                                                            <div class="col">
-                                                                <p class="fw-bold">310712</p>
-                                                            </div>
-                                                            <div class="col ">
-                                                                <p class="fw-bold"></p>
-                                                            </div>
-                                                            <div class="col ">
-                                                                <p class="fw-bold"> 2024-05-15</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold"> 2024-05-15</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">
-                                                                    2024-05-22
-                                                                </p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">7 d</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">5,141.14 € </p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">5,141.14 € </p>
-                                                            </div>
-                                                            <div class="col tavle-dropdown-icon mb-3"
-                                                                onclick="toggleFunction(this)"><i
-                                                                    class="fa-solid fa-chevron-down"></i></div>
-                                                            <div class="hidden d-none bg-light">
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Due data:</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Payment date :</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Overdue :</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Amountexc. Tax :</p>
-                                                                    <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="row pt-3 px-4 align-items-center text-center"
+                                                        style="background-color:#006BFF14;">
+                                                        <div class="col">
+                                                            <p class="fw-bold">2024-05-08 15:55</p>
+                                                        </div>
+                                                        <div class="col ">
+                                                            <p class="fw-bold"><i class="fa-solid fa-phone"
+                                                                    style="font-size: 10px; margin-right: 5px;"></i>phone
+                                                            </p>
+                                                            <p class="fw-bold">Telephone reminder No. 1</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">?, 310510, 310511, 310572,
+                                                                310636, ... [8]</p>
 
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Amountexc. Tax :</p>
-                                                                    <p class="fw-bold"> 5,141.14 € </p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">24,775.96 €</p>
+                                                        </div>
+                                                        <div class="col hide">
+
+                                                            <div class="img-s-2 d-flex">
+                                                                <img src="img/person2.jpg" class="img-fluid"
+                                                                    style="width: 30px; height: 30px; border-radius: 50%;"
+                                                                    alt=""><span> Paul Mayer
+                                                                    (Administrator)</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col tavle-dropdown-icon mb-3"
+                                                            onclick="toggleFunction(this)"><i
+                                                                class="fa-solid fa-chevron-down"></i></div>
+                                                        <div class="hidden d-none bg-light">
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">trans no:</p>
+                                                                <p class="fw-bold">?, 310510, 310511, 310572,
+                                                                    310636, ... [8]</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">action amount inc. tax:</p>
+                                                                <p class="fw-bold">24,775.96 €</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">action done by:</p>
+                                                                <div class="img-s-2 d-flex justify-content-between">
+                                                                    <img src="img/person2.jpg" class="img-fluid"
+                                                                        style="width: 30px; height: 30px; border-radius: 50%; margin: -3px auto -2px;"
+                                                                        alt=""><span> Paul Mayer
+                                                                        (Administrator)</span>
                                                                 </div>
                                                             </div>
 
                                                         </div>
-                                                        <div class="row pt-3 px-4 align-items-center text-center">
-                                                            <div class="col">
-                                                                <p class="fw-bold">310712</p>
-                                                            </div>
-                                                            <div class="col ">
-                                                                <p class="fw-bold"></p>
-                                                            </div>
-                                                            <div class="col ">
-                                                                <p class="fw-bold"> 2024-05-15</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold"> 2024-05-15</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">
-                                                                    2024-05-22
-                                                                </p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">7 d</p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">5,141.14 € </p>
-                                                            </div>
-                                                            <div class="col hide">
-                                                                <p class="fw-bold">5,141.14 € </p>
-                                                            </div>
-                                                            <div class="col tavle-dropdown-icon mb-3"
-                                                                onclick="toggleFunction(this)"><i
-                                                                    class="fa-solid fa-chevron-down"></i></div>
-                                                            <div class="hidden d-none bg-light">
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Due data:</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Payment date :</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Overdue :</p>
-                                                                    <p class="fw-bold"> 2024-05-15</p>
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Amountexc. Tax :</p>
-                                                                    <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="row pt-3 px-4 align-items-center text-center">
+                                                        <div class="col">
+                                                            <p class="fw-bold">2024-05-08 15:55</p>
+                                                        </div>
+                                                        <div class="col ">
+                                                            <span class="btn btn btn-primary">@Email</span>
+                                                            <p class="fw-bold">eminder by e-mail No. 1</p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">?, 310510, 310511, 310572,
+                                                                310636,</p>
 
-                                                                </div>
-                                                                <div class="d-flex">
-                                                                    <p class="fw-bold">Amountexc. Tax :</p>
-                                                                    <p class="fw-bold"> 5,141.14 € </p>
+                                                        </div>
+                                                        <div class="col hide">
+                                                            <p class="fw-bold">24,775.96 €</p>
+                                                        </div>
+                                                        <div class="col hide">
+
+                                                            <div class="img-s-2 d-flex">
+                                                                <img src="img/person2.jpg" class="img-fluid"
+                                                                    style="width: 30px; height: 30px; border-radius: 50%;"
+                                                                    alt=""><span> Paul Mayer
+                                                                    (Administrator)</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col tavle-dropdown-icon mb-3"
+                                                            onclick="toggleFunction(this)"><i
+                                                                class="fa-solid fa-chevron-down"></i></div>
+                                                        <div class="hidden d-none bg-light">
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">trans no:</p>
+                                                                <p class="fw-bold">?, 310510, 310511, 310572,
+                                                                    310636,</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">action amount inc. tax:</p>
+                                                                <p class="fw-bold">24,775.96 €</p>
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <p class="fw-bold">action done by:</p>
+                                                                <div class="img-s-2 d-flex">
+                                                                    <img src="img/person2.jpg" class="img-fluid"
+                                                                        style="width: 30px; height: 30px; border-radius: 50%; margin: -2px auto 2px; "
+                                                                        alt=""><span> Paul Mayer
+                                                                        (Administrator)</span>
                                                                 </div>
                                                             </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="page-not-found mt-3 mb-3 d-none" id="page-not-found">
+                                            <h5 class="text-center mt-3 mb-3 p-4">{{ __('No history found') }}
+                                            </h5>
+                                        </div>
+
+                                        <div class="tale-2 mt-3 border-none d-none" id="history-table">
+                                            <div class="row mt-3 px-4 align-items-center text-center">
+                                                <div class="col ">
+                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
+                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                        <p class="fw-bold">Trans No</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col ">
+                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
+                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                        <p class="fw-bold">Po No.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col ">
+                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
+                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                        <p class="fw-bold">Issue date</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col hide">
+                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
+                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                        <p class="fw-bold">Due data</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col hide">
+                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
+                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                        <p class="fw-bold">Payment date</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col hide">
+                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
+                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                        <p class="fw-bold">Overdue</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col hide">
+                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
+                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                        <p class="fw-bold">Amountexc. Tax</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col hide">
+                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
+                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
+                                                        <p class="fw-bold">Amountexc. Tax</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col  tavle-dropdown-icon"></div>
+                                            </div>
+                                            <div class="tables-backg ">
+                                                <div class="row pt-3 px-4 align-items-center text-center"
+                                                    style="background: #006BFF14;">
+                                                    <div class="col">
+                                                        <p class="fw-bold">310712</p>
+                                                    </div>
+                                                    <div class="col ">
+                                                        <p class="fw-bold"></p>
+                                                    </div>
+                                                    <div class="col ">
+                                                        <p class="fw-bold"> 2024-05-15</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold"> 2024-05-15</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">
+                                                            2024-05-22
+                                                        </p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">7 d</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                    <div class="col tavle-dropdown-icon mb-3"
+                                                        onclick="toggleFunction(this)"><i
+                                                            class="fa-solid fa-chevron-down"></i></div>
+
+
+                                                    <div class="hidden d-none bg-light">
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Due data:</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Payment date :</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Overdue :</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Amountexc. Tax :</p>
+                                                            <p class="fw-bold">5,141.14 € </p>
+
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Amountexc. Tax :</p>
+                                                            <p class="fw-bold"> 5,141.14 € </p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row pt-3 px-4 align-items-center text-center">
+                                                    <div class="col">
+                                                        <p class="fw-bold">310712</p>
+                                                    </div>
+                                                    <div class="col ">
+                                                        <p class="fw-bold"></p>
+                                                    </div>
+                                                    <div class="col ">
+                                                        <p class="fw-bold"> 2024-05-15</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold"> 2024-05-15</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">
+                                                            2024-05-22
+                                                        </p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">7 d</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                    <div class="col tavle-dropdown-icon mb-3"
+                                                        onclick="toggleFunction(this)"><i
+                                                            class="fa-solid fa-chevron-down"></i></div>
+                                                    <div class="hidden d-none bg-light">
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Due data:</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Payment date :</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Overdue :</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Amountexc. Tax :</p>
+                                                            <p class="fw-bold">5,141.14 € </p>
+
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Amountexc. Tax :</p>
+                                                            <p class="fw-bold"> 5,141.14 € </p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row pt-3 px-4 align-items-center text-center"
+                                                    style="background: #006BFF14;">
+                                                    <div class="col">
+                                                        <p class="fw-bold">310712</p>
+                                                    </div>
+                                                    <div class="col ">
+                                                        <p class="fw-bold"></p>
+                                                    </div>
+                                                    <div class="col ">
+                                                        <p class="fw-bold"> 2024-05-15</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold"> 2024-05-15</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">
+                                                            2024-05-22
+                                                        </p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">7 d</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                    <div class="col tavle-dropdown-icon mb-3"
+                                                        onclick="toggleFunction(this)"><i
+                                                            class="fa-solid fa-chevron-down"></i></div>
+                                                    <div class="hidden d-none bg-light">
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Due data:</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Payment date :</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Overdue :</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Amountexc. Tax :</p>
+                                                            <p class="fw-bold">5,141.14 € </p>
+
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Amountexc. Tax :</p>
+                                                            <p class="fw-bold"> 5,141.14 € </p>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row pt-3 px-4 align-items-center text-center">
+                                                    <div class="col">
+                                                        <p class="fw-bold">310712</p>
+                                                    </div>
+                                                    <div class="col ">
+                                                        <p class="fw-bold"></p>
+                                                    </div>
+                                                    <div class="col ">
+                                                        <p class="fw-bold"> 2024-05-15</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold"> 2024-05-15</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">
+                                                            2024-05-22
+                                                        </p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">7 d</p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                    <div class="col hide">
+                                                        <p class="fw-bold">5,141.14 € </p>
+                                                    </div>
+                                                    <div class="col tavle-dropdown-icon mb-3"
+                                                        onclick="toggleFunction(this)"><i
+                                                            class="fa-solid fa-chevron-down"></i></div>
+                                                    <div class="hidden d-none bg-light">
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Due data:</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Payment date :</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Overdue :</p>
+                                                            <p class="fw-bold"> 2024-05-15</p>
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Amountexc. Tax :</p>
+                                                            <p class="fw-bold">5,141.14 € </p>
+
+                                                        </div>
+                                                        <div class="d-flex">
+                                                            <p class="fw-bold">Amountexc. Tax :</p>
+                                                            <p class="fw-bold"> 5,141.14 € </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3781,116 +2627,119 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                            @empty
-                                <div class="row d-none text-center">
-                                    <p class="p-1 mt-3">
-                                        {{ __('No clients has been found') }}
-                                    </p>
-                                </div>
-                            @endforelse
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-md-2 col-4"></div>
-                            <div class="form-group col-md-4 col-8">
-                                <select class="form-select m-2" onfocus="this.size=9;" onblur="this.size=1;"
-                                    onchange="this.size=1; this.blur();" aria-label=" Default select example">
-                                    <option value="" selected disabled>Add To Group :</option>
-                                    <option value="1">ATLANTIQue</option>
-                                    <option value="2">Central</option>
-                                    <option value="3">Clients douteux</option>
-                                    <option value="3">Clients France</option>
-                                    <option value="3">Clients Grands Comptes</option>
-                                    <option value="3">Clients Mass market</option>
-                                    <option value="3">Clients OSP</option>
-                                    <option value="3">Clients PME</option>
-                                    <option value="3">Clients Publics</option>
-                                    <option value="3">Clients Risques</option>
-                                    <option value="3">Clients Speciaux</option>
-                                    <option value="3">Clients VIP</option>
-                                    <option value="3">ClIENT_MEDIPREMA</option>
-                                    <option value="3">France Contentieux</option>
-                                    <option value="3">Group Alias</option>
-                                    <option value="3">Group Elec</option>
-                                    <option value="3">Group Imprimeurs</option>
-                                    <option value="3">Group Industrie</option>
-                                    <option value="3">Magasins de villa</option>
-                                    <option value="3">Market Place</option>
-                                    <option value="3">Public</option>
-                                    <option value="3">Relance team back office</option>
-                                    <option value="3">Retail</option>
-                                    <option value="3">Salomon</option>
-                                    <option value="3">Test 2</option>
-                                    <option value="3">US Clients</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4 col-6">
-                                <select name="collection_scenario_id" class="m-2 form-select"
-                                    data-placeholder="Collection scenario:" title="Collection scenario">
-                                    <option value="" selected disabled>{{ __('Collection Scenarios') }}</option>
-                                    @foreach ($collectionsScenario as $collection)
-                                        <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4 col-6">
-                                <select class="form-select m-2" aria-label="Default select example">
-                                    <option selected disabled>{{ __('Collectors') }}</option>
-                                    @foreach ($collectors as $collector)
-                                        <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4 col-6">
-                                <select class="form-select m-2" aria-label="Default select example">
-                                    <option selected disabled>Associated a colleague :</option>
-                                    <option value="1">Brad Jackson(Sales Manager)</option>
-                                    <option value="1">Juse Durant(Sales Manager)</option>
-                                    <option value="1">Paul Mayer(Sales Manager)</option>
-                                    <option value="1">Thomas Smith(Executive Officer)</option>
-                                    <option value="1">
-                                        Vironica Campbell(Sales Administration)
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4 col-6">
-                                <select class="form-select m-2" aria-label="Default select example">
-                                    <option selected disabled>Interactive emails :</option>
-                                    <option value="1">Yes</option>
-                                    <option value="1">No</option>
-                                    <option value="1" class="text-primary"><a href="#"> Read more</a>
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4 col-5">
-                                <select class="form-select m-2" aria-label="Default select example">
-                                    <option selected disabled>Late payment penalties :</option>
-                                    <option value="1">Yes</option>
-                                    <option value="1">No</option>
-                                    <option value="1" class="text-primary"><a href="#"> Read more</a>
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4 col-5">
-                                <select class="form-select m-2" aria-label="Default select example">
-                                    <option selected disabled>Recovery cost :</option>
-                                    <option value="1">Yes</option>
-                                    <option value="1">No</option>
-                                    <option value="1" class="text-primary"><a href="#"> Read more</a>
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="col-2  ">
-                                <div class=" text-center m-auto align-items-center"><i
-                                        class="fa-solid fa-trash btn-danger mt-2 p-1 text-light"
-                                        style="font-size: 25px;cursor: pointer;border-radius: 5px;"></i></div>
-                            </div>
-                        </div>
                     </div>
+
                 </div>
-                <div class="justify-content-end gap-1 d-flex mb-2">
-                    {{-- <div class="btn btn-outline-primary">Previus</div>
+            @empty
+                <div class="row d-none text-center">
+                    <p class="p-1 mt-3">
+                        {{ __('No clients has been found') }}
+                    </p>
+                </div>
+                @endforelse
+            </div>
+                @include('clients.client_data_model', [$client])
+            <div class="row mb-3">
+                <div class="col-md-2 col-4"></div>
+                <div class="form-group col-md-4 col-8">
+                    <select class="form-select m-2" onfocus="this.size=9;" onblur="this.size=1;"
+                        onchange="this.size=1; this.blur();" aria-label=" Default select example">
+                        <option value="" selected disabled>Add To Group :</option>
+                        <option value="1">ATLANTIQue</option>
+                        <option value="2">Central</option>
+                        <option value="3">Clients douteux</option>
+                        <option value="3">Clients France</option>
+                        <option value="3">Clients Grands Comptes</option>
+                        <option value="3">Clients Mass market</option>
+                        <option value="3">Clients OSP</option>
+                        <option value="3">Clients PME</option>
+                        <option value="3">Clients Publics</option>
+                        <option value="3">Clients Risques</option>
+                        <option value="3">Clients Speciaux</option>
+                        <option value="3">Clients VIP</option>
+                        <option value="3">ClIENT_MEDIPREMA</option>
+                        <option value="3">France Contentieux</option>
+                        <option value="3">Group Alias</option>
+                        <option value="3">Group Elec</option>
+                        <option value="3">Group Imprimeurs</option>
+                        <option value="3">Group Industrie</option>
+                        <option value="3">Magasins de villa</option>
+                        <option value="3">Market Place</option>
+                        <option value="3">Public</option>
+                        <option value="3">Relance team back office</option>
+                        <option value="3">Retail</option>
+                        <option value="3">Salomon</option>
+                        <option value="3">Test 2</option>
+                        <option value="3">US Clients</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 col-6">
+                    <select name="collection_scenario_id" class="m-2 form-select"
+                        data-placeholder="Collection scenario:" title="Collection scenario">
+                        <option value="" selected disabled>{{ __('Collection Scenarios') }}</option>
+                        @foreach ($collectionsScenario as $collection)
+                            <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-4 col-6">
+                    <select class="form-select m-2" aria-label="Default select example">
+                        <option selected disabled>{{ __('Collectors') }}</option>
+                        @foreach ($collectors as $collector)
+                            <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group col-md-4 col-6">
+                    <select class="form-select m-2" aria-label="Default select example">
+                        <option selected disabled>Associated a colleague :</option>
+                        <option value="1">Brad Jackson(Sales Manager)</option>
+                        <option value="1">Juse Durant(Sales Manager)</option>
+                        <option value="1">Paul Mayer(Sales Manager)</option>
+                        <option value="1">Thomas Smith(Executive Officer)</option>
+                        <option value="1">
+                            Vironica Campbell(Sales Administration)
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 col-6">
+                    <select class="form-select m-2" aria-label="Default select example">
+                        <option selected disabled>Interactive emails :</option>
+                        <option value="1">Yes</option>
+                        <option value="1">No</option>
+                        <option value="1" class="text-primary"><a href="#"> Read more</a>
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 col-5">
+                    <select class="form-select m-2" aria-label="Default select example">
+                        <option selected disabled>Late payment penalties :</option>
+                        <option value="1">Yes</option>
+                        <option value="1">No</option>
+                        <option value="1" class="text-primary"><a href="#"> Read more</a>
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4 col-5">
+                    <select class="form-select m-2" aria-label="Default select example">
+                        <option selected disabled>Recovery cost :</option>
+                        <option value="1">Yes</option>
+                        <option value="1">No</option>
+                        <option value="1" class="text-primary"><a href="#"> Read more</a>
+                        </option>
+                    </select>
+                </div>
+                <div class="col-2  ">
+                    <div class=" text-center m-auto align-items-center"><i
+                            class="fa-solid fa-trash btn-danger mt-2 p-1 text-light"
+                            style="font-size: 25px;cursor: pointer;border-radius: 5px;"></i></div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="justify-content-end gap-1 d-flex mb-2">
+            {{-- <div class="btn btn-outline-primary">Previus</div>
                 <div class="btn btn-primary">1</div>
                 <div class="btn btn-outline-primary">2</div>
                 <div class="btn btn-outline-primary">3</div>
@@ -3898,94 +2747,93 @@
                 <div class="btn btn-outline-primary">5</div>
                 <div class="btn btn-outline-primary">6</div>
                 <div class="btn btn-outline-primary">Next</div> --}}
-                </div>
-                {{-- {{ $clientResource->links('pagination::bootstrap-5') }} --}}
+        </div>
+        {{-- {{ $clientResource->links('pagination::bootstrap-5') }} --}}
 
-                {{-- ------------------- Excel button ------------------------------------------------ --}}
+        {{-- ------------------- Excel button ------------------------------------------------ --}}
 
-                <div class="text-center mb-2">
-                    <div class="this-buttons">
-                        <div class="">
-                            <div class="btn-group">
-                                <button type="button" class="btn text-light"><span><i
-                                            class="fa-solid fa-download"></i>&ensp;</span>Export
-                                    this data to excel</button>
-                                <button type="button" class="button-2 text-light btn dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <p>file fromat:</p>
-                                    </li>
-                                    <div class="radios-inp d-flex  justify-content-around">
-                                        <li class="dropdown-item d-flex"><input type="radio" name="fils"
-                                                id="csv"><label for="fils">csv</label></li>
-                                        <li class="dropdown-item d-flex"><input type="radio" name="fils"
-                                                id="xls"><label for="fils">xls</label>
-                                        </li>
-                                    </div>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li>
-                                        <p>encoding:</p>
-                                    </li>
-                                    <select name="" style="width: 100%; font-size: 12px;">
-                                        <option value="" selected>UTF-8 (Unicode / US format)</option>
-                                        <option value="ISO-8859-1">ISO-8859-1 (Western European format)</option>
-                                        <option value="ISO-8859-2">ISO-8859-2 (Central European format)</option>
-                                        <option value="ISO-8859-3">ISO-8859-3 (South European format)</option>
-                                        <option value="ISO-8859-4">ISO-8859-4 (North European format)</option>
-                                        <option value="ISO-8859-5">ISO-8859-5 (Cyrillic format)</option>
-                                        <option value="ISO-8859-6">ISO-8859-6 (Arabic format)</option>
-                                        <option value="ISO-8859-7">ISO-8859-7 (Greek format)</option>
-                                        <option value="ISO-8859-8">ISO-8859-8 (Hebrew format)</option>
-                                        <option value="ISO-8859-9">ISO-8859-9 (Turkish format)</option>
-                                        <option value="ISO-8859-10">ISO-8859-10 (Nordic format)</option>
-                                        <option value="ISO-8859-13">ISO-8859-13 (Baltic format)</option>
-                                        <option value="ISO-8859-14">ISO-8859-14 (Celtic format)</option>
-                                        <option value="ISO-8859-15">ISO-8859-15 (NEW Western European format)</option>
-                                        <option value="ISO-8859-16">ISO-8859-16 (Romanian format)</option>
-                                        <option value="ISO-2022-JP">ISO-2022-JP</option>
-                                        <option value="UTF-7">UTF-7</option>
-                                        <option value="ASCII">ASCII</option>
-                                        <option value="EUC-JP">EUC-JP</option>
-                                        <option value="EUC-KR">EUC-KR</option>
-                                        <option value="SJIS">SJIS</option>
-                                        <option value="EUCJP-WIN">EUCJP-WIN</option>
-                                        <option value="SJIS-WIN">SJIS-WIN</option>
-                                        <option value="JIS">JIS</option>
-                                        <option value="WINDOWS-1252">WINDOWS-1252</option>
-                                        <option value="WINDOWS-1251">WINDOWS-1251</option>
-                                        <option value="BIG-5">BIG-5</option>
-                                        <option value="KOI8-R">KOI8-R</option>
-                                    </select>
-                                    </li>
-                                    <li class="mt-3 "><button type="button" class="btn"
-                                            style="width: 100%;"><span><i
-                                                    class="fa-solidfa-download"></i>&ensp;</span>download</button>
-                                    </li>
-                                </ul>
+        <div class="text-center mb-2">
+            <div class="this-buttons">
+                <div class="">
+                    <div class="btn-group">
+                        <button type="button" class="btn text-light"><span><i
+                                    class="fa-solid fa-download"></i>&ensp;</span>Export
+                            this data to excel</button>
+                        <button type="button" class="button-2 text-light btn dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <p>file fromat:</p>
+                            </li>
+                            <div class="radios-inp d-flex  justify-content-around">
+                                <li class="dropdown-item d-flex"><input type="radio" name="fils"
+                                        id="csv"><label for="fils">csv</label></li>
+                                <li class="dropdown-item d-flex"><input type="radio" name="fils"
+                                        id="xls"><label for="fils">xls</label>
+                                </li>
                             </div>
-                        </div>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <p>encoding:</p>
+                            </li>
+                            <select name="" style="width: 100%; font-size: 12px;">
+                                <option value="" selected>UTF-8 (Unicode / US format)</option>
+                                <option value="ISO-8859-1">ISO-8859-1 (Western European format)</option>
+                                <option value="ISO-8859-2">ISO-8859-2 (Central European format)</option>
+                                <option value="ISO-8859-3">ISO-8859-3 (South European format)</option>
+                                <option value="ISO-8859-4">ISO-8859-4 (North European format)</option>
+                                <option value="ISO-8859-5">ISO-8859-5 (Cyrillic format)</option>
+                                <option value="ISO-8859-6">ISO-8859-6 (Arabic format)</option>
+                                <option value="ISO-8859-7">ISO-8859-7 (Greek format)</option>
+                                <option value="ISO-8859-8">ISO-8859-8 (Hebrew format)</option>
+                                <option value="ISO-8859-9">ISO-8859-9 (Turkish format)</option>
+                                <option value="ISO-8859-10">ISO-8859-10 (Nordic format)</option>
+                                <option value="ISO-8859-13">ISO-8859-13 (Baltic format)</option>
+                                <option value="ISO-8859-14">ISO-8859-14 (Celtic format)</option>
+                                <option value="ISO-8859-15">ISO-8859-15 (NEW Western European format)</option>
+                                <option value="ISO-8859-16">ISO-8859-16 (Romanian format)</option>
+                                <option value="ISO-2022-JP">ISO-2022-JP</option>
+                                <option value="UTF-7">UTF-7</option>
+                                <option value="ASCII">ASCII</option>
+                                <option value="EUC-JP">EUC-JP</option>
+                                <option value="EUC-KR">EUC-KR</option>
+                                <option value="SJIS">SJIS</option>
+                                <option value="EUCJP-WIN">EUCJP-WIN</option>
+                                <option value="SJIS-WIN">SJIS-WIN</option>
+                                <option value="JIS">JIS</option>
+                                <option value="WINDOWS-1252">WINDOWS-1252</option>
+                                <option value="WINDOWS-1251">WINDOWS-1251</option>
+                                <option value="BIG-5">BIG-5</option>
+                                <option value="KOI8-R">KOI8-R</option>
+                            </select>
+                            </li>
+                            <li class="mt-3 "><button type="button" class="btn" style="width: 100%;"><span><i
+                                            class="fa-solidfa-download"></i>&ensp;</span>download</button>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-
-                {{-- ------------------- End Excel button ------------------------------------------------ --}}
             </div>
-        </section>
+        </div>
+
+        {{-- ------------------- End Excel button ------------------------------------------------ --}}
+        </div>
+    </section>
 @endsection
-    @push('scripts')
-        <script src="{{ asset('js/wow.min.js') }}"></script>
-        <script>
-            new WOW().init();
-        </script>
-        <script src="{{ asset('js/risk.js') }}"></script>
-        <script src="{{ asset('js/email.js') }}"></script>
-        <script src="{{ asset('js/hovers.js') }}"></script>
-        <script src="{{ asset('js/collection.js') }}"></script>
-        <script src="{{ asset('js/chart.js') }}"></script>
-        <script src="{{ asset('js/chart-2.js') }}"></script>
-        <script src="{{ asset('js/chart-10.js') }}"></script>
-    @endpush
+@push('scripts')
+    <script src="{{ asset('js/wow.min.js') }}"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src="{{ asset('js/risk.js') }}"></script>
+    <script src="{{ asset('js/email.js') }}"></script>
+    <script src="{{ asset('js/hovers.js') }}"></script>
+    <script src="{{ asset('js/collection.js') }}"></script>
+    <script src="{{ asset('js/chart.js') }}"></script>
+    <script src="{{ asset('js/chart-2.js') }}"></script>
+    <script src="{{ asset('js/chart-10.js') }}"></script>
+@endpush

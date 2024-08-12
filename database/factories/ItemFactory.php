@@ -21,6 +21,7 @@ class ItemFactory extends Factory
             'item_type_id'             => $this->faker->numberBetween(1, 100),
             'company_id'               => $this->faker->unique()->numberBetween(1, 100000),
             'status_id'                => $this->faker->unique()->numberBetween(1, 100000),
+            'trans_no'                 => $this->faker->unique()->randomNumber(5, true),
             'po_no'                    => $this->faker->unique()->randomNumber(5, true),
             'file_no'                  => $this->faker->unique()->randomNumber(5, true),
             'erp_item_type'            => $this->faker->word,

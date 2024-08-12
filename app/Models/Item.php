@@ -15,6 +15,7 @@ class Item extends Model
         'item_type_id',
         'company_id',
         'status_id',
+        'trans_no',
         'po_no',
         'file_no',
         'erp_item_type',

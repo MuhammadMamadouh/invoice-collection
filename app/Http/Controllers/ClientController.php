@@ -8,7 +8,9 @@ use App\Http\Requests\ClientRequest;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use App\Models\CollectionScenario;
+use App\Models\Currency;
 use App\Models\Item;
+use App\Models\ItemType;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -26,12 +28,11 @@ class ClientController extends Controller
         $clients = Client::paginate(30);
         $clientResource = ClientResource::collection($clients)->response()->getData();
         $clientResource = $clientResource->data;
-        // $item = Item::find(1);
-        // dd($clientResource);
         $collectionsScenario = CollectionScenario::all();
+        $itemTypes = ItemType::all();
+        $currencies = Currency::all();
         $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
-        // return $clientResource;
-        return view('clients.index', compact('clientResource', 'collectionsScenario', 'collectors'));
+        return view('clients.index', compact('clientResource', 'collectionsScenario', 'collectors', 'itemTypes', 'clients', 'currencies'));
 
     }
 
@@ -66,7 +67,13 @@ class ClientController extends Controller
     public function showClientData($id)
     {
         $client = Client::findOrFail($id);
-        return new ClientResource($client);
+        $clientResource = new ClientResource($client);
+        $clients = Client::all();
+        $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
+        $collectionsScenario = CollectionScenario::all();
+        $currencies = Currency::all();
+        $itemTypes = ItemType::all();
+        return view('clients.client_data_model', compact('clientResource', 'collectors', 'client', 'clients', 'itemTypes', 'currencies','collectionsScenario' ));
     }
 
     /**

@@ -24,7 +24,9 @@ class ItemRequest extends FormRequest
         return [
             'item_type_id'              => 'required|exists:item_types,id',
             'company_id'                => 'required|integer|exists:clients,id',
+            'status_id'                 => 'required|integer|exists:status_of_items,id',
             'po_no'                     => 'required|string|max:255',
+            'trans_no'                  => 'required|string|max:255',
             'file_no'                   => 'required|string|max:255',
             'erp_item_type'             => 'required|string|max:255',
             'business_case'             => 'required|string|max:255',
