@@ -17,9 +17,6 @@ class CollectionScenarioResource extends JsonResource
         return [
             'id' => $this->id,
             'en_name' => $this->en_name,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-
             'scenariosActions' => ScenarioActionResource::collection($this->scenariosActions),
         ];
     }

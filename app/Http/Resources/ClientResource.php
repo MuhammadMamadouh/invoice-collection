@@ -47,7 +47,7 @@ class ClientResource extends JsonResource
             'items'                     => ItemResource::collection($this->items),
             'collectionScenarios'       => $this->collectionScenarios ? CollectionScenarioResource::make($this->collectionScenarios) : [],
             'collector'                 => new UserResource($this->collector),
-            'clientsGroup'              => ClientGroupResource::collection($this->clientsGroups)->toArray($request) ?? [],
+            'clientGroup'               => ClientGroupResource::collection($this->clientsGroups)->toArray($request) ?? [],
             'firstDueItem'              => $this->firstDueItem ? ItemResource::make($this->firstDueItem()->first()) : [],
         ];
     }

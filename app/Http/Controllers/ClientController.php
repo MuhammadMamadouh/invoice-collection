@@ -7,6 +7,7 @@ use App\Enum\RoleEnum;
 use App\Http\Requests\ClientRequest;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
+use App\Models\ClientsGroup;
 use App\Models\CollectionScenario;
 use App\Models\Currency;
 use App\Models\Item;
@@ -25,14 +26,23 @@ class ClientController extends Controller
     public function index()
     {
 
-        $clients = Client::paginate(30);
+        $clients = Client::with([
+        'collector',
+        'items',
+        'items.itemType',
+        'items.itemStatus',
+        'items.currency',
+        'collectionScenarios',
+        'firstDueItem'
+        ])->paginate(30);
         $clientResource = ClientResource::collection($clients)->response()->getData();
         $clientResource = $clientResource->data;
         $collectionsScenario = CollectionScenario::all();
         $itemTypes = ItemType::all();
         $currencies = Currency::all();
-        $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
-        return view('clients.index', compact('clientResource', 'collectionsScenario', 'collectors', 'itemTypes', 'clients', 'currencies'));
+        $clientGroups = ClientsGroup::all();
+        $collectors = User::collectors()->get();
+        return view('clients.index', compact('clientResource', 'collectionsScenario', 'collectors', 'itemTypes', 'clients', 'currencies', 'clientGroups'));
 
     }
 
@@ -69,11 +79,24 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
         $clientResource = new ClientResource($client);
         $clients = Client::all();
-        $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
+        $collectors = User::collectors()->get();;
         $collectionsScenario = CollectionScenario::all();
         $currencies = Currency::all();
         $itemTypes = ItemType::all();
         return view('clients.client_data_model', compact('clientResource', 'collectors', 'client', 'clients', 'itemTypes', 'currencies','collectionsScenario' ));
+    }
+    public function show($id)
+    {
+        $client = Client::findOrFail($id);
+        $client = new ClientResource($client);
+        $client = $client->response()->getData()->data;
+        // $client = $client->data;
+        $clients = Client::all();
+        $collectors = User::collectors()->get();;
+        $collectionsScenario = CollectionScenario::all();
+        $currencies = Currency::all();
+        $itemTypes = ItemType::all();
+        return view('clients.show', compact( 'collectors', 'client', 'clients', 'itemTypes', 'currencies','collectionsScenario' ));
     }
 
     /**

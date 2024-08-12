@@ -30,10 +30,6 @@
                             <option value="" selected disabled>Clients Group :</option>
                             <option value="1">ATLANTIQue</option>
                             <option value="2">Central</option>
-                            <option value="3">Clients douteux</option>
-                            <option value="3">Clients France</option>
-                            <option value="3">Test 2</option>
-                            <option value="3">US Clients</option>
                         </select>
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
@@ -185,7 +181,7 @@
                                     <p class="fw-bold"><a href="#"
                                             onclick="showHolap({{ $client->id }})">{{ $client->company_name }}</a></p>
                                 </div>
-                                {{-- {{dd($client->collectionScenarios->id)}} --}}
+
                                 <div class="col-md-3 hide">
                                     <div class=" w-100 mb-3">
                                         <select class="form-select" id="inputname19">
@@ -199,10 +195,11 @@
                                     </div>
                                 </div>
                                 <div class="col-2 hide">
-                                    <p class="fw-bold">{{ __('Group Industrie') }}</p>
-                                    {{-- @foreach ($client->clientsGroups as $group)
+                                    @forelse ($client->clientGroup as $group)
                                         <p class=""><a href="#">{{ $group->en_name }}</a></p>
-                                    @endforeach  --}}
+                                    @empty
+                                    <p class=""><a href="#">-</a></p>
+                                        @endforelse
                                 </div>
                                 <div class="col-1 hide">
                                     <p class="fw-bold">4Front</p>
@@ -257,217 +254,7 @@
 
                             <div id="company-details-{{ $client->id }}">
                                 <div class="company-details d-none" id="company-detail-{{ $client->id }}">
-                                    <div class="bg-light holap-first-{{ $client->id }}"
-                                        id="company-details-{{ $client->id }}">
-                                        <div class="row text-center m-0 p-3 w-100"
-                                            id="company-details-{{ $client->id }}" style="background-color: #006bff">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="d-flex w-25 gap-3" id="company-details-{{ $client->id }}">
-                                                    <i class="fa-solid fa-flag text-warning" style="font-size: 25px"></i>
-                                                    <p class="text-light">{{ __('Payeurs correct / Average payer') }}</p>
-
-                                                    {{-- ------------------- Client's Data Noftications------------------------------------------------ --}}
-                                                    @include('clients.data_notifactions')
-
-                                                    {{-- ------------------- End Client's Data Noftications------------------------------------------------ --}}
-
-                                                </div>
-                                                <h2 class="text-light w-50">{{ $client->company_name }}</h2>
-                                                <div class="d-flex justify-content-end gap-3 w-25">
-                                                    <div class="icon-holab  ">
-                                                        <i class="fa-solid fa-pen text-primary p-2 bg-light"
-                                                            onclick="EditHolap({{ $client->id }})"
-                                                            style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i>
-                                                        <a href="holapDetails.html" target="_blank"><i
-                                                                class="fa-solid fa-maximize text-primary p-2 bg-light"style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i></a>
-                                                        <i class="fa-solid fa-close text-light p-2 bg-danger"
-                                                            onclick="closeHolap({{ $client->id }})"
-                                                            style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {{-- ------------------- Client's Data ------------------------------------------------ --}}
-                                        <div class="row m-0 p-3">
-                                            <div class="col-lg-4 col-sm-6 text-start">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Copmany code') }}:</p>
-                                                    <p class="">{{ $client->company_code }}</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Legal ID') }}:</p>
-                                                    <p class="">{{ $client->legal_id }}</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('VAT Number') }}:</p>
-                                                    <p class="">{{ $client->vat_number }}</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Address') }}:</p>
-                                                    <p class="">
-                                                        <a href="">{{ $client->address }}, {{ $client->city }},
-                                                            {{ $client->state }}, {{ $client->country }}</a>
-                                                    </p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Group') }}:</p>
-                                                    {{-- @foreach ($client->clientsGroups as $group)
-                                                        <p class=""><a href="">{{ $group->en_name }}</a></p>
-                                                    @endforeach --}}
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Collector') }}:</p>
-                                                    <p class=""><a
-                                                            href="">{{ $client->collector->first_name ?? '' }}</a>
-                                                    </p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Collection senario') }}:</p>
-                                                    <select class="form-select m-2 w-100"
-                                                        aria-label="Default select example">
-                                                        <option selected disabled>
-                                                            {{ $client->collectionScenarios->en_name ?? '' }}
-                                                        </option>
-                                                        @foreach ($collectionsScenario as $collection)
-                                                            <option value="{{ $collection->id }}">
-                                                                {{ $collection->en_name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-sm-6 text-start">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Payment term') }}:</p>
-                                                    <p class="">{{ $client->payment_term }}</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Payment mean') }}:</p>
-                                                    <p class="">{{ $client->payment_mean }}</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Guarantee World Insurer') }}:</p>
-                                                    <p class="">{{ $client->insurer_guarantee }}</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Other guarantees') }}:</p>
-                                                    <p class="">{{ $client->other_guarantees }}</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">{{ __('Credit Limit') }}:</p>
-                                                    <div class="form-group">
-                                                        <input type="text" value="{{ $client->credit_limit }}"
-                                                            class="form-control" />
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold"><a
-                                                            href="">{{ __('Late payment penalties') }}</a>:
-                                                    </p>
-                                                    <p class="">
-                                                        {{ $client->late_payment_penalties == true ? 'Yes' : 'No' }}</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold"><a href="">{{ __('Recovery cost') }}</a>:
-                                                    </p>
-                                                    <p class="">
-                                                        {{ $client->recovery_cost == 1 ? 'Yes' : 'No' }}</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold"><a
-                                                            href="">{{ __('Interactive emails') }}</a>:</p>
-                                                    <p class="">
-                                                        {{ $client->interactive_emails == 1 ? 'Yes' : 'No' }}</p>
-                                                </div>
-                                            </div>
-                                            {{-- <div class="col-lg-4 text-start">
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <select class="form-select m-auto w-50"
-                                                        aria-label="Default select example">
-                                                        <option selected disabled>Contact:</option>
-                                                        <option value="1">Clients risqués (FR)</option>
-                                                        <option value="1">Key accounts scenario (EN)</option>
-                                                        <option value="1">Modeles actions specifiques</option>
-                                                        <option value="1">Risky clients (En)</option>
-                                                        <option value="1">Scenario de relance standard (by default)
-                                                        </option>
-                                                        <option value="1">Standard collection scenario</option>
-                                                        <option value="1">Templates specific actions</option>
-                                                    </select>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">Role:</p>
-                                                    <p class="">Other</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-between">
-                                                    <p class="fw-bold">Last name:</p>
-                                                    <p class="">{{ $client->collector['last_name'] ?? ''}}</p>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center">
-                                                    @<a href="">{{ $client->collector['email']?? '' }}</a>
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center">
-                                                    <i class="fa-solid fa-phone"></i> &nbsp; &nbsp;
-                                                    <a href=""> {{ $client->collector['mobile_phone']?? '' }}</a> &nbsp;
-                                                    (Phone)
-                                                </div>
-                                                <div class="d-flex align-items-center justify-content-center">
-                                                    <i class="fa-solid fa-star"></i> &nbsp; {{__("Contact for collection")}}
-                                                </div>
-                                            </div> --}}
-                                        </div>
-
-                                        {{-- -------------------End Client's Data ------------------------------------------------ --}}
-
-                                        {{-- ------------------- Client's Data Buttons------------------------------------------------ --}}
-                                        <div class="row p-4 m-0">
-                                            <div class="col-lg-4 col-sm-6">
-                                                <div class="m-1 w-100 btn btn-primary disputeButton"
-                                                    onclick="disputeFun()">
-                                                    <i class="fa-solid fa-clock"></i>
-                                                    {{ __('collection& dispute management') }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2 col-sm-6">
-                                                <div class="m-1 w-100 btn btn-outline-primary riskButton"
-                                                    onclick="riskFun()">
-                                                    <i class="fa-solid fa-bolt"></i> {{ __('Risk Report') }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="m-1 w-100 btn btn-outline-primary indicatorsButton"
-                                                    onclick="indicatorsFun()">
-                                                    <i class="fa-solid fa-chart-simple"></i>
-                                                    {{ __('Reports & Indicators') }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-sm-6">
-                                                <div class="m-1 w-100 btn btn-outline-primary historyButton"
-                                                    onclick="historyFun()">
-                                                    <i class="fa-solid fa-bars-staggered"></i> {{ __('History') }}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {{-- ------------------- End Client's Data Buttons------------------------------------------------ --}}
-                                    </div>
-                                    {{-- ------------------- Edit Client Data------------------------------------------------ --}}
-                                    @include('clients.edit_client_data')
-
-                                    {{-- -------------------  End Edit Client Data------------------------------------------------ --}}
-
-                                    {{-- ------------------- Dates Line ------------------------------------------------ --}}
-                                    @include('clients.dates_line')
-                                    {{-- ------------------- End Dates Line ------------------------------------------------ --}}
-
-                                    {{-- ------------------- Actions Table ------------------------------------------------ --}}
-                                    @include('clients.items_actions_table')
-                                    {{-- ------------------- End Actions Table ------------------------------------------------ --}}
-
-                                    {{-- ------------------- Items Table------------------------------------------------ --}}
-                                    @include('clients.items_table')
-                                    {{-- ------------------- End Items Table------------------------------------------------ --}}
+                                    @include('clients.client_data_model')
                                 </div>
                                 <div class="row px-4 align-items-center m-0">
                                     <div class="col-lg-4 col-sm-6 col-12 mb-2">
@@ -1933,10 +1720,6 @@
                                 </div>
                             </div>
 
-
-
-                            <!--sec-2-->
-
                             <div class="d-none" id="indicatorsDiv">
                                 <div class="sec-2 bg-white">
                                     <div class="container">
@@ -2639,7 +2422,7 @@
                 </div>
                 @endforelse
             </div>
-                @include('clients.client_data_model', [$client])
+                {{-- @include('clients.client_data_model', [$client]) --}}
             <div class="row mb-3">
                 <div class="col-md-2 col-4"></div>
                 <div class="form-group col-md-4 col-8">
