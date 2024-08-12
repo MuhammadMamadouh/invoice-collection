@@ -28,8 +28,6 @@ class ClientController extends Controller
         $clients = Client::paginate(30);
         $clientResource = ClientResource::collection($clients)->response()->getData();
         $clientResource = $clientResource->data;
-        // $item = Item::find(1);
-        // dd($clientResource);
         $collectionsScenario = CollectionScenario::all();
         $itemTypes = ItemType::all();
         $currencies = Currency::all();
@@ -69,7 +67,13 @@ class ClientController extends Controller
     public function showClientData($id)
     {
         $client = Client::findOrFail($id);
-        return new ClientResource($client);
+        $clientResource = new ClientResource($client);
+        $clients = Client::all();
+        $collectors = User::where('role_id', RoleEnum::COLLECTOR)->get();
+        $collectionsScenario = CollectionScenario::all();
+        $currencies = Currency::all();
+        $itemTypes = ItemType::all();
+        return view('clients.client_data_model', compact('clientResource', 'collectors', 'client', 'clients', 'itemTypes', 'currencies','collectionsScenario' ));
     }
 
     /**

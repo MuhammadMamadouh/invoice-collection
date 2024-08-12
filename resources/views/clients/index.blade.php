@@ -254,6 +254,7 @@
                                 </div>
                             </div>
                             <div class="arrow-bottom"></div>
+
                             <div id="company-details-{{ $client->id }}">
                                 <div class="company-details d-none" id="company-detail-{{ $client->id }}">
                                     <div class="bg-light holap-first-{{ $client->id }}"
@@ -2638,6 +2639,7 @@
                 </div>
                 @endforelse
             </div>
+                @include('clients.client_data_model', [$client])
             <div class="row mb-3">
                 <div class="col-md-2 col-4"></div>
                 <div class="form-group col-md-4 col-8">

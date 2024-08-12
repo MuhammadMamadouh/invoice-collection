@@ -42,7 +42,7 @@
         <div class="col fw-bold">{{ $firstDueItem->due_date ?? '-' }}</div>
         <div class="col fw-bold">
             <div class="btn openModalBtn btn-primary">
-                {{ $firstDueItem->toTakeAction->action_type ?? 'email' }}</div>
+                {{-- $firstDueItem->toTakeAction->action_type ?? 'email' --}}</div>
         </div>
         <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' }}
         {{ optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
