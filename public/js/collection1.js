@@ -1,4 +1,3 @@
-
 let showItemButton = document.getElementById("show-items-button");
 let showItemContent = document.getElementById("item-contents");
 let isClick = true;
@@ -467,18 +466,17 @@ document.getElementById("addinputs-2").addEventListener("click", function () {
   newInputRow.appendChild(select2);
   container.appendChild(newInputRow);
 });
-$(document).ready(function() {
-  
 
-  // You can now call these functions from within this scope.
-  // For example:
-  // showHollabTwo();
-  // showHollab();
-});
-
-
-
-
+let holabOne = document.getElementById("hide-hoalp-1");
+let holabTwo = document.getElementById("hide-hoalp-2");
+function showHollabTwo() {
+  holabOne.classList.add("d-none");
+  holabTwo.classList.remove("d-none");
+};
+function showHollab() {
+  holabOne.classList.remove("d-none");
+  holabTwo.classList.add("d-none");
+};
 
 
 function associateFiles(){
@@ -572,16 +570,7 @@ function showSearchResults(){
     document.querySelector(".overlay").classList.remove("d-none")
   }
 
-  function showAddActionDiv(){
-    document.querySelector(".add-action-div").classList.remove("d-none")
-    document.querySelector(".overlay").classList.remove("d-none")
-  }
   
-  function hideAddActionDiv(){
-    document.querySelector(".add-action-div").classList.add("d-none")
-    document.querySelector(".overlay").classList.add("d-none")
-    document.querySelector(".new-collection-scenario").classList.add("d-none")
-  }
   
   
   function showNewCollectionDiv(){

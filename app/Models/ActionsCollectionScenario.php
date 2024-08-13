@@ -17,5 +17,9 @@ class ActionsCollectionScenario extends Model
     public function Collection(){
         return $this->belongsTo(CollectionScenario::class);
     }
+    public function actionType()
+    {
+       return  $this->belongsTo(ActionType::class);
+    } 
 }
  

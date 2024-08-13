@@ -960,7 +960,7 @@
                   $actionType ="" ;
                   $action = $collectionScenarioAction['action_name'];
                   $total_amount +=$item->initial_amount_inc_tax;  
-                  //break;
+                  break;
                 }
                }
               @endphp

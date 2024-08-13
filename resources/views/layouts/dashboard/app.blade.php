@@ -39,7 +39,13 @@
         document.querySelector(".add-action-div").classList.remove("d-none");
         document.querySelector(".overlay").classList.remove("d-none");
     }
-</script>
+    
+<style>
+    .form-control
+    {
+        padding: .175rem .75rem;
+    }
+</style>
 </head>
 
 <body>
