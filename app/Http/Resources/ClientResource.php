@@ -25,6 +25,7 @@ class ClientResource extends JsonResource
             'legal_id'                  => $this->legal_id,
             'vat_number'                => $this->vat_number,
             'business_line'             => $this->business_line,
+            'ultimate_parent_code'      => $this->ultimate_parent_code,
             'collector_id'              => $this->collector_id,
             'collection_scenario_id'    => $this->collection_scenario_id,
             'address'                   => $this->address,
@@ -36,8 +37,13 @@ class ClientResource extends JsonResource
             'website'                   => $this->website,
             'payment_term'              => $this->payment_term,
             'payment_mean'              => $this->payment_mean,
+            'score'                     => $this->score,
+            'start_date'                => $this->start_date,
+            'end_date'                  => $this->end_date,
+            'insurer_reference'         => $this->insurer_reference,
             'insurer_guarantee'         => $this->insurer_guarantee,
             'other_guarantees'          => $this->other_guarantees,
+            'temporary_guarantees'      => $this->temporary_guarantees,
             'credit_limit'              => $this->credit_limit,
             'late_payment_penalties'    => $this->late_payment_penalties,
             'recovery_cost'             => $this->recovery_cost,
@@ -49,6 +55,7 @@ class ClientResource extends JsonResource
             'collector'                 => new UserResource($this->collector),
             'clientGroup'               => ClientGroupResource::collection($this->clientsGroups)->toArray($request) ?? [],
             'firstDueItem'              => $this->firstDueItem ? ItemResource::make($this->firstDueItem()->first()) : [],
+            ''
         ];
     }
 }

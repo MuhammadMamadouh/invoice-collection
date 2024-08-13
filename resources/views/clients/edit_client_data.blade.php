@@ -1,5 +1,6 @@
-<form action="{{ route('clients.edit', $client->id) }}" method="POST">
+<form action="{{ route('clients.update', $client->id) }}" method="POST">
     @csrf
+    @method("PATCH")
     <div class="create-c-i holap-second bg-light d-none" id="edit-client-data-{{ $client->id }}">
         <div class="d-flex gap-3 justify-content-end text-center m-0 mb-3 p-3 w-100" style="background-color: #006bff">
             <span class="btn text-light p-1 px-2 btn-danger" onclick="closeHolap()"><i class="fa-solid fa-trash"
@@ -138,7 +139,7 @@
                         </div>
                         <div class="col-7">
                             <div class="input-group">
-                                <input type="text" name="insurer_reference" class="form-control"
+                                <input type="text" name="insurer_reference" value="{{ old('insurer_reference', $client->insurer_reference) }}" class="form-control"
                                     id="inputname50">
                             </div>
                         </div>
@@ -171,7 +172,7 @@
 
                         </div>
                         <div class="col-7 ">
-                            <input type="text" class="form-control" id="inputname5">
+                            <input type="text" name="ultimate_parent_code" value="{{ old('ultimate_parent_code', $client->ultimate_parent_code) }}" class="form-control" id="inputname5">
                         </div>
                     </div>
 
@@ -237,8 +238,8 @@
                         </div>
                         <div class="col-7">
                             <div class="input-group">
-                                <input type="number" name="" class="form-control" id="inputname91">
-                                <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
+                                {{-- <input type="number" name="temporary_guarantee" value="{{ old('temporary_guarantee', $client->temporary_guarantee) }}" class="form-control" id="inputname91">
+                                <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span> --}}
                             </div>
                         </div>
                     </div>
@@ -281,7 +282,7 @@
 
                         </div>
                         <div class="input-group">
-                            <input type="date" class="form-control" id="inputname222">
+                            <input type="date" name="start_date" value="{{ old('start_date', $client->start_date) }}" class="form-control" id="inputname222">
                             <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                         </div>
                     </div>
@@ -322,7 +323,7 @@
 
                         </div>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inputname2222">
+                            <input type="date" name="end_date" value="{{ old('end_date', $client->end_date) }}" class="form-control" id="inputname2222">
                             <span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>
                         </div>
                     </div>
@@ -624,7 +625,7 @@
 
                         </div>
                         <div class="col-7 ">
-                            <input type="text" class="form-control" id="inputname27">
+                            <input type="text" name="customer_custom_field_1" value="{{ old('customer_custom_field_1', $client->customer_custom_field_1) }}" class="form-control" id="inputname27">
                         </div>
                     </div>
 
@@ -666,7 +667,7 @@
 
                         </div>
                         <div class="col-7 ">
-                            <input type="text" class="form-control" id="inputname30">
+                            <input type="text" name="customer_custom_field_2" value="{{ old('customer_custom_field_2', $client->customer_custom_field_2) }}" class="form-control" id="inputname30">
                         </div>
                     </div>
                 </div><!--30-->

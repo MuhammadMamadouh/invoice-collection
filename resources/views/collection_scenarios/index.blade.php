@@ -247,7 +247,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                @foreach ($collection->scenariosActionss as $ActionScenario)
+                                @foreach ($collection->scenariosActions as $ActionScenario)
                                     <div class="content-text-2">
                                         <ul class="d-flex">
                                             <span>@</span>
