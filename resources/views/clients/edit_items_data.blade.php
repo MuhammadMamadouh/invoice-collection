@@ -79,7 +79,7 @@
                             <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                         @enderror
                     </div>
-                </div>pany_id
+                </div>
 
             </div><!--4-->
             <div class="col-md-6 my-2">

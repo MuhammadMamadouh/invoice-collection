@@ -178,7 +178,8 @@
                         </div>
                         <div class="col-7">
                             <div class="input-group">
-                                <input type="text" name="title" value="{{old('title', $client->contacts->title)}}" class="form-control" id="inputname9">
+                            @php($title = App\models\Contact::where('client_id', $client->id)->first())
+                                <input type="text" name="title" value="{{$title}}" class="form-control" id="inputname9">
                             </div>
                         </div>
                     </div>
@@ -237,7 +238,8 @@
 
                         </div>
                         <div class="col-7 ">
-                            <input type="text" name="last_name" value="{{old('last_name', $client->contacts->last_name)}}" class="form-control" id="inputname100">
+                            @php($last_name = App\models\Contact::where('client_id', $client->id)->first())
+                            <input type="text" name="last_name" value="{{$last_name}}" class="form-control" id="inputname100">
                         </div>
                     </div>
                 </div><!--10-->
@@ -291,7 +293,8 @@
 
                         </div>
                         <div class="col-7 ">
-                            <input type="text" name="first_name" value="{{old('first_name', $client->contacts->first_name)}}" class="form-control" id="inputname101">
+                            @php($firstname = App\models\Contact::where('client_id', $client->id)->first())
+                            <input type="text" name="first_name" value="$firstname" class="form-control" id="inputname101">
                         </div>
                     </div>
                 </div><!--10-->
@@ -341,7 +344,8 @@
 
                         </div>
                         <div class="col-7 ">
-                            <input type="email" name="email" value="{{old('email', $client->contacts->email)}}" class="form-control" id="inputname555">
+                            @php($email = App\models\Contact::where('client_id', $client->id)->first())
+                            <input type="email" name="email" value="{{ $email}}" class="form-control" id="inputname555">
                         </div>
                     </div>
 
@@ -407,8 +411,9 @@
                     <div class="d-flex justify-content-center my-2">
                         <div>
                             <div class="form-check">
+                                @php($automatic_email = App\models\Contact::where('client_id', $client->id)->first())
                                 <input class="form-check-input" type="checkbox" id="email" name="copy_in_the_automatic_email"
-                                value="0" {{old('copy_in_the_automatic_email', $client->contactDate->copy_in_the_automatic_email) == 1 ? 'checked' : ''}}>
+                                value="0" {{$automatic_email == "1" ? 'checked' : ''}}>
                                 <label class="form-check-label"
                                     for="email">{{ __('Email in copy in the automatic  emails') }}</label>
                             </div>
@@ -422,7 +427,8 @@
 
                             </div>
                             <div class="col-7 ">
-                                <input type="text" name="phone" value="{{old('phone', $client->contactDate->phone)}}" class="form-control" id="inputname502">
+                            @php($phone = App\models\Contact::where('client_id', $client->id)->first())
+                                <input type="text" name="phone" value="{{$phone}}" class="form-control" id="inputname502">
                             </div>
                         </div>
                     </div><!--5-->
@@ -475,7 +481,8 @@
 
                         </div>
                         <div class="col-7 ">
-                            <input type="text"  name="mobile_phone" value="{{old('mobile_phone', $client->contactDate->mobile_phone)}}"class="form-control" id="inputname504">
+                                                    @php($mobile_phone = App\models\Contact::where('client_id', $client->id)->first())
+                            <input type="text"  name="mobile_phone" value="{{$mobile_phone}}"class="form-control" id="inputname504">
                         </div>
                     </div>
                 </div><!--5-->
@@ -527,7 +534,8 @@
 
                         </div>
                         <div class="col-7 ">
-                            <input type="text" name="fax" value='{{ old('fax', $client->fax) }}' class="form-control" id="inputname506">
+                        @php($fax = App\models\Contact::where('client_id', $client->id)->first())
+                            <input type="text" name="fax" value='{{ $fax }}' class="form-control" id="inputname506">
                             @error('fax')
                                 <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                             @enderror
@@ -683,7 +691,8 @@
 
                         </div>
                         <div class="col-7 ">
-                            <textarea name="comments" class="form-control" rows="3" id="inputname2">{{ $client->contacts->comments }}</textarea>
+                        @php($comments = App\models\Contact::where('client_id', $client->id)->first())
+                            <textarea name="comments" class="form-control" rows="3" id="inputname2">{{ $comments }}</textarea>
                             <p class="text-black-50 m-0">
                                 {{ __('Comments should be factual, objective and non offensive') }}
                             </p>
@@ -736,9 +745,10 @@
                     <div class="d-flex justify-content-center my-2">
                         <div>
                             <div class="form-check">
+                                                    @php($contact_for_collection = App\models\Contact::where('client_id', $client->id)->first())
                                 <input class="form-check-input" type="checkbox" name="contact_for_collection"
                                     value="0"
-                                    {{ old('contact_for_collection', $client->contacts->contact_for_collection) == 1 ? 'checked' : '' }}
+                                    {{$contact_for_collection == '1' ? 'checked' : '' }}
                                     id="contact">
                                 <label class="form-check-label"
                                     for="contact">{{ __('Contact for collection?') }}</label>

@@ -51,12 +51,11 @@
             <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
             <p class="fw-bold">{{ __('Status') }}</p>
         </div>
-
     </div>
     <div class="col-3 tavle-dropdown-icon"></div>
 </div>
-<div class="text-center mb-3 table-container-2 p-2 px-md-4  ">
-    @forelse ($client->items as $item)
+@forelse ($client->items as $item)
+    <div class="text-center mb-3 table-container-2 p-2 px-md-4  ">
         <div class="row align-items-center pt-3"
             style="{{ $item->overdue >= 0 ? 'background-color: #e6d3d3' : 'background-color: #d9edf7' }}">
             <div class="col-1" style="z-index: 999;">
@@ -65,13 +64,13 @@
                 </div>
             </div>
             <div class="col">
-                <p class="fw-bold"><a href='#' onclick="showInvoice({{$item->id}})"><img src="./img/pdficons.gif"
-                            class="mb-1" alt="">
+                <p class="fw-bold"><a href='#' onclick="showInvoice({{ $item->id }})" style="text-decoration: none !important;"><img
+                            src="./img/pdficons.gif" class="mb-1" alt="">
                         {{ $item->trans_no ?? '-' }}</a>
                 </p>
-            {{-- -------------------------------------------invoice data-------------------------------------- --}}
-            @include('clients.items_data')
-            {{-- -------------------------------------------end invoice data-------------------------------------- --}}
+                {{-- -------------------------------------------invoice data-------------------------------------- --}}
+                @include('clients.items_data')
+                {{-- -------------------------------------------end invoice data-------------------------------------- --}}
             </div>
             <div class="col hide">
                 <p class="fw-bold">
@@ -89,28 +88,27 @@
             </div>
             <div class="col hide">
                 <p class="fw-bold">
-                    {{ $item->total_InitialAmount ?? '0' }}
-                    €</p>
+                    <a href='#' onclick="showInvoice({{ $item->id }})" style="text-decoration: none !important;">
+{{ $item->total_InitialAmount ?? '0' }}€</a>
+                    </p>
             </div>
             <div class="col">
                 <p class="fw-bold">
-                    {{ $item->total_RemainingAmount ?? '0' }}
-                    €</p>
+                    <a href='#' onclick="showInvoice({{ $item->id }})"style="text-decoration: none !important;">{{ $item->total_RemainingAmount ?? '0' }}
+                    €</a></p>
             </div>
             <div class="col-3 hide">
-                @foreach ($client->items as $item)
-                    {{ $item->itemStatus->status ?? 'action1' }}, {{ $item->itemStatus->follow_up_days ?? 1 }}
-                @endforeach
+                    <a href='#' onclick="showInvoice({{ $item->id }})"style="text-decoration: none !important;">{{ $client->items->status ?? 'action1' }}, {{ $client->items->follow_up_days ?? 1 }}</a>
             </div>
             <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
         </div>
 
-    @empty
-        {{ __('No Data yet') }}
-    @endforelse
-</div>
+    </div>
+@empty
+    {{ __('No Data yet') }}
+@endforelse
 <div class="d-flex justify-content-center gap-5">
     <p class="fw-bold">{{ __('Total') }}:</p>
     {{-- <p class="fw-bold">{{ $total_InitialAmount = null ?? 55955 }} €</p>
