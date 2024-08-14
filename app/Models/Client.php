@@ -37,6 +37,7 @@ class Client extends Model
         'temporary_guarantee',
         'credit_limit',
         'late_payment_penalties',
+        'block_this_account',
         'recovery_cost',
         'interactive_emails',
         'customer_custom_field_1',
@@ -79,5 +80,8 @@ class Client extends Model
             ->orderBy('number_of_days')->first();
     }
 
-
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class, 'client_id');
+    }
 }

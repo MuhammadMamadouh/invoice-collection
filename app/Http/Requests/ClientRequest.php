@@ -50,6 +50,7 @@ class ClientRequest extends FormRequest
             'credit_limit' => "nullable|numeric",
             'late_payment_penalties' => "nullable|boolean",
             'recovery_cost' => "nullable|boolean",
+            'block_this_account' => "nullable|boolean",
             'interactive_emails' => "nullable|boolean",
             'customer_custom_field_1' => "nullable|string|max:255",
             'customer_custom_field_2' => "nullable|string|max:255",

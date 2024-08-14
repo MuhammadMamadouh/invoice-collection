@@ -15,10 +15,10 @@
         </div>
         <div class="row container-fluid">
             <div class="col-md-6  my-2">
+                <input type="hidden" name='id' value='{{ $item->id }}' class="form-control" id="inputname1">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname0">{{ __('ltem Type') }} * :</label>
-
                     </div>
                     <div class="col-7 ">
                         <select name="item_type_id" class="form-select" id="inputname0">
@@ -79,7 +79,7 @@
                             <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                         @enderror
                     </div>
-                </div>
+                </div>pany_id
 
             </div><!--4-->
             <div class="col-md-6 my-2">
@@ -178,14 +178,14 @@
                     </div>
                     <div class="col-7 ">
                         <select name='currency_id' class="form-select" id="inputname10">
-                            <option value="{{ $item->currency->id ?? 1}}" selected disabled>
+                            <option value="{{ $item->currency->id ?? 1 }}" selected disabled>
                                 {{ $item->currency->en_name ?? 'Eur' }}€ </option>
                             @foreach ($currencies as $currency)
                                 <option value="{{ $currency->id }}">{{ $currency->en_name }} €</option>
                             @endforeach
-                        @error('currency_id')
-                            <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
-                        @enderror
+                            @error('currency_id')
+                                <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                            @enderror
                         </select>
                     </div>
                 </div>
@@ -214,7 +214,7 @@
                         <label for="inputname12"> {{ __('Initial amount exc. Tax') }} :</label>
                     </div>
                     <div class="input-group">
-                        <input type="text" name="initial_amount_exc_tax"
+                        <input type="number" name="initial_amount_exc_tax"
                             value="{{ old('initial_amount_exc_tax', $item->initial_amount_exc_tax) }}"
                             class="form-control" id="inputname12">
                         <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
@@ -249,7 +249,7 @@
 
                     </div>
                     <div class="input-group">
-                        <input type="text" name="initial_amount_inc_tax"
+                        <input type="number" name="initial_amount_inc_tax"
                             value="{{ old('initial_amount_inc_tax', $item->initial_amount_inc_tax) }}"
                             class="form-control" id="inputname14">
                         <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
@@ -285,7 +285,7 @@
 
                     </div>
                     <div class="input-group">
-                        <input type="text" name="remaining_amount_exc_tax"
+                        <input type="number" name="remaining_amount_exc_tax"
                             value="{{ old('remaining_amount_exc_tax', $item->remaining_amount_exc_tax) }}"
                             class="form-control" id="inputname16">
                         <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>
@@ -320,7 +320,7 @@
 
                     </div>
                     <div class="input-group">
-                        <input type="text" name='remaining_amount_inc_tax'
+                        <input type="number" name='remaining_amount_inc_tax'
                             value="{{ old('remaining_amount_inc_tax', $item->remaining_amount_inc_tax) }}"
                             class="form-control" id="inputname18">
                         <span class="input-group-text"><i class="fa-solid fa-euro-sign"></i></span>

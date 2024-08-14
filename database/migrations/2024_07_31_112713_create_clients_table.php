@@ -42,6 +42,7 @@ return new class extends Migration
             $table->boolean('late_payment_penalties')->default(0);
             $table->boolean('recovery_cost')->default(0);
             $table->boolean('interactive_emails')->default(0);
+            $table->boolean('block_this_account')->default(0);
             $table->string('customer_custom_field_1')->nullable();
             $table->string('customer_custom_field_2')->nullable();
             $table->timestamps();

@@ -27,13 +27,14 @@ class ClientController extends Controller
     {
 
         $clients = Client::with([
-        'collector',
-        'items',
-        'items.itemType',
-        'items.itemStatus',
-        'items.currency',
-        'collectionScenarios',
-        'firstDueItem'
+            'collector',
+            'items',
+            'items.itemType',
+            'items.itemStatus',
+            'items.currency',
+            'collectionScenarios',
+            'firstDueItem',
+            'contacts',
         ])->paginate(30);
         $clientResource = ClientResource::collection($clients)->response()->getData();
         $clientResource = $clientResource->data;
@@ -79,11 +80,12 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
         $clientResource = new ClientResource($client);
         $clients = Client::all();
-        $collectors = User::collectors()->get();;
+        $collectors = User::collectors()->get();
+        ;
         $collectionsScenario = CollectionScenario::all();
         $currencies = Currency::all();
         $itemTypes = ItemType::all();
-        return view('clients.client_data_model', compact('clientResource', 'collectors', 'client', 'clients', 'itemTypes', 'currencies','collectionsScenario' ));
+        return view('clients.client_data_model', compact('clientResource', 'collectors', 'client', 'clients', 'itemTypes', 'currencies', 'collectionsScenario'));
     }
     public function show($id)
     {
@@ -92,11 +94,12 @@ class ClientController extends Controller
         $client = $client->response()->getData()->data;
         // $client = $client->data;
         $clients = Client::all();
-        $collectors = User::collectors()->get();;
+        $collectors = User::collectors()->get();
+        ;
         $collectionsScenario = CollectionScenario::all();
         $currencies = Currency::all();
         $itemTypes = ItemType::all();
-        return view('clients.show', compact( 'collectors', 'client', 'clients', 'itemTypes', 'currencies','collectionsScenario' ));
+        return view('clients.show', compact('collectors', 'client', 'clients', 'itemTypes', 'currencies', 'collectionsScenario'));
     }
 
     /**

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\ItemResource;
 use Illuminate\Support\Collection;
-
+use League\CommonMark\Node\Inline\Newline;
 
 class ClientResource extends JsonResource
 {
@@ -43,11 +43,12 @@ class ClientResource extends JsonResource
             'insurer_reference'         => $this->insurer_reference,
             'insurer_guarantee'         => $this->insurer_guarantee,
             'other_guarantees'          => $this->other_guarantees,
-            'temporary_guarantees'      => $this->temporary_guarantees,
+            'temporary_guarantee'       => $this->temporary_guarantee,
             'credit_limit'              => $this->credit_limit,
             'late_payment_penalties'    => $this->late_payment_penalties,
             'recovery_cost'             => $this->recovery_cost,
             'interactive_emails'        => $this->interactive_emails,
+            'block_this_account'        => $this->block_this_account,
             'customer_custom_field_1'   => $this->customer_custom_field_1,
             'customer_custom_field_2'   => $this->customer_custom_field_2,
             'items'                     => ItemResource::collection($this->items),
@@ -55,7 +56,7 @@ class ClientResource extends JsonResource
             'collector'                 => new UserResource($this->collector),
             'clientGroup'               => ClientGroupResource::collection($this->clientsGroups)->toArray($request) ?? [],
             'firstDueItem'              => $this->firstDueItem ? ItemResource::make($this->firstDueItem()->first()) : [],
-            ''
+            'contacts'                  => $this->contacts ? ContactResource::collection($this->contacts) : [],
         ];
     }
 }
