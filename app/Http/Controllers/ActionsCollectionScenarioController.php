@@ -48,11 +48,12 @@ class ActionsCollectionScenarioController extends Controller
             'number_of_days' => 'required|numeric',
             'action_type' => 'required|string',
             'collection_scenario_id' => 'required|exists:collection_scenarios,id',
-            'mail_subject'=>'nullable|string',
-            'mail_content'=>'nullable|string',
-            'language'=>'nullable|string',
+            // 'mail_subject'=>'nullable|string',
+            // 'mail_content'=>'nullable|string',
+            // 'language'=>'nullable|string',  
         ]);
         $collection = ActionsCollectionScenario::findOrFail($id);
+        //dd($request->action_name);
         try {
             $collection->update([
                 'action_name' => $request->action_name,

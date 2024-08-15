@@ -45,6 +45,18 @@
     {
         padding: .175rem .75rem;
     }
+    .dropdown-row {
+            display: flex;
+            gap: 10px; /* Space between dropdowns */
+        }
+        .dropdown-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping of items if necessary */
+        }
+        .file-input-container {
+            margin-bottom: 10px;
+        }
 </style>
 </head>
 

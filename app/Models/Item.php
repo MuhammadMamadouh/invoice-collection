@@ -55,4 +55,19 @@ class Item extends Model
     {
         return $this->belongsTo(Client::class,'company_id');
     }
+     public function itemStatus()
+    {
+        return $this->belongsTo(ItemStatus::class, 'status_id');
+    }
+    public function is_overdue()
+    {
+        $is_overdue = now()->gt($this->due_date) ? true : false;
+        return $is_overdue;
+    } 
+    public function overdue()
+    {
+        $over_due_days = now()->diffInDays($this->due_date, false) * -1;
+        $overdue = $over_due_days > 0 ? "+$over_due_days" : "$over_due_days";
+        return $overdue;
+    } 
 }

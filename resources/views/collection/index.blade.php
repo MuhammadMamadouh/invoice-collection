@@ -398,38 +398,42 @@
             <div class="text-center mb-3 table-container p-2 p-md-4">
               <?php use Carbon\Carbon; ?>
               @php
-              $dates = [];
-              $total_amount = 0;
-              $actionId = 0;
-              $actionDate = null;
+               $dates = [];
+               $total_amount = 0;
+               $actionId = 0;
+               $actionDate = null;
                $actionType = null;
                $action = null;
                $isDueDateGreaterThanCurrentDate = null;
+               $items_amount_overdue_exclude_disputes_include_late_penalties = null;
+               $my_company_signature = null;
+               $client_code = null; 
+               $tems_amount_overdue_exclude_disputes = $my_name =  $my_phone = $my_email = $my_company_name
+               = $actionSubject = $my_company_logo = null;
               @endphp
               @foreach($items  as $item)
               @php
               $client = $item->client;
+              $client_items = $client->items;
               $collectionScenario = $client->collectionScenario;
               $collectionScenarioActions = $collectionScenario->actionScenarios->where('is_automatic_action',1)->toArray();
+              //dd($collectionScenarioActions);
               usort($collectionScenarioActions, function($a, $b) {
-                // Custom sorting function based on number_of_days
-                $a_sign = ($a->number_of_days < 0) ? '-' : '+';
-                $b_sign = ($b->number_of_days < 0) ? '-' : '+';
-                // Compare signs first
-                if ($a_sign !== $b_sign) {
-                    return strcmp($a_sign, $b_sign);
-                } 
-                // If signs are the same, compare absolute values
-                return $a->number_of_days - $b->number_of_days;
-               });
+                  // Compare signs first
+                  if ($a['number_of_days'] < 0 && $b['number_of_days'] >= 0) {
+                      return -1; // $a should come before $b
+                  }
+                  if ($a['number_of_days'] >= 0 && $b['number_of_days'] < 0) {
+                      return 1; // $b should come before $a
+                  }
+                  // If both have the same sign, compare absolute values
+                  return ($a['number_of_days'] - $b['number_of_days']);
+              });
                // After sorting, $collectionScenarioActions[0] will be the smallest one
-               //$smallestAction = $collectionScenarioActions[0];
-              
+               $smallestAction = $collectionScenarioActions[0];  
                $currentDate = Carbon::now()->toDateString();
                $dueDate = $item->due_date;
-               foreach($collectionScenarioActions as $collectionScenarioAction)
-               {  
-                $numberOfDays = $collectionScenarioAction['number_of_days'];
+                $numberOfDays = $collectionScenarioActions[0]['number_of_days'];
                 // Convert $numberOfDays to an integer (just to ensure it's treated as a number)
                 $numberOfDays = (int) $numberOfDays;
                 // Adjust the due date based on whether $numberOfDays is positive or negative
@@ -440,34 +444,27 @@
                     // Subtract days from $dueDate
                     $dueDate = Carbon::parse($dueDate)->subDays(abs($numberOfDays))->toDateString();
                 } 
-                $currentDate = Carbon::today(); // Get current date without time
-                $dates[]=$dueDate;
-                $isDueDateGreaterThanCurrentDate = Carbon::parse($dueDate)->gt($currentDate);
-                
-                if($isDueDateGreaterThanCurrentDate)  
-                {
-                  $actionId = $collectionScenarioAction['id']; 
+                   $currentDate = Carbon::today(); // Get current date without time
+                   $dates[]=$dueDate;
+                  $actionId = $collectionScenarioActions[0]['id']; 
                   $actionDate = $dueDate;
-                  $action_type = (int)$collectionScenarioAction['action_type']; 
+                  $action_type = (int)$collectionScenarioActions[0]['action_type']; 
                   $actionType = \App\Models\ActionType::where('id',$action_type)->first();
-                  $action = $collectionScenarioAction['action_name'];
-                  $total_amount +=$item->initial_amount_inc_tax;  
-                  break;
-                }
-                $items_amount_overdue_exclude_disputes_include_late_penalties = 12354600;
-                $interactive_page_button = 'View My Account Statement';
-                $my_company_signature' = '',
-                $client_code' =  $request->client_code,
-                'items_amount_overdue_exclude_disputes' => '12345',
-                'my_name' => 'Paul Mayer',
-                'my_phone' => '+33 4 12 34 56 78',
-                'my_email' => 'demo@mydsomanager.com',
-                'my_company_name' => 'Business Solutions',
-                'my_company_logo' => 'img/logo.png',
-               }
-
+                  $action = $collectionScenarioActions[0]['action_name'];
+                  $total_amount +=$item->initial_amount_inc_tax; 
+                  $items_amount_overdue_exclude_disputes_include_late_penalties = 12354600;
+                  $interactive_page_button = 'View My Account Statement';
+                  $my_company_signature  = '';
+                  $client_code =  $client->company_code;
+                  $tems_amount_overdue_exclude_disputes = 12345006;
+                  $my_name = 'Paul Mayer';
+                  $my_phone = '+33 4 12 34 56 78';
+                  $my_email = 'demo@mydsomanager.com';
+                  $my_company_name ='Business Solutions';
+                  $my_company_logo  = 'img/logo.png'; 
+              
               @endphp   
-              @if($isDueDateGreaterThanCurrentDate)
+              
               <div class="row align-items-center pt-3" style="background-color: #006bff14">
                 <div class="col-1">
                   <div class="form-check">
@@ -484,7 +481,7 @@
                   </div>
                 </div>
                 <div class="col-md-2 col-5">
-                @if($actionType->en_name == "Litigation")
+                @if($actionType->en_name == "Litigation")  
                 <button class="btn text-light text-decoration-none btn-primary w-100 mb-3">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-gavel" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="gavel" role="img">
                   <path fill="currentColor" d="M438.6 81.4l-41.3-41.3c-9.4-9.4-24.6-9.4-34 0L312.1 67.2 248.6 10.8c-9.4-9.4-24.6-9.4-34 0L160.8 62.4l-24.6-24.6c-9.4-9.4-24.6-9.4-34 0l-41.3 41.3c-9.4 9.4-9.4 24.6 0 34l24.6 24.6-35.4 35.4c-11.6 11.6-17.6 27.6-17.6 43.6v220.8c0 16.1 6 32.1 17.6 43.6l84.7 84.7c11.6 11.6 27.6 17.6 43.6 17.6h220.8c16.1 0 32.1-6 43.6-17.6l84.7-84.7c11.6-11.6 17.6-27.6 17.6-43.6V159c0-16.1-6-32.1-17.6-43.6l-35.4-35.4 24.6-24.6c9.4-9.4 9.4-24.6 0-34zm-48.4 348.8c0 15.8-6.1 30.9-17.2 42.1l-83.9 83.9c-11.2 11.2-26.3 17.2-42.1 17.2H123.7c-15.8 0-30.9-6.1-42.1-17.2l-83.9-83.9c-11.2-11.2-17.2-26.3-17.2-42.1V239.5c0-15.8 6.1-30.9 17.2-42.1l83.9-83.9c11.2-11.2 26.3-17.2 42.1-17.2h220.8c15.8 0 30.9 6.1 42.1 17.2l83.9 83.9c11.2 11.2 17.2 26.3 17.2 42.1v220.8zm-67.2-161.6c-11.2-11.2-26.3-17.2-42.1-17.2H156.8c-15.8 0-30.9 6.1-42.1 17.2l-83.9 83.9c-11.2 11.2-17.2 26.3-17.2 42.1v220.8c0 15.8 6.1 30.9 17.2 42.1l83.9 83.9c11.2 11.2 26.3 17.2 42.1 17.2H220.8c15.8 0 30.9-6.1 42.1-17.2l83.9-83.9c11.2-11.2 17.2-26.3 17.2-42.1V239.5c0-15.8-6.1-30.9-17.2-42.1l-83.9-83.9c-11.2-11.2-26.3-17.2-42.1-17.2h-220.8c-15.8 0-30.9 6.1-42.1 17.2l-83.9 83.9c-11.2 11.2-17.2 26.3-17.2 42.1v220.8z"/>
@@ -510,7 +507,7 @@
                 {{$actionType->en_name}} 
               </button>
                 @elseif( $actionType->en_name == "E-mail")
-                <button class="btn openModalBtn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}})">
+                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}})">
                     @ {{$actionType->en_name}}
               </button>
                 @elseif($actionType->en_name == "Fax")
@@ -575,8 +572,7 @@
                     <p class="fw-bold">1230504</p>
                   </div>
                 </div>
-              </div>
-              @endif
+              </div> 
               @endforeach
               <div class="d-flex justify-content-center gap-5">
                 <p class="fw-bold">Total:</p>
@@ -619,35 +615,47 @@
             <a href="#" style="text-decoration: none; font-weight: bold;" class="text-primary">
               Paul Mayer &lt; mohamed@gmail.com&gt; </a>
             <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-              <p> <input type="checkbox" class="form-check-input mx-2" id="exampleChe">
-                Lorem ipsum dolor sit amet.
+              <p> <input type="checkbox" class="form-check-input mx-2" id="copy" name="copy">
+                Get a copy of this email 
               </p>
               <p> <input type="checkbox" class="form-check-input mx-2" id="exampleChe">
-                Lorem ipsum dolor sit amet.
+                Request an acknowledgment of receipt 
               </p>
             </div>
           </div><!--r-1-->
-  
+           <input type="hidden" id="client_id" name="client_id" value="{{$client->id}}"/>
           <div class="col-md-2 mt-2">
-            <select class="form-select" id="">
+            <select class="form-select" id="email_to0_type" name="email_to0_type">
               <option value="" selected="" disabled=""> to :</option>
-              <option value="option1">1</option>
-              <option value="option1">2</option>
-              <option value="option1">3</option>
+              <option value="">To :</option>
+              <option value="cc">Cc :</option>  
+              <option value="bcc">Bcc :</option>
             </select>
           </div><!--l-2-->
           <div class="col-md-10 mt-2">
-            <select class="form-select" id="">
+            <select class="form-select" id="email_to0" name="email_to0">
               <option value="" selected="" disabled=""> </option>
-              <option value="option1">1</option>
-              <option value="option1">2</option>
-              <option value="option1">3</option>
-            </select>
-            <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-              <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span class="mx-1"><svg class="svg-inline--fa fa-plus text-dark" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <i class="fa-solid fa-plus text-dark"></i> Font Awesome fontawesome.com --></span>Add anoter acount</a>
+              @foreach ($combined as $item)
+              @if($item instanceof \App\Models\Client)
+              <option value="mohamed@gmail.com">{{$item->company_code}} / {{$item->company_name}}</option>
+              @elseif($item instanceof \App\Models\User)
+              <option value="{{$item->email}}">{{$item->first_name}} {{"<"}}{{$item->email}}{{">"}} (Function : {{$item->function}} / Role : {{$item->role->name}})  *** {{$item->role->name}} ***</option>
+              @endif
+              @endforeach
+            </select> 
+            
+          </div><!--r-2-->
+          <div id="dropdownContainer" class="row">
+            <!-- Dropdowns will be added here -->
+        </div>
+          <div class="col-md-2 mt-2"></div>
+          <div class="col-md-10 mt-2">
+          <div style=" display: flex; flex-wrap: wrap;" class="my-2">
+              <button type="button" class="text-primary mx-3" id="add_recipient"><span class="mx-1"><svg class="svg-inline--fa fa-plus text-dark" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <i class="fa-solid fa-plus text-dark"></i> Font Awesome fontawesome.com --></span>Add anoter recipient</button>
               <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span class="mx-1"><svg class="svg-inline--fa fa-plus text-dark" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <i class="fa-solid fa-plus text-dark"></i> Font Awesome fontawesome.com --></span>Add an anoter acount</a>
             </div>
-          </div><!--r-2-->
+          </div>
+          
           <div class="col-md-2 mt-2">
             <h4 for="">Supject :</h4>
           </div><!--l-3-->
@@ -682,7 +690,13 @@
               {{$collectionScenarioAction['mail_content']}}
               </div>
             </div>
-            <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span class="mx-1"><svg class="svg-inline--fa fa-plus" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <i class="fa-solid fa-plus"></i> Font Awesome fontawesome.com --></span>Add an item</a>
+             <div id="file-inputs-container">
+        <!-- Initial file input -->
+        <div class="file-input-container">
+           
+        </div>
+    </div>
+            <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);" id="add-file-btn"><span class="mx-1"><svg class="svg-inline--fa fa-plus" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <i class="fa-solid fa-plus"></i> Font Awesome fontawesome.com --></span>Add an item</a>
           </div><!--r-4-->
           <div class="col-md-4 mt-2">
   
@@ -770,52 +784,62 @@
         <button id="addinputs-2"> Add an external recipient</button>
       </div>
       <div class="emil-para-2 mt-3 mb-3">
-        <p class="text-capitalize mt-3 mb-3">Facture(s) Business Solutions en attente de paiement - Hopital
-          Necplus - 341291</p>
+        <p class="text-capitalize mt-3 mb-3">
+        @php 
+        $actionSubject = $collectionScenarioAction['mail_subject'];
+        $sub_replacements = [
+            '#my_company_name' => 'Business Solutions',
+            '#client_name' => $client->company_name,
+            '#client_code' => $client->company_code,
+        ];
+        foreach ($sub_replacements as $placeholder => $value) {
+            if (strpos($actionSubject, $placeholder) !== false) {
+                $actionSubject = str_replace($placeholder, $value, $actionSubject);
+            }
+        }
+        @endphp  
+        {{$actionSubject}}</p>
       </div>
       <div class="email-prev">
-        onjour, <br>
+      Dear Client, <br>
 
-        Je vous prie de bien vouloir trouver ci-dessous le relevé détaillé de votre compte présentant à ce jour un
-        solde dû de 12 956,16 €. <br>
+        Please find below a statement of account showing a total outstanding of: {{ number_format($items_amount_overdue_exclude_disputes_include_late_penalties, 2) }}.. <br>
 
-        Nous sommes sûrs que vous avez simplement omis de nous envoyer votre paiement et vous serions
-        reconnaissants de régulariser cette situation dès que possible. <br>
-
-        N'hésitez pas à cliquer sur le bouton suivant pour nous faire part de vos commentaires :
+        We are sure that you simply forgot to send us your payment and we would be grateful if you could rectify this
+        situation as soon as possible. <br>
+        Don't hesitate to click on the following button to share your comments with us:</p>
         <div class="view-button mt-3 mb-3">
-          <a href="account-statement.html" class="btn btn-success"><span><svg class="svg-inline--fa fa-comments" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M416 176C416 78.8 322.9 0 208 0S0 78.8 0 176c0 39.57 15.62 75.96 41.67 105.4c-16.39 32.76-39.23 57.32-39.59 57.68c-2.1 2.205-2.67 5.475-1.441 8.354C1.9 350.3 4.602 352 7.66 352c38.35 0 70.76-11.12 95.74-24.04C134.2 343.1 169.8 352 208 352C322.9 352 416 273.2 416 176zM599.6 443.7C624.8 413.9 640 376.6 640 336C640 238.8 554 160 448 160c-.3145 0-.6191 .041-.9336 .043C447.5 165.3 448 170.6 448 176c0 98.62-79.68 181.2-186.1 202.5C282.7 455.1 357.1 512 448 512c33.69 0 65.32-8.008 92.85-21.98C565.2 502 596.1 512 632.3 512c3.059 0 5.76-1.725 7.02-4.605c1.229-2.879 .6582-6.148-1.441-8.354C637.6 498.7 615.9 475.3 599.6 443.7z"></path></svg><!-- <i class="fa-solid fa-comments"></i> Font Awesome fontawesome.com --></span> Consulter mon état
-            de compte</a>
+        <a href="" class="btn btn-success"><span><svg class="svg-inline--fa fa-comments" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M416 176C416 78.8 322.9 0 208 0S0 78.8 0 176c0 39.57 15.62 75.96 41.67 105.4c-16.39 32.76-39.23 57.32-39.59 57.68c-2.1 2.205-2.67 5.475-1.441 8.354C1.9 350.3 4.602 352 7.66 352c38.35 0 70.76-11.12 95.74-24.04C134.2 343.1 169.8 352 208 352C322.9 352 416 273.2 416 176zM599.6 443.7C624.8 413.9 640 376.6 640 336C640 238.8 554 160 448 160c-.3145 0-.6191 .041-.9336 .043C447.5 165.3 448 170.6 448 176c0 98.62-79.68 181.2-186.1 202.5C282.7 455.1 357.1 512 448 512c33.69 0 65.32-8.008 92.85-21.98C565.2 502 596.1 512 632.3 512c3.059 0 5.76-1.725 7.02-4.605c1.229-2.879 .6582-6.148-1.441-8.354C637.6 498.7 615.9 475.3 599.6 443.7z"></path></svg><!-- <i class="fa-solid fa-comments"></i> Font Awesome fontawesome.com --></span> View my account
+        statement</a>
         </div>
         <div class="descri">
-          <p> Dans l'attente de votre règlement rapide, nous restons à votre disposition pour toute information
-            complémentaire. <br>
-
-            Cordialement,</p>
+          <p>In anticipation of your payment, we remain at your disposal for any information you may need. <br>
+            Best regards,</p>
         </div>
         <div class="the-cloumn  d-flex align-items-center mb-3">
           <img src="img/person2.jpg" class="img-fluid" alt="">
           <div class="name text-center">
-            <h6 class="mt-3 mb-3">Paul Mayer</h6>
-            <p class="mt-3 mb-3">Credit manager <br>
-              +33 4 12 34 56 78 <br>
-              +33 6 06 06 06 00 <br>
-              Business Solutions</p>
+            <h6 class="mt-3 mb-3">{{$my_name}}</h6>
+            <p class="mt-3 mb-3">Credit manager <br> 
+              {{$my_phone}} <br>
+              {{$my_email}}<br>
+              {{$my_company_name}}</p>
             <a href="#">http://www.demo-solutions.com </a>
           </div>
           <div class="logo-mail">
-            <img src="img/logo.png" class="img-fluid" alt="">
+            <img src="{{$my_company_logo}}" class="img-fluid" alt="">
           </div>
         </div>
         <div class="client-code">
           <h6>Code client: 341291</h6>
           <div class="client-codes d-flex justify-content-between align-items-center">
-            <p><span><svg class="svg-inline--fa fa-star" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"></path></svg><!-- <i class="fa-solid fa-star"></i> Font Awesome fontawesome.com --></span> Cliquez sur le N° de pièce pour avoir plus
-              d'informations et laisser un commentaire:</p>
+            <p><span><svg class="svg-inline--fa fa-star" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"></path></svg><!-- <i class="fa-solid fa-star"></i> Font Awesome fontawesome.com --></span>Click on the Part Number to see more information and leave a comment::</p>
             <div class="this-buttons">
               <button type="button" class="btn text-light"><span><svg class="svg-inline--fa fa-download" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M480 352h-133.5l-45.25 45.25C289.2 409.3 273.1 416 256 416s-33.16-6.656-45.25-18.75L165.5 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456zM233.4 374.6C239.6 380.9 247.8 384 256 384s16.38-3.125 22.62-9.375l128-128c12.49-12.5 12.49-32.75 0-45.25c-12.5-12.5-32.76-12.5-45.25 0L288 274.8V32c0-17.67-14.33-32-32-32C238.3 0 224 14.33 224 32v242.8L150.6 201.4c-12.49-12.5-32.75-12.5-45.25 0c-12.49 12.5-12.49 32.75 0 45.25L233.4 374.6z"></path></svg><!-- <i class="fa-solid fa-download"></i> Font Awesome fontawesome.com --> </span>Export this data to excel</button>
             </div>
           </div>
+          
+          @if (strpos($collectionScenarioAction['mail_content'], '#items_list_monthly') !== false)
           <div class="tabels-emails">
             <div class="container-fluid">
               <div class="table-responsive mt-3 mb-3">
@@ -823,52 +847,49 @@
                   <thead class="thead-dark ">
                     <tr class="text-center">
                       <th>#</th>
-                      <th>N° pièce </th>
-                      <th>Société</th>
-                      <th>N° commande</th>
-                      <th>Date émission</th>
-                      <th>Date échéance</th>
-                      <th>Retard</th>
-                      <th>Montant
-                        initial TTC</th>
-                      <th>Montant
-                        restant TTC</th>
-                      <th>Statut</th>
-                      <th>Champ personnalisé
-                        #2</th>
+                      <th>Part number </th>
+                      <th>Society</th>
+                      <th>Order No.</th>
+                      <th>{{ __('Issue date') }}</th>
+                      <th>{{ __('Due date') }}</th>
+                      <th>Delay</th>
+                      <th>{{ __('Intial amount inc. Tax') }}</th>
+                      <th>{{ __('Remaining amount inc. Tax') }}</th>
+                      <th>Status</th>
+                      <th>Custom
+                      Field#2</th>
                     </tr>
                   </thead>
                   <tbody class="text-center">
-                    <tr>
-                      <td style="background: #f0f0f0;">1</td>
+                  @php $countt = 0;$total_Am = 0;@endphp
+                  @foreach($client->items as $item)
+                  @php $countt++;
+                  $due_date = Carbon::parse($item->due_date);
+                  $startOfMonth = Carbon::now()->startOfMonth();
+                  $endOfMonth = Carbon::now()->endOfMonth();
+                  @endphp
+                  @if($due_date->between($startOfMonth, $endOfMonth))
+                  @php $total_Am += $item->initial_amount_inc_tax;@endphp
+                    <tr> 
+                      <td style="background: #f0f0f0;">{{$countt}}</td>
                       <td style="display: flex;"><img src="img/pdficons.gif" style="width: 17px;" alt="" class="img-fluid"><a href=""> 3794</a></td>
-                      <td>Hopital Necplus</td>
+                      <td>{{$client->company_name}}</td>
                       <td>227107 </td>
-                      <td>21-03-2024</td>
-                      <td>14-04-2024</td>
-                      <td>69 j </td>
-                      <td>5 544,00 $</td>
-                      <td style="display: flex; justify-content: space-between;">7,112.64 € <img src="img/card.png" style="width: 17px;" alt="" class="img-fluid"></td>
-                      <td>5 544,00 $</td>
+                      <td>{{$item->issue_date}}</td>
+                      <td>{{$item->due_date}}</td>
+                      <td>{{$item->overdue()}}d </td>
+                      <td>{{ $item->initial_amount_inc_tax }}
+                      €</td>
+                      <td style="display: flex; justify-content: space-between;">{{ $item->remaining_amount_inc_tax }}
+                      € <img src="img/card.png" style="width: 17px;" alt="" class="img-fluid"></td>
                       <td></td>
+                      <td>{{$item->customer_custom_field_2}}</td>
                     </tr>
+                    @endif
+                    @endforeach
                     <tr>
-                      <td style="background: #f0f0f0;">2</td>
-                      <td style="display: flex;"><img src="img/pdficons.gif" style="width: 17px;" alt="" class="img-fluid"><a href=""> 3794</a></td>
-                      <td>Hopital Necplus</td>
-                      <td>227107 </td>
-                      <td>21-03-2024</td>
-                      <td>14-04-2024</td>
-                      <td>69 j </td>
-                      <td>5 544,00 $</td>
-                      <td style="display: flex; justify-content: space-between;">7,112.64 € <img src="img/card.png" style="width: 17px;" alt="" class="img-fluid"></td>
-                      <td>5 544,00 $</td>
-                      <td></td>
-
-                    </tr>
-                    <tr>
-                      <td colspan="8" class="text-end">April 2024 - Total </td>
-                      <td>7,112.64 € </td>
+                      <td colspan="8" class="text-end">{{Carbon::now()->format('F')}} 2024 - Total </td>
+                      <td>{{$total_Am}} € </td>
                       <td></td>
                     </tr>
                   </tbody>
@@ -878,37 +899,62 @@
           </div>
           <div class="tabels-emails">
             <div class="container-fluid">
-              <div class="table-responsive mt-3 mb-3">
-                <table class="table table-bordered">
-                  <tbody class="text-center">
-                    <tr>
-                      <td style="background: #f0f0f0;">3</td>
-                      <td style="display: flex;"><img src="img/pdficons.gif" style="width: 17px;" alt="" class="img-fluid"><a href=""> 3794</a></td>
-                      <td>Hopital Necplus</td>
-                      <td>181403</td>
-                      <td>08-03-2024</td>
-                      <td>23-06-2024</td>
-                      <td>-1 j</td>
-                      <td>3 050,81 € </td>
-                      <td style="display: flex; justify-content: space-between;">7,112.64 € <img src="img/card.png" style="width: 17px;" alt="" class="img-fluid"></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td colspan="8" class="text-end">Juin 2024 - Total </td>
-                      <td>7,112.64 € </td>
-                      <td></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              
             </div>
             <div class="end-of-total">
               <p> <strong>Encours total</strong> : 16 006,97 €</p>
             </div>
           </div>
+          @endif
+        
+          @if (strpos($collectionScenarioAction['mail_content'], '#items_list_overdue') !== false)
+          <div class="tabels-emails">
+            <div class="container-fluid">
+              <div class="table-responsive mt-3 mb-3">
+                <table class="table table-bordered">
+                  <thead class="thead-dark ">
+                    <tr class="text-center">
+                      <th>#</th>
+                      <th>{{ __('Trans.no') }} </th>
+                      <th>Company</th>
+                      <th>PO No.</th>
+                      <th>{{ __('Issue date') }}</th>
+                      <th>{{ __('Due date') }}</th>
+                      <th>{{ __('Overdue') }}</th>
+                      <th>{{ __('Intial amount inc. Tax') }}</th>
+                      <th>{{ __('Remaining amount inc. Tax') }}</th>
+                      <th>Custom<br>field #2</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-center">
+                  @php $countt1 = 0;@endphp
+                  @foreach($client->items as $item)
+                  @if($item->is_overdue()) 
+                  @php $countt1++;@endphp
+                    <tr>
+                      <td style="background: #f0f0f0;">{{$countt1}}</td>
+                      <td style="display: flex;"><img src="img/pdficons.gif" style="width: 17px;" alt="" class="img-fluid"><a href=""> {{$item->trans_no}}</a></td>
+                      <td>{{$client->company_name}}</td>
+                      <td>{{$item->po_no}} </td>
+                      <td>{{$item->issue_date}}</td>
+                      <td>{{$item->due_date}}</td>
+                      <td>{{$item->overdue()}}d </td>
+                      <td>  {{ $item->initial_amount_inc_tax }}
+                      €</td>
+                      <td style="display: flex; justify-content: space-between;">{{ $item->remaining_amount_inc_tax }}
+                      € <img src="img/card.png" style="width: 17px;" alt="" class="img-fluid"></td>
+                      <td>{{$item->customer_custom_field_2}}</td>
+                    </tr>
+                    @endif
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          @endif
         </div>
-      </div>
+      </div> 
       <div class="add-itemes mt-3 mb-3">
         <div class="container">
           <div class="col-12">
@@ -948,6 +994,7 @@
     </div><!--modal-content-->
 
   </div>
+ 
 <div class="new-holap d-none " id="hide-hoalp">
     <div class="container">
       <div class="row">
@@ -1241,4 +1288,113 @@
     document.querySelector(".overlay").classList.add("d-none")
   } 
       </script>
+      <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+    const addDropdownButton = document.getElementById('add_recipient');
+    const dropdownContainer = document.getElementById('dropdownContainer');
+    @php $count = $counter = 0; @endphp
+    var count = 0;
+    addDropdownButton.addEventListener('click', () => { 
+      count++;
+    const dropdownRow = document.createElement('div');
+    dropdownRow.className = 'col-md-2 mt-2';
+    const dropdownRow1 = document.createElement('div');
+    dropdownRow1.className = 'col-md-10 mt-2';
+
+    const createDropdown = () => {
+        const select = document.createElement('select');
+        select.className = 'form-select';
+        select.name = 'cc_emails[]'; // Update to reflect how you want to capture CC emails
+        const option1 = document.createElement('option');
+        option1.value = 'cc';
+        option1.textContent = 'Cc:';
+        const option2 = document.createElement('option');
+        option2.value = 'bcc';
+        option2.textContent = 'Bcc:';
+        select.appendChild(option1);
+        select.appendChild(option2);
+        return select;
+    };
+
+    const createDropdown2 = () => {
+        const select = document.createElement('select');
+        select.className = 'form-select';
+        select.name = `email_to`+count; // Make sure this aligns with your expected input names
+        @foreach ($combined as $item) 
+        
+            @if($item instanceof \App\Models\Client)
+                {
+                    var option = document.createElement('option');
+                    option.value = @json($item->company_code);
+                    option.textContent = @json($item->company_code . ' / ' . $item->company_name);
+                    select.appendChild(option);
+                }
+            @elseif($item instanceof \App\Models\User)
+                {
+                    var option = document.createElement('option');
+                    var firstName = @json($item->first_name);
+                    var email = @json($item->email);
+                    var functionName = @json($item->function);
+                    var roleName = @json($item->role->name);
+                    
+                    option.value = email;
+                    option.textContent = firstName + ' <' + email + '> (Function: ' + functionName + ' / Role: ' + roleName + ') *** ' + roleName + ' ***';
+                    select.appendChild(option);
+                }
+            @endif
+        @endforeach
+        return select;
+    };
+
+    const dropdown1 = createDropdown();
+    const dropdown2 = createDropdown2();
+
+    dropdownRow.appendChild(dropdown1);
+    dropdownRow1.appendChild(dropdown2); 
+
+    dropdownContainer.appendChild(dropdownRow);
+    dropdownContainer.appendChild(dropdownRow1);
+});
+
+});
+
+        </script>
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+    const fileInputsContainer = document.getElementById('file-inputs-container');
+    const addFileBtn = document.getElementById('add-file-btn');
+    
+    let fileInputCount = 1; // Track the number of file inputs
+
+    // Function to create a new file input element
+    function createFileInput() {
+        fileInputCount++;
+        
+        const container = document.createElement('div');
+        container.className = 'file-input-container';
+        
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.name = `email_file${fileInputCount}[]`; // Unique name for each file input
+        input.multiple = true; // Allow multiple files to be selected
+
+        const removeBtn = document.createElement('button');
+        removeBtn.type = 'button';
+        removeBtn.className = 'remove-file-btn';
+        removeBtn.textContent = 'Remove';
+        removeBtn.addEventListener('click', () => {
+            container.remove();
+        });
+
+        container.appendChild(input);
+        container.appendChild(removeBtn);
+        
+        fileInputsContainer.appendChild(container);
+    }
+
+    // Add a new file input when the "Add File Input" button is clicked
+    addFileBtn.addEventListener('click', createFileInput);
+});
+
+        </script>
 @endpush

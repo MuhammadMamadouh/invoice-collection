@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
@@ -13,18 +12,18 @@ class InvoiceMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $attachmentPath;
+    protected $attachments;
     protected $data;
 
     /**
      * Create a new message instance.
      *
-     * @param string $attachmentPath
+     * @param array $attachments
      * @param array $data
      */
-    public function __construct($attachmentPath, $data)
+    public function __construct(array $attachments, array $data)
     {
-        $this->attachmentPath = $attachmentPath;
+        $this->attachments = $attachments;
         $this->data = $data;
     }
 
@@ -57,8 +56,13 @@ class InvoiceMail extends Mailable
      */
     public function attachments(): array
     {
-        return [
-            Attachment::fromPath($this->attachmentPath)->as('invoice.pdf'), // Customize filename if needed
-        ];
+        $attachments = [];
+        foreach ($this->attachments as $attachment) {
+            $attachments[] = Attachment::fromPath($attachment['path'])
+                ->as($attachment['name'])
+                ->withMime($attachment['mime']);
+        }
+        return $attachments;
     }
 }
+

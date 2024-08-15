@@ -37,7 +37,7 @@
           <div class="name text-center">
             <h6 class="mt-3 mb-3">{{ $data['my_name'] }}</h6>
             <p class="mt-3 mb-3">{{ $data['my_phone'] }} <br>
-             
+            <p class="mt-3 mb-3">{{ $data['$my_email'] }} <br>
             {{ $data['my_company_name'] }}</p>
             <a href="#">http://www.demo-solutions.com </a>
           </div>

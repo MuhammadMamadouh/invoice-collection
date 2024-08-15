@@ -21,30 +21,46 @@ class InvoiceMailController extends Controller
     public function sendInvoice(Request $request)
     {
         $from = $request->from;
-        $recipient = 'recipient@example.com';
-        $attachmentPath = storage_path('app/public/invoice.pdf'); // Path to the attachment
+        $to = $request->email_to0;
+        $toEmails = $request->input('email_to', []);
+        $ccEmails = $request->input('cc_emails', []); 
+        $cc_emails = [];
+        $bccEmails = []; 
+        $count = 0; 
+        if(count($ccEmails) !== 0 && count($toEmails) !== 0)
+        {
+        foreach($ccEmails as $key => $value) 
+        {
+            if($value == "cc")
+            {
+                $cc_emails [] = $toEmails[$count];
+            }
+            elseif($value == "bcc")
+            {
+                $bccEmails [] =  $toEmails[$count];
+            }
+            $count++;
+        }
+        }
+        $clientId = $request->client_id; 
         $subject = $request->mail_subject;
         $content = $request->mail_content; 
+        $client = Client::where('id',$clientId)->first();
         $sub_replacements = [
-            '#my_company_name' => 'Business Solution',
-            '#client_name' => $request->client_name,
-            '#client_code' => $request->client_code,
+            '#my_company_name' => 'Business Solutions',
+            '#client_name' => $client->company_name,
+            '#client_code' => $client->company_code,   
         ];
-       
-        //'#items_amount' => '',
-        //items_list_monthly
-        //items_list_overdue
         foreach ($sub_replacements as $placeholder => $value) {
             if (strpos($subject, $placeholder) !== false) {
                 $subject = str_replace($placeholder, $value, $subject);
             }
         }
-        
-
         $data = [
             'from'=>$from,
-            'to'=>$recipient,
+            'to'=>$to,
             'subject' => $subject,
+            'client_items'=>$client_items,
             'items_amount_overdue_exclude_disputes_include_late_penalties' => 12354600,
             'interactive_page_button' => 'View my account statement',
             'my_company_signature' => '',
@@ -56,12 +72,35 @@ class InvoiceMailController extends Controller
             'my_company_name' => 'Business Solutions',
             'my_company_logo' => 'img/logo.png',
         ];
- 
+        $attachments = [];
+        foreach ($request->allFiles() as $fileInput) {
+            if (is_array($fileInput)) {
+                foreach ($fileInput as $file) {
+                    $attachments[] = [
+                        'path' => $file->getRealPath(),
+                        'name' => $file->getClientOriginalName(),
+                        'mime' => $file->getMimeType(),
+                    ];
+                } 
+            }
+        }
         // Send the email
-        Mail::to($recipient)->send(new InvoiceMail($attachmentPath, $data));
-
-        return 'Email sent with attachment and data!';  
+        if($request->has('copy'))  
+        {
+            Mail::to($to)
+            ->cc($from)
+            ->cc($cc_emails)
+            ->bcc($bccEmails) 
+            ->send(new InvoiceMail($attachments, $data));  
+         } 
+         else
+         {
+            Mail::to($to)
+            ->cc($cc_emails)
+            ->bcc($bccEmails)->send(new InvoiceMail($attachments, $data));
+         }  
+        
+         return back()->with('success', 'Invoice sent successfully with attachments.');  
     }
-   
-  
 }
+      

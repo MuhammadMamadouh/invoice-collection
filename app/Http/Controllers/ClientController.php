@@ -92,7 +92,7 @@ class ClientController extends Controller
         $client = $client->response()->getData()->data;
         // $client = $client->data;
         $clients = Client::all();
-        $collectors = User::collectors()->get();;
+        $collectors = User::collectors()->get();
         $collectionsScenario = CollectionScenario::all();
         $currencies = Currency::all();
         $itemTypes = ItemType::all();

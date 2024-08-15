@@ -11,11 +11,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsGroupController;
 use App\Http\Controllers\Dashboard\ItemsController;
-use App\Http\Controllers\Dashboard\ItemStatusController;
+use App\Http\Controllers\Dashboard\ItemStatusController; 
 use App\Http\Controllers\ImportExportController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CollectionController;
-
+use App\Http\Controllers\InvoiceMailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -87,7 +87,7 @@ Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
 Route::get('collection', [CollectionController::class,'index'])->name('collection.automatic.actions');
 Route::get('collection-manual-actions', [CollectionController::class,'manualActions'])->name('collection.manual.actions'); 
-
+Route::post('send/invoice', [InvoiceMailController::class,'sendInvoice'])->name('send.invoice');
 
 Route::get('actions/create', [ActionController::class,'create']);
 Route::post('actions', [ActionController::class,'store'])->name('actions.store');

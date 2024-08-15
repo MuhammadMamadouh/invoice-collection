@@ -8,6 +8,7 @@ use App\Models\ActionType;
 use App\Models\CollectionScenario;
 use App\Models\Item;
 use App\Models\Client;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,10 @@ class CollectionController extends Controller
     public function index()
     {
         $items = Item::with('client')->paginate(10);
-        return view('collection.index', compact('items'));
+        $clients = Client::get(); 
+        $users = User::where('active',1)->with('role')->get();
+        $combined = $clients->merge($users);
+        return view('collection.index', compact('items','combined')); 
     }
     public function manualActions()
     {
