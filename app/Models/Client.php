@@ -16,6 +16,7 @@ class Client extends Model
         'legal_id',
         'vat_number',
         'business_line',
+        'ultimate_parent_code',
         'collector_id',
         'collection_scenario_id',
         'address',
@@ -27,10 +28,16 @@ class Client extends Model
         'website',
         'payment_term',
         'payment_mean',
+        'score',
+        'start_date',
+        'end_date',
+        'insurer_reference',
         'insurer_guarantee',
         'other_guarantees',
+        'temporary_guarantee',
         'credit_limit',
         'late_payment_penalties',
+        'block_this_account',
         'recovery_cost',
         'interactive_emails',
         'customer_custom_field_1',
@@ -73,5 +80,9 @@ class Client extends Model
             ->orderBy('number_of_days')->first();
     }
 
-
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class, 'client_id');
+    }
+    
 }

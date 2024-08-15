@@ -18,7 +18,7 @@ class ScenarioActionResource extends JsonResource
             'id'                        => $this->id,
             'action_name'               => $this->action_name,
             'number_of_days'            => $this->number_of_days,
-            'action_type'               => $this->action_type,
+            'action_type'               =>  new ActionTypeResource($this->actionType),
             'collection_scenario_id'    => $this->collection_scenario_id,
         ];
     }

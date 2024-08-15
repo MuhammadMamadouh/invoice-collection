@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('legal_id')->nullable();
             $table->string('vat_number')->nullable();
             $table->string('business_line')->nullable();
+            $table->string('ultimate_parent_code')->nullable();
             $table->foreignId('collector_id')->constrained('users');
             $table->foreignId('collection_scenario_id')->constrained('collection_scenarios');
             $table->string('address')->nullable();
@@ -30,12 +31,18 @@ return new class extends Migration
             $table->string('website')->nullable();
             $table->string('payment_term')->nullable();
             $table->string('payment_mean')->nullable();
+            $table->string('score')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->string('insurer_reference')->nullable();
             $table->decimal('insurer_guarantee', 10, 2)->nullable();
             $table->decimal('other_guarantees', 10, 2)->nullable();
+            $table->decimal('temporary_guarantee', 10, 2)->nullable();
             $table->decimal('credit_limit', 10, 2)->nullable();
             $table->boolean('late_payment_penalties')->default(0);
             $table->boolean('recovery_cost')->default(0);
             $table->boolean('interactive_emails')->default(0);
+            $table->boolean('block_this_account')->default(0);
             $table->string('customer_custom_field_1')->nullable();
             $table->string('customer_custom_field_2')->nullable();
             $table->timestamps();
