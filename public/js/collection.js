@@ -34,24 +34,24 @@ scoreButton2.addEventListener("click", () => {
   showScore2.style.display = "block";
 });
 
-function showHolap() {
-  document.querySelector(".overlay").classList.remove("d-none");
-  document.querySelector(".company-details").classList.remove("d-none");
-}
+// function showHolap() {
+//   document.querySelector(".overlay").classList.remove("d-none");
+//   document.querySelector(".company-details").classList.remove("d-none");
+// }
 
-function closeHolap() {
-  document.querySelector(".overlay").classList.add("d-none");
-  document.querySelector(".company-details").classList.add("d-none");
-}
-function EditHolap() {
-  document.querySelector(".holap-first").classList.add("d-none");
-  document.querySelector(".holap-second").classList.remove("d-none");
-}
+// function closeHolap() {
+//   document.querySelector(".overlay").classList.add("d-none");
+//   document.querySelector(".company-details").classList.add("d-none");
+// }
+// function EditHolap() {
+//   document.querySelector(".holap-first").classList.add("d-none");
+//   document.querySelector(".holap-second").classList.remove("d-none");
+// }
 
-function closeEditHolap() {
-  document.querySelector(".holap-first").classList.remove("d-none");
-  document.querySelector(".holap-second").classList.add("d-none");
-}
+// function closeEditHolap() {
+//   document.querySelector(".holap-first").classList.remove("d-none");
+//   document.querySelector(".holap-second").classList.add("d-none");
+// }
 
 let hideTable = document.querySelector(".collection-table");
 let showHistory = document.getElementById("page-not-found");
@@ -332,24 +332,6 @@ function associatedFun() {
 };
 
 
-function showInvoice() {
-  document.querySelector(".overlay").classList.remove("d-none");
-  document.querySelector(".invoice").classList.remove("d-none");
-}
-
-function closeInvoice() {
-  document.querySelector(".overlay").classList.add("d-none");
-  document.querySelector(".invoice").classList.add("d-none");
-}
-function EditInvoice() {
-  document.querySelector(".invoice-first").classList.add("d-none");
-  document.querySelector(".invoice-second").classList.remove("d-none");
-}
-
-function closeEditInvoice() {
-  document.querySelector(".invoice-first").classList.remove("d-none");
-  document.querySelector(".invoice-second").classList.add("d-none");
-}
 
 
 function showInvioce2(){

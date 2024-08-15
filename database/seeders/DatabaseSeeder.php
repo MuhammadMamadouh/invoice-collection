@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call(CurrencySeeder::class);
         $this->call(ItemStatusTypeSeeder::class);
-        $this->call(ItemSeeder::class);
+        $this->call(ItemTypeSeeder::class);
         $this->call(ActionTypesSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'role_id'           => RoleEnum::COLLECTOR,
         ]);
         $this->call(ClientSeeder::class); // faker to remove in production
-
+        $this->call(ItemSeeder::class);
 
 
     }

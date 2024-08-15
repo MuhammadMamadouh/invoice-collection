@@ -13,4 +13,9 @@ class ItemType extends Model
     protected $fillable = [
         'en_name',
     ];
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

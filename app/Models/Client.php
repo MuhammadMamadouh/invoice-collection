@@ -52,4 +52,26 @@ class Client extends Model
         return $this->belongsToMany(ClientsGroup::class, 'clients_groups_pivot', 'client_id', 'clients_group_id');
     }
 
+    public function items()
+    {
+        return $this->hasMany(Item::class, 'company_id');
+    }
+
+    // public function firstDueItem()
+    // {
+    //     return $this->items()->orderBy('due_date')->first();
+    // }
+    public function firstDueItem()
+    {
+        return $this->hasOne(Item::class, 'company_id')->orderBy('due_date');
+    }
+    public function toTakeAction()
+    {
+        // get taken actions on first due item
+        $firstDueTakenAction = $this->firstDueItem()->takenActions()->pluck('collection_scenario_id');
+        return $this->collectionScenarios->scenariosActions()->whereNotIn('id', $firstDueTakenAction)
+            ->orderBy('number_of_days')->first();
+    }
+
+
 }

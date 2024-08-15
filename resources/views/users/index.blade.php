@@ -2,6 +2,7 @@
 @section('content')
 
 
+
     @include('users.create')
     {{-- ----------------------------------------------------- --}}
     @include('users.edit')
@@ -10,6 +11,8 @@
 
         <p class="mt-3 py-5"><i
                 class="fa-regular fa-star px-3"></i>{{ __('Allow other people to use your account MY DSO MANAGER for your company') }}
+            <span class="fw-bold">{{ __('Business Solutions') }}</span>
+        </p>
             <span class="fw-bold">{{ __('Business Solutions') }}</span>
         </p>
     </section><!--reing-info-->

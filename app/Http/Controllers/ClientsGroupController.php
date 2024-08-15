@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\ClientsGroup;
-use Exception;
+use App\Services\TranslateService;
 use Illuminate\Http\Request;
 
 
@@ -45,7 +45,7 @@ public function update(Request $request, $id)
     $group->en_name = $request->input('en_name');
     $group->save();
     $group->clients()->sync($request->group_clients);
-    return response()->json(['message' => 'updated successfully']);
+    return response()->json(['message' => __('edited successfully')]);
 }
 
 
@@ -53,14 +53,14 @@ public function update(Request $request, $id)
     public function destroy($id)
     {
         ClientsGroup::findOrFail($id)->delete();
-        return to_route('clients-group')->with(['message' => 'success']);
+        return to_route('clients-group')->with(['message' => __('deleted successfully')]);
 
     }
 
     public function deleteAll(Request $request)
     {
         ClientsGroup::truncate();
-        return to_route('clients-group')->with(['message' => 'success', 'All client groups deleted successfully.']);
+        return to_route('clients-group')->with(['message' => __('deleted successfully')]);
     }
 
 

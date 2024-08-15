@@ -36,6 +36,6 @@ class ItemStatusController extends Controller
         $validatedData = $request->validated();
 
         ItemStatus::create($validatedData);
-        return redirect()->back()->with('success', 'Status item created successfully.');
+        return redirect()->back()->with('success', __('created successfully'));
     }
 }

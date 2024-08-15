@@ -38,7 +38,7 @@ class ActionController extends Controller
         $data = $request->validated();
         Action::create($data);
 
-        return __('message.action_stored');
+        return __('created successfully');
     }
 
     /**

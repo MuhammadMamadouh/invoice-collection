@@ -10,7 +10,6 @@
                 <div class="col-12 mb-3">
                     <label for="inputname18">{{_(" Name:")}}</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="inputname18" name="en_name" value="{{old('name')}}">
                     </div>
                     @error('name')
                     <div class="text-danger">{{ $message }}</div>

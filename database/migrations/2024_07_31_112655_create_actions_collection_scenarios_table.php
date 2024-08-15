@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('action_name');
             $table->smallInteger('number_of_days');
             $table->string('action_type');
-            $table->bigInteger('collection_scenario_id');
+            $table->foreignId('collection_scenario_id')->constrained('collection_scenarios')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('mail_subject')->nullable();
             $table->string('mail_content')->nullable();
             $table->string('language')->nullable();

@@ -5,7 +5,7 @@
 </div>
 <div class="position-fixed new-status-div d-none w-75"
     style="top:10% ;left: 50%;transform: translate(-50%);z-index: 10;">
-    <div class="bg-white m-auto p-3 shadow-sm position-relative" style="border-radius: 10px;">
+    <div class="p-3 m-auto bg-white shadow-sm position-relative" style="border-radius: 10px;">
         <span class="btn btn-secondary position-absolute" onclick="hideNewStatusDiv()"
             style="border-radius:50%;top: -20px;right: -20px;"><i class="fa-solid fa-close"></i></span>
         <div class="my-2">
@@ -45,7 +45,7 @@
             <div class="d-flex align-items-center">
                 <div class="col-4 ">
                     <label for="inputname20">{{__('No. Of Days Follow-Up Action')}} <a href="DSOInformation.html"><i
-                                class="fa-solid fa-question bg-primary text-light p-1"
+                                class="p-1 fa-solid fa-question bg-primary text-light"
                                 style="border-radius: 50%;width: 18px;height: 22px;"></i></a>:</label>
                 </div>
                 <div class="col-8">
@@ -57,7 +57,7 @@
             </div>
         </div>
         <!--24-->
-        <div class="text-center mt-3">
+        <div class="mt-3 text-center">
             <button type="submit" class="btn btn-success"><i class="fa-solid fa-plus"></i> {{__('Add')}}</button>
         </div>
     </div>
@@ -65,7 +65,7 @@
 </div>
 <div class="position-fixed edit-status-div d-none w-75"
     style="top:10% ;left: 50%;transform: translate(-50%);z-index: 10;">
-    <div class="bg-white m-auto p-3 shadow-sm position-relative" style="border-radius: 10px;">
+    <div class="p-3 m-auto bg-white shadow-sm position-relative" style="border-radius: 10px;">
         <span class="btn btn-secondary position-absolute" onclick="hideNewStatusDiv()"
             style="border-radius:50%;top: -20px;right: -20px;"><i class="fa-solid fa-close"></i></span>
         <div class="my-2">
@@ -89,7 +89,7 @@
         <div class="my-2">
             <form class="d-flex align-items-center">
                 <div class="col-4 ">
-                    <label for="inputname18"> Status:</label>
+                    <label for="inputname18"> {{__('Status:')}}</label>
                 </div>
                 <div class="col-8">
                     <div class="input-group">
@@ -103,8 +103,8 @@
         <div class="my-2">
             <form class="d-flex align-items-center">
                 <div class="col-4 ">
-                    <label for="inputname20">No. Of Days Follow-Up Action <a href="DSOInformation.html"><i
-                                class="fa-solid fa-question bg-primary text-light p-1"
+                    <label for="inputname20">{{__('No. Of Days Follow-Up Action') }}<a href="DSOInformation.html"><i
+                                class="p-1 fa-solid fa-question bg-primary text-light"
                                 style="border-radius: 50%;width: 18px;height: 22px;"></i></a>:</label>
                 </div>
                 <div class="col-8">
@@ -119,57 +119,57 @@
         <div class="my-2">
             <form class="d-flex align-items-center">
                 <div class="col-4 ">
-                    <label for="inputname20">Active:</label>
+                    <label for="inputname20">{{__('Active:')}}</label>
                 </div>
                 <div class="col-8">
-                    <div class=" checks-bx d-flex ">
+                    <div class=" checks-bx d-flex">
                         <input type="radio" name="active" id="yes">
-                        <label for="yes">yes</label>
+                        <label for="yes">{{__('yes')}}</label>
                         <input type="radio" name="active" id="no">
-                        <label for="no">no</label>
+                        <label for="no">{{__('no')}}</label>
                     </div>
                 </div>
             </form>
         </div>
         <!--24-->
 
-        <div class="text-center mt-3">
-            <div class="btn btn-success"><i class="fa-solid fa-check"></i> Modify</div>
+        <div class="mt-3 text-center">
+            <div class="btn btn-success"><i class="fa-solid fa-check"></i>{{__(' Modify')}}</div>
         </div>
     </div>
 </div>
 
 
 
-<div class="our-titles mt-3 mb-3 text-capitalize text-center">
+<div class="mt-3 mb-3 text-center our-titles text-capitalize">
     <div class="container">
-        <h4>Manage Item Status (Dispute,...)</h4>
+        <h4>{{__('Manage Item Status (Dispute,...)')}}</h4>
     </div>
 </div>
 
-<div class="plus-button text-end mt-3 mb-3">
+<div class="mt-3 mb-3 plus-button text-end">
     <div class="container-fluid">
         <div class="btn btn-primary" onclick="showNewStatusDiv()"><span><i class="fa-solid fa-plus"></i></span>
             {{__('New Status')}}</div>
     </div>
 </div>
 <!--start-desc-->
-<!-- <div class="two-contents mt-2 mb-4">
+<!-- <div class="mt-2 mb-4 two-contents">
     <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-md-2 col-3 text-center">
+      <div class="mb-2 row">
+        <div class="text-center col-md-2 col-3">
           <h6>Type of status</h6>
         </div>
-        <div class="col-md-8 col-6 text-center">
+        <div class="text-center col-md-8 col-6">
           <h6>Status</h6>
         </div>
     </div>
       <div class="backg-content">
       <div class="row ">
         <div class="col-lg-4">
-          <p class=" mt-3 mb-3">Dispute</p>
+          <p class="mt-3 mb-3 ">Dispute</p>
         </div>
-        <div class="col-lg-8 col-sm-12 col-md-12 py-3 ">
+        <div class="py-3 col-lg-8 col-sm-12 col-md-12 ">
         <div class="content-text">
           <ul class="d-flex">
             <li class=""><a href="#" onclick="showEditStatusDiv()">Litige administratif</a></li>
@@ -224,13 +224,13 @@
   </div> -->
 <!-- </div>
 
-<div class="two-contents mt-2 mb-3">
+<div class="mt-2 mb-3 two-contents">
     <div class="container-fluid">
     <div class="row ">
       <div class="col-lg-4">
-        <p class=" mt-3 mb-3">Dispute resolved</p>
+        <p class="mt-3 mb-3 ">Dispute resolved</p>
       </div>
-      <div class="col-lg-8 col-sm-12 col-md-12 py-3">
+      <div class="py-3 col-lg-8 col-sm-12 col-md-12">
       <div class="content-text">
         <ul class="d-flex">
           <li class=""><a href="#" onclick="showEditStatusDiv()">Facture contestée à tort</a></li>
@@ -250,14 +250,14 @@
 </div> -->
 
 
-<!-- <div class="two-contents mt-2 mb-5">
+<!-- <div class="mt-2 mb-5 two-contents">
   <div class="container-fluid">
     <div class="backg-content">
     <div class="row ">
       <div class="col-lg-4">
-        <p class=" mt-3 mb-3">Litigation</p>
+        <p class="mt-3 mb-3 ">Litigation</p>
       </div>
-      <div class="col-lg-8 col-sm-12 col-md-12 py-3">
+      <div class="py-3 col-lg-8 col-sm-12 col-md-12">
       <div class="content-text">
         <ul class="d-flex">
           <li class=""><a href="#" onclick="showEditStatusDiv()">A passer en pertes et profits</a></li>
@@ -277,14 +277,14 @@
 </div> -->
 
 <!--
-<div class="two-contents mt-2 mb-3 text-capitalize">
+<div class="mt-2 mb-3 two-contents text-capitalize">
   <div class="container-fluid">
     <div class="dirc">
   <div class="row ">
     <div class="col-lg-4">
-      <p class=" mt-3 mb-3">on going</p>
+      <p class="mt-3 mb-3 ">on going</p>
     </div>
-    <div class="col-lg-8 col-sm-12 col-md-12 py-3">
+    <div class="py-3 col-lg-8 col-sm-12 col-md-12">
     <div class="content-text">
       <ul class="d-flex">
         <li class=""><a href="#" onclick="showEditStatusDiv()">Avoir emis</a></li>
@@ -324,14 +324,14 @@
 
 
 
-<!-- <div class="two-contents mt-2 mb- text-capitalize">
+<!-- <div class="mt-2 two-contents mb- text-capitalize">
   <div class="container-fluid">
     <div class="backg-content">
   <div class="row ">
     <div class="col-lg-4">
-      <p class=" mt-3 mb-3">Promise to pay</p>
+      <p class="mt-3 mb-3 ">Promise to pay</p>
     </div>
-    <div class="col-lg-8 col-sm-12 col-md-12 py-3">
+    <div class="py-3 col-lg-8 col-sm-12 col-md-12">
     <div class="content-text">
       <ul class="d-flex">
         <li class=""><a href="#" onclick="showEditStatusDiv()">Echéancier de paiement validé</a></li>
@@ -364,11 +364,11 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <p>Type of status </p>
+            <p>{{__('Type of status')}} </p>
         </div>
 
         <div class="col-6">
-            <p>Status</p>
+            <p>{{__('Status')}}</p>
         </div>
         </div>
        @php $count = 0; @endphp

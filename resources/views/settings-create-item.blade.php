@@ -5,22 +5,22 @@
 <!--navbar-site-->
 </section>
 <section class="ring-info">
-    <button class=" btn my-4 px-5 ">Use rather the import module to create your customers and invoices</button>
+    <button class="px-5 my-4 btn">Use rather the import module to create your customers and invoices</button>
 </section>
 <!--reing-info-->
-<section class="m-groups my-2">
+<section class="my-2 m-groups">
     <div class="container-fluid">
-        <div class=" text-center text-capitalize">
-            <h4 class="hfour-clients">Create an item (invoice, credit note, ...)</h4>
+        <div class="text-center text-capitalize">
+            <h4 class="hfour-clients">{{__('Create an item (invoice, credit note, ...)')}}</h4>
         </div>
         <!--t-manage-->
     </div>
     <!--container-->
-    <div class="create-c-i my-2">
+    <div class="my-2 create-c-i">
         <div class="row">
             <form action="{{route('items.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="col-md-6  my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname0">{{__("ltem type ")}}* :</label>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <!--1-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname2">{{__("Order date")}} :</label>
@@ -54,7 +54,7 @@
 
                 </div>
                 <!--2-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname1">{{__("Trans NO")}} :</label>
@@ -67,7 +67,7 @@
 
                 </div>
                 <!--3-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname4">{{__("Issue date")}} * :</label>
@@ -81,7 +81,7 @@
 
                 </div>
                 <!--4-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname5">{{__("Company code / company")}} :</label>
@@ -1762,7 +1762,7 @@
 
                 </div>
                 <!--5-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname6">{{__("Due date")}} * :</label>
@@ -1776,7 +1776,7 @@
 
                 </div>
                 <!--6-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname7">{{__(" PO NO")}} :</label>
@@ -1789,7 +1789,7 @@
 
                 </div>
                 <!--7-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname8">{{__(" Payment date")}} :</label>
@@ -1804,7 +1804,7 @@
 
                 </div>
                 <!--8-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname9">{{__(" File NO ")}}":</label>
@@ -1820,7 +1820,7 @@
 
                 </div>
                 <!--9-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname10">{{__("Currency ")}}* :</label>
@@ -1839,7 +1839,7 @@
 
                 </div>
                 <!--10-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname11">
@@ -1853,7 +1853,7 @@
 
                 </div>
                 <!--11-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname12"> {{__("Initial amount exc. Tax")}} :</label>
@@ -1866,7 +1866,7 @@
 
                 </div>
                 <!--12-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname13">{{__("Business case")}} :</label>
@@ -1879,7 +1879,7 @@
 
                 </div>
                 <!--13-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname14">{{__(" Initial amount inc. Tax ")}}* :</label>
@@ -1893,7 +1893,7 @@
 
                 </div>
                 <!--14-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname15">
@@ -1907,7 +1907,7 @@
 
                 </div>
                 <!--15-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname16">{{__("Remaining amount exc. Tax")}} :</label>
@@ -1921,7 +1921,7 @@
 
                 </div>
                 <!--16-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname17">{{__(" Sales administrative")}} :</label>
@@ -1934,7 +1934,7 @@
 
                 </div>
                 <!--17-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname18">{{__("Remaining amount inc. Tax")}} :</label>
@@ -1949,7 +1949,7 @@
                 </div>
                 <!--18-->
 
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname27">{{__("Customer custom field #1")}}:</label>
@@ -1962,7 +1962,7 @@
 
                 </div>
                 <!--27-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname17"></label>
@@ -1975,7 +1975,7 @@
 
                 </div>
                 <!--17-->
-                <div class="col-md-6 my-2">
+                <div class="my-2 col-md-6">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname30">{{__("Customer custom field #2")}}:</label>
@@ -1985,7 +1985,7 @@
                             <input type="text" class="form-control" id="inputname30" name="Customer_custom_field_2">
                         </div>
                     </div>
-                    <div class="col-md-6 my-2">
+                    <div class="my-2 col-md-6">
                         <div class="d-flex">
                             <div class="col-5 ">
                                 <label for="inputname17"></label>
@@ -2003,7 +2003,7 @@
                 </div>
                 <!--30-->
                 <div class="container text-center">
-                    <button class="btn btn-primary my-1 btn-add-i" type="submit">{{__("+ ADD")}}</button>
+                    <button class="my-1 btn btn-primary btn-add-i" type="submit">{{__("+ ADD")}}</button>
                 </div>
             </form>
         </div>

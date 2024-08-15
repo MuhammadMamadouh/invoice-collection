@@ -1,0 +1,26 @@
+{
+    "language" : "اللغة",
+    "number_of_days"  : "عدد الايام",
+    "action_type"  : "نوع الحدث",
+    "action_name" : "ِاسم الحدث",
+    "Create Action":"انشاء حدث",
+
+    "created successfully":"تم الادخال بنجاح",
+    "verification-link-sent": "تم إرسال رابط التحقق إلى عنوان بريدك الإلكتروني.",
+    "password-updated": "تم تحديث كلمة المرور الخاصة بك.",
+    "edited successfully": "تم التعديل بنجاح.",
+    "deleted successfully": "تم الحذف بنجاح.",
+    "duplicated successfully": "تم النسخ بنجاح.",
+    "profile-updated": "تم تحديث الملف الشخصي بنجاح.",
+    "Import and export your billing information": "استيراد وتصدير معلومات الفوترة الخاصة بك",
+    "Import / Export your data": "استيراد / تصدير بياناتك",
+    "After clicking on Submit, you can set up the import of these data.": "بعد النقر على تقديم ، يمكنك إعداد استيراد هذه البيانات.",
+    "The file contains": "الملف يحتوي على",
+    "Items (Invoices, ...)": "العناصر (الفواتير ، ...)",
+    "Clients": "العملاء",
+    "Contacts": "جهات الاتصال",
+    "Users (Associates)": "المستخدمين (الشركاء)"
+
+
+
+}

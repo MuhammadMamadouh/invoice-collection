@@ -14,6 +14,8 @@ class Item extends Model
     protected $fillable = [
         'item_type_id',
         'company_id',
+        'status_id',
+        'trans_no',
         'po_no',
         'file_no',
         'erp_item_type',
@@ -48,7 +50,6 @@ class Item extends Model
     {
         return $this->belongsTo(Currency::class);
     }
-
 
     public function client()
     {

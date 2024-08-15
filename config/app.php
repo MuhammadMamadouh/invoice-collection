@@ -82,7 +82,10 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ar',
+
+    'supported_languages' => ['en','ar'],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -194,6 +197,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
+        // App\Providers\ExcelServiceProvider::class
+
 
     ],
 
@@ -209,7 +215,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        // 'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];
