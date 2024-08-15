@@ -9,7 +9,7 @@
                 <span>{{$action->number_of_days }}d</span>
                 <div class="btn-warning small-icons text-light px-2 py-1">
                 {{-- {{dd($action)}} --}}
-                    <i class="fa-solid fa-email"></i>
+                    <i class="fa-solid fa-phone"></i>
                 </div>
             </div>
             @endforeach

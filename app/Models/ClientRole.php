@@ -17,4 +17,9 @@ class ClientRole extends Model
         'other',
     ];
 
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class, 'role_id');
+    }
+
 }

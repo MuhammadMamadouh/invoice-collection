@@ -84,4 +84,5 @@ class Client extends Model
     {
         return $this->hasMany(Contact::class, 'client_id');
     }
+    
 }

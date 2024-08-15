@@ -13,17 +13,18 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('email')->unique();
+            $table->string('title')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->boolean('copy_in_the_automatic_email')->default(1);
-            $table->string('phone')->unique();
-            $table->string('mobile_phone')->unique();
-            $table->string('fax')->unique();
-            $table->longText('comments');
+            $table->string('phone')->unique()->nullable();
+            $table->string('mobile_phone')->unique()->nullable();
+            $table->string('fax')->unique()->nullable();
+            $table->longText('comments')->nullable();
             $table->boolean('contact_for_collection')->default(1);
             $table->bigInteger('client_id');
+            $table->bigInteger('role_id')->nullable();
             $table->timestamps();
         });
     }

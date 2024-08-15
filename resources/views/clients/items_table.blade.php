@@ -64,8 +64,9 @@
                 </div>
             </div>
             <div class="col">
-                <p class="fw-bold"><a href='#' onclick="showInvoice({{ $item->id }})" style="text-decoration: none !important;"><img
-                            src="./img/pdficons.gif" class="mb-1" alt="">
+                <p class="fw-bold"><a href='#' onclick="showInvoice({{ $item->id }})"
+                        style="text-decoration: none !important;"><img src="./img/pdficons.gif" class="mb-1"
+                            alt="">
                         {{ $item->trans_no ?? '-' }}</a>
                 </p>
                 {{-- -------------------------------------------invoice data-------------------------------------- --}}
@@ -88,17 +89,22 @@
             </div>
             <div class="col hide">
                 <p class="fw-bold">
-                    <a href='#' onclick="showInvoice({{ $item->id }})" style="text-decoration: none !important;">
-{{ $item->total_InitialAmount ?? '0' }}€</a>
-                    </p>
+                    <a href='#' onclick="showInvoice({{ $item->id }})"
+                        style="text-decoration: none !important;">
+                        {{ $item->total_InitialAmount ?? '0' }}€</a>
+                </p>
             </div>
             <div class="col">
                 <p class="fw-bold">
-                    <a href='#' onclick="showInvoice({{ $item->id }})"style="text-decoration: none !important;">{{ $item->total_RemainingAmount ?? '0' }}
-                    €</a></p>
+                    <a href='#'
+                        onclick="showInvoice({{ $item->id }})"style="text-decoration: none !important;">{{ $item->total_RemainingAmount ?? '0' }}
+                        €</a>
+                </p>
             </div>
             <div class="col-3 hide">
-                    <a href='#' onclick="showInvoice({{ $item->id }})"style="text-decoration: none !important;">{{ $client->items->status ?? 'action1' }}, {{ $client->items->follow_up_days ?? 1 }}</a>
+                <a href='#'
+                    onclick="showInvoice({{ $item->id }})"style="text-decoration: none !important;">{{ $client->items->status ?? 'action1' }},
+                    {{ $client->items->follow_up_days ?? 1 }}</a>
             </div>
             <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
                 <i class="fa-solid fa-chevron-down"></i>

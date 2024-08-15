@@ -29,8 +29,8 @@ class ClientRequest extends FormRequest
             'vat_number' => "nullable|string|max:255",
             'business_line' => "nullable|string|max:255",
             'ultimate_parent_code' => "nullable|string|max:255",
-            'collector_id' => "required|exists:users,id",
-            'collection_scenario_id' => "required|exists:collection_scenarios,id",
+            // 'collector_id' => "required|exists:users,id",
+            // 'collection_scenario_id' => "required|exists:collection_scenarios,id", // for now
             'address' => "nullable|string|max:255",
             'postal_code' => "nullable|string|max:255",
             'post_office_box' => "nullable|string|max:255",

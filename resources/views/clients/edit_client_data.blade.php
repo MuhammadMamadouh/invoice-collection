@@ -12,7 +12,7 @@
             <span class="btn px-4 text-light p-1 btn-warning" onclick="closeEditHolap({{ $client->id }})"><i
                     class="fa-solid fa-reply" style="  font-size: 15px;"></i>
                 {{ __('Cancel') }}</span>
-            <a href="editHolapDetails.html" class="btn px-2 text-primary p-1 btn-light" target="_blank"><i
+            <a href="#" class="btn px-2 text-primary p-1 btn-light" target="_blank"><i
                     class="fa-solid fa-maximize "style="  font-size: 15px;"></i></a>
         </div>
         <input type='hidden' name="id" value="{{ $client->id }}" class="form-control" id="inputname0">
@@ -56,19 +56,9 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <select class="form-select m-auto w-75" aria-label="Default select example">
                             <option selected disabled>Contact:</option>
-                            <option value="1">Clients risqués (FR)</option>
-                            <option value="1">Key accounts scenario (EN)
-                            </option>
-                            <option value="1">Modeles actions specifiques
-                            </option>
-                            <option value="1">Risky clients (En)</option>
-                            <option value="1">
-                                Scenario de relance standard (by default)
-                            </option>
-                            <option value="1">Standard collection scenario
-                            </option>
-                            <option value="1">Templates specific actions
-                            </option>
+                            @foreach($client->contacts as $contact)
+                            <option value="{{$contact->id}}">{{$contact->first_name}} / {{$contact->last_name}} </option>
+                            @endforeach
                         </select>
                     </div>
                 </div><!--2-->
@@ -116,12 +106,18 @@
 
                         </div>
                         <div class="col-7 ">
-                            <select class="form-select w-100" id="inputname60" aria-label="Default select example">
-                                <option value="1">Accountant</option>
-                                <option value="1">Client</option>
-                                <option value="1">Company</option>
-                                <option value="1">Executive Officer</option>
-                                <option selected>Other</option>
+                            <input type="hidden" name="client_id" value="{{ $client->id }}" class="form-control"
+                                id="inputname7">
+                            @php($roleId = App\models\Contact::where('client_id', $client->id)->with('clientRole')->value('role_id'))
+                            <select name="role_id" class="form-select w-100" id="inputname60"
+                                aria-label="Default select example">
+                                <option value="{{ $roleId->role_id ?? null }}" disabled selected>{{ $roleId->clientRole->name ?? 'Select One' }}</option>
+                                @foreach ($clientRoles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
+                                @error('role_id')
+                                    <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                                @enderror
                             </select>
                         </div>
                     </div>
@@ -178,8 +174,12 @@
                         </div>
                         <div class="col-7">
                             <div class="input-group">
-                            @php($title = App\models\Contact::where('client_id', $client->id)->first())
-                                <input type="text" name="title" value="{{$title}}" class="form-control" id="inputname9">
+                                @php($title = App\models\Contact::where('client_id', $client->id)->value('title'))
+                                <input type="text" name="title" value="{{ $title }}"
+                                    class="form-control" id="inputname9">
+                                @error('title')
+                                    <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -238,8 +238,12 @@
 
                         </div>
                         <div class="col-7 ">
-                            @php($last_name = App\models\Contact::where('client_id', $client->id)->first())
-                            <input type="text" name="last_name" value="{{$last_name}}" class="form-control" id="inputname100">
+                            @php($last_name = App\models\Contact::where('client_id', $client->id)->value('last_name'))
+                            <input type="text" name="last_name" value="{{ $last_name }}" class="form-control"
+                                id="inputname100">
+                            @error('last_name')
+                                <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div><!--10-->
@@ -293,8 +297,12 @@
 
                         </div>
                         <div class="col-7 ">
-                            @php($firstname = App\models\Contact::where('client_id', $client->id)->first())
-                            <input type="text" name="first_name" value="$firstname" class="form-control" id="inputname101">
+                            @php($firstname = App\models\Contact::where('client_id', $client->id)->value('first_name'))
+                            <input type="text" name="first_name" value="{{ $firstname }}"
+                                class="form-control" id="inputname101">
+                            @error('first_name')
+                                <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div><!--10-->
@@ -344,8 +352,12 @@
 
                         </div>
                         <div class="col-7 ">
-                            @php($email = App\models\Contact::where('client_id', $client->id)->first())
-                            <input type="email" name="email" value="{{ $email}}" class="form-control" id="inputname555">
+                            @php($email = App\models\Contact::where('client_id', $client->id)->value('email'))
+                            <input type="email" name="email" value="{{ $email }}" class="form-control"
+                                id="inputname555">
+                            @error('email')
+                                <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -411,11 +423,14 @@
                     <div class="d-flex justify-content-center my-2">
                         <div>
                             <div class="form-check">
-                                @php($automatic_email = App\models\Contact::where('client_id', $client->id)->first())
-                                <input class="form-check-input" type="checkbox" id="email" name="copy_in_the_automatic_email"
-                                value="0" {{$automatic_email == "1" ? 'checked' : ''}}>
+                                @php($automatic_email = App\models\Contact::where('client_id', $client->id)->value('copy_in_the_automatic_email'))
+                                <input class="form-check-input" type="checkbox" id="email"
+                                    name="copy_in_the_automatic_email" value="1" {{ $automatic_email == 1  ? 'checked' : '' }}>
                                 <label class="form-check-label"
                                     for="email">{{ __('Email in copy in the automatic  emails') }}</label>
+                                @error('copy_in_the_automatic_email')
+                                    <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -427,8 +442,12 @@
 
                             </div>
                             <div class="col-7 ">
-                            @php($phone = App\models\Contact::where('client_id', $client->id)->first())
-                                <input type="text" name="phone" value="{{$phone}}" class="form-control" id="inputname502">
+                                @php($phone = App\models\Contact::where('client_id', $client->id)->value('phone'))
+                                <input type="text" name="phone" value="{{ $phone }}"
+                                    class="form-control" id="inputname502">
+                                @error('phone')
+                                    <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div><!--5-->
@@ -481,8 +500,12 @@
 
                         </div>
                         <div class="col-7 ">
-                                                    @php($mobile_phone = App\models\Contact::where('client_id', $client->id)->first())
-                            <input type="text"  name="mobile_phone" value="{{$mobile_phone}}"class="form-control" id="inputname504">
+                            @php($mobile_phone = App\models\Contact::where('client_id', $client->id)->value('mobile_phone'))
+                            <input type="text" name="mobile_phone"
+                                value="{{ $mobile_phone }}"class="form-control" id="inputname504">
+                            @error('mobile_phone')
+                                <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                 </div><!--5-->
@@ -534,8 +557,9 @@
 
                         </div>
                         <div class="col-7 ">
-                        @php($fax = App\models\Contact::where('client_id', $client->id)->first())
-                            <input type="text" name="fax" value='{{ $fax }}' class="form-control" id="inputname506">
+                            @php($fax = App\models\Contact::where('client_id', $client->id)->value('fax'))
+                            <input type="text" name="fax" value='{{ $fax }}' class="form-control"
+                                id="inputname506">
                             @error('fax')
                                 <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                             @enderror
@@ -691,7 +715,7 @@
 
                         </div>
                         <div class="col-7 ">
-                        @php($comments = App\models\Contact::where('client_id', $client->id)->first())
+                            @php($comments = App\models\Contact::where('client_id', $client->id)->value('comments'))
                             <textarea name="comments" class="form-control" rows="3" id="inputname2">{{ $comments }}</textarea>
                             <p class="text-black-50 m-0">
                                 {{ __('Comments should be factual, objective and non offensive') }}
@@ -740,15 +764,13 @@
 
                 </div><!--27-->
 
-
                 <div class="col-md-4 my-2">
                     <div class="d-flex justify-content-center my-2">
                         <div>
                             <div class="form-check">
-                                                    @php($contact_for_collection = App\models\Contact::where('client_id', $client->id)->first())
+                                @php($contact_for_collection = App\models\Contact::where('client_id', $client->id)->value('contact_for_collection'))
                                 <input class="form-check-input" type="checkbox" name="contact_for_collection"
-                                    value="0"
-                                    {{$contact_for_collection == '1' ? 'checked' : '' }}
+                                    value="0" {{ $contact_for_collection == '1' ? 'checked' : '' }}
                                     id="contact">
                                 <label class="form-check-label"
                                     for="contact">{{ __('Contact for collection?') }}</label>
@@ -813,6 +835,7 @@
 
                         </div>
                         <div class="col-7 ">
+                        {{-- dd($client->collector->id) --}}
                             <select name="collector_id" class="form-select" id="inputname19">
                                 <option selected disabled value="{{ $client->collector->id }}">
                                     {{ $client->collector->first_name }}</option>
@@ -838,9 +861,7 @@
                         </div>
                         <div class="col-7 ">
                             <select name='collection_scenario_id' class="form-select" id="inputname19">
-                                <option selected disabled value="{{ $client->collectionScenarios->id }}">
-                                    {{ $client->collectionScenarios->en_name ?? '' }}
-                                </option>
+                                <option selected disabled value="{{ $client->collectionScenarios->id }}">{{ $client->collectionScenarios->en_name ?? '' }}</option>
                                 @foreach ($collectionsScenario as $collection)
                                     <option value={{ $collection->id }}>
                                         {{ $collection->en_name }}</option>
