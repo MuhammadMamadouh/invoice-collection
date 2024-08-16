@@ -30,7 +30,10 @@ class CollectionController extends Controller
     public function manualActions()
     {
         $items = Item::with('client')->paginate(10);
-        return view('collection.manual-actions', compact('items'));  
+        $clients = Client::get(); 
+        $users = User::where('active',1)->with('role')->get();
+        $combined = $clients->merge($users);
+        return view('collection.manual-actions', compact('items','combined'));  
     }
    
   
