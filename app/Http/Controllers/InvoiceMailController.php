@@ -12,7 +12,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Mail\InvoiceMail;
+use App\Mail\InoviceMail;
 use Illuminate\Support\Facades\Mail;
 
  
@@ -91,13 +91,13 @@ class InvoiceMailController extends Controller
             ->cc($from)
             ->cc($cc_emails)
             ->bcc($bccEmails) 
-            ->send(new InvoiceMail($attachments, $data));  
+            ->send(new InoviceMail($attachments, $data));  
          } 
          else
          {
             Mail::to($to)
             ->cc($cc_emails)
-            ->bcc($bccEmails)->send(new InvoiceMail($attachments, $data));
+            ->bcc($bccEmails)->send(new InoviceMail($attachments, $data));
          }  
         
          return back()->with('success', 'Invoice sent successfully with attachments.');  
