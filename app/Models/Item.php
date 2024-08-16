@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     use HasFactory;
-    protected $table = 'items';
+    // protected $table = 'items';
 
     // The attributes that are mass assignable
     protected $fillable = [
@@ -53,31 +53,21 @@ class Item extends Model
 
     public function client()
     {
-        return $this->belongsTo(Client::class, 'company_id');
+        return $this->belongsTo(Client::class,'company_id');
     }
-
-    public function itemStatus()
+     public function itemStatus()
     {
         return $this->belongsTo(ItemStatus::class, 'status_id');
     }
-
-    public function takenActions()
+    public function is_overdue()
     {
-        return $this->belongsToMany(ActionsCollectionScenario::class, 'item_taken_actions',"scenario_action_id", 'item_id');
-    }
-
-    // public function toTakeAction()
-    // {
-    //     // get taken actions on first due item
-    //     $firstDueTakenAction = $this->firstDueItem()->takenActions()->pluck('collection_scenario_id');
-    //     return $this->collectionScenarios->scenariosActions()->whereNotIn('id', $firstDueTakenAction)
-    //     ->orderBy('number_of_days')->first();
-    // }
-
-    public function toTakeAction()
+        $is_overdue = now()->gt($this->due_date) ? true : false;
+        return $is_overdue;
+    } 
+    public function overdue()
     {
-        $action =  $this->takenActions()->pluck('collection_scenario_id');
-        return $this->client->collectionScenarios->scenariosActions()->whereNotIn('id',  $action)
-        ->orderBy('number_of_days')->first();
-    }
+        $over_due_days = now()->diffInDays($this->due_date, false) * -1;
+        $overdue = $over_due_days > 0 ? "+$over_due_days" : "$over_due_days";
+        return $overdue;
+    } 
 }

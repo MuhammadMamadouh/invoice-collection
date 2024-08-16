@@ -11,14 +11,18 @@ class ActionsCollectionScenario extends Model
 
     public $table = 'collection_scenario_actions';
 
-    protected $fillable = ['action_name', 'number_of_days', 'action_type', 'collection_scenario_id'];
+    protected $fillable = ['action_name', 'number_of_days', 'action_type', 'collection_scenario_id',
+    'mail_subject','mail_content','language','is_automatic_action'];
 
     public function Collection(){
         return $this->belongsTo(CollectionScenario::class);
     }
 
+
     public function actionType()
     {
         return $this->belongsTo(ActionType::class, 'action_type');
     }
+
 }
+ 

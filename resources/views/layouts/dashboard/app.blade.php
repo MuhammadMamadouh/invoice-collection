@@ -7,31 +7,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Help</title>
     <!--bootstrap-file-->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <!--bootstrap-file-->
     <!--fontawesome-file-->
-    <link rel="stylesheet" href="{{asset('css/all.min.css')}}" >
+    <link rel="stylesheet" href="/css/all.min.css" />
     <!--fontawesome-file-->
-    <link rel="stylesheet" href="{{asset('css/reports.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style-2.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/update.css')}}">
-    <link rel="stylesheet" href="{{asset('css/risk.css')}}" >
-    <link rel="stylesheet" href="{{asset('css/navbar.css')}}" >
-    <link rel="stylesheet" href="{{asset('css/seedemo.css')}}" >
-    <link rel="stylesheet" href="{{asset('css/help.css')}}" >
-    <link rel="stylesheet" href="{{asset('css/search-bar.css')}}">
+    <link rel="stylesheet" href="/css/reports.css">
+    <link rel="stylesheet" href="/css/style-2.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/update.css">
+    <link rel="stylesheet" href="/css/risk.css" />
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/seedemo.css" />
+    <link rel="stylesheet" href="/css/help.css" />
+    <link rel="stylesheet" href="/css/search-bar.css">
     <!--icons-site-->
-    <link rel="icon" type="png" href="{{asset('img/logo.png')}}" >
+    <link rel="icon" type="png" href="/img/logo.png" />
     <!--icons-site-->
     <!--google-font-->
     <!--woow AnimateFiles Css-->
-    <link rel="stylesheet" href="{{asset('/all.min.css')}}" />
+    <link rel="stylesheet" href="/css/all.min.css" />
     <!--woow AnimateFiles Css-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
     <!--google-font-->
+    <script>
+    // Define the function in global scope
+    function showAddActionDiv(collectionId) {
+        document.getElementById('collection_scenario_id').value = collectionId;
+        document.querySelector(".add-action-div").classList.remove("d-none");
+        document.querySelector(".overlay").classList.remove("d-none");
+    }
+    
+<style>
+    .form-control
+    {
+        padding: .175rem .75rem;
+    }
+    .dropdown-row {
+            display: flex;
+            gap: 10px; /* Space between dropdowns */
+        }
+        .dropdown-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping of items if necessary */
+        }
+        .file-input-container {
+            margin-bottom: 10px;
+        }
+</style>
 </head>
 
 <body>
@@ -48,17 +74,15 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-piechart-outlabels"></script>
 
     <!-- <script src="https://cdn.jsdelivr.net/gh/maxshuty/accessible-web-components@latest/dist/simpleRange.min.js"></script> -->
-    <script src="{{asset('js/all.min.js')}}"></script>
-    <script src="{{asset('js/help.js')}}"></script>
-    <script src="{{asset('js/chart-5.js')}}"></script>
-    <script src="{{asset('js/chart-11.js')}}"></script>
-    <script src="{{asset('js/chart-3.js')}}"></script>
-    <script src="{{asset('js/chart-8.js')}}"></script>
-    <script src="{{asset('js/chart-6.js')}}"></script>
-    <script src="{{asset('js/searchBar.js')}}"></script>
-    <script src="{{ asset('js/invoice.js') }}"></script>
-    <script src="{{asset('js/client.js')}}"></script>
-    <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script src="/js/all.min.js"></script>
+    <script src="/js/help.js"></script>
+    <script src="/js/chart-5.js"></script>
+    <script src="/js/chart-11.js"></script>
+    <script src="/js/chart-3.js"></script>
+    <script src="/js/chart-8.js"></script>
+    <script src="/js/chart-6.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/searchBar.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
     $(document).ready(function() {
@@ -77,8 +101,8 @@
         });
     });
     </script>
-    @yield('scripts')
-    {{-- @stack('scripts') --}}
+    <!-- @yield('scripts') -->
+    @stack('scripts')
     <!-- <script src="js/main.js"></script> -->
     <!--scirpt Files-->
 </body>

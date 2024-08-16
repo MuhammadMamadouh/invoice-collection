@@ -2,6 +2,7 @@
 @section('content')
 
 
+
     @include('users.create')
     {{-- ----------------------------------------------------- --}}
     @include('users.edit')
@@ -10,6 +11,8 @@
 
         <p class="mt-3 py-5"><i
                 class="fa-regular fa-star px-3"></i>{{ __('Allow other people to use your account MY DSO MANAGER for your company') }}
+            <span class="fw-bold">{{ __('Business Solutions') }}</span>
+        </p>
             <span class="fw-bold">{{ __('Business Solutions') }}</span>
         </p>
     </section><!--reing-info-->
@@ -122,7 +125,7 @@
                                     onclick="showEditUserDiv({{ $user->id }})"><i class="fa-solid fa-pen"></i></button>
 
                                     <div class="position-fixed w-75 pop-up d-none pt-4 pe-4 " id="edit-user-div-{{ $user->id }}"
-                                        style="top:5% ;left: 50%;transform: translate(-50%);z-index: 10;height: 90vh; overflow-y: scroll;overflow-x: hidden;">
+                                        style="top:5% ;left: 50%;transform: translate(-50%);z-index: 10;height: 100vh; overflow-y: scroll;overflow-x: hidden;">
                                         <div class="bg-white m-auto p-4 shadow-sm position-relative " id="edit-user-div-{{ $user->id }}"
                                             style="border-radius: 10px;">
                                             <span class="btn btn-secondary position-absolute"

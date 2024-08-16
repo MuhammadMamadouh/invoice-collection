@@ -1,4 +1,3 @@
-
 let showItemButton = document.getElementById("show-items-button");
 let showItemContent = document.getElementById("item-contents");
 let isClick = true;
@@ -34,24 +33,24 @@ scoreButton2.addEventListener("click", () => {
   showScore2.style.display = "block";
 });
 
-// function showHolap() {
-//   document.querySelector(".overlay").classList.remove("d-none");
-//   document.querySelector(".company-details").classList.remove("d-none");
-// }
+function showHolap() {
+  document.querySelector(".overlay").classList.remove("d-none");
+  document.querySelector(".company-details").classList.remove("d-none");
+}
 
-// function closeHolap() {
-//   document.querySelector(".overlay").classList.add("d-none");
-//   document.querySelector(".company-details").classList.add("d-none");
-// }
-// function EditHolap() {
-//   document.querySelector(".holap-first").classList.add("d-none");
-//   document.querySelector(".holap-second").classList.remove("d-none");
-// }
+function closeHolap() {
+  document.querySelector(".overlay").classList.add("d-none");
+  document.querySelector(".company-details").classList.add("d-none");
+}
+function EditHolap() {
+  document.querySelector(".holap-first").classList.add("d-none");
+  document.querySelector(".holap-second").classList.remove("d-none");
+}
 
-// function closeEditHolap() {
-//   document.querySelector(".holap-first").classList.remove("d-none");
-//   document.querySelector(".holap-second").classList.add("d-none");
-// }
+function closeEditHolap() {
+  document.querySelector(".holap-first").classList.remove("d-none");
+  document.querySelector(".holap-second").classList.add("d-none");
+}
 
 let hideTable = document.querySelector(".collection-table");
 let showHistory = document.getElementById("page-not-found");
@@ -332,6 +331,24 @@ function associatedFun() {
 };
 
 
+function showInvoice() {
+  document.querySelector(".overlay").classList.remove("d-none");
+  document.querySelector(".invoice").classList.remove("d-none");
+}
+
+function closeInvoice() {
+  document.querySelector(".overlay").classList.add("d-none");
+  document.querySelector(".invoice").classList.add("d-none");
+}
+function EditInvoice() {
+  document.querySelector(".invoice-first").classList.add("d-none");
+  document.querySelector(".invoice-second").classList.remove("d-none");
+}
+
+function closeEditInvoice() {
+  document.querySelector(".invoice-first").classList.remove("d-none");
+  document.querySelector(".invoice-second").classList.add("d-none");
+}
 
 
 function showInvioce2(){
@@ -449,18 +466,17 @@ document.getElementById("addinputs-2").addEventListener("click", function () {
   newInputRow.appendChild(select2);
   container.appendChild(newInputRow);
 });
-$(document).ready(function() {
-  
 
-  // You can now call these functions from within this scope.
-  // For example:
-  // showHollabTwo();
-  // showHollab();
-});
-
-
-
-
+let holabOne = document.getElementById("hide-hoalp-1");
+let holabTwo = document.getElementById("hide-hoalp-2");
+function showHollabTwo() {
+  holabOne.classList.add("d-none");
+  holabTwo.classList.remove("d-none");
+};
+function showHollab() {
+  holabOne.classList.remove("d-none");
+  holabTwo.classList.add("d-none");
+};
 
 
 function associateFiles(){
@@ -554,16 +570,7 @@ function showSearchResults(){
     document.querySelector(".overlay").classList.remove("d-none")
   }
 
-  function showAddActionDiv(){
-    document.querySelector(".add-action-div").classList.remove("d-none")
-    document.querySelector(".overlay").classList.remove("d-none")
-  }
   
-  function hideAddActionDiv(){
-    document.querySelector(".add-action-div").classList.add("d-none")
-    document.querySelector(".overlay").classList.add("d-none")
-    document.querySelector(".new-collection-scenario").classList.add("d-none")
-  }
   
   
   function showNewCollectionDiv(){

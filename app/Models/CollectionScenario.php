@@ -13,13 +13,11 @@ class CollectionScenario extends Model
 
     protected $fillable = ['en_name'];
 
-    public function scenariosActions()
-    {
+    public function actionScenarios(){
         return $this->hasMany(ActionsCollectionScenario::class, 'collection_scenario_id');
     }
 
-    public function client()
-    {
+    public function client(){
         return $this->hasMany(Client::class);
     }
 }
