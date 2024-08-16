@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActionType extends Model
 {
-    protected $fillable=['en_name',];
+    protected $fillable=['en_name', "icon"];
 
     use HasFactory;
 
     public function actions(){
         return $this->hasMany(Action::class);
     }
+    
 }

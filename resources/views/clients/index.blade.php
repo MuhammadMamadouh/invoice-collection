@@ -89,6 +89,11 @@
                             </select>
                             <div>actions display on 134</div>
                         </div>
+                        @if (session()->has('message'))
+                            <div class="alert alert-success" role="alert">
+                                <strong>{{ session('message') }}</strong>
+                            </div>
+                        @endif
                         <form>
                             <div class="form-group">
                                 <input type="text" class="form-control" aria-describedby="emailHelp"
@@ -198,8 +203,8 @@
                                     @forelse ($client->clientGroup as $group)
                                         <p class=""><a href="#">{{ $group->en_name }}</a></p>
                                     @empty
-                                    <p class=""><a href="#">-</a></p>
-                                        @endforelse
+                                        <p class=""><a href="#">-</a></p>
+                                    @endforelse
                                 </div>
                                 <div class="col-1 hide">
                                     <p class="fw-bold">4Front</p>
@@ -259,32 +264,33 @@
                                 <div class="row px-4 align-items-center m-0">
                                     <div class="col-lg-4 col-sm-6 col-12 mb-2">
                                         <div class="btn text-light btn-secondary px-2" onclick="showInvioce2()">
-                                            <i class="fa-solid fa-pen-to-square"></i>&ensp;{{__("Change status >Add
-                                            comment >Set next action")}}
+                                            <i
+                                                class="fa-solid fa-pen-to-square"></i>&ensp;{{ __("Change status >Add
+                                                                                            comment >Set next action") }}
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-3 col-6 mb-2">
                                         <div class="btn text-light btn-primary px-2" onclick="associateFiles()">
-                                            <i class="fa-solid fa-link"></i>&ensp;{{__("Associate File")}}
+                                            <i class="fa-solid fa-link"></i>&ensp;{{ __('Associate File') }}
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-3 col-6 mb-2" onclick="payViaDirectLink()">
                                         <div class="btn text-light btn-primary px-2">
-                                            {{__("Pay via direct link")}}
+                                            {{ __('Pay via direct link') }}
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-3 col-6 mb-2">
                                         <div class="btn text-dark btn-light px-2">
-                                            {{__("Clear the transaction")}}
+                                            {{ __('Clear the transaction') }}
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-3 col-6 mb-2">
                                         <select class="form-select bg-light" aria-label="Default select example">
-                                            <option selected disabled>{{__("Ignore the transaction")}} :</option>
+                                            <option selected disabled>{{ __('Ignore the transaction') }} :</option>
                                             <option value="1">Yes</option>
                                             <option value="1">No</option>
                                             <option value="1" class="text-primary">
-                                                <a href="#"> {{__("Read more")}}</a>
+                                                <a href="#"> {{ __('Read more') }}</a>
                                             </option>
                                         </select>
                                     </div>
@@ -293,32 +299,32 @@
                                             <div class="">
                                                 <div class="btn-group">
                                                     <button type="button" class="btn text-light"><span><i
-                                                                class="fa-solid fa-download"></i>&ensp;</span>{{__("Export
-                                                        this data to
-                                                        excel")}}</button>
+                                                                class="fa-solid fa-download"></i>&ensp;</span>{{ __("Export
+                                                                                                                        this data to
+                                                                                                                        excel") }}</button>
                                                     <button type="button"
                                                         class="button-2 text-light btn dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <span class="visually-hidden">{{__("Toggle Dropdown")}}</span>
+                                                        <span class="visually-hidden">{{ __('Toggle Dropdown') }}</span>
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li>
-                                                            <p>{{__("file fromat")}}:</p>
+                                                            <p>{{ __('file fromat') }}:</p>
                                                         </li>
                                                         <div class="radios-inp d-flex  justify-content-around">
                                                             <li class="dropdown-item d-flex"><input type="radio"
                                                                     name="fils" id="csv"><label
-                                                                    for="fils">{{__("csv")}}</label></li>
+                                                                    for="fils">{{ __('csv') }}</label></li>
                                                             <li class="dropdown-item d-flex"><input type="radio"
                                                                     name="fils" id="xls"><label
-                                                                    for="fils">{{__("xls")}}</label>
+                                                                    for="fils">{{ __('xls') }}</label>
                                                             </li>
                                                         </div>
                                                         <li>
                                                             <hr class="dropdown-divider">
                                                         </li>
                                                         <li>
-                                                            <p>{{__("encoding")}}:</p>
+                                                            <p>{{ __('encoding') }}:</p>
                                                         </li>
                                                         <select name="" style="width: 100%; font-size: 12px;">
                                                             <option value="" selected>UTF-8 (Unicode /
@@ -372,7 +378,7 @@
                                                         <li class="mt-3 "><button type="button" class="btn"
                                                                 style="width: 100%;"><span><i
                                                                         class="fa-solid
-                                                                                fa-download"></i>&ensp;</span>{{__("download")}}</button>
+                                                                                fa-download"></i>&ensp;</span>{{ __('download') }}</button>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -2422,7 +2428,7 @@
                 </div>
                 @endforelse
             </div>
-                {{-- @include('clients.client_data_model', [$client]) --}}
+            {{-- @include('clients.client_data_model', [$client]) --}}
             <div class="row mb-3">
                 <div class="col-md-2 col-4"></div>
                 <div class="form-group col-md-4 col-8">

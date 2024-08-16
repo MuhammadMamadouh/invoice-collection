@@ -12,7 +12,7 @@ class Action extends Model
 
     public function actionTypes()
     {
-       return  $this->belongsTo(ActionType::class);
+        return  $this->belongsTo(ActionType::class);
     }
 
 }

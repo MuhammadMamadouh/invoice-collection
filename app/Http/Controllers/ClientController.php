@@ -7,8 +7,10 @@ use App\Enum\RoleEnum;
 use App\Http\Requests\ClientRequest;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
+use App\Models\ClientRole;
 use App\Models\ClientsGroup;
 use App\Models\CollectionScenario;
+use App\Models\Contact;
 use App\Models\Currency;
 use App\Models\Item;
 use App\Models\ItemType;
@@ -16,6 +18,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class ClientController extends Controller
@@ -27,13 +30,14 @@ class ClientController extends Controller
     {
 
         $clients = Client::with([
-        'collector',
-        'items',
-        'items.itemType',
-        'items.itemStatus',
-        'items.currency',
-        'collectionScenarios',
-        'firstDueItem'
+            'collector',
+            'items',
+            'items.itemType',
+            'items.itemStatus',
+            'items.currency',
+            'collectionScenarios',
+            'firstDueItem',
+            'contacts',
         ])->paginate(30);
         $clientResource = ClientResource::collection($clients)->response()->getData();
         $clientResource = $clientResource->data;
@@ -42,7 +46,9 @@ class ClientController extends Controller
         $currencies = Currency::all();
         $clientGroups = ClientsGroup::all();
         $collectors = User::collectors()->get();
-        return view('clients.index', compact('clientResource', 'collectionsScenario', 'collectors', 'itemTypes', 'clients', 'currencies', 'clientGroups'));
+        $clientRoles = ClientRole::all();
+        return view('clients.index', compact('clientResource', 'collectionsScenario', 
+        'collectors', 'itemTypes', 'clients', 'currencies', 'clientGroups', 'clientRoles'));
 
     }
 
@@ -79,24 +85,24 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
         $clientResource = new ClientResource($client);
         $clients = Client::all();
-        $collectors = User::collectors()->get();;
+        $collectors = User::collectors()->get();
+        ;
         $collectionsScenario = CollectionScenario::all();
         $currencies = Currency::all();
         $itemTypes = ItemType::all();
-        return view('clients.client_data_model', compact('clientResource', 'collectors', 'client', 'clients', 'itemTypes', 'currencies','collectionsScenario' ));
+        return view('clients.client_data_model', compact('clientResource', 'collectors', 'client', 'clients', 'itemTypes', 'currencies', 'collectionsScenario'));
     }
     public function show($id)
     {
         $client = Client::findOrFail($id);
         $client = new ClientResource($client);
         $client = $client->response()->getData()->data;
-        // $client = $client->data;
         $clients = Client::all();
         $collectors = User::collectors()->get();
         $collectionsScenario = CollectionScenario::all();
         $currencies = Currency::all();
         $itemTypes = ItemType::all();
-        return view('clients.show', compact( 'collectors', 'client', 'clients', 'itemTypes', 'currencies','collectionsScenario' ));
+        return view('clients.show', compact('collectors', 'client', 'clients', 'itemTypes', 'currencies', 'collectionsScenario'));
     }
 
     /**
@@ -113,9 +119,16 @@ class ClientController extends Controller
      */
     public function update(ClientRequest $request, $id)
     {
-        $client = Client::findOrFail($id);
         try {
-            $client->update($request->validated());
+            DB::transaction(function () use ($request, $id) {
+                
+                $client = Client::findOrFail($id);
+                $client->update($request->validated());
+
+                if($request->has('role_id')){
+                    Contact::updateOrCreate(['role_id' => $request->role_id], $request->all());
+                }
+            });
             return to_route('clients.index')->with(['message' => __('edited successfully')]);
         } catch (Exception $e) {
             Log::info($e->getMessage());

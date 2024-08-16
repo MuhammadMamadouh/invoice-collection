@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call(ClientSeeder::class); // faker to remove in production
         $this->call(ItemSeeder::class);
+        $this->call(ClientRolesSeeder::class);
 
 
     }

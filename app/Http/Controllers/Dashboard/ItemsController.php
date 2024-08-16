@@ -29,11 +29,11 @@ class ItemsController extends Controller
         return redirect()->back()->with('success', __('created successfully'));
     }
 
-    public function update(ItemRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $item = Item::findOrFail($id);
         try{
-            $item->update($request->validated());
+            $item->update($request->all());
             return redirect()->back()->with('message', __('created successfully'));
         }catch(Exception $e){
             Log::info($e->getMessage());

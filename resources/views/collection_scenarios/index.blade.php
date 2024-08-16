@@ -390,7 +390,8 @@ z-index: 99999;
                                         </div>
                                     </div>
                                 </form>
-                                @foreach ($collection->ActionScenarios as $ActionScenario)
+
+                                @foreach ($collection->scenariosActions as $ActionScenario)
                                     <div class="content-text-2">
                                         <ul class="d-flex">
                                             <span>@</span>
