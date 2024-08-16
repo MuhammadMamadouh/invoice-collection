@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Attachment;
 
-class InvoiceMail extends Mailable
+class InoviceMail extends Mailable
 {
     use Queueable, SerializesModels;
 
