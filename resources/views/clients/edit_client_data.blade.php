@@ -112,7 +112,7 @@
                             {{-- {{dd($roleId->clientRole->name)}} --}}
                             <select name="role_id" class="form-select w-100" id="inputname60"
                                 aria-label="Default select example">
-                                <option value="{{ $roleId->role_id }}" disabled selected>{{ $roleId->clientRole->name ?? 'Select One' }}</option>
+                                <option value="{{ $roleId->role_id ?? null}}" disabled selected>{{ $roleId->clientRole->name ?? 'Select One' }}</option>
                                 @foreach ($clientRoles as $role)
                                     <option value="{{ $role->id }}">{{ $role->name }}</option>
                                 @endforeach

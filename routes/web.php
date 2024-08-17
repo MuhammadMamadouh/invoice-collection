@@ -16,6 +16,9 @@ use App\Http\Controllers\ImportExportController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\InvoiceMailController;
+use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\ScoreCriteriaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -83,6 +86,11 @@ Route::post('/collection_scenarios/actions', [ActionsCollectionScenarioControlle
 Route::post('/collection_scenarios/actions/{id}', [ActionsCollectionScenarioController::class, 'update'])->name('collection.update');
 Route::post('/collection_scenarios/duplicate/{id}', [CollectionScenarioController::class, 'duplicateScenario'])->name('collection.duplicateScenario');
 Route::resource("/collection_scenarios", CollectionScenarioController::class);
+
+//-----------------ManageRisk--------------------------------
+Route::post('/manage_risk/criteria', [ScoreCriteriaController::class, 'store'])->name('scoreCriteria.store');
+Route::patch('/manage_risk/criteria/edit/{id}', [ScoreCriteriaController::class, 'update'])->name('scoreCriteria.update');
+Route::resource('/manage_risk', ScoreController::class);
 
 
 Route::get('collection', [CollectionController::class,'index'])->name('collection.automatic.actions');
