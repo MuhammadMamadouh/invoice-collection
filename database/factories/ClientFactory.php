@@ -44,6 +44,7 @@ class ClientFactory extends Factory
             'credit_limit'                  => fake()->numberBetween(100000, 999999),
             'late_payment_penalties'        => fake()->boolean(),
             'recovery_cost'                 => fake()->boolean(),
+            'block_this_account'            => fake()->boolean(),
             'interactive_emails'            => fake()->boolean(),
             'customer_custom_field_1'       => fake()->text(30),
             'customer_custom_field_2'       => fake()->text(30),

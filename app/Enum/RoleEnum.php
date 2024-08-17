@@ -12,7 +12,7 @@ class RoleEnum
     const FINANCIAL_CONTROLLER = 5;
     const EXECUTIVE_OFFICER = 6;
     const GUEST = 7;
-    
+
 
     const ROLES = [
         'Credit Manager',
@@ -22,5 +22,13 @@ class RoleEnum
         'Financial Controller',
         'Executive Officer',
         'Guest'
+    ];
+
+    const CLIENTROLES = [
+        'accountant',
+        'client',
+        'company',
+        'executive_Officer',
+        'other',
     ];
 }

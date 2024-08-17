@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('items', function (Blueprint $table) {
-            $table->string('trans_no')->after('company_id');
+        Schema::create('client_roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('items', function (Blueprint $table) {
-            $table->dropColumn('trans_no');
-        });
+        Schema::dropIfExists('client_roles');
     }
 };
