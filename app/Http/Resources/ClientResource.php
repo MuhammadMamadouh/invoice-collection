@@ -52,7 +52,7 @@ class ClientResource extends JsonResource
             'customer_custom_field_1'   => $this->customer_custom_field_1,
             'customer_custom_field_2'   => $this->customer_custom_field_2,
             'items'                     => ItemResource::collection($this->items),
-            'collectionScenarios'       => $this->collectionScenarios ? CollectionScenarioResource::make($this->collectionScenarios) : [],
+            'collectionScenarios'       => $this->collectionScenario ? CollectionScenarioResource::make($this->collectionScenario) : [],
             'collector'                 => new UserResource($this->collector),
             'clientGroup'               => ClientGroupResource::collection($this->clientsGroups)->toArray($request) ?? [],
             'firstDueItem'              => $this->firstDueItem ? ItemResource::make($this->firstDueItem()->first()) : [],

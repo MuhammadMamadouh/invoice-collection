@@ -11,7 +11,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsGroupController;
 use App\Http\Controllers\Dashboard\ItemsController;
-use App\Http\Controllers\Dashboard\ItemStatusController; 
+use App\Http\Controllers\Dashboard\ItemStatusController;
 use App\Http\Controllers\ImportExportController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CollectionController;
@@ -86,7 +86,7 @@ Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
 
 Route::get('collection', [CollectionController::class,'index'])->name('collection.automatic.actions');
-Route::get('collection-manual-actions', [CollectionController::class,'manualActions'])->name('collection.manual.actions'); 
+Route::get('collection-manual-actions', [CollectionController::class,'manualActions'])->name('collection.manual.actions');
 Route::post('send/invoice', [InvoiceMailController::class,'sendInvoice'])->name('send.invoice');
 
 Route::get('actions/create', [ActionController::class,'create']);
@@ -113,3 +113,5 @@ Route::get('switch-language/{locale}', [LanguageController::class, 'switchLangua
 
 Route::get('import-export', [ImportExportController::class, 'importExportView'])->name('import-export');
 Route::post('import', [ImportExportController::class, 'import'])->name('import');
+
+Route::get('credit-managment', [App\Http\Controllers\CreditValidationController::class, 'index'])->name('credit-managment.index');

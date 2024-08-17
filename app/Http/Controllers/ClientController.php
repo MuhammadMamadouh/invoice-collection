@@ -35,7 +35,7 @@ class ClientController extends Controller
             'items.itemType',
             'items.itemStatus',
             'items.currency',
-            'collectionScenarios',
+            'collectionScenario',
             'firstDueItem',
             'contacts',
         ])->paginate(30);
@@ -47,7 +47,7 @@ class ClientController extends Controller
         $clientGroups = ClientsGroup::all();
         $collectors = User::collectors()->get();
         $clientRoles = ClientRole::all();
-        return view('clients.index', compact('clientResource', 'collectionsScenario', 
+        return view('clients.index', compact('clientResource', 'collectionsScenario',
         'collectors', 'itemTypes', 'clients', 'currencies', 'clientGroups', 'clientRoles'));
 
     }
@@ -121,7 +121,7 @@ class ClientController extends Controller
     {
         try {
             DB::transaction(function () use ($request, $id) {
-                
+
                 $client = Client::findOrFail($id);
                 $client->update($request->validated());
 
