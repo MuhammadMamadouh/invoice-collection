@@ -609,7 +609,7 @@
         <span onclick="hideEditActionnModal({{$collectionScenarioAction['id']}})">×</span>
         <form action="{{route('send.invoice')}}" method="post" enctype="multipart/form-data">
         @csrf         
-        <div class="row mt-3">
+        <div class="row mt-3"> 
           <div class="col-md-2">
             <h4>From :</h4>
           </div><!--l-1-->
@@ -640,7 +640,7 @@
               <option value="" selected="" disabled=""> </option>
               @foreach ($combined as $item)
               @if($item instanceof \App\Models\Client)
-              <option value="mohamed@gmail.com">{{$item->company_code}} / {{$item->company_name}}</option>
+              <option value="eng.mohamedabdelmeged900@gmail.com">{{$item->company_code}} / {{$item->company_name}}</option>
               @elseif($item instanceof \App\Models\User)
               <option value="{{$item->email}}">{{$item->first_name}} {{"<"}}{{$item->email}}{{">"}} (Function : {{$item->function}} / Role : {{$item->role->name}})  *** {{$item->role->name}} ***</option>
               @endif

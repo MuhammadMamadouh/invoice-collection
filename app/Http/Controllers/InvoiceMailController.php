@@ -12,11 +12,12 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Mail\InvoiceMail;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\InvoiceMail;
+//use Illuminate\Support\Facades\Mail; 
 
  
-class InvoiceMailController extends Controller
+class InvoiceMailController extends Controller 
 {
     public function sendInvoice(Request $request)
     {
@@ -60,7 +61,6 @@ class InvoiceMailController extends Controller
             'from'=>$from,
             'to'=>$to,
             'subject' => $subject,
-            'client_items'=>$client_items,
             'items_amount_overdue_exclude_disputes_include_late_penalties' => 12354600,
             'interactive_page_button' => 'View my account statement',
             'my_company_signature' => '',
@@ -95,12 +95,12 @@ class InvoiceMailController extends Controller
          } 
          else
          {
-            Mail::to($to)
-            ->cc($cc_emails)
-            ->bcc($bccEmails)->send(new InvoiceMail($attachments, $data));
+            // Mail::to($to)
+            // ->send(new InvoiceMail($attachments, $data));
+            Mail::to($to)->send(new InvoiceMail($attachments, $data));
          }  
         
          return back()->with('success', 'Invoice sent successfully with attachments.');  
     }
-}
-      
+} 
+       
