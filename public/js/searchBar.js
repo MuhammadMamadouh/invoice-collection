@@ -48,6 +48,9 @@ function showTable() {
     document.querySelector(".this-tabels").classList.remove("d-none");
 }
 
+
+
+
 // settings-manage-validation
 function showAddLevelDiv() {
     document.querySelector(".add-level-div").classList.remove("d-none");
@@ -63,25 +66,6 @@ function hideAddLevelDiv() {
     document.querySelector(".overlay").classList.add("d-none");
 }
 
-// settings-manage-risk
-function showNewScoringDiv() {
-    document.querySelector(".new-scoring-div").classList.remove("d-none");
-    document.querySelector(".overlay").classList.remove("d-none");
-}
-function showAddCriterionDiv() {
-    document.querySelector(".add-criterion-div").classList.remove("d-none");
-    document.querySelector(".overlay").classList.remove("d-none");
-}
-function showEditCriterionDiv() {
-    document.querySelector(".edit-criterion-div").classList.remove("d-none");
-    document.querySelector(".overlay").classList.remove("d-none");
-}
-function hideNewScoringDiv() {
-    document.querySelector(".new-scoring-div").classList.add("d-none");
-    document.querySelector(".add-criterion-div").classList.add("d-none");
-    document.querySelector(".edit-criterion-div").classList.add("d-none");
-    document.querySelector(".overlay").classList.add("d-none");
-}
 
 // settings-manage-item-status
 function showNewStatusDiv() {

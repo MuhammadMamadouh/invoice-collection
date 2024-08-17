@@ -55,7 +55,7 @@ class Item extends Model
     {
         return $this->belongsTo(Client::class,'company_id');
     }
-     public function itemStatus()
+    public function itemStatus()
     {
         return $this->belongsTo(ItemStatus::class, 'status_id');
     }
