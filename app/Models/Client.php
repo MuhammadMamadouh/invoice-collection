@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Client extends Model
 {
-    use HasFactory;
+    use HasFactory, HasFilter;
 
     protected $fillable = [
         'company_name',
@@ -84,5 +85,5 @@ class Client extends Model
     {
         return $this->hasMany(Contact::class, 'client_id');
     }
-    
+
 }
