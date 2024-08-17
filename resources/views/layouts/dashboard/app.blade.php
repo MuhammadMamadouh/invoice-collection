@@ -80,6 +80,8 @@
     <script src="/js/chart-11.js"></script>
     <script src="/js/chart-3.js"></script>
     <script src="/js/chart-8.js"></script>
+    <script src="/js/client.js"></script>
+    <script src="/js/invoice.js"></script>
     <script src="/js/chart-6.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/searchBar.js"></script>
