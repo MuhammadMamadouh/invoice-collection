@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enum\Role;
 use App\Enum\RoleEnum;
+use App\Filters\Client\ClientFilter;
 use App\Http\Requests\ClientRequest;
 use App\Http\Resources\ClientResource;
 use App\Models\Client;
@@ -38,7 +39,9 @@ class ClientController extends Controller
             'collectionScenario',
             'firstDueItem',
             'contacts',
-        ])->paginate(30);
+        ])->filter(new ClientFilter(request()))->paginate(30);
+
+        dd($clients);
         $clientResource = ClientResource::collection($clients)->response()->getData();
         $clientResource = $clientResource->data;
         $collectionsScenario = CollectionScenario::all();
