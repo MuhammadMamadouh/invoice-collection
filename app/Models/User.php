@@ -61,7 +61,13 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function client(){
+    public function client()
+    {
         return $this->hasOne(Client::class);
+    }
+
+    public function limitsValidations()
+    {
+        return $this->hasMany(CreditLimitsValidation::class, 'user_id');
     }
 }
