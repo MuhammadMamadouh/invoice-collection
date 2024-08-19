@@ -83,6 +83,8 @@
     <script src="/js/chart-8.js"></script>
     <script src="/js/client.js"></script>
     <script src="/js/invoice.js"></script>
+    <script src="/js/credit_limits_validation.js"></script>
+    <script src="/js/manage_risk.js"></script>
     <script src="/js/chart-6.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/searchBar.js"></script>

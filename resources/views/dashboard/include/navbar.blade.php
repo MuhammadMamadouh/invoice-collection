@@ -371,15 +371,15 @@
                                         </path>
                                     </svg><!-- <i class="fa-regular fa-flag"></i> Font Awesome fontawesome.com -->
                                     Manage payment profiles</a></li>
-                            <li><a class="dropdown-item text-primary" href="#"><svg class="svg-inline--fa fa-bolt"
+                            <li><a class="dropdown-item text-primary" href="{{route('manage_risk.index')}}"><svg class="svg-inline--fa fa-bolt"
                                         aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bolt"
                                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
                                         data-fa-i2svg="">
                                         <path fill="currentColor"
                                             d="M240.5 224H352C365.3 224 377.3 232.3 381.1 244.7C386.6 257.2 383.1 271.3 373.1 280.1L117.1 504.1C105.8 513.9 89.27 514.7 77.19 505.9C65.1 497.1 60.7 481.1 66.59 467.4L143.5 288H31.1C18.67 288 6.733 279.7 2.044 267.3C-2.645 254.8 .8944 240.7 10.93 231.9L266.9 7.918C278.2-1.92 294.7-2.669 306.8 6.114C318.9 14.9 323.3 30.87 317.4 44.61L240.5 224z">
                                         </path>
-                                    </svg><!-- <i class="fa-solid fa-bolt"></i> Font Awesome fontawesome.com --> Manage
-                                    risk</a></li>
+                                    </svg><!-- <i class="fa-solid fa-bolt"></i> Font Awesome fontawesome.com --> {{__("Manage
+                                    risk")}}</a></li>
                             <li><a class="dropdown-item text-primary" href="{{route('credit-managment.index')}}"><svg class="svg-inline--fa fa-computer"
                                         aria-hidden="true" focusable="false" data-prefix="fas" data-icon="computer"
                                         role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
@@ -388,8 +388,8 @@
                                             d="M400 32C426.5 32 448 53.49 448 80V336C448 362.5 426.5 384 400 384H266.7L277.3 416H352C369.7 416 384 430.3 384 448C384 465.7 369.7 480 352 480H96C78.33 480 64 465.7 64 448C64 430.3 78.33 416 96 416H170.7L181.3 384H48C21.49 384 0 362.5 0 336V80C0 53.49 21.49 32 48 32H400zM64 96V320H384V96H64zM592 32C618.5 32 640 53.49 640 80V432C640 458.5 618.5 480 592 480H528C501.5 480 480 458.5 480 432V80C480 53.49 501.5 32 528 32H592zM544 96C535.2 96 528 103.2 528 112C528 120.8 535.2 128 544 128H576C584.8 128 592 120.8 592 112C592 103.2 584.8 96 576 96H544zM544 192H576C584.8 192 592 184.8 592 176C592 167.2 584.8 160 576 160H544C535.2 160 528 167.2 528 176C528 184.8 535.2 192 544 192zM560 400C577.7 400 592 385.7 592 368C592 350.3 577.7 336 560 336C542.3 336 528 350.3 528 368C528 385.7 542.3 400 560 400z">
                                         </path>
                                     </svg>
-                                    <!-- <i class="fa-solid fa-computer"></i> Font Awesome fontawesome.com -->Manage
-                                    credit limits validation</a></li>
+                                    <!-- <i class="fa-solid fa-computer"></i> Font Awesome fontawesome.com -->{{__("Manage
+                                    credit limits validation")}}</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
