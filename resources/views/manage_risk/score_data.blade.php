@@ -10,7 +10,7 @@
                 <h4 class="">{{ __('Manage Risk') }}</h4>
             </div><!--t-manage-->
             <div class="s-c-notation d-flex ">
-                <a href="{{route('settings.index')}}" class="text-dark  text-decoration-none m-3"
+                <a href="{{route('manage_risk_settings.index')}}" class="text-dark  text-decoration-none m-3"
                     style="padding: 5px 10px;"><i class="fa-solid fa-gear"></i>{{ __('Setting') }}</a>
                 <a href="#" class=" text-decoration-none border-primary border  m-3"
                     style="padding: 5px 10px; border-width:2px !important;">{{ __('Manage Credit Notation') }}</a>

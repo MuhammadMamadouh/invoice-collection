@@ -67,9 +67,9 @@
                                                 </span>
                                                 <a href="#" class="">{{ $limitsValidation->user->email }}</a>
                                             </div>
-                                            <div class="delete-and-edit mt-2 mb-2 ">
-                                                <div class="btn btn-secondary" onclick="showEditLevelDiv({{$limitsValidation->id}})"><span><i
-                                                            class="fa-solid fa-pen"></i></span></div>
+                                            <div class="delete-and-edit mt-2 mb-2" style="display: flex;">
+                                                <button class="btn btn-secondary"style="margin: 0px 10px;" onclick="showEditLevelDiv({{$limitsValidation->id}})"><span><i
+                                                            class="fa-solid fa-pen"></i></span></button>
                                                 <form action="{{route('credit-managment.destroy', $limitsValidation->id)}}" method="POST">
                                                 @csrf
                                                 @method('delete')
@@ -91,7 +91,8 @@
             </div>
         </div>
     </section>
-    <!--the-table-->
+
+    <!----------------------------------the-request-history-table----------------------------------------->
     <div class="tables-two-validations d-none " id="tabTwo">
         <div class="d-flex justify-content-end container-fluid">
             <div class="form-group col-md-4 col-sm-6">
@@ -388,44 +389,43 @@
             </table>
         </div>
     </div>
+
+    <!---------------------------------------setting------------------------------------------------------->
     <div class="settings-tables-show d-none" id="tabThree">
-        <div class="container-fluid">
-            <div class="setingone mt-3 mb-3 d-flex justify-content-between">
-                <h6>If no validation took place </h6>
-                <div class="col-lg-6" style="font-size: 13.7px;">If no validation took place
-                    <select name="nbJoursExpiration">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                    </select>
-                    days after the request then <select name="actionExpiration">
-                        <option value="cancel" selected="selected">Cancel</option>
-                        <option value="valid">Validate</option>
-                    </select> it
-                </div>
-            </div>
-            <div class="setingone mt-3 mb-3 d-flex justify-content-between">
-                <p>Request validation of lower levels?</p>
-                <div class="col-lg-6">
-                    <div class=" checks-bx d-flex ">
-                        <input type="radio" name="yes" id="yes">
-                        <label for="yes">yes</label>
-                        <input type="radio" name="yes" id="no">
-                        <label for="no">no</label>
+        <form action="{{route('settings.storeSettings')}}" method="POST">
+            @csrf
+            <div class="container-fluid">
+                <div class="setingone mt-3 mb-3 d-flex justify-content-between">
+                    <h6>{{__("If no validation took place")}} </h6>
+                    <div class="col-lg-6" style="font-size: 13.7px;">{{__("If no validation took place")}}
+                        <select name="num_of_days">
+                            <option value="" selected disabled>{{__("Select One")}}</option>
+                            @foreach($numbers as $number)
+                            <option value="{{$number}}">{{$number}}</option>
+                            @endforeach
+                        </select>
+                        {{__("days after the request then")}} <select name="actions">
+                            <option value="" selected disabled>{{__("Select One")}}</option>
+                            <option value="{{'cancel'}}">{{__("Cancel")}}</option>
+                            <option value="{{'validate'}}">{{__("Validate")}}</option>
+                        </select> {{__("it")}}
                     </div>
                 </div>
+                <div class="setingone mt-3 mb-3 d-flex justify-content-between">
+                    <p>{{__("Request validation of lower levels")}}?</p>
+                    <div class="col-lg-6">
+                        <div class=" checks-bx d-flex ">
+                            <input type="radio" name="validation_of_lower_levels" id="yes" value='1'>
+                            <label for="yes">{{__("Yes")}}</label>
+                            <input type="radio" name="validation_of_lower_levels" id="no" value='0'>
+                            <label for="no">{{__("No")}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="valid-buttons text-center mt-3 mb-3">
+                    <button type="submit" class="btn btn-secondary  "><span><i class="fa-solid fa-check"></i></span> {{__("submit")}}</button>
+                </div>
             </div>
-            <div class="valid-buttons text-center mt-3 mb-3">
-                <a href="#" class="btn btn-secondary  "><span><i class="fa-solid fa-check"></i></span> submit</a>
-            </div>
-        </div>
+        </form>
     </div>
 @endsection

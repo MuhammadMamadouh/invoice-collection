@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CreditLimitsValidation;
+use App\Models\SettingCreditValidation;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Exception;
@@ -15,9 +16,10 @@ class CreditValidationController extends Controller
      */
     public function index()
     {
+        $numbers = range(1, 365);
         $limitsValidations =  CreditLimitsValidation::with('user')->get();
         $users = User::all();
-        return view('credit_validation.index', compact('limitsValidations', 'users'));
+        return view('credit_validation.index', compact('limitsValidations', 'users', 'numbers'));
     }
 
     public function store(Request $request)
@@ -59,6 +61,22 @@ class CreditValidationController extends Controller
         }catch(Exception $e){
             Log::info($e->getMessage());
             return to_route('credit-managment.index')->with(['message' => $e->getMessage()]);
+        }
+    }
+
+    public function storeSettings(Request $request)
+    {
+        $data = $request->validate([
+            'num_of_days' => 'required|numeric',
+            'actions' => 'required|in:validate,cancel',
+            'validation_of_lower_levels' => 'required|boolean',
+        ]);
+        try{
+            SettingCreditValidation::create($data);
+            return back()->with(['message' => 'success']);
+        }catch(Exception $e){
+            Log::info($e->getMessage());
+            return back()->with(['message' => $e->getMessage()]);
         }
     }
 }
