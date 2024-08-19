@@ -10,13 +10,11 @@
                 <h4 class="">{{ __('Manage Risk') }}</h4>
             </div><!--t-manage-->
             <div class="s-c-notation d-flex ">
-                <a href="settings-manage-risk-settings.html" class="text-dark  text-decoration-none m-3"
+                <a href="{{route('settings.index')}}" class="text-dark  text-decoration-none m-3"
                     style="padding: 5px 10px;"><i class="fa-solid fa-gear"></i>{{ __('Setting') }}</a>
                 <a href="#" class=" text-decoration-none border-primary border  m-3"
                     style="padding: 5px 10px; border-width:2px !important;">{{ __('Manage Credit Notation') }}</a>
             </div><!--s-c-notation-->
-
-
         </div><!--container-->
         <div class="row justify-content-end ">
             <div class="col-auto">
@@ -38,7 +36,6 @@
             <strong>{{ session('message') }}</strong>
         </div>
     @endif
-
     <div class="three-content mt-2 mb-0">
         <div class="container-fluid">
             <div class="bg p-4" style="background: #cfcbcb; min-height: 50vh;">

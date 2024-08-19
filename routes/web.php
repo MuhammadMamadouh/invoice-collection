@@ -15,9 +15,12 @@ use App\Http\Controllers\Dashboard\ItemStatusController;
 use App\Http\Controllers\ImportExportController;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CollectionController;
+use App\Http\Controllers\CreditValidationController;
 use App\Http\Controllers\InvoiceMailController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\ScoreCriteriaController;
+use App\Http\Controllers\SettingCreditValidationController;
+use App\Http\Controllers\SettingManageRiskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,10 +90,23 @@ Route::post('/collection_scenarios/actions/{id}', [ActionsCollectionScenarioCont
 Route::post('/collection_scenarios/duplicate/{id}', [CollectionScenarioController::class, 'duplicateScenario'])->name('collection.duplicateScenario');
 Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
+
 //-----------------ManageRisk--------------------------------
 Route::post('/manage_risk/criteria', [ScoreCriteriaController::class, 'store'])->name('scoreCriteria.store');
 Route::patch('/manage_risk/criteria/edit/{id}', [ScoreCriteriaController::class, 'update'])->name('scoreCriteria.update');
 Route::resource('/manage_risk', ScoreController::class);
+
+Route::resource('/settings', SettingManageRiskController::class);
+
+
+//-----------------ManageCreditLimitsValidation--------------------------------
+Route::get('/credit-managment', [CreditValidationController::class, 'index'])->name('credit-managment.index');
+Route::post('/credit-managment/store', [CreditValidationController::class, 'store'])->name('credit-managment.store');
+Route::patch('/credit-managment/update/{id}', [CreditValidationController::class, 'update'])->name('credit-managment.update');
+Route::delete('/credit-managment/destroy/{id}', [CreditValidationController::class, 'destroy'])->name('credit-managment.destroy');
+
+Route::get('credit-managment/settings', [SettingCreditValidationController::class, 'index'])->name('settings.index');
+
 
 
 Route::get('collection', [CollectionController::class,'index'])->name('collection.automatic.actions');
@@ -122,4 +138,3 @@ Route::get('switch-language/{locale}', [LanguageController::class, 'switchLangua
 Route::get('import-export', [ImportExportController::class, 'importExportView'])->name('import-export');
 Route::post('import', [ImportExportController::class, 'import'])->name('import');
 
-Route::get('credit-managment', [App\Http\Controllers\CreditValidationController::class, 'index'])->name('credit-managment.index');

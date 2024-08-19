@@ -49,24 +49,6 @@ function showTable() {
 }
 
 
-
-
-// settings-manage-validation
-function showAddLevelDiv() {
-    document.querySelector(".add-level-div").classList.remove("d-none");
-    document.querySelector(".overlay").classList.remove("d-none");
-}
-function showEditLevelDiv() {
-    document.querySelector(".edit-level-div").classList.remove("d-none");
-    document.querySelector(".overlay").classList.remove("d-none");
-}
-function hideAddLevelDiv() {
-    document.querySelector(".add-level-div").classList.add("d-none");
-    document.querySelector(".edit-level-div").classList.add("d-none");
-    document.querySelector(".overlay").classList.add("d-none");
-}
-
-
 // settings-manage-item-status
 function showNewStatusDiv() {
     document.querySelector(".new-status-div").classList.remove("d-none");
