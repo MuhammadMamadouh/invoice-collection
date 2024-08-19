@@ -250,14 +250,14 @@ function addFileFunction2(){
   myChild =
   `
   <div class="d-flex justify-content-between flex-wrap align-items-center mb-3">
-  <input requiered name="files[]" type="file" id="upload-image-input2" multiple />
+  <input requiered name="file" type="file" id="upload-image-input2" multiple />
   <input type="text" class="form-control w-auto">
   <div class="form-check">
-  <input class="form-check-input" type="checkbox" id="internal">
+  <input class="form-check-input" type="radio" id="internal" name="visible_in" value="1">
   <label class="form-check-label" for="internal">Visible in internal emails</label>
   </div>
   <div class="form-check">
-  <input class="form-check-input" type="checkbox" id="external">
+  <input class="form-check-input" type="radio" id="external" name="visible_in" value="0">
   <label class="form-check-label" for="external">Visible in external emails </label>
   </div>
   </div>
@@ -334,13 +334,13 @@ function associatedFun() {
 
 
 
-function showInvioce2(){
-  document.querySelector(".invoice-2").classList.remove("d-none");
-  document.querySelector(".invoice").classList.add("d-none");
+function showInvioce2(itemId){
+  document.getElementById(`invoice-2-${itemId}`).classList.remove("d-none");
+  // document.querySelector(".invoice").classList.add("d-none");
 }
 
 function closeInvoice2() {
-  document.querySelector(".overlay").classList.add("d-none");
+  // document.querySelector(".overlay").classList.add("d-none");
   document.querySelector(".invoice-2").classList.add("d-none");
 }
 

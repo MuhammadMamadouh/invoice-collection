@@ -18,6 +18,7 @@
                 </div>
             </div>
         </div>
+        @include("clients.items_change_status", [$item->id])
         <div class="p-3 text-center" style="{{ $item->overdue >= 0 ? 'background-color: #e6d3d3' : 'background-color: #0dcaf0' }}">
         {{$item->order_date >= 0 ? __("Overdue") : __("Not due")}}</div>
         <div class="row m-0 p-3">
@@ -82,7 +83,7 @@
                     <p class="">{{ $item->initial_amount_inc_tax  }} € ({{$item->initial_amount_exc_tax}} € exc. Tax)</p>
                 </div>
             </div>
-            <div class="btn text-light btn-secondary px-2 w-auto m-auto" onclick="showInvioce2()">
+            <div class="btn text-light btn-secondary px-2 w-auto m-auto" onclick="showInvioce2({{$item->id}})">
                 <i class="fa-solid fa-pen-to-square"></i>&ensp;{{__("Change status")}} > {{__("Add
                 comment")}} > {{__("Set next action")}}
             </div>
