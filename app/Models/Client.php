@@ -65,10 +65,16 @@ class Client extends Model
         return $this->hasMany(Item::class, 'company_id');
     }
 
-    // public function firstDueItem()
-    // {
-    //     return $this->items()->orderBy('due_date')->first();
-    // }
+    public function overDueItems()
+    {
+        // get all items that are overdue date is more than today
+        return $this->items()->where('due_date', '<', now());
+    }
+    public function overDueItemsMoreThanTwoMonths()
+    {
+        // get all items that are overdue date is more than today with more than 2 months
+        return $this->items()->where('due_date', '<', now()->subMonths(2));
+    }
     public function firstDueItem()
     {
         return $this->hasOne(Item::class, 'company_id')->orderBy('due_date');

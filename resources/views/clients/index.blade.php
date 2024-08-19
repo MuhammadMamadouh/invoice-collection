@@ -6,7 +6,7 @@
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <a href="{{ route('clients.index') }}" class="m-1 w-100 btn btn-primary p-3">
                         <i class="fa-solid fa-earth-asia"></i> &ensp; {{ __('All clients') }} &ensp;
-                        {{-- <span class="badge bg-white text-primary">{{ \App\Models\Client::count() }}</span> --}}
+                        <span class="badge bg-white text-primary">{{ $client_count }}</span>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
@@ -27,9 +27,10 @@
                     <div class="form-group col-md-4 col-sm-6">
                         <select class="form-select m-2" onfocus="this.size=9;" onblur="this.size=1;"
                             onchange="this.size=1; this.blur();" aria-label=" Default select example">
-                            <option value="" selected disabled>Clients Group :</option>
-                            <option value="1">ATLANTIQue</option>
-                            <option value="2">Central</option>
+                            <option value="" selected disabled>{{__('Clients Group')}} :</option>
+                            @foreach ($clientGroups as $client_group)
+                                <option value="{{$client_group->id}}">{{$client_group->en_name}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
@@ -43,7 +44,7 @@
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
                         <select name='collector_id' class="form-select m-2" aria-label="Default select example">
-                            <option selected disabled>collectors</option>
+                            <option selected disabled>{{__('collectors')}}</option>
                             @foreach ($collectors as $collector)
                                 <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
                             @endforeach
@@ -51,14 +52,10 @@
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
                         <select class="form-select m-2" aria-label="Default select example">
-                            <option selected disabled>Associated With Client :</option>
-                            <option value="1">Brad Jackson(Sales Manager)</option>
-                            <option value="1">Juse Durant(Sales Manager)</option>
-                            <option value="1">Paul Mayer(Sales Manager)</option>
-                            <option value="1">Thomas Smith(Executive Officer)</option>
-                            <option value="1">
-                                Vironica Campbell(Sales Administration)
-                            </option>
+                            <option selected disabled>{{__('Associated With Client')}} :</option>
+                            @foreach ( $users as $user)
+                            <option value="1">{{$user->first_name . ' ' . $user->last_name}}(Sales Manager)</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
@@ -164,7 +161,6 @@
                     </div>
                     <div class="text-center mb-3 p-2 p-md-4 table-container">
                         @forelse($clientResource as $key => $client)
-                            {{-- {{dd($client)}} --}}
                             <div class="row align-items-center pt-3"
                                 style="background-color: {{ $key % 2 == 0 ? '#006bff14' : '#ffffff' }}">
                                 <div class="col-1">
@@ -207,18 +203,18 @@
                                     @endforelse
                                 </div>
                                 <div class="col-1 hide">
-                                    <p class="fw-bold">4Front</p>
+                                    <p class="fw-bold">{{$client->total_recievables}}</p>
                                 </div>
                                 <div class="col-1 hide">
-                                    <p class="fw-bold">39.6 k€</p>
+                                    <p class="fw-bold">{{$client->total_overdue}}</p>
                                 </div>
                                 <div class="col-1 hide">
-                                    <p class="fw-bold">39.6 k€</p>
+                                    <p class="fw-bold">{{$client->total_overdue_60}}</p>
                                 </div>
                                 <div class="col-3 mb-3 tavle-dropdown-icon" onclick="toggleFunction(this)">
                                     <i class="fa-solid fa-chevron-down"></i>
                                 </div>
-                                <div class="hidden ms-2 d-none">
+                                {{-- <div class="hidden ms-2 d-none">
                                     <div class="d-flex bg-light">
                                         <p class="fw-bold">Business name:</p>
                                         <p class="fw-bold">4Front</p>
@@ -253,12 +249,12 @@
                                         <p class="fw-bold">Overdue +60d:</p>
                                         <p class="fw-bold">39.6 k€</p>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="arrow-bottom"></div>
 
                             <div id="company-details-{{ $client->id }}">
-                                <div class="company-details d-none" id="company-detail-{{ $client->id }}">
+                                <div class="company-details d-none" id="company-detail-{{ $client->id }}" >
                                     @include('clients.client_data_model')
                                 </div>
                                 <div class="row px-4 align-items-center m-0">
@@ -299,9 +295,7 @@
                                             <div class="">
                                                 <div class="btn-group">
                                                     <button type="button" class="btn text-light"><span><i
-                                                                class="fa-solid fa-download"></i>&ensp;</span>{{ __("Export
-                                                                                                                        this data to
-                                                                                                                        excel") }}</button>
+                                                                class="fa-solid fa-download"></i>&ensp;</span>{{ __("Export this data to excel") }}</button>
                                                     <button type="button"
                                                         class="button-2 text-light btn dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -2440,25 +2434,7 @@
                         <option value="3">Clients douteux</option>
                         <option value="3">Clients France</option>
                         <option value="3">Clients Grands Comptes</option>
-                        <option value="3">Clients Mass market</option>
-                        <option value="3">Clients OSP</option>
-                        <option value="3">Clients PME</option>
-                        <option value="3">Clients Publics</option>
-                        <option value="3">Clients Risques</option>
-                        <option value="3">Clients Speciaux</option>
-                        <option value="3">Clients VIP</option>
-                        <option value="3">ClIENT_MEDIPREMA</option>
-                        <option value="3">France Contentieux</option>
-                        <option value="3">Group Alias</option>
-                        <option value="3">Group Elec</option>
-                        <option value="3">Group Imprimeurs</option>
-                        <option value="3">Group Industrie</option>
-                        <option value="3">Magasins de villa</option>
-                        <option value="3">Market Place</option>
-                        <option value="3">Public</option>
-                        <option value="3">Relance team back office</option>
-                        <option value="3">Retail</option>
-                        <option value="3">Salomon</option>
+
                         <option value="3">Test 2</option>
                         <option value="3">US Clients</option>
                     </select>
@@ -2575,27 +2551,9 @@
                                 <option value="ISO-8859-2">ISO-8859-2 (Central European format)</option>
                                 <option value="ISO-8859-3">ISO-8859-3 (South European format)</option>
                                 <option value="ISO-8859-4">ISO-8859-4 (North European format)</option>
-                                <option value="ISO-8859-5">ISO-8859-5 (Cyrillic format)</option>
-                                <option value="ISO-8859-6">ISO-8859-6 (Arabic format)</option>
-                                <option value="ISO-8859-7">ISO-8859-7 (Greek format)</option>
-                                <option value="ISO-8859-8">ISO-8859-8 (Hebrew format)</option>
-                                <option value="ISO-8859-9">ISO-8859-9 (Turkish format)</option>
-                                <option value="ISO-8859-10">ISO-8859-10 (Nordic format)</option>
-                                <option value="ISO-8859-13">ISO-8859-13 (Baltic format)</option>
-                                <option value="ISO-8859-14">ISO-8859-14 (Celtic format)</option>
-                                <option value="ISO-8859-15">ISO-8859-15 (NEW Western European format)</option>
                                 <option value="ISO-8859-16">ISO-8859-16 (Romanian format)</option>
                                 <option value="ISO-2022-JP">ISO-2022-JP</option>
                                 <option value="UTF-7">UTF-7</option>
-                                <option value="ASCII">ASCII</option>
-                                <option value="EUC-JP">EUC-JP</option>
-                                <option value="EUC-KR">EUC-KR</option>
-                                <option value="SJIS">SJIS</option>
-                                <option value="EUCJP-WIN">EUCJP-WIN</option>
-                                <option value="SJIS-WIN">SJIS-WIN</option>
-                                <option value="JIS">JIS</option>
-                                <option value="WINDOWS-1252">WINDOWS-1252</option>
-                                <option value="WINDOWS-1251">WINDOWS-1251</option>
                                 <option value="BIG-5">BIG-5</option>
                                 <option value="KOI8-R">KOI8-R</option>
                             </select>
