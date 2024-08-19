@@ -37,7 +37,7 @@
         </div>
         <div class="col"></div>
     </div>
-    <div class="row mt-2 text-center p-2 align-items-center"style="background-color: #006bff14;">
+    <div class="row mt-2 text-center p-2 align-items-center" style="background-color: #006bff14;">
         @php($firstDueItem = $client->firstDueItem)
         <div class="col fw-bold">{{ $firstDueItem->due_date ?? '-' }}</div>
         <div class="col fw-bold">
@@ -45,7 +45,7 @@
                 {{-- $firstDueItem->toTakeAction->action_type ?? 'email' --}}</div>
         </div>
         <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' }}
-        {{ optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
+            {{ optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
         <div class="col fw-bold">0000</div>
         <div class="col">
             <div class="btn btn-primary">
@@ -61,14 +61,14 @@
     </div>
     <div class="row bg-light p-2 mt-3">
         <div class="col-sm-4">
-            {{ __(' Total Receivable') }}:<span class="fw-bold">100,000.00
+            {{ __(' Total Receivable') }}:<span class="fw-bold">00
                 €</span>
         </div>
         <div class="col-sm-4">
-            {{ __('Overdue') }}:<span class="fw-bold">100,000.00 €</span>
+            {{ __('Overdue') }}:<span class="fw-bold">100.00 €</span>
         </div>
         <div class="col-sm-4">
-            {{ __('Current Receivable') }}:<span class="fw-bold">100,000.00
+            {{ __('Current Receivable') }}:<span class="fw-bold">100,0
                 €</span>
         </div>
     </div>
@@ -91,3 +91,4 @@
                 placeholder="Multi-columns search" />
         </div>
     </div>
+</div>

@@ -221,8 +221,8 @@ function addFileFunction(){
   if(document.querySelector(".myBtn").classList.contains("d-none")){
     document.querySelector(".myBtn").classList.remove("d-none")
   }
-  
-  
+
+
   let addFileDiv=document.querySelector(".addFileDiv")
   let myChild;
   myChild =
@@ -450,7 +450,7 @@ document.getElementById("addinputs-2").addEventListener("click", function () {
   container.appendChild(newInputRow);
 });
 $(document).ready(function() {
-  
+
 
   // You can now call these functions from within this scope.
   // For example:
@@ -548,7 +548,7 @@ function showSearchResults(){
     document.querySelector(".edit-assignment").classList.remove("d-none")
     document.querySelector(".overlay").classList.remove("d-none")
   }
-  
+
   function showAddAssignment(){
     document.querySelector(".add-assignment").classList.remove("d-none")
     document.querySelector(".overlay").classList.remove("d-none")
@@ -558,14 +558,14 @@ function showSearchResults(){
     document.querySelector(".add-action-div").classList.remove("d-none")
     document.querySelector(".overlay").classList.remove("d-none")
   }
-  
+
   function hideAddActionDiv(){
     document.querySelector(".add-action-div").classList.add("d-none")
     document.querySelector(".overlay").classList.add("d-none")
     document.querySelector(".new-collection-scenario").classList.add("d-none")
   }
-  
-  
+
+
   function showNewCollectionDiv(){
     document.querySelector(".new-collection-scenario").classList.remove("d-none")
     document.querySelector(".overlay").classList.remove("d-none")
@@ -576,8 +576,8 @@ function showSearchResults(){
     document.querySelector(".overlay").classList.add("d-none")
     document.querySelector(".payment-profile").classList.add("d-none")
   }
-  
-  
+
+
   function showPaymentProfile(){
     document.querySelector(".payment-profile").classList.remove("d-none")
     document.querySelector(".overlay").classList.remove("d-none")

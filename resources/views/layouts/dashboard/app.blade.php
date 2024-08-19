@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Help</title>
+    <title>Collection</title>
     <!--bootstrap-file-->
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <!--bootstrap-file-->
@@ -39,7 +39,7 @@
         document.querySelector(".add-action-div").classList.remove("d-none");
         document.querySelector(".overlay").classList.remove("d-none");
     }
-    
+    </script>
 <style>
     .form-control
     {
@@ -67,7 +67,8 @@
     </div>
 
     <!--scirpt Files-->
-
+@yield('scripts')
+@stack('scripts')
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
@@ -86,27 +87,30 @@
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/searchBar.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        // Move selected clients to the right list
-        $('.fa-circle-arrow-right').click(function() {
-            $('#clients-select option:selected').each(function() {
-                $(this).remove().appendTo('#group-clients-select');
-            });
-        });
+       <script type="text/javascript">
+        $(document).ready(function() {
+            // Cache jQuery selectors
+            var $clientsSelect = $('#clients-select');
+            var $groupClientsSelect = $('#group-clients-select');
 
-        // Move selected clients to the left list
-        $('.fa-circle-arrow-left').click(function() {
-            $('#group-clients-select option:selected').each(function() {
-                $(this).remove().appendTo('#clients-select');
+            // Move selected clients to the right list
+            $(document).on('click', '.fa-circle-arrow-right', function() {
+                $clientsSelect.find('option:selected').each(function() {
+                    $(this).remove().appendTo($groupClientsSelect);
+                });
+            });
+
+            // Move selected clients to the left list
+            $(document).on('click', '.fa-circle-arrow-left', function() {
+                $groupClientsSelect.find('option:selected').each(function() {
+                    $(this).remove().appendTo($clientsSelect);
+                });
             });
         });
-    });
     </script>
-    <!-- @yield('scripts') -->
-    @stack('scripts')
-    <!-- <script src="js/main.js"></script> -->
-    <!--scirpt Files-->
+
+    <script src="js/main.js"></script>
+
 </body>
 
 </html>

@@ -41,16 +41,19 @@ class ClientController extends Controller
             'contacts',
         ])->filter(new ClientFilter(request()))->paginate(30);
 
-        $clientResource = ClientResource::collection($clients)->response()->getData();
-        $clientResource = $clientResource->data;
+        $clientResource = ClientResource::collection($clients)->response()->getData()->data;
+        // dd($clientResource);
+        $client_count = Client::count();
         $collectionsScenario = CollectionScenario::all();
         $itemTypes = ItemType::all();
         $currencies = Currency::all();
         $clientGroups = ClientsGroup::all();
         $collectors = User::collectors()->get();
         $clientRoles = ClientRole::all();
-        return view('clients.index', compact('clientResource', 'collectionsScenario',
-        'collectors', 'itemTypes', 'clients', 'currencies', 'clientGroups', 'clientRoles'));
+        $users = User::all(['id', 'first_name', 'last_name']);
+        return view('clients.index', compact('clientResource', 'collectionsScenario', 'client_count',
+        'collectors', 'itemTypes', 'clients', 'currencies', 'clientGroups', 'clientRoles',
+    'users'));
 
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 use App\Http\Requests\ItemRequest;
+use App\Http\Resources\ItemResource;
 use App\Models\ItemType;
 use App\Models\Item;
 use App\Models\Currency;
@@ -27,6 +28,16 @@ class ItemsController extends Controller
         $validatedData = $request->all();
         Item::create($validatedData);
         return redirect()->back()->with('success', __('created successfully'));
+    }
+
+    public function show($id)
+    {
+        $item = Item::findOrFail($id);
+        $itemTypes = ItemType::all();
+        $clients = Client::all(['id', 'company_name', 'company_code']);
+        $item = (new ItemResource($item))->response()->getData()->data;
+        $currencies = Currency::all();
+        return view('items.show', compact('item', 'itemTypes', 'clients', 'currencies'));
     }
 
     public function update(Request $request, $id)
