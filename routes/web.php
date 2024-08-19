@@ -92,11 +92,13 @@ Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
 
 //-----------------ManageRisk--------------------------------
+Route::get('/manage_risk/settings', [SettingManageRiskController::class, 'index'])->name('manage_risk_settings.index');
+Route::post('/manage_risk/settings/store', [SettingManageRiskController::class, 'store'])->name('settings.store');
+
 Route::post('/manage_risk/criteria', [ScoreCriteriaController::class, 'store'])->name('scoreCriteria.store');
 Route::patch('/manage_risk/criteria/edit/{id}', [ScoreCriteriaController::class, 'update'])->name('scoreCriteria.update');
 Route::resource('/manage_risk', ScoreController::class);
 
-Route::resource('/settings', SettingManageRiskController::class);
 
 
 //-----------------ManageCreditLimitsValidation--------------------------------
@@ -105,7 +107,8 @@ Route::post('/credit-managment/store', [CreditValidationController::class, 'stor
 Route::patch('/credit-managment/update/{id}', [CreditValidationController::class, 'update'])->name('credit-managment.update');
 Route::delete('/credit-managment/destroy/{id}', [CreditValidationController::class, 'destroy'])->name('credit-managment.destroy');
 
-Route::get('credit-managment/settings', [SettingCreditValidationController::class, 'index'])->name('settings.index');
+Route::get('/credit-managment/settings', [SettingCreditValidationController::class, 'index'])->name('credit-managment_settings.index');
+Route::post('/credit-managment/settings/store', [CreditValidationController::class, 'storeSettings'])->name('settings.storeSettings');
 
 
 
