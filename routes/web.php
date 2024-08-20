@@ -114,6 +114,7 @@ Route::post('/credit-managment/settings/store', [CreditValidationController::cla
 
 //-----------------ItemsChangeStatus--------------------------------
 Route::post('/items_change_status', [ItemsChangeStatusController::class, 'store'])->name('items_change_status.store');
+Route::patch('/items_change_status/{id}', [ItemsChangeStatusController::class, 'update'])->name('items_change_status.update');
 
 
 

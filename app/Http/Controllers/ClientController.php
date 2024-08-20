@@ -51,7 +51,7 @@ class ClientController extends Controller
         $clientGroups = ClientsGroup::all();
         $collectors = User::collectors()->get();
         $clientRoles = ClientRole::all();
-        $users = User::all(['id', 'first_name', 'last_name']);
+        $users = User::all(['id', 'first_name', 'last_name', 'role_id']);
         return view('clients.index', compact('clientResource', 'collectionsScenario', 'client_count',
         'collectors', 'itemTypes', 'clients', 'currencies', 'clientGroups', 'clientRoles',
     'users'));

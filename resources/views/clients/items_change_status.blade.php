@@ -7,7 +7,7 @@
                 <div class="icon-holab  ">
                     <a href="invoice-2.html" target="_blank"><i
                             class="fa-solid fa-maximize text-primary p-2 bg-light"style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i></a>
-                    <i class="fa-solid fa-close text-light p-2 bg-danger" onclick="closeInvoice2()"
+                    <i class="fa-solid fa-close text-light p-2 bg-danger" onclick="closeInvoice2({{ $item->id }})"
                         style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i>
                 </div>
             </div>
@@ -86,70 +86,67 @@
         </div>
     </div>
     <div class="step-1">
-    <form action="{{route('items_change_status.store')}}" method="POST" enctype="multipart/form-data">
-    @csrf
-        <input type="hidden" name="item_id" value="{{ $item->id }}">
-        <input type="hidden" name="created_by" value="1">
-        <div class="mt-3 px-5 d-flex gap-3">
-            <h5 class="text-black-50">{{ __('Step 1/3') }}</h5>
-            <h5>{{ __('New status') }} :</h5>
-        </div>
-        <livewire:ShowItemStatus>
-            <div class="px-5">
-                <div class="d-flex">
+        <form action="{{ route('items_change_status.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="item_id" value="{{ $item->id }}">
+            <input type="hidden" name="created_by" value="1">
+            <div class="mt-3 px-5 d-flex gap-3">
+                <h5 class="text-black-50">{{ __('Step 1/3') }}</h5>
+                <h5>{{ __('New status') }} :</h5>
+            </div>
+            <livewire:ShowItemStatus>
+                <div class="px-5">
+                    {{-- <div class="d-flex">
                     <p>{{ __('Associate files to items') }}</p>
                     <a href="DSOInformation.html"><i class="fa-solid fa-question bg-primary text-light p-1 ms-1"
                             style="border-radius: 50%;width: 15px;height: 18px;font-size: 12px !important;"></i></a>
-                </div>
-                <div class="addFileDiv-2">
-
+                </div> --}}
+                    {{-- <div class="addFileDiv-2">
                 </div>
                 <div class="btn text-primary" onclick="addFileFunction2()"><i
                         class="fa-solid fa-link"></i>&ensp;{{ __('Add File') }}
-                </div><br>
+                </div><br> --}}
+                </div>
+                <div class="position-fixed w-75 d-none associate-files "
+                    style="top:10% ;left: 50%;transform: translate(-50%);z-index: 12;">
+                    <div class="bg-white m-auto p-3 shadow-sm position-relative" style="border-radius: 10px;">
+                        <span class="btn btn-secondary position-absolute" onclick="hideAssociateFiles()"
+                            style="border-radius:50%;top: -20px;right: -20px;"><i class="fa-solid fa-close"></i></span>
+                        <div class="p-4">
+                            <div class=" d-flex text-start">
+                                <h4>Associate files to items</h4>
+                                <a href="DSOInformation.html"><i
+                                        class="fa-solid fa-question bg-primary text-light p-1 ms-1"
+                                        style="border-radius: 50%;width: 15px;height: 18px;font-size: 12px !important;"></i></a>
+                            </div><!--24-->
+                            <p class=" mb-2" style="font-size: 14px;">(.pdf or .docx or .xlsx or .txt or .jpg or .png
+                                ...)
+                                <span style="font-size: 10px;">•Maxsize: 15 MB</span>
+                            </p>
+                            <div class="addFileDiv">
 
-            </div>
-            <div class="position-fixed w-75 d-none associate-files "
-                style="top:10% ;left: 50%;transform: translate(-50%);z-index: 12;">
-                <div class="bg-white m-auto p-3 shadow-sm position-relative" style="border-radius: 10px;">
-                    <span class="btn btn-secondary position-absolute" onclick="hideAssociateFiles()"
-                        style="border-radius:50%;top: -20px;right: -20px;"><i class="fa-solid fa-close"></i></span>
-                    <div class="p-4">
-                        <div class=" d-flex text-start">
-                            <h4>Associate files to items</h4>
-                            <a href="DSOInformation.html"><i class="fa-solid fa-question bg-primary text-light p-1 ms-1"
-                                    style="border-radius: 50%;width: 15px;height: 18px;font-size: 12px !important;"></i></a>
-                        </div><!--24-->
-                        <p class=" mb-2" style="font-size: 14px;">(.pdf or .docx or .xlsx or .txt or .jpg or .png ...)
-                            <span style="font-size: 10px;">•Maxsize: 15 MB</span>
-                        </p>
-                        <div class="addFileDiv">
-
-                            <div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="email"
-                                        name="copy_in_the_automatic_email" value="1">
-                                    <label class="form-check-label"
-                                        for="email">{{ __('Email in copy in the automatic  emails') }}</label>
-                                    @error('copy_in_the_automatic_email')
-                                        <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
-                                    @enderror
+                                <div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="email"
+                                            name="copy_in_the_automatic_email" value="1">
+                                        <label class="form-check-label"
+                                            for="email">{{ __('Email in copy in the automatic  emails') }}</label>
+                                        @error('copy_in_the_automatic_email')
+                                            <div class="alert text-danger" style="font-weight: bold;">{{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="btn text-primary" onclick="addFileFunction()"><i
-                                class="fa-solid fa-link"></i>&ensp;Add
-                            File</div><br>
-                        <div class="text-center myBtn d-none">
-                            <div class="btn btn-primary"><i class="fa-solid fa-check"></i> Submit</div>
+                            <div class="btn text-primary" onclick="addFileFunction()"><i
+                                    class="fa-solid fa-link"></i>&ensp;Add
+                                File</div><br>
+                            <div class="text-center myBtn d-none">
+                                <div class="btn btn-primary"><i class="fa-solid fa-check"></i> Submit</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary px-5 mx-5">{{ __('save') }} <i
-                        class="fa-solid fa-chevron-right ps-2"></i></button>
-            </div>
         </form>
     </div>
     <div class="d-flex justify-content-end">
@@ -171,67 +168,35 @@
         <div class="d-flex justify-content-end">
             <div class="btn btn-danger px-5 mx-5" onclick=" showStepOne()"><i
                     class="fa-solid fa-chevron-left pe-2"></i>
-                Previus</div>
-            <div class="btn btn-primary px-5 mx-5" onclick=" showStepThree()">Next <i
+                {{ __('Previus') }}</div>
+            <div class="btn btn-primary px-5 mx-5" onclick=" showStepThree()">{{ __('Next') }} <i
                     class="fa-solid fa-chevron-right ps-2"></i></div>
         </div>
     </div>
     <div class="step-3 d-none">
         <div class="mt-3 px-5 d-flex gap-3">
-            <h5 class="text-black-50">Step 3/3</h5>
-            <h5>Next action :</h5>
+            <h5 class="text-black-50">{{ __('Step 3/3') }}</h5>
+            <h5>{{ __('Next action') }} :</h5>
         </div>
         <div class="px-5">
             <input type="radio" id="go" checked name="checkbox">
-            <label for="go" class="mb-3">Follow the collection scenario and the actions in progress
+            <label for="go"
+                class="mb-3">{{ __('Follow the collection scenario and the actions in progress') }}
                 :</label>
             <div class="bg-white position-relative">
                 <div class="d-flex small-icons-big-container justify-content-between p-4 px-5 m-0">
                     <div class="text-center my-auto small-icons-container">
-                        Key accounts scenario (EN) :
+                        {{ __('Key accounts scenario') }} (EN) :
                     </div>
-                    <div class="text-center small-icons-container" style="z-index: 2">
-                        <span>-10d</span>
-                        <div class="btn-warning small-icons text-light px-2 py-1">
-                            <i class="fa-solid fa-phone"></i>
+                    @foreach ($client->collectionScenarios->scenariosActions as $action)
+                        <div class="text-center small-icons-container" style="z-index: 2">
+                            <span>{{ $action->number_of_days }}d</span>
+                            <div class="btn-warning small-icons text-light px-2 py-1">
+                                {{-- {{dd($action)}} --}}
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="text-center small-icons-container" style="z-index: 2">
-                        <span>+5d</span>
-                        <div class="btn-success small-icons text-light px-2 py-1">@</div>
-                    </div>
-                    <div class="text-center small-icons-container" style="z-index: 2">
-                        <span>+12d</span>
-                        <div class="btn-success small-icons text-light px-2 py-1">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                    </div>
-                    <div class="text-center small-icons-container" style="z-index: 2">
-                        <span>+20d</span>
-                        <div class="btn-secondary small-icons text-light px-2 py-1">@</div>
-                    </div>
-                    <div class="text-center small-icons-container" style="z-index: 2">
-                        <span>+28d</span>
-                        <div class="btn-light small-icons text-dark px-2 py-1">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                    </div>
-                    <div class="text-center small-icons-container" style="z-index: 2">
-                        <span>+38d</span>
-                        <div class="btn-light small-icons text-dark px-2 py-1">@</div>
-                    </div>
-                    <div class="text-center small-icons-container" style="z-index: 2">
-                        <span>+45d</span>
-                        <div class="btn-light small-icons text-dark px-2 py-1">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                    </div>
-                    <div class="text-center small-icons-container" style="z-index: 2">
-                        <span>+60d</span>
-                        <div class="btn-light small-icons text-dark px-2 py-1">
-                            <i class="fa-solid fa-envelope"></i>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
                 <div class="arrow-right"></div>
                 <div class="line-through-icons"></div>

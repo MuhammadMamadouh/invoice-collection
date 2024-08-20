@@ -20,5 +20,11 @@ class ItemsChangeStatus extends Model
         'file',
         'create_at',
         'visible_in',
+        'desc',
     ];
+
+    public function statusResolver()
+    {
+        return $this->belongsTo(User::class, 'resolver');
+    }
 }

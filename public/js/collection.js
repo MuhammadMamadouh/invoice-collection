@@ -272,11 +272,11 @@ function addFileFunction2(){
 let statusButton = document.querySelectorAll(".statusButton");
 let actionsButton = document.querySelectorAll(".actionsButton");
 let associatedButton = document.querySelectorAll(".associatedButton");
-let statusDiv = document.getElementById("statusDiv");
-let actionsDiv = document.getElementById("actionsDiv");
-let associatedDiv = document.getElementById("associatedDiv");
+let statusDiv = document.getElementById(`statusDiv-${itemId}`);
+let actionsDiv = document.getElementById(`actionsDiv-${itemId}`);
+let associatedDiv = document.getElementById(`associatedDiv-${itemId}`);
 
-function statusFun() {
+function statusFun(itemId) {
   statusButton.forEach((btn)=>{
     btn.classList.remove("btn-outline-primary");
     btn.classList.add("btn-primary");
@@ -289,12 +289,12 @@ function statusFun() {
     btn.classList.remove("btn-primary");
     btn.classList.add("btn-outline-primary");
   })
-  statusDiv.classList.remove("d-none");
-  actionsDiv.classList.add("d-none");
-  associatedDiv.classList.add("d-none");
+  document.getElementById(`statusDiv-${itemId}`).classList.remove("d-none");
+  document.getElementById(`actionsDiv-${itemId}`).classList.add("d-none");
+  document.getElementById(`associatedDiv-${itemId}`).classList.add("d-none");
 };
 
-function actionsFun() {
+function actionsFun(itemId) {
   statusButton.forEach((btn)=>{
     btn.classList.remove("btn-primary");
     btn.classList.add("btn-outline-primary");
@@ -308,11 +308,12 @@ function actionsFun() {
     btn.classList.add("btn-outline-primary");
   })
 
-  statusDiv.classList.add("d-none");
-  actionsDiv.classList.remove("d-none");
-  associatedDiv.classList.add("d-none");
+  document.getElementById(`statusDiv-${itemId}`).classList.add("d-none");
+  document.getElementById(`actionsDiv-${itemId}`).classList.remove("d-none");
+  document.getElementById(`associatedDiv-${itemId}`).classList.add("d-none");
 };
-function associatedFun() {
+
+function associatedFun(itemId) {
   statusButton.forEach((btn)=>{
     btn.classList.remove("btn-primary");
     btn.classList.add("btn-outline-primary");
@@ -326,9 +327,9 @@ function associatedFun() {
     btn.classList.add("btn-primary");
   })
 
-  statusDiv.classList.add("d-none");
-  actionsDiv.classList.add("d-none");
-  associatedDiv.classList.remove("d-none");
+  document.getElementById(`statusDiv-${itemId}`).classList.add("d-none");
+  document.getElementById(`actionsDiv-${itemId}`).classList.add("d-none");
+  document.getElementById(`associatedDiv-${itemId}`).classList.remove("d-none");
 };
 
 
@@ -339,33 +340,30 @@ function showInvioce2(itemId){
   // document.querySelector(".invoice").classList.add("d-none");
 }
 
-function closeInvoice2() {
+function closeInvoice2(itemId) {
   // document.querySelector(".overlay").classList.add("d-none");
-  document.querySelector(".invoice-2").classList.add("d-none");
+  document.getElementById(`invoice-2-${itemId}`).classList.add("d-none");
 }
 
-let stepOne= document.querySelector(".step-1")
-let stepTwo= document.querySelector(".step-2")
-let stepThree= document.querySelector(".step-3")
+// var stepOne= document.querySelector(".step-1")
+// var stepTwo= document.querySelector(".step-2")
+// var stepThree= document.querySelector(".step-3")
 function showStepOne(){
-  stepOne.classList.remove("d-none")
-  stepTwo.classList.add("d-none")
-  stepThree.classList.add("d-none")
+  document.querySelector(".step-1").classList.remove("d-none")
+  document.querySelector(".step-2").classList.add("d-none")
+  document.querySelector(".step-3").classList.add("d-none")
 }
 
 function showStepTwo(){
-  console.log(stepOne);
-  console.log(stepTwo);
-  console.log(stepThree);
-  stepOne.classList.add("d-none")
-  stepTwo.classList.remove("d-none")
-  stepThree.classList.add("d-none")
+  document.querySelector(".step-1").classList.add("d-none")
+  document.querySelector(".step-2").classList.remove("d-none")
+  document.querySelector(".step-3").classList.add("d-none")
 }
 
 function showStepThree(){
-  stepOne.classList.add("d-none")
-  stepTwo.classList.add("d-none")
-  stepThree.classList.remove("d-none")
+  document.querySelector(".step-1").classList.add("d-none")
+  document.querySelector(".step-2").classList.add("d-none")
+  document.querySelector(".step-3").classList.remove("d-none")
 }
 
 
@@ -477,11 +475,11 @@ function payViaDirectLink(){
     document.querySelector(".overlay-2").classList.remove("d-none")
 }
 
-function editAuther(){
-  document.querySelector(".edit-auther").classList.remove("d-none")
+function editAuther(newStatusItemId){
+  document.getElementById(`edit-auther-${newStatusItemId}`).classList.remove("d-none")
 }
-function closeEditAuther(){
-  document.querySelector(".edit-auther").classList.add("d-none")
+function closeEditAuther(newStatusItemId){
+  document.getElementById(`edit-auther-${newStatusItemId}`).classList.add("d-none")
 }
 
 

@@ -254,10 +254,10 @@
                             <div class="arrow-bottom"></div>
 
                             <div id="company-details-{{ $client->id }}">
-                                <div class="company-details d-none" id="company-detail-{{ $client->id }}" >
+                                <div class="company-details d-none" id="company-detail-{{ $client->id }}"style="overflow-x: hidden;">
                                     @include('clients.client_data_model')
                                 </div>
-                                <div class="row px-4 align-items-center m-0">
+                                <div class="row px-4 align-items-center m-0" style="background-color: white;">
                                     <div class="col-lg-4 col-sm-6 col-12 mb-2">
                                         <div class="btn text-light btn-secondary px-2" onclick="showInvioce2()">
                                             <i

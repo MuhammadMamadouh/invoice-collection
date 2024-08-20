@@ -31,6 +31,7 @@ class ItemsChangeStatusRequest extends FormRequest
             'file' => 'required|',
             'create_at' => 'required|date',
             'visible_in' => 'required|boolean',
+            'desc' => 'required|string',
         ];
     }
 }
