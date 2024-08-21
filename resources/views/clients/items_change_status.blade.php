@@ -156,14 +156,10 @@
     <div class="step-2 d-none">
         <div class="mt-3 px-5 d-flex gap-3">
             <h5 class="text-black-50">{{ __('Step 2/3') }}</h5>
-            <h5>Do you want to send an email to that client or to your colleagues?</h5>
+            <h5>{{__("Do you want to send an email to that client or to your colleagues?")}}</h5>
         </div>
         <div class="px-5 mb-5">
-            <select class="form-select" id="inputname205" aria-label="Default select example">
-                <option value="1" selected>No</option>
-                <option value="1">Yes, simple e-mail</option>
-                <option value="1">Yes, internal interactive e-mail</option>
-            </select>
+        <livewire:EmailForm>
         </div>
         <div class="d-flex justify-content-end">
             <div class="btn btn-danger px-5 mx-5" onclick=" showStepOne()"><i
