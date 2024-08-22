@@ -1,12 +1,13 @@
 <div>
     <form wire:submit.prevent="submit">
-        <select class="form-select" id="inputname205" wire:model.live="selectedOption" aria-label="Default select example">
+        @csrf
+        <select class="form-select" id="inputname205" wire:model.live="email_type" aria-label="Default select example">
             <option value="" selected>{{ __('Select One') }}</option>
-            <option value="option0">{{ __('No') }}</option>
+            <option value="">{{ __('No') }}</option>
             <option value="simple_e-mail">{{ __('Yes, simple e-mail') }}</option>
             <option value="internal_interactive_e-mail">{{ __('Yes, internal interactive e-mail') }}</option>
         </select>
-        @if (in_array($selectedOption, ['simple_e-mail']))
+        @if (in_array($email_type, ['simple_e-mail']))
             <div class="new-holab-1" id="hide-hoalp-1">
                 <div class="row mt-3">
                     <div class="col-md-2">
@@ -15,7 +16,7 @@
                     <div class="col-md-10">
                         <input type="text" wire:model="from" value="form1">
                         <a href="#" style="text-decoration: none; font-weight: bold;" class="text-primary">
-                            Paul Mayer < mohamed@gmail.com></a>
+                            {{$nums}} < mohamed@gmail.com></a>
                         <div style=" display: flex; flex-wrap: wrap;" class="my-2">
                             <p> <input type="checkbox" wire:model="get_a_copy" class="form-check-input mx-2"
                                     id="exampleChe">
@@ -30,8 +31,7 @@
 
                     <div class="col-md-2 mt-2">
                         <select class="form-select" wire:model='type_to' id="">
-                            <option value="" selected disabled>Select One:</option>
-                            <option value="to">to</option>
+                            <option value="to" selected>to</option>
                             <option value="cc">cc</option>
                             <option value="bcc">bcc</option>
                         </select>
@@ -118,7 +118,7 @@
                 </div>
             </div>
         @endif
-        {{-- @if (in_array($selectedOption, ['internal_interactive_e-mail']))
+        {{-- @if (in_array($email_type, ['internal_interactive_e-mail']))
             <div class="new-holab-1" id="hide-hoalp-1">
                 <div class="row mt-3">
                     <div class="col-md-2">

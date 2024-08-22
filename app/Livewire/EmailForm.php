@@ -1,53 +1,40 @@
 <?php
 
 namespace App\Livewire;
-
+use Livewire\Attributes\On; 
 use App\Models\SentEmail;
 use Livewire\Component;
 
 class EmailForm extends Component
 {
-    public $selectedOption;
+    public $email_type;
     public $from;
     public $get_a_copy = false;
     public $request_an_acknowledgment = false;
     public $to;
     public $subject;
     public $editorContent; 
-    public $email_type;
+    // public $email_type;
     public $message;
+
+    public $resolver;
+    public $itemStatusActions;
+
+    public $nums;
 
 
     
-    public function updatedSelectedOption($value)
+    public function updated_email_type($value)
     {
-        $this->selectedOption = $value;
+
+        $this->email_type = $value;
     }
 
-    public function submit()
+    #[On('updateEmail')]
+    public function updateEmail($resolver, $nums)
     {
-        // $this->validate([
-        //     'selectedOption' => 'required',
-        //     'from' => 'required',
-        //     'to' => 'required',
-        //     'subject' => 'required',
-        //     'editorContent' => 'required',
-        //     'message' => 'required',
-        //     'get_a_copy' => 'required',
-        //     'request_an_acknowledgment' => 'required'
-        // ]);
-        $data = [
-            'email_type' => $this->selectedOption,
-            'from' => $this->from,
-            'to' => $this->to,
-            'subject' => $this->subject,
-            'message' => '$this->editorContent',
-            'get_a_copy' => $this->get_a_copy,
-            'request_an_acknowledgment' => $this->request_an_acknowledgment
-        ];
-        SentEmail::create($data);
-        session()->flash('message', 'Email content saved successfully!');
-        return redirect()->route('clients.index'); 
+        $this->resolver = $resolver;
+        $this->nums = $nums;
     }
     public function render()
     {

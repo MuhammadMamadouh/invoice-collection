@@ -17,14 +17,22 @@ class ItemsChangeStatus extends Model
         'resolver',
         'created_by',
         'comments',
-        'file',
         'create_at',
-        'visible_in',
-        'desc',
+        'email_type',
+        'type_to',
+        'subject',
+        'message',
+        'get_a_copy',
+        'request_an_acknowledgment',
     ];
 
     public function statusResolver()
     {
         return $this->belongsTo(User::class, 'resolver');
+    }
+
+    public function statusFiles()
+    {
+        return $this->hasMany(ItemsChangeStatusFiles::class, 'items_change_status_id');
     }
 }
