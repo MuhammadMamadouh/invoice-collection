@@ -31,6 +31,11 @@ class ItemsChangeStatus extends Model
         return $this->belongsTo(User::class, 'resolver');
     }
 
+    public function subject()
+    {
+        return $this->belongsTo(Client::class, 'subject');
+    }
+
     public function statusFiles()
     {
         return $this->hasMany(ItemsChangeStatusFiles::class, 'items_change_status_id');
