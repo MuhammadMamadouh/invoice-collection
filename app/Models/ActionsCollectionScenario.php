@@ -25,4 +25,3 @@ class ActionsCollectionScenario extends Model
     }
 
 }
- 

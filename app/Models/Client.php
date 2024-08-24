@@ -92,4 +92,9 @@ class Client extends Model
         return $this->hasMany(Contact::class, 'client_id');
     }
 
+    public function emails()
+    {
+        return $this->hasMany(ItemsChangeStatus::class, 'subject');
+    }
+
 }

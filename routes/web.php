@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CreditValidationController;
 use App\Http\Controllers\InvoiceMailController;
+use App\Http\Controllers\ItemsChangeStatusController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\ScoreCriteriaController;
 use App\Http\Controllers\SettingCreditValidationController;
@@ -109,6 +110,13 @@ Route::delete('/credit-managment/destroy/{id}', [CreditValidationController::cla
 
 Route::get('/credit-managment/settings', [SettingCreditValidationController::class, 'index'])->name('credit-managment_settings.index');
 Route::post('/credit-managment/settings/store', [CreditValidationController::class, 'storeSettings'])->name('settings.storeSettings');
+
+
+//-----------------ItemsChangeStatus--------------------------------
+Route::post('/items_change_status', [ItemsChangeStatusController::class, 'store'])->name('items_change_status.store');
+Route::patch('/items_change_status/{id}', [ItemsChangeStatusController::class, 'update'])->name('items_change_status.update');
+
+
 
 
 

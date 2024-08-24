@@ -70,7 +70,7 @@
                         {{ $item->trans_no ?? '-' }}</a>
                 </p>
                 {{-- -------------------------------------------invoice data-------------------------------------- --}}
-                @include('clients.items_data')
+                @include('clients.items_data',[$users])
                 {{-- -------------------------------------------end invoice data-------------------------------------- --}}
             </div>
             <div class="col hide">
