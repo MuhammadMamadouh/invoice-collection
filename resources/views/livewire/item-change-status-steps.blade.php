@@ -172,7 +172,6 @@
                                 <h4>From :</h4>
                             </div><!--l-1-->
                             <div class="col-md-10">
-                                <input type="text" wire:model="from" value="form1">
                                 <a href="#" style="text-decoration: none; font-weight: bold;"
                                     class="text-primary">
                                     created_by name < mohamed@gmail.com>
@@ -199,9 +198,12 @@
                             <div class="col-md-10 mt-2">
                                 <select class="form-select" wire:model='resolverData'>
                                     <option value="{{ $resolver }}" selected>{{ $resolver }}</option>
-                                    <option value="option1">1</option>
-                                    <option value="option1">2</option>
-                                    <option value="option1">3</option>
+                                    @foreach ($resolvers as $resolverss)
+                                        <option value="{{ $resolverss->id }}">
+                                            {{ $resolverss->first_name }}{{ $resolverss->last_name }}
+                                            ({{ $resolverss->role->name }})
+                                        </option>
+                                    @endforeach
                                 </select>
                                 <div style=" display: flex; flex-wrap: wrap;" class="my-2">
                                     <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
@@ -229,36 +231,42 @@
                             <div class="col-md-10 mt-2">
                                 <div class="editor-container mb-1">
                                     <div class="toolbar">
-                                        <button onclick="execCmd('bold')"><i class="fas fa-bold"></i></button>
-                                        <button onclick="execCmd('italic')"><i class="fas fa-italic"></i></button>
-                                        <button onclick="execCmd('underline')"><i
+                                        <button type="button" onclick="execCmd('bold')"><i
+                                                class="fas fa-bold"></i></button>
+                                        <button type="button" onclick="execCmd('italic')"><i
+                                                class="fas fa-italic"></i></button>
+                                        <button type="button" onclick="execCmd('underline')"><i
                                                 class="fas fa-underline"></i></button>
-                                        <button onclick="execCmd('strikeThrough')"><i
+                                        <button type="button" onclick="execCmd('strikeThrough')"><i
                                                 class="fas fa-strikethrough"></i></button>
-                                        <button onclick="execCmd('justifyLeft')"><i
+                                        <button type="button" onclick="execCmd('justifyLeft')"><i
                                                 class="fas fa-align-left"></i></button>
-                                        <button onclick="execCmd('justifyCenter')"><i
+                                        <button type="button" onclick="execCmd('justifyCenter')"><i
                                                 class="fas fa-align-center"></i></button>
-                                        <button onclick="execCmd('justifyRight')"><i
+                                        <button type="button" onclick="execCmd('justifyRight')"><i
                                                 class="fas fa-align-right"></i></button>
-                                        <button onclick="execCmd('justifyFull')"><i
+                                        <button type="button" onclick="execCmd('justifyFull')"><i
                                                 class="fas fa-align-justify"></i></button>
-                                        <button onclick="execCmd('insertUnorderedList')"><i
+                                        <button type="button" onclick="execCmd('insertUnorderedList')"><i
                                                 class="fas fa-list-ul"></i></button>
-                                        <button onclick="execCmd('insertOrderedList')"><i
+                                        <button type="button" onclick="execCmd('insertOrderedList')"><i
                                                 class="fas fa-list-ol"></i></button>
-                                        <button onclick="execCmd('createLink', prompt('Enter the URL:', 'http: '))"><i
+                                        <button type="button"
+                                            onclick="execCmd('createLink', prompt('Enter the URL:', 'http: '))"><i
                                                 class="fas fa-link"></i></button>
-                                        <button onclick="execCmd('unlink')"><i class="fas fa-unlink"></i></button>
-                                        <button onclick="insertImage()"><i class="fas fa-image"></i></button>
-                                        <button onclick="insertTable()"><i class="fas fa-table"></i></button>
-                                        <button onclick="toggleHTML()">Toggle HTML</button>
+                                        <button type="button" onclick="execCmd('unlink')"><i
+                                                class="fas fa-unlink"></i></button>
+                                        <button type="button" onclick="insertImage()"><i
+                                                class="fas fa-image"></i></button>
+                                        <button type="button" onclick="insertTable()"><i
+                                                class="fas fa-table"></i></button>
+                                        <button type="button" onclick="toggleHTML()">Toggle HTML</button>
                                     </div>
+                                    <input type="hidden" wire:model="editorContent" id="editorContent">
                                     <div id="editor" class="form-control" contenteditable="true"
                                         oninput="updateEditorContent(this)">
                                         Start typing here...
                                     </div>
-                                    <input type="hidden" wire:model="editorContent">
                                 </div>
                                 <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
                                         class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item</a>
@@ -270,14 +278,14 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
-                                                onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i> Email
-                                                preview</button>
+                                                onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
+                                                {{ __('Email preview') }}</button>
                                         </div>
                                         <div class="col-lg-6">
                                             <button type="submit" class="btn btn-success w-100 mt-3"><i
-                                                    class="fa-solid fa-check"></i> Send
-                                                the
-                                                email <i class="fa-solid fa-plus"></i> complete the action</button>
+                                                    class="fa-solid fa-check"></i> {{ __('Send the email') }} <i
+                                                    class="fa-solid fa-plus"></i>
+                                                {{ __('complete the action') }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -285,120 +293,140 @@
                         </div>
                     </div>
                 @endif
-                {{-- @if (in_array($email_type, ['internal_interactive_e-mail']))
-                <div class="new-holab-1" id="hide-hoalp-1">
-                    <div class="row mt-3">
-                        <div class="col-md-2">
-                            <h4>From :</h4>
-                        </div><!--l-1-->
-                        <div class="col-md-10">
-                            <input type="hidden" name="from" value="form1">
-                            <a href="#" style="text-decoration: none; font-weight: bold;" class="text-primary">
-                                Paul Mayer < mohamed@gmail.com></a>
-                            <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-                                <p> <input type="checkbox" name="get_a_copy" class="form-check-input mx-2"
-                                        id="exampleChe">
-                                    Get a copy of this email.
-                                </p>
-                                <p> <input type="checkbox" name="request_an_acknowledgment" class="form-check-input mx-2"
-                                        id="exampleChe">
-                                    Request an acknowledgment of receipt.
-                                </p>
-                            </div>
-                        </div><!--r-1-->
-
-                        <div class="col-md-2 mt-2">
-                            <select class="form-select" id="">
-                                <option value="" selected disabled>to :</option>
-                                <option value="option1">1</option>
-                                <option value="option1">2</option>
-                                <option value="option1">3</option>
-                            </select>
-                        </div><!--l-2-->
-                        <div class="col-md-10 mt-2">
-                            <select class="form-select" id="">
-                                <option value="" selected disabled> </option>
-                                <option value="option1">1</option>
-                                <option value="option1">2</option>
-                                <option value="option1">3</option>
-                            </select>
-                            <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-                                <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
-                                        class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add another
-                                    recipient</a>
-                                <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
-                                        class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add an external
-                                    recipient</a>
-                            </div>
-                        </div><!--r-2-->
-                        <div class="col-md-2 mt-2">
-                            <h4 for="">Supject :</h4>
-                        </div><!--l-3-->
-                        <div class="col-md-10 mt-2">
-                            <input type="text" class="form-control" name="supject" id=""
-                                value="#client_code - #client_name">
-                        </div><!--r-3-->
-                        <div class="col-md-2 mt-2">
-                            <h4 class="mb-5">Message :</h4>
-                            <p style="color: rgb(172, 169, 169); text-align: center;"><i
-                                    class="fa-solid fa-hashtag hash mb-5"></i><br>
-                                Lorem ipsum dolor sit amet.</p>
-                        </div><!--l-4-->
-                        <div class="col-md-10 mt-2">
-                            <div class="editor-container mb-1">
-                                <div class="toolbar">
-                                    <button onclick="execCmd('bold')"><i class="fas fa-bold"></i></button>
-                                    <button onclick="execCmd('italic')"><i class="fas fa-italic"></i></button>
-                                    <button onclick="execCmd('underline')"><i class="fas fa-underline"></i></button>
-                                    <button onclick="execCmd('strikeThrough')"><i
-                                            class="fas fa-strikethrough"></i></button>
-                                    <button onclick="execCmd('justifyLeft')"><i class="fas fa-align-left"></i></button>
-                                    <button onclick="execCmd('justifyCenter')"><i
-                                            class="fas fa-align-center"></i></button>
-                                    <button onclick="execCmd('justifyRight')"><i class="fas fa-align-right"></i></button>
-                                    <button onclick="execCmd('justifyFull')"><i class="fas fa-align-justify"></i></button>
-                                    <button onclick="execCmd('insertUnorderedList')"><i
-                                            class="fas fa-list-ul"></i></button>
-                                    <button onclick="execCmd('insertOrderedList')"><i class="fas fa-list-ol"></i></button>
-                                    <button onclick="execCmd('createLink', prompt('Enter the URL:', 'http: '))"><i
-                                            class="fas fa-link"></i></button>
-                                    <button onclick="execCmd('unlink')"><i class="fas fa-unlink"></i></button>
-                                    <button onclick="insertImage()"><i class="fas fa-image"></i></button>
-                                    <button onclick="insertTable()"><i class="fas fa-table"></i></button>
-                                    <button onclick="toggleHTML()">Toggle HTML</button>
+                @if (in_array($email_type, ['internal_interactive_e-mail']))
+                    <div class="new-holab-1" id="hide-hoalp-1">
+                        <div class="col-md-12 mt-2">
+                            <p style="background-color: #dff0d8; padding: 10px;">Internal interactive email →
+                                Interactive email intended for the internal actors of your
+                                company
+                                allowing them to interact in MY DSO MANAGER about actions requests or disputes follow-up
+                            </p>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-2">
+                                <h4>From :</h4>
+                            </div><!--l-1-->
+                            <div class="col-md-10">
+                                <a href="#" style="text-decoration: none; font-weight: bold;"
+                                    class="text-primary">
+                                    created_by name < mohamed@gmail.com>
+                                </a>
+                                <div style=" display: flex; flex-wrap: wrap;" class="my-2">
+                                    <p> <input type="checkbox" wire:model="get_a_copy" class="form-check-input mx-2"
+                                            id="exampleChe">
+                                        Get a copy of this email.
+                                    </p>
+                                    <p> <input type="checkbox" wire:model="request_an_acknowledgment"
+                                            class="form-check-input mx-2" id="exampleChe">
+                                        Request an acknowledgment of receipt.
+                                    </p>
                                 </div>
-                                <div id="editor" class="form-control" contenteditable="true" 
-                                    wire:ignore
-                                    oninput="updateEditorContent(this)">
-                                    Start typing here...
+                            </div><!--r-1-->
+                            <div class="col-md-2 mt-2">
+                                <select class="form-select" wire:model='type_to' id="">
+                                    <option value="" selected>Select One</option>
+                                    <option value="to" selected>to</option>
+                                    <option value="cc">cc</option>
+                                    <option value="bcc">bcc</option>
+                                </select>
+                            </div><!--l-2-->
+                            <div class="col-md-10 mt-2">
+                                <select class="form-select" wire:model='resolverData'>
+                                    <option value="{{ $resolver }}" selected>{{ $resolver }}</option>
+                                    @foreach ($resolvers as $resolverss)
+                                        <option value="{{ $resolverss->id }}">
+                                            {{ $resolverss->first_name }}{{ $resolverss->last_name }}
+                                            ({{ $resolverss->role->name }})
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <div style=" display: flex; flex-wrap: wrap;" class="my-2">
+                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
+                                            class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
+                                        another
+                                        recipient</a>
+                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
+                                            class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add an
+                                        external
+                                        recipient</a>
                                 </div>
-                            </div>
-                            <a href="#"
-                                    style="text-decoration: none; color: rgb(155, 152, 152);"><span class="mx-1"><i
-                                            class="fa-solid fa-plus"></i></span>Add an item</a>
-                                </div><!--r-4-->
-                                <div class="col-md-4 mt-2">
-                                </div><!--l-5-->
-                                <div class="tw-btn-holab d-flex justify-content-end">
-                                    <div class="col-md-8 mt-2">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
-                                                    onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i> Email
-                                                    preview</button>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <button type="submit" class="btn btn-success w-100 mt-3"><i
-                                                        class="fa-solid fa-check"></i> Send
-                                                    the
-                                                    email <i class="fa-solid fa-plus"></i> complete the action</button>
-                                            </div>
+                            </div><!--r-2-->
+                            <div class="col-md-2 mt-2">
+                                <h4 for="">Subject :</h4>
+                            </div><!--l-3-->
+                            <div class="col-md-10 mt-2">
+                                <input type="text" class="form-control" wire:model="subject" id="">
+                            </div><!--r-3-->
+                            <div class="col-md-2 mt-2">
+                                <h4 class="mb-5">Message :</h4>
+                                <p style="color: rgb(172, 169, 169); text-align: center;"><i
+                                        class="fa-solid fa-hashtag hash mb-5"></i><br>
+                                    Lorem ipsum dolor sit amet.</p>
+                            </div><!--l-4-->
+                            <div class="col-md-10 mt-2">
+                                <div class="editor-container mb-1">
+                                    <div class="toolbar">
+                                        <button type="button" onclick="execCmd('bold')"><i
+                                                class="fas fa-bold"></i></button>
+                                        <button type="button" onclick="execCmd('italic')"><i
+                                                class="fas fa-italic"></i></button>
+                                        <button type="button" onclick="execCmd('underline')"><i
+                                                class="fas fa-underline"></i></button>
+                                        <button type="button" onclick="execCmd('strikeThrough')"><i
+                                                class="fas fa-strikethrough"></i></button>
+                                        <button type="button" onclick="execCmd('justifyLeft')"><i
+                                                class="fas fa-align-left"></i></button>
+                                        <button type="button" onclick="execCmd('justifyCenter')"><i
+                                                class="fas fa-align-center"></i></button>
+                                        <button type="button" onclick="execCmd('justifyRight')"><i
+                                                class="fas fa-align-right"></i></button>
+                                        <button type="button" onclick="execCmd('justifyFull')"><i
+                                                class="fas fa-align-justify"></i></button>
+                                        <button type="button" onclick="execCmd('insertUnorderedList')"><i
+                                                class="fas fa-list-ul"></i></button>
+                                        <button type="button" onclick="execCmd('insertOrderedList')"><i
+                                                class="fas fa-list-ol"></i></button>
+                                        <button type="button" onclick="execCmd('createLink', prompt('Enter the URL:', 'http: '))"><i
+                                                class="fas fa-link"></i></button>
+                                        <button type="button" onclick="execCmd('unlink')"><i
+                                                class="fas fa-unlink"></i></button>
+                                        <button type="button" onclick="insertImage()"><i
+                                                class="fas fa-image"></i></button>
+                                        <button type="button" onclick="insertTable()"><i
+                                                class="fas fa-table"></i></button>
+                                        <button type="button" onclick="toggleHTML()">Toggle HTML</button>
+                                    </div>
+                                    <input type="hidden" wire:model="editorContent" id="editorContent">
+                                    <div id="editor" class="form-control" contenteditable="true"
+                                        oninput="updateEditorContent(this)">
+                                        Start typing here...
+                                    </div>
+                                </div>
+                                <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
+                                        class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item</a>
+                            </div><!--r-4-->
+                            <div class="col-md-4 mt-2">
+                            </div><!--l-5-->
+                            <div class="tw-btn-holab d-flex justify-content-end">
+                                <div class="col-md-8 mt-2">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
+                                                onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
+                                                {{ __('Email preview') }}</button>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <button type="submit" class="btn btn-success w-100 mt-3"><i
+                                                    class="fa-solid fa-check"></i> {{ __('Send the email') }} <i
+                                                    class="fa-solid fa-plus"></i>
+                                                {{ __('complete the action') }}</button>
                                         </div>
                                     </div>
-                                </div><!--r-5-->
-                            </div>
+                                </div>
+                            </div><!--r-5-->
                         </div>
-            @endif --}}
+                    </div>
+                @endif
             </div>
         @endif
         {{-- ------------------------------STEP3----------------------------------- --}}
@@ -431,37 +459,40 @@
                     <div class="line-through-icons"></div>
                 </div>
                 <div class="row align-items-center text-center">
-                    <div class="col fw-bold">Action date</div>
-                    <div class="col fw-bold">Action type</div>
-                    <div class="col fw-bold">Action</div>
-                    <div class="col fw-bold">Action amount inc. Tax</div>
+                    <div class="col fw-bold">{{ __('Action date') }}</div>
+                    <div class="col fw-bold">{{ __('Action type') }}</div>
+                    <div class="col fw-bold">{{ __('Action') }}</div>
+                    <div class="col fw-bold">{{ __('Action amount inc. Tax') }}</div>
                 </div>
                 <div class="row mt-2 text-center">
-                    <div class="col fw-bold">13 - 5 - 2022</div>
+                    @php($firstDueItem = $client->firstDueItem)
+                    <div class="col fw-bold">{{ $firstDueItem->due_date ?? '-' }}</div>
                     <div class="col fw-bold">
-                        <div class="btn openModalBtn btn-primary">@ Email</div>
+                        <div class="btn openModalBtn btn-primary">{{-- $firstDueItem->toTakeAction->action_type ?? 'email' --}}</div>
                     </div>
-                    <div class="col fw-bold">Reminder by email No .2</div>
+                    <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' --}}
+                        {{-- optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
                     <div class="col fw-bold">100,000.00 €</div>
                 </div>
             </div>
             <div class="px-5 mt-3">
                 <input type="radio" id="Create" name="Create">
-                <label for="Create" class="mb-3">Create a specific action for selected items</label>
+                <label for="Create" class="mb-3">{{ __('Create a specific action for selected items') }}</label>
                 <div class=" my-2">
                     <div class="d-flex">
                         <div class="col-3 ">
-                            <label for="inputname13"> Action name :</label>
+                            <label for="inputname13"> {{ __('Action name') }} :</label>
                         </div>
                         <div class="col-9 ">
-                            <input type="text" wire:model='action_name' class="form-control" placeholder="Name" id="inputname13">
+                            <input type="text" wire:model='action_name' class="form-control" placeholder="Name"
+                                id="inputname13">
                         </div>
                     </div>
                 </div><!--13-->
                 <div class=" my-2">
                     <div class="d-flex">
                         <div class="col-3 ">
-                            <label for="inputname222">Action date :</label>
+                            <label for="inputname222">{{ __('Action date') }} :</label>
                         </div>
                         <div class="input-group">
                             <select wire:model="number_of_days" class="form-select" id="inputname19">
@@ -469,7 +500,7 @@
                                     {{ __('select one') }}</option>
                                 @foreach ($days as $day)
                                     <option value="{{ $day }}">{{ $day }}
-                                        days</option>
+                                        {{ __('days') }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -478,11 +509,11 @@
                 <div class=" my-2">
                     <div class="d-flex">
                         <div class="col-3 ">
-                            <label for="inputname222">Action Type :</label>
+                            <label for="inputname222">{{ __('Action Type') }} :</label>
                         </div>
                         <div class="input-group">
-                            <select class="form-select"  wire:model='action_type' aria-label="Default select example">
-                                <option value="" selected>Select One</option>
+                            <select class="form-select" wire:model='action_type' aria-label="Default select example">
+                                <option value="" selected>{{ __('Select One') }}</option>
                                 @foreach ($actionTypes as $actionType)
                                     <option value="{{ $actionType->id }}">
                                         {{ $actionType->en_name }}</option>
@@ -509,4 +540,18 @@
             @endif
         </div>
     </form>
+    <script>
+        document.addEventListener('livewire:load', function() {
+            function updateEditorContent(editor) {
+                let content = editor.innerHTML;
+                document.getElementById('editorContent').value = content;
+                Livewire.hook('message.sent', () => {
+                    @this.set('editorContent', content);
+                });
+            }
+            document.getElementById('editor').oninput = function() {
+                updateEditorContent(this);
+            };
+        });
+    </script>
 </div>

@@ -40,6 +40,7 @@ class ClientController extends Controller
             'collectionScenario',
             'firstDueItem',
             'contacts',
+            'items.itemChangeStatus',
         ])->filter(new ClientFilter(request()))->paginate(30);
 
         $clientResource = ClientResource::collection($clients)->response()->getData()->data;

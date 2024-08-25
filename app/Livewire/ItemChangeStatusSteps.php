@@ -26,6 +26,7 @@ class ItemChangeStatusSteps extends Component
     public $resolvers;
     public $actionTypes;
     public $days = [];
+    public $editorContent;
 
     //---------------------email table data--------------------
     public $resolver;
@@ -106,13 +107,14 @@ class ItemChangeStatusSteps extends Component
     public function save()
     {
         DB::beginTransaction();
-        if ($this->action_name) {
+        if ($this->action_name != null && $this->selectedStatus == null) {
             ActionsCollectionScenario::create([
                 'action_name' => $this->action_name,
                 'number_of_days' => $this->number_of_days,
                 'action_type' => $this->action_type,
-                'collection_scenario_id' => 1,
+                'collection_scenario_id' => $this->client->collectionScenarios->id,
             ]);
+            DB::commit();
         } else {
             ItemsChangeStatus::create([
                 'item_id' => $this->item->id,
@@ -124,20 +126,22 @@ class ItemChangeStatusSteps extends Component
                 'create_at' => $this->create_at,
                 'subject' => $this->client->id,
                 'type_to' => $this->type_to,
-                'message' => $this->message,
+                'message' => $this->editorContent,
                 'get_a_copy' => $this->get_a_copy,
                 'request_an_acknowledgment' => $this->request_an_acknowledgment,
                 'email_type' => $this->email_type,
             ]);
-            foreach ($this->file_name as $file) {
-                $filePath = $file->store('items_files', 'public');
-                ItemsChangeStatusFiles::create([
-                    'file_name' => $filePath,
-                    'desc' => $this->desc,
-                    'visiable_in' => $this->visible_in,
-                    'items_change_status_id' => $this->items_change_status_id,
-                    // 'items_change_status_id' => $itemChangeStatus->id,
-                ]);
+            if($this->file_name){
+                foreach ($this->file_name as $file) {
+                    $filePath = $file->store('items_files', 'public');
+                    ItemsChangeStatusFiles::create([
+                        'file_name' => $filePath,
+                        'desc' => $this->desc,
+                        'visiable_in' => $this->visible_in,
+                        'items_change_status_id' => $this->items_change_status_id,
+                        // 'items_change_status_id' => $itemChangeStatus->id,
+                    ]);
+                }
             }
             DB::commit();
         }

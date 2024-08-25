@@ -47,6 +47,7 @@ class ItemResource extends JsonResource
             'itemType'                  => new ItemTypeResource($this->itemType),
             'client'                    => $this->client,
             'currency'                  => $this->currency,
+            'itemChangeStatus'          => $this->itemChangeStatus ? ItemsChangeStatusResource::collection($this->itemChangeStatus) : [],
         ];
     }
 }
