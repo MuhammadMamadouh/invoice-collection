@@ -70,4 +70,9 @@ class Item extends Model
         $overdue = $over_due_days > 0 ? "+$over_due_days" : "$over_due_days";
         return $overdue;
     } 
+
+    public function itemChangeStatus()
+    {
+        return $this->hasMany(ItemsChangeStatus::class, 'item_id');
+    }
 }

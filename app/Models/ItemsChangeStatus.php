@@ -40,4 +40,9 @@ class ItemsChangeStatus extends Model
     {
         return $this->hasMany(ItemsChangeStatusFiles::class, 'items_change_status_id');
     }
+
+    public function changedStatusItem()
+    {
+        return $this->belongsTo(Client::class, 'item_id');
+    }
 }
