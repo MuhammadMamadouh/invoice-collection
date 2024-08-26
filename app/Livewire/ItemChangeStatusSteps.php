@@ -116,7 +116,7 @@ class ItemChangeStatusSteps extends Component
             ]);
             DB::commit();
         } else {
-            ItemsChangeStatus::create([
+            $changedStatus = ItemsChangeStatus::create([
                 'item_id' => $this->item->id,
                 'status_id' => $this->selectedStatus,
                 'status_action_id' => $this->status_action_id,
@@ -136,10 +136,10 @@ class ItemChangeStatusSteps extends Component
                     $filePath = $file->store('items_files', 'public');
                     ItemsChangeStatusFiles::create([
                         'file_name' => $filePath,
+                        'file_size' => $file->getSize(),
                         'desc' => $this->desc,
                         'visiable_in' => $this->visible_in,
-                        'items_change_status_id' => $this->items_change_status_id,
-                        // 'items_change_status_id' => $itemChangeStatus->id,
+                        'items_change_status_id' => $changedStatus->id,
                     ]);
                 }
             }

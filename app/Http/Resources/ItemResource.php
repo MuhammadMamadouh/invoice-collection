@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\ItemsChangeStatusFiles;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -48,6 +49,7 @@ class ItemResource extends JsonResource
             'client'                    => $this->client,
             'currency'                  => $this->currency,
             'itemChangeStatus'          => $this->itemChangeStatus ? ItemsChangeStatusResource::collection($this->itemChangeStatus) : [],
+            'itemsFileCount'            => ItemsChangeStatusFiles::count(),
         ];
     }
 }

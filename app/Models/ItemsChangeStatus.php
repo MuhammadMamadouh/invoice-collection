@@ -43,6 +43,6 @@ class ItemsChangeStatus extends Model
 
     public function changedStatusItem()
     {
-        return $this->belongsTo(Client::class, 'item_id');
+        return $this->belongsTo(Item::class, 'item_id');
     }
 }
