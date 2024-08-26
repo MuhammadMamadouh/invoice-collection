@@ -42,9 +42,7 @@ class ClientController extends Controller
             'contacts',
             'items.itemChangeStatus',
         ])->filter(new ClientFilter(request()))->paginate(30);
-
         $clientResource = ClientResource::collection($clients)->response()->getData()->data;
-        // dd($clientResource);
         $client_count = Client::count();
         $collectionsScenario = CollectionScenario::all();
         $itemTypes = ItemType::all();
@@ -93,7 +91,6 @@ class ClientController extends Controller
         $clientResource = new ClientResource($client);
         $clients = Client::all();
         $collectors = User::collectors()->get();
-        ;
         $collectionsScenario = CollectionScenario::all();
         $currencies = Currency::all();
         $itemTypes = ItemType::all();

@@ -418,8 +418,7 @@
             </div>
             <div class="col-lg-3 col-sm-6">
                 <div class="m-1 w-100 btn btn-outline-primary associatedButton" onclick="associatedFun()">
-                    <i class="fa-solid fa-link"></i> {{ __('Associated files') }} <span class="badge bg-danger ms-1"
-                        style="border-radius: 50%;">1</span>
+                    <i class="fa-solid fa-link"></i> {{ __('Associated files') }} 
                 </div>
             </div>
             <div class="col-1"></div>

@@ -21,33 +21,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @forelse($item->itemChangeStatus as $itemChange)
-                        @foreach($itemChange->statusFiles as $statusFile)
+                    @forelse($item->itemChangeStatus as $itemChange)
+                        @foreach ($itemChange->statusFiles as $statusFile)
                             <tr>
                                 <td>
-                                    <p>{{$statusFile->file_name}}</p>
+                                    <p>{{ $statusFile->file_name }}</p>
                                 </td>
                                 <td>
-                                    <p></p>
+                                    <p>{{ $statusFile->desc }}</p>
                                 </td>
                                 <td>
-                                    <p></p>
+                                    <p>{{ $statusFile->file_size }}</p>
+                                    {{-- <p>{{ $statusFile->readableFileSize() }}</p> --}}
                                 </td>
                                 <td>
-                                    <p></p>
+                                    <p>{{$itemChange->create_at }}</p>
                                 </td>
                                 <td>
-                                    <p></p>
+                                    <p>{{ $itemChange->statusResolver->first_name }}</p>
                                 </td>
                             </tr>
                         @endforeach
                     @empty
                         <div class="bg-light text-center w-100 p-3 mt-0">{{ __('No associated files') }}</div>
-                    @endforelse --}}
+                    @endforelse
                 </tbody>
             </table>
         </div>
-        <div class="p-4">
+        {{-- <div class="p-4">
             <div class="d-flex">
                 <p>{{ __('Associate files to items') }}</p>
                 <a href="DSOInformation.html"><i class="fa-solid fa-question bg-primary text-light p-1 ms-1"
@@ -61,6 +62,6 @@
                 {{ __('File') }}</div><br>
             <div class="text-center myBtn d-none">
                 <div class="btn btn-primary"><i class="fa-solid fa-check"></i> {{ __('Submit') }}</div>
-            </div>
-        </div>
+            </div> 
+        </div> --}}
     </div>
