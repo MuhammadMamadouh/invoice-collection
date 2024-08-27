@@ -1,27 +1,26 @@
 @extends('layouts.dashboard.app')
 @section('content')
-<div class="overlay d-none"></div>
 <section class="mt-5">
           <div class="container-fluid ">
             <div class="row">
               <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="{{route('collection.manual.actions')}}" class="m-1 w-100 btn btn-outline-light text-dark p-3">
+                <a id="button1" href="{{route('collection.manual.actions')}}" class="m-1 w-100 btn dynamic-button btn-outline-light text-dark p-3">
                   <svg class="svg-inline--fa fa-hand-point-right" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="hand-point-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M224 320c0 17.69 14.33 32 32 32h64c17.67 0 32-14.31 32-32s-14.33-32-32-32h-64C238.3 288 224 302.3 224 320zM267.6 256H352c17.67 0 32-14.31 32-32s-14.33-32-32-32h-80v40C272 240.5 270.3 248.5 267.6 256zM272 160H480c17.67 0 32-14.31 32-32s-14.33-32-32-32h-208.8C271.5 98.66 272 101.3 272 104V160zM320 416c0-17.69-14.33-32-32-32H224c-17.67 0-32 14.31-32 32s14.33 32 32 32h64C305.7 448 320 433.7 320 416zM202.1 355.8C196 345.6 192 333.3 192 320c0-5.766 1.08-11.24 2.51-16.55C157.4 300.6 128 269.9 128 232V159.1C128 151.2 135.2 144 143.1 144S160 151.2 159.1 159.1l0 69.72C159.1 245.2 171.3 271.1 200 271.1C222.1 271.1 240 254.1 240 232v-128C240 81.91 222.1 64 200 64H136.6C103.5 64 72.03 80 52.47 106.8L26.02 143.2C9.107 166.5 0 194.5 0 223.3V312C0 387.1 60.89 448 136 448h32.88C163.4 438.6 160 427.7 160 416C160 388.1 178 364.6 202.1 355.8z"></path></svg><!-- <i class="fa-solid fa-hand-point-right"></i> Font Awesome fontawesome.com --> Manual actions
                   <span class="badge bg-danger">200</span>
                 </a>
-              </div> 
+              </div>
               <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="{{route('collection.automatic.actions')}}" class="m-1 w-100 btn btn-primary text-light p-3"><svg class="svg-inline--fa fa-arrows-rotate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrows-rotate" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M464 16c-17.67 0-32 14.31-32 32v74.09C392.1 66.52 327.4 32 256 32C161.5 32 78.59 92.34 49.58 182.2c-5.438 16.81 3.797 34.88 20.61 40.28c16.89 5.5 34.88-3.812 40.3-20.59C130.9 138.5 189.4 96 256 96c50.5 0 96.26 24.55 124.4 64H336c-17.67 0-32 14.31-32 32s14.33 32 32 32h128c17.67 0 32-14.31 32-32V48C496 30.31 481.7 16 464 16zM441.8 289.6c-16.92-5.438-34.88 3.812-40.3 20.59C381.1 373.5 322.6 416 256 416c-50.5 0-96.25-24.55-124.4-64H176c17.67 0 32-14.31 32-32s-14.33-32-32-32h-128c-17.67 0-32 14.31-32 32v144c0 17.69 14.33 32 32 32s32-14.31 32-32v-74.09C119.9 445.5 184.6 480 255.1 480c94.45 0 177.4-60.34 206.4-150.2C467.9 313 458.6 294.1 441.8 289.6z"></path></svg><!-- <i class="fa-solid fa-arrows-rotate"></i> Font Awesome fontawesome.com --> Automatic actions
+                <a id="button2" href="{{route('collection.automatic.actions')}}" class="m-1 w-100 btn dynamic-button btn-outline-light text-dark text-light p-3"><svg class="svg-inline--fa fa-arrows-rotate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrows-rotate" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M464 16c-17.67 0-32 14.31-32 32v74.09C392.1 66.52 327.4 32 256 32C161.5 32 78.59 92.34 49.58 182.2c-5.438 16.81 3.797 34.88 20.61 40.28c16.89 5.5 34.88-3.812 40.3-20.59C130.9 138.5 189.4 96 256 96c50.5 0 96.26 24.55 124.4 64H336c-17.67 0-32 14.31-32 32s14.33 32 32 32h128c17.67 0 32-14.31 32-32V48C496 30.31 481.7 16 464 16zM441.8 289.6c-16.92-5.438-34.88 3.812-40.3 20.59C381.1 373.5 322.6 416 256 416c-50.5 0-96.25-24.55-124.4-64H176c17.67 0 32-14.31 32-32s-14.33-32-32-32h-128c-17.67 0-32 14.31-32 32v144c0 17.69 14.33 32 32 32s32-14.31 32-32v-74.09C119.9 445.5 184.6 480 255.1 480c94.45 0 177.4-60.34 206.4-150.2C467.9 313 458.6 294.1 441.8 289.6z"></path></svg><!-- <i class="fa-solid fa-arrows-rotate"></i> Font Awesome fontawesome.com --> Automatic actions
                   <svg class="svg-inline--fa fa-triangle-exclamation" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="triangle-exclamation" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"></path></svg><!-- <i class="fa-solid fa-triangle-exclamation"></i> Font Awesome fontawesome.com -->
                   <span class="badge bg-danger">184</span></a>
               </div>
               <!--btns-->
               <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="collectionActionsHistoy.html" class="m-1 w-100 btn btn-outline-light text-dark p-3"><svg class="svg-inline--fa fa-bars-staggered" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars-staggered" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM64 256C64 238.3 78.33 224 96 224H480C497.7 224 512 238.3 512 256C512 273.7 497.7 288 480 288H96C78.33 288 64 273.7 64 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"></path></svg><!-- <i class="fa-solid fa-bars-staggered"></i> Font Awesome fontawesome.com -->
+                <a id="button3" href="collectionActionsHistoy.html" class="m-1 w-100 btn dynamic-button btn-outline-light text-dark p-3"><svg class="svg-inline--fa fa-bars-staggered" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars-staggered" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM64 256C64 238.3 78.33 224 96 224H480C497.7 224 512 238.3 512 256C512 273.7 497.7 288 480 288H96C78.33 288 64 273.7 64 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"></path></svg><!-- <i class="fa-solid fa-bars-staggered"></i> Font Awesome fontawesome.com -->
                   Actions history</a>
               </div>
               <div class="col-lg-3 col-md-4 col-sm-6">
-                <a href="collectionAlerts.html" class="m-1 w-100 btn btn-outline-light text-dark p-3"><svg class="svg-inline--fa fa-bell" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M256 32V51.2C329 66.03 384 130.6 384 208V226.8C384 273.9 401.3 319.2 432.5 354.4L439.9 362.7C448.3 372.2 450.4 385.6 445.2 397.1C440 408.6 428.6 416 416 416H32C19.4 416 7.971 408.6 2.809 397.1C-2.353 385.6-.2883 372.2 8.084 362.7L15.5 354.4C46.74 319.2 64 273.9 64 226.8V208C64 130.6 118.1 66.03 192 51.2V32C192 14.33 206.3 0 224 0C241.7 0 256 14.33 256 32H256zM224 512C207 512 190.7 505.3 178.7 493.3C166.7 481.3 160 464.1 160 448H288C288 464.1 281.3 481.3 269.3 493.3C257.3 505.3 240.1 512 224 512z"></path></svg><!-- <i class="fa-solid fa-bell"></i> Font Awesome fontawesome.com -->
+                <a id="button4" href="collectionAlerts.html" class="m-1 w-100 btn dynamic-button btn-outline-light text-dark p-3"><svg class="svg-inline--fa fa-bell" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bell" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M256 32V51.2C329 66.03 384 130.6 384 208V226.8C384 273.9 401.3 319.2 432.5 354.4L439.9 362.7C448.3 372.2 450.4 385.6 445.2 397.1C440 408.6 428.6 416 416 416H32C19.4 416 7.971 408.6 2.809 397.1C-2.353 385.6-.2883 372.2 8.084 362.7L15.5 354.4C46.74 319.2 64 273.9 64 226.8V208C64 130.6 118.1 66.03 192 51.2V32C192 14.33 206.3 0 224 0C241.7 0 256 14.33 256 32H256zM224 512C207 512 190.7 505.3 178.7 493.3C166.7 481.3 160 464.1 160 448H288C288 464.1 281.3 481.3 269.3 493.3C257.3 505.3 240.1 512 224 512z"></path></svg><!-- <i class="fa-solid fa-bell"></i> Font Awesome fontawesome.com -->
                   My Alerts
                   <span class="badge bg-danger">200</span></a>
               </div>
@@ -192,7 +191,7 @@
               <div class="col-lg-9 bg-white" style="height:400px ;">
                 <canvas id="myChart-10" width="0" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;"></canvas>
               </div>
-      
+
             </div>
             <div class="row p-3 bg-light d-none collection-charts-2">
               <div class="col-lg-3">
@@ -254,7 +253,7 @@
               <div class="col-lg-9 bg-white" style="height:400px ;">
                 <canvas id="myChart-101" width="0" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;"></canvas>
               </div>
-      
+
             </div>
             <div class="row p-3 bg-light d-none collection-charts-3">
               <div class="col-lg-3">
@@ -316,7 +315,7 @@
               <div class="col-lg-9 bg-white" style="height:400px ;">
                 <canvas id="myChart-102" width="0" height="0" style="display: block; box-sizing: border-box; height: 0px; width: 0px;"></canvas>
               </div>
-      
+
             </div>
           </div>
         </section>
@@ -349,49 +348,49 @@
                     <svg class="svg-inline--fa fa-sort mb-3" style="cursor: pointer;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"></path></svg><!-- <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i> Font Awesome fontawesome.com -->
                     <p class="fw-bold">Action date</p>
                   </div>
-                
+
               </div>
               <div class="col-md-2 col-5">
                                   <div class="d-flex align-items-center justify-content-center gap-1 ">
                     <svg class="svg-inline--fa fa-sort mb-3" style="cursor: pointer;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"></path></svg><!-- <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i> Font Awesome fontawesome.com -->
                     <p class="fw-bold">Action type</p>
                   </div>
-                
+
               </div>
               <div class="col-2 hide">
                                   <div class="d-flex align-items-center justify-content-center gap-1 ">
                     <svg class="svg-inline--fa fa-sort mb-3" style="cursor: pointer;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"></path></svg><!-- <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i> Font Awesome fontawesome.com -->
                     <p class="fw-bold">Action</p>
                   </div>
-               
+
               </div>
               <div class="col-2 hide">
                                   <div class="d-flex align-items-center justify-content-center gap-1 ">
                     <svg class="svg-inline--fa fa-sort mb-3" style="cursor: pointer;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"></path></svg><!-- <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i> Font Awesome fontawesome.com -->
                     <p class="fw-bold">Action amount</p>
                   </div>
-                
+
               </div>
               <div class="col-1 hide">
                                   <div class="d-flex align-items-center justify-content-center gap-1 ">
                     <svg class="svg-inline--fa fa-sort mb-3" style="cursor: pointer;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"></path></svg><!-- <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i> Font Awesome fontawesome.com -->
                     <p class="fw-bold">Flag</p>
                   </div>
-                
+
               </div>
               <div class="col hide">
                                   <div class="d-flex align-items-center justify-content-center gap-1 ">
                     <svg class="svg-inline--fa fa-sort mb-3" style="cursor: pointer;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"></path></svg><!-- <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i> Font Awesome fontawesome.com -->
                     <p class="fw-bold">Company code</p>
                   </div>
-                
+
               </div>
               <div class="col">
                                   <div class="d-flex align-items-center justify-content-center gap-1 ">
                     <svg class="svg-inline--fa fa-sort mb-3" style="cursor: pointer;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sort" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" data-fa-i2svg=""><path fill="currentColor" d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"></path></svg><!-- <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i> Font Awesome fontawesome.com -->
                     <p class="fw-bold">Business name</p>
                   </div>
-                
+
               </div>
               <div class="col tavle-dropdown-icon"></div>
             </div>
@@ -400,6 +399,7 @@
               @php
                $dates = [];
                $total_amount = 0;
+               $counting = 0;
                $actionId = 0;
                $actionDate = null;
                $actionType = null;
@@ -407,17 +407,19 @@
                $isDueDateGreaterThanCurrentDate = null;
                $items_amount_overdue_exclude_disputes_include_late_penalties = null;
                $my_company_signature = null;
-               $client_code = null; 
+               $client_code = null;
                $tems_amount_overdue_exclude_disputes = $my_name =  $my_phone = $my_email = $my_company_name
                = $actionSubject = $my_company_logo = null;
               @endphp
               @foreach($items  as $item)
               @php
               $client = $item->client;
-              $client_items = $client->items;
+              //$client_items = $client->items;
               $collectionScenario = $client->collectionScenario;
               $collectionScenarioActions = $collectionScenario->actionScenarios->where('is_automatic_action',1)->toArray();
               //dd($collectionScenarioActions);
+              if(sizeof($collectionScenarioActions) > 0)
+              {
               usort($collectionScenarioActions, function($a, $b) {
                   // Compare signs first
                   if ($a['number_of_days'] < 0 && $b['number_of_days'] >= 0) {
@@ -430,7 +432,7 @@
                   return ($a['number_of_days'] - $b['number_of_days']);
               });
                // After sorting, $collectionScenarioActions[0] will be the smallest one
-               $smallestAction = $collectionScenarioActions[0];  
+               $smallestAction = $collectionScenarioActions[0];
                $currentDate = Carbon::now()->toDateString();
                $dueDate = $item->due_date;
                 $numberOfDays = $collectionScenarioActions[0]['number_of_days'];
@@ -443,15 +445,15 @@
                 } elseif ($numberOfDays < 0) {
                     // Subtract days from $dueDate
                     $dueDate = Carbon::parse($dueDate)->subDays(abs($numberOfDays))->toDateString();
-                } 
+                }
                    $currentDate = Carbon::today(); // Get current date without time
                    $dates[]=$dueDate;
-                  $actionId = $collectionScenarioActions[0]['id']; 
+                  $actionId = $collectionScenarioActions[0]['id'];
                   $actionDate = $dueDate;
-                  $action_type = (int)$collectionScenarioActions[0]['action_type']; 
+                  $action_type = (int)$collectionScenarioActions[0]['action_type'];
                   $actionType = \App\Models\ActionType::where('id',$action_type)->first();
                   $action = $collectionScenarioActions[0]['action_name'];
-                  $total_amount +=$item->initial_amount_inc_tax; 
+                  $total_amount +=$item->initial_amount_inc_tax;
                   $items_amount_overdue_exclude_disputes_include_late_penalties = 12354600;
                   $interactive_page_button = 'View My Account Statement';
                   $my_company_signature  = '';
@@ -461,10 +463,11 @@
                   $my_phone = '+33 4 12 34 56 78';
                   $my_email = 'demo@mydsomanager.com';
                   $my_company_name ='Business Solutions';
-                  $my_company_logo  = 'img/logo.png'; 
-              
-              @endphp   
-              
+                  $my_company_logo  = 'img/logo.png';
+                  $counting++;
+
+              @endphp
+
               <div class="row align-items-center pt-3" style="background-color: #006bff14">
                 <div class="col-1">
                   <div class="form-check">
@@ -481,57 +484,57 @@
                   </div>
                 </div>
                 <div class="col-md-2 col-5">
-                @if($actionType->en_name == "Litigation")  
+                @if($actionType->en_name == "Litigation")
                 <button class="btn text-light text-decoration-none btn-primary w-100 mb-3">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-gavel" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="gavel" role="img">
                   <path fill="currentColor" d="M438.6 81.4l-41.3-41.3c-9.4-9.4-24.6-9.4-34 0L312.1 67.2 248.6 10.8c-9.4-9.4-24.6-9.4-34 0L160.8 62.4l-24.6-24.6c-9.4-9.4-24.6-9.4-34 0l-41.3 41.3c-9.4 9.4-9.4 24.6 0 34l24.6 24.6-35.4 35.4c-11.6 11.6-17.6 27.6-17.6 43.6v220.8c0 16.1 6 32.1 17.6 43.6l84.7 84.7c11.6 11.6 27.6 17.6 43.6 17.6h220.8c16.1 0 32.1-6 43.6-17.6l84.7-84.7c11.6-11.6 17.6-27.6 17.6-43.6V159c0-16.1-6-32.1-17.6-43.6l-35.4-35.4 24.6-24.6c9.4-9.4 9.4-24.6 0-34zm-48.4 348.8c0 15.8-6.1 30.9-17.2 42.1l-83.9 83.9c-11.2 11.2-26.3 17.2-42.1 17.2H123.7c-15.8 0-30.9-6.1-42.1-17.2l-83.9-83.9c-11.2-11.2-17.2-26.3-17.2-42.1V239.5c0-15.8 6.1-30.9 17.2-42.1l83.9-83.9c11.2-11.2 26.3-17.2 42.1-17.2h220.8c15.8 0 30.9 6.1 42.1 17.2l83.9 83.9c11.2 11.2 17.2 26.3 17.2 42.1v220.8zm-67.2-161.6c-11.2-11.2-26.3-17.2-42.1-17.2H156.8c-15.8 0-30.9 6.1-42.1 17.2l-83.9 83.9c-11.2 11.2-17.2 26.3-17.2 42.1v220.8c0 15.8 6.1 30.9 17.2 42.1l83.9 83.9c11.2 11.2 26.3 17.2 42.1 17.2H220.8c15.8 0 30.9-6.1 42.1-17.2l83.9-83.9c11.2-11.2 17.2-26.3 17.2-42.1V239.5c0-15.8-6.1-30.9-17.2-42.1l-83.9-83.9c-11.2-11.2-26.3-17.2-42.1-17.2h-220.8c-15.8 0-30.9 6.1-42.1 17.2l-83.9 83.9c-11.2 11.2-17.2 26.3-17.2 42.1v220.8z"/>
                 </svg>
-                {{$actionType->en_name}} 
+                {{$actionType->en_name}}
               </button>
                 @elseif($actionType->en_name == "Dunning letter (Standard letter)")
-                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}})">
-                <span><svg class="svg-inline--fa fa-envelope" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"></path></svg><!-- <i class="fa-solid fa-envelope"></i> Font Awesome fontawesome.com --></span> {{$actionType->en_name}} 
+                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}},{{$counting}})">
+                <span><svg class="svg-inline--fa fa-envelope" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"></path></svg><!-- <i class="fa-solid fa-envelope"></i> Font Awesome fontawesome.com --></span> {{$actionType->en_name}}
               </button>
                 @elseif($actionType->en_name == "Dunning letter with AR (Acknowledgment of Receipt)")
-                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}})">
+                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}},{{$counting}})">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-dunning-ar" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope-check" role="img">
                   <path fill="currentColor" d="M64 32h320c35.3 0 64 28.7 64 64v320c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96c0-35.3 28.7-64 64-64zm16 48v48h288V80H80zm288 416h-288V144h288v352zM160 368l-32-32 24-24 8 8 32-32 24 24-56 56zm56-56l-24-24 24-24 24 24-24 24zm224-64v-96c0-13.3-10.7-24-24-24H88c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h256c13.3 0 24-10.7 24-24z"/>
                 </svg>
-                {{$actionType->en_name}} 
+                {{$actionType->en_name}}
               </button>
                 @elseif($actionType->en_name == "Dunning letter via ERM (Electronic Registered Mail)")
-                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}})">
+                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}},{{$counting}})">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-dunning-erm" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="envelope" role="img">
                   <path fill="currentColor" d="M502.3 190.8l-100.1 100.1c-8.4 8.4-19.5 13.1-31.6 13.1H140.4c-12.1 0-23.2-4.7-31.6-13.1L8.6 190.8C-1.4 180.8-1.4 159.6 8.6 149.6L18.8 139.4C28.8 129.4 50.1 129.4 60.1 139.4l89.8 89.8c8.4 8.4 19.5 13.1 31.6 13.1h230.4c12.1 0 23.2-4.7 31.6-13.1l89.8-89.8c10-10 31.3-10 41.3 0l10.2 10.2c10 10 10 28.2 0 38.2zM376 308H136c-13.3 0-24-10.7-24-24v-64c0-13.3 10.7-24 24-24h240c13.3 0 24 10.7 24 24v64c0 13.3-10.7 24-24 24zm0-112H136v48h240v-48zm60.2-152c-10.3 0-20.6 4-28.3 11.8L256 112.3 123.1 57.7C115.4 50 105.4 46 95.1 46H80v416h320V46h-15.1c-10.3 0-20.6 4-28.3 11.8L256 112.3 436.2 12.5c8.4-8.4 19.5-13.1 31.6-13.1h15.1v416H32V46h15.1c12.1 0 23.2 4.7 31.6 13.1L256 112.3l124.5-60.2c8.4-8.4 19.5-13.1 31.6-13.1h15.1zM440 464H72v-16c0-13.3 10.7-24 24-24h320c13.3 0 24 10.7 24 24v16z"/>
                 </svg>
-                {{$actionType->en_name}} 
+                {{$actionType->en_name}}
               </button>
                 @elseif( $actionType->en_name == "E-mail")
-                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}})">
+                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}},{{$counting}})">
                     @ {{$actionType->en_name}}
               </button>
                 @elseif($actionType->en_name == "Fax")
-                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}})">
+                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}},{{$counting}})">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-fax" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="fax" role="img">
                   <path fill="currentColor" d="M464 80H368c-13.3 0-24 10.7-24 24v24H168v-24c0-13.3-10.7-24-24-24H48C21.5 80 0 101.5 0 128v352c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V128c0-26.5-21.5-48-48-48zM160 104h192v32H160v-32zm-8 64h208v48H152v-48zm-40 368H40c-8.8 0-16-7.2-16-16v-8h136v24zm416-24c0 8.8-7.2 16-16 16H376v-24h136v8zm0-56H40v-8h448v8zm0-40H40v-8h448v8zm0-40H40v-8h448v8zm0-40H40v-8h448v8zm0-40H40v-8h448v8zm0-40H40v-8h448v8zm0-40H40v-8h448v8z"/>
                 </svg>
-                {{$actionType->en_name}}  
+                {{$actionType->en_name}}
               </button>
                 @elseif($actionType->en_name == "SMS" )
-                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}})">
+                <button class="btn text-light text-decoration-none btn-primary w-100 mb-3" onclick="showEditActionModal({{$actionId}},{{$counting}})">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-sms" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comment-dots" role="img">
                 <path fill="currentColor" d="M256 32C114.6 32 0 146.6 0 288c0 48.1 19.3 92.1 50.7 126.2L0 448l48.7-20.7C72.7 460.7 116.9 480 168 480h224c141.4 0 256-114.6 256-256S397.4 32 256 32zM256 416H168c-19.5 0-38.3-5.6-54.6-15.3l-21.1-10.6L129.1 372c10.3-19.2 15.9-40.5 15.9-62.4 0-97.2-78.7-176-176-176s-176 78.7-176 176 78.7 176 176 176c29.8 0 58.8-5.2 85.6-14.7l10.6 21.1-10.6 21.1c-9.7 19.7-15.3 39.9-15.3 59.4s5.6 39.8 15.3 54.6l20.7 48.7L480 416c12.2-17.7 23.8-36.6 32.6-56.7L512 368c-22.6 34.2-55.7 64-95.7 85.1L418.5 404c-10.3-19.2-15.9-40.5-15.9-62.4 0-97.2 78.7-176 176-176S512 234.8 512 288s-78.7 176-176 176z"/>
                 </svg>
-                {{$actionType->en_name}} 
+                {{$actionType->en_name}}
               </button>
-                @elseif($actionType->en_name == "Phone" ) 
+                @elseif($actionType->en_name == "Phone" )
                 <button class="btn text-light text-decoration-none btn-primary w-100 mb-3">
-                <span><svg class="svg-inline--fa fa-phone" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z"></path></svg><!-- <i class="fa-solid fa-phone"></i> Font Awesome fontawesome.com --></span> {{$actionType->en_name}} 
+                <span><svg class="svg-inline--fa fa-phone" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="phone" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z"></path></svg><!-- <i class="fa-solid fa-phone"></i> Font Awesome fontawesome.com --></span> {{$actionType->en_name}}
               </button>
                 @endif
                 </div>
                 <div class="col-2 hide">
-                  <p><a href="#"  onclick="showEditActionModal({{$actionId}})">{{$action}}</a></p>
+                  <p><a href="#"  onclick="showEditActionModal({{$actionId}},{{$counting}})">{{$action}}</a></p>
                 </div>
                 <div class="col-2 hide">
                   <p>{{$item->initial_amount_inc_tax}}</p>
@@ -540,12 +543,12 @@
                   <span class="onmouse-2"><svg class="svg-inline--fa fa-flag mb-2 text-primary" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="flag" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M64 496C64 504.8 56.75 512 48 512h-32C7.25 512 0 504.8 0 496V32c0-17.75 14.25-32 32-32s32 14.25 32 32V496zM476.3 0c-6.365 0-13.01 1.35-19.34 4.233c-45.69 20.86-79.56 27.94-107.8 27.94c-59.96 0-94.81-31.86-163.9-31.87C160.9 .3055 131.6 4.867 96 15.75v350.5c32-9.984 59.87-14.1 84.85-14.1c73.63 0 124.9 31.78 198.6 31.78c31.91 0 68.02-5.971 111.1-23.09C504.1 355.9 512 344.4 512 332.1V30.73C512 11.1 495.3 0 476.3 0z"></path></svg><!-- <i class="fa-solid fa-flag mb-2 text-primary"></i> Font Awesome fontawesome.com --></span>
                   <span class="conttt-2">payment profile &lt; payeur correct / average payeur&gt; <br> average days beyond
                       items
-                      +28days (&lt; 10days) </span>   
+                      +28days (&lt; 10days) </span>
                 </div>
                 <div class="col hide">
                   <p class="fw-bold">{{$client->company_code}}</p>
                 </div>
-                <div class="col"> 
+                <div class="col">
                   <p class="fw-bold"><a href="#" onclick="showHolap()">{{$client->company_name}}</a></p>
                 </div>
                 <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
@@ -572,7 +575,8 @@
                     <p class="fw-bold">1230504</p>
                   </div>
                 </div>
-              </div> 
+              </div>
+              @php } @endphp
               @endforeach
               <div class="d-flex justify-content-center gap-5">
                 <p class="fw-bold">Total:</p>
@@ -580,13 +584,35 @@
               </div>
               <div class="arrow-bottom"></div>
             </div>
-            @foreach($collectionScenarioActions as $collectionScenarioAction)
-            @php $action_type = (int)$collectionScenarioAction['action_type']; 
+            @php $counting=0;@endphp
+            @foreach($items  as $item)
+              @php
+              $clientt = $item->client;
+              $collectionScenario = $clientt->collectionScenario;
+              $collectionScenarioActions = $collectionScenario->actionScenarios->where('is_automatic_action',1)->toArray();
+              if(sizeof($collectionScenarioActions) > 0)
+              {
+              usort($collectionScenarioActions, function($a, $b) {
+                  // Compare signs first
+                  if ($a['number_of_days'] < 0 && $b['number_of_days'] >= 0) {
+                      return -1; // $a should come before $b
+                  }
+                  if ($a['number_of_days'] >= 0 && $b['number_of_days'] < 0) {
+                      return 1; // $b should come before $a
+                  }
+                  // If both have the same sign, compare absolute values
+                  return ($a['number_of_days'] - $b['number_of_days']);
+              });
+              $collectionScenarioAction = $collectionScenarioActions[0];
+              $counting++;
+
+              @endphp
+              @php $action_type = (int)$collectionScenarioActions[0]['action_type'];
                  $actionType = \App\Models\ActionType::where('id',$action_type)->first(); @endphp
-            @if($actionType->en_name == "Dunning letter (Standard letter)" || $actionType->en_name == "Dunning letter with AR (Acknowledgment of Receipt)" || 
+            @if($actionType->en_name == "Dunning letter (Standard letter)" || $actionType->en_name == "Dunning letter with AR (Acknowledgment of Receipt)" ||
                 $actionType->en_name == "Dunning letter via ERM (Electronic Registered Mail)" || $actionType->en_name == "E-mail"
                 || $actionType->en_name == "Fax" || $actionType->en_name == "SMS" )
-            <div id="myModal" class="modal-{{$collectionScenarioAction['id']}} d-none" style="position: fixed;
+            <div id="myModal-{{$collectionScenarioActions[0]['id']}}" class="modal" style="position: fixed;
     z-index: 11;
     left: 0;
     top: 0;
@@ -595,7 +621,7 @@
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);">
     <div class="modal-content">
-      <div class="new-holab-1" id="hide-hoalp-1">
+      <div class="new-holab-1" id="hide-hoalp-{{$collectionScenarioActions[0]['id']}}">
         <div class="d-flex justify-content-end me-4 ">
           <a href="email.html" target="_blank"><svg class="svg-inline--fa fa-maximize text-primary p-2 bg-light" style="
           font-size: 15px;
@@ -606,7 +632,9 @@
           border-radius: 5px;
         "></i> Font Awesome fontawesome.com --></a>
         </div>
-        <span onclick="hideEditActionnModal({{$collectionScenarioAction['id']}})">×</span>
+        <span onclick="hideEditActionnModal({{$collectionScenarioActions[0]['id']}})">×</span>
+        <form action="{{route('send.invoice')}}" method="post" enctype="multipart/form-data">
+        @csrf
         <div class="row mt-3">
           <div class="col-md-2">
             <h4>From :</h4>
@@ -616,19 +644,20 @@
               Paul Mayer &lt; mohamed@gmail.com&gt; </a>
             <div style=" display: flex; flex-wrap: wrap;" class="my-2">
               <p> <input type="checkbox" class="form-check-input mx-2" id="copy" name="copy">
-                Get a copy of this email 
+                Get a copy of this email
               </p>
               <p> <input type="checkbox" class="form-check-input mx-2" id="exampleChe">
-                Request an acknowledgment of receipt 
+                Request an acknowledgment of receipt
               </p>
             </div>
           </div><!--r-1-->
-           <input type="hidden" id="client_id" name="client_id" value="{{$client->id}}"/>
+           <input type="hidden" id="client_id" name="client_id" value="{{$clientt->id}}"/>
+           <input type="text" id="from" name="from" value="mohamed@gmail.com" style="display:none;"/>
           <div class="col-md-2 mt-2">
             <select class="form-select" id="email_to0_type" name="email_to0_type">
               <option value="" selected="" disabled=""> to :</option>
               <option value="">To :</option>
-              <option value="cc">Cc :</option>  
+              <option value="cc">Cc :</option>
               <option value="bcc">Bcc :</option>
             </select>
           </div><!--l-2-->
@@ -637,13 +666,13 @@
               <option value="" selected="" disabled=""> </option>
               @foreach ($combined as $item)
               @if($item instanceof \App\Models\Client)
-              <option value="mohamed@gmail.com">{{$item->company_code}} / {{$item->company_name}}</option>
+              <option value="eng.mohamedabdelmeged900@gmail.com">{{$item->company_code}} / {{$item->company_name}}</option>
               @elseif($item instanceof \App\Models\User)
               <option value="{{$item->email}}">{{$item->first_name}} {{"<"}}{{$item->email}}{{">"}} (Function : {{$item->function}} / Role : {{$item->role->name}})  *** {{$item->role->name}} ***</option>
               @endif
               @endforeach
-            </select> 
-            
+            </select>
+
           </div><!--r-2-->
           <div id="dropdownContainer" class="row">
             <!-- Dropdowns will be added here -->
@@ -655,12 +684,12 @@
               <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span class="mx-1"><svg class="svg-inline--fa fa-plus text-dark" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <i class="fa-solid fa-plus text-dark"></i> Font Awesome fontawesome.com --></span>Add an anoter acount</a>
             </div>
           </div>
-          
+
           <div class="col-md-2 mt-2">
             <h4 for="">Supject :</h4>
           </div><!--l-3-->
           <div class="col-md-10 mt-2">
-            <input type="text" class="form-control " id="mail_subject" value="{{$collectionScenarioAction['mail_subject']}}">
+            <input type="text" class="form-control " id="mail_subject" value="{{$collectionScenarioActions[0]['mail_subject']}}">
           </div><!--r-3-->
           <div class="col-md-2 mt-2">
             <h4 class="mb-5">Message :</h4>
@@ -685,40 +714,38 @@
                 <button onclick="insertImage()"><svg class="svg-inline--fa fa-image" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="image" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M447.1 32h-384C28.64 32-.0091 60.65-.0091 96v320c0 35.35 28.65 64 63.1 64h384c35.35 0 64-28.65 64-64V96C511.1 60.65 483.3 32 447.1 32zM111.1 96c26.51 0 48 21.49 48 48S138.5 192 111.1 192s-48-21.49-48-48S85.48 96 111.1 96zM446.1 407.6C443.3 412.8 437.9 416 432 416H82.01c-6.021 0-11.53-3.379-14.26-8.75c-2.73-5.367-2.215-11.81 1.334-16.68l70-96C142.1 290.4 146.9 288 152 288s9.916 2.441 12.93 6.574l32.46 44.51l93.3-139.1C293.7 194.7 298.7 192 304 192s10.35 2.672 13.31 7.125l128 192C448.6 396 448.9 402.3 446.1 407.6z"></path></svg><!-- <i class="fas fa-image"></i> Font Awesome fontawesome.com --></button>
                 <button onclick="insertTable()"><svg class="svg-inline--fa fa-table" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="table" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M448 32C483.3 32 512 60.65 512 96V416C512 451.3 483.3 480 448 480H64C28.65 480 0 451.3 0 416V96C0 60.65 28.65 32 64 32H448zM224 256V160H64V256H224zM64 320V416H224V320H64zM288 416H448V320H288V416zM448 256V160H288V256H448z"></path></svg><!-- <i class="fas fa-table"></i> Font Awesome fontawesome.com --></button>
                 <button onclick="toggleHTML()">Toggle HTML</button>
-              </div> 
+              </div>
               <div id="editor" name="mail_content" class="form-control" contenteditable="true">
-              {{$collectionScenarioAction['mail_content']}}
+              {{$collectionScenarioActions[0]['mail_content']}}
               </div>
             </div>
              <div id="file-inputs-container">
         <!-- Initial file input -->
         <div class="file-input-container">
-           
+
         </div>
     </div>
             <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);" id="add-file-btn"><span class="mx-1"><svg class="svg-inline--fa fa-plus" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <i class="fa-solid fa-plus"></i> Font Awesome fontawesome.com --></span>Add an item</a>
           </div><!--r-4-->
           <div class="col-md-4 mt-2">
-  
           </div><!--l-5-->
           <div class="tw-btn-holab d-flex justify-content-end">
-  
             <div class="col-md-8 mt-2">
               <div class="row">
                 <div class="col-lg-6">
-                  <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow" onclick="showHollabTwo()"><svg class="svg-inline--fa fa-eye" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="eye" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M279.6 160.4C282.4 160.1 285.2 160 288 160C341 160 384 202.1 384 256C384 309 341 352 288 352C234.1 352 192 309 192 256C192 253.2 192.1 250.4 192.4 247.6C201.7 252.1 212.5 256 224 256C259.3 256 288 227.3 288 192C288 180.5 284.1 169.7 279.6 160.4zM480.6 112.6C527.4 156 558.7 207.1 573.5 243.7C576.8 251.6 576.8 260.4 573.5 268.3C558.7 304 527.4 355.1 480.6 399.4C433.5 443.2 368.8 480 288 480C207.2 480 142.5 443.2 95.42 399.4C48.62 355.1 17.34 304 2.461 268.3C-.8205 260.4-.8205 251.6 2.461 243.7C17.34 207.1 48.62 156 95.42 112.6C142.5 68.84 207.2 32 288 32C368.8 32 433.5 68.84 480.6 112.6V112.6zM288 112C208.5 112 144 176.5 144 256C144 335.5 208.5 400 288 400C367.5 400 432 335.5 432 256C432 176.5 367.5 112 288 112z"></path></svg><!-- <i class="fa-solid fa-eye"></i> Font Awesome fontawesome.com --> Email preview</button>
+                  <button type="button" class="btn btn-primary w-100 mt-3" id="hollabTwoShow" onclick="showHollabTwo({{$collectionScenarioActions[0]['id']}})"><svg class="svg-inline--fa fa-eye" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="eye" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M279.6 160.4C282.4 160.1 285.2 160 288 160C341 160 384 202.1 384 256C384 309 341 352 288 352C234.1 352 192 309 192 256C192 253.2 192.1 250.4 192.4 247.6C201.7 252.1 212.5 256 224 256C259.3 256 288 227.3 288 192C288 180.5 284.1 169.7 279.6 160.4zM480.6 112.6C527.4 156 558.7 207.1 573.5 243.7C576.8 251.6 576.8 260.4 573.5 268.3C558.7 304 527.4 355.1 480.6 399.4C433.5 443.2 368.8 480 288 480C207.2 480 142.5 443.2 95.42 399.4C48.62 355.1 17.34 304 2.461 268.3C-.8205 260.4-.8205 251.6 2.461 243.7C17.34 207.1 48.62 156 95.42 112.6C142.5 68.84 207.2 32 288 32C368.8 32 433.5 68.84 480.6 112.6V112.6zM288 112C208.5 112 144 176.5 144 256C144 335.5 208.5 400 288 400C367.5 400 432 335.5 432 256C432 176.5 367.5 112 288 112z"></path></svg><!-- <i class="fa-solid fa-eye"></i> Font Awesome fontawesome.com --> Email preview</button>
                 </div>
                 <div class="col-lg-6">
-                  <button class="btn btn-success w-100 mt-3"><svg class="svg-inline--fa fa-check" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg><!-- <i class="fa-solid fa-check"></i> Font Awesome fontawesome.com --> Send the email <svg class="svg-inline--fa fa-plus" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <i class="fa-solid fa-plus"></i> Font Awesome fontawesome.com --> complete the action</button>
+                  <button type="submit" class="btn btn-success w-100 mt-3"><svg class="svg-inline--fa fa-check" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg><!-- <i class="fa-solid fa-check"></i> Font Awesome fontawesome.com --> Send the email <svg class="svg-inline--fa fa-plus" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"></path></svg><!-- <i class="fa-solid fa-plus"></i> Font Awesome fontawesome.com --> complete the action</button>
                 </div>
               </div>
             </div>
           </div><!--r-5-->
         </div><!--row-->
-      
+        </form>
       </div>
        <!--new-Holap-->
- <div class="new-holap-2 d-none" id="hide-hoalp-2">
+ <div class="new-holap-2 d-none" id="hide-hoalp-2-{{$collectionScenarioActions[0]['id']}}">
   <div class="container">
     <div class="row">
       <div class="close-btn-span d-flex justify-content-end me-3">
@@ -785,61 +812,63 @@
       </div>
       <div class="emil-para-2 mt-3 mb-3">
         <p class="text-capitalize mt-3 mb-3">
-        @php 
-        $actionSubject = $collectionScenarioAction['mail_subject'];
+        @php
+        $actionSubject = $collectionScenarioActions[0]['mail_subject'];
         $sub_replacements = [
             '#my_company_name' => 'Business Solutions',
-            '#client_name' => $client->company_name,
-            '#client_code' => $client->company_code,
+            '#client_name' => $clientt->company_name,
+            '#client_code' => $clientt->company_code,
         ];
         foreach ($sub_replacements as $placeholder => $value) {
             if (strpos($actionSubject, $placeholder) !== false) {
                 $actionSubject = str_replace($placeholder, $value, $actionSubject);
             }
         }
-        @endphp  
+        @endphp
         {{$actionSubject}}</p>
       </div>
       <div class="email-prev">
-      Dear Client, <br>
-
-        Please find below a statement of account showing a total outstanding of: {{ number_format($items_amount_overdue_exclude_disputes_include_late_penalties, 2) }}.. <br>
-
-        We are sure that you simply forgot to send us your payment and we would be grateful if you could rectify this
-        situation as soon as possible. <br>
-        Don't hesitate to click on the following button to share your comments with us:</p>
-        <div class="view-button mt-3 mb-3">
+        @php
+        $content_replacements = [
+            '#items_amount_overdue_exclude_disputes_include_late_penalties' => '<br>',
+            '#interactive_page_button' => '<div class="view-button mt-3 mb-3">
         <a href="" class="btn btn-success"><span><svg class="svg-inline--fa fa-comments" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" data-fa-i2svg=""><path fill="currentColor" d="M416 176C416 78.8 322.9 0 208 0S0 78.8 0 176c0 39.57 15.62 75.96 41.67 105.4c-16.39 32.76-39.23 57.32-39.59 57.68c-2.1 2.205-2.67 5.475-1.441 8.354C1.9 350.3 4.602 352 7.66 352c38.35 0 70.76-11.12 95.74-24.04C134.2 343.1 169.8 352 208 352C322.9 352 416 273.2 416 176zM599.6 443.7C624.8 413.9 640 376.6 640 336C640 238.8 554 160 448 160c-.3145 0-.6191 .041-.9336 .043C447.5 165.3 448 170.6 448 176c0 98.62-79.68 181.2-186.1 202.5C282.7 455.1 357.1 512 448 512c33.69 0 65.32-8.008 92.85-21.98C565.2 502 596.1 512 632.3 512c3.059 0 5.76-1.725 7.02-4.605c1.229-2.879 .6582-6.148-1.441-8.354C637.6 498.7 615.9 475.3 599.6 443.7z"></path></svg><!-- <i class="fa-solid fa-comments"></i> Font Awesome fontawesome.com --></span> View my account
         statement</a>
-        </div>
-        <div class="descri">
-          <p>In anticipation of your payment, we remain at your disposal for any information you may need. <br>
-            Best regards,</p>
-        </div>
-        <div class="the-cloumn  d-flex align-items-center mb-3">
+        </div>',
+        '#my_company_signature'=>'',
+        '#client_code' =>'<div class="client-code">
+        <h6>Code client: ' . htmlspecialchars($clientt->company_code, ENT_QUOTES, 'UTF-8') . '</h6>
+    ',
+        '#my_name'=>' <div class="the-cloumn  d-flex align-items-center mb-3">
           <img src="img/person2.jpg" class="img-fluid" alt="">
           <div class="name text-center">
-            <h6 class="mt-3 mb-3">{{$my_name}}</h6>
-            <p class="mt-3 mb-3">Credit manager <br> 
-              {{$my_phone}} <br>
-              {{$my_email}}<br>
-              {{$my_company_name}}</p>
+            <h6 class="mt-3 mb-3">{{$my_name}}</h6>',
+        '#my_phone'=>'  <p class="mt-3 mb-3">Credit manager <br>
+        {{$my_phone}} <br>',
+        '#my_email'=>'{{$my_email}}<br>',
+        '#my_company_name'=>'{{$my_company_name}}</p>
             <a href="#">http://www.demo-solutions.com </a>
-          </div>
-          <div class="logo-mail">
+          </div>',
+        '#my_company_logo'=>'<div class="logo-mail">
             <img src="{{$my_company_logo}}" class="img-fluid" alt="">
           </div>
-        </div>
-        <div class="client-code">
-          <h6>Code client: 341291</h6>
+        </div>',
+        ];
+        $actionContent = $collectionScenarioActions[0]['mail_content'];
+        foreach ($content_replacements as $key => $replacement) {
+            // Replace placeholder with the corresponding value in $actionContent
+            $actionContent = str_replace($key, $replacement, $actionContent);
+        }
+        echo $actionContent;
+        @endphp
           <div class="client-codes d-flex justify-content-between align-items-center">
             <p><span><svg class="svg-inline--fa fa-star" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M381.2 150.3L524.9 171.5C536.8 173.2 546.8 181.6 550.6 193.1C554.4 204.7 551.3 217.3 542.7 225.9L438.5 328.1L463.1 474.7C465.1 486.7 460.2 498.9 450.2 506C440.3 513.1 427.2 514 416.5 508.3L288.1 439.8L159.8 508.3C149 514 135.9 513.1 126 506C116.1 498.9 111.1 486.7 113.2 474.7L137.8 328.1L33.58 225.9C24.97 217.3 21.91 204.7 25.69 193.1C29.46 181.6 39.43 173.2 51.42 171.5L195 150.3L259.4 17.97C264.7 6.954 275.9-.0391 288.1-.0391C300.4-.0391 311.6 6.954 316.9 17.97L381.2 150.3z"></path></svg><!-- <i class="fa-solid fa-star"></i> Font Awesome fontawesome.com --></span>Click on the Part Number to see more information and leave a comment::</p>
             <div class="this-buttons">
               <button type="button" class="btn text-light"><span><svg class="svg-inline--fa fa-download" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M480 352h-133.5l-45.25 45.25C289.2 409.3 273.1 416 256 416s-33.16-6.656-45.25-18.75L165.5 352H32c-17.67 0-32 14.33-32 32v96c0 17.67 14.33 32 32 32h448c17.67 0 32-14.33 32-32v-96C512 366.3 497.7 352 480 352zM432 456c-13.2 0-24-10.8-24-24c0-13.2 10.8-24 24-24s24 10.8 24 24C456 445.2 445.2 456 432 456zM233.4 374.6C239.6 380.9 247.8 384 256 384s16.38-3.125 22.62-9.375l128-128c12.49-12.5 12.49-32.75 0-45.25c-12.5-12.5-32.76-12.5-45.25 0L288 274.8V32c0-17.67-14.33-32-32-32C238.3 0 224 14.33 224 32v242.8L150.6 201.4c-12.49-12.5-32.75-12.5-45.25 0c-12.49 12.5-12.49 32.75 0 45.25L233.4 374.6z"></path></svg><!-- <i class="fa-solid fa-download"></i> Font Awesome fontawesome.com --> </span>Export this data to excel</button>
             </div>
           </div>
-          
-          @if (strpos($collectionScenarioAction['mail_content'], '#items_list_monthly') !== false)
+
+          @if (strpos($collectionScenarioActions[0]['mail_content'], '#items_list_monthly') !== false)
           <div class="tabels-emails">
             <div class="container-fluid">
               <div class="table-responsive mt-3 mb-3">
@@ -862,7 +891,7 @@
                   </thead>
                   <tbody class="text-center">
                   @php $countt = 0;$total_Am = 0;@endphp
-                  @foreach($client->items as $item)
+                  @foreach($clientt->items as $item)
                   @php $countt++;
                   $due_date = Carbon::parse($item->due_date);
                   $startOfMonth = Carbon::now()->startOfMonth();
@@ -870,10 +899,10 @@
                   @endphp
                   @if($due_date->between($startOfMonth, $endOfMonth))
                   @php $total_Am += $item->initial_amount_inc_tax;@endphp
-                    <tr> 
+                    <tr>
                       <td style="background: #f0f0f0;">{{$countt}}</td>
                       <td style="display: flex;"><img src="img/pdficons.gif" style="width: 17px;" alt="" class="img-fluid"><a href=""> 3794</a></td>
-                      <td>{{$client->company_name}}</td>
+                      <td>{{$clientt->company_name}}</td>
                       <td>227107 </td>
                       <td>{{$item->issue_date}}</td>
                       <td>{{$item->due_date}}</td>
@@ -899,15 +928,15 @@
           </div>
           <div class="tabels-emails">
             <div class="container-fluid">
-              
+
             </div>
             <div class="end-of-total">
               <p> <strong>Encours total</strong> : 16 006,97 €</p>
             </div>
           </div>
           @endif
-        
-          @if (strpos($collectionScenarioAction['mail_content'], '#items_list_overdue') !== false)
+
+          @if (strpos($collectionScenarioActions[0]['mail_content'], '#items_list_overdue') !== false)
           <div class="tabels-emails">
             <div class="container-fluid">
               <div class="table-responsive mt-3 mb-3">
@@ -928,8 +957,8 @@
                   </thead>
                   <tbody class="text-center">
                   @php $countt1 = 0;@endphp
-                  @foreach($client->items as $item)
-                  @if($item->is_overdue()) 
+                  @foreach($clientt->items as $item)
+                  @if($item->is_overdue())
                   @php $countt1++;@endphp
                     <tr>
                       <td style="background: #f0f0f0;">{{$countt1}}</td>
@@ -954,7 +983,7 @@
           </div>
           @endif
         </div>
-      </div> 
+      </div>
       <div class="add-itemes mt-3 mb-3">
         <div class="container">
           <div class="col-12">
@@ -978,12 +1007,12 @@
         <div class="col-md-8 mt-2">
           <div class="row ">
             <div class="col-lg-6">
-              <button class="btn btn-primary mt-3 w-100" id="hollabTwoShow" onclick="showHollab()"><svg class="svg-inline--fa fa-pen" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M362.7 19.32C387.7-5.678 428.3-5.678 453.3 19.32L492.7 58.75C517.7 83.74 517.7 124.3 492.7 149.3L444.3 197.7L314.3 67.72L362.7 19.32zM421.7 220.3L188.5 453.4C178.1 463.8 165.2 471.5 151.1 475.6L30.77 511C22.35 513.5 13.24 511.2 7.03 504.1C.8198 498.8-1.502 489.7 .976 481.2L36.37 360.9C40.53 346.8 48.16 333.9 58.57 323.5L291.7 90.34L421.7 220.3z"></path></svg><!-- <i class="fa-solid fa-pen"></i> Font Awesome fontawesome.com -->Modify</button>
+              <button class="btn btn-primary mt-3 w-100" id="hollabTwoShow" onclick="showHollab({{$collectionScenarioActions[0]['id']}})"><svg class="svg-inline--fa fa-pen" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="pen" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M362.7 19.32C387.7-5.678 428.3-5.678 453.3 19.32L492.7 58.75C517.7 83.74 517.7 124.3 492.7 149.3L444.3 197.7L314.3 67.72L362.7 19.32zM421.7 220.3L188.5 453.4C178.1 463.8 165.2 471.5 151.1 475.6L30.77 511C22.35 513.5 13.24 511.2 7.03 504.1C.8198 498.8-1.502 489.7 .976 481.2L36.37 360.9C40.53 346.8 48.16 333.9 58.57 323.5L291.7 90.34L421.7 220.3z"></path></svg><!-- <i class="fa-solid fa-pen"></i> Font Awesome fontawesome.com -->Modify</button>
             </div>
-            <div class="col-lg-6">
-              <button class="btn btn-success mt-3 w-100"><svg class="svg-inline--fa fa-check" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg><!-- <i class="fa-solid fa-check"></i> Font Awesome fontawesome.com -->send the email +
-                complete the action</button>
-            </div>
+{{--            <div class="col-lg-6">--}}
+{{--              <button class="btn btn-success mt-3 w-100"><svg class="svg-inline--fa fa-check" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg><!-- <i class="fa-solid fa-check"></i> Font Awesome fontawesome.com -->send the email +--}}
+{{--                complete the action</button>--}}
+{{--            </div>--}}
           </div>
         </div>
       </div>
@@ -994,7 +1023,7 @@
     </div><!--modal-content-->
 
   </div>
- 
+
 <div class="new-holap d-none " id="hide-hoalp">
     <div class="container">
       <div class="row">
@@ -1147,14 +1176,15 @@
                 </div>
             </div>
             </div>
-          </div>          
+          </div>
         </div>
 </div>
 </div>
 </div>
 </div>
 @endif
-            @endforeach
+@php  }@endphp
+ @endforeach
             <div class="text-md-start mx-md-5 text-center px-4 mb-2">
               <div class=" thebtn-3 btn  btn-primary text-light px-2 m-1">
                 <svg class="svg-inline--fa fa-check" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"></path></svg><!-- <i class=" fa-solid fa-check"></i> Font Awesome fontawesome.com -->  Confirm the automatic action
@@ -1174,7 +1204,7 @@
                         <div class="calendar_content"><div class="blank"></div><div class="blank"></div><div class="blank"></div><div class="blank"></div><div class="past-date">1</div><div class="past-date">2</div><div class="past-date">3</div><div class="past-date">4</div><div class="past-date">5</div><div class="past-date">6</div><div class="today" style="color: rgb(0, 189, 170);">7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div><div class="blank"></div><div class="blank"></div><div class="blank"></div><div class="blank"></div><div class="blank"></div><div class="blank"></div><div class="blank"></div></div>
                       </div>
                     </div>
-                  </div> 
+                  </div>
                 </div>
               </div>
               <div class=" thebtn-2 btn text-light btn-danger px-2 m-1">
@@ -1248,7 +1278,7 @@
                         <option value="BIG-5">BIG-5</option>
                         <option value="KOI8-R">KOI8-R</option>
                       </select>
-                      
+
                       <li class="mt-3 "><button type="button" class="btn" style="width: 100%;"><span><iclass="fa-solid fa-download"=""> </iclass="fa-solid></span>download</button></li>
                     </ul>
                   </div>
@@ -1256,37 +1286,37 @@
               </div>
             </div>
           </div>
-        </section>         
+
+        </section>
 @endsection
-@push('scripts') 
-<script>
-  var holabOne = document.getElementById("hide-hoalp-1");
-    var holabTwo = document.getElementById("hide-hoalp-2");
-
-  function showHollabTwo() {
-    holabOne.classList.add("d-none");
-    holabTwo.classList.remove("d-none");
-  }
-
-  function showHollab() {
-    holabOne.classList.remove("d-none");
-    holabTwo.classList.add("d-none");
-  }
-</script>
-</script>
+@push('scripts')
 <script src="/js/collection.js"></script>
     <script src="/js/risk.js"></script>
     <script src="/js/mange.js" ></script>
     <script src="/js/email.js"></script>
     <script>
-     function showEditActionModal(collectionId) {
-        document.querySelector(`.modal-${collectionId}`).classList.remove("d-none");
-        document.querySelector(".overlay").classList.remove("d-none"); 
-    }  
-    function hideEditActionnModal(collectionId){
-    document.querySelector(`.modal-${collectionId}`).classList.add("d-none")
-    document.querySelector(".overlay").classList.add("d-none")
-  } 
+        function showEditActionModal(collectionId,counting) {
+            var modal = document.getElementById(`myModal-${collectionId}`);
+            modal.style.display = "block";
+            modal.addEventListener('click', function(event) {
+                var modalContent = document.querySelector(`#myModal-${collectionId} .modal-content`);
+
+                // If the click is outside the modal content, close the modal
+                if (!modalContent.contains(event.target)) {
+                    modal.style.display = "none";
+                }
+            });
+            //  button.setAttribute('onclick', `${functionName}()`);
+            //     document.querySelector(`.modal-${collectionId}`).classList.remove("d-none");
+        }
+        function hideEditActionnModal(collectionId){
+            var modal = document.getElementById(`myModal-${collectionId}`);
+
+            modal.style.display = "none";
+
+            // document.querySelector(`.modal-${collectionId}`).classList.add("d-none")
+
+        }
       </script>
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -1294,7 +1324,7 @@
     const dropdownContainer = document.getElementById('dropdownContainer');
     @php $count = $counter = 0; @endphp
     var count = 0;
-    addDropdownButton.addEventListener('click', () => { 
+    addDropdownButton.addEventListener('click', () => {
       count++;
     const dropdownRow = document.createElement('div');
     dropdownRow.className = 'col-md-2 mt-2';
@@ -1319,9 +1349,8 @@
     const createDropdown2 = () => {
         const select = document.createElement('select');
         select.className = 'form-select';
-        select.name = `email_to`+count; // Make sure this aligns with your expected input names
-        @foreach ($combined as $item) 
-        
+        select.name = `email_to`+count;// Make sure this aligns with your expected input names
+        @foreach ($combined as $item)
             @if($item instanceof \App\Models\Client)
                 {
                     var option = document.createElement('option');
@@ -1336,7 +1365,7 @@
                     var email = @json($item->email);
                     var functionName = @json($item->function);
                     var roleName = @json($item->role->name);
-                    
+
                     option.value = email;
                     option.textContent = firstName + ' <' + email + '> (Function: ' + functionName + ' / Role: ' + roleName + ') *** ' + roleName + ' ***';
                     select.appendChild(option);
@@ -1350,7 +1379,7 @@
     const dropdown2 = createDropdown2();
 
     dropdownRow.appendChild(dropdown1);
-    dropdownRow1.appendChild(dropdown2); 
+    dropdownRow1.appendChild(dropdown2);
 
     dropdownContainer.appendChild(dropdownRow);
     dropdownContainer.appendChild(dropdownRow1);
@@ -1363,16 +1392,16 @@
           document.addEventListener('DOMContentLoaded', () => {
     const fileInputsContainer = document.getElementById('file-inputs-container');
     const addFileBtn = document.getElementById('add-file-btn');
-    
+
     let fileInputCount = 1; // Track the number of file inputs
 
     // Function to create a new file input element
     function createFileInput() {
         fileInputCount++;
-        
+
         const container = document.createElement('div');
         container.className = 'file-input-container';
-        
+
         const input = document.createElement('input');
         input.type = 'file';
         input.name = `email_file${fileInputCount}[]`; // Unique name for each file input
@@ -1388,7 +1417,7 @@
 
         container.appendChild(input);
         container.appendChild(removeBtn);
-        
+
         fileInputsContainer.appendChild(container);
     }
 
@@ -1397,4 +1426,22 @@
 });
 
         </script>
+
+<script>
+  var holabOne = document.getElementById("hide-hoalp-1");
+    var holabTwo = document.getElementById("hide-hoalp-2");
+    var hollabTwoShow = document.getElementById("hollabTwoShow");
+
+  function showHollabTwo(actionId) {
+      document.getElementById(`hide-hoalp-${actionId}`).classList.add("d-none");
+      document.getElementById(`hide-hoalp-2-${actionId}`).classList.remove("d-none");
+    console.log(actionId);
+  }
+
+  function showHollab(actionId) {
+      document.getElementById(`hide-hoalp-${actionId}`).classList.remove("d-none");
+      document.getElementById(`hide-hoalp-2-${actionId}`).classList.add("d-none");
+  }
+
+</script>
 @endpush

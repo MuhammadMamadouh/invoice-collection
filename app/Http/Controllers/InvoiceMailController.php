@@ -97,7 +97,7 @@ class InvoiceMailController extends Controller
          {
             // Mail::to($to)
             // ->send(new InvoiceMail($attachments, $data));
-            Mail::to($to)->send(new InvoiceMail($attachments, $data));
+          //  Mail::to($to)->send(new InvoiceMail($attachments, $data));
          }  
         
          return back()->with('success', 'Invoice sent successfully with attachments.');  

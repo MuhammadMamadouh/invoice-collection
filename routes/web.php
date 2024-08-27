@@ -87,7 +87,8 @@ Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
 Route::get('collection', [CollectionController::class,'index'])->name('collection.automatic.actions');
 Route::get('collection-manual-actions', [CollectionController::class,'manualActions'])->name('collection.manual.actions'); 
-Route::post('send/invoice', [InvoiceMailController::class,'sendInvoice'])->name('send.invoice');
+Route::post('send/invoice', [InvoiceMailController::class,'sendInvoice'])->name('send.invoice'); 
+Route::get('action/preview',[CollectionController::class,'getActionPreview'])->name('action.preview');
 
 Route::get('actions/create', [ActionController::class,'create']);
 Route::post('actions', [ActionController::class,'store'])->name('actions.store');
