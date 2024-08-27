@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('status_action_id');
             $table->bigInteger('resolver');
             $table->bigInteger('created_by');
-            $table->longText('comments');
+            $table->text('comments');
             $table->dateTime('create_at');
             $table->enum('email_type', ['simple_e-mail', 'internal_interactive_e-mail'])->nullable();
             $table->enum('type_to', ['to', 'cc', 'bcc'])->nullable();

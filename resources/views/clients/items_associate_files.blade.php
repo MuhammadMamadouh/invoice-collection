@@ -1,4 +1,4 @@
-    <div class="bg-white d-none " id="associatedDiv-{{ $item->id }}">
+    <div class="bg-white d-none " id="associatedDiv-{{ $item->id }}" style="height: 250px;">
         <div class="table-responsive pt-3" id="table-scroll">
             <table class="table px-2 mb-0">
                 <thead>
@@ -32,10 +32,9 @@
                                 </td>
                                 <td>
                                     <p>{{ $statusFile->file_size }}</p>
-                                    {{-- <p>{{ $statusFile->readableFileSize() }}</p> --}}
                                 </td>
                                 <td>
-                                    <p>{{$itemChange->create_at }}</p>
+                                    <p>{{ $itemChange->create_at }}</p>
                                 </td>
                                 <td>
                                     <p>{{ $itemChange->statusResolver->first_name }}</p>
@@ -43,13 +42,17 @@
                             </tr>
                         @endforeach
                     @empty
-                        <div class="bg-light text-center w-100 p-3 mt-0">{{ __('No associated files') }}</div>
+                        <div class="bg-light text-center w-100 p-3 mt-0">
+                            <td>
+                                {{ __('No associated files') }}
+                            </td>
+                        </div>
                     @endforelse
                 </tbody>
             </table>
         </div>
-        {{-- <div class="p-4">
-            <div class="d-flex">
+        <div class="p-4">
+            {{-- <div class="d-flex">
                 <p>{{ __('Associate files to items') }}</p>
                 <a href="DSOInformation.html"><i class="fa-solid fa-question bg-primary text-light p-1 ms-1"
                         style="border-radius: 50%;width: 15px;height: 18px;font-size: 12px !important;"></i></a>
@@ -62,6 +65,6 @@
                 {{ __('File') }}</div><br>
             <div class="text-center myBtn d-none">
                 <div class="btn btn-primary"><i class="fa-solid fa-check"></i> {{ __('Submit') }}</div>
-            </div> 
-        </div> --}}
+            </div> --}}
+        </div>
     </div>

@@ -31,7 +31,6 @@ class ItemsChangeStatusResource extends JsonResource
             'request_an_acknowledgment' => $this->request_an_acknowledgment,
             'statusResolver' => $this->statusResolver,
             'statusFiles' => $this->statusFiles ? ItemsChangeStatusFilesResource::collection($this->statusFiles) : [],
-            'readableFileSize' => $this->readableFileSize ? ItemsChangeStatusFilesResource::make($this->getReadableFileSizeAttribute()) : [],
         ];
     }
 }

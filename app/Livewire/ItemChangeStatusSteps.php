@@ -27,6 +27,8 @@ class ItemChangeStatusSteps extends Component
     public $actionTypes;
     public $days = [];
     public $editorContent;
+    // public $showActionForm = false;
+    public $selectedAction = 'go'; 
 
     //---------------------email table data--------------------
     public $resolver;
@@ -53,7 +55,7 @@ class ItemChangeStatusSteps extends Component
     public $file_name;
     public $desc;
     public $visible_in;
-    public $items_change_status_id = 1;
+    public $items_change_status_id;
 
     //------------------action collection scenario---------
 
@@ -90,6 +92,12 @@ class ItemChangeStatusSteps extends Component
     {
         $this->resolverData = $value;
     }
+
+    public function toggleActionForm($action)
+    {
+        $this->selectedAction = $action ? 'create' : 'go';
+    }
+
     public function incrementSteps()
     {
         if ($this->currentStep < $this->totalSteps) {

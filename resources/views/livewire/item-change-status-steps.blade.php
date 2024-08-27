@@ -386,7 +386,8 @@
                                                 class="fas fa-list-ul"></i></button>
                                         <button type="button" onclick="execCmd('insertOrderedList')"><i
                                                 class="fas fa-list-ol"></i></button>
-                                        <button type="button" onclick="execCmd('createLink', prompt('Enter the URL:', 'http: '))"><i
+                                        <button type="button"
+                                            onclick="execCmd('createLink', prompt('Enter the URL:', 'http: '))"><i
                                                 class="fas fa-link"></i></button>
                                         <button type="button" onclick="execCmd('unlink')"><i
                                                 class="fas fa-unlink"></i></button>
@@ -396,7 +397,7 @@
                                                 class="fas fa-table"></i></button>
                                         <button type="button" onclick="toggleHTML()">Toggle HTML</button>
                                     </div>
-                                    <input type="hidden" wire:model="editorContent" id="editorContent">
+                                    <input type="text" wire:model="editorContent" id="editorContent">
                                     <div id="editor" class="form-control" contenteditable="true"
                                         oninput="updateEditorContent(this)">
                                         Start typing here...
@@ -436,7 +437,7 @@
                 <h5>{{ __('Next action') }} :</h5>
             </div>
             <div class="px-5">
-                <input type="radio" id="go" checked name="checkbox">
+                <input type="radio" id="go" name="actionType" wire:model.live="selectedAction" value="go">
                 <label for="go"
                     class="mb-3">{{ __('Follow the collection scenario and the actions in progress') }}
                     :</label>
@@ -468,60 +469,64 @@
                     @php($firstDueItem = $client->firstDueItem)
                     <div class="col fw-bold">{{ $firstDueItem->due_date ?? '-' }}</div>
                     <div class="col fw-bold">
-                        <div class="btn openModalBtn btn-primary">{{-- $firstDueItem->toTakeAction->action_type ?? 'email' --}}</div>
+                        <div class="btn openModalBtn btn-primary">{{-- $firstDueItem->toTakeAction->action_type ?? 'email'--}}</div>
                     </div>
-                    <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' --}}
+                    <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email'--}}
                         {{-- optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
                     <div class="col fw-bold">100,000.00 €</div>
                 </div>
             </div>
             <div class="px-5 mt-3">
-                <input type="radio" id="Create" name="Create">
-                <label for="Create" class="mb-3">{{ __('Create a specific action for selected items') }}</label>
-                <div class=" my-2">
-                    <div class="d-flex">
-                        <div class="col-3 ">
-                            <label for="inputname13"> {{ __('Action name') }} :</label>
+                <input type="radio" id="Create" name="actionType" wire:model.live="selectedAction"
+                    value="create"> <label for="Create"
+                    class="mb-3">{{ __('Create a specific action for selected items') }}</label>
+                @if ($selectedAction === 'create')
+                    <div class=" my-2">
+                        <div class="d-flex">
+                            <div class="col-3 ">
+                                <label for="inputname13"> {{ __('Action name') }} :</label>
+                            </div>
+                            <div class="col-9 ">
+                                <input type="text" wire:model='action_name' class="form-control"
+                                    placeholder="Name" id="inputname13">
+                            </div>
                         </div>
-                        <div class="col-9 ">
-                            <input type="text" wire:model='action_name' class="form-control" placeholder="Name"
-                                id="inputname13">
+                    </div><!--13-->
+                    <div class=" my-2">
+                        <div class="d-flex">
+                            <div class="col-3 ">
+                                <label for="inputname222">{{ __('Action date') }} :</label>
+                            </div>
+                            <div class="input-group">
+                                <select wire:model="number_of_days" class="form-select" id="inputname19">
+                                    <option value="" selected disabled>
+                                        {{ __('select one') }}</option>
+                                    @foreach ($days as $day)
+                                        <option value="{{ $day }}">{{ $day }}
+                                            {{ __('days') }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </div><!--13-->
-                <div class=" my-2">
-                    <div class="d-flex">
-                        <div class="col-3 ">
-                            <label for="inputname222">{{ __('Action date') }} :</label>
+                    </div><!--2-->
+                    <div class=" my-2">
+                        <div class="d-flex">
+                            <div class="col-3 ">
+                                <label for="inputname222">{{ __('Action Type') }} :</label>
+                            </div>
+                            <div class="input-group">
+                                <select class="form-select" wire:model='action_type'
+                                    aria-label="Default select example">
+                                    <option value="" selected>{{ __('Select One') }}</option>
+                                    @foreach ($actionTypes as $actionType)
+                                        <option value="{{ $actionType->id }}">
+                                            {{ $actionType->en_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <select wire:model="number_of_days" class="form-select" id="inputname19">
-                                <option value="" selected disabled>
-                                    {{ __('select one') }}</option>
-                                @foreach ($days as $day)
-                                    <option value="{{ $day }}">{{ $day }}
-                                        {{ __('days') }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div><!--2-->
-                <div class=" my-2">
-                    <div class="d-flex">
-                        <div class="col-3 ">
-                            <label for="inputname222">{{ __('Action Type') }} :</label>
-                        </div>
-                        <div class="input-group">
-                            <select class="form-select" wire:model='action_type' aria-label="Default select example">
-                                <option value="" selected>{{ __('Select One') }}</option>
-                                @foreach ($actionTypes as $actionType)
-                                    <option value="{{ $actionType->id }}">
-                                        {{ $actionType->en_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div><!--2-->
+                    </div><!--2-->
+                @endif
             </div>
         @endif
         <div class="d-flex justify-content-end my-5">

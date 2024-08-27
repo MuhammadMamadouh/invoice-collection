@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ItemsChangeStatusFiles extends Model
+class File extends Model
 {
     use HasFactory;
 
@@ -13,15 +13,17 @@ class ItemsChangeStatusFiles extends Model
         'file_name',
         'file_size',
         'desc',
-        'visiable_in',
-        'item_id',
-        'items_change_status_id',
+        'visiable_in_internal',
+        'visiable_in_external',
+        'fileable_id',
+        'fileable_type',
     ];
 
-    public function changedStatus()
+    public function fileable()
     {
-        return $this->belongsTo(ItemsChangeStatus::class, 'items_change_status_id');
+        return $this->morphTo();
     }
+
 
     public function getReadableFileSizeAttribute()
     {
@@ -37,10 +39,4 @@ class ItemsChangeStatusFiles extends Model
         }
         return $size;
     }
-
-    // public function filesOfItem()
-    // {
-    //     return $this->belongsTo(Item::class, 'item_id');
-    // }
-
 }

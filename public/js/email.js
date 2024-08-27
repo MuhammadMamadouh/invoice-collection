@@ -1,12 +1,7 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     var modal = document.getElementById("myModal");
-
-
     var btns = document.querySelectorAll(".openModalBtn");
-
-
     var span = document.querySelectorAll(".closeBtn");
-
     btns.forEach((btn)=>{
         btn.onclick = function () {
             modal.style.display = "block";

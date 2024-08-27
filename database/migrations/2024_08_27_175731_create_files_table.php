@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items_change_status_files', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->id();
             $table->string('file_name');
+            $table->bigInteger('file_size');
             $table->string('desc');
-            $table->json('visiable_in');
-            $table->bigInteger('items_change_status_id');
+            $table->boolean('visiable_in_internal')->default(1);
+            $table->boolean('visiable_in_external')->default(1);
+            $table->unsignedBigInteger('fileable_id');
+            $table->string('fileable_type');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('items_change_status_files');
+        Schema::dropIfExists('files');
     }
 };
