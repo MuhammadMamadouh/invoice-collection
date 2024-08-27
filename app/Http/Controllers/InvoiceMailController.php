@@ -14,23 +14,23 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InvoiceMail;
-//use Illuminate\Support\Facades\Mail; 
+//use Illuminate\Support\Facades\Mail;
 
- 
-class InvoiceMailController extends Controller 
+
+class InvoiceMailController extends Controller
 {
     public function sendInvoice(Request $request)
     {
         $from = $request->from;
         $to = $request->email_to0;
         $toEmails = $request->input('email_to', []);
-        $ccEmails = $request->input('cc_emails', []); 
+        $ccEmails = $request->input('cc_emails', []);
         $cc_emails = [];
-        $bccEmails = []; 
-        $count = 0; 
+        $bccEmails = [];
+        $count = 0;
         if(count($ccEmails) !== 0 && count($toEmails) !== 0)
         {
-        foreach($ccEmails as $key => $value) 
+        foreach($ccEmails as $key => $value)
         {
             if($value == "cc")
             {
@@ -43,14 +43,14 @@ class InvoiceMailController extends Controller
             $count++;
         }
         }
-        $clientId = $request->client_id; 
+        $clientId = $request->client_id;
         $subject = $request->mail_subject;
-        $content = $request->mail_content; 
+        $content = $request->mail_content;
         $client = Client::where('id',$clientId)->first();
         $sub_replacements = [
             '#my_company_name' => 'Business Solutions',
             '#client_name' => $client->company_name,
-            '#client_code' => $client->company_code,   
+            '#client_code' => $client->company_code,
         ];
         foreach ($sub_replacements as $placeholder => $value) {
             if (strpos($subject, $placeholder) !== false) {
@@ -81,26 +81,25 @@ class InvoiceMailController extends Controller
                         'name' => $file->getClientOriginalName(),
                         'mime' => $file->getMimeType(),
                     ];
-                } 
+                }
             }
         }
         // Send the email
-        if($request->has('copy'))  
+        if($request->has('copy'))
         {
             Mail::to($to)
             ->cc($from)
             ->cc($cc_emails)
-            ->bcc($bccEmails) 
-            ->send(new InvoiceMail($attachments, $data));  
-         } 
+            ->bcc($bccEmails)
+            ->send(new InoviceMail($attachments, $data));
+         }
          else
          {
             // Mail::to($to)
             // ->send(new InvoiceMail($attachments, $data));
           //  Mail::to($to)->send(new InvoiceMail($attachments, $data));
-         }  
-        
-         return back()->with('success', 'Invoice sent successfully with attachments.');  
+         }
+
+         return back()->with('success', 'Invoice sent successfully with attachments.');
     }
-} 
-       
+}
