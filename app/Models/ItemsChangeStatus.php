@@ -36,9 +36,9 @@ class ItemsChangeStatus extends Model
         return $this->belongsTo(Client::class, 'subject');
     }
 
-    public function statusFiles()
+    public function files()
     {
-        return $this->hasMany(ItemsChangeStatusFiles::class, 'items_change_status_id');
+        return $this->morphMany(File::class, 'fileable');
     }
 
     public function changedStatusItem()

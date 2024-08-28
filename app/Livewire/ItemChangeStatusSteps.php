@@ -2,15 +2,14 @@
 
 namespace App\Livewire;
 
-use App\Models\ActionsCollectionScenario;
 use App\Models\ActionType;
+use App\Models\File;
 use App\Models\ItemsChangeStatus;
-use App\Models\ItemsChangeStatusFiles;
 use App\Models\ItemStatus;
 use App\Models\ItemStatusType;
+use App\Models\TempAction;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Reactive;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -54,8 +53,9 @@ class ItemChangeStatusSteps extends Component
     //---------------------files table data--------------------
     public $file_name;
     public $desc;
-    public $visible_in;
-    public $items_change_status_id;
+    public $visiable_in_internal;
+    public $visiable_in_external;
+    // public $items_change_status_id;
 
     //------------------action collection scenario---------
 
@@ -116,7 +116,7 @@ class ItemChangeStatusSteps extends Component
     {
         DB::beginTransaction();
         if ($this->action_name != null && $this->selectedStatus == null) {
-            ActionsCollectionScenario::create([
+            TempAction::create([
                 'action_name' => $this->action_name,
                 'number_of_days' => $this->number_of_days,
                 'action_type' => $this->action_type,
@@ -132,23 +132,26 @@ class ItemChangeStatusSteps extends Component
                 'created_by' => $this->created_by,
                 'comments' => $this->comments,
                 'create_at' => $this->create_at,
-                'subject' => $this->client->id,
-                'type_to' => $this->type_to,
-                'message' => $this->editorContent,
-                'get_a_copy' => $this->get_a_copy,
-                'request_an_acknowledgment' => $this->request_an_acknowledgment,
-                'email_type' => $this->email_type,
+                // 'subject' => $this->client->id,
+                // 'type_to' => $this->type_to,
+                // 'message' => $this->editorContent,
+                // 'get_a_copy' => $this->get_a_copy,
+                // 'request_an_acknowledgment' => $this->request_an_acknowledgment,
+                // 'email_type' => $this->email_type,
             ]);
             if($this->file_name){
                 foreach ($this->file_name as $file) {
                     $filePath = $file->store('items_files', 'public');
-                    ItemsChangeStatusFiles::create([
+                    $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
+                    $newStatusFiles = new File([
                         'file_name' => $filePath,
                         'file_size' => $file->getSize(),
                         'desc' => $this->desc,
-                        'visiable_in' => $this->visible_in,
-                        'items_change_status_id' => $changedStatus->id,
+                        'visiable_in_internal' => $this->visiable_in_internal,
+                        'visiable_in_external' => $this->visiable_in_external,
+                        // 'items_change_status_id' => $changedStatus->id,
                     ]);
+                    $newStatus->files()->save($newStatusFiles);
                 }
             }
             DB::commit();

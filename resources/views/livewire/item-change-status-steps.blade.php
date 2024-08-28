@@ -79,18 +79,21 @@
                                 @enderror
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="internal"
-                                        wire:model="visible_in" value="1">
+                                        wire:model="visiable_in_internal">
                                     <label class="form-check-label"
                                         for="internal">{{ __('Visible in internal emails') }}</label>
                                 </div>
+                                @error('visiable_in_internal')
+                                    <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                                @enderror
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="external"
-                                        wire:model="visible_in" value="0">
+                                        wire:model="visiable_in_external">
                                     <label class="form-check-label"
                                         for="external">{{ __('Visible in external emails') }}
                                     </label>
                                 </div>
-                                @error('visible_in')
+                                @error('visiable_in_external')
                                     <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -437,7 +440,8 @@
                 <h5>{{ __('Next action') }} :</h5>
             </div>
             <div class="px-5">
-                <input type="radio" id="go" name="actionType" wire:model.live="selectedAction" value="go">
+                <input type="radio" id="go" name="actionType" wire:model.live="selectedAction"
+                    value="go">
                 <label for="go"
                     class="mb-3">{{ __('Follow the collection scenario and the actions in progress') }}
                     :</label>
@@ -469,9 +473,9 @@
                     @php($firstDueItem = $client->firstDueItem)
                     <div class="col fw-bold">{{ $firstDueItem->due_date ?? '-' }}</div>
                     <div class="col fw-bold">
-                        <div class="btn openModalBtn btn-primary">{{-- $firstDueItem->toTakeAction->action_type ?? 'email'--}}</div>
+                        <div class="btn openModalBtn btn-primary">{{-- $firstDueItem->toTakeAction->action_type ?? 'email' --}}</div>
                     </div>
-                    <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email'--}}
+                    <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' --}}
                         {{-- optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
                     <div class="col fw-bold">100,000.00 €</div>
                 </div>

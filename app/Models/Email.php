@@ -27,4 +27,14 @@ class Email extends Model
     {
         return $this->morphTo();
     }
+
+    public function emailTypes()
+    {
+        return $this->hasMany(EmailType::class, 'email_type');
+    }
+
+    public function emailTypeTos()
+    {
+        return $this->hasMany(TypeTo::class, 'type_to');
+    }
 }

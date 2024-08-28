@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($item->itemChangeStatus as $itemChange)
+                    {{-- @forelse($item->itemChangeStatus as $itemChange)
                         @foreach ($itemChange->statusFiles as $statusFile)
                             <tr>
                                 <td>
@@ -47,7 +47,7 @@
                                 {{ __('No associated files') }}
                             </td>
                         </div>
-                    @endforelse
+                    @endforelse --}}
                 </tbody>
             </table>
         </div>

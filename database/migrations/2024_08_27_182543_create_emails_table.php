@@ -21,8 +21,7 @@ return new class extends Migration
             $table->boolean('request_an_acknowledgment')->default(1);
             $table->bigInteger('email_type');
             $table->bigInteger('type_to');
-            $table->unsignedBigInteger('emailable_id');
-            $table->string('emailable_type');
+            $table->morphs('emailable');
             $table->timestamps();
         });
     }

@@ -25,13 +25,12 @@ class DatabaseSeeder extends Seeder
         $this->call(ActionTypesSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);
-        User::factory(50)->create([
-            'is_super_admin'    => 0,
-            'role_id'           => RoleEnum::COLLECTOR,
-        ]);
+        User::factory(50)->create(['is_super_admin' => 0, 'role_id' => RoleEnum::COLLECTOR,]);
         $this->call(ClientSeeder::class); // faker to remove in production
         $this->call(ItemSeeder::class);
         $this->call(ClientRolesSeeder::class);
+        $this->call(EmailTypeSeeder::class);
+        $this->call(TypeToSeeder::class);
 
 
     }

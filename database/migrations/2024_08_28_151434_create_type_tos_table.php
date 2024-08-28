@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('type_tos', function (Blueprint $table) {
             $table->id();
-            $table->string('file_name');
-            $table->bigInteger('file_size');
-            $table->string('desc');
-            $table->boolean('visiable_in_internal')->default(1);
-            $table->boolean('visiable_in_external')->default(1);
-            $table->morphs('fileable');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('files');
+        Schema::dropIfExists('type_tos');
     }
 };
