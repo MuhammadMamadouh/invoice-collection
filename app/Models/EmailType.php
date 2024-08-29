@@ -13,4 +13,9 @@ class EmailType extends Model
         'simple_email',
         'internal_interactive_email',
     ];
+
+    public function email()
+    {
+        return $this->belongsTo(Email::class, 'email_type');
+    }
 }

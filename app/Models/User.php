@@ -70,4 +70,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(CreditLimitsValidation::class, 'user_id');
     }
+
+    public function emailsCreatedBy()
+    {
+        return $this->hasMany(Email::class, 'created_by');
+    }
+
+    public function emailsResolver()
+    {
+        return $this->hasMany(Email::class, 'resolver');
+    }
+
+
 }

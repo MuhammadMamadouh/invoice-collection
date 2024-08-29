@@ -37,4 +37,14 @@ class Email extends Model
     {
         return $this->hasMany(TypeTo::class, 'type_to');
     }
+
+    public function creator()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+    
+    public function resolver()
+    {
+        return $this->belongsTo(User::class, 'resolver');
+    }
 }

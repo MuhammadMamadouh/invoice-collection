@@ -32,6 +32,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet" />
     <!--google-font-->
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+
     <script>
     // Define the function in global scope
     function showAddActionDiv(collectionId) {
@@ -90,7 +92,7 @@
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/searchBar.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-       <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function() {
             // Cache jQuery selectors
             var $clientsSelect = $('#clients-select');

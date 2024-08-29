@@ -3,11 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\ActionType;
+use App\Models\Email;
+use App\Models\EmailType;
 use App\Models\File;
 use App\Models\ItemsChangeStatus;
 use App\Models\ItemStatus;
 use App\Models\ItemStatusType;
 use App\Models\TempAction;
+use App\Models\TypeTo;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -28,6 +31,9 @@ class ItemChangeStatusSteps extends Component
     public $editorContent;
     // public $showActionForm = false;
     public $selectedAction = 'go'; 
+    public $selectedEmailType = null;
+    public $emailTypes;
+    public $typesTo;
 
     //---------------------email table data--------------------
     public $resolver;
@@ -73,9 +79,13 @@ class ItemChangeStatusSteps extends Component
         $this->client = $client;
         $this->subject = $client->company_code . ' / ' . $client->company_name;
         $this->actionTypes = ActionType::all();
+        $this->emailTypes = EmailType::all();
+        $this->typesTo = TypeTo::all();
         for ($i = -90; $i <= 365; $i++) {
             $this->days[] = $i;
         }
+
+
     }
 
     public function updatedselectedStatus($id)
@@ -83,9 +93,10 @@ class ItemChangeStatusSteps extends Component
         $this->itemStatusActions = ItemStatus::where('type_of_status', $id)->get();
     }
 
-    public function updated_email_type($value)
+    public function updatedselectedEmailType($value)
     {
         $this->email_type = $value;
+
     }
 
     public function updatedresolverData($value)
@@ -132,13 +143,21 @@ class ItemChangeStatusSteps extends Component
                 'created_by' => $this->created_by,
                 'comments' => $this->comments,
                 'create_at' => $this->create_at,
-                // 'subject' => $this->client->id,
-                // 'type_to' => $this->type_to,
-                // 'message' => $this->editorContent,
-                // 'get_a_copy' => $this->get_a_copy,
-                // 'request_an_acknowledgment' => $this->request_an_acknowledgment,
-                // 'email_type' => $this->email_type,
             ]);
+            if($this->email_type){
+                $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
+                $newEmail = new Email([
+                    'created_by' => $this->created_by,
+                    'resolver' => $this->resolver,
+                    'subject' => $this->client->id,
+                    'message' => $this->editorContent,
+                    'get_a_copy' => $this->get_a_copy,
+                    'request_an_acknowledgment' => $this->request_an_acknowledgment,
+                    'email_type' => $this->email_type,
+                    'type_to' => $this->type_to,
+                ]);
+                $newStatus->emails()->save($newEmail);
+            }
             if($this->file_name){
                 foreach ($this->file_name as $file) {
                     $filePath = $file->store('items_files', 'public');

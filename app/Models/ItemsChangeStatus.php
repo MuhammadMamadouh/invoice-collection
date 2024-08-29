@@ -45,4 +45,10 @@ class ItemsChangeStatus extends Model
     {
         return $this->belongsTo(Item::class, 'item_id');
     }
+
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'emailable');
+    }
+
 }

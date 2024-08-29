@@ -13,4 +13,9 @@ class TypeTo extends Model
         'cc',
         'bcc',
     ];
+
+    public function email()
+    {
+        return $this->belongsTo(Email::class, 'type_to');
+    }
 }
