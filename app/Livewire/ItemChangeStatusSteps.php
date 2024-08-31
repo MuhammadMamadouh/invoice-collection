@@ -34,6 +34,10 @@ class ItemChangeStatusSteps extends Component
     public $selectedEmailType = null;
     public $emailTypes;
     public $typesTo;
+    public $selectedActionType = null;
+    public $automatic_action = false;
+    public $automatic_action_to_be_confirmed = false;
+    public $internal_interactive_emailLink = false;
 
     //---------------------email table data--------------------
     public $resolver;
@@ -107,6 +111,27 @@ class ItemChangeStatusSteps extends Component
     public function toggleActionForm($action)
     {
         $this->selectedAction = $action ? 'create' : 'go';
+    }
+
+    public function updatedselectedActionType($value)
+    {
+        $this->action_type = $value;
+    }
+
+    public function updatedAutomaticAction($value)
+    {
+        if ($value) {
+            $this->automatic_action_to_be_confirmed = true;
+            $this->internal_interactive_emailLink = false;
+        }
+    }
+    
+    public function updatedInternalInteractiveEmailLink($value)
+    {
+        if ($value) {
+            $this->automatic_action  = false;
+            $this->automatic_action_to_be_confirmed = false;
+        }
     }
 
     public function incrementSteps()

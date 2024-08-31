@@ -18,6 +18,9 @@ class Email extends Model
         'request_an_acknowledgment',
         'email_type',
         'type_to',
+        'automatic_action', 
+        'automatic_action_to_be_confirmed', 
+        'internal_interactive_emailLink',
         'emailable_id',
         'emailable_type',
     ];
