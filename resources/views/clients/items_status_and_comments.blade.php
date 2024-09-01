@@ -102,7 +102,7 @@
                             </td>
                         </tr>
                     @empty
-                        <td>
+                        <td colspan=4>
                             <p>{{ __('No status were found for this item') }}</p>
                         </td>
                     @endforelse

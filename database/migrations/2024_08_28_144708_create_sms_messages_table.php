@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items_change_status_files', function (Blueprint $table) {
+        Schema::create('sms_messages', function (Blueprint $table) {
             $table->id();
-            $table->string('file_name');
-            $table->string('desc');
-            $table->json('visiable_in');
-            $table->bigInteger('items_change_status_id');
+            $table->bigInteger('created_by');
+            $table->longText('message');
+            $table->boolean('automatic_action')->default(0);
+            $table->boolean('automatic_action_to_be_confirmed')->default(0);
+            $table->morphs('messageable');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('items_change_status_files');
+        Schema::dropIfExists('sms_messages');
     }
 };

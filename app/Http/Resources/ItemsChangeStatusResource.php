@@ -23,15 +23,8 @@ class ItemsChangeStatusResource extends JsonResource
             'created_by' => $this->created_by,
             'comments' => $this->comments,
             'create_at' => $this->create_at,
-            'email_type' => $this->email_type,
-            'type_to' => $this->type_to,
-            'subject' => $this->subject,
-            'message' => $this->message,
-            'get_a_copy' => $this->get_a_copy,
-            'request_an_acknowledgment' => $this->request_an_acknowledgment,
             'statusResolver' => $this->statusResolver,
-            'statusFiles' => $this->statusFiles ? ItemsChangeStatusFilesResource::collection($this->statusFiles) : [],
-            'readableFileSize' => $this->readableFileSize ? ItemsChangeStatusFilesResource::make($this->getReadableFileSizeAttribute()) : [],
+            'statusFiles' => $this->statusFiles ? FilesResource::collection($this->files) : [],
         ];
     }
 }

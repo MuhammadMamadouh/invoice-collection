@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items_change_status', function (Blueprint $table) {
+        Schema::create('temp_actions', function (Blueprint $table) {
             $table->id();
+            $table->string('action_name');
+            $table->date('action_date');
+            $table->string('action_type');
+            $table->bigInteger('collection_scenario_id')->nullable();
+            $table->bigInteger('client_id');
             $table->bigInteger('item_id');
-            $table->bigInteger('status_id');
-            $table->bigInteger('status_action_id');
-            $table->bigInteger('resolver');
             $table->bigInteger('created_by');
-            $table->text('comments');
-            $table->dateTime('create_at');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('items_change_status');
+        Schema::dropIfExists('temp_actions');
     }
 };

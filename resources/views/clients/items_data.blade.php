@@ -110,7 +110,7 @@
                 <div class="m-1 w-100 btn btn-outline-primary associatedButton"
                     onclick="associatedFun({{ $item->id }})">
                     <i class="fa-solid fa-link"></i> {{ __('Associated files') }}
-                            <span class="badge bg-danger ms-1"style="border-radius: 50%;">{{$item->itemsFileCount}}</span>
+                            <span class="badge bg-danger ms-1"style="border-radius: 50%;">{{--$item->itemsFileCount--}}</span>
 
                 </div>
             </div>

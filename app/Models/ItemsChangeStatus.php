@@ -18,12 +18,8 @@ class ItemsChangeStatus extends Model
         'created_by',
         'comments',
         'create_at',
-        'email_type',
-        'type_to',
-        'subject',
-        'message',
-        'get_a_copy',
-        'request_an_acknowledgment',
+        'follow_the_collection_scenario', 
+        'create_a_specific_action',
     ];
 
     public function statusResolver()
@@ -36,13 +32,29 @@ class ItemsChangeStatus extends Model
         return $this->belongsTo(Client::class, 'subject');
     }
 
-    public function statusFiles()
+    public function files()
     {
-        return $this->hasMany(ItemsChangeStatusFiles::class, 'items_change_status_id');
+        return $this->morphMany(File::class, 'fileable');
     }
 
     public function changedStatusItem()
     {
         return $this->belongsTo(Item::class, 'item_id');
     }
+
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'emailable');
+    }
+
+    public function tempActions()
+    {
+        return $this->hasMany(TempAction::class, 'item_change_status_id');
+    }
+
+    public function smsMessages()
+    {
+        return $this->morphMany(SmsMessage::class, 'messageable');
+    }
+
 }

@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('items_change_status_files', function (Blueprint $table) {
-            $table->bigInteger('file_size')->after('file_name');
+        Schema::table('temp_actions', function (Blueprint $table) {
+            $table->bigInteger('item_change_status_id');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('items_change_status_files', function (Blueprint $table) {
-            $table->dropColumn('file_size');
+        Schema::table('temp_actions', function (Blueprint $table) {
+            $table->dropColumn('item_change_status_id');
         });
     }
 };

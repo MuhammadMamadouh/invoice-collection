@@ -79,18 +79,21 @@
                                 @enderror
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="internal"
-                                        wire:model="visible_in" value="1">
+                                        wire:model="visiable_in_internal">
                                     <label class="form-check-label"
                                         for="internal">{{ __('Visible in internal emails') }}</label>
                                 </div>
+                                @error('visiable_in_internal')
+                                    <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                                @enderror
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="external"
-                                        wire:model="visible_in" value="0">
+                                        wire:model="visiable_in_external">
                                     <label class="form-check-label"
                                         for="external">{{ __('Visible in external emails') }}
                                     </label>
                                 </div>
-                                @error('visible_in')
+                                @error('visiable_in_external')
                                     <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -157,15 +160,15 @@
                 <h5>{{ __('Do you want to send an email to that client or to your colleagues?') }}</h5>
             </div>
             <div class="px-5 mb-5">
-                <select class="form-select" id="inputname205" wire:model.live="email_type"
+                <select class="form-select" id="inputname205" wire:model.live="selectedEmailType"
                     aria-label="Default select example">
-                    <option value="" selected>{{ __('Select One') }}</option>
-                    <option value="">{{ __('No') }}</option>
-                    <option value="simple_e-mail">{{ __('Yes, simple e-mail') }}</option>
-                    <option value="internal_interactive_e-mail">{{ __('Yes, internal interactive e-mail') }}
+                    <option value="" selected>{{ __('No') }}</option>
+                    @foreach ($emailTypes as $emailType)
+                        <option value="{{ $emailType->id }}">{{ $emailType->name }}</option>
+                    @endforeach
                     </option>
                 </select>
-                @if (in_array($email_type, ['simple_e-mail']))
+                @if ($email_type == 1)
                     <div class="new-holab-1" id="hide-hoalp-1">
                         <div class="row mt-3">
                             <div class="col-md-2">
@@ -190,9 +193,9 @@
                             <div class="col-md-2 mt-2">
                                 <select class="form-select" wire:model='type_to' id="">
                                     <option value="" selected>Select One</option>
-                                    <option value="to" selected>to</option>
-                                    <option value="cc">cc</option>
-                                    <option value="bcc">bcc</option>
+                                    @foreach ($typesTo as $typeTo)
+                                        <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
+                                    @endforeach
                                 </select>
                             </div><!--l-2-->
                             <div class="col-md-10 mt-2">
@@ -230,43 +233,7 @@
                             </div><!--l-4-->
                             <div class="col-md-10 mt-2">
                                 <div class="editor-container mb-1">
-                                    <div class="toolbar">
-                                        <button type="button" onclick="execCmd('bold')"><i
-                                                class="fas fa-bold"></i></button>
-                                        <button type="button" onclick="execCmd('italic')"><i
-                                                class="fas fa-italic"></i></button>
-                                        <button type="button" onclick="execCmd('underline')"><i
-                                                class="fas fa-underline"></i></button>
-                                        <button type="button" onclick="execCmd('strikeThrough')"><i
-                                                class="fas fa-strikethrough"></i></button>
-                                        <button type="button" onclick="execCmd('justifyLeft')"><i
-                                                class="fas fa-align-left"></i></button>
-                                        <button type="button" onclick="execCmd('justifyCenter')"><i
-                                                class="fas fa-align-center"></i></button>
-                                        <button type="button" onclick="execCmd('justifyRight')"><i
-                                                class="fas fa-align-right"></i></button>
-                                        <button type="button" onclick="execCmd('justifyFull')"><i
-                                                class="fas fa-align-justify"></i></button>
-                                        <button type="button" onclick="execCmd('insertUnorderedList')"><i
-                                                class="fas fa-list-ul"></i></button>
-                                        <button type="button" onclick="execCmd('insertOrderedList')"><i
-                                                class="fas fa-list-ol"></i></button>
-                                        <button type="button"
-                                            onclick="execCmd('createLink', prompt('Enter the URL:', 'http: '))"><i
-                                                class="fas fa-link"></i></button>
-                                        <button type="button" onclick="execCmd('unlink')"><i
-                                                class="fas fa-unlink"></i></button>
-                                        <button type="button" onclick="insertImage()"><i
-                                                class="fas fa-image"></i></button>
-                                        <button type="button" onclick="insertTable()"><i
-                                                class="fas fa-table"></i></button>
-                                        <button type="button" onclick="toggleHTML()">Toggle HTML</button>
-                                    </div>
-                                    <input type="hidden" wire:model="editorContent" id="editorContent">
-                                    <div id="editor" class="form-control" contenteditable="true"
-                                        oninput="updateEditorContent(this)">
-                                        Start typing here...
-                                    </div>
+                                    <textarea id="text_editor" class="form-control" wire:model.defer="editorContent"></textarea>
                                 </div>
                                 <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
                                         class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item</a>
@@ -293,7 +260,7 @@
                         </div>
                     </div>
                 @endif
-                @if (in_array($email_type, ['internal_interactive_e-mail']))
+                @if ($email_type == 2)
                     <div class="new-holab-1" id="hide-hoalp-1">
                         <div class="col-md-12 mt-2">
                             <p style="background-color: #dff0d8; padding: 10px;">Internal interactive email →
@@ -325,9 +292,9 @@
                             <div class="col-md-2 mt-2">
                                 <select class="form-select" wire:model='type_to' id="">
                                     <option value="" selected>Select One</option>
-                                    <option value="to" selected>to</option>
-                                    <option value="cc">cc</option>
-                                    <option value="bcc">bcc</option>
+                                    @foreach ($typesTo as $typeTo)
+                                        <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
+                                    @endforeach
                                 </select>
                             </div><!--l-2-->
                             <div class="col-md-10 mt-2">
@@ -365,42 +332,7 @@
                             </div><!--l-4-->
                             <div class="col-md-10 mt-2">
                                 <div class="editor-container mb-1">
-                                    <div class="toolbar">
-                                        <button type="button" onclick="execCmd('bold')"><i
-                                                class="fas fa-bold"></i></button>
-                                        <button type="button" onclick="execCmd('italic')"><i
-                                                class="fas fa-italic"></i></button>
-                                        <button type="button" onclick="execCmd('underline')"><i
-                                                class="fas fa-underline"></i></button>
-                                        <button type="button" onclick="execCmd('strikeThrough')"><i
-                                                class="fas fa-strikethrough"></i></button>
-                                        <button type="button" onclick="execCmd('justifyLeft')"><i
-                                                class="fas fa-align-left"></i></button>
-                                        <button type="button" onclick="execCmd('justifyCenter')"><i
-                                                class="fas fa-align-center"></i></button>
-                                        <button type="button" onclick="execCmd('justifyRight')"><i
-                                                class="fas fa-align-right"></i></button>
-                                        <button type="button" onclick="execCmd('justifyFull')"><i
-                                                class="fas fa-align-justify"></i></button>
-                                        <button type="button" onclick="execCmd('insertUnorderedList')"><i
-                                                class="fas fa-list-ul"></i></button>
-                                        <button type="button" onclick="execCmd('insertOrderedList')"><i
-                                                class="fas fa-list-ol"></i></button>
-                                        <button type="button" onclick="execCmd('createLink', prompt('Enter the URL:', 'http: '))"><i
-                                                class="fas fa-link"></i></button>
-                                        <button type="button" onclick="execCmd('unlink')"><i
-                                                class="fas fa-unlink"></i></button>
-                                        <button type="button" onclick="insertImage()"><i
-                                                class="fas fa-image"></i></button>
-                                        <button type="button" onclick="insertTable()"><i
-                                                class="fas fa-table"></i></button>
-                                        <button type="button" onclick="toggleHTML()">Toggle HTML</button>
-                                    </div>
-                                    <input type="hidden" wire:model="editorContent" id="editorContent">
-                                    <div id="editor" class="form-control" contenteditable="true"
-                                        oninput="updateEditorContent(this)">
-                                        Start typing here...
-                                    </div>
+                                    <textarea id="text_editor" class="form-control" wire:model.defer="editorContent"></textarea>
                                 </div>
                                 <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
                                         class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item</a>
@@ -436,7 +368,8 @@
                 <h5>{{ __('Next action') }} :</h5>
             </div>
             <div class="px-5">
-                <input type="radio" id="go" checked name="checkbox">
+                <input type="radio" id="follow_the_collection_scenario" name="actionType"
+                    wire:model.live="selectedAction" value="follow_the_collection_scenario">
                 <label for="go"
                     class="mb-3">{{ __('Follow the collection scenario and the actions in progress') }}
                     :</label>
@@ -476,52 +409,150 @@
                 </div>
             </div>
             <div class="px-5 mt-3">
-                <input type="radio" id="Create" name="Create">
-                <label for="Create" class="mb-3">{{ __('Create a specific action for selected items') }}</label>
-                <div class=" my-2">
-                    <div class="d-flex">
-                        <div class="col-3 ">
-                            <label for="inputname13"> {{ __('Action name') }} :</label>
+                <input type="radio" id="create_a_specific_action" name="actionType"
+                    wire:model.live="selectedAction"
+                    value="create_a_specific_action"> {{ __('Create a specific action for selected items') }}</label>
+                @if ($selectedAction === 'create_a_specific_action')
+                    <div class=" my-2">
+                        <div class="d-flex">
+                            <div class="col-3 ">
+                                <label for="inputname13"> {{ __('Action name') }} :</label>
+                            </div>
+                            <div class="col-9 ">
+                                <input type="text" wire:model='action_name' class="form-control"
+                                    placeholder="Name" id="inputname13">
+                            </div>
                         </div>
-                        <div class="col-9 ">
-                            <input type="text" wire:model='action_name' class="form-control" placeholder="Name"
-                                id="inputname13">
+                    </div><!--13-->
+                    <div class=" my-2">
+                        <div class="d-flex">
+                            <div class="col-3 ">
+                                <label for="inputname222">{{ __('Action date') }} :</label>
+                            </div>
+                            <div class="input-group">
+                                <input type='date' wire:model="action_date" class="form-select" id="inputname19"> 
+                            </div>
                         </div>
-                    </div>
-                </div><!--13-->
-                <div class=" my-2">
-                    <div class="d-flex">
-                        <div class="col-3 ">
-                            <label for="inputname222">{{ __('Action date') }} :</label>
+                    </div><!--2-->
+                    <div class=" my-2">
+                        <div class="d-flex">
+                            <div class="col-3 ">
+                                <label for="inputname222">{{ __('Action Type') }} :</label>
+                            </div>
+                            <div class="input-group">
+                                <select class="form-select" wire:model.live='selectedActionType'
+                                    aria-label="Default select example">
+                                    <option value="" selected>{{ __('Select One') }}</option>
+                                    @foreach ($actionTypes as $actionType)
+                                        <option value="{{ $actionType->id }}">
+                                            {{ $actionType->en_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <select wire:model="number_of_days" class="form-select" id="inputname19">
-                                <option value="" selected disabled>
-                                    {{ __('select one') }}</option>
-                                @foreach ($days as $day)
-                                    <option value="{{ $day }}">{{ $day }}
-                                        {{ __('days') }}</option>
-                                @endforeach
-                            </select>
+                    </div><!--2-->
+                    {{-- ---------------------------------------Send Email ---------------------------- --}}
+                    @if ($action_type == 5)
+                        <div class="new-holab-1" id="hide-hoalp-1">
+                            <div class="row mt-5">
+                                <div class="col-md-2 mt-2">
+                                    <h4 for="">Subject :</h4>
+                                </div><!--l-3-->
+                                <div class="col-md-10 mt-2">
+                                    <input type="text" class="form-control" wire:model="subject" id="">
+                                </div><!--r-3-->
+                                <div class="col-md-2 mt-2">
+                                    <h4 class="mb-5">Message :</h4>
+                                    <p style="color: rgb(172, 169, 169); text-align: center;"><i
+                                            class="fa-solid fa-hashtag hash mb-5"></i><br>
+                                        Lorem ipsum dolor sit amet.</p>
+                                </div><!--l-4-->
+                                <div class="col-md-10 mt-2">
+                                    <div class="editor-container mb-1">
+                                        <textarea id="text_editor" class="form-control" wire:model.defer="editorContent"></textarea>
+                                    </div>
+                                    <div style=" display: flex; flex-wrap: wrap;" class="my-2">
+                                        <p> <input type="checkbox" wire:model.live='automatic_action'
+                                                class="form-check-input mx-2" id="exampleChe">
+                                            Automatic action
+                                        </p>
+                                        @if ($automatic_action)
+                                            <p> <input type="checkbox"
+                                                    wire:model.live='automatic_action_to_be_confirmed'
+                                                    class="form-check-input mx-2" id="exampleChe">
+                                                Automatic action to be confirmed
+                                            </p>
+                                        @endif
+                                    </div>
+                                    <div class="col-4">
+                                        <p> <input type="checkbox" wire:model.live='internal_interactive_emailLink'
+                                                class="form-check-input mx-2" id="exampleChe"
+                                                @if ($automatic_action) disabled @endif>
+                                            Internal interactive emailLink
+                                        </p>
+                                    </div>
+                                </div><!--r-4-->
+                                <div class="col-md-4 mt-2">
+                                </div><!--l-5-->
+                                <div class="tw-btn-holab d-flex justify-content-end">
+                                    <div class="col-md-8 mt-2">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
+                                                    onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
+                                                    {{ __('Email preview') }}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--r-5-->
+                            </div>
                         </div>
-                    </div>
-                </div><!--2-->
-                <div class=" my-2">
-                    <div class="d-flex">
-                        <div class="col-3 ">
-                            <label for="inputname222">{{ __('Action Type') }} :</label>
+                    @endif
+                    {{-- ---------------------------------------Send SMS ---------------------------- --}}
+                    @if ($action_type == 7)
+                        <div class="new-holab-1" id="hide-hoalp-1">
+                            <div class="row mt-5">
+                                <div class="col-md-2 mt-2">
+                                    <h4 class="mb-5">Message :</h4>
+                                    <p style="color: rgb(172, 169, 169); text-align: center;"><i
+                                            class="fa-solid fa-hashtag hash mb-5"></i><br>
+                                        Lorem ipsum dolor sit amet.</p>
+                                </div><!--l-4-->
+                                <div class="col-md-10 mt-2">
+                                    <div class="editor-container mb-1">
+                                        <textarea id="text_editor" class="form-control" wire:model.defer="editorContent"></textarea>
+                                    </div>
+                                    <div style=" display: flex; flex-wrap: wrap;" class="my-2">
+                                        <p> <input type="checkbox" wire:model.live='automatic_action'
+                                                class="form-check-input mx-2" id="exampleChe">
+                                            Automatic action
+                                        </p>
+                                        @if ($automatic_action)
+                                            <p> <input type="checkbox"
+                                                    wire:model.live='automatic_action_to_be_confirmed'
+                                                    class="form-check-input mx-2" id="exampleChe">
+                                                Automatic action to be confirmed
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div><!--r-4-->
+                                <div class="col-md-4 mt-2">
+                                </div><!--l-5-->
+                                <div class="tw-btn-holab d-flex justify-content-end">
+                                    <div class="col-md-8 mt-2">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
+                                                    onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
+                                                    {{ __('SMS preview') }}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!--r-5-->
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <select class="form-select" wire:model='action_type' aria-label="Default select example">
-                                <option value="" selected>{{ __('Select One') }}</option>
-                                @foreach ($actionTypes as $actionType)
-                                    <option value="{{ $actionType->id }}">
-                                        {{ $actionType->en_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </div><!--2-->
+                    @endif
+                @endif
             </div>
         @endif
         <div class="d-flex justify-content-end my-5">
@@ -542,16 +573,19 @@
     </form>
     <script>
         document.addEventListener('livewire:load', function() {
-            function updateEditorContent(editor) {
-                let content = editor.innerHTML;
-                document.getElementById('editorContent').value = content;
-                Livewire.hook('message.sent', () => {
-                    @this.set('editorContent', content);
+            ClassicEditor
+                .create(document.querySelector('#text_editor'))
+                .then(editor => {
+                    editor.model.document.on('change:data', () => {
+                        @this.set('editorContent', editor.getData());
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
                 });
-            }
-            document.getElementById('editor').oninput = function() {
-                updateEditorContent(this);
-            };
+            Livewire.on('resetEditor', () => {
+                document.querySelector('#text_editor').value = '';
+            });
         });
     </script>
 </div>
