@@ -368,8 +368,8 @@
                 <h5>{{ __('Next action') }} :</h5>
             </div>
             <div class="px-5">
-                <input type="radio" id="go" name="actionType" wire:model.live="selectedAction"
-                    value="go">
+                <input type="radio" id="follow_the_collection_scenario" name="actionType"
+                    wire:model.live="selectedAction" value="follow_the_collection_scenario">
                 <label for="go"
                     class="mb-3">{{ __('Follow the collection scenario and the actions in progress') }}
                     :</label>
@@ -409,10 +409,10 @@
                 </div>
             </div>
             <div class="px-5 mt-3">
-                <input type="radio" id="Create" name="actionType" wire:model.live="selectedAction"
-                    value="create"> <label for="Create"
-                    class="mb-3">{{ __('Create a specific action for selected items') }}</label>
-                @if ($selectedAction === 'create')
+                <input type="radio" id="create_a_specific_action" name="actionType"
+                    wire:model.live="selectedAction"
+                    value="create_a_specific_action"> {{ __('Create a specific action for selected items') }}</label>
+                @if ($selectedAction === 'create_a_specific_action')
                     <div class=" my-2">
                         <div class="d-flex">
                             <div class="col-3 ">
@@ -430,14 +430,7 @@
                                 <label for="inputname222">{{ __('Action date') }} :</label>
                             </div>
                             <div class="input-group">
-                                <select wire:model="number_of_days" class="form-select" id="inputname19">
-                                    <option value="" selected disabled>
-                                        {{ __('select one') }}</option>
-                                    @foreach ($days as $day)
-                                        <option value="{{ $day }}">{{ $day }}
-                                            {{ __('days') }}</option>
-                                    @endforeach
-                                </select>
+                                <input type='date' wire:model="action_date" class="form-select" id="inputname19"> 
                             </div>
                         </div>
                     </div><!--2-->

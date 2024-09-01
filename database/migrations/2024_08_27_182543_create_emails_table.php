@@ -17,10 +17,10 @@ return new class extends Migration
             $table->bigInteger('resolver');
             $table->bigInteger('subject');
             $table->longText('message');
-            $table->boolean('get_a_copy')->default(1);
-            $table->boolean('request_an_acknowledgment')->default(1);
-            $table->bigInteger('email_type');
-            $table->bigInteger('type_to');
+            $table->boolean('get_a_copy')->default(0);
+            $table->boolean('request_an_acknowledgment')->default(0);
+            $table->bigInteger('email_type')->nullable();
+            $table->bigInteger('type_to')->nullable();
             $table->morphs('emailable');
             $table->timestamps();
         });

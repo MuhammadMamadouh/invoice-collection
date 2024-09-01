@@ -18,12 +18,8 @@ class ItemsChangeStatus extends Model
         'created_by',
         'comments',
         'create_at',
-        'email_type',
-        'type_to',
-        'subject',
-        'message',
-        'get_a_copy',
-        'request_an_acknowledgment',
+        'follow_the_collection_scenario', 
+        'create_a_specific_action',
     ];
 
     public function statusResolver()
@@ -49,6 +45,16 @@ class ItemsChangeStatus extends Model
     public function emails()
     {
         return $this->morphMany(Email::class, 'emailable');
+    }
+
+    public function tempActions()
+    {
+        return $this->hasMany(TempAction::class, 'item_change_status_id');
+    }
+
+    public function smsMessages()
+    {
+        return $this->morphMany(SmsMessage::class, 'messageable');
     }
 
 }

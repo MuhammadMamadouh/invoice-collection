@@ -9,6 +9,7 @@ use App\Models\File;
 use App\Models\ItemsChangeStatus;
 use App\Models\ItemStatus;
 use App\Models\ItemStatusType;
+use App\Models\SmsMessage;
 use App\Models\TempAction;
 use App\Models\TypeTo;
 use App\Models\User;
@@ -30,7 +31,7 @@ class ItemChangeStatusSteps extends Component
     public $days = [];
     public $editorContent;
     // public $showActionForm = false;
-    public $selectedAction = 'go'; 
+    public $selectedAction = 'follow_the_collection_scenario';
     public $selectedEmailType = null;
     public $emailTypes;
     public $typesTo;
@@ -39,7 +40,7 @@ class ItemChangeStatusSteps extends Component
     public $automatic_action_to_be_confirmed = false;
     public $internal_interactive_emailLink = false;
 
-    //---------------------email table data--------------------
+    //---------------------status table data--------------------
     public $resolver;
     public $item;
     public $client;
@@ -67,12 +68,16 @@ class ItemChangeStatusSteps extends Component
     public $visiable_in_external;
     // public $items_change_status_id;
 
+
     //------------------action collection scenario---------
 
     public $action_name;
-    public $number_of_days;
+    public $action_date;
     public $action_type;
     public $collection_scenario_id;
+    public $item_change_status_id;
+
+    //------------------sms messages table---------
 
 
     public function mount($item, $client)
@@ -108,9 +113,12 @@ class ItemChangeStatusSteps extends Component
         $this->resolverData = $value;
     }
 
-    public function toggleActionForm($action)
+    public function updatedSelectedAction($value)
     {
-        $this->selectedAction = $action ? 'create' : 'go';
+        if ($value === 'follow_the_collection_scenario') {
+            $this->action_name = null;
+            $this->selectedActionType = null;
+        }
     }
 
     public function updatedselectedActionType($value)
@@ -125,11 +133,11 @@ class ItemChangeStatusSteps extends Component
             $this->internal_interactive_emailLink = false;
         }
     }
-    
+
     public function updatedInternalInteractiveEmailLink($value)
     {
         if ($value) {
-            $this->automatic_action  = false;
+            $this->automatic_action = false;
             $this->automatic_action_to_be_confirmed = false;
         }
     }
@@ -151,55 +159,81 @@ class ItemChangeStatusSteps extends Component
     public function save()
     {
         DB::beginTransaction();
-        if ($this->action_name != null && $this->selectedStatus == null) {
-            TempAction::create([
+        $changedStatus = ItemsChangeStatus::create([
+            'item_id' => $this->item->id,
+            'status_id' => $this->selectedStatus,
+            'status_action_id' => $this->status_action_id,
+            'resolver' => $this->resolver,
+            'created_by' => $this->created_by,
+            'comments' => $this->comments,
+            'create_at' => $this->create_at,
+            'follow_the_collection_scenario' => $this->selectedAction === 'follow_the_collection_scenario' ? 1 : 0,
+            'create_a_specific_action' => $this->selectedAction === 'create_a_specific_action' ? 1 : 0,
+        ]);
+        if ($this->email_type) {
+            $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
+            $newEmail = new Email([
+                'created_by' => $this->created_by,
+                'resolver' => $this->resolver,
+                'subject' => $this->client->id,
+                'message' => $this->editorContent,
+                'get_a_copy' => $this->get_a_copy,
+                'request_an_acknowledgment' => $this->request_an_acknowledgment,
+                'email_type' => $this->email_type,
+                'type_to' => $this->type_to,
+            ]);
+            $newStatus->emails()->save($newEmail);
+        }
+        if ($this->file_name) {
+            foreach ($this->file_name as $file) {
+                $filePath = $file->store('items_files', 'public');
+                $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
+                $newStatusFiles = new File([
+                    'file_name' => $filePath,
+                    'file_size' => $file->getSize(),
+                    'desc' => $this->desc,
+                    'visiable_in_internal' => $this->visiable_in_internal,
+                    'visiable_in_external' => $this->visiable_in_external,
+                    // 'items_change_status_id' => $changedStatus->id,
+                ]);
+                $newStatus->files()->save($newStatusFiles);
+            }
+        }
+        if ($this->action_name) {
+            $tempAction = TempAction::create([
                 'action_name' => $this->action_name,
-                'number_of_days' => $this->number_of_days,
+                'action_date' => $this->action_date,
                 'action_type' => $this->action_type,
                 'collection_scenario_id' => $this->client->collectionScenarios->id,
-            ]);
-            DB::commit();
-        } else {
-            $changedStatus = ItemsChangeStatus::create([
+                'client_id' => $this->client->id,
                 'item_id' => $this->item->id,
-                'status_id' => $this->selectedStatus,
-                'status_action_id' => $this->status_action_id,
-                'resolver' => $this->resolver,
                 'created_by' => $this->created_by,
-                'comments' => $this->comments,
-                'create_at' => $this->create_at,
+                'item_change_status_id' => $changedStatus->id,
             ]);
-            if($this->email_type){
-                $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
+            if($this->action_type == 5){
                 $newEmail = new Email([
                     'created_by' => $this->created_by,
                     'resolver' => $this->resolver,
                     'subject' => $this->client->id,
                     'message' => $this->editorContent,
-                    'get_a_copy' => $this->get_a_copy,
-                    'request_an_acknowledgment' => $this->request_an_acknowledgment,
-                    'email_type' => $this->email_type,
-                    'type_to' => $this->type_to,
+                    'automatic_action' => $this->automatic_action,
+                    'automatic_action_to_be_confirmed' => $this->automatic_action_to_be_confirmed,
+                    'internal_interactive_emailLink' => $this->internal_interactive_emailLink,
                 ]);
-                $newStatus->emails()->save($newEmail);
+                $tempAction->emails()->save($newEmail);
             }
-            if($this->file_name){
-                foreach ($this->file_name as $file) {
-                    $filePath = $file->store('items_files', 'public');
-                    $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
-                    $newStatusFiles = new File([
-                        'file_name' => $filePath,
-                        'file_size' => $file->getSize(),
-                        'desc' => $this->desc,
-                        'visiable_in_internal' => $this->visiable_in_internal,
-                        'visiable_in_external' => $this->visiable_in_external,
-                        // 'items_change_status_id' => $changedStatus->id,
-                    ]);
-                    $newStatus->files()->save($newStatusFiles);
-                }
+            if($this->action_type == 7){
+                $newSms = new SmsMessage([
+                    'created_by' => $this->created_by,
+                    'message' => $this->editorContent,
+                    'automatic_action' => $this->automatic_action,
+                    'automatic_action_to_be_confirmed' => $this->automatic_action_to_be_confirmed,                
+                ]);
+                $tempAction->smsMessages()->save($newSms);
             }
-            DB::commit();
         }
+        DB::commit();
+        return to_route('clients.index');
     }
 
     public function render()

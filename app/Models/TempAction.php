@@ -17,5 +17,21 @@ class TempAction extends Model
         'client_id',
         'item_id',
         'created_by',
+        'item_change_status_id',
     ];
+
+    public function itemChangedStatus()
+    {
+        return $this->belongsTo(ItemsChangeStatus::class, 'item_change_status_id');
+    }
+
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'emailable');
+    }
+    public function smsMessages()
+    {
+        return $this->morphMany(SmsMessage::class, 'messageable');
+    }
+
 }
