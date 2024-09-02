@@ -93,8 +93,6 @@ class ItemChangeStatusSteps extends Component
         for ($i = -90; $i <= 365; $i++) {
             $this->days[] = $i;
         }
-
-
     }
 
     public function updatedselectedStatus($id)

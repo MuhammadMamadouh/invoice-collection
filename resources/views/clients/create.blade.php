@@ -226,7 +226,7 @@
                         </div>
                         <div class="col-7 ">
                             <select name="collector_id" class="form-select" id="inputname19">
-                                <option selected disabled>{{__("Select One")}}</option>
+                                <option selected >{{__("Select One")}}</option>
                                 @foreach($collectors as $collector)
                                     <option value={{$collector->id}}>{{$collector->first_name}}</option>
                                 @endforeach

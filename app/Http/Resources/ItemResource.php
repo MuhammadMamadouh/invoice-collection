@@ -50,7 +50,7 @@ class ItemResource extends JsonResource
             'currency'                  => $this->currency,
             'itemChangeStatus'          => $this->itemChangeStatus ? ItemsChangeStatusResource::collection($this->itemChangeStatus) : [],
             'itemsFileCount'            => File::count(),
-            // 'itemFiles'                 => $this->itemFiles ? ItemsChangeStatusFilesResource::collection($this->itemFiles) : [], 
+            'files'                     => FilesResource::collection($this->itemChangeStatus->flatMap->files ),
         ];
     }
 }

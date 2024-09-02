@@ -21,33 +21,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @forelse($item->itemChangeStatus as $itemChange)
-                        @foreach ($itemChange->statusFiles as $statusFile)
+                    @forelse($item->files as $itemfile)
+                        {{-- {{dd($itemfile)}} --}}
                             <tr>
                                 <td>
-                                    <p>{{ $statusFile->file_name }}</p>
+                                    <p>{{ $itemfile->file_name }}</p>
                                 </td>
                                 <td>
-                                    <p>{{ $statusFile->desc }}</p>
+                                    <p>{{ $itemfile->desc }}</p>
                                 </td>
                                 <td>
-                                    <p>{{ $statusFile->file_size }}</p>
+                                    <p>{{ $itemfile->file_size }}</p>
                                 </td>
                                 <td>
-                                    <p>{{ $itemChange->create_at }}</p>
+                                    <p>{{-- $itemChange->create_at --}}</p>
                                 </td>
                                 <td>
-                                    <p>{{ $itemChange->statusResolver->first_name }}</p>
+                                    <p>{{-- $itemChange->statusResolver->first_name --}}</p>
                                 </td>
                             </tr>
-                        @endforeach
                     @empty
                         <div class="bg-light text-center w-100 p-3 mt-0">
                             <td>
                                 {{ __('No associated files') }}
                             </td>
                         </div>
-                    @endforelse --}}
+                    @endforelse
                 </tbody>
             </table>
         </div>

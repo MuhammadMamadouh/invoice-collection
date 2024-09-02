@@ -16,4 +16,9 @@ class SmsMessage extends Model
         'messageable_id',
         'messageable_type',
     ];
+
+    public function messageable()
+    {
+        return $this->morphTo();
+    }
 }
