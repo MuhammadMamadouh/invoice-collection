@@ -1,14 +1,14 @@
     <div class="bg-white p-4 " id="actionsDiv-{{$item->id}}">
         <div class="row mt-2 px-4 text-center table-alerts-container">
             <div class=" col-md-2">
-                <p class="fw-bold">Action date</p>
+                <p class="fw-bold">{{__("Action date")}}</p>
             </div>
             <div class=" col-md-2">
-                <p class="fw-bold">Action type</p>
+                <p class="fw-bold">{{__("Action type")}}</p>
             </div>
             <div class="col-md-5 d-none d-md-block"></div>
             <div class="col-md-3">
-                <p class="fw-bold">Action done by</p>
+                <p class="fw-bold">{{__("Action done by")}}</p>
             </div>
         </div>
         <div class="text-center mb-3  p-2 p-md-4">
