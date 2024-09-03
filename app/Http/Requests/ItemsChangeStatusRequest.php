@@ -28,10 +28,10 @@ class ItemsChangeStatusRequest extends FormRequest
             'resolver' => 'required|',
             'created_by' => 'required|',
             'comments' => 'required|string',
-            'file' => 'required|',
             'create_at' => 'required|date',
-            'visible_in' => 'required|boolean',
-            'desc' => 'required|string',
+            // 'file' => 'required|',
+            // 'visible_in' => 'required|boolean',
+            // 'desc' => 'required|string',
         ];
     }
 }

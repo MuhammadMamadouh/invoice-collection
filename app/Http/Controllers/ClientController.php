@@ -41,7 +41,7 @@ class ClientController extends Controller
             'firstDueItem',
             'contacts',
             'items.itemChangeStatus',
-            // 'items.files'
+            //'items.tempActions'
         ])->filter(new ClientFilter(request()))->paginate(30);
         $clientResource = ClientResource::collection($clients)->response()->getData()->data;
         $client_count = Client::count();

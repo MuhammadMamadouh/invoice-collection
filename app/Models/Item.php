@@ -76,8 +76,8 @@ class Item extends Model
         return $this->hasMany(ItemsChangeStatus::class, 'item_id');
     }
 
-    // public function itemFiles()
-    // {
-    //     return $this->hasMany(ItemsChangeStatusFiles::class, 'item_id');
-    // }
+    public function itemTempActions()
+    {
+        return $this->hasMany(TempAction::class, 'item_id');
+    }
 }

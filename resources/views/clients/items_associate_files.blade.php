@@ -34,10 +34,14 @@
                                     <p>{{ $itemfile->file_size }}</p>
                                 </td>
                                 <td>
-                                    <p>{{-- $itemChange->create_at --}}</p>
+                                    <p>{{-- $itemChange->create_at --}}
+                                        2024-09-01 13:07:12
+                                    </p>
                                 </td>
                                 <td>
-                                    <p>{{-- $itemChange->statusResolver->first_name --}}</p>
+                                    <p>{{-- $itemChange->statusResolver->first_name --}}
+                                        sys admin (Sales Manager)
+                                    </p>
                                 </td>
                             </tr>
                     @empty

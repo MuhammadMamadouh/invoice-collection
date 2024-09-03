@@ -51,6 +51,7 @@ class ItemResource extends JsonResource
             'itemChangeStatus'          => $this->itemChangeStatus ? ItemsChangeStatusResource::collection($this->itemChangeStatus) : [],
             'itemsFileCount'            => File::count(),
             'files'                     => FilesResource::collection($this->itemChangeStatus->flatMap->files ),
+            'tempActions'               => TempActionsResource::collection($this->itemTempActions),
         ];
     }
 }

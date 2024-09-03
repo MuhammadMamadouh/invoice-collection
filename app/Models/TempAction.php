@@ -33,5 +33,18 @@ class TempAction extends Model
     {
         return $this->morphMany(SmsMessage::class, 'messageable');
     }
+    public function item()
+    {
+        return $this->belongsTo(Item::class, 'item_id');
+    }
+
+    public function actionTypes()
+    {
+        return $this->belongsTo(ActionType::class, 'action_type');
+    }
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 
 }

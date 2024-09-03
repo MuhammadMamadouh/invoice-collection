@@ -14,5 +14,9 @@ class ActionType extends Model
     public function actions(){
         return $this->hasMany(Action::class);
     }
+
+    public function tempActions(){
+        return $this->hasMany(TempAction::class, 'action_type');
+    }
     
 }
