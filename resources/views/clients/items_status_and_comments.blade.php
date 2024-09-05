@@ -40,8 +40,8 @@
                                                 aria-label="Default select example">
                                                 <option value='{{ $newStatusItem->resolver }}' selected>
                                                     {{ __('Resolver') }} :
-                                                    {{ $newStatusItem->statusResolver->first_name }}
-                                                    {{ $newStatusItem->statusResolver->last_name }}({{ $newStatusItem->statusResolver->role->name }})
+                                                    {{ $newStatusItem->statusResolver->first_name ?? 'aaa'}}
+                                                    {{ $newStatusItem->statusResolver->last_name  ?? 'ddd'}}({{ $newStatusItem->statusResolver->role->name ?? 'admin' }})
                                                 </option>
                                                 @foreach ($users as $user)
                                                     <option value="{{ $user->id }}">{{ $user->first_name }}
@@ -86,8 +86,8 @@
                                     <img src="./img/person2.jpg" style="width:50px;height:50px;border-radius: 50%;"
                                         alt="">
                                     <p class="fw-bold"><a
-                                            href="#">{{ $newStatusItem->statusResolver->first_name }}</a>
-                                        ({{ $newStatusItem->statusResolver->role->name }})
+                                            href="#">{{ $newStatusItem->statusResolver->first_name ?? 'aaa'}}</a>
+                                        ({{ $newStatusItem->statusResolver->role->name ?? 'aaa'}})
                                     </p>
                                 </div>
                             </td>

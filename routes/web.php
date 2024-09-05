@@ -140,8 +140,8 @@ Route::resource('items', ItemsController::class);
 Route::get('item-status', [ItemStatusController::class,'showStatusItemsForm'])->name('item-status.index');
 Route::post('item-status', [ItemStatusController::class,'store'])->name('item-status.store');
 
-Route::resource('/clients-group', ClientsGroupController::class);
 Route::post('/clients-group/delete-all', [ClientsGroupController::class, 'deleteAll'])->name('clients-group.delete-all');
+Route::resource('/clients-group', ClientsGroupController::class);
 
 
 Route::get('switch-language/{locale}', [LanguageController::class, 'switchLanguage'])->name('switch.language');

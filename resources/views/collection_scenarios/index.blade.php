@@ -588,7 +588,8 @@ width: 65% !important;
 overflow-y: scroll; 
 overflow-x: hidden;">
                                         <form id="myForm"
-                                            action="{{ route('collection.update', $ActionScenario->id) }}" method="POST">
+                                            action="{{ route('collection.update', $ActionScenario->id) }}"
+                                            method="POST">
                                             @csrf
                                             <input type="hidden" id="collection_scenario_id"
                                                 name="collection_scenario_id" class="form-control" style="width: 355px;"
@@ -710,7 +711,8 @@ overflow-x: hidden;">
                                                                 post mail with acknowledge of receipt (Dunning letter)
                                                             </option>
                                                             <option value="">Risky clients (EN) / Formal notice
-                                                                (Dunning letter)</option>
+                                                                (Dunning letter)
+                                                            </option>
                                                             <option value="">Risky clients (EN) / Reminder by post
                                                                 mail with acknowledge of receipt (Dunning letter)</option>
                                                             <option value="">Clients risqués (FR) / Courrier de mise
@@ -1309,7 +1311,7 @@ overflow-x: hidden;">
 
 
             // Display the value (for example, using an alert)
-            alert("The value of the hidden input is: " + value);
+            //alert("The value of the hidden input is: " + value);
         }
         getValue();
         //   var body =  $("#mail_content .clear-2").val();
