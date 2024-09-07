@@ -33,12 +33,13 @@
   border-radius: 5px;
 }
 .nav-item.active .nav-link{
-  color: #0d6efd;
+  color: #2f6579;
   font-weight: bold;
 }
 .nav-item.active .fa-gear{
-  color: #0d6efd;
+  color: #2f6579;
   font-weight: bold;
+  background-color: #eee8a9;
 }
 
 .containe {

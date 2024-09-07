@@ -3,7 +3,7 @@
     margin: 0;
 }
 .cairo-uniquifier {
-    font-family: "Cairo", sans-serif;
+    font-family: "Roboto", sans-serif !important;
     font-optical-sizing: auto;
     font-weight: 600;
     font-style: normal;
@@ -11,6 +11,9 @@
     "slnt" 0;
   }
 
+  body{
+    background-color: #F3F4F6;
+  }
 /*google font*/
 
 /*navbar*/
@@ -18,7 +21,7 @@
     width: 100px;
 }
 .navbar-all-site {
-    background-color: #387bd3;
+    background-color: #2f6579;
 }
 .nav-item .nav-link {
     color: #fff;
@@ -46,6 +49,11 @@
 .top-navbar a {
     color: #fff;
     text-decoration: none;
+}
+.icons-nav button {
+    color: #fff !important;
+    background: none;
+    border: none;
 }
 .top-navbar  input {
     outline: none;

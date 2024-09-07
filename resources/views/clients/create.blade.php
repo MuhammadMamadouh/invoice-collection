@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 @section('content')
     <section class="ring-info">
-        <button class="px-5 my-4 btn">{{__("Use rather the import module to create your customers and invoices")}}</button>
+        <button class="btn btn-secondary my-4 px-5">{{__("Use rather the import module to create your customers and invoices")}}</button>
     </section><!--reing-info-->
     <section class="my-2 m-groups">
         <div class="container-fluid">
@@ -356,7 +356,7 @@
 
             </div><!--row-->
             <div class="container text-center">
-                <button type="submit" class="my-5 btn btn-primary btn-add-i">{{__("+ ADD")}}</button>
+                <button type="submit" class="btn btn-secondary my-5 btn-add-i">{{__("+ ADD")}}</button>
             </div>
             </div>
         </form><!--create-c-i-->

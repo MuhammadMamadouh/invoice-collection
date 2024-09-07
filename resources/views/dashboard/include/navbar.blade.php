@@ -59,7 +59,7 @@
                                     </path>
                                 </svg><!-- <i class="fa-solid fa-eye"></i> Font Awesome fontawesome.com --></span>
                             global view</a>
-                        <svg class="svg-inline--fa fa-gear nav-link bg-dark" onclick="showSetts()"
+                        <svg class="svg-inline--fa fa-gear nav-link" onclick="showSetts()"
                             style="cursor: pointer;padding: 12px;" aria-hidden="true" focusable="false"
                             data-prefix="fas" data-icon="gear" role="img" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512" data-fa-i2svg="">

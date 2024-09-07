@@ -1,18 +1,12 @@
 @extends('layouts.dashboard.app')
 @section('content')
-
-
-
     @include('users.create')
     {{-- ----------------------------------------------------- --}}
     @include('users.edit')
     {{-- ----------------------------------------------------- --}}
     <section class="ring-info text-center">
-
         <p class="mt-3 py-5"><i
                 class="fa-regular fa-star px-3"></i>{{ __('Allow other people to use your account MY DSO MANAGER for your company') }}
-            <span class="fw-bold">{{ __('Business Solutions') }}</span>
-        </p>
             <span class="fw-bold">{{ __('Business Solutions') }}</span>
         </p>
     </section><!--reing-info-->
@@ -24,13 +18,11 @@
             <div class="row justify-content-end">
                 <div class="col-auto">
                     <div class="new-s mt-5">
-                        <button class="btn btn-primary py-3" onclick="showAddUserDiv()">
+                        <button class="btn btn-secondary py-3" onclick="showAddUserDiv()">
                             <i class="fa-solid fa-plus"></i> {{ __('Add a user') }}
                         </button>
                     </div><!--row-->
                 </div><!--new-st-->
-
-
             </div><!--container-->
             <div class="row justify-content-end">
                 <div class="col-auto">
@@ -50,7 +42,6 @@
                             <div class="btn btn-secondary p-2 px-3" style="border-radius: 0 5px 5px 0 ;"><i
                                     class="fas pt-1 fa-search"></i></div>
                         </div>
-
                     </div><!--f-searsh-->
                     <div class="row mt-3">
                         <div class="form-group d-flex justify-content-end">
@@ -62,16 +53,12 @@
             </div>
             <div class="row justify-content-end">
                 <div class="col-auto">
-
                     <div class="search-container">
                         <input type="text" placeholder="{{ __('Multi-column search') }}" class="search-input">
-
                     </div>
-
                 </div><!--f-searsh-->
             </div>
         </div>
-
         <div class="table-responsive" id="table-scroll">
             <table class="table rounded px-2" id="my-table">
                 <thead>
@@ -118,183 +105,187 @@
                             </td>
                             <td>
                                 {{-- <button class="lock-btn rounded mt-3"><i class="fa-solid fa-lock"></i></button> --}}
-                                <button class="lock-btn rounded mt-3"
+                                <button class="lock-btn rounded mt-3" style="font-size: 17px;padding: 5px 5px;"
                                     onclick="showRegeneratePasswordModal({{ $user->id }})"><i
                                         class="fa-solid fa-lock"></i></button>
-                                <button class="edt-btn rounded mt-3" style="color:blue"
+                                <button class="edt-btn rounded mt-3" style="font-size: 17px;padding: 5px 5px;"
                                     onclick="showEditUserDiv({{ $user->id }})"><i class="fa-solid fa-pen"></i></button>
-
-                                    <div class="position-fixed w-75 pop-up d-none pt-4 pe-4 " id="edit-user-div-{{ $user->id }}"
-                                        style="top:5% ;left: 50%;transform: translate(-50%);z-index: 10;height: 100vh; overflow-y: scroll;overflow-x: hidden;">
-                                        <div class="bg-white m-auto p-4 shadow-sm position-relative " id="edit-user-div-{{ $user->id }}"
-                                            style="border-radius: 10px;">
-                                            <span class="btn btn-secondary position-absolute"
-                                                onclick="hideEditUserDiv({{ $user->id }})"
-                                                style="border-radius:50%;top: -20px;right: -20px;"><i
-                                                    class="fa-solid fa-close"></i></span>
-                                            <h3 class="text-center mb-4">{{ __('Edit user data') }}</h3>
-                                            <form id="editUserForm" action="{{ route('users.update', $user->id) }}"
-                                                method="POST" enctype="multipart/form-data">
-                                                <div class="">
-                                                    @csrf
-                                                    @method('PATCH')
-                                                    <input type="hidden" name="id" id="edit_id" value="{{$user->id}}">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-md-3 mb-3">
-                                                            <small class="">{{ __('First name *:') }}</small>
-                                                        </div>
-                                                        <div class="col-md-9 mb-3">
-                                                            <input required type="text" name="first_name"
-                                                                class="form-control" id="edit_first_name"
-                                                                value="{{ old('first_name', $user->first_name) }}" />
-                                                            @error('first_name')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="col-md-3 mb-3">
-                                                            <small class="">{{ __('Last Name *:') }}</small>
-                                                        </div>
-                                                        <div class="col-md-9 mb-3">
-                                                            <input required type="text" name="last_name"
-                                                                class="form-control" id="edit_last_name"
-                                                                value="{{ old('last_name', $user->last_name) }} "/>
-                                                            @error('last_name')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="col-md-3 mb-3">
-                                                            <small class="">{{ __('E-Mail *:') }}</small>
-                                                        </div>
-                                                        <div class="col-md-9 mb-3">
-                                                            <input required type="email" name="email"
-                                                                class="form-control" id="edit_email" value="{{ old('email', $user->email) }}" />
-                                                            @error('email')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="col-md-3 mb-3">
-                                                            <small class="">{{ __('Image Of Account:') }}</small>
-                                                        </div>
-                                                        <div class="col-md-9 mb-3">
-                                                            <div class="change-img text-center">
-                                                                <img src="{{asset('storage/'. $user->picture)}}" id="edit_changeimg" class="img-fluid"
-                                                                    style="width: 100px;height:100px; border-radius: 50%;" alt="">
-                                                                <div class="upload" id="edit_uploads">
-                                                                    <label for="edit_upload"
-                                                                        class="text-center">{{ __('Upload') }}</label>
-                                                                    <input type="file" id="edit_upload"
-                                                                        name="picture">
-                                                                </div>
-                                                            </div>
-                                                            @error('picture')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="col-md-3 mb-3">
-                                                            <small class="">{{ __('Phone:') }}</small>
-                                                        </div>
-                                                        <div class="col-md-9 mb-3">
-                                                            <input type="text" name="phone" class="form-control"
-                                                                id="edit_phone" value="{{ old('phone', $user->phone) }}"/>
-                                                            @error('phone')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="col-md-3 mb-3">
-                                                            <small class="">{{ __('Fax:') }}</small>
-                                                        </div>
-                                                        <div class="col-md-9 mb-3">
-                                                            <input type="text" name="fax" class="form-control"
-                                                                id="edit_fax" value="{{ old('fax', $user->fax) }}" />
-                                                            @error('fax')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="col-md-3 mb-3">
-                                                            <small class="">{{ __('Function:') }}</small>
-                                                        </div>
-                                                        <div class="col-md-9 mb-3">
-                                                            <input type="text" name="function" class="form-control"
-                                                                id="edit_function" value="{{ old('function', $user->function) }}" />
-                                                            @error('function')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="col-md-3 mb-3">
-                                                            <small class="">{{ __('ID number:') }}</small>
-                                                        </div>
-                                                        <div class="col-md-9 mb-3">
-                                                            <input type="text" name="id_number" class="form-control"
-                                                                id="edit_id_number" value="{{ old('id_number', $user->id_number) }}" />
-                                                            @error('id_number')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="col-md-3 mb-3">
-                                                            <small class="">{{ __('Active account') }} :</small>
-                                                        </div>
-                                                        <div class="col-md-9 mb-3">
-                                                            <div class="checks-bx d-flex gap-3">
-                                                                <div>
-                                                                    <input type="radio" name="active" value="1"
-                                                                        id="edit_yes" @if(old('active', $user->active ) == '1') checked @endif/>
-                                                                    <label for="edit_yes">{{ __('Yes') }}</label>
-                                                                </div>
-                                                                <div>
-                                                                    <input type="radio" name="active" value="0"
-                                                                        id="edit_no" @if(old('active', $user->active ) == '0') checked @endif/>
-                                                                    <label for="edit_no">{{ __('No') }}</label>
-                                                                </div>
-                                                            </div>
-                                                            @error('active')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
-
-                                                        <div class="col-md-3 mb-3">
-                                                            <small class="">{{ __('Role :') }}</small>
-                                                        </div>
-                                                        <div class="col-md-9 mb-3">
-                                                            <select class="form-select" name="role_id" id="edit_role_id"
-                                                                aria-label="Default select example">
-                                                                <option selected value="{{$user->role->id}}"> {{$user->role->name}}</option>
-                                                                @foreach ($roles as $role)
-                                                                    <option value="{{ $role->id }}">
-                                                                        {{ $role->name }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-                                                            @error('role_id')
-                                                                <div class="text-danger">{{ $message }}</div>
-                                                            @enderror
-                                                        </div>
+                                <div class="position-fixed w-75 pop-up d-none pt-4 pe-4 "
+                                    id="edit-user-div-{{ $user->id }}"
+                                    style="top:5% ;left: 50%;transform: translate(-50%);z-index: 10;height: 100vh; overflow-y: scroll;overflow-x: hidden;">
+                                    <div class="bg-white m-auto p-4 shadow-sm position-relative "
+                                        id="edit-user-div-{{ $user->id }}" style="border-radius: 10px;">
+                                        <span class="btn btn-secondary position-absolute"
+                                            onclick="hideEditUserDiv({{ $user->id }})"
+                                            style="border-radius:50%;top: -20px;right: -20px;"><i
+                                                class="fa-solid fa-close"></i></span>
+                                        <h3 class="text-center mb-4">{{ __('Edit user data') }}</h3>
+                                        <form id="editUserForm" action="{{ route('users.update', $user->id) }}"
+                                            method="POST" enctype="multipart/form-data">
+                                            <div class="">
+                                                @csrf
+                                                @method('PATCH')
+                                                <input type="hidden" name="id" id="edit_id"
+                                                    value="{{ $user->id }}">
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-3 mb-3">
+                                                        <small class="">{{ __('First name *:') }}</small>
                                                     </div>
-                                                    <div class="text-center mt-3">
-                                                        <button type="submit" class="btn btn-success"><i
-                                                                class="fa-solid fa-check"></i>
-                                                            {{ __('Modify') }}</button>
+                                                    <div class="col-md-9 mb-3">
+                                                        <input required type="text" name="first_name"
+                                                            class="form-control" id="edit_first_name"
+                                                            value="{{ old('first_name', $user->first_name) }}" />
+                                                        @error('first_name')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <small class="">{{ __('Last Name *:') }}</small>
+                                                    </div>
+                                                    <div class="col-md-9 mb-3">
+                                                        <input required type="text" name="last_name"
+                                                            class="form-control" id="edit_last_name"
+                                                            value="{{ old('last_name', $user->last_name) }} " />
+                                                        @error('last_name')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <small class="">{{ __('E-Mail *:') }}</small>
+                                                    </div>
+                                                    <div class="col-md-9 mb-3">
+                                                        <input required type="email" name="email"
+                                                            class="form-control" id="edit_email"
+                                                            value="{{ old('email', $user->email) }}" />
+                                                        @error('email')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <small class="">{{ __('Image Of Account:') }}</small>
+                                                    </div>
+                                                    <div class="col-md-9 mb-3">
+                                                        <div class="change-img text-center">
+                                                            <img src="{{ asset('storage/' . $user->picture) }}"
+                                                                id="edit_changeimg" class="img-fluid"
+                                                                style="width: 100px;height:100px; border-radius: 50%;"
+                                                                alt="">
+                                                            <div class="upload" id="edit_uploads">
+                                                                <label for="edit_upload"
+                                                                    class="text-center">{{ __('Upload') }}</label>
+                                                                <input type="file" id="edit_upload" name="picture">
+                                                            </div>
+                                                        </div>
+                                                        @error('picture')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <small class="">{{ __('Phone:') }}</small>
+                                                    </div>
+                                                    <div class="col-md-9 mb-3">
+                                                        <input type="text" name="phone" class="form-control"
+                                                            id="edit_phone" value="{{ old('phone', $user->phone) }}" />
+                                                        @error('phone')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <small class="">{{ __('Fax:') }}</small>
+                                                    </div>
+                                                    <div class="col-md-9 mb-3">
+                                                        <input type="text" name="fax" class="form-control"
+                                                            id="edit_fax" value="{{ old('fax', $user->fax) }}" />
+                                                        @error('fax')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <small class="">{{ __('Function:') }}</small>
+                                                    </div>
+                                                    <div class="col-md-9 mb-3">
+                                                        <input type="text" name="function" class="form-control"
+                                                            id="edit_function"
+                                                            value="{{ old('function', $user->function) }}" />
+                                                        @error('function')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <small class="">{{ __('ID number:') }}</small>
+                                                    </div>
+                                                    <div class="col-md-9 mb-3">
+                                                        <input type="text" name="id_number" class="form-control"
+                                                            id="edit_id_number"
+                                                            value="{{ old('id_number', $user->id_number) }}" />
+                                                        @error('id_number')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <small class="">{{ __('Active account') }} :</small>
+                                                    </div>
+                                                    <div class="col-md-9 mb-3">
+                                                        <div class="checks-bx d-flex gap-3">
+                                                            <div>
+                                                                <input type="radio" name="active" value="1"
+                                                                    id="edit_yes"
+                                                                    @if (old('active', $user->active) == '1') checked @endif />
+                                                                <label for="edit_yes">{{ __('Yes') }}</label>
+                                                            </div>
+                                                            <div>
+                                                                <input type="radio" name="active" value="0"
+                                                                    id="edit_no"
+                                                                    @if (old('active', $user->active) == '0') checked @endif />
+                                                                <label for="edit_no">{{ __('No') }}</label>
+                                                            </div>
+                                                        </div>
+                                                        @error('active')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="col-md-3 mb-3">
+                                                        <small class="">{{ __('Role :') }}</small>
+                                                    </div>
+                                                    <div class="col-md-9 mb-3">
+                                                        <select class="form-select" name="role_id" id="edit_role_id"
+                                                            aria-label="Default select example">
+                                                            <option selected value="{{ $user->role->id }}">
+                                                                {{ $user->role->name }}</option>
+                                                            @foreach ($roles as $role)
+                                                                <option value="{{ $role->id }}">
+                                                                    {{ $role->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                        @error('role_id')
+                                                            <div class="text-danger">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
+                                                <div class="text-center mt-3">
+                                                    <button type="submit" class="btn btn-success"><i
+                                                            class="fa-solid fa-check"></i>
+                                                        {{ __('Modify') }}</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-
-
-
-
+                                </div>
                                 <form action="{{ route('users.destroy', $user->id) }}" method="POST"
                                     style="display: inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="del-btn rounded mt-3" style="color:red">
+                                    <button type="submit" class="del-btn rounded mt-3" style="font-size: 17px;padding: 5px 5px;">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </form>
@@ -346,7 +337,7 @@
 
         <div class="tab-btm my-3 container d-flex">
             <div class="my-5 px-3">
-                <button id="dropbtn" class="btn btn-primary dropbtn" id="roleDropdown" role="button"
+                <button id="dropbtn" class="btn btn-secondary dropbtn" id="roleDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-pen px-3"></i>{{ __('Role') }}<i class="fas fa-arrow-down px-3"></i>
                 </button>
@@ -373,45 +364,35 @@
                 onclick="exportTableToPDF()">{{ __('Export these data to Excel') }} <i
                     class="fa-solid fa-arrow-up-from-bracket"></i></button>
         </div>
-
-
     </section><!--m-groups-->
     <style>
         .table-responsive {
             overflow: hidden;
             position: relative;
             margin-bottom: 1rem;
-
         }
-
         .table {
             width: 100%;
             margin-bottom: 1rem;
             background-color: transparent;
             border-collapse: collapse;
         }
-
         .table th,
         .table td {
             padding: 0.75rem;
             vertical-align: top;
-
         }
-
         .table th {
             background-color: white;
             font-weight: bold;
         }
-
         .btn-add-i {
             width: auto;
             display: inline-block;
         }
-
         .modal-content {
             border-radius: 10px;
         }
-
         .modal-backdrop {
             display: none
         }

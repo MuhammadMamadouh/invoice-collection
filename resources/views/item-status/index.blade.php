@@ -149,7 +149,7 @@
 
 <div class="mt-3 mb-3 plus-button text-end">
     <div class="container-fluid">
-        <div class="btn btn-primary" onclick="showNewStatusDiv()"><span><i class="fa-solid fa-plus"></i></span>
+        <div class="btn btn-secondary" onclick="showNewStatusDiv()"><span><i class="fa-solid fa-plus"></i></span>
             {{__('New Status')}}</div>
     </div>
 </div>

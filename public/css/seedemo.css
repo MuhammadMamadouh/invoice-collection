@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -9,7 +9,7 @@
     border: 2px solid #efefef;
     font-size: 10px;
     padding: 3px;
-    cursor:not-allowed;
+    cursor: not-allowed;
     font-size: 13px;
 }
 .next {
@@ -18,8 +18,8 @@
     font-size: 10px;
     padding: 3px;
     font-size: 13px;
-} 
-.change-pages  a {
+}
+.change-pages a {
     text-decoration: none;
     padding: 5px;
     display: flex;
@@ -29,7 +29,7 @@
 .change-pages span {
     display: block;
 }
-.show-txt  {
+.show-txt {
     display: none;
     color: #fff;
     background: #000;
@@ -43,9 +43,9 @@
     font-size: 10px;
 }
 #aning-mouse {
-    cursor:alias;
+    cursor: alias;
 }
-.show-txt-2  {
+.show-txt-2 {
     display: none;
     color: #fff;
     background: #000;
@@ -64,11 +64,13 @@
     border-top: 2px solid #efefef;
     border-bottom: 2px solid #efefef;
 }
-.three-cont ,.two-cont:hover {
+.three-cont,
+.two-cont:hover {
     background: #efefef;
 }
-@media (max-width:991px) {
-    .sec-1 h6,.sec-1 p {
+@media (max-width: 991px) {
+    .sec-1 h6,
+    .sec-1 p {
         font-size: 10px !important;
     }
     .left-sec span {
@@ -84,7 +86,8 @@
     .end-con h4 {
         font-size: 10px;
     }
-    .two-content-show a,.two-content-show a span {
+    .two-content-show a,
+    .two-content-show a span {
         font-size: 5px;
         display: flex;
         justify-content: center;
@@ -94,17 +97,16 @@
         font-size: 5px !important;
     }
 }
-.save-end  {
+.save-end {
     display: flex;
     justify-content: center;
     justify-content: space-between;
 }
 .save-end button {
-   padding: 2px 5px;
-   color: #fff;
-   border: 2px solid;
-   background: green;
-
+    padding: 2px 5px;
+    color: #fff;
+    border: 2px solid;
+    background: green;
 }
 .block-con span {
     background: gray;
@@ -133,7 +135,7 @@
     font-size: 15px;
     padding: 4px 10px;
     border: 2px solid blue;
-    border-radius:3px ;
+    border-radius: 3px;
 }
 .show-items button:hover {
     color: #fff;
@@ -148,7 +150,6 @@
     width: 100px;
     height: 100px;
     object-fit: cover;
-
 }
 .lights-tables span {
     margin: 8px;
@@ -162,7 +163,7 @@
     font-size: 14px;
     text-transform: capitalize;
 }
-.two-content-show  a {
+.two-content-show a {
     text-decoration: none;
 }
 .two-content-show a:hover {
@@ -176,7 +177,7 @@
     font-size: 13px;
 }
 .show-credit h6 span {
-    color: #3e7ea5;;
+    color: #3e7ea5;
     background: #fff;
     border-radius: 50%;
     width: 10px;
@@ -185,7 +186,7 @@
     font-size: 4px;
     margin-left: 6px;
 }
-.scroll-bars  {
+.scroll-bars {
     overflow-y: scroll;
     height: 100px;
 }
@@ -207,13 +208,13 @@
     font-size: 14px;
     text-transform: capitalize;
 }
-.credit-limit  {
+.credit-limit {
     border: 2px solid #000;
 }
 .two-content-show p span {
     color: blue;
 }
-.two-content-show p  {
+.two-content-show p {
     font-size: 14px;
 }
 .two-content-show p span:hover {
@@ -226,7 +227,7 @@
     font-size: 13px;
 }
 .input-titles p span {
-    color: #3e7ea5;;
+    color: #3e7ea5;
     background: #fff;
     border-radius: 50%;
     width: 10px;
@@ -238,7 +239,7 @@
 .input-titles input {
     width: 100%;
     outline: none;
-    border:2px solid #efefef;
+    border: 2px solid #efefef;
     border-radius: 2px;
     transition: 0.5s;
 }
@@ -272,8 +273,8 @@
     font-style: bold;
 }
 .four-cont-sec-2 {
-    background:#eeeeee;
-    border-bottom: 2px solid #eeeeee;;
+    background: #eeeeee;
+    border-bottom: 2px solid #eeeeee;
     border-top: 2px solid #ddd;
     border-radius: 2px;
 }
@@ -310,27 +311,27 @@
     display: flex;
     min-height: 50vh;
 }
-.head-titels  {
+.head-titels {
     display: flex;
-   justify-content:space-around;
-   text-transform: capitalize;
-   background: #eeeeee;
-   border: 2px solid #000;
+    justify-content: space-around;
+    text-transform: capitalize;
+    background: #eeeeee;
+    border: 2px solid #000;
 }
-.head-titels  p span {
+.head-titels p span {
     background: #fff;
     padding: 3px 5px;
     margin-left: 10px;
     width: 15px;
     height: 15px;
-    border-radius:12px;
+    border-radius: 12px;
     font-size: 12px;
 }
-@media (max-width:991px) {
-    .head-titels  p{
+@media (max-width: 991px) {
+    .head-titels p {
         font-size: 5px !important;
     }
-    .head-titels  p span{
+    .head-titels p span {
         font-size: 2px !important;
     }
 }
@@ -348,8 +349,8 @@
     text-transform: capitalize;
     width: 100%;
 }
-@media (max-width:991px) {
-    .three-button button  {
+@media (max-width: 991px) {
+    .three-button button {
         font-size: 10px;
     }
     .three-button-collections {
@@ -370,25 +371,27 @@ tbody {
     background-color: #d9edf7;
     border-color: #bce8f1;
 }
-.tale-2  tbody,.tale-2  thead {
+.tale-2 tbody,
+.tale-2 thead {
     font-size: 14px;
     text-align: center;
 }
-.tale-2 .text-end,.tale-2 .numer-start {
+.tale-2 .text-end,
+.tale-2 .numer-start {
     color: blue;
     cursor: pointer;
     transition: 0.5s;
 }
 .tale-2 .text-end:hover {
-  text-decoration: underline;
+    text-decoration: underline;
 }
-.tale-2 .numer-start:hover{
+.tale-2 .numer-start:hover {
     text-decoration: underline;
 }
 /*sec-3*/
 
 .showdesc {
-    color:#efefef;
+    color: #efefef;
     background: #000;
     font-size: 8px;
     width: 10px;
@@ -408,12 +411,13 @@ tbody {
     padding: 5px;
 }
 
-@media (min-width:992px) {
-    .collection-table p,.collection-table span {
+@media (min-width: 992px) {
+    .collection-table p,
+    .collection-table span {
         font-size: 13px;
     }
 }
- .conttt {
+.conttt {
     position: absolute;
     color: #fff;
     background: #000;
@@ -421,7 +425,7 @@ tbody {
     margin: 5px;
     padding: 5px;
     line-height: 10px;
-    left:18.5%;
+    left: 18.5%;
     text-transform: capitalize;
     display: none;
 }
@@ -435,7 +439,6 @@ tbody {
     font-size: 10px;
     border-radius: 50%;
     cursor: pointer;
-
 }
 .conttt-2 {
     position: absolute;
@@ -443,14 +446,308 @@ tbody {
     background: #000;
     z-index: 12;
     font-size: 10px;
-   margin: 5px;
-   margin-top: 5px;
+    margin: 5px;
+    margin-top: 5px;
     padding: 5px;
     line-height: 10px;
     right: 15%;
-    text-transform: capitalize; 
+    text-transform: capitalize;
     display: none;
 }
 .onmouse-2 {
     cursor: pointer;
 }
+.conttt-3 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 10px;
+    margin: 5px;
+    margin-top: 55px;
+    padding: 4px;
+    line-height: 10px;
+    left: 38%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse-3 {
+    text-decoration: underline;
+}
+.conttt-4 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 10px;
+    margin: 5px;
+    margin-top: 1px;
+    padding: 4px;
+    line-height: 10px;
+    right: 20%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse-4 {
+    text-decoration: underline;
+}
+.conttt-5 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 10px;
+    margin: 5px;
+    margin-top: 1px;
+    padding: 4px;
+    line-height: 10px;
+    left: 0%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse-5 {
+    text-decoration: underline;
+}
+.conttt-6 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 12px;
+    margin: 5px;
+    margin-top: 1px;
+    padding: 5px;
+    line-height: 20px;
+    left: 42%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse-6 {
+    text-decoration: underline;
+}
+.conttt-7 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 10px;
+    margin: 5px;
+    margin-top: 150px;
+    padding: 5px;
+    line-height: 20px;
+    right: 0%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse-7 {
+    text-decoration: underline;
+}
+.conttt-8 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 10px;
+    margin: 5px;
+    margin-top: 120px;
+    padding: 5px;
+    line-height: 20px;
+    right: 37%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse-8 {
+    text-decoration: underline;
+}
+.conttt-9 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 10px;
+    margin: 5px;
+    margin-top: 120px;
+    padding: 5px;
+    line-height: 20px;
+    right: 25%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse-9 {
+    text-decoration: underline;
+}
+
+.conttt-10 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 10px;
+    margin: 5px;
+    margin-top: 130px;
+    padding: 10px;
+    line-height: 20px;
+    left: 30%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse-10 {
+    text-decoration: underline;
+}
+.conttt-11 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 10px;
+    margin: 5px;
+    margin-top: 150px;
+    padding: 10px;
+    line-height: 20px;
+    left: 30%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse-11 {
+    text-decoration: underline;
+}
+.conttt-12 {
+    position: absolute;
+    color: #fff;
+    background: #000;
+    z-index: 12;
+    font-size: 10px;
+    margin: 5px;
+    margin-top: 150px;
+    padding: 10px;
+    line-height: 20px;
+    left: 25%;
+    text-transform: capitalize;
+    display: none;
+}
+.onmouse-12 {
+    text-decoration: underline;
+}
+/*Insighis Page*/
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    box-shadow: 0 10px 10px 20px red;
+}
+.show-poup {
+    position: fixed;
+    height: 80vh;
+    min-height: 100vh;
+    overflow-y: scroll;
+    top: 0%;
+    width: 60%;
+    left: 20%;
+    z-index: 1000;
+}
+@media (max-width: 991px) {
+    .show-poup {
+        top: 0% !important;
+        width: 90% !important;
+        left: 5%;
+    }
+    .table-insi-page th {
+        font-size: 10px !important;
+    }
+    .form- input {
+        width: 50% !important;
+    }
+    .text-and-titles-ppuop p {
+        font-size: 10px !important;
+    }
+    .text-and-titles-ppuop h2 {
+        font-size: 20px !important;
+    }
+}
+.show-poup-2 {
+    position: fixed;
+    top: 0%;
+    height: 80vh;
+    min-height: 100vh;
+    overflow-y: scroll;
+    width: 60%;
+    left: 20%;
+    z-index: 1000;
+    padding: 20px;
+}
+.overlay-2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.418);
+    z-index: 9;
+}
+.table-insi-page tbody,
+td,
+th {
+    font-size: 12.2px;
+}
+.table-insi-page a {
+    text-decoration: none;
+}
+.table-insi-page a:hover {
+    text-decoration: underline;
+}
+.bg-section-one {
+    background: none;
+}
+.boxs-section-two {
+    border: 2px dashed lightgray;
+    border-radius: 5px;
+    padding: 1.5em 1.5em 1.2em 1.5em;
+}
+.small-text {
+    font-size: 13px;
+}
+.contents-two-holab input {
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    outline: none;
+    padding: 2px;
+}
+.contents-two-holab input::placeholder {
+    text-align: center;
+}
+.contents-two-holab label {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    position: absolute;
+    left: 22%;
+    margin-top: 1px;
+}
+.clents {
+    padding: 0 1em 0.2em;
+    border-radius: 0.5em;
+    box-shadow: lightgray 0px 0px 5px;
+    border: 1px solid #46ad0e99;
+}
+.items {
+    padding: 0 1em 0.2em;
+    border-radius: 0.5em;
+    box-shadow: lightgray 0px 0px 5px;
+    border: 1px solid #ffa60099;
+}
+.userssss {
+    padding: 0 1em 0.2em;
+    border-radius: 0.5em;
+    box-shadow: lightgray 0px 0px 5px;
+    border: 1px solid #0080a999;
+}
+/*Insighis Page*/

@@ -10,7 +10,7 @@
             </div>
             <!--t-manage-->
             <div class="create my-3">
-                <button class="btn btn-m" onclick="showCreateClientGroupDiv()">
+                <button class="btn btn-secondary" onclick="showCreateClientGroupDiv()">
                     <i class="fa-solid fa-plus"></i> {{ _('Create a group') }}
                 </button>
             </div>
@@ -79,7 +79,7 @@
                             </td>
                             <td class="border-0">
                                 <div class="delete-and-edit mt-2 mb-2" style="display: flex;">
-                                    <button type="button" class="btn btn-secondary"style="margin: 0px 10px;"
+                                    <button type="button" class="text-decoration-none btn btn-secondary rounded"style="margin: 0px 10px;"
                                         onclick="showEditGroupDiv({{ $clientsGroup->id }})"><span><i
                                                 class="fa-solid fa-pen"></i></span></button>
                                     @include('clients-group.edit', [$clientsGroup])
@@ -88,7 +88,7 @@
                                         @method('delete')
                                         <button type="submit"
                                             onclick="return confirm('Are you sure you want to delete this client group?')"
-                                            class="btn btn-danger"><span><i class="fa-solid fa-trash"></i></span>
+                                            class="text-decoration-none btn btn-danger rounded"><span><i class="fa-solid fa-trash"></i></span>
                                         </button>
                                     </form>
                                 </div>

@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/css/seedemo.css" />
     <link rel="stylesheet" href="/css/help.css" />
     <link rel="stylesheet" href="/css/search-bar.css">
+    <link rel="stylesheet" href="/css/reportsPayment.css">
     <!--icons-site-->
     <link rel="icon" type="png" href="/img/logo.png" />
     <!--icons-site-->
@@ -35,42 +36,45 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
 
     <script>
-    // Define the function in global scope
-    function showAddActionDiv(collectionId) {
-        document.getElementById('collection_scenario_id').value = collectionId;
-        document.querySelector(".add-action-div").classList.remove("d-none");
-        document.querySelector(".overlay").classList.remove("d-none");
-    }
-    </script>
-<style>
-    .form-control
-    {
-        padding: .175rem .75rem;
-    }
-    .dropdown-row {
-            display: flex;
-            gap: 10px; /* Space between dropdowns */
+        // Define the function in global scope
+        function showAddActionDiv(collectionId) {
+            document.getElementById('collection_scenario_id').value = collectionId;
+            document.querySelector(".add-action-div").classList.remove("d-none");
+            document.querySelector(".overlay").classList.remove("d-none");
         }
+    </script>
+    <style>
+        .form-control {
+            padding: .175rem .75rem;
+        }
+
+        .dropdown-row {
+            display: flex;
+            gap: 10px;
+            /* Space between dropdowns */
+        }
+
         .dropdown-container {
             margin-top: 20px;
             display: flex;
-            flex-wrap: wrap; /* Allows wrapping of items if necessary */
+            flex-wrap: wrap;
+            /* Allows wrapping of items if necessary */
         }
+
         .file-input-container {
             margin-bottom: 10px;
         }
-</style>
+    </style>
 </head>
 
-<body>
+<body class="cairo-uniquifier">
     @include('dashboard.include.navbar')
-    <div class="container-fluid px-lg-5">
+    <div class="container-fluid">
         @yield('content')
     </div>
-
     <!--scirpt Files-->
-@yield('scripts')
-@stack('scripts')
+    @yield('scripts')
+    @stack('scripts')
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
@@ -98,14 +102,12 @@
             // Cache jQuery selectors
             var $clientsSelect = $('#clients-select');
             var $groupClientsSelect = $('#group-clients-select');
-
             // Move selected clients to the right list
             $(document).on('click', '.fa-circle-arrow-right', function() {
                 $clientsSelect.find('option:selected').each(function() {
                     $(this).remove().appendTo($groupClientsSelect);
                 });
             });
-
             // Move selected clients to the left list
             $(document).on('click', '.fa-circle-arrow-left', function() {
                 $groupClientsSelect.find('option:selected').each(function() {
@@ -114,9 +116,7 @@
             });
         });
     </script>
-
     <script src="js/main.js"></script>
-
 </body>
 
 </html>

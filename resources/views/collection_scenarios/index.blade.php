@@ -5,14 +5,7 @@
     </div>
 
     <div class="position-fixed add-action-div pop-up d-none w-75 pt-4 pe-4"
-        style="position: fixed; 
-top: 0; 
-left: 50%; 
-transform: translateX(-50%);
-z-index: 99999; 
- width: 100%;
-    height: 100%;
-    overflow: auto;">
+        style="position: fixed; top: 0; left: 50%; transform: translateX(-50%);z-index: 99999; width: 100%;height: 100%; overflow: auto;">
         <form action="{{ route('collection.storeAction') }}" method="POST">
             @csrf
             <input type="hidden" id="collection_scenario_id" name="collection_scenario_id" class="form-control"
@@ -365,7 +358,7 @@ z-index: 99999;
     <section class="sections-1 " id="sec-1">
         <div class="flag-dropdown  mt-3 mb-3">
             <div class="container-fluid d-flex justify-content-end ">
-                <button type="button" class="btn btn-primary" onclick="showCreateGroupDiv()"><i
+                <button type="button" class="btn btn-secondary " onclick="showCreateGroupDiv()"><i
                         class="fa-solid fa-plus"></i> {{ __('New collection scenario') }}</button>
                 <div class="position-fixed create-group-div d-none"
                     style="top:10% ;left: 50%;transform: translate(-50%);z-index: 10;">
@@ -399,7 +392,7 @@ z-index: 99999;
                     </div>
                 </div>
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    <button class="btn btn-secondary  dropdown-toggle" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <span><i class="fa-solid fa-plus"></i></span> {{ __('Add a pre-defined scenario') }}
                     </button>
@@ -497,19 +490,19 @@ z-index: 99999;
                                             method="POST">
                                             @csrf
                                             @method('delete')
-                                            <button class="text-black-50"><i class="fa-solid fa-trash"></i></button>
+                                            <button class="text-danger"><i class="fa-solid fa-trash"></i></button>
                                         </form>
                                         <form action="{{ route('collection.duplicateScenario', $collection->id) }}"
                                             method="POST">
                                             @csrf
-                                            <button class="text-black-50"><i class="fa-solid fa-copy"></i></button>
+                                            <button class="text-success"><i class="fa-solid fa-copy"></i></button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-8 col-sm-12 col-md-12">
                                 <div class="end-buttons text-end container">
-                                    <button class="btn btn-primary text-capitalize mt-2"
+                                    <button class="btn btn-secondary text-capitalize mt-2"
                                         onclick="showAddActionDiv({{ $collection->id }})">
                                         <span><i class="fa-solid fa-plus"></i></span>{{ __('Add An Action') }}
                                     </button>
@@ -578,15 +571,7 @@ z-index: 99999;
                                         </ul>
                                     </div>
                                     <div class="position-fixed edit-action-div-{{ $ActionScenario->id }} pop-up d-none w-75 pt-4 pe-4"
-                                        style="position: fixed; 
-top: 0; 
-left: 50%; 
-transform: translateX(-50%);
-z-index: 99999; 
-height: 100vh;  
-width: 65% !important; 
-overflow-y: scroll; 
-overflow-x: hidden;">
+                                        style="position: fixed; top: 0; left: 50%; transform: translateX(-50%);z-index: 99999; height: 100vh;  width: 65% !important; overflow-y: scroll; overflow-x: hidden;">
                                         <form id="myForm"
                                             action="{{ route('collection.update', $ActionScenario->id) }}"
                                             method="POST">
@@ -666,7 +651,6 @@ overflow-x: hidden;">
                                                             @enderror
                                                         </div>
                                                     </div>
-
                                                 </div><!--24-->
                                                 <div>
                                                     <div class="col-12">
@@ -696,9 +680,7 @@ overflow-x: hidden;">
                                                 </div><!--24-->
                                                 <div id="dunning-letter" class="clearr">
                                                     <div class="modal-content w-100"
-                                                        style="margin:auto;overflow-x: hidden;
-    overflow-y: scroll;
-    height: 400px;">
+                                                        style="margin:auto;overflow-x: hidden;overflow-y: scroll;height: 400px;">
                                                         <select class="form-select" id="inputname19">
                                                             <option value="" selected="">Do you want to copy the
                                                                 content of an existing action?</option>
