@@ -24,4 +24,9 @@ class ActionsCollectionScenario extends Model
         return $this->belongsTo(ActionType::class, 'action_type');
     }
 
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'emailable');
+    }
+
 }

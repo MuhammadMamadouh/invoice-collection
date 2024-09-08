@@ -552,10 +552,10 @@ function showSearchResults(){
     document.querySelector(".overlay").classList.remove("d-none")
   }
 
-  function showAddActionDiv(){
-    document.querySelector(".add-action-div").classList.remove("d-none")
-    document.querySelector(".overlay").classList.remove("d-none")
-  }
+  // function showAddActionDiv(){
+  //   document.querySelector(".add-action-div").classList.remove("d-none")
+  //   document.querySelector(".overlay").classList.remove("d-none")
+  // }
 
   function hideAddActionDiv(){
     document.querySelector(".add-action-div").classList.add("d-none")
