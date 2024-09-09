@@ -8,7 +8,7 @@
             <button type="submit" class="btn px-4 text-light p-1 btn-success"
                 onclick="closeEditInvoice({{ $item->id }})"><i class="fa-solid fa-floppy-disk"
                     style="  font-size: 15px;"></i> {{ __('Save') }}</button>
-            <span class="btn px-4 text-light p-1 btn-warning" onclick="closeEditInvoice({{ $item->id }})"><i
+            <span class="btn px-4 text-secondary p-1 btn-warning" onclick="closeEditInvoice({{ $item->id }})"><i
                     class="fa-solid fa-reply" style="  font-size: 15px;"></i> {{ __('Cancel') }}</span>
             <a href="editInvoice.html" class="btn px-2 text-primary p-1 btn-light" target="_blank"><i
                     class="fa-solid fa-maximize "style="  font-size: 15px;"></i></a>
@@ -407,17 +407,17 @@
         <div class="row p-4 m-0">
             <div class="col-1"></div>
             <div class="col-lg-4 col-sm-6">
-                <div class="m-1 w-100 btn btn-outline-primary statusButton" onclick="statusFun()">
+                <div class="m-1 w-100 btn btn-outline-secondary  statusButton" onclick="statusFun()">
                     <i class="fa-solid fa-check"></i> {{ __('Status history and Comments') }}
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="m-1 w-100 btn btn-primary actionsButton" onclick="actionsFun()">
+                <div class="m-1 w-100 btn btn-secondary  actionsButton" onclick="actionsFun()">
                     <i class="fa-solid fa-list"></i> {{ __('Actions history') }}
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="m-1 w-100 btn btn-outline-primary associatedButton" onclick="associatedFun()">
+                <div class="m-1 w-100 btn btn-outline-secondary  associatedButton" onclick="associatedFun()">
                     <i class="fa-solid fa-link"></i> {{ __('Associated files') }} 
                 </div>
             </div>

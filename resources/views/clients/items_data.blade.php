@@ -10,9 +10,9 @@
                 </div>
                 <div class="d-flex justify-content-end gap-3 mt-2">
                     <div class="icon-holab  ">
-                        <i class="fa-solid fa-pen text-primary p-2 bg-light" onclick="EditInvoice({{ $item->id }})"
+                        <i class="fa-solid fa-pen text-secondary p-2 bg-light" onclick="EditInvoice({{ $item->id }})"
                             style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i>
-                        <a href="invoice.html" target="_blank"><i class="fa-solid fa-maximize text-primary p-2 bg-light"
+                        <a href="#" target="_blank"><i class="fa-solid fa-maximize text-secondary p-2 bg-light"
                                 style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i></a>
                         <i class="fa-solid fa-close text-light p-2 bg-danger"
                             onclick="closeInvoice({{ $item->id }})"
@@ -90,24 +90,23 @@
             </div>
             <div class="btn text-light btn-secondary px-2 w-auto m-auto" onclick="showInvioce2({{ $item->id }})">
                 <i class="fa-solid fa-pen-to-square"></i>&ensp;{{ __('Change status') }} >
-                {{ __("Add
-                                comment") }} > {{ __('Set next action') }}
+                {{ __("Add comment") }} > {{ __('Set next action') }}
             </div>
         </div>
         <div class="row p-4 m-0">
             <div class="col-1"></div>
             <div class="col-lg-4 col-sm-6">
-                <div class="m-1 w-100 btn btn-outline-primary statusButton" onclick="statusFun({{ $item->id }})">
+                <div class="m-1 w-100 btn btn-outline-secondary  statusButton" onclick="statusFun({{ $item->id }})">
                     <i class="fa-solid fa-check"></i> {{ __('Status history and Comments') }}
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="m-1 w-100 btn btn-primary actionsButton" onclick="actionsFun({{ $item->id }})">
+                <div class="m-1 w-100 btn btn-secondary  actionsButton" onclick="actionsFun({{ $item->id }})">
                     <i class="fa-solid fa-list"></i> {{ __('Actions history') }}
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6">
-                <div class="m-1 w-100 btn btn-outline-primary associatedButton"
+                <div class="m-1 w-100 btn btn-outline-secondary  associatedButton"
                     onclick="associatedFun({{ $item->id }})">
                     <i class="fa-solid fa-link"></i> {{ __('Associated files') }}
                             <span class="badge bg-danger ms-1"style="border-radius: 50%;">{{--$item->itemsFileCount--}}</span>
@@ -121,14 +120,10 @@
     @include('clients.edit_items_data')
 
     @include('clients.items_status_and_comments', [$users])
-    <!--sec-1-->
 
     @include('clients.items_action_history')
 
-
     @include('clients.items_associate_files')
-
-
 
     <div class="invoice-2 bg-white px-3 d-none">
         <div class=" py-2">
@@ -136,7 +131,7 @@
                 <div class="text-start">
                 </div>
                 <div class="d-flex justify-content-end gap-3 mt-2">
-                    <div class="icon-holab  ">
+                    <div class="icon-holab">
                         <a href="invoice-2.html" target="_blank"><svg
                                 class="svg-inline--fa fa-maximize text-secondary p-2 bg-light"
                                 style="  font-size: 15px; cursor: pointer; border-radius: 5px;" aria-hidden="true"

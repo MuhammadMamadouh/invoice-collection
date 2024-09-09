@@ -269,16 +269,17 @@
                                 <div class="row px-4 align-items-center m-0" style="background-color: white;">
                                     <div class="col-lg-4 col-sm-6 col-12 mb-2">
                                         <div class="btn text-light btn-secondary px-2" onclick="showInvioce2()">
-                                            <i class="fa-solid fa-pen-to-square"></i>&ensp;{{ __("Change status >Add comment >Set next action") }}
+                                            <i
+                                                class="fa-solid fa-pen-to-square"></i>&ensp;{{ __('Change status >Add comment >Set next action') }}
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-3 col-6 mb-2">
-                                        <div class="btn text-light btn-primary px-2" onclick="associateFiles()">
+                                        <div class="btn text-light btn-secondary px-2" onclick="associateFiles()">
                                             <i class="fa-solid fa-link"></i>&ensp;{{ __('Associate File') }}
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-3 col-6 mb-2" onclick="payViaDirectLink()">
-                                        <div class="btn text-light btn-primary px-2">
+                                        <div class="btn text-light btn-secondary px-2">
                                             {{ __('Pay via direct link') }}
                                         </div>
                                     </div>
@@ -1805,95 +1806,96 @@
                             </div>
                             <!--sec-2-->
                             <!--sec-3-->
-                        @include('clients.client_history')
-                        @empty
-                            <div class="row d-none text-center">
-                                <p class="p-1 mt-3">
-                                    {{ __('No clients has been found') }}
-                                </p>
-                            </div>
-                        @endforelse
+                            @include('clients.client_history')
                     </div>
+                @empty
+                    <div class="row d-none text-center">
+                        <p class="p-1 mt-3">
+                            {{ __('No clients has been found') }}
+                        </p>
+                    </div>
+                    @endforelse
                 </div>
             </div>
-            {{-- @include('clients.client_data_model', [$client]) --}}
-            <div class="row mb-3">
-                <div class="col-md-2 col-4"></div>
-                <div class="form-group col-md-4 col-8">
-                    <select class="form-select m-2" onfocus="this.size=9;" onblur="this.size=1;"
-                        onchange="this.size=1; this.blur();" aria-label=" Default select example">
-                        <option value="" selected disabled>Add To Group :</option>
-                        <option value="1">ATLANTIQue</option>
-                        <option value="2">Central</option>
-                        <option value="3">Clients douteux</option>
-                        <option value="3">Clients France</option>
-                        <option value="3">Clients Grands Comptes</option>
-                        <option value="3">Test 2</option>
-                        <option value="3">US Clients</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-6">
-                    <select name="collection_scenario_id" class="m-2 form-select"
-                        data-placeholder="Collection scenario:" title="Collection scenario">
-                        <option value="" selected disabled>{{ __('Collection Scenarios') }}</option>
-                        @foreach ($collectionsScenario as $collection)
-                            <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-6">
-                    <select class="form-select m-2" aria-label="Default select example">
-                        <option selected disabled>{{ __('Collectors') }}</option>
-                        @foreach ($collectors as $collector)
-                            <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-6">
-                    <select class="form-select m-2" aria-label="Default select example">
-                        <option selected disabled>Associated a colleague :</option>
-                        <option value="1">Brad Jackson(Sales Manager)</option>
-                        <option value="1">Juse Durant(Sales Manager)</option>
-                        <option value="1">Paul Mayer(Sales Manager)</option>
-                        <option value="1">Thomas Smith(Executive Officer)</option>
-                        <option value="1">
-                            Vironica Campbell(Sales Administration)
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-6">
-                    <select class="form-select m-2" aria-label="Default select example">
-                        <option selected disabled>Interactive emails :</option>
-                        <option value="1">Yes</option>
-                        <option value="1">No</option>
-                        <option value="1" class="text-primary"><a href="#"> Read more</a>
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-5">
-                    <select class="form-select m-2" aria-label="Default select example">
-                        <option selected disabled>Late payment penalties :</option>
-                        <option value="1">Yes</option>
-                        <option value="1">No</option>
-                        <option value="1" class="text-primary"><a href="#"> Read more</a>
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-5">
-                    <select class="form-select m-2" aria-label="Default select example">
-                        <option selected disabled>Recovery cost :</option>
-                        <option value="1">Yes</option>
-                        <option value="1">No</option>
-                        <option value="1" class="text-primary"><a href="#"> Read more</a>
-                        </option>
-                    </select>
-                </div>
-                <div class="col-2  ">
-                    <div class=" text-center m-auto align-items-center"><i
-                            class="fa-solid fa-trash btn-danger mt-2 p-1 text-light"
-                            style="font-size: 25px;cursor: pointer;border-radius: 5px;"></i></div>
-                </div>
+        </div>
+        {{-- @include('clients.client_data_model', [$client]) --}}
+        <div class="row mb-3">
+            <div class="col-md-2 col-4"></div>
+            <div class="form-group col-md-4 col-8">
+                <select class="form-select m-2" onfocus="this.size=9;" onblur="this.size=1;"
+                    onchange="this.size=1; this.blur();" aria-label=" Default select example">
+                    <option value="" selected disabled>Add To Group :</option>
+                    <option value="1">ATLANTIQue</option>
+                    <option value="2">Central</option>
+                    <option value="3">Clients douteux</option>
+                    <option value="3">Clients France</option>
+                    <option value="3">Clients Grands Comptes</option>
+                    <option value="3">Test 2</option>
+                    <option value="3">US Clients</option>
+                </select>
             </div>
+            <div class="form-group col-md-4 col-6">
+                <select name="collection_scenario_id" class="m-2 form-select" data-placeholder="Collection scenario:"
+                    title="Collection scenario">
+                    <option value="" selected disabled>{{ __('Collection Scenarios') }}</option>
+                    @foreach ($collectionsScenario as $collection)
+                        <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-6">
+                <select class="form-select m-2" aria-label="Default select example">
+                    <option selected disabled>{{ __('Collectors') }}</option>
+                    @foreach ($collectors as $collector)
+                        <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-6">
+                <select class="form-select m-2" aria-label="Default select example">
+                    <option selected disabled>Associated a colleague :</option>
+                    <option value="1">Brad Jackson(Sales Manager)</option>
+                    <option value="1">Juse Durant(Sales Manager)</option>
+                    <option value="1">Paul Mayer(Sales Manager)</option>
+                    <option value="1">Thomas Smith(Executive Officer)</option>
+                    <option value="1">
+                        Vironica Campbell(Sales Administration)
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-6">
+                <select class="form-select m-2" aria-label="Default select example">
+                    <option selected disabled>Interactive emails :</option>
+                    <option value="1">Yes</option>
+                    <option value="1">No</option>
+                    <option value="1" class="text-primary"><a href="#"> Read more</a>
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-5">
+                <select class="form-select m-2" aria-label="Default select example">
+                    <option selected disabled>Late payment penalties :</option>
+                    <option value="1">Yes</option>
+                    <option value="1">No</option>
+                    <option value="1" class="text-primary"><a href="#"> Read more</a>
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-5">
+                <select class="form-select m-2" aria-label="Default select example">
+                    <option selected disabled>Recovery cost :</option>
+                    <option value="1">Yes</option>
+                    <option value="1">No</option>
+                    <option value="1" class="text-primary"><a href="#"> Read more</a>
+                    </option>
+                </select>
+            </div>
+            <div class="col-2  ">
+                <div class=" text-center m-auto align-items-center"><i
+                        class="fa-solid fa-trash btn-danger mt-2 p-1 text-light"
+                        style="font-size: 25px;cursor: pointer;border-radius: 5px;"></i></div>
+            </div>
+        </div>
         </div>
         </div>
         <div class="justify-content-end gap-1 d-flex mb-2">

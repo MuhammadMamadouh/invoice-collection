@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-md-2 pt-3">
                         <div class="d-flex">
-                            <div class="btn openModalBtn btn-primary w-100" style="border-radius:5px 0 0 5px ">
+                            <div class="btn openModalBtn btn-secondary w-100" style="border-radius:5px 0 0 5px ">
                                 <i class="fa-solid {{$tempAction->actionTypes->icon}}"></i> {{$tempAction->actionTypes->name}}
                             </div>
                             <div class="btn btn-success" style="border-radius:0 5px 5px 0">

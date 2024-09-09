@@ -55,6 +55,9 @@
     <div class="col-3 tavle-dropdown-icon"></div>
 </div>
 @forelse ($client->items as $item)
+{{-- -------------------------------------------invoice data-------------------------------------- --}}
+@include('clients.items_data', [$users])
+{{-- -------------------------------------------end invoice data-------------------------------------- --}}
     <div class="text-center mb-3 table-container-2 p-2 px-md-4  ">
         <div class="row align-items-center pt-3"
             style="{{ $item->overdue >= 0 ? 'background-color: #e6d3d3' : 'background-color: #d9edf7' }}">
@@ -69,9 +72,7 @@
                             alt="">
                         {{ $item->trans_no ?? '-' }}</a>
                 </p>
-                {{-- -------------------------------------------invoice data-------------------------------------- --}}
-                @include('clients.items_data',[$users])
-                {{-- -------------------------------------------end invoice data-------------------------------------- --}}
+
             </div>
             <div class="col hide">
                 <p class="fw-bold">
