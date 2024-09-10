@@ -21,9 +21,9 @@
         </div>
         <div class="d-flex align-items-center justify-content-between">
             <p class="fw-bold">{{ __('Group') }}:</p>
-            {{-- @foreach ($client->clientsGroups as $group)
+            @foreach ($client->clientGroup as $group)
                 <p class=""><a href="">{{ $group->en_name }}</a></p>
-            @endforeach --}}
+            @endforeach
         </div>
         <div class="d-flex align-items-center justify-content-between">
             <p class="fw-bold">{{ __('Collector') }}:</p>
@@ -102,8 +102,8 @@
                 <p class="">{{ $contact->clientRole->name ?? 'a' }}</p>
             </div>
             <div class="d-flex align-items-center justify-content-between">
-                <p class="fw-bold">Last name:</p>
-                <p class="">{{ $contact->last_name ?? 'a' }}</p>
+                <p class="fw-bold">Name:</p>
+                <p class="">{{ $contact->first_name ?? 'a' }} {{ $contact->last_name ?? 'a' }}</p>
             </div>
             <div class="d-flex align-items-center justify-content-center">
                 @<a href="">{{ $contact->email ?? 'a' }}</a>

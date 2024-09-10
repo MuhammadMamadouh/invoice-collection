@@ -401,7 +401,7 @@
                     @php($firstDueItem = $client->firstDueItem)
                     <div class="col fw-bold">{{ $firstDueItem->due_date ?? '-' }}</div>
                     <div class="col fw-bold">
-                        <div class="btn openModalBtn btn-primary">{{-- $firstDueItem->toTakeAction->action_type ?? 'email' --}}E-mail</div>
+                        <div class="btn openModalBtn btn-secondary">{{-- $firstDueItem->toTakeAction->action_type ?? 'email' --}}E-mail</div>
                     </div>
                     <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' --}}
                         {{-- optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
@@ -562,7 +562,7 @@
             @endif
             @if ($currentStep < $totalSteps)
                 <button type="button" wire:click='incrementSteps'
-                    class="btn btn-primary px-5 mx-5">{{ __('Next') }} <i
+                    class="btn btn-secondary px-5 mx-5">{{ __('Next') }} <i
                         class="fa-solid fa-chevron-right ps-2"></i></button>
             @endif
             @if ($currentStep === $totalSteps)

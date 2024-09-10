@@ -30,13 +30,11 @@
                         </select>
                     </div>
                 </div>
-
             </div><!--1-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5">
                         <label for="inputname2">{{ __('Order date') }} :</label>
-
                     </div>
                     <div class="input-group">
                         <input type="date" name="order_date" value="{{ old('order_date', $item->order_date) }}"
@@ -47,13 +45,11 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--2-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname1">{{ __('Trans NO') }} :</label>
-
                     </div>
                     <div class="col-7 ">
                         <input type="text" name='trans_no' value='{{ old('trans_no', $item->trans_no) }}'
@@ -63,13 +59,11 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--3-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname4">{{ __('Issue date') }} * :</label>
-
                     </div>
                     <div class="input-group">
                         <input type="date" name='issue_date' value='{{ old('issue_date', $item->issue_date) }}'
@@ -80,13 +74,11 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--4-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname5">{{ __('Company code / company') }} :</label>
-
                     </div>
                     <div class="col-7 ">
                         <select name="company_id" class="form-select" id="inputname5">
@@ -102,13 +94,11 @@
                         </select>
                     </div>
                 </div>
-
             </div><!--5-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname6">{{ __('Due date') }} * :</label>
-
                     </div>
                     <div class="input-group">
                         <input type="date" name="due_date" value="{{ old('due_date', $item->due_date) }}"
@@ -119,13 +109,11 @@
                         <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                     @enderror
                 </div>
-
             </div><!--6-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname7"> {{ __('PO NO') }} :</label>
-
                     </div>
                     <div class="col-7 ">
                         <input type="text" name="po_no" value="{{ old('po_no', $item->po_no) }}"
@@ -135,13 +123,11 @@
                         <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                     @enderror
                 </div>
-
             </div><!--7-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname8"> {{ __('Payment date') }} :</label>
-
                     </div>
                     <div class="input-group">
                         <input type="date" name="payment_date"
@@ -153,7 +139,6 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--8-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
@@ -169,12 +154,10 @@
                     </div>
                 </div>
             </div><!--9-->
-
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname10">{{ __('Currency') }} * :</label>
-
                     </div>
                     <div class="col-7 ">
                         <select name='currency_id' class="form-select" id="inputname10">
@@ -189,14 +172,12 @@
                         </select>
                     </div>
                 </div>
-
             </div><!--10-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname11">
                             {{ __('ERP item type') }} :</label>
-
                     </div>
                     <div class="col-7 ">
                         <input name="erp_item_type" value="{{ old('erp_item_type', $item->erp_item_type) }}"
@@ -206,7 +187,6 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--11-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
@@ -223,13 +203,11 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--12-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname13">{{ __('Business case') }} :</label>
-
                     </div>
                     <div class="col-7 ">
                         <input type="text" name="business_case"
@@ -240,13 +218,11 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--13-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname14"> {{ __('Initial amount inc. Tax') }} * :</label>
-
                     </div>
                     <div class="input-group">
                         <input type="number" name="initial_amount_inc_tax"
@@ -258,14 +234,12 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--14-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname15">
                             {{ __('Sales manager') }} :</label>
-
                     </div>
                     <div class="col-7 ">
                         <input type="text" name="sales_manager"
@@ -276,13 +250,11 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--15-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname16">{{ __('Remaining amount exc. Tax') }} :</label>
-
                     </div>
                     <div class="input-group">
                         <input type="number" name="remaining_amount_exc_tax"
@@ -294,13 +266,11 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--16-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname17"> {{ __('Sales adrninistative') }} :</label>
-
                     </div>
                     <div class="col-7 ">
                         <input type="text" name='sales_administrative'
@@ -311,13 +281,11 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--17-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname18">{{ __('Remaining amount inc. Tax') }} :</label>
-
                     </div>
                     <div class="input-group">
                         <input type="number" name='remaining_amount_inc_tax'
@@ -329,14 +297,11 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--18-->
-
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname27">{{ __('Customer custom field #1') }}:</label>
-
                     </div>
                     <div class="col-7 ">
                         <input type="text" name="customer_custom_field_1"
@@ -348,25 +313,21 @@
                         @enderror
                     </div>
                 </div>
-
             </div><!--27-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname17"></label>
-
                     </div>
                     <div class="col-7 ">
                         <input type="text" class="form-control visually-hidden" id="inputname17">
                     </div>
                 </div>
-
             </div><!--17-->
             <div class="col-md-6 my-2">
                 <div class="d-flex">
                     <div class="col-5 ">
                         <label for="inputname30">{{ __('Customer custom field #2') }} :</label>
-
                     </div>
                     <div class="col-7 ">
                         <input type="text" name="customer_custom_field_2"
@@ -381,16 +342,12 @@
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname17"></label>
-
                         </div>
                         <div class="col-7 ">
                             <input type="text" class="form-control visually-hidden" id="inputname17">
                         </div>
                     </div>
-
                 </div><!--17-->
-
-
             </div><!--30-->
             <div class="mt-4 d-flex justify-content-center gap-3">
                 <p class="text-black-50">{{ __('Creation date in MY DSO MANAGER') }} : {{ $item->created_at }}

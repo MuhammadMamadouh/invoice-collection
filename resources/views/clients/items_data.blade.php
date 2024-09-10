@@ -110,7 +110,6 @@
                     onclick="associatedFun({{ $item->id }})">
                     <i class="fa-solid fa-link"></i> {{ __('Associated files') }}
                             <span class="badge bg-danger ms-1"style="border-radius: 50%;">{{--$item->itemsFileCount--}}</span>
-
                 </div>
             </div>
             <div class="col-1"></div>
@@ -260,7 +259,6 @@
                         <!-- <i class="fa-solid fa-question bg-secondary text-light p-1 ms-1" style="border-radius: 50%;width: 15px;height: 18px;font-size: 12px !important;"></i> Font Awesome fontawesome.com --></a>
                 </div>
                 <div class="addFileDiv-2">
-
                 </div>
                 <div class="btn text-secondary" onclick="addFileFunction2()"><svg class="svg-inline--fa fa-link"
                         aria-hidden="true" focusable="false" data-prefix="fas" data-icon="link" role="img"
@@ -423,7 +421,6 @@
             <div class="px-5 mt-3">
                 <input type="radio" id="Create" name="Create">
                 <label for="Create" class="mb-3">Create a specific action for selected items</label>
-
                 <div class=" my-2">
                     <form class="d-flex">
                         <div class="col-3 ">
@@ -435,12 +432,10 @@
                     </form>
                 </div>
                 <!--13-->
-
                 <div class=" my-2">
                     <form class="d-flex">
                         <div class="col-3 ">
                             <label for="inputname222">Action date :</label>
-
                         </div>
                         <div class="input-group">
                             <input type="text" class="form-control" id="inputname222">
@@ -460,7 +455,6 @@
                     <form class="d-flex">
                         <div class="col-3 ">
                             <label for="inputname222">Action Type :</label>
-
                         </div>
                         <div class="input-group">
                             <select class="form-select" aria-label="Default select example">
@@ -495,6 +489,4 @@
             </div>
         </div>
     </div>
-
-
 </div>

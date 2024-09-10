@@ -22,7 +22,7 @@
                     </div>
                 </a>
             </div>
-            <hr />
+            <hr/>
             <div>
                 <form class="row mt-1">
                     <div class="form-group col-md-4 col-sm-6">
@@ -378,9 +378,7 @@
                                                         </select>
                                                         </li>
                                                         <li class="mt-3 "><button type="button" class="btn"
-                                                                style="width: 100%;"><span><i
-                                                                        class="fa-solid
-                                                                                fa-download"></i>&ensp;</span>{{ __('download') }}</button>
+                                                                style="width: 100%;"><span><i class="fa-solid fa-download"></i>&ensp;</span>{{ __('download') }}</button>
                                                         </li>
                                                     </ul>
                                                 </div>

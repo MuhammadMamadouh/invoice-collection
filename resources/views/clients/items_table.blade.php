@@ -72,7 +72,6 @@
                             alt="">
                         {{ $item->trans_no ?? '-' }}</a>
                 </p>
-
             </div>
             <div class="col hide">
                 <p class="fw-bold">
@@ -111,7 +110,6 @@
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
         </div>
-
     </div>
 @empty
     {{ __('No Data yet') }}

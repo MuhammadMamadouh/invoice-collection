@@ -52,10 +52,18 @@ class ClientController extends Controller
         $collectors = User::collectors()->get();
         $clientRoles = ClientRole::all();
         $users = User::all(['id', 'first_name', 'last_name', 'role_id']);
-        return view('clients.index', compact('clientResource', 'collectionsScenario', 'client_count',
-        'collectors', 'itemTypes', 'clients', 'currencies', 'clientGroups', 'clientRoles',
-    'users'));
-
+        return view('clients.index', compact(
+            'collectionsScenario',
+            'clientResource',
+            'client_count',
+            'clientGroups',
+            'clientRoles',
+            'currencies',
+            'collectors',
+            'itemTypes',
+            'clients',
+            'users'
+        ));
     }
 
 
@@ -126,12 +134,18 @@ class ClientController extends Controller
     {
         try {
             DB::transaction(function () use ($request, $id) {
-
                 $client = Client::findOrFail($id);
                 $client->update($request->validated());
-
-                if($request->has('role_id')){
-                    Contact::updateOrCreate(['role_id' => $request->role_id], $request->all());
+                if ($request->has('role_id')) {
+                    $existingContact = Contact::where('client_id', $client->id)->first();
+                    if ($existingContact && $existingContact->role_id != $request->role_id) {
+                        Contact::create($request->all());
+                    } else {
+                        Contact::updateOrCreate(
+                            ['client_id' => $client->id],
+                            $request->all()
+                        );
+                    }
                 }
             });
             return to_route('clients.index')->with(['message' => __('edited successfully')]);
@@ -140,6 +154,7 @@ class ClientController extends Controller
             return to_route('clients.index')->with(['message' => $e->getMessage()]);
         }
     }
+    
 
     /**
      * Remove the specified resource from storage.
