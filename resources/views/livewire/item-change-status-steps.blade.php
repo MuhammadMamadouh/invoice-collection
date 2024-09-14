@@ -232,8 +232,10 @@
                                     Lorem ipsum dolor sit amet.</p>
                             </div><!--l-4-->
                             <div class="col-md-10 mt-2">
-                                <div class="editor-container mb-1">
-                                    <textarea id="text_editor" class="form-control" wire:model.defer="editorContent"></textarea>
+                                <div class="col-md-10">
+                                    <div class="editor-container">
+                                        <textarea id="editor" wire:model="editorContent" class="form-control clear-2" contenteditable="true"></textarea>
+                                    </div>
                                 </div>
                                 <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
                                         class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item</a>
@@ -244,7 +246,7 @@
                                 <div class="col-md-8 mt-2">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
+                                            <button type="button" class="btn btn-secondary w-100 mt-3" id="hollabTwoShow"
                                                 onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
                                                 {{ __('Email preview') }}</button>
                                         </div>
@@ -343,7 +345,7 @@
                                 <div class="col-md-8 mt-2">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
+                                            <button type="button" class="btn btn-secondary w-100 mt-3" id="hollabTwoShow"
                                                 onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
                                                 {{ __('Email preview') }}</button>
                                         </div>
@@ -410,8 +412,8 @@
             </div>
             <div class="px-5 mt-3">
                 <input type="radio" id="create_a_specific_action" name="actionType"
-                    wire:model.live="selectedAction"
-                    value="create_a_specific_action"> {{ __('Create a specific action for selected items') }}</label>
+                    wire:model.live="selectedAction" value="create_a_specific_action">
+                {{ __('Create a specific action for selected items') }}</label>
                 @if ($selectedAction === 'create_a_specific_action')
                     <div class=" my-2">
                         <div class="d-flex">
@@ -430,7 +432,7 @@
                                 <label for="inputname222">{{ __('Action date') }} :</label>
                             </div>
                             <div class="input-group">
-                                <input type='date' wire:model="action_date" class="form-select" id="inputname19"> 
+                                <input type='date' wire:model="action_date" class="form-select" id="inputname19">
                             </div>
                         </div>
                     </div><!--2-->
@@ -469,7 +471,7 @@
                                 </div><!--l-4-->
                                 <div class="col-md-10 mt-2">
                                     <div class="editor-container mb-1">
-                                        <textarea id="text_editor" class="form-control" wire:model.defer="editorContent"></textarea>
+                                        <textarea id="editor" class="form-control" wire:model.lazy="editorContent"></textarea>
                                     </div>
                                     <div style=" display: flex; flex-wrap: wrap;" class="my-2">
                                         <p> <input type="checkbox" wire:model.live='automatic_action'
@@ -498,7 +500,7 @@
                                     <div class="col-md-8 mt-2">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
+                                                <button type="button" class="btn btn-secondary w-100 mt-3" id="hollabTwoShow"
                                                     onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
                                                     {{ __('Email preview') }}</button>
                                             </div>
@@ -542,7 +544,7 @@
                                     <div class="col-md-8 mt-2">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
+                                                <button type="button" class="btn btn-secondary w-100 mt-3" id="hollabTwoShow"
                                                     onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
                                                     {{ __('SMS preview') }}</button>
                                             </div>
@@ -571,21 +573,5 @@
             @endif
         </div>
     </form>
-    <script>
-        document.addEventListener('livewire:load', function() {
-            ClassicEditor
-                .create(document.querySelector('#text_editor'))
-                .then(editor => {
-                    editor.model.document.on('change:data', () => {
-                        @this.set('editorContent', editor.getData());
-                    });
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-            Livewire.on('resetEditor', () => {
-                document.querySelector('#text_editor').value = '';
-            });
-        });
-    </script>
+
 </div>

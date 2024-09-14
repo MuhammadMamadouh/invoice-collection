@@ -71,7 +71,7 @@ function showCreateGroupDiv() {
 }
 function showEditGroupDiv() {
     document.querySelector(".edit-group-div").classList.remove("d-none");
-    document.querySelector(".overlay").classList.remove("d-none");
+    // document.querySelector(".overlay").classList.remove("d-none");
 }
 function hideCreateGroupDiv() {
     document.querySelector(".create-group-div").classList.add("d-none");

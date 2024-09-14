@@ -7,7 +7,7 @@
             <form id="editGroupForm" class="d-flex flex-column" method="post">
                 @csrf
                 @method('PATCH')
-                <input type="hidden" id="editGroupId" name="id">
+                <input type="hidden" id="editGroupId" name="id" value='{{$clientsGroup->id}}'>
                 <input type="hidden" name="_method" value="PATCH"> 
                 <div class="mb-3">
                     <label for="name">{{ _('Name:') }}</label>

@@ -140,6 +140,8 @@ Route::resource('items', ItemsController::class);
 Route::get('item-status', [ItemStatusController::class,'showStatusItemsForm'])->name('item-status.index');
 Route::post('item-status', [ItemStatusController::class,'store'])->name('item-status.store');
 
+
+Route::patch('/clients-group/{id}', [ClientsGroupController::class, 'update'])->name('clients-group.update');
 Route::post('/clients-group/delete-all', [ClientsGroupController::class, 'deleteAll'])->name('clients-group.delete-all');
 Route::resource('/clients-group', ClientsGroupController::class);
 

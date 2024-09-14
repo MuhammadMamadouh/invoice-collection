@@ -1,8 +1,6 @@
 @extends('layouts.dashboard.app')
 @section('content')
     @include('clients-group.create')
-
-
     <section class="m-groups my-2">
         <div class="container-fluid">
             <div class="t-manage text-center text-capitalize">
@@ -14,7 +12,6 @@
                     <i class="fa-solid fa-plus"></i> {{ _('Create a group') }}
                 </button>
             </div>
-
             <!-- pagination -->
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div class="form-group d-flex align-items-center">
@@ -38,12 +35,9 @@
                     </div>
                 </form>
             </div>
-
             <div class="d-flex justify-content-center">
                 {{ $clientsGroups->appends(['per_page' => request('per_page')])->links('pagination::default') }}
             </div>
-
-
             <div class="groups-t position-relative ">
                 <table class="table table-striped rounded">
                     <tr class="kall">
@@ -107,8 +101,6 @@
             <!--create-->
         </div>
         <!--container-->
-
-
     </section>
     <!--m-groups-->
 @endsection
@@ -124,7 +116,7 @@
             var id = $('#editGroupId').val();
             $.ajax({
                 url: '/clients-group/' + id,
-                type: 'PATCH', // Change POST to PATCH
+                type: 'POST', // Change POST to PATCH
                 data: formData,
                 success: function(response) {
                     alert('Data updated successfully!');
@@ -136,8 +128,6 @@
                 }
             });
         });
-
-
         function showEditGroupDiv(id) {
             $.ajax({
                 url: '/clients-group/' + id,
@@ -146,14 +136,12 @@
                     // Populate the form fields with the data from the response
                     $('#editGroupId').val(response.id);
                     $('#name').val(response.en_name);
-
                     // append response.clients to the select with id edit-group-clients-select
                     $('#edit-group-clients-select').empty();
                     $.each(response.clients, function(index, client) {
                         $('#edit-group-clients-select').append('<option selected value="' + client.id +
                             '">' + client.company_code + ' / ' + client.company_name + '</option>');
                     });
-
                     // Show the edit form
                     $('.edit-group-div').removeClass('d-none');
                 },
@@ -169,7 +157,6 @@
                     $(this).remove().appendTo('#edit-group-clients-select');
                 });
             });
-
             // Move selected clients to the left list
             $('.fa-circle-arrow-left').click(function() {
                 $('#edit-group-clients-select option:selected').each(function() {
@@ -177,7 +164,6 @@
                 });
             });
         });
-
         function hideEditGroupDiv() {
             $('.edit-group-div').addClass('d-none'); // Hide the edit form
         }
