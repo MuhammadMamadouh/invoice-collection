@@ -34,7 +34,7 @@
                 @enderror
             </div><!--24-->
             <div class="text-center mt-3">
-                <button class="btn btn-success"><i class="fa-solid fa-floppy-disk me-2"></i>
+                <button class="btn btn-success"><i class="fa-solid fa-check me-2"></i>
                     {{ __('Save') }}</button>
             </div>
         </div>

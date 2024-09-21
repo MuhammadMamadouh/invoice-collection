@@ -51,7 +51,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto text-center mb-2 mb-lg-0">
                     <li class="nav-item active d-flex align-items-center">
-                        <a class="nav-link" aria-current="page" href="#"><span><svg class="svg-inline--fa fa-eye"
+                        <a class="nav-link" aria-current="page" href="{{url('/')}}"><span><svg class="svg-inline--fa fa-eye"
                                     aria-hidden="true" focusable="false" data-prefix="fas" data-icon="eye" role="img"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="">
                                     <path fill="currentColor"

@@ -1191,13 +1191,6 @@
     <script src="/js/mange.js"></script>
     <script src="/js/email.js"></script>
     <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-    <script>
         function showAddActionDiv(collectionId) {
             document.getElementById(`add-action-div-${collectionId}`).classList.remove("d-none")
             document.querySelector(".overlay").classList.remove("d-none")

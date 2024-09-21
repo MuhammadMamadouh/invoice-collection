@@ -109,25 +109,25 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
         // Form submission handler
-        $('#editGroupForm').on('submit', function(e) {
-            e.preventDefault(); // Prevent default form submission
-            $('#edit-group-clients-select option').prop('selected', true);
-            var formData = $(this).serialize();
-            var id = $('#editGroupId').val();
-            $.ajax({
-                url: '/clients-group/' + id,
-                type: 'POST', // Change POST to PATCH
-                data: formData,
-                success: function(response) {
-                    alert('Data updated successfully!');
-                    $('.edit-group-div').hide(); // Hide the edit form
-                    window.location.reload(); // Reload the page
-                },
-                error: function(xhr) {
-                    alert('An error occurred: ' + xhr.responseText);
-                }
-            });
-        });
+        //$('#editGroupForm').on('submit', function(e) {
+         //   e.preventDefault(); // Prevent default form submission
+        //    $('#edit-group-clients-select option').prop('selected', true);
+        //    var formData = $(this).serialize();
+        //    var id = $('#editGroupId').val();
+        //    $.ajax({
+         //       url: '/clients-group/' + id,
+         //       type: 'POST', // Change POST to PATCH
+        //        data: formData,
+         //       success: function(response) {
+         //           alert('Data updated successfully!');
+          //          $('.edit-group-div').hide(); // Hide the edit form
+         //           window.location.reload(); // Reload the page
+         //       },
+         //       error: function(xhr) {
+         //           alert('An error occurred: ' + xhr.responseText);
+         //       }
+        //    });
+        //});
         function showEditGroupDiv(id) {
             $.ajax({
                 url: '/clients-group/' + id,

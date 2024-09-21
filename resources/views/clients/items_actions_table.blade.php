@@ -44,8 +44,8 @@
             <div class="btn openModalBtn btn-secondary">
                 {{-- $firstDueItem->toTakeAction->action_type ?? 'email' --}} E-mail</div>
         </div>
-        <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' }}
-            {{ optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
+        <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' --}}
+            {{-- optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
         <div class="col fw-bold">0000</div>
         <div class="col">
             <div class="btn btn-secondary">

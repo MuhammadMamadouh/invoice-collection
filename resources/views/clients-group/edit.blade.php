@@ -4,11 +4,10 @@
         <span class="btn btn-secondary position-absolute" onclick="hideEditGroupDiv()"
             style="border-radius:50%; top: -20px; right: -20px;"><i class="fa-solid fa-close"></i></span>
         <div class="my-2">
-            <form id="editGroupForm" class="d-flex flex-column" method="post">
+            <form id="editGroupForm" action="{{route('clients-group.update', $clientsGroup->id )}}" class="d-flex flex-column" method="post">
                 @csrf
                 @method('PATCH')
                 <input type="hidden" id="editGroupId" name="id" value='{{$clientsGroup->id}}'>
-                <input type="hidden" name="_method" value="PATCH"> 
                 <div class="mb-3">
                     <label for="name">{{ _('Name:') }}</label>
                     <input type="text" class="form-control" id="name" name="en_name"

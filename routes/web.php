@@ -60,9 +60,8 @@ Route::get('migrate-refresh-seed', function () {
 });
 
 
-Route::get('/', function () {
-    return view('dashboard.index');
-});
+Route::view('/', 'dashboard.index');
+
 
 require __DIR__.'/auth.php';
 
@@ -141,7 +140,7 @@ Route::get('item-status', [ItemStatusController::class,'showStatusItemsForm'])->
 Route::post('item-status', [ItemStatusController::class,'store'])->name('item-status.store');
 
 
-Route::patch('/clients-group/{id}', [ClientsGroupController::class, 'update'])->name('clients-group.update');
+// Route::patch('/clients-group/{id}', [ClientsGroupController::class, 'update'])->name('clients-group.update');
 Route::post('/clients-group/delete-all', [ClientsGroupController::class, 'deleteAll'])->name('clients-group.delete-all');
 Route::resource('/clients-group', ClientsGroupController::class);
 

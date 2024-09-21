@@ -116,7 +116,13 @@
             });
         });
     </script>
-    
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
     <script src="js/main.js"></script>
 </body>
 

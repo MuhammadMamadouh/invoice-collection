@@ -86,7 +86,7 @@
                 @enderror
             </div><!--24-->
             <div class="text-center mt-5">
-                <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk me-2"></i> {{ __('Save') }}</button>
+                <button type="submit" class="btn btn-success"><i class="fa-solid fa-check me-2"></i> {{ __('Save') }}</button>
             </div>
         </div>
     </div>

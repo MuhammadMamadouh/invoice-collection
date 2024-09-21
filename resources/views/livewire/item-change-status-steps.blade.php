@@ -63,17 +63,17 @@
                             @enderror
                         </div>
                         <div class="d-flex">
-                            <p>{{ __('Associate files to items') }}</p>
+                            <p style="margin-left: 95px;">{{ __('Associate files to items') }}</p>
                             <a href="DSOInformation.html"><i class="fa-solid fa-question bg-primary text-light p-1 ms-1"
                                     style="border-radius: 50%;width: 15px;height: 18px;font-size: 12px !important;"></i></a>
                         </div>
                         <div class="addFileDiv-2">
-                            <div class="d-flex justify-content-between flex-wrap align-items-center mb-3">
+                            <div class="d-flex justify-content-around flex-wrap align-items-center mb-3">
                                 <input wire:model="file_name" type="file" id="upload-image-input2" multiple />
                                 @error('file_name')
                                     <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                                 @enderror
-                                <input wire:model="desc" type="text" class="form-control w-auto">
+                                <input wire:model="desc" type="text" class="form-control w-auto" placeholder="Description...">
                                 @error('desc')
                                     <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                                 @enderror
@@ -190,35 +190,50 @@
                                     </p>
                                 </div>
                             </div><!--r-1-->
-                            <div class="col-md-2 mt-2">
-                                <select class="form-select" wire:model='type_to' id="">
-                                    <option value="" selected>Select One</option>
-                                    @foreach ($typesTo as $typeTo)
-                                        <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div><!--l-2-->
-                            <div class="col-md-10 mt-2">
-                                <select class="form-select" wire:model='resolverData'>
-                                    <option value="{{ $resolver }}" selected>{{ $resolver }}</option>
-                                    @foreach ($resolvers as $resolverss)
-                                        <option value="{{ $resolverss->id }}">
-                                            {{ $resolverss->first_name }}{{ $resolverss->last_name }}
-                                            ({{ $resolverss->role->name }})
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
-                                            class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
-                                        another
-                                        recipient</a>
-                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
-                                            class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add an
-                                        external
-                                        recipient</a>
+                            <div>
+                                @foreach ($recipients as $index => $recipient)
+                                    <div class="row">
+                                        <!-- First column for type_to -->
+                                        <div class="col-md-2 mt-2">
+                                            <select class="form-select"
+                                                wire:model="recipients.{{ $index }}.type_to">
+                                                <option value="" selected>Select One</option>
+                                                @foreach ($typesTo as $typeTo)
+                                                    <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div><!--l-2-->
+
+                                        <!-- Second column for resolver -->
+                                        <div class="col-md-10 mt-2">
+                                            <select class="form-select"
+                                                wire:model="recipients.{{ $index }}.resolverData">
+                                                <option value="" selected>Select Resolver</option>
+                                                @foreach ($resolvers as $resolver)
+                                                    <option value="{{ $resolver->id }}">
+                                                        {{ $resolver->first_name }} {{ $resolver->last_name }}
+                                                        ({{ $resolver->role->name }})
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                @endforeach
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <!-- Add another recipient button -->
+                                        <a href="#" class="text-primary mx-3" style="text-decoration: none;"
+                                            wire:click.prevent="addRecipient">
+                                            <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
+                                            another recipient
+                                        </a>
+                                        <!-- Add external recipient button -->
+                                        <a href="#" class="text-primary mx-3" style="text-decoration: none;">
+                                            <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
+                                            an external recipient
+                                        </a>
+                                    </div>
                                 </div>
-                            </div><!--r-2-->
+                            </div>
                             <div class="col-md-2 mt-2">
                                 <h4 for="">Subject :</h4>
                             </div><!--l-3-->
@@ -234,7 +249,7 @@
                             <div class="col-md-10 mt-2">
                                 <div class="col-md-10">
                                     <div class="editor-container">
-                                        <textarea id="editor" wire:model="editorContent" class="form-control clear-2" contenteditable="true"></textarea>
+                                        <textarea id="editor" wire:model.defer="editorContent" class="form-control clear-2" contenteditable="true"></textarea>
                                     </div>
                                 </div>
                                 <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
@@ -246,8 +261,9 @@
                                 <div class="col-md-8 mt-2">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <button type="button" class="btn btn-secondary w-100 mt-3" id="hollabTwoShow"
-                                                onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
+                                            <button type="button" class="btn btn-secondary w-100 mt-3"
+                                                id="hollabTwoShow" onclick="showHollabTwo()"><i
+                                                    class="fa-solid fa-eye"></i>
                                                 {{ __('Email preview') }}</button>
                                         </div>
                                         <div class="col-lg-6">
@@ -291,35 +307,44 @@
                                     </p>
                                 </div>
                             </div><!--r-1-->
-                            <div class="col-md-2 mt-2">
-                                <select class="form-select" wire:model='type_to' id="">
-                                    <option value="" selected>Select One</option>
-                                    @foreach ($typesTo as $typeTo)
-                                        <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div><!--l-2-->
-                            <div class="col-md-10 mt-2">
-                                <select class="form-select" wire:model='resolverData'>
-                                    <option value="{{ $resolver }}" selected>{{ $resolver }}</option>
-                                    @foreach ($resolvers as $resolverss)
-                                        <option value="{{ $resolverss->id }}">
-                                            {{ $resolverss->first_name }}{{ $resolverss->last_name }}
-                                            ({{ $resolverss->role->name }})
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
-                                            class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
-                                        another
-                                        recipient</a>
-                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
-                                            class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add an
-                                        external
-                                        recipient</a>
+                            <div>
+                                @foreach ($recipients as $index => $recipient)
+                                    <div class="form-group">
+                                        <select class="form-select"
+                                            wire:model="recipients.{{ $index }}.type_to">
+                                            <option value="" selected>Select One</option>
+                                            @foreach ($typesTo as $typeTo)
+                                                <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <select class="form-select"
+                                            wire:model="recipients.{{ $index }}.resolverData">
+                                            <option value="" selected>Select Resolver</option>
+                                            @foreach ($resolvers as $resolver)
+                                                <option value="{{ $resolver->id }}">
+                                                    {{ $resolver->first_name }} {{ $resolver->last_name }}
+                                                    ({{ $resolver->role->name }})
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                @endforeach
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <!-- Add another recipient button -->
+                                        <a href="#" class="text-primary mx-3" style="text-decoration: none;"
+                                            wire:click.prevent="addRecipient">
+                                            <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
+                                            another recipient
+                                        </a>
+                                        <!-- Add external recipient button -->
+                                        <a href="#" class="text-primary mx-3" style="text-decoration: none;">
+                                            <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
+                                            an external recipient
+                                        </a>
+                                    </div>
                                 </div>
-                            </div><!--r-2-->
+                            </div>
                             <div class="col-md-2 mt-2">
                                 <h4 for="">Subject :</h4>
                             </div><!--l-3-->
@@ -334,7 +359,7 @@
                             </div><!--l-4-->
                             <div class="col-md-10 mt-2">
                                 <div class="editor-container mb-1">
-                                    <textarea id="text_editor" class="form-control" wire:model.defer="editorContent"></textarea>
+                                    <textarea id="editor" class="form-control" wire:model.defer="editorContent"></textarea>
                                 </div>
                                 <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
                                         class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item</a>
@@ -345,8 +370,9 @@
                                 <div class="col-md-8 mt-2">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <button type="button" class="btn btn-secondary w-100 mt-3" id="hollabTwoShow"
-                                                onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
+                                            <button type="button" class="btn btn-secondary w-100 mt-3"
+                                                id="hollabTwoShow" onclick="showHollabTwo()"><i
+                                                    class="fa-solid fa-eye"></i>
                                                 {{ __('Email preview') }}</button>
                                         </div>
                                         <div class="col-lg-6">
@@ -500,8 +526,9 @@
                                     <div class="col-md-8 mt-2">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <button type="button" class="btn btn-secondary w-100 mt-3" id="hollabTwoShow"
-                                                    onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
+                                                <button type="button" class="btn btn-secondary w-100 mt-3"
+                                                    id="hollabTwoShow" onclick="showHollabTwo()"><i
+                                                        class="fa-solid fa-eye"></i>
                                                     {{ __('Email preview') }}</button>
                                             </div>
                                         </div>
@@ -544,8 +571,9 @@
                                     <div class="col-md-8 mt-2">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <button type="button" class="btn btn-secondary w-100 mt-3" id="hollabTwoShow"
-                                                    onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
+                                                <button type="button" class="btn btn-secondary w-100 mt-3"
+                                                    id="hollabTwoShow" onclick="showHollabTwo()"><i
+                                                        class="fa-solid fa-eye"></i>
                                                     {{ __('SMS preview') }}</button>
                                             </div>
                                         </div>
@@ -573,5 +601,31 @@
             @endif
         </div>
     </form>
-
+    {{-- <script>
+        document.addEventListener('livewire:load', () => {
+            ClassicEditor
+                .create(document.querySelector('#text_editor'))
+                .then(editor => {
+                    // Sync CKEditor data to Livewire's content property
+                    editor.model.document.on('change:data', () => {
+                        @this.set('editorContent', editor.getData());
+                    });
+                    // Set the initial CKEditor content from Livewire
+                    editor.setData(@this.get('editorContent'));
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script> --}}
+        {{-- <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script> --}}
 </div>

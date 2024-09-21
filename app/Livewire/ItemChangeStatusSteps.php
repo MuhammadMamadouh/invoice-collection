@@ -29,6 +29,7 @@ class ItemChangeStatusSteps extends Component
     public $resolvers;
     public $actionTypes;
     public $days = [];
+    public $recipients = [['type_to' => '', 'resolverData' => '']];
     public $editorContent;
     // public $showActionForm = false;
     public $selectedAction = 'follow_the_collection_scenario';
@@ -93,6 +94,9 @@ class ItemChangeStatusSteps extends Component
         for ($i = -90; $i <= 365; $i++) {
             $this->days[] = $i;
         }
+        $this->recipients = [
+            ['type_to' => '', 'resolverData' => '']
+        ];
     }
 
     public function updatedselectedStatus($id)
@@ -140,6 +144,20 @@ class ItemChangeStatusSteps extends Component
         }
     }
 
+    public function addRecipient()
+    {
+        $this->recipients[] = [
+            'type_to' => '',
+            'resolverData' => '',
+        ];
+    }
+
+    public function removeRecipient($index)
+    {
+        unset($this->recipients[$index]);
+        $this->recipients = array_values($this->recipients);
+    }
+
     public function incrementSteps()
     {
         if ($this->currentStep < $this->totalSteps) {
@@ -169,18 +187,23 @@ class ItemChangeStatusSteps extends Component
             'create_a_specific_action' => $this->selectedAction === 'create_a_specific_action' ? 1 : 0,
         ]);
         if ($this->email_type) {
+            foreach ($this->recipients as $recipient) {
+                $typeTo = $recipient['type_to'] ?? null;
+                $resolverData = $recipient['resolverData'] ?? null;
             $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
             $newEmail = new Email([
                 'created_by' => $this->created_by,
-                'resolver' => $this->resolver,
+                'resolver' => $resolverData,
                 'subject' => $this->client->id,
                 'message' => $this->editorContent,
                 'get_a_copy' => $this->get_a_copy,
                 'request_an_acknowledgment' => $this->request_an_acknowledgment,
                 'email_type' => $this->email_type,
-                'type_to' => $this->type_to,
+                'type_to' =>  $typeTo,
             ]);
+            
             $newStatus->emails()->save($newEmail);
+        };
         }
         if ($this->file_name) {
             foreach ($this->file_name as $file) {
@@ -211,7 +234,7 @@ class ItemChangeStatusSteps extends Component
             if($this->action_type == 5){
                 $newEmail = new Email([
                     'created_by' => $this->created_by,
-                    'resolver' => $this->resolver,
+                    'resolver' => $this->recipients['resolverData'],
                     'subject' => $this->client->id,
                     'message' => $this->editorContent,
                     'automatic_action' => $this->automatic_action,

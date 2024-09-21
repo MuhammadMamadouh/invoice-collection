@@ -52,7 +52,7 @@ class ClientsGroupController extends Controller
         ]);
         $group->save();
         $group->clients()->sync($request->group_clients);
-        return response()->json(['message' => __('edited successfully')]);
+        return to_route('clients-group.index')->with( ['message' => __('edited successfully')]);
     }
 
 
