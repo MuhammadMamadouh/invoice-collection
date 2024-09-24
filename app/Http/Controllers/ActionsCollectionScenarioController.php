@@ -70,7 +70,7 @@ class ActionsCollectionScenarioController extends Controller
                 'action_name' => $request->action_name,
                 'action_type' => $request->action_type,
                 'number_of_days' => $request->number_of_days,
-                'collection_scenario_id' => $request->collection_scenario_id,
+                'collection_scenario_id' => $collection->collection_scenario_id,
                 // 'mail_subject' => $request->mail_subject,
                 // 'mail_content' => $request->mail_content,
                 // 'language' => $request->language,

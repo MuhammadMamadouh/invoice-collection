@@ -6,6 +6,7 @@ use App\Http\Requests\CollectionScenarioRequest;
 use App\Models\ActionsCollectionScenario;
 use App\Models\ActionType;
 use App\Models\CollectionScenario;
+use App\Models\PredefinedCollectionScenarios;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,8 +24,9 @@ class CollectionScenarioController extends Controller
             $days[] = $i;
         }
         $collections = CollectionScenario::with('actionScenarios', 'client')->get();
+        $preCollections = PredefinedCollectionScenarios::with('scenarioActions')->get();
         $actionTypes = ActionType::all();
-        return view('collection_scenarios.index', compact('collections', 'actionTypes', 'days'));
+        return view('collection_scenarios.index', compact('collections', 'actionTypes', 'days', 'preCollections'));
     }
 
     public function store(Request $request)
@@ -74,8 +76,31 @@ class CollectionScenarioController extends Controller
             CollectionScenario::create([
                 'en_name' => $copyScenario->en_name . ' (Copy)',
             ]);
-            return to_route('collection_scenarios.index')->with(['message' => __(' duplicated successfully')]);
+            return to_route('collection_scenarios.index')->with(['message' => __('duplicated successfully')]);
         } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
+        }
+    }
+
+    public function addPreDefinedCollection(Request $request)
+    {
+        $preDefinedCollection = PredefinedCollectionScenarios::with('scenarioActions')
+        ->findOrFail($request->predefined_scenario_id);
+        try{
+            $newCollection = CollectionScenario::create([
+                'en_name' => $preDefinedCollection->en_name
+            ]);
+            foreach($preDefinedCollection->scenarioActions as $preDefinedAction){
+                ActionsCollectionScenario::create([
+                    'collection_scenario_id' => $newCollection->id,
+                    'action_name' => $preDefinedAction->action_name,
+                    'number_of_days' => $preDefinedAction->number_of_days,
+                    'action_type' => $preDefinedAction->action_type,
+                ]);
+            }
+            return to_route('collection_scenarios.index')->with(['message' => __('created successfully')]);
+        }catch (Exception $e){
             Log::info($e->getMessage());
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
         }
