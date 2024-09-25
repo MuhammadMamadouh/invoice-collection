@@ -77,7 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-
+Route::post('/users/{id}/regenerate-password', [UserController::class, 'regeneratePassword'])->name('users.regeneratePassword');
 Route::resource('users', UserController::class);
 
 

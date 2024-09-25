@@ -13,7 +13,7 @@
         </div>
         <div class="text-center mb-3  p-2 p-md-4">
             {{--dd($item->tempActions)--}}
-            @foreach($item->tempActions as $key => $tempAction)
+            @forelse($item->tempActions as $key => $tempAction)
                 <div class="row align-items-center" style="{{ $key % 2 == 0 ? 'background-color:#ffffff;' : 'background-color:#006bff14' }}">
                     <div class="col-md-2 pt-2">
                         <div class="mouse-hovers d-flex justify-content-center">
@@ -37,7 +37,9 @@
                         <p class="fw-bold"><a href="#">{{$tempAction->createdBy->first_name}}</a> (Administrator {{--$tempAction->createdBy->role->name--}})</p>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <p> No Actions Yet.... </p>
+            @endforelse
             {{-- <div class="row align-items-center">
                 <div class="col-md-2 pt-2">
                     <div class="mouse-hovers d-flex justify-content-center">

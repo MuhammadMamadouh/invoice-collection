@@ -45,8 +45,8 @@
                                 </td>
                             </tr>
                     @empty
-                        <div class="bg-light text-center w-100 p-3 mt-0">
-                            <td>
+                        <div class="bg-light text-center w-100 p-3 mt-0" >
+                            <td colspan=5>
                                 {{ __('No associated files') }}
                             </td>
                         </div>

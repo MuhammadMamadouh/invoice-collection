@@ -105,7 +105,7 @@
                             {{ __('Edit') }}</a>
                     </div>
                     <div class="row mt-2 align-items-center px-4 text-center">
-                        <div class="col-1 col-md-1">
+                        <div class="col-1 col-md-1" style="z-index: 10 !important;">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                             </div>
@@ -173,7 +173,7 @@
                         @forelse($clientResource as $key => $client)
                             <div class="row align-items-center pt-3"
                                 style="background-color: {{ $key % 2 == 0 ? '#006bff14' : '#ffffff' }}">
-                                <div class="col-1">
+                                <div class="col-1" style="z-index: 10 !important;">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                                     </div>

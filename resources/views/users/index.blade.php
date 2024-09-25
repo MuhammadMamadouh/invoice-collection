@@ -305,7 +305,7 @@
                                     <div class="modal-body">
                                         <form id="regeneratePasswordForm" action="" method="POST">
                                             @csrf
-                                            <input type="hidden" name="user_id" id="modal_user_id">
+                                            <input type="hidden" name="user_id" id="modal_user_id" value="{{$user->id}}">
                                             <div class="mb-3">
                                                 <label for="password" class="form-label">{{ __('New Password') }}</label>
                                                 <input type="password" class="form-control" id="password"
@@ -318,7 +318,7 @@
                                                     name="password_confirmation" required>
                                             </div>
                                             <button type="submit"
-                                                class="btn btn-primary">{{ __('Regenerate') }}</button>
+                                                class="btn btn-secondary">{{ __('Regenerate') }}</button>
                                         </form>
                                     </div>
                                 </div>

@@ -8,6 +8,8 @@ use App\Models\Item;
 use App\Models\Currency;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\ItemStatus;
+use App\Models\ItemStatusType;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -17,13 +19,13 @@ class ItemsController extends Controller
     public function create()
     {
         $item_types = ItemType::all();
+        $item_status = ItemStatusType::all();
         $currencies = Currency::all();
         $companies  = Client::all(['id', 'company_name', 'company_code']);
-
-        return view('items.create', compact('item_types' ,'currencies', 'companies'));
+        return view('items.create', compact('item_types' ,'item_status', 'currencies', 'companies'));
     }
 
-    public function store(ItemRequest $request)
+    public function store(Request $request)
     {
         $validatedData = $request->all();
         Item::create($validatedData);

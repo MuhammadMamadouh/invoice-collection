@@ -1,4 +1,4 @@
-<div class="invoice d-none" id="show-invoice-{{ $item->id }}">
+<div class="invoice d-none" id="show-invoice-{{ $item->id }}" style="z-index: 11;">
     <div class="bg-light invoice-first-{{ $item->id }}">
         <div class="row text-center m-0 p-1 w-100" style="background-color: #006bff">
             <div class="d-flex justify-content-between ">

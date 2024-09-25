@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('created_by');
             $table->longText('message');
-            $table->boolean('automatic_action')->default(0);
-            $table->boolean('automatic_action_to_be_confirmed')->default(0);
+            // $table->boolean('automatic_action')->default(0);
+            // $table->boolean('automatic_action_to_be_confirmed')->default(0);
             $table->morphs('messageable');
             $table->timestamps();
         });

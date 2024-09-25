@@ -5,7 +5,7 @@
         <div class="d-flex gap-3 justify-content-end text-center m-0 mb-3 p-3 w-100" style="background-color: #006bff">
             <span class="btn text-light p-1 px-2 btn-danger" onclick="closeHolap()"><i class="fa-solid fa-trash"
                     style="  font-size: 15px;"></i></span>
-            <button type="submit"><span class="btn px-4 text-light p-1 btn-success"
+            <button class="btn px-4 text-light p-1 btn-success" type="submit"><span
                     onclick="closeEditHolap({{ $client->id }})"><i class="fa-solid fa-floppy-disk"
                         style="  font-size: 15px;"></i>
                     {{ __('Save') }}</span></button>

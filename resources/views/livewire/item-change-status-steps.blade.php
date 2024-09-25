@@ -73,7 +73,8 @@
                                 @error('file_name')
                                     <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                                 @enderror
-                                <input wire:model="desc" type="text" class="form-control w-auto" placeholder="Description...">
+                                <input wire:model="desc" type="text" class="form-control w-auto"
+                                    placeholder="Description...">
                                 @error('desc')
                                     <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                                 @enderror
@@ -171,6 +172,7 @@
                 @if ($email_type == 1)
                     <div class="new-holab-1" id="hide-hoalp-1">
                         <div class="row mt-3">
+                            <!-- From Section -->
                             <div class="col-md-2">
                                 <h4>From :</h4>
                             </div><!--l-1-->
@@ -179,104 +181,109 @@
                                     class="text-primary">
                                     created_by name < mohamed@gmail.com>
                                 </a>
-                                <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-                                    <p> <input type="checkbox" wire:model="get_a_copy" class="form-check-input mx-2"
+                                <div class="d-flex flex-wrap my-2">
+                                    <p class="me-3">
+                                        <input type="checkbox" wire:model="get_a_copy" class="form-check-input mx-2"
                                             id="exampleChe">
                                         Get a copy of this email.
                                     </p>
-                                    <p> <input type="checkbox" wire:model="request_an_acknowledgment"
+                                    <p>
+                                        <input type="checkbox" wire:model="request_an_acknowledgment"
                                             class="form-check-input mx-2" id="exampleChe">
                                         Request an acknowledgment of receipt.
                                     </p>
                                 </div>
                             </div><!--r-1-->
-                            <div>
-                                @foreach ($recipients as $index => $recipient)
-                                    <div class="row">
-                                        <!-- First column for type_to -->
-                                        <div class="col-md-2 mt-2">
-                                            <select class="form-select"
-                                                wire:model="recipients.{{ $index }}.type_to">
-                                                <option value="" selected>Select One</option>
-                                                @foreach ($typesTo as $typeTo)
-                                                    <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div><!--l-2-->
 
-                                        <!-- Second column for resolver -->
-                                        <div class="col-md-10 mt-2">
-                                            <select class="form-select"
-                                                wire:model="recipients.{{ $index }}.resolverData">
-                                                <option value="" selected>Select Resolver</option>
-                                                @foreach ($resolvers as $resolver)
-                                                    <option value="{{ $resolver->id }}">
-                                                        {{ $resolver->first_name }} {{ $resolver->last_name }}
-                                                        ({{ $resolver->role->name }})
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                @endforeach
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <!-- Add another recipient button -->
-                                        <a href="#" class="text-primary mx-3" style="text-decoration: none;"
-                                            wire:click.prevent="addRecipient">
-                                            <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
-                                            another recipient
-                                        </a>
-                                        <!-- Add external recipient button -->
-                                        <a href="#" class="text-primary mx-3" style="text-decoration: none;">
-                                            <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
-                                            an external recipient
-                                        </a>
-                                    </div>
+                            <!-- Recipients Section -->
+                            @foreach ($recipients as $index => $recipient)
+                                <div class="row">
+                                    <!-- First column for type_to -->
+                                    <div class="col-md-2 mt-2">
+                                        <select class="form-select"
+                                            wire:model="recipients.{{ $index }}.type_to">
+                                            <option value="" selected>Select One</option>
+                                            @foreach ($typesTo as $typeTo)
+                                                <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div><!--l-2-->
+
+                                    <!-- Second column for resolver -->
+                                    <div class="col-md-10 mt-2">
+                                        <select class="form-select"
+                                            wire:model="recipients.{{ $index }}.resolverData">
+                                            <option value="" selected>Select Resolver</option>
+                                            @foreach ($resolvers as $resolver)
+                                                <option value="{{ $resolver->id }}">
+                                                    {{ $resolver->first_name }} {{ $resolver->last_name }}
+                                                    ({{ $resolver->role->name }})
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div><!--r-2-->
+                                </div><!--end-row-->
+                            @endforeach
+
+                            <!-- Add another recipient button -->
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"
+                                        wire:click.prevent="addRecipient">
+                                        <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
+                                        another recipient
+                                    </a>
                                 </div>
                             </div>
+
+                            <!-- Subject Section -->
                             <div class="col-md-2 mt-2">
                                 <h4 for="">Subject :</h4>
                             </div><!--l-3-->
                             <div class="col-md-10 mt-2">
                                 <input type="text" class="form-control" wire:model="subject" id="">
                             </div><!--r-3-->
+
+                            <!-- Message Section -->
                             <div class="col-md-2 mt-2">
                                 <h4 class="mb-5">Message :</h4>
-                                <p style="color: rgb(172, 169, 169); text-align: center;"><i
-                                        class="fa-solid fa-hashtag hash mb-5"></i><br>
-                                    Lorem ipsum dolor sit amet.</p>
+                                <p style="color: rgb(172, 169, 169); text-align: center;">
+                                    <i class="fa-solid fa-hashtag hash mb-5"></i><br>
+                                    Lorem ipsum dolor sit amet.
+                                </p>
                             </div><!--l-4-->
                             <div class="col-md-10 mt-2">
-                                <div class="col-md-10">
-                                    <div class="editor-container">
-                                        <textarea id="editor" wire:model.defer="editorContent" class="form-control clear-2" contenteditable="true"></textarea>
-                                    </div>
+                                <div class="editor-container">
+                                    <textarea id="editor" wire:model.defer="editorContent" class="form-control clear-2" contenteditable="true"></textarea>
                                 </div>
-                                <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
-                                        class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item</a>
+                                <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);">
+                                    <span class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item
+                                </a>
                             </div><!--r-4-->
-                            <div class="col-md-4 mt-2">
-                            </div><!--l-5-->
+
+                            <!-- Submit Buttons -->
+                            <div class="col-md-4 mt-2"></div><!--l-5-->
                             <div class="tw-btn-holab d-flex justify-content-end">
                                 <div class="col-md-8 mt-2">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <button type="button" class="btn btn-secondary w-100 mt-3"
-                                                id="hollabTwoShow" onclick="showHollabTwo()"><i
-                                                    class="fa-solid fa-eye"></i>
-                                                {{ __('Email preview') }}</button>
+                                                id="hollabTwoShow" onclick="showHollabTwo()">
+                                                <i class="fa-solid fa-eye"></i> {{ __('Email preview') }}
+                                            </button>
                                         </div>
                                         <div class="col-lg-6">
-                                            <button type="submit" class="btn btn-success w-100 mt-3"><i
-                                                    class="fa-solid fa-check"></i> {{ __('Send the email') }} <i
-                                                    class="fa-solid fa-plus"></i>
-                                                {{ __('complete the action') }}</button>
+                                            <button type="submit" class="btn btn-success w-100 mt-3">
+                                                <i class="fa-solid fa-check"></i> {{ __('Send the email') }} <i
+                                                    class="fa-solid fa-plus"></i> {{ __('complete the action') }}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div><!--r-5-->
                         </div>
                     </div>
+
                 @endif
                 @if ($email_type == 2)
                     <div class="new-holab-1" id="hide-hoalp-1">
@@ -288,6 +295,7 @@
                             </p>
                         </div>
                         <div class="row mt-3">
+                            <!-- From Section -->
                             <div class="col-md-2">
                                 <h4>From :</h4>
                             </div><!--l-1-->
@@ -296,20 +304,25 @@
                                     class="text-primary">
                                     created_by name < mohamed@gmail.com>
                                 </a>
-                                <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-                                    <p> <input type="checkbox" wire:model="get_a_copy" class="form-check-input mx-2"
+                                <div class="d-flex flex-wrap my-2">
+                                    <p class="me-3">
+                                        <input type="checkbox" wire:model="get_a_copy" class="form-check-input mx-2"
                                             id="exampleChe">
                                         Get a copy of this email.
                                     </p>
-                                    <p> <input type="checkbox" wire:model="request_an_acknowledgment"
+                                    <p>
+                                        <input type="checkbox" wire:model="request_an_acknowledgment"
                                             class="form-check-input mx-2" id="exampleChe">
                                         Request an acknowledgment of receipt.
                                     </p>
                                 </div>
                             </div><!--r-1-->
-                            <div>
-                                @foreach ($recipients as $index => $recipient)
-                                    <div class="form-group">
+
+                            <!-- Recipients Section -->
+                            @foreach ($recipients as $index => $recipient)
+                                <div class="row">
+                                    <!-- First column for type_to -->
+                                    <div class="col-md-2 mt-2">
                                         <select class="form-select"
                                             wire:model="recipients.{{ $index }}.type_to">
                                             <option value="" selected>Select One</option>
@@ -317,6 +330,10 @@
                                                 <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
                                             @endforeach
                                         </select>
+                                    </div><!--l-2-->
+
+                                    <!-- Second column for resolver -->
+                                    <div class="col-md-10 mt-2">
                                         <select class="form-select"
                                             wire:model="recipients.{{ $index }}.resolverData">
                                             <option value="" selected>Select Resolver</option>
@@ -327,59 +344,62 @@
                                                 </option>
                                             @endforeach
                                         </select>
-                                    </div>
-                                @endforeach
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <!-- Add another recipient button -->
-                                        <a href="#" class="text-primary mx-3" style="text-decoration: none;"
-                                            wire:click.prevent="addRecipient">
-                                            <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
-                                            another recipient
-                                        </a>
-                                        <!-- Add external recipient button -->
-                                        <a href="#" class="text-primary mx-3" style="text-decoration: none;">
-                                            <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
-                                            an external recipient
-                                        </a>
-                                    </div>
+                                    </div><!--r-2-->
+                                </div><!--end-row-->
+                            @endforeach
+
+                            <!-- Add another recipient button -->
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"
+                                        wire:click.prevent="addRecipient">
+                                        <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
+                                        another recipient
+                                    </a>
                                 </div>
                             </div>
+
+                            <!-- Subject Section -->
                             <div class="col-md-2 mt-2">
                                 <h4 for="">Subject :</h4>
                             </div><!--l-3-->
                             <div class="col-md-10 mt-2">
                                 <input type="text" class="form-control" wire:model="subject" id="">
                             </div><!--r-3-->
+
+                            <!-- Message Section -->
                             <div class="col-md-2 mt-2">
                                 <h4 class="mb-5">Message :</h4>
-                                <p style="color: rgb(172, 169, 169); text-align: center;"><i
-                                        class="fa-solid fa-hashtag hash mb-5"></i><br>
-                                    Lorem ipsum dolor sit amet.</p>
+                                <p style="color: rgb(172, 169, 169); text-align: center;">
+                                    <i class="fa-solid fa-hashtag hash mb-5"></i><br>
+                                    Lorem ipsum dolor sit amet.
+                                </p>
                             </div><!--l-4-->
                             <div class="col-md-10 mt-2">
-                                <div class="editor-container mb-1">
-                                    <textarea id="editor" class="form-control" wire:model.defer="editorContent"></textarea>
+                                <div class="editor-container">
+                                    <textarea id="editor" wire:model.defer="editorContent" class="form-control clear-2" contenteditable="true"></textarea>
                                 </div>
-                                <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
-                                        class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item</a>
+                                <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);">
+                                    <span class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item
+                                </a>
                             </div><!--r-4-->
-                            <div class="col-md-4 mt-2">
-                            </div><!--l-5-->
+
+                            <!-- Submit Buttons -->
+                            <div class="col-md-4 mt-2"></div><!--l-5-->
                             <div class="tw-btn-holab d-flex justify-content-end">
                                 <div class="col-md-8 mt-2">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <button type="button" class="btn btn-secondary w-100 mt-3"
-                                                id="hollabTwoShow" onclick="showHollabTwo()"><i
-                                                    class="fa-solid fa-eye"></i>
-                                                {{ __('Email preview') }}</button>
+                                                id="hollabTwoShow" onclick="showHollabTwo()">
+                                                <i class="fa-solid fa-eye"></i> {{ __('Email preview') }}
+                                            </button>
                                         </div>
                                         <div class="col-lg-6">
-                                            <button type="submit" class="btn btn-success w-100 mt-3"><i
-                                                    class="fa-solid fa-check"></i> {{ __('Send the email') }} <i
-                                                    class="fa-solid fa-plus"></i>
-                                                {{ __('complete the action') }}</button>
+                                            <button type="submit" class="btn btn-success w-100 mt-3">
+                                                <i class="fa-solid fa-check"></i> {{ __('Send the email') }} <i
+                                                    class="fa-solid fa-plus"></i> {{ __('complete the action') }}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -618,7 +638,7 @@
                 });
         });
     </script> --}}
-        {{-- <script>
+    {{-- <script>
         ClassicEditor
             .create(document.querySelector('#editor'))
             .then(editor => {

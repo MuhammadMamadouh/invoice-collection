@@ -38,6 +38,25 @@
                             </div>
                         </div>
                     </div>
+                    <div class="my-2 col-md-6">
+                        <div class="d-flex">
+                            <div class="col-5 ">
+                                <label for="inputname5">{{ __('item status') }} :</label>
+                            </div>
+                            <div class="col-7 ">
+                                <select class="form-select" id="status_id" name="status_id">
+                                    <option value="" selected disabled>Select One</option>
+                                    @foreach ($item_status as $itemStatus)
+                                        <option value="{{ $itemStatus->id }}">
+                                            {{ $itemStatus->en_name }} </option>
+                                    @endforeach
+                                </select>
+                                @error('status_id')
+                                    {{ $message }}
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                     <!--1-->
                     <div class="my-2 col-md-6">
                         <div class="d-flex">

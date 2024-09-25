@@ -1,5 +1,5 @@
 <div class="row mt-3 p-2 px-md-4 align-items-center text-center">
-    <div class="col-1" style="z-index: 999;">
+    <div class="col-1" style="z-index:10 !important;">
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" />
         </div>
@@ -61,7 +61,7 @@
     <div class="text-center mb-3 table-container-2 p-2 px-md-4  ">
         <div class="row align-items-center pt-3"
             style="{{ $item->overdue >= 0 ? 'background-color: #e6d3d3' : 'background-color: #d9edf7' }}">
-            <div class="col-1" style="z-index: 999;">
+            <div class="col-1" style="z-index:10 !important;">
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                 </div>
