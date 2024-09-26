@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Action;
 use App\Models\ActionType;
 use App\Models\Email;
 use App\Models\EmailType;
@@ -221,34 +222,33 @@ class ItemChangeStatusSteps extends Component
             }
         }
         if ($this->action_name) {
-            $tempAction = TempAction::create([
+            $tempAction = Action::create([
                 'action_name' => $this->action_name,
                 'action_date' => $this->action_date,
                 'action_type' => $this->action_type,
                 'collection_scenario_id' => $this->client->collectionScenarios->id,
-                'client_id' => $this->client->id,
+                // 'client_id' => $this->client->id,
                 'item_id' => $this->item->id,
                 'created_by' => $this->created_by,
                 'item_change_status_id' => $changedStatus->id,
+                'automatic_action' => $this->automatic_action,
+                'automatic_action_to_be_confirmed' => $this->automatic_action_to_be_confirmed,
+                'internal_interactive_emailLink' => $this->internal_interactive_emailLink,
             ]);
             if($this->action_type == 5){
                 $newEmail = new Email([
                     'created_by' => $this->created_by,
-                    'resolver' => $this->recipients['resolverData'],
+                    'resolver' => $this->resolver,
                     'subject' => $this->client->id,
                     'message' => $this->editorContent,
-                    'automatic_action' => $this->automatic_action,
-                    'automatic_action_to_be_confirmed' => $this->automatic_action_to_be_confirmed,
-                    'internal_interactive_emailLink' => $this->internal_interactive_emailLink,
                 ]);
                 $tempAction->emails()->save($newEmail);
             }
             if($this->action_type == 7){
                 $newSms = new SmsMessage([
                     'created_by' => $this->created_by,
-                    'message' => $this->editorContent,
-                    'automatic_action' => $this->automatic_action,
-                    'automatic_action_to_be_confirmed' => $this->automatic_action_to_be_confirmed,                
+                    'subject' => $this->client->id,
+                    'message' => $this->editorContent,               
                 ]);
                 $tempAction->smsMessages()->save($newSms);
             }

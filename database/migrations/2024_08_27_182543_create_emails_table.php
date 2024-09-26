@@ -21,9 +21,6 @@ return new class extends Migration
             $table->boolean('request_an_acknowledgment')->default(0);
             $table->bigInteger('email_type')->nullable();
             $table->bigInteger('type_to')->nullable();
-            // $table->boolean('automatic_action')->nullable();
-            // $table->boolean('automatic_action_to_be_confirmed')->nullable();
-            // $table->boolean('internal_interactive_emailLink')->nullable();
             $table->morphs('emailable');
             $table->timestamps();
         });

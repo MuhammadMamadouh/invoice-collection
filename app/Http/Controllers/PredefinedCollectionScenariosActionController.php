@@ -13,14 +13,15 @@ class PredefinedCollectionScenariosActionController extends Controller
     {;
         $request->validate([
             'action_name' => 'required|string|max:255',
-            'number_of_days' => 'required|numeric',
+            'action_date' => 'required|date',
             'action_type' => 'required|string',
         ]);
         try{
             PredefinedCollectionScenariosAction::create([
                 'action_name' => $request->action_name,
                 'action_type' => $request->action_type,
-                'number_of_days' => $request->number_of_days,
+                'action_date' => $request->action_date,
+                'created_by'  => $request->created_by,
                 'collection_scenario_id' => $request->collection_scenario_id,
             ]);
             return back()->with(['message' => __('created successfully')]);
@@ -35,16 +36,17 @@ class PredefinedCollectionScenariosActionController extends Controller
     {
         $request->validate([
             'action_name' => 'required|string|max:255',
-            'number_of_days' => 'required|numeric',
+            'action_date' => 'required|date',
             'action_type' => 'required|string',
         ]);
-        $collection = PredefinedCollectionScenariosAction::findOrFail($id);
+        $action = PredefinedCollectionScenariosAction::findOrFail($id);
         try {
-            $collection->update([
+            $action->update([
                 'action_name' => $request->action_name,
                 'action_type' => $request->action_type,
-                'number_of_days' => $request->number_of_days,
-                'collection_scenario_id' => $collection->collection_scenario_id,
+                'action_date' => $request->action_date,
+                'created_by'  => $request->created_by,
+                'collection_scenario_id' => $action->collection_scenario_id,
             ]);
             return back()->with(['message' => __('edited successfully')]);
         } catch (Exception $e) {

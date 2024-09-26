@@ -1,10 +1,13 @@
 <div class="position-fixed edit-action-div2-{{ $ActionScenario->id }} pop-up d-none w-75 pt-4 pe-4"
     style="position: fixed; top: 0; left: 50%; transform: translateX(-50%);z-index: 99999; height: 100vh;  width: 65% !important; overflow-y: scroll; overflow-x: hidden;">
-    <form id="myForm"  action="{{ route('pre-defined_collection_scenarios_actions.update', $ActionScenario->id) }}" method="POST">
+    <form id="myForm" action="{{ route('pre-defined_collection_scenarios_actions.update', $ActionScenario->id) }}"
+        method="POST">
         @csrf
-        @method("PATCH")
-        <input type="hidden" id="collection_scenario_id" name="collection_scenario_id" class="form-control"
-            style="width: 355px;" value="{{ $ActionScenario->id }}">
+        @method('PATCH')
+        <input type="hidden" id="collection_scenario_id" name="predefined_collection_scenario_id" class="form-control"
+            style="width: 355px;" value="{{ old('predefined_collection_scenario_id', $ActionScenario->predefined_collection_scenario_id) }}">
+        <input type="hidden" name="created_by" value='{{ old('created_by', $ActionScenario->created_by) }}'>
+        <input type="hidden" name='is_pre_defined' value='1'>
         <div class="bg-white m-auto p-4 shadow-sm position-relative" style="border-radius: 10px;">
             <span class="btn btn-secondary position-absolute" onclick="hideEditActionDiv2({{ $ActionScenario->id }})"
                 style="border-radius:50%;top: -20px;right: -20px;"><svg class="svg-inline--fa fa-xmark"
@@ -16,14 +19,12 @@
                 </svg><!-- <i class="fa-solid fa-close"></i> Font Awesome fontawesome.com --></span>
             <div>
                 <input type="hidden" id="action_id" name="action_id" value="{{ $ActionScenario->action_type }}" />
-                <input type="text" id="subject_t" name="subject_t" value="{{ $ActionScenario->mail_subject }}"
-                    style="display:none;">
-
+                <input type="text" id="subject_t" name="subject_t" value="{{ $ActionScenario->mail_subject }}" style="display:none;">
                 <div class="col-12">
                     <div class="input-group">
-                        <label for="inputname18"> Action name:</label>
+                        <label for="inputname18"> {{__("Action name")}}:</label>
                         <input type="text" name="action_name" class="form-control " id="inputname18"
-                            value="{{ $ActionScenario->action_name }}">
+                            value="{{ old('action_name', $ActionScenario->action_name) }}">
                         @error('action_name')
                             <div class="alert text-danger" style="font-weight: bold;">
                                 {{ $message }}</div>
@@ -36,7 +37,7 @@
 
                 <div class="col-12">
                     <div class="input-group">
-                        <label for="inputname20">No. Of Days Follow-Up Action <a href="#"><svg
+                        <label for="inputname20">{{__("No. Of Days Follow-Up Action")}} <a href="#"><svg
                                     class="svg-inline--fa fa-question bg-primary text-light p-1"
                                     style="border-radius: 50%;width: 18px;height: 22px;" aria-hidden="true"
                                     focusable="false" data-prefix="fas" data-icon="question" role="img"
@@ -45,7 +46,7 @@
                                         d="M204.3 32.01H96c-52.94 0-96 43.06-96 96c0 17.67 14.31 31.1 32 31.1s32-14.32 32-31.1c0-17.64 14.34-32 32-32h108.3C232.8 96.01 256 119.2 256 147.8c0 19.72-10.97 37.47-30.5 47.33L127.8 252.4C117.1 258.2 112 268.7 112 280v40c0 17.67 14.31 31.99 32 31.99s32-14.32 32-31.99V298.3L256 251.3c39.47-19.75 64-59.42 64-103.5C320 83.95 268.1 32.01 204.3 32.01zM144 400c-22.09 0-40 17.91-40 40s17.91 39.1 40 39.1s40-17.9 40-39.1S166.1 400 144 400z">
                                     </path>
                                 </svg><!-- <i class="fa-solid fa-question bg-primary text-light p-1" style="border-radius: 50%;width: 18px;height: 22px;"></i> Font Awesome fontawesome.com --></a>:</label>
-                        <select name="number_of_days" class="form-select" id="inputname19">
+                        {{-- <select name="number_of_days" class="form-select" id="inputname19">
                             <option value="" selected disabled>
                                 {{ __('select one') }}</option>
                             @foreach ($days as $day)
@@ -61,6 +62,12 @@
                             @endforeach
                         </select>
                         @error('number_of_days')
+                            <div class="alert text-danger" style="font-weight: bold;">
+                                {{ $message }}</div>
+                        @enderror --}}
+                        <input type="date" name="action_date" class="form-control " id="inputname18"
+                            placeholder="Action Date" value="{{ old('action_date', $ActionScenario->action_date) }}">
+                        @error('action_date')
                             <div class="alert text-danger" style="font-weight: bold;">
                                 {{ $message }}</div>
                         @enderror

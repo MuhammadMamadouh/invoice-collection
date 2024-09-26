@@ -12,7 +12,7 @@ class PredefinedCollectionScenarios extends Model
     protected $fillable = ['en_name'];
 
     public function scenarioActions(){
-        return $this->hasMany(PredefinedCollectionScenariosAction::class, 'collection_scenario_id');
+        return $this->hasMany(Action::class, 'predefined_collection_scenario_id');
     }
 }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CollectionScenarioRequest;
+use App\Models\Action;
 use App\Models\ActionsCollectionScenario;
 use App\Models\ActionType;
 use App\Models\CollectionScenario;
@@ -29,6 +30,8 @@ class CollectionScenarioController extends Controller
         return view('collection_scenarios.index', compact('collections', 'actionTypes', 'days', 'preCollections'));
     }
 
+
+
     public function store(Request $request)
     {
         $request->validate([
@@ -44,6 +47,8 @@ class CollectionScenarioController extends Controller
             return to_route('collection_scenarios.index')->with(['message' => $e->getMessage()]);
         }
     }
+
+
 
     public function update(Request $request, $id)
     {
@@ -92,11 +97,13 @@ class CollectionScenarioController extends Controller
                 'en_name' => $preDefinedCollection->en_name
             ]);
             foreach($preDefinedCollection->scenarioActions as $preDefinedAction){
-                ActionsCollectionScenario::create([
+                Action::create([
                     'collection_scenario_id' => $newCollection->id,
                     'action_name' => $preDefinedAction->action_name,
-                    'number_of_days' => $preDefinedAction->number_of_days,
+                    'action_date' => $preDefinedAction->action_date,
                     'action_type' => $preDefinedAction->action_type,
+                    'created_by'  => $request->created_by,
+                    'is_pre_defined' => $request->is_pre_defined ?? 0,
                 ]);
             }
             return to_route('collection_scenarios.index')->with(['message' => __('created successfully')]);

@@ -42,28 +42,43 @@ class Item extends Model
         'Due_date' => 'date',
         'Payment_date' => 'date',
     ];
+
+
     public function itemType()
     {
         return $this->belongsTo(ItemType::class);
     }
+
+
     public function currency()
     {
         return $this->belongsTo(Currency::class);
     }
 
+
+
     public function client()
     {
         return $this->belongsTo(Client::class,'company_id');
     }
+
+
+
     public function itemStatus()
     {
         return $this->belongsTo(ItemStatus::class, 'status_id');
     }
+
+
+
     public function is_overdue()
     {
         $is_overdue = now()->gt($this->due_date) ? true : false;
         return $is_overdue;
     } 
+
+
+
     public function overdue()
     {
         $over_due_days = now()->diffInDays($this->due_date, false) * -1;
@@ -71,13 +86,17 @@ class Item extends Model
         return $overdue;
     } 
 
+
+
     public function itemChangeStatus()
     {
         return $this->hasMany(ItemsChangeStatus::class, 'item_id');
     }
 
+
+
     public function itemTempActions()
     {
-        return $this->hasMany(TempAction::class, 'item_id');
+        return $this->hasMany(Action::class, 'item_id');
     }
 }

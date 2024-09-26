@@ -14,7 +14,7 @@ class CollectionScenario extends Model
     protected $fillable = ['en_name'];
 
     public function actionScenarios(){
-        return $this->hasMany(ActionsCollectionScenario::class, 'collection_scenario_id');
+        return $this->hasMany(Action::class, 'collection_scenario_id');
     }
 
     public function client(){

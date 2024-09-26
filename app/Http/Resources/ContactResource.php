@@ -29,7 +29,6 @@ class ContactResource extends JsonResource
             'client_id'                    => $this->client_id,
             'created_at'                   => $this->created_at,
             'updated_at'                   => $this->updated_at,
-
             'clientRole'                   => $this->clientRole ? ClientRoleResource::make($this->clientRole) : [],
         ];
     }

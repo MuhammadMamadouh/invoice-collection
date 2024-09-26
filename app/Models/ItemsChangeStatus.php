@@ -49,7 +49,7 @@ class ItemsChangeStatus extends Model
 
     public function tempActions()
     {
-        return $this->hasMany(TempAction::class, 'item_change_status_id');
+        return $this->hasMany(Action::class, 'item_change_status_id');
     }
 
     public function smsMessages()

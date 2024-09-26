@@ -76,7 +76,7 @@
                                         <li><a href="#"
                                                 onclick="showEditActionDiv2({{ $ActionScenario->id }})">{{ $ActionScenario->action_name }}</a>
                                         </li>
-                                        <span>{{ $ActionScenario->number_of_days }} day(s)
+                                        <span>{{ $ActionScenario->action_date }} day(s)
                                             {{-- <img src="img/france.png"alt=""> --}}
                                         </span>
                                     </ul>

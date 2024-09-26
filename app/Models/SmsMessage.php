@@ -11,8 +11,7 @@ class SmsMessage extends Model
     public $fillable = [
         'created_by',
         'message',
-        'automatic_action',
-        'automatic_action_to_be_confirmed',
+        'subject',
         'messageable_id',
         'messageable_type',
     ];

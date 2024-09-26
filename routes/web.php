@@ -88,8 +88,8 @@ Route::resource("/clients", ClientController::class);
 
 //-----------------CollectionScenarios--------------------------------
 Route::post('/collection_scenarios/add_pre-defined_collection', [CollectionScenarioController::class, 'addPreDefinedCollection'])->name('collection.add_pre_defined_collection');
-Route::post('/collection_scenarios/actions', [ActionsCollectionScenarioController::class, 'store'])->name('collection.storeAction');
-Route::post('/collection_scenarios/actions/{id}', [ActionsCollectionScenarioController::class, 'update'])->name('collection.update');
+Route::post('/collection_scenarios/actions', [ActionController::class, 'store'])->name('collection.storeAction');
+Route::post('/collection_scenarios/actions/{id}', [ActionController::class, 'update'])->name('collection.update');
 Route::post('/collection_scenarios/duplicate/{id}', [CollectionScenarioController::class, 'duplicateScenario'])->name('collection.duplicateScenario');
 Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
@@ -125,9 +125,9 @@ Route::patch("/pre-defined_collection_scenarios/update/{id}", [PredefinedCollect
 Route::delete("/pre-defined_collection_scenarios/destroy/{id}", [PredefinedCollectionScenariosController::class, 'destroy'])->name('pre-defined_collection_scenarios.destroy');
 
 //-----------------Pre-DefinedCollectionScenariosActions--------------------------------
-Route::post("/pre-defined_collection_scenarios_actions", [PredefinedCollectionScenariosActionController::class, 'store'])->name('pre-defined_collection_scenarios_actions.store');
-Route::patch("/pre-defined_collection_scenarios_actions/update/{id}", [PredefinedCollectionScenariosActionController::class, 'update'])->name('pre-defined_collection_scenarios_actions.update');
-Route::delete("/pre-defined_collection_scenarios_actions/destroy/{id}", [PredefinedCollectionScenariosActionController::class, 'destroy'])->name('pre-defined_collection_scenarios_actions.destroy');
+Route::post("/pre-defined_collection_scenarios_actions", [ActionController::class, 'store'])->name('pre-defined_collection_scenarios_actions.store');
+Route::patch("/pre-defined_collection_scenarios_actions/update/{id}", [ActionController::class, 'update'])->name('pre-defined_collection_scenarios_actions.update');
+Route::delete("/pre-defined_collection_scenarios_actions/destroy/{id}", [ActionController::class, 'destroy'])->name('pre-defined_collection_scenarios_actions.destroy');
 
 
 

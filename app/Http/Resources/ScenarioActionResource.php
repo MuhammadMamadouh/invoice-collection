@@ -15,11 +15,11 @@ class ScenarioActionResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'                        => $this->id,
-            'action_name'               => $this->action_name,
-            'number_of_days'            => $this->number_of_days,
-            'action_type'               =>  new ActionTypeResource($this->actionType),
-            'collection_scenario_id'    => $this->collection_scenario_id,
+            // 'id'                        => $this->id,
+            // 'action_name'               => $this->action_name,
+            // 'number_of_days'            => $this->number_of_days,
+            // 'action_type'               =>  new ActionTypeResource($this->actionType),
+            // 'collection_scenario_id'    => $this->collection_scenario_id,
         ];
     }
 }
