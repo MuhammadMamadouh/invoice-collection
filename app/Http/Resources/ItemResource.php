@@ -22,6 +22,7 @@ class ItemResource extends JsonResource
             'id'                        => $this->id,
             'item_type_id'              => $this->item_type_id,
             'company_id'                => $this->company_id,
+            'status_id'                 => $this->status_id,
             'trans_no'                  => $this->trans_no,
             'po_no'                     => $this->po_no,
             'file_no'                   => $this->file_no,
@@ -50,7 +51,8 @@ class ItemResource extends JsonResource
             'currency'                  => $this->currency,
             'itemChangeStatus'          => $this->itemChangeStatus ? ItemsChangeStatusResource::collection($this->itemChangeStatus) : [],
             'itemsFileCount'            => File::count(),
-            // 'itemFiles'                 => $this->itemFiles ? ItemsChangeStatusFilesResource::collection($this->itemFiles) : [], 
+            'files'                     => FilesResource::collection($this->itemChangeStatus->flatMap->files ),
+            'tempActions'               => ActionsResource::collection($this->itemTempActions),
         ];
     }
 }

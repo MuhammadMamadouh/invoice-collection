@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\ClientsGroup;
 use App\Services\TranslateService;
+use Exception;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Log;
 
 class ClientsGroupController extends Controller
 {
@@ -26,41 +27,46 @@ class ClientsGroupController extends Controller
         $data = $request->validate([
             'en_name' => 'required|string|max:255',
         ], $messages);
-        $groupClient = ClientsGroup::create($data);
-        $groupClient->clients()->sync($request->group_clients);
-
-        return redirect()->route('clients-group.index')->with('success', __('created successfully'));
+        try {
+            $groupClient = ClientsGroup::create($data);
+            $groupClient->clients()->sync($request->group_clients);
+            return redirect()->route('clients-group.index')->with('success', __('created successfully'));
+        } catch (Exception $e) {
+            Log::info($e->getMessage());
+            return redirect()->route('clients-group.index')->with('success', __('created failed'));
+        }
     }
 
     public function show($id)
-{
-    $clientsGroup = ClientsGroup::with(['clients:id,company_code,company_name'])->findOrFail($id);
-    return response()->json($clientsGroup);
-}
+    {
+        $clientsGroup = ClientsGroup::with(['clients:id,company_code,company_name'])->findOrFail($id);
+        return response()->json($clientsGroup);
+    }
 
 
-public function update(Request $request, $id)
-{
-    $group = ClientsGroup::findOrFail($id);
-    $group->en_name = $request->input('en_name');
-    $group->save();
-    $group->clients()->sync($request->group_clients);
-    return response()->json(['message' => __('edited successfully')]);
-}
+    public function update(Request $request, $id)
+    {
+        $group = ClientsGroup::findOrFail($id);
+        $group->update([
+            'en_name' => $request->en_name,
+        ]);
+        $group->save();
+        $group->clients()->sync($request->group_clients);
+        return to_route('clients-group.index')->with( ['message' => __('edited successfully')]);
+    }
 
 
 
     public function destroy($id)
     {
         ClientsGroup::findOrFail($id)->delete();
-        return to_route('clients-group')->with(['message' => __('deleted successfully')]);
-
+        return to_route('clients-group.index')->with(['message' => __('deleted successfully')]);
     }
 
     public function deleteAll(Request $request)
     {
         ClientsGroup::truncate();
-        return to_route('clients-group')->with(['message' => __('deleted successfully')]);
+        return to_route('clients-group.index')->with(['message' => __('deleted successfully')]);
     }
 
 

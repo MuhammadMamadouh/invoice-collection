@@ -1,5 +1,5 @@
 <div class="row mt-3 p-2 px-md-4 align-items-center text-center">
-    <div class="col-1" style="z-index: 999;">
+    <div class="col-1" style="z-index:10 !important;">
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" />
         </div>
@@ -55,10 +55,13 @@
     <div class="col-3 tavle-dropdown-icon"></div>
 </div>
 @forelse ($client->items as $item)
+{{-- -------------------------------------------invoice data-------------------------------------- --}}
+@include('clients.items_data', [$users])
+{{-- -------------------------------------------end invoice data-------------------------------------- --}}
     <div class="text-center mb-3 table-container-2 p-2 px-md-4  ">
         <div class="row align-items-center pt-3"
             style="{{ $item->overdue >= 0 ? 'background-color: #e6d3d3' : 'background-color: #d9edf7' }}">
-            <div class="col-1" style="z-index: 999;">
+            <div class="col-1" style="z-index:10 !important;">
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                 </div>
@@ -69,9 +72,6 @@
                             alt="">
                         {{ $item->trans_no ?? '-' }}</a>
                 </p>
-                {{-- -------------------------------------------invoice data-------------------------------------- --}}
-                @include('clients.items_data',[$users])
-                {{-- -------------------------------------------end invoice data-------------------------------------- --}}
             </div>
             <div class="col hide">
                 <p class="fw-bold">
@@ -110,7 +110,6 @@
                 <i class="fa-solid fa-chevron-down"></i>
             </div>
         </div>
-
     </div>
 @empty
     {{ __('No Data yet') }}

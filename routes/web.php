@@ -18,6 +18,8 @@ use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CreditValidationController;
 use App\Http\Controllers\InvoiceMailController;
 use App\Http\Controllers\ItemsChangeStatusController;
+use App\Http\Controllers\PredefinedCollectionScenariosActionController;
+use App\Http\Controllers\PredefinedCollectionScenariosController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\ScoreCriteriaController;
 use App\Http\Controllers\SettingCreditValidationController;
@@ -60,9 +62,8 @@ Route::get('migrate-refresh-seed', function () {
 });
 
 
-Route::get('/', function () {
-    return view('dashboard.index');
-});
+Route::view('/', 'dashboard.index');
+
 
 require __DIR__.'/auth.php';
 
@@ -76,7 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-
+Route::post('/users/{id}/regenerate-password', [UserController::class, 'regeneratePassword'])->name('users.regeneratePassword');
 Route::resource('users', UserController::class);
 
 
@@ -86,8 +87,9 @@ Route::resource("/clients", ClientController::class);
 
 
 //-----------------CollectionScenarios--------------------------------
-Route::post('/collection_scenarios/actions', [ActionsCollectionScenarioController::class, 'store'])->name('collection.storeAction');
-Route::post('/collection_scenarios/actions/{id}', [ActionsCollectionScenarioController::class, 'update'])->name('collection.update');
+Route::post('/collection_scenarios/add_pre-defined_collection', [CollectionScenarioController::class, 'addPreDefinedCollection'])->name('collection.add_pre_defined_collection');
+Route::post('/collection_scenarios/actions', [ActionController::class, 'store'])->name('collection.storeAction');
+Route::post('/collection_scenarios/actions/{id}', [ActionController::class, 'update'])->name('collection.update');
 Route::post('/collection_scenarios/duplicate/{id}', [CollectionScenarioController::class, 'duplicateScenario'])->name('collection.duplicateScenario');
 Route::resource("/collection_scenarios", CollectionScenarioController::class);
 
@@ -117,6 +119,15 @@ Route::post('/items_change_status', [ItemsChangeStatusController::class, 'store'
 Route::patch('/items_change_status/{id}', [ItemsChangeStatusController::class, 'update'])->name('items_change_status.update');
 
 
+//-----------------Pre-DefinedCollectionScenarios--------------------------------
+Route::post("/pre-defined_collection_scenarios", [PredefinedCollectionScenariosController::class, 'store'])->name('pre-defined_collection_scenarios.store');
+Route::patch("/pre-defined_collection_scenarios/update/{id}", [PredefinedCollectionScenariosController::class, 'update'])->name('pre-defined_collection_scenarios.update');
+Route::delete("/pre-defined_collection_scenarios/destroy/{id}", [PredefinedCollectionScenariosController::class, 'destroy'])->name('pre-defined_collection_scenarios.destroy');
+
+//-----------------Pre-DefinedCollectionScenariosActions--------------------------------
+Route::post("/pre-defined_collection_scenarios_actions", [ActionController::class, 'store'])->name('pre-defined_collection_scenarios_actions.store');
+Route::patch("/pre-defined_collection_scenarios_actions/update/{id}", [ActionController::class, 'update'])->name('pre-defined_collection_scenarios_actions.update');
+Route::delete("/pre-defined_collection_scenarios_actions/destroy/{id}", [ActionController::class, 'destroy'])->name('pre-defined_collection_scenarios_actions.destroy');
 
 
 
@@ -140,8 +151,10 @@ Route::resource('items', ItemsController::class);
 Route::get('item-status', [ItemStatusController::class,'showStatusItemsForm'])->name('item-status.index');
 Route::post('item-status', [ItemStatusController::class,'store'])->name('item-status.store');
 
-Route::resource('/clients-group', ClientsGroupController::class);
+
+// Route::patch('/clients-group/{id}', [ClientsGroupController::class, 'update'])->name('clients-group.update');
 Route::post('/clients-group/delete-all', [ClientsGroupController::class, 'deleteAll'])->name('clients-group.delete-all');
+Route::resource('/clients-group', ClientsGroupController::class);
 
 
 Route::get('switch-language/{locale}', [LanguageController::class, 'switchLanguage'])->name('switch.language');

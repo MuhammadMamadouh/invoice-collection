@@ -13,7 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
- 
+
 class CollectionController extends Controller
 {
     /**
@@ -22,19 +22,19 @@ class CollectionController extends Controller
     public function index()
     {
         $items = Item::with('client')->paginate(10);
-        $clients = Client::get(); 
-        $users = User::where('active',1)->with('role')->get();
+        $clients = Client::get();
+        $users = User::where('active', 1)->with('role')->get();
         $combined = $clients->merge($users);
-        return view('collection.index', compact('items','combined')); 
+        return view('collection.index', compact('items', 'combined'));
     }
     public function manualActions()
     {
         $items = Item::with('client')->paginate(10);
-        $clients = Client::get(); 
-        $users = User::where('active',1)->with('role')->get();
+        $clients = Client::get();
+        $users = User::where('active', 1)->with('role')->get();
         $combined = $clients->merge($users);
-        return view('collection.manual-actions', compact('items','combined'));  
+        return view('collection.manual-actions', compact('items', 'combined'));
     }
-   
-  
+
+
 }

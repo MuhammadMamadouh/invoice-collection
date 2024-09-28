@@ -71,11 +71,25 @@ function showCreateGroupDiv() {
 }
 function showEditGroupDiv() {
     document.querySelector(".edit-group-div").classList.remove("d-none");
-    document.querySelector(".overlay").classList.remove("d-none");
+    // document.querySelector(".overlay").classList.remove("d-none");
 }
 function hideCreateGroupDiv() {
     document.querySelector(".create-group-div").classList.add("d-none");
     document.querySelector(".edit-group-div").classList.add("d-none");
+    // document.querySelector(".overlay").classList.add("d-none");
+}
+
+function showCreateGroupDiv2() {
+    document.querySelector(".create-group-div2").classList.remove("d-none");
+    document.querySelector(".overlay").classList.remove("d-none");
+}
+function showEditGroupDiv2() {
+    document.querySelector(".edit-group-div2").classList.remove("d-none");
+    // document.querySelector(".overlay").classList.remove("d-none");
+}
+function hideCreateGroupDiv2() {
+    document.querySelector(".create-group-div2").classList.add("d-none");
+    document.querySelector(".edit-group-div2").classList.add("d-none");
     document.querySelector(".overlay").classList.add("d-none");
 }
 
@@ -94,6 +108,23 @@ function hideCreateAction(collectionId) {
     document.getElementById(`create-group-div-${collectionId}`).classList.add("d-none");
     document.getElementById(`edit-group-div-${collectionId}`).classList.add("d-none");
     document.querySelector(".overlay").classList.add("d-none");
+}
+
+// settings-manage-collection-scenario
+function showCreateAction2(collectionId) {
+    document.getElementById(`create-group-div2-${collectionId}`).classList.remove("d-none");
+    document.querySelector(".overlay").classList.remove("d-none");
+}
+
+function showEditGroupDiv2(collectionId) {
+    document.getElementById(`edit-group-div2-${collectionId}`).classList.remove("d-none");
+    // document.querySelector(".overlay").classList.remove("d-none");
+}
+
+function hideCreateAction2(collectionId) {
+    // document.getElementById(`create-group-div2-${collectionId}`).classList.add("d-none");
+    document.getElementById(`edit-group-div2-${collectionId}`).classList.add("d-none");
+    // document.querySelector(".overlay").classList.add("d-none");
 }
 
 

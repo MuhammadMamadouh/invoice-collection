@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('item_type_id');
             $table->bigInteger('company_id');
+            $table->bigInteger('status_id');
             $table->string('po_no');
             $table->string('file_no');
             $table->string('trans_no');

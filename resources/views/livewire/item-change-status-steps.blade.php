@@ -63,17 +63,18 @@
                             @enderror
                         </div>
                         <div class="d-flex">
-                            <p>{{ __('Associate files to items') }}</p>
+                            <p style="margin-left: 95px;">{{ __('Associate files to items') }}</p>
                             <a href="DSOInformation.html"><i class="fa-solid fa-question bg-primary text-light p-1 ms-1"
                                     style="border-radius: 50%;width: 15px;height: 18px;font-size: 12px !important;"></i></a>
                         </div>
                         <div class="addFileDiv-2">
-                            <div class="d-flex justify-content-between flex-wrap align-items-center mb-3">
+                            <div class="d-flex justify-content-around flex-wrap align-items-center mb-3">
                                 <input wire:model="file_name" type="file" id="upload-image-input2" multiple />
                                 @error('file_name')
                                     <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                                 @enderror
-                                <input wire:model="desc" type="text" class="form-control w-auto">
+                                <input wire:model="desc" type="text" class="form-control w-auto"
+                                    placeholder="Description...">
                                 @error('desc')
                                     <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
                                 @enderror
@@ -171,6 +172,7 @@
                 @if ($email_type == 1)
                     <div class="new-holab-1" id="hide-hoalp-1">
                         <div class="row mt-3">
+                            <!-- From Section -->
                             <div class="col-md-2">
                                 <h4>From :</h4>
                             </div><!--l-1-->
@@ -179,86 +181,109 @@
                                     class="text-primary">
                                     created_by name < mohamed@gmail.com>
                                 </a>
-                                <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-                                    <p> <input type="checkbox" wire:model="get_a_copy" class="form-check-input mx-2"
+                                <div class="d-flex flex-wrap my-2">
+                                    <p class="me-3">
+                                        <input type="checkbox" wire:model="get_a_copy" class="form-check-input mx-2"
                                             id="exampleChe">
                                         Get a copy of this email.
                                     </p>
-                                    <p> <input type="checkbox" wire:model="request_an_acknowledgment"
+                                    <p>
+                                        <input type="checkbox" wire:model="request_an_acknowledgment"
                                             class="form-check-input mx-2" id="exampleChe">
                                         Request an acknowledgment of receipt.
                                     </p>
                                 </div>
                             </div><!--r-1-->
-                            <div class="col-md-2 mt-2">
-                                <select class="form-select" wire:model='type_to' id="">
-                                    <option value="" selected>Select One</option>
-                                    @foreach ($typesTo as $typeTo)
-                                        <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div><!--l-2-->
-                            <div class="col-md-10 mt-2">
-                                <select class="form-select" wire:model='resolverData'>
-                                    <option value="{{ $resolver }}" selected>{{ $resolver }}</option>
-                                    @foreach ($resolvers as $resolverss)
-                                        <option value="{{ $resolverss->id }}">
-                                            {{ $resolverss->first_name }}{{ $resolverss->last_name }}
-                                            ({{ $resolverss->role->name }})
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
-                                            class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
-                                        another
-                                        recipient</a>
-                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
-                                            class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add an
-                                        external
-                                        recipient</a>
+
+                            <!-- Recipients Section -->
+                            @foreach ($recipients as $index => $recipient)
+                                <div class="row">
+                                    <!-- First column for type_to -->
+                                    <div class="col-md-2 mt-2">
+                                        <select class="form-select"
+                                            wire:model="recipients.{{ $index }}.type_to">
+                                            <option value="" selected>Select One</option>
+                                            @foreach ($typesTo as $typeTo)
+                                                <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div><!--l-2-->
+
+                                    <!-- Second column for resolver -->
+                                    <div class="col-md-10 mt-2">
+                                        <select class="form-select"
+                                            wire:model="recipients.{{ $index }}.resolverData">
+                                            <option value="" selected>Select Resolver</option>
+                                            @foreach ($resolvers as $resolver)
+                                                <option value="{{ $resolver->id }}">
+                                                    {{ $resolver->first_name }} {{ $resolver->last_name }}
+                                                    ({{ $resolver->role->name }})
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div><!--r-2-->
+                                </div><!--end-row-->
+                            @endforeach
+
+                            <!-- Add another recipient button -->
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"
+                                        wire:click.prevent="addRecipient">
+                                        <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
+                                        another recipient
+                                    </a>
                                 </div>
-                            </div><!--r-2-->
+                            </div>
+
+                            <!-- Subject Section -->
                             <div class="col-md-2 mt-2">
                                 <h4 for="">Subject :</h4>
                             </div><!--l-3-->
                             <div class="col-md-10 mt-2">
                                 <input type="text" class="form-control" wire:model="subject" id="">
                             </div><!--r-3-->
+
+                            <!-- Message Section -->
                             <div class="col-md-2 mt-2">
                                 <h4 class="mb-5">Message :</h4>
-                                <p style="color: rgb(172, 169, 169); text-align: center;"><i
-                                        class="fa-solid fa-hashtag hash mb-5"></i><br>
-                                    Lorem ipsum dolor sit amet.</p>
+                                <p style="color: rgb(172, 169, 169); text-align: center;">
+                                    <i class="fa-solid fa-hashtag hash mb-5"></i><br>
+                                    Lorem ipsum dolor sit amet.
+                                </p>
                             </div><!--l-4-->
                             <div class="col-md-10 mt-2">
-                                <div class="editor-container mb-1">
-                                    <textarea id="text_editor" class="form-control" wire:model.defer="editorContent"></textarea>
+                                <div class="editor-container">
+                                    <textarea id="editor" wire:model.defer="editorContent" class="form-control clear-2" contenteditable="true"></textarea>
                                 </div>
-                                <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
-                                        class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item</a>
+                                <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);">
+                                    <span class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item
+                                </a>
                             </div><!--r-4-->
-                            <div class="col-md-4 mt-2">
-                            </div><!--l-5-->
+
+                            <!-- Submit Buttons -->
+                            <div class="col-md-4 mt-2"></div><!--l-5-->
                             <div class="tw-btn-holab d-flex justify-content-end">
                                 <div class="col-md-8 mt-2">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
-                                                onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
-                                                {{ __('Email preview') }}</button>
+                                            <button type="button" class="btn btn-secondary w-100 mt-3"
+                                                id="hollabTwoShow" onclick="showHollabTwo()">
+                                                <i class="fa-solid fa-eye"></i> {{ __('Email preview') }}
+                                            </button>
                                         </div>
                                         <div class="col-lg-6">
-                                            <button type="submit" class="btn btn-success w-100 mt-3"><i
-                                                    class="fa-solid fa-check"></i> {{ __('Send the email') }} <i
-                                                    class="fa-solid fa-plus"></i>
-                                                {{ __('complete the action') }}</button>
+                                            <button type="submit" class="btn btn-success w-100 mt-3">
+                                                <i class="fa-solid fa-check"></i> {{ __('Send the email') }} <i
+                                                    class="fa-solid fa-plus"></i> {{ __('complete the action') }}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div><!--r-5-->
                         </div>
                     </div>
+
                 @endif
                 @if ($email_type == 2)
                     <div class="new-holab-1" id="hide-hoalp-1">
@@ -270,6 +295,7 @@
                             </p>
                         </div>
                         <div class="row mt-3">
+                            <!-- From Section -->
                             <div class="col-md-2">
                                 <h4>From :</h4>
                             </div><!--l-1-->
@@ -278,80 +304,102 @@
                                     class="text-primary">
                                     created_by name < mohamed@gmail.com>
                                 </a>
-                                <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-                                    <p> <input type="checkbox" wire:model="get_a_copy" class="form-check-input mx-2"
+                                <div class="d-flex flex-wrap my-2">
+                                    <p class="me-3">
+                                        <input type="checkbox" wire:model="get_a_copy" class="form-check-input mx-2"
                                             id="exampleChe">
                                         Get a copy of this email.
                                     </p>
-                                    <p> <input type="checkbox" wire:model="request_an_acknowledgment"
+                                    <p>
+                                        <input type="checkbox" wire:model="request_an_acknowledgment"
                                             class="form-check-input mx-2" id="exampleChe">
                                         Request an acknowledgment of receipt.
                                     </p>
                                 </div>
                             </div><!--r-1-->
-                            <div class="col-md-2 mt-2">
-                                <select class="form-select" wire:model='type_to' id="">
-                                    <option value="" selected>Select One</option>
-                                    @foreach ($typesTo as $typeTo)
-                                        <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div><!--l-2-->
-                            <div class="col-md-10 mt-2">
-                                <select class="form-select" wire:model='resolverData'>
-                                    <option value="{{ $resolver }}" selected>{{ $resolver }}</option>
-                                    @foreach ($resolvers as $resolverss)
-                                        <option value="{{ $resolverss->id }}">
-                                            {{ $resolverss->first_name }}{{ $resolverss->last_name }}
-                                            ({{ $resolverss->role->name }})
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <div style=" display: flex; flex-wrap: wrap;" class="my-2">
-                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
-                                            class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
-                                        another
-                                        recipient</a>
-                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"><span
-                                            class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add an
-                                        external
-                                        recipient</a>
+
+                            <!-- Recipients Section -->
+                            @foreach ($recipients as $index => $recipient)
+                                <div class="row">
+                                    <!-- First column for type_to -->
+                                    <div class="col-md-2 mt-2">
+                                        <select class="form-select"
+                                            wire:model="recipients.{{ $index }}.type_to">
+                                            <option value="" selected>Select One</option>
+                                            @foreach ($typesTo as $typeTo)
+                                                <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div><!--l-2-->
+
+                                    <!-- Second column for resolver -->
+                                    <div class="col-md-10 mt-2">
+                                        <select class="form-select"
+                                            wire:model="recipients.{{ $index }}.resolverData">
+                                            <option value="" selected>Select Resolver</option>
+                                            @foreach ($resolvers as $resolver)
+                                                <option value="{{ $resolver->id }}">
+                                                    {{ $resolver->first_name }} {{ $resolver->last_name }}
+                                                    ({{ $resolver->role->name }})
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div><!--r-2-->
+                                </div><!--end-row-->
+                            @endforeach
+
+                            <!-- Add another recipient button -->
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <a href="#" class="text-primary mx-3" style="text-decoration: none;"
+                                        wire:click.prevent="addRecipient">
+                                        <span class="mx-1"><i class="fa-solid fa-plus text-dark"></i></span>Add
+                                        another recipient
+                                    </a>
                                 </div>
-                            </div><!--r-2-->
+                            </div>
+
+                            <!-- Subject Section -->
                             <div class="col-md-2 mt-2">
                                 <h4 for="">Subject :</h4>
                             </div><!--l-3-->
                             <div class="col-md-10 mt-2">
                                 <input type="text" class="form-control" wire:model="subject" id="">
                             </div><!--r-3-->
+
+                            <!-- Message Section -->
                             <div class="col-md-2 mt-2">
                                 <h4 class="mb-5">Message :</h4>
-                                <p style="color: rgb(172, 169, 169); text-align: center;"><i
-                                        class="fa-solid fa-hashtag hash mb-5"></i><br>
-                                    Lorem ipsum dolor sit amet.</p>
+                                <p style="color: rgb(172, 169, 169); text-align: center;">
+                                    <i class="fa-solid fa-hashtag hash mb-5"></i><br>
+                                    Lorem ipsum dolor sit amet.
+                                </p>
                             </div><!--l-4-->
                             <div class="col-md-10 mt-2">
-                                <div class="editor-container mb-1">
-                                    <textarea id="text_editor" class="form-control" wire:model.defer="editorContent"></textarea>
+                                <div class="editor-container">
+                                    <textarea id="editor" wire:model.defer="editorContent" class="form-control clear-2" contenteditable="true"></textarea>
                                 </div>
-                                <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);"><span
-                                        class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item</a>
+                                <a href="#" style="text-decoration: none; color: rgb(155, 152, 152);">
+                                    <span class="mx-1"><i class="fa-solid fa-plus"></i></span>Add an item
+                                </a>
                             </div><!--r-4-->
-                            <div class="col-md-4 mt-2">
-                            </div><!--l-5-->
+
+                            <!-- Submit Buttons -->
+                            <div class="col-md-4 mt-2"></div><!--l-5-->
                             <div class="tw-btn-holab d-flex justify-content-end">
                                 <div class="col-md-8 mt-2">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
-                                                onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
-                                                {{ __('Email preview') }}</button>
+                                            <button type="button" class="btn btn-secondary w-100 mt-3"
+                                                id="hollabTwoShow" onclick="showHollabTwo()">
+                                                <i class="fa-solid fa-eye"></i> {{ __('Email preview') }}
+                                            </button>
                                         </div>
                                         <div class="col-lg-6">
-                                            <button type="submit" class="btn btn-success w-100 mt-3"><i
-                                                    class="fa-solid fa-check"></i> {{ __('Send the email') }} <i
-                                                    class="fa-solid fa-plus"></i>
-                                                {{ __('complete the action') }}</button>
+                                            <button type="submit" class="btn btn-success w-100 mt-3">
+                                                <i class="fa-solid fa-check"></i> {{ __('Send the email') }} <i
+                                                    class="fa-solid fa-plus"></i> {{ __('complete the action') }}
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -401,7 +449,7 @@
                     @php($firstDueItem = $client->firstDueItem)
                     <div class="col fw-bold">{{ $firstDueItem->due_date ?? '-' }}</div>
                     <div class="col fw-bold">
-                        <div class="btn openModalBtn btn-primary">{{-- $firstDueItem->toTakeAction->action_type ?? 'email' --}}</div>
+                        <div class="btn openModalBtn btn-secondary">{{-- $firstDueItem->toTakeAction->action_type ?? 'email' --}}E-mail</div>
                     </div>
                     <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' --}}
                         {{-- optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
@@ -410,8 +458,8 @@
             </div>
             <div class="px-5 mt-3">
                 <input type="radio" id="create_a_specific_action" name="actionType"
-                    wire:model.live="selectedAction"
-                    value="create_a_specific_action"> {{ __('Create a specific action for selected items') }}</label>
+                    wire:model.live="selectedAction" value="create_a_specific_action">
+                {{ __('Create a specific action for selected items') }}</label>
                 @if ($selectedAction === 'create_a_specific_action')
                     <div class=" my-2">
                         <div class="d-flex">
@@ -430,7 +478,7 @@
                                 <label for="inputname222">{{ __('Action date') }} :</label>
                             </div>
                             <div class="input-group">
-                                <input type='date' wire:model="action_date" class="form-select" id="inputname19"> 
+                                <input type='date' wire:model="action_date" class="form-select" id="inputname19">
                             </div>
                         </div>
                     </div><!--2-->
@@ -469,7 +517,7 @@
                                 </div><!--l-4-->
                                 <div class="col-md-10 mt-2">
                                     <div class="editor-container mb-1">
-                                        <textarea id="text_editor" class="form-control" wire:model.defer="editorContent"></textarea>
+                                        <textarea id="editor" class="form-control" wire:model.lazy="editorContent"></textarea>
                                     </div>
                                     <div style=" display: flex; flex-wrap: wrap;" class="my-2">
                                         <p> <input type="checkbox" wire:model.live='automatic_action'
@@ -498,8 +546,9 @@
                                     <div class="col-md-8 mt-2">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
-                                                    onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
+                                                <button type="button" class="btn btn-secondary w-100 mt-3"
+                                                    id="hollabTwoShow" onclick="showHollabTwo()"><i
+                                                        class="fa-solid fa-eye"></i>
                                                     {{ __('Email preview') }}</button>
                                             </div>
                                         </div>
@@ -542,8 +591,9 @@
                                     <div class="col-md-8 mt-2">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <button class="btn btn-primary w-100 mt-3" id="hollabTwoShow"
-                                                    onclick="showHollabTwo()"><i class="fa-solid fa-eye"></i>
+                                                <button type="button" class="btn btn-secondary w-100 mt-3"
+                                                    id="hollabTwoShow" onclick="showHollabTwo()"><i
+                                                        class="fa-solid fa-eye"></i>
                                                     {{ __('SMS preview') }}</button>
                                             </div>
                                         </div>
@@ -562,7 +612,7 @@
             @endif
             @if ($currentStep < $totalSteps)
                 <button type="button" wire:click='incrementSteps'
-                    class="btn btn-primary px-5 mx-5">{{ __('Next') }} <i
+                    class="btn btn-secondary px-5 mx-5">{{ __('Next') }} <i
                         class="fa-solid fa-chevron-right ps-2"></i></button>
             @endif
             @if ($currentStep === $totalSteps)
@@ -571,21 +621,31 @@
             @endif
         </div>
     </form>
-    <script>
-        document.addEventListener('livewire:load', function() {
+    {{-- <script>
+        document.addEventListener('livewire:load', () => {
             ClassicEditor
                 .create(document.querySelector('#text_editor'))
                 .then(editor => {
+                    // Sync CKEditor data to Livewire's content property
                     editor.model.document.on('change:data', () => {
                         @this.set('editorContent', editor.getData());
                     });
+                    // Set the initial CKEditor content from Livewire
+                    editor.setData(@this.get('editorContent'));
                 })
                 .catch(error => {
                     console.error(error);
                 });
-            Livewire.on('resetEditor', () => {
-                document.querySelector('#text_editor').value = '';
-            });
         });
-    </script>
+    </script> --}}
+    {{-- <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script> --}}
 </div>

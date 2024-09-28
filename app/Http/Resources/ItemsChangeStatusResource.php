@@ -23,8 +23,10 @@ class ItemsChangeStatusResource extends JsonResource
             'created_by' => $this->created_by,
             'comments' => $this->comments,
             'create_at' => $this->create_at,
+            'follow_the_collection_scenario' => $this->follow_the_collection_scenario, 
+            'create_a_specific_action' => $this->create_a_specific_action,
             'statusResolver' => $this->statusResolver,
-            'statusFiles' => $this->statusFiles ? FilesResource::collection($this->files) : [],
+            'statusFiles' => $this->statusFiles ? FilesResource::collection($this->files) : [], 
         ];
     }
 }

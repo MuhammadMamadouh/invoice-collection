@@ -2,7 +2,6 @@
 @section('content')
 <div class="invoice" >
     <div class="bg-light invoice-first-{{$item->id}}">
-
         <div class="p-3 text-center"
             style="{{ $item->overdue >= 0 ? 'background-color: #e6d3d3' : 'background-color: #0dcaf0' }}">
             {{$item->order_date >= 0 ? __("Overdue") : __("Not due")}}</div>

@@ -5,8 +5,8 @@
             </div>
             <div class="d-flex justify-content-end gap-3 mt-2">
                 <div class="icon-holab  ">
-                    <a href="invoice-2.html" target="_blank"><i
-                            class="fa-solid fa-maximize text-primary p-2 bg-light"style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i></a>
+                    <a href="#" target="_blank"><i
+                            class="fa-solid fa-maximize text-secondary p-2 bg-light"style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i></a>
                     <i class="fa-solid fa-close text-light p-2 bg-danger" onclick="closeInvoice2({{ $item->id }})"
                         style="  font-size: 15px; cursor: pointer; border-radius: 5px;"></i>
                 </div>

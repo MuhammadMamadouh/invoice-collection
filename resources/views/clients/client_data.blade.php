@@ -21,9 +21,9 @@
         </div>
         <div class="d-flex align-items-center justify-content-between">
             <p class="fw-bold">{{ __('Group') }}:</p>
-            {{-- @foreach ($client->clientsGroups as $group)
+            @foreach ($client->clientGroup as $group)
                 <p class=""><a href="">{{ $group->en_name }}</a></p>
-            @endforeach --}}
+            @endforeach
         </div>
         <div class="d-flex align-items-center justify-content-between">
             <p class="fw-bold">{{ __('Collector') }}:</p>
@@ -85,39 +85,5 @@
                 {{ $client->interactive_emails == 1 ? 'Yes' : 'No' }}</p>
         </div>
     </div>
-    <div class="col-lg-4 text-start">
-        <div class="d-flex align-items-center justify-content-between">
-            <select class="form-select m-auto w-50" aria-label="Default select example">
-                <option selected disabled>Contact:</option>
-                @foreach ($client->contacts as $contact)
-                    <option value="{{ $contact->id }}">{{ $contact->first_name }} / {{ $contact->last_name }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
-
-        @foreach ($client->contacts as $contact)
-            <div class="d-flex align-items-center justify-content-between">
-                <p class="fw-bold">Role:</p>
-                <p class="">{{ $contact->clientRole->name ?? 'a' }}</p>
-            </div>
-            <div class="d-flex align-items-center justify-content-between">
-                <p class="fw-bold">Last name:</p>
-                <p class="">{{ $contact->last_name ?? 'a' }}</p>
-            </div>
-            <div class="d-flex align-items-center justify-content-center">
-                @<a href="">{{ $contact->email ?? 'a' }}</a>
-            </div>
-            <div class="d-flex align-items-center justify-content-center">
-                <i class="fa-solid fa-phone"></i> &nbsp; &nbsp;
-                <a href=""> {{ $contact->phone ?? 'a' }}</a> &nbsp;
-                (Phone)
-            </div>
-            <div class="d-flex align-items-center justify-content-center">
-                @if ($contact->contact_for_collection == 1)
-                    <i class="fa-solid fa-star"></i> &nbsp; {{ __('Contact for collection') }}
-                @endif
-            </div>
-        @endforeach
-    </div>
+    <livewire:ShowContacts :client="$client">
 </div>

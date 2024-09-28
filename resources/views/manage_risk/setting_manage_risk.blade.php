@@ -131,7 +131,7 @@
                 </div><!--row-->
             </div><!--container-->
             <div class="container text-center my-5 ">
-                <button class="btn btn-primary my-1 btn-add-i"><i
+                <button class="btn btn-secondary my-1 btn-add-i"><i
                         class="fa-solid fa-check "></i>{{ __('Submit') }}</button>
             </div>
         </form>

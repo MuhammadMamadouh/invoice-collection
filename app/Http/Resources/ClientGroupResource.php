@@ -17,7 +17,6 @@ class ClientGroupResource extends JsonResource
         return [
             'id'        => $this->id,
             'en_name'   => $this->en_name,
-
         ];
     }
 }

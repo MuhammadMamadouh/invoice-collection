@@ -4,32 +4,33 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="{{ route('clients.index') }}" class="m-1 w-100 btn btn-primary p-3">
+                    <a href="{{ route('clients.index') }}" class="m-1 w-100 btn btn-secondary p-3">
                         <i class="fa-solid fa-earth-asia"></i> &ensp; {{ __('All clients') }} &ensp;
-                        <span class="badge bg-white text-primary">{{ $client_count }}</span>
+                        <span class="badge bg-white text-secondary">{{ $client_count }}</span>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="#" class="m-1 w-100 btn btn-outline-primary text-secondary p-3" id="actionButton">
+                    <a href="#" class="m-1 w-100 btn btn-outline-secondary text-dark p-3 text-secondary"
+                        id="actionButton">
                         <i class="fa-solid fa-building text-primary"></i> &ensp; {{ __('My clients') }} &ensp;
-                        <span class="badge bg-primary">4</span>
+                        <span class="badge bg-white text-secondary">4</span>
                     </a>
                 </div>
-                <a href="searchForAClient.html" class="col-lg-3 col-md-4 col-sm-6">
+                <a href="#" class="col-lg-3 col-md-4 col-sm-6">
                     <div class="m-1 w-100 btn btn-light text-secondary p-3">
                         <i class="fa-solid fa-magnifying-glass"></i> &ensp; {{ __('Search for client') }}
                     </div>
                 </a>
             </div>
-            <hr />
+            <hr/>
             <div>
                 <form class="row mt-1">
                     <div class="form-group col-md-4 col-sm-6">
                         <select class="form-select m-2" onfocus="this.size=9;" onblur="this.size=1;"
                             onchange="this.size=1; this.blur();" aria-label=" Default select example">
-                            <option value="" selected disabled>{{__('Clients Group')}} :</option>
+                            <option value="" selected disabled>{{ __('Clients Group') }} :</option>
                             @foreach ($clientGroups as $client_group)
-                                <option value="{{$client_group->id}}">{{$client_group->en_name}}</option>
+                                <option value="{{ $client_group->id }}">{{ $client_group->en_name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -44,7 +45,7 @@
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
                         <select name='collector_id' class="form-select m-2" aria-label="Default select example">
-                            <option selected disabled>{{__('collectors')}}</option>
+                            <option selected disabled>{{ __('collectors') }}</option>
                             @foreach ($collectors as $collector)
                                 <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
                             @endforeach
@@ -52,9 +53,10 @@
                     </div>
                     <div class="form-group col-md-4 col-sm-6">
                         <select class="form-select m-2" aria-label="Default select example">
-                            <option selected disabled>{{__('Associated With Client')}} :</option>
-                            @foreach ( $users as $user)
-                            <option value="1">{{$user->first_name . ' ' . $user->last_name}}(Sales Manager)</option>
+                            <option selected disabled>{{ __('Associated With Client') }} :</option>
+                            @foreach ($users as $user)
+                                <option value="1">{{ $user->first_name . ' ' . $user->last_name }}(Sales Manager)
+                                </option>
                             @endforeach
                         </select>
                     </div>
@@ -63,7 +65,6 @@
                             <option value="0" selected disabled>Country :</option>
                             <option value="1">Afghanistan</option>
                             <option value="2">Albania</option>
-
                             <option value="243">Zimbabwe</option>
                         </select>
                     </div>
@@ -104,7 +105,7 @@
                             {{ __('Edit') }}</a>
                     </div>
                     <div class="row mt-2 align-items-center px-4 text-center">
-                        <div class="col-1 col-md-1">
+                        <div class="col-1 col-md-1" style="z-index: 10 !important;">
                             <div class="form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                             </div>
@@ -130,7 +131,16 @@
                         <div class="col-3 hide">
                             <div class="d-flex align-items-center justify-content-center gap-1 ">
                                 <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                <p class="fw-bold">{{ __('Collection scenario') }}</p>
+                                <p class="onmouse-3 fw-bold">{{ __('Collection scenario') }}</p>
+                                {{-- <span class="conttt-3">
+                                    payment profile < payeur correct / 
+                                    <br>
+                                        average payeur > 
+                                    <br>
+                                        average days beyond
+                                    <br>
+                                        items +28days (< 10days) 
+                                </span> --}}
                             </div>
                         </div>
                         <div class="col-2 hide">
@@ -163,7 +173,7 @@
                         @forelse($clientResource as $key => $client)
                             <div class="row align-items-center pt-3"
                                 style="background-color: {{ $key % 2 == 0 ? '#006bff14' : '#ffffff' }}">
-                                <div class="col-1">
+                                <div class="col-1" style="z-index: 10 !important;">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                                     </div>
@@ -182,7 +192,6 @@
                                     <p class="fw-bold"><a href="#"
                                             onclick="showHolap({{ $client->id }})">{{ $client->company_name }}</a></p>
                                 </div>
-
                                 <div class="col-md-3 hide">
                                     <div class=" w-100 mb-3">
                                         <select class="form-select" id="inputname19">
@@ -203,13 +212,13 @@
                                     @endforelse
                                 </div>
                                 <div class="col-1 hide">
-                                    <p class="fw-bold">{{$client->total_recievables}}</p>
+                                    <p class="fw-bold">{{ $client->total_recievables }}</p>
                                 </div>
                                 <div class="col-1 hide">
-                                    <p class="fw-bold">{{$client->total_overdue}}</p>
+                                    <p class="fw-bold">{{ $client->total_overdue }}</p>
                                 </div>
                                 <div class="col-1 hide">
-                                    <p class="fw-bold">{{$client->total_overdue_60}}</p>
+                                    <p class="fw-bold">{{ $client->total_overdue_60 }}</p>
                                 </div>
                                 <div class="col-3 mb-3 tavle-dropdown-icon" onclick="toggleFunction(this)">
                                     <i class="fa-solid fa-chevron-down"></i>
@@ -252,26 +261,25 @@
                                 </div> --}}
                             </div>
                             <div class="arrow-bottom"></div>
-
                             <div id="company-details-{{ $client->id }}">
-                                <div class="company-details d-none" id="company-detail-{{ $client->id }}"style="overflow-x: hidden;">
+                                <div class="company-details d-none"
+                                    id="company-detail-{{ $client->id }}"style="overflow-x: hidden;">
                                     @include('clients.client_data_model')
                                 </div>
                                 <div class="row px-4 align-items-center m-0" style="background-color: white;">
                                     <div class="col-lg-4 col-sm-6 col-12 mb-2">
                                         <div class="btn text-light btn-secondary px-2" onclick="showInvioce2()">
                                             <i
-                                                class="fa-solid fa-pen-to-square"></i>&ensp;{{ __("Change status >Add
-                                                                                            comment >Set next action") }}
+                                                class="fa-solid fa-pen-to-square"></i>&ensp;{{ __('Change status >Add comment >Set next action') }}
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-3 col-6 mb-2">
-                                        <div class="btn text-light btn-primary px-2" onclick="associateFiles()">
+                                        <div class="btn text-light btn-secondary px-2" onclick="associateFiles()">
                                             <i class="fa-solid fa-link"></i>&ensp;{{ __('Associate File') }}
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-sm-3 col-6 mb-2" onclick="payViaDirectLink()">
-                                        <div class="btn text-light btn-primary px-2">
+                                        <div class="btn text-light btn-secondary px-2">
                                             {{ __('Pay via direct link') }}
                                         </div>
                                     </div>
@@ -295,7 +303,7 @@
                                             <div class="">
                                                 <div class="btn-group">
                                                     <button type="button" class="btn text-light"><span><i
-                                                                class="fa-solid fa-download"></i>&ensp;</span>{{ __("Export this data to excel") }}</button>
+                                                                class="fa-solid fa-download"></i>&ensp;</span>{{ __('Export this data to excel') }}</button>
                                                     <button type="button"
                                                         class="button-2 text-light btn dropdown-toggle dropdown-toggle-split"
                                                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -370,9 +378,7 @@
                                                         </select>
                                                         </li>
                                                         <li class="mt-3 "><button type="button" class="btn"
-                                                                style="width: 100%;"><span><i
-                                                                        class="fa-solid
-                                                                                fa-download"></i>&ensp;</span>{{ __('download') }}</button>
+                                                                style="width: 100%;"><span><i class="fa-solid fa-download"></i>&ensp;</span>{{ __('download') }}</button>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -381,7 +387,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="sec-1 pb-5 bg-white text-capitalize d-none " id="riskDiv">
                                 <div class="container">
                                     <div class="row">
@@ -477,7 +482,6 @@
                                                     </p>
                                                 </div>
                                             </div>
-
                                             <div class="add-itemes mt-3 mb-3">
                                                 <div class="container">
                                                     <div class="col-12">
@@ -553,7 +557,6 @@
                                                             <p class="fw-bold">Total collectable
                                                                 May 2024</p>
                                                         </div>
-
                                                     </div>
                                                     <div class="col hide">
                                                         <div
@@ -562,7 +565,6 @@
                                                             <p class="fw-bold">Remains to collect
                                                                 May 2024</p>
                                                         </div>
-
                                                     </div>
                                                     <div class="col hide">
                                                         <div
@@ -571,7 +573,6 @@
                                                             <p class="fw-bold">Collection efficiency
                                                                 May 2024</p>
                                                         </div>
-
                                                     </div>
                                                     <div class="col hide">
                                                         <div
@@ -579,7 +580,6 @@
                                                             <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
                                                             <p class="fw-bold">Total receivable</p>
                                                         </div>
-
                                                     </div>
                                                     <div class="col hide">
                                                         <div
@@ -588,7 +588,6 @@
                                                             <p class="fw-bold">Overdue
                                                             </p>
                                                         </div>
-
                                                     </div>
                                                     <div class="col hide">
                                                         <div
@@ -597,7 +596,6 @@
                                                             <p class="fw-bold">Current month
                                                                 May 2024</p>
                                                         </div>
-
                                                     </div>
                                                     <div class="col hide">
                                                         <div
@@ -606,7 +604,6 @@
                                                             <p class="fw-bold">Month M+1
                                                                 June 2024</p>
                                                         </div>
-
                                                     </div>
                                                     <div class="col hide">
                                                         <div
@@ -615,7 +612,6 @@
                                                             <p class="fw-bold">Month M+2
                                                                 July 2024</p>
                                                         </div>
-
                                                     </div>
                                                     <div class="col hide">
                                                         <div
@@ -624,7 +620,6 @@
                                                             <p class="fw-bold">Month M+3
                                                                 August 2024</p>
                                                         </div>
-
                                                     </div>
                                                     <div class="col hide">
                                                         <div
@@ -633,11 +628,9 @@
                                                             <p class="fw-bold">Month M>3
                                                             </p>
                                                         </div>
-
                                                     </div>
                                                     <div class="col col-1 tavle-dropdown-icon"></div>
                                                 </div>
-
                                                 <div class="pt-1">
                                                     <div class="row pt-3 px-4 align-items-center text-center"
                                                         style="background-color:#006BFF14;">
@@ -713,7 +706,6 @@
                                                                     June 2024:</p>
                                                                 <p class="fw-bold">14.8 k€ </p>
                                                             </div>
-
                                                             <div class="d-flex">
                                                                 <p class="fw-bold">Month M+2
                                                                     July 2024:</p>
@@ -729,10 +721,8 @@
                                                                 </p>
                                                                 <p class="fw-bold">-</p>
                                                             </div>
-
                                                         </div>
                                                     </div>
-
                                                     <div class="row pt-3 px-4 align-items-center text-center">
                                                         <div class="col-6 col-md-2">
                                                             <p class="fw-bold">Unallocated payments</p>
@@ -767,7 +757,6 @@
                                                         <div class="col hide">
                                                             <p class="fw-bold">-</p>
                                                         </div>
-
                                                         <div class="col-6 tavle-dropdown-icon mb-3"
                                                             onclick="toggleFunction(this)">
                                                             <i class="fa-solid fa-chevron-down"></i>
@@ -807,7 +796,6 @@
                                                                     June 2024:</p>
                                                                 <p class="fw-bold">-</p>
                                                             </div>
-
                                                             <div class="d-flex">
                                                                 <p class="fw-bold">Month M+2
                                                                     July 2024:</p>
@@ -825,7 +813,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="row pt-3 px-4 align-items-center text-center"
                                                         style="background-color:#006BFF14;">
                                                         <div class="col-6 col-md-2">
@@ -861,7 +848,6 @@
                                                         <div class="col hide">
                                                             <p class="fw-bold">-</p>
                                                         </div>
-
                                                         <div class="col-6 tavle-dropdown-icon mb-3"
                                                             onclick="toggleFunction(this)">
                                                             <i class="fa-solid fa-chevron-down"></i>
@@ -901,7 +887,6 @@
                                                                     June 2024:</p>
                                                                 <p class="fw-bold">-</p>
                                                             </div>
-
                                                             <div class="d-flex">
                                                                 <p class="fw-bold">Month M+2
                                                                     July 2024:</p>
@@ -919,8 +904,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                     <div class="row pt-3 px-4 align-items-center text-center">
                                                         <div class="col-6 col-md-2">
                                                             <p class="fw-bold">Order backlog
@@ -956,7 +939,6 @@
                                                         <div class="col hide">
                                                             <p class="fw-bold">-</p>
                                                         </div>
-
                                                         <div class="col-6 tavle-dropdown-icon mb-3"
                                                             onclick="toggleFunction(this)">
                                                             <i class="fa-solid fa-chevron-down"></i>
@@ -996,7 +978,6 @@
                                                                     June 2024:</p>
                                                                 <p class="fw-bold">-</p>
                                                             </div>
-
                                                             <div class="d-flex">
                                                                 <p class="fw-bold">Month M+2
                                                                     July 2024:</p>
@@ -1014,7 +995,6 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                     <div class="row pt-3 px-4 align-items-center text-center"
                                                         style="background-color:#006BFF14;">
                                                         <div class="col-6 col-md-2">
@@ -1089,7 +1069,6 @@
                                                                     June 2024:</p>
                                                                 <p class="fw-bold">14.8 k€ </p>
                                                             </div>
-
                                                             <div class="d-flex">
                                                                 <p class="fw-bold">Month M+2
                                                                     July 2024:</p>
@@ -1105,10 +1084,8 @@
                                                                 </p>
                                                                 <p class="fw-bold">-</p>
                                                             </div>
-
                                                         </div>
                                                     </div>
-
                                                     <div class="row pt-3 px-4 align-items-center text-center">
                                                         <div class="col-6 col-md-2">
                                                             <p class="fw-bold">Promise to pay
@@ -1144,7 +1121,6 @@
                                                         <div class="col hide">
                                                             <p class="fw-bold">-</p>
                                                         </div>
-
                                                         <div class="col-6 tavle-dropdown-icon mb-3"
                                                             onclick="toggleFunction(this)">
                                                             <i class="fa-solid fa-chevron-down"></i>
@@ -1184,7 +1160,6 @@
                                                                     June 2024:</p>
                                                                 <p class="fw-bold">-</p>
                                                             </div>
-
                                                             <div class="d-flex">
                                                                 <p class="fw-bold">Month M+2
                                                                     July 2024:</p>
@@ -1202,14 +1177,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
-
                                                 </div>
                                             </div>
                                         </div>
-
-
-
                                         <div class="new-score mt-3 mb-3 container">
                                             <h6>Credit notation:</h6>
                                             <button id="score-button"><span><i class="fa-solid fa-plus"></i></span>new
@@ -1481,7 +1451,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="credit-limit-btn mt-3 ">
                                             <h5 class="text-capitalize mt-2 mb-2">credit limit</h5>
                                             <button id="score-button-2"><span><i class="fa-solid fa-plus"></i></span>new
@@ -1719,7 +1688,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="d-none" id="indicatorsDiv">
                                 <div class="sec-2 bg-white">
                                     <div class="container">
@@ -1749,8 +1717,7 @@
                                                     <span>+7d. <i class="fa-solid fa-flag"
                                                             style="color: green;"></i></span>
                                                     <span class="text-black-50"><i class="fa-solid fa-flag"></i></span>
-                                                    <span class=" text-black-50 "><i
-                                                            class="fa-solid fa-flag"></i></span>
+                                                    <span class=" text-black-50 "><i class="fa-solid fa-flag"></i></span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6" style="height:300px ;">
@@ -1837,670 +1804,96 @@
                             </div>
                             <!--sec-2-->
                             <!--sec-3-->
-                            <div class="three-button-collections pb-5 bg-white d-none" id="historyDiv">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-
-                                            <div
-                                                class="three-button align-items-center gap-2 mt-3 d-flex text-center justify-content-around">
-                                                <div class="btn btn-primary w-100" id="show-table-one"
-                                                    onclick="fun1()">
-                                                    collection
-                                                    history</div>
-                                                <div class="btn btn-outline-primary w-100" id="show-table-one-2"
-                                                    onclick="fun2()">
-                                                    Actions history (Risk)</div>
-                                                <div class="btn btn-outline-primary w-100" id="show-history"
-                                                    onclick="fun3()">
-                                                    Items
-                                                    history</div>
-
-                                            </div>
-                                            <div class="search mt-3 mb-3 justify-content-end d-flex">
-                                                <form action="">
-                                                    <div class="form-group col-12">
-
-                                                        <input type="text" class="form-control"
-                                                            id="formGroupExampleInput"
-                                                            placeholder="Multi-columns search">
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                        <div class="collection-table ">
-                                            <div class="container">
-                                                <div class="row mt-3 px-4 align-items-center text-center">
-                                                    <div class="col ">
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-center gap-1 ">
-                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                            <p class="fw-bold">Action date</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col ">
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-center gap-1 ">
-                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                            <p class="fw-bold">Action type</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-center gap-1 ">
-                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                            <p class="fw-bold">trans no.</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-center gap-1 ">
-                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                            <p class="fw-bold">action amount inc. tax</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <div
-                                                            class="d-flex align-items-center justify-content-center gap-1 ">
-                                                            <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                            <p class="fw-bold">action done by</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col  tavle-dropdown-icon"></div>
-                                                </div>
-                                                <div>
-                                                    <div class="row pt-3 px-4 align-items-center text-center"
-                                                        style="background-color:#006BFF14;">
-                                                        <div class="col">
-                                                            <p class="fw-bold">2024-05-08 15:55</p>
-                                                        </div>
-                                                        <div class="col ">
-                                                            <p class="fw-bold"><i class="fa-solid fa-phone"
-                                                                    style="font-size: 10px; margin-right: 5px;"></i>phone
-                                                            </p>
-                                                            <p class="fw-bold">Telephone reminder No. 1</p>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                310636, ... [8]</p>
-
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <p class="fw-bold">24,775.96 €</p>
-                                                        </div>
-                                                        <div class="col hide">
-
-                                                            <div class="img-s-2 d-flex">
-                                                                <img src="img/person2.jpg" class="img-fluid"
-                                                                    style="width: 30px; height: 30px; border-radius: 50%;"
-                                                                    alt=""><span> Paul Mayer
-                                                                    (Administrator)</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col tavle-dropdown-icon mb-3"
-                                                            onclick="toggleFunction(this)"><i
-                                                                class="fa-solid fa-chevron-down"></i></div>
-                                                        <div class="hidden d-none bg-light">
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">trans no:</p>
-                                                                <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                    310636, ... [8]</p>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">action amount inc. tax:</p>
-                                                                <p class="fw-bold">24,775.96 €</p>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">action done by:</p>
-                                                                <div class="img-s-2 d-flex justify-content-between">
-                                                                    <img src="img/person2.jpg" class="img-fluid"
-                                                                        style="width: 30px; height: 30px; border-radius: 50%; margin: -3px auto -2px;"
-                                                                        alt=""><span> Paul Mayer
-                                                                        (Administrator)</span>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="row pt-3 px-4 align-items-center text-center">
-                                                        <div class="col">
-                                                            <p class="fw-bold">2024-05-08 15:55</p>
-                                                        </div>
-                                                        <div class="col ">
-                                                            <span class="btn btn btn-primary">@Email</span>
-                                                            <p class="fw-bold">eminder by e-mail No. 1</p>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                310636,</p>
-
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <p class="fw-bold">24,775.96 €</p>
-                                                        </div>
-                                                        <div class="col hide">
-
-                                                            <div class="img-s-2 d-flex">
-                                                                <img src="img/person2.jpg" class="img-fluid"
-                                                                    style="width: 30px; height: 30px; border-radius: 50%;"
-                                                                    alt=""><span> Paul Mayer
-                                                                    (Administrator)</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col tavle-dropdown-icon mb-3"
-                                                            onclick="toggleFunction(this)"><i
-                                                                class="fa-solid fa-chevron-down"></i></div>
-                                                        <div class="hidden d-none bg-light">
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">trans no:</p>
-                                                                <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                    310636,</p>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">action amount inc. tax:</p>
-                                                                <p class="fw-bold">24,775.96 €</p>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">action done by:</p>
-                                                                <div class="img-s-2 d-flex">
-                                                                    <img src="img/person2.jpg" class="img-fluid"
-                                                                        style="width: 30px; height: 30px; border-radius: 50%; margin: -2px auto 2px; "
-                                                                        alt=""><span> Paul Mayer
-                                                                        (Administrator)</span>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="row pt-3 px-4 align-items-center text-center"
-                                                        style="background-color:#006BFF14;">
-                                                        <div class="col">
-                                                            <p class="fw-bold">2024-05-08 15:55</p>
-                                                        </div>
-                                                        <div class="col ">
-                                                            <p class="fw-bold"><i class="fa-solid fa-phone"
-                                                                    style="font-size: 10px; margin-right: 5px;"></i>phone
-                                                            </p>
-                                                            <p class="fw-bold">Telephone reminder No. 1</p>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                310636, ... [8]</p>
-
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <p class="fw-bold">24,775.96 €</p>
-                                                        </div>
-                                                        <div class="col hide">
-
-                                                            <div class="img-s-2 d-flex">
-                                                                <img src="img/person2.jpg" class="img-fluid"
-                                                                    style="width: 30px; height: 30px; border-radius: 50%;"
-                                                                    alt=""><span> Paul Mayer
-                                                                    (Administrator)</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col tavle-dropdown-icon mb-3"
-                                                            onclick="toggleFunction(this)"><i
-                                                                class="fa-solid fa-chevron-down"></i></div>
-                                                        <div class="hidden d-none bg-light">
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">trans no:</p>
-                                                                <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                    310636, ... [8]</p>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">action amount inc. tax:</p>
-                                                                <p class="fw-bold">24,775.96 €</p>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">action done by:</p>
-                                                                <div class="img-s-2 d-flex justify-content-between">
-                                                                    <img src="img/person2.jpg" class="img-fluid"
-                                                                        style="width: 30px; height: 30px; border-radius: 50%; margin: -3px auto -2px;"
-                                                                        alt=""><span> Paul Mayer
-                                                                        (Administrator)</span>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="row pt-3 px-4 align-items-center text-center">
-                                                        <div class="col">
-                                                            <p class="fw-bold">2024-05-08 15:55</p>
-                                                        </div>
-                                                        <div class="col ">
-                                                            <span class="btn btn btn-primary">@Email</span>
-                                                            <p class="fw-bold">eminder by e-mail No. 1</p>
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                310636,</p>
-
-                                                        </div>
-                                                        <div class="col hide">
-                                                            <p class="fw-bold">24,775.96 €</p>
-                                                        </div>
-                                                        <div class="col hide">
-
-                                                            <div class="img-s-2 d-flex">
-                                                                <img src="img/person2.jpg" class="img-fluid"
-                                                                    style="width: 30px; height: 30px; border-radius: 50%;"
-                                                                    alt=""><span> Paul Mayer
-                                                                    (Administrator)</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col tavle-dropdown-icon mb-3"
-                                                            onclick="toggleFunction(this)"><i
-                                                                class="fa-solid fa-chevron-down"></i></div>
-                                                        <div class="hidden d-none bg-light">
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">trans no:</p>
-                                                                <p class="fw-bold">?, 310510, 310511, 310572,
-                                                                    310636,</p>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">action amount inc. tax:</p>
-                                                                <p class="fw-bold">24,775.96 €</p>
-                                                            </div>
-                                                            <div class="d-flex">
-                                                                <p class="fw-bold">action done by:</p>
-                                                                <div class="img-s-2 d-flex">
-                                                                    <img src="img/person2.jpg" class="img-fluid"
-                                                                        style="width: 30px; height: 30px; border-radius: 50%; margin: -2px auto 2px; "
-                                                                        alt=""><span> Paul Mayer
-                                                                        (Administrator)</span>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="page-not-found mt-3 mb-3 d-none" id="page-not-found">
-                                            <h5 class="text-center mt-3 mb-3 p-4">{{ __('No history found') }}
-                                            </h5>
-                                        </div>
-
-                                        <div class="tale-2 mt-3 border-none d-none" id="history-table">
-                                            <div class="row mt-3 px-4 align-items-center text-center">
-                                                <div class="col ">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Trans No</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col ">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Po No.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col ">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Issue date</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col hide">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Due data</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col hide">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Payment date</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col hide">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Overdue</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col hide">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Amountexc. Tax</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col hide">
-                                                    <div class="d-flex align-items-center justify-content-center gap-1 ">
-                                                        <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                                                        <p class="fw-bold">Amountexc. Tax</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col  tavle-dropdown-icon"></div>
-                                            </div>
-                                            <div class="tables-backg ">
-                                                <div class="row pt-3 px-4 align-items-center text-center"
-                                                    style="background: #006BFF14;">
-                                                    <div class="col">
-                                                        <p class="fw-bold">310712</p>
-                                                    </div>
-                                                    <div class="col ">
-                                                        <p class="fw-bold"></p>
-                                                    </div>
-                                                    <div class="col ">
-                                                        <p class="fw-bold"> 2024-05-15</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold"> 2024-05-15</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">
-                                                            2024-05-22
-                                                        </p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">7 d</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">5,141.14 € </p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">5,141.14 € </p>
-                                                    </div>
-                                                    <div class="col tavle-dropdown-icon mb-3"
-                                                        onclick="toggleFunction(this)"><i
-                                                            class="fa-solid fa-chevron-down"></i></div>
-
-
-                                                    <div class="hidden d-none bg-light">
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Due data:</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Payment date :</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Overdue :</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Amountexc. Tax :</p>
-                                                            <p class="fw-bold">5,141.14 € </p>
-
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Amountexc. Tax :</p>
-                                                            <p class="fw-bold"> 5,141.14 € </p>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="row pt-3 px-4 align-items-center text-center">
-                                                    <div class="col">
-                                                        <p class="fw-bold">310712</p>
-                                                    </div>
-                                                    <div class="col ">
-                                                        <p class="fw-bold"></p>
-                                                    </div>
-                                                    <div class="col ">
-                                                        <p class="fw-bold"> 2024-05-15</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold"> 2024-05-15</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">
-                                                            2024-05-22
-                                                        </p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">7 d</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">5,141.14 € </p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">5,141.14 € </p>
-                                                    </div>
-                                                    <div class="col tavle-dropdown-icon mb-3"
-                                                        onclick="toggleFunction(this)"><i
-                                                            class="fa-solid fa-chevron-down"></i></div>
-                                                    <div class="hidden d-none bg-light">
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Due data:</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Payment date :</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Overdue :</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Amountexc. Tax :</p>
-                                                            <p class="fw-bold">5,141.14 € </p>
-
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Amountexc. Tax :</p>
-                                                            <p class="fw-bold"> 5,141.14 € </p>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="row pt-3 px-4 align-items-center text-center"
-                                                    style="background: #006BFF14;">
-                                                    <div class="col">
-                                                        <p class="fw-bold">310712</p>
-                                                    </div>
-                                                    <div class="col ">
-                                                        <p class="fw-bold"></p>
-                                                    </div>
-                                                    <div class="col ">
-                                                        <p class="fw-bold"> 2024-05-15</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold"> 2024-05-15</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">
-                                                            2024-05-22
-                                                        </p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">7 d</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">5,141.14 € </p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">5,141.14 € </p>
-                                                    </div>
-                                                    <div class="col tavle-dropdown-icon mb-3"
-                                                        onclick="toggleFunction(this)"><i
-                                                            class="fa-solid fa-chevron-down"></i></div>
-                                                    <div class="hidden d-none bg-light">
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Due data:</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Payment date :</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Overdue :</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Amountexc. Tax :</p>
-                                                            <p class="fw-bold">5,141.14 € </p>
-
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Amountexc. Tax :</p>
-                                                            <p class="fw-bold"> 5,141.14 € </p>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="row pt-3 px-4 align-items-center text-center">
-                                                    <div class="col">
-                                                        <p class="fw-bold">310712</p>
-                                                    </div>
-                                                    <div class="col ">
-                                                        <p class="fw-bold"></p>
-                                                    </div>
-                                                    <div class="col ">
-                                                        <p class="fw-bold"> 2024-05-15</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold"> 2024-05-15</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">
-                                                            2024-05-22
-                                                        </p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">7 d</p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">5,141.14 € </p>
-                                                    </div>
-                                                    <div class="col hide">
-                                                        <p class="fw-bold">5,141.14 € </p>
-                                                    </div>
-                                                    <div class="col tavle-dropdown-icon mb-3"
-                                                        onclick="toggleFunction(this)"><i
-                                                            class="fa-solid fa-chevron-down"></i></div>
-                                                    <div class="hidden d-none bg-light">
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Due data:</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Payment date :</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Overdue :</p>
-                                                            <p class="fw-bold"> 2024-05-15</p>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Amountexc. Tax :</p>
-                                                            <p class="fw-bold">5,141.14 € </p>
-
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <p class="fw-bold">Amountexc. Tax :</p>
-                                                            <p class="fw-bold"> 5,141.14 € </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @include('clients.client_history')
                     </div>
-
-                </div>
-            @empty
-                <div class="row d-none text-center">
-                    <p class="p-1 mt-3">
-                        {{ __('No clients has been found') }}
-                    </p>
-                </div>
-                @endforelse
-            </div>
-            {{-- @include('clients.client_data_model', [$client]) --}}
-            <div class="row mb-3">
-                <div class="col-md-2 col-4"></div>
-                <div class="form-group col-md-4 col-8">
-                    <select class="form-select m-2" onfocus="this.size=9;" onblur="this.size=1;"
-                        onchange="this.size=1; this.blur();" aria-label=" Default select example">
-                        <option value="" selected disabled>Add To Group :</option>
-                        <option value="1">ATLANTIQue</option>
-                        <option value="2">Central</option>
-                        <option value="3">Clients douteux</option>
-                        <option value="3">Clients France</option>
-                        <option value="3">Clients Grands Comptes</option>
-
-                        <option value="3">Test 2</option>
-                        <option value="3">US Clients</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-6">
-                    <select name="collection_scenario_id" class="m-2 form-select"
-                        data-placeholder="Collection scenario:" title="Collection scenario">
-                        <option value="" selected disabled>{{ __('Collection Scenarios') }}</option>
-                        @foreach ($collectionsScenario as $collection)
-                            <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-6">
-                    <select class="form-select m-2" aria-label="Default select example">
-                        <option selected disabled>{{ __('Collectors') }}</option>
-                        @foreach ($collectors as $collector)
-                            <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-6">
-                    <select class="form-select m-2" aria-label="Default select example">
-                        <option selected disabled>Associated a colleague :</option>
-                        <option value="1">Brad Jackson(Sales Manager)</option>
-                        <option value="1">Juse Durant(Sales Manager)</option>
-                        <option value="1">Paul Mayer(Sales Manager)</option>
-                        <option value="1">Thomas Smith(Executive Officer)</option>
-                        <option value="1">
-                            Vironica Campbell(Sales Administration)
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-6">
-                    <select class="form-select m-2" aria-label="Default select example">
-                        <option selected disabled>Interactive emails :</option>
-                        <option value="1">Yes</option>
-                        <option value="1">No</option>
-                        <option value="1" class="text-primary"><a href="#"> Read more</a>
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-5">
-                    <select class="form-select m-2" aria-label="Default select example">
-                        <option selected disabled>Late payment penalties :</option>
-                        <option value="1">Yes</option>
-                        <option value="1">No</option>
-                        <option value="1" class="text-primary"><a href="#"> Read more</a>
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group col-md-4 col-5">
-                    <select class="form-select m-2" aria-label="Default select example">
-                        <option selected disabled>Recovery cost :</option>
-                        <option value="1">Yes</option>
-                        <option value="1">No</option>
-                        <option value="1" class="text-primary"><a href="#"> Read more</a>
-                        </option>
-                    </select>
-                </div>
-                <div class="col-2  ">
-                    <div class=" text-center m-auto align-items-center"><i
-                            class="fa-solid fa-trash btn-danger mt-2 p-1 text-light"
-                            style="font-size: 25px;cursor: pointer;border-radius: 5px;"></i></div>
+                @empty
+                    <div class="row d-none text-center">
+                        <p class="p-1 mt-3">
+                            {{ __('No clients has been found') }}
+                        </p>
+                    </div>
+                    @endforelse
                 </div>
             </div>
+        </div>
+        {{-- @include('clients.client_data_model', [$client]) --}}
+        <div class="row mb-3">
+            <div class="col-md-2 col-4"></div>
+            <div class="form-group col-md-4 col-8">
+                <select class="form-select m-2" onfocus="this.size=9;" onblur="this.size=1;"
+                    onchange="this.size=1; this.blur();" aria-label=" Default select example">
+                    <option value="" selected disabled>Add To Group :</option>
+                    <option value="1">ATLANTIQue</option>
+                    <option value="2">Central</option>
+                    <option value="3">Clients douteux</option>
+                    <option value="3">Clients France</option>
+                    <option value="3">Clients Grands Comptes</option>
+                    <option value="3">Test 2</option>
+                    <option value="3">US Clients</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-6">
+                <select name="collection_scenario_id" class="m-2 form-select" data-placeholder="Collection scenario:"
+                    title="Collection scenario">
+                    <option value="" selected disabled>{{ __('Collection Scenarios') }}</option>
+                    @foreach ($collectionsScenario as $collection)
+                        <option value="{{ $collection->id }}">{{ $collection->en_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-6">
+                <select class="form-select m-2" aria-label="Default select example">
+                    <option selected disabled>{{ __('Collectors') }}</option>
+                    @foreach ($collectors as $collector)
+                        <option value="{{ $collector->id }}">{{ $collector->first_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-6">
+                <select class="form-select m-2" aria-label="Default select example">
+                    <option selected disabled>Associated a colleague :</option>
+                    <option value="1">Brad Jackson(Sales Manager)</option>
+                    <option value="1">Juse Durant(Sales Manager)</option>
+                    <option value="1">Paul Mayer(Sales Manager)</option>
+                    <option value="1">Thomas Smith(Executive Officer)</option>
+                    <option value="1">
+                        Vironica Campbell(Sales Administration)
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-6">
+                <select class="form-select m-2" aria-label="Default select example">
+                    <option selected disabled>Interactive emails :</option>
+                    <option value="1">Yes</option>
+                    <option value="1">No</option>
+                    <option value="1" class="text-primary"><a href="#"> Read more</a>
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-5">
+                <select class="form-select m-2" aria-label="Default select example">
+                    <option selected disabled>Late payment penalties :</option>
+                    <option value="1">Yes</option>
+                    <option value="1">No</option>
+                    <option value="1" class="text-primary"><a href="#"> Read more</a>
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-4 col-5">
+                <select class="form-select m-2" aria-label="Default select example">
+                    <option selected disabled>Recovery cost :</option>
+                    <option value="1">Yes</option>
+                    <option value="1">No</option>
+                    <option value="1" class="text-primary"><a href="#"> Read more</a>
+                    </option>
+                </select>
+            </div>
+            <div class="col-2  ">
+                <div class=" text-center m-auto align-items-center"><i
+                        class="fa-solid fa-trash btn-danger mt-2 p-1 text-light"
+                        style="font-size: 25px;cursor: pointer;border-radius: 5px;"></i></div>
+            </div>
+        </div>
         </div>
         </div>
         <div class="justify-content-end gap-1 d-flex mb-2">

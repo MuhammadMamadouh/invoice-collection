@@ -81,7 +81,7 @@ label {
 }
 .green-checks span {
   color: #fff;
-  background: #31f610;
+  background: #95C11B;
   font-size: 12px;
   padding: 5px;
   border-radius: 13px;
@@ -94,8 +94,8 @@ label {
   border-radius: 13px;
 }
 .yellows-checks span {
-  color: #fff;
-  background: #dce01a;
+  color: #000;
+  background: yellow;
   font-size: 12px;
   padding: 5px;
   border-radius: 13px;
@@ -117,7 +117,7 @@ label {
 
 .green-checks-2 span {
   color: #fff;
-  background:#dce01a;
+  background:#95C11B;
   width: 13px;
   height: 13px;
 }
@@ -126,7 +126,7 @@ label {
 }
 .yellows-checks-2 span {
   color: #fff;
-  background: #31F610;
+  background: yellow;
   width: 13px;
   height: 13px;
 }
@@ -144,31 +144,31 @@ label {
 }
 .litige-administratif-checks span {
   color: #fff;
-  background: #dce01a;
+  background: yellow;
   width: 13px;
   height: 13px;
 }
 .litige-livraison-checks span {
     color: #fff;
-    background: #3ab8ff;
+    background: #9C0102;
     width: 13px;
     height: 13px;
 }
 .litige-matériel-manquant-checks span {
     color: #fff;
-    background:  #503636;
+    background:  #3AB8FF;
     width: 13px;
     height: 13px;
 }
 .litige-prix-checks span {
     color: #fff;
-    background: #73eb48;
+    background: #73EB48;
     width: 13px;
     height: 13px;
 }
 .litige-qualité-checks span {
     color: #fff;
-    background: #503636;
+    background: #9F5700;
     width: 13px;
     height: 13px;
 }
@@ -180,7 +180,7 @@ label {
 }
 .price-dispute-checks span {
     color: #fff;
-    background: #31F610;
+    background: #95C11B;
     width: 13px;
     height: 13px;
 }
@@ -201,22 +201,22 @@ label {
 
 
 .litige-administratif-checks-1 span {
-    color: #fff;
-    background: #dce01a;
+    color: #000;
+    background: yellow;
     font-size: 12px;
     padding: 5px;
     border-radius: 13px;
   }
   .litige-livraison-check-3 span {
       color: #fff;
-      background: #3ab8ff;
+      background: #9C0102;
       font-size: 12px;
       padding: 5px;
       border-radius: 13px;
   }
   .litige-matériel-manquant-checks-4 span {
       color: #fff;
-      background:  #503636;
+      background:  #3AB8FF;
       font-size: 12px;
       padding: 5px;
       border-radius: 13px;
@@ -231,7 +231,7 @@ label {
   
   .litige-qualité-checks-6 span {
       color: #fff;
-      background: #503636;
+      background: #9F5700;
       font-size: 12px;
       padding: 5px;
       border-radius: 13px;
@@ -247,7 +247,7 @@ label {
     color: #fff;
     font-size: 12px;
     padding: 5px;
-    background: #31F610;
+    background: #95C11B;
     border-radius: 13px;
 }
 

@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-8">
                         <select name="user_id" class="form-select" id="inputname20" aria-label="Default select example">
-                            <option value="{{$limitsValidation->user_id}}" selected disabled>{{$limitsValidation->first_name}}{{$limitsValidation->last_name}} ({{$limitsValidation->user->role->name}})</option>
+                            <option value="{{$limitsValidation->user_id}}" selected>{{$limitsValidation->first_name}}{{$limitsValidation->last_name}} ({{$limitsValidation->user->role->name}})</option>
                             @foreach($users as $user)
                                 <option value="{{$user->id}}">{{$user->first_name}}{{$user->last_name}} ({{$user->role->name}})</option>
                             @endforeach

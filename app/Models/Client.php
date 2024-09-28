@@ -70,15 +70,23 @@ class Client extends Model
         // get all items that are overdue date is more than today
         return $this->items()->where('due_date', '<', now());
     }
+
+
     public function overDueItemsMoreThanTwoMonths()
     {
         // get all items that are overdue date is more than today with more than 2 months
         return $this->items()->where('due_date', '<', now()->subMonths(2));
     }
+
+
+
     public function firstDueItem()
     {
         return $this->hasOne(Item::class, 'company_id')->orderBy('due_date');
     }
+
+
+
     public function toTakeAction()
     {
         // get taken actions on first due item
@@ -87,6 +95,8 @@ class Client extends Model
             ->orderBy('number_of_days')->first();
     }
 
+
+    
     public function contacts()
     {
         return $this->hasMany(Contact::class, 'client_id');

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Action;
 use App\Models\ActionType;
 use App\Models\Email;
 use App\Models\EmailType;
@@ -29,6 +30,7 @@ class ItemChangeStatusSteps extends Component
     public $resolvers;
     public $actionTypes;
     public $days = [];
+    public $recipients = [['type_to' => '', 'resolverData' => '']];
     public $editorContent;
     // public $showActionForm = false;
     public $selectedAction = 'follow_the_collection_scenario';
@@ -93,8 +95,9 @@ class ItemChangeStatusSteps extends Component
         for ($i = -90; $i <= 365; $i++) {
             $this->days[] = $i;
         }
-
-
+        $this->recipients = [
+            ['type_to' => '', 'resolverData' => '']
+        ];
     }
 
     public function updatedselectedStatus($id)
@@ -142,6 +145,20 @@ class ItemChangeStatusSteps extends Component
         }
     }
 
+    public function addRecipient()
+    {
+        $this->recipients[] = [
+            'type_to' => '',
+            'resolverData' => '',
+        ];
+    }
+
+    public function removeRecipient($index)
+    {
+        unset($this->recipients[$index]);
+        $this->recipients = array_values($this->recipients);
+    }
+
     public function incrementSteps()
     {
         if ($this->currentStep < $this->totalSteps) {
@@ -171,18 +188,23 @@ class ItemChangeStatusSteps extends Component
             'create_a_specific_action' => $this->selectedAction === 'create_a_specific_action' ? 1 : 0,
         ]);
         if ($this->email_type) {
+            foreach ($this->recipients as $recipient) {
+                $typeTo = $recipient['type_to'] ?? null;
+                $resolverData = $recipient['resolverData'] ?? null;
             $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
             $newEmail = new Email([
                 'created_by' => $this->created_by,
-                'resolver' => $this->resolver,
+                'resolver' => $resolverData,
                 'subject' => $this->client->id,
                 'message' => $this->editorContent,
                 'get_a_copy' => $this->get_a_copy,
                 'request_an_acknowledgment' => $this->request_an_acknowledgment,
                 'email_type' => $this->email_type,
-                'type_to' => $this->type_to,
+                'type_to' =>  $typeTo,
             ]);
+            
             $newStatus->emails()->save($newEmail);
+        };
         }
         if ($this->file_name) {
             foreach ($this->file_name as $file) {
@@ -200,15 +222,18 @@ class ItemChangeStatusSteps extends Component
             }
         }
         if ($this->action_name) {
-            $tempAction = TempAction::create([
+            $tempAction = Action::create([
                 'action_name' => $this->action_name,
                 'action_date' => $this->action_date,
                 'action_type' => $this->action_type,
                 'collection_scenario_id' => $this->client->collectionScenarios->id,
-                'client_id' => $this->client->id,
+                // 'client_id' => $this->client->id,
                 'item_id' => $this->item->id,
                 'created_by' => $this->created_by,
                 'item_change_status_id' => $changedStatus->id,
+                'automatic_action' => $this->automatic_action,
+                'automatic_action_to_be_confirmed' => $this->automatic_action_to_be_confirmed,
+                'internal_interactive_emailLink' => $this->internal_interactive_emailLink,
             ]);
             if($this->action_type == 5){
                 $newEmail = new Email([
@@ -216,18 +241,14 @@ class ItemChangeStatusSteps extends Component
                     'resolver' => $this->resolver,
                     'subject' => $this->client->id,
                     'message' => $this->editorContent,
-                    'automatic_action' => $this->automatic_action,
-                    'automatic_action_to_be_confirmed' => $this->automatic_action_to_be_confirmed,
-                    'internal_interactive_emailLink' => $this->internal_interactive_emailLink,
                 ]);
                 $tempAction->emails()->save($newEmail);
             }
             if($this->action_type == 7){
                 $newSms = new SmsMessage([
                     'created_by' => $this->created_by,
-                    'message' => $this->editorContent,
-                    'automatic_action' => $this->automatic_action,
-                    'automatic_action_to_be_confirmed' => $this->automatic_action_to_be_confirmed,                
+                    'subject' => $this->client->id,
+                    'message' => $this->editorContent,               
                 ]);
                 $tempAction->smsMessages()->save($newSms);
             }

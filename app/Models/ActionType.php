@@ -12,7 +12,11 @@ class ActionType extends Model
     use HasFactory;
 
     public function actions(){
-        return $this->hasMany(Action::class);
+        return $this->hasMany(Action::class, 'action_type');
+    }
+
+    public function tempActions(){
+        return $this->hasMany(Action::class, 'action_type');
     }
     
 }

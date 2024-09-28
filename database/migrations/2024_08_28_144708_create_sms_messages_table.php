@@ -14,9 +14,8 @@ return new class extends Migration
         Schema::create('sms_messages', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('created_by');
+            $table->bigInteger('subject');
             $table->longText('message');
-            $table->boolean('automatic_action')->default(0);
-            $table->boolean('automatic_action_to_be_confirmed')->default(0);
             $table->morphs('messageable');
             $table->timestamps();
         });

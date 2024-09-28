@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', (_event) => {
     var modal = document.getElementById("myModal");
     var btns = document.querySelectorAll(".openModalBtn");
     var span = document.querySelectorAll(".closeBtn");

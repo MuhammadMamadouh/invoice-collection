@@ -64,34 +64,34 @@ function fun1() {
   hideTable.classList.remove("d-none");
   showHistory.classList.add("d-none");
   hideTable2.classList.add("d-none");
-  historyBtn1.classList.remove("btn-outline-primary");
-  historyBtn1.classList.add("btn-primary");
-  historyBtn2.classList.remove("btn-primary");
-  historyBtn2.classList.add("btn-outline-primary");
-  historyBtn3.classList.remove("btn-primary");
-  historyBtn3.classList.add("btn-outline-primary");
+  historyBtn1.classList.remove("btn-outline-secondary");
+  historyBtn1.classList.add("btn-secondary");
+  historyBtn2.classList.remove("btn-secondary");
+  historyBtn2.classList.add("btn-outline-secondary");
+  historyBtn3.classList.remove("btn-secondary");
+  historyBtn3.classList.add("btn-outline-secondary");
 }
 function fun2() {
   hideTable.classList.add("d-none");
   showHistory.classList.remove("d-none");
   hideTable2.classList.add("d-none");
-  historyBtn1.classList.remove("btn-primary");
-  historyBtn1.classList.add("btn-outline-primary");
-  historyBtn2.classList.remove("btn-outline-primary");
-  historyBtn2.classList.add("btn-primary");
-  historyBtn3.classList.remove("btn-primary");
-  historyBtn3.classList.add("btn-outline-primary");
+  historyBtn1.classList.remove("btn-secondary");
+  historyBtn1.classList.add("btn-outline-secondary");
+  historyBtn2.classList.remove("btn-outline-secondary");
+  historyBtn2.classList.add("btn-secondary");
+  historyBtn3.classList.remove("btn-secondary");
+  historyBtn3.classList.add("btn-outline-secondary");
 }
 function fun3() {
   hideTable.classList.add("d-none");
   showHistory.classList.add("d-none");
   hideTable2.classList.remove("d-none");
-  historyBtn1.classList.remove("btn-primary");
-  historyBtn1.classList.add("btn-outline-primary");
-  historyBtn2.classList.remove("btn-primary");
-  historyBtn2.classList.add("btn-outline-primary");
-  historyBtn3.classList.remove("btn-outline-primary");
-  historyBtn3.classList.add("btn-primary");
+  historyBtn1.classList.remove("btn-secondary");
+  historyBtn1.classList.add("btn-outline-secondary");
+  historyBtn2.classList.remove("btn-secondary");
+  historyBtn2.classList.add("btn-outline-secondary");
+  historyBtn3.classList.remove("btn-outline-secondary");
+  historyBtn3.classList.add("btn-secondary");
 }
 
 let disputeButton = document.querySelectorAll(".disputeButton");
@@ -105,20 +105,20 @@ let historyDiv = document.getElementById("historyDiv");
 
 function disputeFun() {
   disputeButton.forEach((btn) => {
-    btn.classList.remove("btn-outline-primary");
-    btn.classList.add("btn-primary");
+    btn.classList.remove("btn-outline-secondary");
+    btn.classList.add("btn-secondary");
   });
   riskButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
   indicatorsButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
   historyButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
   disputeDiv.classList.remove("d-none");
   riskDiv.classList.add("d-none");
@@ -127,20 +127,20 @@ function disputeFun() {
 }
 function riskFun() {
   disputeButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
   riskButton.forEach((btn) => {
-    btn.classList.remove("btn-outline-primary");
-    btn.classList.add("btn-primary");
+    btn.classList.remove("btn-outline-secondary");
+    btn.classList.add("btn-secondary");
   });
   indicatorsButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
   historyButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
 
   disputeDiv.classList.add("d-none");
@@ -150,20 +150,20 @@ function riskFun() {
 }
 function indicatorsFun() {
   disputeButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
   riskButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
   indicatorsButton.forEach((btn) => {
-    btn.classList.remove("btn-outline-primary");
-    btn.classList.add("btn-primary");
+    btn.classList.remove("btn-outline-secondary");
+    btn.classList.add("btn-secondary");
   });
   historyButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
 
   disputeDiv.classList.add("d-none");
@@ -173,20 +173,20 @@ function indicatorsFun() {
 }
 function historyFun() {
   disputeButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
   riskButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
   indicatorsButton.forEach((btn) => {
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   });
   historyButton.forEach((btn) => {
-    btn.classList.remove("btn-outline-primary");
-    btn.classList.add("btn-primary");
+    btn.classList.remove("btn-outline-secondary");
+    btn.classList.add("btn-secondary");
   });
 
   disputeDiv.classList.add("d-none");
@@ -278,16 +278,16 @@ let associatedDiv = document.getElementById(`associatedDiv-${itemId}`);
 
 function statusFun(itemId) {
   statusButton.forEach((btn)=>{
-    btn.classList.remove("btn-outline-primary");
-    btn.classList.add("btn-primary");
+    btn.classList.remove("btn-outline-secondary");
+    btn.classList.add("btn-secondary");
   })
   actionsButton.forEach((btn)=>{
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   })
   associatedButton.forEach((btn)=>{
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   })
   document.getElementById(`statusDiv-${itemId}`).classList.remove("d-none");
   document.getElementById(`actionsDiv-${itemId}`).classList.add("d-none");
@@ -296,16 +296,16 @@ function statusFun(itemId) {
 
 function actionsFun(itemId) {
   statusButton.forEach((btn)=>{
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   })
   actionsButton.forEach((btn)=>{
-    btn.classList.remove("btn-outline-primary");
-    btn.classList.add("btn-primary");
+    btn.classList.remove("btn-outline-secondary");
+    btn.classList.add("btn-secondary");
   })
   associatedButton.forEach((btn)=>{
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   })
 
   document.getElementById(`statusDiv-${itemId}`).classList.add("d-none");
@@ -315,16 +315,16 @@ function actionsFun(itemId) {
 
 function associatedFun(itemId) {
   statusButton.forEach((btn)=>{
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   })
   actionsButton.forEach((btn)=>{
-    btn.classList.remove("btn-primary");
-    btn.classList.add("btn-outline-primary");
+    btn.classList.remove("btn-secondary");
+    btn.classList.add("btn-outline-secondary");
   })
   associatedButton.forEach((btn)=>{
-    btn.classList.remove("btn-outline-primary");
-    btn.classList.add("btn-primary");
+    btn.classList.remove("btn-outline-secondary");
+    btn.classList.add("btn-secondary");
   })
 
   document.getElementById(`statusDiv-${itemId}`).classList.add("d-none");
@@ -552,10 +552,10 @@ function showSearchResults(){
     document.querySelector(".overlay").classList.remove("d-none")
   }
 
-  function showAddActionDiv(){
-    document.querySelector(".add-action-div").classList.remove("d-none")
-    document.querySelector(".overlay").classList.remove("d-none")
-  }
+  // function showAddActionDiv(){
+  //   document.querySelector(".add-action-div").classList.remove("d-none")
+  //   document.querySelector(".overlay").classList.remove("d-none")
+  // }
 
   function hideAddActionDiv(){
     document.querySelector(".add-action-div").classList.add("d-none")

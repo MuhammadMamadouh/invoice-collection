@@ -19,10 +19,10 @@
         <div class="row justify-content-end ">
             <div class="col-auto">
                 <div class="new-st">
-                    <button class="btn btn-primary btn-m mb-2" onclick="showNewScoringDiv()">
+                    <button class="btn btn-secondary btn-m mb-2" onclick="showNewScoringDiv()">
                         <i class="fa-solid fa-plus"></i> {{ __('New Scoring Model') }}
                     </button>
-                    <button class="btn btn-primary btn-m mb-2">
+                    <button class="btn btn-secondary btn-m mb-2">
                         <i class="fa-solid fa-plus px-1"></i>{{ __('Add A Pre-Define Model') }}<i
                             class="fa-solid fa-arrow-down px-2"></i>
                     </button>
@@ -47,7 +47,7 @@
                             <h5 class="text-black-50 mt-3 mb-0">{{ $score->description }}</h5>
                             <div class="d-flex gap-3">
                                 <button onclick="showEditScoringDiv({{ $score->id }})"
-                                    class="primary-pen btn btn-primary mb-2 mt-2"><span><i
+                                    class="primary-pen btn btn-secondary mb-2 mt-2"><span><i
                                             class="fa-solid fa-pen"></i></span></button>
                                 <form action="{{ route('manage_risk.destroy', $score->id) }}" method="POST">
                                     @csrf
@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-lg-4 col-sm-12 col-md-12 text-lg-end">
                             <div class="the-button mt-3 mb-3 ">
-                                <button class="btn btn-primary d-flex"
+                                <button class="btn btn-secondary d-flex"
                                     onclick="showAddCriterionDiv({{ $score->id }})"><span><i
                                             class="fa-solid fa-plus px-1"></i></span>{{ __('Add a criterion') }}</button>
                             </div>

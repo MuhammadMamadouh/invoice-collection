@@ -1,11 +1,11 @@
 <form action="{{ route('clients.update', $client->id) }}" method="POST">
     @csrf
     @method('PATCH')
-    <div class="create-c-i holap-second bg-light d-none" id="edit-client-data-{{ $client->id }}">
+    <div class="holap-second bg-light d-none" id="edit-client-data-{{ $client->id }}">
         <div class="d-flex gap-3 justify-content-end text-center m-0 mb-3 p-3 w-100" style="background-color: #006bff">
             <span class="btn text-light p-1 px-2 btn-danger" onclick="closeHolap()"><i class="fa-solid fa-trash"
                     style="  font-size: 15px;"></i></span>
-            <button type="submit"><span class="btn px-4 text-light p-1 btn-success"
+            <button class="btn px-4 text-light p-1 btn-success" type="submit"><span
                     onclick="closeEditHolap({{ $client->id }})"><i class="fa-solid fa-floppy-disk"
                         style="  font-size: 15px;"></i>
                     {{ __('Save') }}</span></button>
@@ -56,8 +56,9 @@
                     <div class="d-flex align-items-center justify-content-between">
                         <select class="form-select m-auto w-75" aria-label="Default select example">
                             <option selected disabled>Contact:</option>
-                            @foreach($client->contacts as $contact)
-                            <option value="{{$contact->id}}">{{$contact->first_name}} / {{$contact->last_name}} </option>
+                            @foreach ($client->contacts as $contact)
+                                <option value="{{ $contact->id }}">{{ $contact->first_name }} /
+                                    {{ $contact->last_name }} </option>
                             @endforeach
                         </select>
                     </div>
@@ -108,19 +109,22 @@
                         <div class="col-7 ">
                             <input type="hidden" name="client_id" value="{{ $client->id }}" class="form-control"
                                 id="inputname7">
-                            @php($roleId = App\models\Contact::where('client_id', $client->id)->with('clientRole')->value('role_id'))
-                            {{-- {{dd($roleId)}} --}}
+                            @php($roleId = App\Models\Contact::where('client_id', $client->id)->with('clientRole')->first())
                             <select name="role_id" class="form-select w-100" id="inputname60"
                                 aria-label="Default select example">
-                                <option value="{{ $roleId->role_id ?? '' }}" disabled selected>{{ $roleId->clientRole->name ?? 'Select One' }}</option>
+                                @if ($roleId && $roleId->clientRole)
+                                    <option value="{{ $roleId->role_id }}" selected>{{ $roleId->clientRole->name }}
+                                    </option>
+                                @endif
                                 @foreach ($clientRoles as $role)
                                     <option value="{{ $role->id }}">{{ $role->name }}</option>
                                 @endforeach
-                                @error('role_id')
-                                    <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
-                                @enderror
                             </select>
+                            @error('role_id')
+                                <div class="alert text-danger" style="font-weight: bold;">{{ $message }}</div>
+                            @enderror
                         </div>
+
                     </div>
                 </div><!--6-->
 
@@ -426,7 +430,8 @@
                             <div class="form-check">
                                 @php($automatic_email = App\models\Contact::where('client_id', $client->id)->value('copy_in_the_automatic_email'))
                                 <input class="form-check-input" type="checkbox" id="email"
-                                    name="copy_in_the_automatic_email" value="1" {{ $automatic_email == 1  ? 'checked' : '' }}>
+                                    name="copy_in_the_automatic_email" value="1"
+                                    {{ $automatic_email == 1 ? 'checked' : '' }}>
                                 <label class="form-check-label"
                                     for="email">{{ __('Email in copy in the automatic  emails') }}</label>
                                 @error('copy_in_the_automatic_email')
@@ -771,7 +776,7 @@
                             <div class="form-check">
                                 @php($contact_for_collection = App\models\Contact::where('client_id', $client->id)->value('contact_for_collection'))
                                 <input class="form-check-input" type="checkbox" name="contact_for_collection"
-                                    value="0" {{ $contact_for_collection == '1' ? 'checked' : '' }}
+                                    value="1" {{ $contact_for_collection == 1 ? 'checked' : '' }}
                                     id="contact">
                                 <label class="form-check-label"
                                     for="contact">{{ __('Contact for collection?') }}</label>
@@ -783,13 +788,11 @@
                     </div>
                 </div><!--5-->
 
-
                 <div class="col-md-4 my-2">
                     <div class="d-flex">
                         <div class="col-5 ">
                             <label for="inputname16"> {{ __('Business line') }}
                                 :</label>
-
                         </div>
                         <div class="col-7 ">
                             <input type="text" name="business_line"
@@ -836,9 +839,9 @@
 
                         </div>
                         <div class="col-7 ">
-                        {{-- dd($client->collector->id) --}}
+                            {{-- dd($client->collector->id) --}}
                             <select name="collector_id" class="form-select" id="inputname19">
-                                <option selected disabled value="{{ $client->collector->id }}">
+                                <option selected value="{{ $client->collector->id }}">
                                     {{ $client->collector->first_name }}</option>
                                 @foreach ($collectors as $collector)
                                     <option value={{ $collector->id }}>
@@ -862,7 +865,8 @@
                         </div>
                         <div class="col-7 ">
                             <select name='collection_scenario_id' class="form-select" id="inputname19">
-                                <option selected disabled value="{{ $client->collectionScenarios->id }}">{{ $client->collectionScenarios->en_name ?? '' }}</option>
+                                <option selected value="{{ $client->collectionScenarios->id }}">
+                                    {{ $client->collectionScenarios->en_name ?? '' }}</option>
                                 @foreach ($collectionsScenario as $collection)
                                     <option value={{ $collection->id }}>
                                         {{ $collection->en_name }}</option>

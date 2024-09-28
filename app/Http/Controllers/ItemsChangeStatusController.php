@@ -39,10 +39,10 @@ class ItemsChangeStatusController extends Controller
                 $dataToUpdate['file'] = $request->file('file')->store('items_files', 'public');
             }
             $ItemsChangeStatus->update($dataToUpdate);
-            return to_route('clients.index')->with(['message' => 'success']);
+            return back()->with(['message' => 'success']);
         }catch(Exception $e){
             Log::info($e->getMessage());
-            return to_route('clients.index')->with(['message' => $e->getMessage()]);
+            return back()->with(['message' => $e->getMessage()]);
         }
     }
 }

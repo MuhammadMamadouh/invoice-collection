@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('collection_scenario_actions', function (Blueprint $table) {
-            $table->id();
-            $table->string('action_name');
-            $table->smallInteger('number_of_days');
-            $table->string('action_type');
-            $table->foreignId('collection_scenario_id')->constrained('collection_scenarios')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('mail_subject')->nullable();
-            $table->string('mail_content')->nullable();
-            $table->string('language')->nullable();
-            $table->boolean('is_automatic_action')->nullable();
-            $table->timestamps(); 
+            // $table->id();
+            // $table->string('action_name');
+            // $table->smallInteger('number_of_days');
+            // $table->string('action_type');
+            // $table->foreignId('collection_scenario_id')->constrained('collection_scenarios')->cascadeOnDelete()->cascadeOnUpdate();
+            // $table->string('mail_subject')->nullable();
+            // $table->string('mail_content')->nullable();
+            // $table->string('language')->nullable();
+            // $table->boolean('is_automatic_action')->nullable();
+            // $table->timestamps(); 
         });
     }
 

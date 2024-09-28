@@ -24,24 +24,24 @@
     {{-- ------------------- Client's Data Buttons------------------------------------------------ --}}
     <div class="row p-4 m-0">
         <div class="col-lg-4 col-sm-6">
-            <div class="m-1 w-100 btn btn-primary disputeButton" onclick="disputeFun()">
+            <div class="m-1 w-100 btn btn-secondary disputeButton" onclick="disputeFun()">
                 <i class="fa-solid fa-clock"></i>
                 {{ __('collection& dispute management') }}
             </div>
         </div>
         <div class="col-lg-2 col-sm-6">
-            <div class="m-1 w-100 btn btn-outline-primary riskButton" onclick="riskFun()">
+            <div class="m-1 w-100 btn btn-outline-secondary riskButton" onclick="riskFun()">
                 <i class="fa-solid fa-bolt"></i> {{ __('Risk Report') }}
             </div>
         </div>
         <div class="col-lg-3 col-sm-6">
-            <div class="m-1 w-100 btn btn-outline-primary indicatorsButton" onclick="indicatorsFun()">
+            <div class="m-1 w-100 btn btn-outline-secondary indicatorsButton" onclick="indicatorsFun()">
                 <i class="fa-solid fa-chart-simple"></i>
                 {{ __('Reports & Indicators') }}
             </div>
         </div>
         <div class="col-lg-3 col-sm-6">
-            <div class="m-1 w-100 btn btn-outline-primary historyButton" onclick="historyFun()">
+            <div class="m-1 w-100 btn btn-outline-secondary historyButton" onclick="historyFun()">
                 <i class="fa-solid fa-bars-staggered"></i> {{ __('History') }}
             </div>
         </div>
