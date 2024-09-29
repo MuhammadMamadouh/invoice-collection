@@ -1,5 +1,5 @@
 /* Actions to do */
-.overlay{
+.overlay {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -8,31 +8,31 @@
     background-color: rgba(0, 0, 0, 0.418);
     z-index: 9;
 }
-.width-responsive-50{
+.width-responsive-50 {
     width: 50%;
 }
-.nav-item.active{
+.nav-item.active {
     background-color: #fff;
     border-radius: 5px;
-  }
-  .nav-item.active .nav-link{
+}
+.nav-item.active .nav-link {
     color: #2f6579;
     font-weight: bold;
-  }
+}
 .parent-input {
     --input-height: 0.5rem;
     --input-color: #0d6efd;
     position: relative;
     display: flex;
-  }
+}
 .parent-input input[type="range"] {
     appearance: none;
     height: 5px;
     border-radius: 0;
     accent-color: var(--input-color);
-    width:200px;
-  }
-  .parent-input input[type="range"]::-webkit-slider-thumb {
+    width: 200px;
+}
+.parent-input input[type="range"]::-webkit-slider-thumb {
     appearance: none;
     width: 12px; /* Adjust the width as needed */
     height: 12px; /* Adjust the height as needed */
@@ -41,9 +41,7 @@
     cursor: pointer;
 }
 
-
-
-.rangeSperade{
+.rangeSperade {
     position: absolute;
     width: 4px;
     height: 12px;
@@ -72,14 +70,14 @@
     margin-top: 5px; /* Adjust the spacing between input and steps */
 }
 
-.table-container{
+.table-container {
     position: relative;
 }
 
 .table-container:before {
-    content: '';
+    content: "";
     position: absolute;
-    z-index: -1;
+    z-index: 1;
     left: 31px; /* Adjust this value according to your desired margin width */
     top: 0px; /* Adjust this value according to your desired margin */
     bottom: -30px; /* Adjust this value according to your desired margin */
@@ -88,9 +86,9 @@
 }
 
 .table-container:after {
-    content: '';
+    content: "";
     position: absolute;
-    z-index: -1;
+    z-index: 1;
     left: 31px; /* Align with the left border */
     bottom: -30px; /* Adjust this value according to your desired margin */
     width: 30px; /* Adjust this value according to your desired margin width */
@@ -98,24 +96,24 @@
     background-color: #0d6efd; /* Adjust this value according to your desired border color */
 }
 
-.arrow-bottom{
+.arrow-bottom {
     position: absolute;
     z-index: -1;
     left: 61px; /* Adjust this value according to your desired margin width */
     bottom: -34px; /* Adjust this value according to your desired margin */
     width: 40px; /* Adjust this value according to your desired arrow width */
     height: 1px; /* Adjust this value according to your desired border thickness */
-    
+
     /* Create the arrow */
     border: 5px solid transparent;
     border-left-color: #0d6efd; /* Adjust this value according to your desired arrow color */
 }
-.table-container-2{
+.table-container-2 {
     position: relative;
 }
 
 .table-container-2:before {
-    content: '';
+    content: "";
     position: absolute;
     z-index: 10;
     left: 31px; /* Adjust this value according to your desired margin width */
@@ -126,7 +124,7 @@
 }
 
 .table-container-2:after {
-    content: '';
+    content: "";
     position: absolute;
     z-index: 10;
     left: 31px; /* Align with the left border */
@@ -136,33 +134,34 @@
     background-color: #0d6efd; /* Adjust this value according to your desired border color */
 }
 
-.arrow-bottom-2{
+.arrow-bottom-2 {
     position: absolute;
     z-index: 10;
     left: 61px; /* Adjust this value according to your desired margin width */
     bottom: -34px; /* Adjust this value according to your desired margin */
     width: 40px; /* Adjust this value according to your desired arrow width */
     height: 1px; /* Adjust this value according to your desired border thickness */
-    
+
     /* Create the arrow */
     border: 5px solid transparent;
     border-left-color: #0d6efd; /* Adjust this value according to your desired arrow color */
 }
-.hide{
+.hide {
     display: block;
 }
 .rotate {
     transform: rotate(180deg);
-  }
+}
 
-.tavle-dropdown-icon{
+.tavle-dropdown-icon {
     display: none;
     cursor: pointer;
     font-size: 20px;
 }
 
-@media (max-width:992px) {
-    .table-container,.table-alerts-container{
+@media (max-width: 992px) {
+    .table-container,
+    .table-alerts-container {
         font-size: 10px;
     }
     .table-container:before {
@@ -171,10 +170,11 @@
     .table-container::after {
         left: 29px;
     }
-    .arrow-bottom{
+    .arrow-bottom {
         left: 59px;
     }
-    .table-container-2,.table-alerts-container{
+    .table-container-2,
+    .table-alerts-container {
         font-size: 10px;
     }
     .table-container-2:before {
@@ -183,21 +183,21 @@
     .table-container-2::after {
         left: 29px;
     }
-    .arrow-bottom-2{
+    .arrow-bottom-2 {
         left: 59px;
     }
 }
-@media (max-width:767px) {
-    .width-responsive-50{
+@media (max-width: 767px) {
+    .width-responsive-50 {
         width: 75%;
     }
-    .table-container{
+    .table-container {
         font-size: 14px;
     }
-    .hide{
+    .hide {
         display: none;
     }
-    .tavle-dropdown-icon{
+    .tavle-dropdown-icon {
         display: block;
     }
     .table-container:before {
@@ -206,7 +206,7 @@
     .table-container::after {
         left: 15px;
     }
-    .arrow-bottom{
+    .arrow-bottom {
         left: 45px;
     }
     .table-container-2:before {
@@ -215,12 +215,12 @@
     .table-container-2::after {
         left: 13px;
     }
-    .arrow-bottom-2{
+    .arrow-bottom-2 {
         left: 43px;
     }
 }
-@media (max-width:500px) {
-    .parent-input input[type="range"]{
+@media (max-width: 500px) {
+    .parent-input input[type="range"] {
         width: 150px;
     }
     .second-range::after {
@@ -228,235 +228,239 @@
     }
 }
 
-
 /* Alerts */
 
-.all-alerts-container{
+.all-alerts-container {
     border-radius: 10px 10px 0 0;
     cursor: pointer;
 }
-.all-alerts-child-red{
-    border-left: 5px #F46464 solid;
+.all-alerts-child-red {
+    border-left: 5px #f46464 solid;
     border-radius: 5px 0 0 5px;
     cursor: pointer;
 }
-.all-alerts-child-blue{
-    border-left: 5px #006BFF solid;
-    border-radius: 5px 0 0 5px  ;
+.all-alerts-child-blue {
+    border-left: 5px #006bff solid;
+    border-radius: 5px 0 0 5px;
     cursor: pointer;
 }
-.all-alerts-end{
-    border-radius: 0 0 10px 10px  ;
+.all-alerts-end {
+    border-radius: 0 0 10px 10px;
     cursor: pointer;
 }
-    .alert-icon-container {
-        display: inline-block; /* Ensures the container only takes the necessary width */
-        position: relative; /* Allows positioning of the counter */
+.alert-icon-container {
+    display: inline-block; /* Ensures the container only takes the necessary width */
+    position: relative; /* Allows positioning of the counter */
+}
+
+.alert-counter {
+    position: absolute; /* Position the counter relative to the container */
+    top: 25%; /* Position it vertically centered */
+    transform: translate(
+        -50%,
+        -50%
+    ); /* Center it horizontally and vertically */
+    background-color: white;
+    color: #f46464;
+    border-radius: 50%;
+    padding: 1px 4px;
+    font-size: 8px;
+}
+
+.alert-list {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transition: all 0.2s;
+    left: 100%;
+    width: 300px;
+    color: #f46464;
+    font-size: 12px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+    border-radius: 0 10px 10px 10px;
+}
+.alert-list a {
+    color: #f46464;
+}
+.alert-list::before {
+    content: "";
+    position: absolute;
+    top: -1%;
+    right: 100%;
+    border: solid transparent;
+    border-right-color: #f46464;
+    border-top-color: #f46464;
+    border-width: 7px;
+}
+
+.alert-item {
+    margin-bottom: 5px;
+}
+
+.alert-icon-container:hover .alert-list {
+    display: block;
+}
+
+.company-details,
+.invoice,
+.invoice-2 {
+    position: fixed;
+    top: 5vh;
+    left: 5vw;
+    width: 90vw;
+    height: 90vh;
+    overflow-y: scroll;
+    z-index: 10;
+    border-radius: 5px;
+}
+
+.company-details .small-icons,
+.invoice .small-icons,
+.invoice-2 .small-icons {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+.line-through-icons {
+    position: absolute;
+    left: 0;
+    right: 3%;
+    bottom: 38%;
+    border-top: 1px solid #006bff; /* Adjust color and style as needed */
+    z-index: 1; /* Ensure the line is behind the icons */
+}
+.arrow-right {
+    position: absolute;
+    z-index: 1;
+    right: 0; /* Adjust this value according to your desired margin width */
+    bottom: 33.5%; /* Adjust this value according to your desired margin */
+    width: 40px; /* Adjust this value according to your desired arrow width */
+    height: 1px; /* Adjust this value according to your desired border thickness */
+
+    /* Create the arrow */
+    border: 5px solid transparent;
+    border-left-color: #0d6efd; /* Adjust this value according to your desired arrow color */
+}
+
+@media (max-width: 992px) {
+    .line-through-icons {
+        right: 5%;
     }
-    
-    .alert-counter {
-        position: absolute; /* Position the counter relative to the container */
-        top: 25%; /* Position it vertically centered */
-        transform: translate(-50%, -50%); /* Center it horizontally and vertically */
-        background-color: white;
-        color: #F46464;
-        border-radius: 50%;
-        padding: 1px 4px;
+}
+@media (max-width: 790px) {
+    .line-through-icons {
+        right: 6%;
+    }
+}
+@media (max-width: 676px) {
+    .line-through-icons {
+        right: 7%;
+    }
+}
+@media (max-width: 570px) {
+    .line-through-icons {
+        right: 8%;
+    }
+}
+@media (max-width: 500px) {
+    .line-through-icons {
+        right: 9%;
+    }
+}
+@media (max-width: 450px) {
+    .line-through-icons {
+        right: 10%;
+    }
+}
+@media (max-width: 850px) {
+    .company-details .small-icons,
+    .invoice .small-icons,
+    .invoice-2 .small-icons {
+        width: 23px;
+        height: 23px;
+        font-size: 10px;
+    }
+    .small-icons-container {
+        font-size: 10px;
+    }
+    .actions-row {
+        font-size: 10px;
+    }
+    .actions-row .btn {
+        font-size: 8px;
+        padding: 5px;
+    }
+}
+@media (max-width: 500px) {
+    .company-details .small-icons,
+    .invoice .small-icons {
+        width: 15px;
+        height: 15px;
+        padding: 2px 5px !important;
         font-size: 8px;
     }
+    .small-icons-container {
+        font-size: 8px;
+    }
+}
 
-    .alert-list {
-        display: none;
-        position: absolute;
-        top: 50%;
-        transition: all 0.2s;
-        left: 100%;
-        width: 300px;
-        color: #F46464;
-        font-size: 12px;
-        background-color: white;
-        border: 1px solid #ccc;
-        padding: 10px;
-        z-index: 1000;
-        border-radius: 0 10px 10px 10px;
-    }
-    .alert-list a{
-        color: #F46464;
-    }
-    .alert-list::before {
-        content: '';
-        position: absolute;
-        top: -1%;
-        right: 100%;
-        border: solid transparent;
-        border-right-color: #F46464;
-        border-top-color: #F46464;
-        border-width: 7px;
-    }
-    
-    .alert-item {
-        margin-bottom: 5px;
-    }
-    
-    .alert-icon-container:hover .alert-list {
-        display: block;
-    }
-    
-    .company-details,.invoice,.invoice-2{
-        position: fixed;
-        top: 5vh;
-        left: 5vw;
-        width: 90vw;
-        height: 90vh;
-        overflow-y: scroll;
-        z-index: 10;
-        border-radius: 5px;
-    }
-    
-    .company-details .small-icons, .invoice .small-icons, .invoice-2 .small-icons{
-        border-radius:50% ;
-        width: 32px;
-        height: 32px;
-    }
-    .line-through-icons {
-        position: absolute;
-        left: 0;
-        right: 3%;
-        bottom: 38%;
-        border-top: 1px solid #006BFF; /* Adjust color and style as needed */
-        z-index: 1; /* Ensure the line is behind the icons */
-    }
-    .arrow-right{
-        position: absolute;
-        z-index: 1;
-        right: 0; /* Adjust this value according to your desired margin width */
-        bottom: 33.5%; /* Adjust this value according to your desired margin */
-        width: 40px; /* Adjust this value according to your desired arrow width */
-        height: 1px; /* Adjust this value according to your desired border thickness */
-        
-        /* Create the arrow */
-        border: 5px solid transparent;
-        border-left-color: #0d6efd; /* Adjust this value according to your desired arrow color */
-    }
+.input-container {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+}
 
+.input-container input {
+    border: none;
+    outline: none;
+    padding: 2px 4px;
+    font-size: 10px;
+    background-color: #f3f7fd;
+    border: 1px solid #777676;
+}
 
+.input-container .euro-sign {
+    padding: 2px 4px;
+    font-size: 10px;
+    background-color: #f3f7fd;
+    border: 1px solid #777676;
+}
 
-    @media (max-width:992px) {
-        .line-through-icons {
-            right: 5%;
-        }
-    }
-    @media (max-width:790px) {
-        .line-through-icons {
-            right: 6%;
-        }
-    }
-    @media (max-width:676px) {
-        .line-through-icons {
-            right: 7%;
-        }
-    }
-    @media (max-width:570px) {
-        .line-through-icons {
-            right: 8%;
-        }
-    }
-    @media (max-width:500px) {
-        .line-through-icons {
-            right: 9%;
-        }
-    }
-    @media (max-width:450px) {
-        .line-through-icons {
-            right: 10%;
-        }
-    }
-    @media (max-width:850px) {
-        .company-details .small-icons, .invoice .small-icons, .invoice-2 .small-icons{
-            width: 23px;
-            height: 23px;
-            font-size: 10px;
-        }
-        .small-icons-container{
-            font-size: 10px;
-        }
-        .actions-row{
-            font-size: 10px;
-        }
-        .actions-row .btn{
-            font-size: 8px;
-            padding: 5px;
-        }
-    }
-    @media (max-width:500px) {
-        .company-details .small-icons, .invoice .small-icons{
-            width: 15px;
-            height: 15px;
-            padding:2px 5px !important;
-            font-size: 8px;
-        }
-        .small-icons-container{
-            font-size: 8px;
-        }
-    }
-    
+.big-table,
+.account-table {
+    overflow-x: auto !important;
+}
+.big-table::-webkit-scrollbar,
+.account-table::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
 
-    .input-container {
-        display: inline-flex;
-        align-items: center;
-        padding: 5px;
-        border-radius: 5px;
-    }
-    
-    .input-container input {
-        border: none;
-        outline: none;
-        padding: 2px 4px ;
+@media (max-width: 1050px) {
+    .my-search {
         font-size: 10px;
-        background-color: #F3F7FD;
-        border: 1px solid #777676;
     }
-    
-    .input-container .euro-sign {
-        padding: 2px 4px ;
-        font-size: 10px;
-        background-color: #F3F7FD;
-        border: 1px solid #777676;
+    .my-search .fa-solid {
+        font-size: 10px !important;
     }
-    
-    .big-table,.account-table {
-        overflow-x: auto !important;
+}
+@media (max-width: 992px) {
+    .big-table-child {
+        width: 3500px !important;
     }
-    .big-table::-webkit-scrollbar, .account-table::-webkit-scrollbar { 
-        display: none;  /* Safari and Chrome */
-      }
-      
-
-    @media (max-width:1050px) {
-        .my-search{
-            font-size: 10px;
-        }
-        .my-search .fa-solid{
-            font-size: 10px !important;
-        }
-
+}
+@media (max-width: 767px) {
+    .big-table-child {
+        width: 3000px !important;
     }
-    @media (max-width:992px) {
-        .big-table-child {
-            width: 3500px !important;
-        }
-    }
-    @media (max-width:767px) {
-        .big-table-child {
-            width: 3000px !important;
-        }
-    }
+}
 
+/* email */
 
-   /* email */
-
-
-   .modal {
+.modal {
     display: none;
     position: fixed;
     z-index: 11;
@@ -466,9 +470,9 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .modal-content {
+}
+
+.modal-content {
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
@@ -478,9 +482,9 @@
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-  }
-  
-  .closeBtn {
+}
+
+.closeBtn {
     color: #aaa;
     position: absolute;
     right: 0;
@@ -489,25 +493,24 @@
     font-weight: bold;
     padding: 10px 15px;
     cursor: pointer;
-  }
-  
-  .closeBtn:hover,
-  .closeBtn:focus {
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
     color: black;
     text-decoration: none;
-  }
-  
-  
-  .editor-container {
+}
+
+.editor-container {
     width: auto;
     margin: auto;
     background: white;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .toolbar {
+}
+
+.toolbar {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -516,21 +519,21 @@
     background: #f9f9f9;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-  }
-  
-  .toolbar button {
+}
+
+.toolbar button {
     background: none;
     border: 1px solid #ddd;
     padding: 5px 10px;
     border-radius: 3px;
     cursor: pointer;
-  }
-  
-  .toolbar button:hover {
+}
+
+.toolbar button:hover {
     background: #eee;
-  }
-  
-  #editor {
+}
+
+#editor {
     padding: 20px;
     height: 300px;
     overflow: auto;
@@ -539,9 +542,8 @@
     white-space: pre-wrap;
     word-wrap: break-word;
     overflow: auto;
-  
-  }
-  
-  .hash {
+}
+
+.hash {
     font-size: 8rem;
-  }
+}

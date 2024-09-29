@@ -18,7 +18,7 @@ class ItemsChangeStatus extends Model
         'created_by',
         'comments',
         'create_at',
-        'follow_the_collection_scenario', 
+        'follow_the_collection_scenario',
         'create_a_specific_action',
     ];
 
@@ -47,7 +47,7 @@ class ItemsChangeStatus extends Model
         return $this->morphMany(Email::class, 'emailable');
     }
 
-    public function tempActions()
+    public function itemActions()
     {
         return $this->hasMany(Action::class, 'item_change_status_id');
     }
