@@ -30,10 +30,10 @@ return new class extends Migration
             $table->date('due_date');
             $table->date('payment_date');
             $table->bigInteger('currency_id');
-            $table->decimal('initial_amount_exc_tax', 10, 2);
-            $table->decimal('initial_amount_inc_tax', 10, 2);
-            $table->decimal('remaining_amount_exc_tax', 10, 2);
-            $table->decimal('remaining_amount_inc_tax', 10, 2);
+            $table->decimal('initial_amount_exc_tax', 10, 2)->default(0);
+            $table->decimal('initial_amount_inc_tax', 10, 2)->default(0);
+            $table->decimal('remaining_amount_exc_tax', 10, 2)->default(0);
+            $table->decimal('remaining_amount_inc_tax', 10, 2)->default(0);
             $table->timestamps();
         });
     }

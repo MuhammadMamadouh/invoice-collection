@@ -7,16 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActionType extends Model
 {
-    protected $fillable=['en_name', "icon"];
+    protected $fillable = ['en_name', "icon"];
 
     use HasFactory;
 
-    public function actions(){
+    public function actions()
+    {
         return $this->hasMany(Action::class, 'action_type');
     }
 
-    public function tempActions(){
+    public function itemActions()
+    {
         return $this->hasMany(Action::class, 'action_type');
     }
-    
+
 }

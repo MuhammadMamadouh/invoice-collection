@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CollectionScenarioRequest;
+use App\Models\Action;
 use App\Models\ActionsCollectionScenario;
 use App\Models\ActionType;
 use App\Models\CollectionScenario;
@@ -19,22 +20,60 @@ class CollectionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $items = Item::with('client')->paginate(10);
-        $clients = Client::get();
-        $users = User::where('active', 1)->with('role')->get();
-        $combined = $clients->merge($users);
-        return view('collection.index', compact('items', 'combined'));
-    }
+    // public function index()
+    // {
+    //     $items = Item::with('client')->paginate(10);
+    //     $clients = Client::get();
+    //     $users = User::where('active', 1)->with('role')->get();
+    //     $combined = $clients->merge($users);
+    //     return view('collection.index', compact('items', 'combined'));
+    // }
+
+
     public function manualActions()
     {
-        $items = Item::with('client')->paginate(10);
-        $clients = Client::get();
-        $users = User::where('active', 1)->with('role')->get();
-        $combined = $clients->merge($users);
-        return view('collection.manual-actions', compact('items', 'combined'));
+        $manualActions = Action::with('item', 'Collection.client', 'actionTypes')
+        ->where('automatic_action', 0)
+        ->orderBy('action_date')->get();
+        $manualActionsCount = $manualActions->count();
+        dd($manualActions);
+        return view('collection.manual_actions', compact('manualActions', 'manualActionsCount'));
     }
+
+
+
+
+    // public function manualActions()
+    // {
+    //     $manualActions = Action::with('item.client', 'item.client.collectionScenario.client', 'actionTypes')
+    //     ->where('automatic_action', 0)
+    //     ->get();
+    //     dd($manualActions);
+    //     return view('collection.manual_actions', compact('manualActions'));
+    // }
+
+
+    // public function manualActions()
+    // {
+    //     $manualActions = Action::with('item.client', 'item.client.collectionScenario', 'actionTypes')
+    //     ->whereHas('item.client.collectionScenario')
+    //     ->whereHas('item', function($query) {
+    //         $query->where('company_id', 1);
+    //     })
+    //     ->orderBy('created_at', 'desc')
+    //     ->paginate(10);
+    //     //dd($manualActions);
+    //     return view('collection.manual_actions', compact('manualActions'));
+    // }
+
+    // public function manualActions()
+    // {
+    //     $manualActions = Item::with(['itemActions' => function ($query){
+    //         $query->where('automatic_action', 0);
+    //     }, 'client'])->whereNotNull('company_id')
+    //     ->get();
+    //     return view('collection.manual_actions', compact('manualActions'));
+    // }
 
 
 }

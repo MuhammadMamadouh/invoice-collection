@@ -95,7 +95,7 @@ class Item extends Model
 
 
 
-    public function itemTempActions()
+    public function itemActions()
     {
         return $this->hasMany(Action::class, 'item_id');
     }

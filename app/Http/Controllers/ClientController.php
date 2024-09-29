@@ -41,7 +41,7 @@ class ClientController extends Controller
             'firstDueItem',
             'contacts',
             'items.itemChangeStatus',
-            //'items.tempActions'
+            //'items.itemActions'
         ])->filter(new ClientFilter(request()))->paginate(30);
         $clientResource = ClientResource::collection($clients)->response()->getData()->data;
         $client_count = Client::count();
@@ -154,7 +154,7 @@ class ClientController extends Controller
             return to_route('clients.index')->with(['message' => $e->getMessage()]);
         }
     }
-    
+
 
     /**
      * Remove the specified resource from storage.
