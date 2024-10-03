@@ -47,10 +47,13 @@ class CreateCollectionScenarioAction extends Component
         $this->isVisible = true;
     }
 
+
+
     #[On('showEditActionForm')]
     public function editForm($actionId)
     {
         $action = Action::findOrFail($actionId);
+        $this->actionId = $action->id;
         $this->action_name = $action->action_name;
         $this->action_date = $action->action_date;
         $this->action_type = $action->action_type;
@@ -75,6 +78,7 @@ class CreateCollectionScenarioAction extends Component
         $this->isVisible = true;
     }
 
+    #[On('closeForm')]
     public function hideForm()
     {
         $this->isVisible = false;
