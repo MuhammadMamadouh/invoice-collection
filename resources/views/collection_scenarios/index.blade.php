@@ -110,17 +110,18 @@
                             </div>
                             <div class="col-lg-8 col-sm-12 col-md-12">
                                 <div class="end-buttons text-end container">
-                                    <button class="btn btn-secondary text-capitalize mt-2"
+                                    {{-- <button class="btn btn-secondary text-capitalize mt-2"
                                         onclick="showAddActionDiv({{ $collection->id }})">
                                         <span><i class="fa-solid fa-plus"></i></span>{{ __('Add An Action') }}
-                                    </button>
+                                    </button> --}}
+                                    <livewire:AddCollectionScenarioActionButton :collection="$collection">
                                 </div>
                                 {{-- <div class="overlay d-none"
                                     style="width: 100%;height: 100%;position: absolute;top: 0;left: 0;background-color: rgba(0, 0, 0, 0.418);z-index: 9;">
                                 </div> --}}
 
                                 {{-- ------------------------------------------------------------------------------- --}}
-                                @include('collection_scenarios.create_collection_scenarios_actions')
+                                    <livewire:CreateCollectionScenarioAction>
                                 {{-- ------------------------------------------------------------------------------- --}}
 
                                 {{-- <form class="d-flex align-items-center mb-3" action="#" method="POST">
@@ -175,17 +176,11 @@
                                 </form> --}}
 
                                 @foreach ($collection->actionScenarios as $ActionScenario)
-                                    <div class="content-text-2">
-                                        <ul class="d-flex">
-                                            <span>@</span>
-                                            <li><a href="#"
-                                                    onclick="showEditActionDiv({{ $ActionScenario->id }})">{{ $ActionScenario->action_name }}</a>
-                                            </li>
-                                            <span>{{ $ActionScenario->number_of_days }} day(s)
-                                                {{-- <img src="img/france.png"alt=""> --}}
-                                            </span>
-                                        </ul>
-                                    </div>
+
+                                    {{-- ------------------------------------------------------------------------------- --}}
+                                    <livewire:EditCollectionScenarioActionButton :actionScenario="$ActionScenario">
+                                    {{-- ------------------------------------------------------------------------------- --}}
+
                                     {{-- ------------------------------------------------------------------------------- --}}
                                     @include('collection_scenarios.edit_collection_scenarios_actions')
                                     {{-- ------------------------------------------------------------------------------- --}}

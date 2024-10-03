@@ -1,6 +1,6 @@
 <div class="position-fixed edit-action-div-{{ $ActionScenario->id }} pop-up d-none w-75 pt-4 pe-4"
     style="position: fixed; top: 0; left: 50%; transform: translateX(-50%);z-index: 99999; height: 100vh;  width: 65% !important; overflow-y: scroll; overflow-x: hidden;">
-    <form id="myForm" action="{{ route('collection.update', $ActionScenario->id) }}" method="POST">
+    <form id="myForm" action="{{ route('collection.updateAction', $ActionScenario->id) }}" method="POST">
         @csrf
         <input type="hidden" id="collection_scenario_id" name="collection_scenario_id" class="form-control"
             style="width: 355px;" value="{{ $ActionScenario->id }}">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </div><!--24-->
-            <div id="dunning-letter" class="clearr">
+            {{-- <div id="dunning-letter" class="clearr">
                 <div class="modal-content w-100"
                     style="margin:auto;overflow-x: hidden;overflow-y: scroll;height: 400px;">
                     <select class="form-select" id="inputname19">
@@ -255,7 +255,7 @@
                         </div><!--r-5-->
                     </div><!--row-->
                 </div><!--modal-content-->
-            </div><!--modal-->
+            </div><!--modal--> --}}
 
             <div class="text-center mt-3">
                 <button type="submit" class="btn btn-success"> <i
