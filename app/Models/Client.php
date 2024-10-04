@@ -96,7 +96,7 @@ class Client extends Model
     }
 
 
-    
+
     public function contacts()
     {
         return $this->hasMany(Contact::class, 'client_id');
@@ -107,4 +107,6 @@ class Client extends Model
         return $this->hasMany(ItemsChangeStatus::class, 'subject');
     }
 
+
+    
 }

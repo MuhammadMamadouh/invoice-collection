@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Enum\Role;
 use App\Enum\RoleEnum;
 use App\Filters\Client\ClientFilter;
 use App\Http\Requests\ClientRequest;
@@ -13,11 +12,8 @@ use App\Models\ClientsGroup;
 use App\Models\CollectionScenario;
 use App\Models\Contact;
 use App\Models\Currency;
-use App\Models\Item;
-use App\Models\ItemStatusType;
 use App\Models\ItemType;
 use App\Models\User;
-use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -66,7 +62,6 @@ class ClientController extends Controller
         ));
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
@@ -103,19 +98,45 @@ class ClientController extends Controller
         $collectionsScenario = CollectionScenario::all();
         $currencies = Currency::all();
         $itemTypes = ItemType::all();
-        return view('clients.client_data_model', compact('clientResource', 'collectors', 'client', 'clients', 'itemTypes', 'currencies', 'collectionsScenario'));
+        return view('clients.client_data_model',
+        [
+                'clientResource' => $clientResource,
+                'collectors' => $collectors,
+                'client' => $client,
+                'clients' => $clients,
+                'itemTypes' => $itemTypes,
+                'currencies' => $currencies,
+                'collectionsScenario' => $collectionsScenario,
+            ]
+        );
     }
     public function show($id)
     {
         $client = Client::findOrFail($id);
+        dd($client->collectionScenario->actions);
         $client = new ClientResource($client);
         $client = $client->response()->getData()->data;
         $clients = Client::all();
+        // dd($client->firstDueItem);
         $collectors = User::collectors()->get();
         $collectionsScenario = CollectionScenario::all();
         $currencies = Currency::all();
         $itemTypes = ItemType::all();
-        return view('clients.show', compact('collectors', 'client', 'clients', 'itemTypes', 'currencies', 'collectionsScenario'));
+        $clientRoles = ClientRole::all();
+        $users = User::all(['id', 'first_name', 'last_name', 'role_id']);
+
+        return view('clients.show',
+            [
+                'clientResource' => $client,
+                'collectors' => $collectors,
+                'client' => $client,
+                'clients' => $clients,
+                'itemTypes' => $itemTypes,
+                'currencies' => $currencies,
+                'collectionsScenario' => $collectionsScenario,
+                'clientRoles' => $clientRoles,
+                'users' => $users,
+            ]);
     }
 
     /**
@@ -154,7 +175,6 @@ class ClientController extends Controller
             return to_route('clients.index')->with(['message' => $e->getMessage()]);
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
