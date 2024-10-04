@@ -1,7 +1,7 @@
 <div>
     <div>
         @if ($isVisible == true)
-            <div class="position-fixed add-action-div pop-up w-75 pt-4 pe-4"
+            <div class="position-fixed add-action-div pop-up w-50 pt-4 pe-4"
                 style="position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 99999; width: 100%; height: 100%; overflow: auto;">
                 <form wire:submit.prevent="submit">
                     <input type="hidden" wire:model="collection_scenario_id" class="form-control">
@@ -29,6 +29,20 @@
                         <div class="my-1">
                             <div class="col-12">
                                 <div class="input-group mt-1">
+                                    <label for="no_of_days">No. of days:</label>
+                                </div>
+                                <div class="mt-2">
+                                    <input type="number" wire:model.defer="no_of_days" class="form-control"
+                                        id="no_of_days">
+                                </div>
+                                @error('no_of_days')
+                                    <div class="alert text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        {{-- <div class="my-1">
+                            <div class="col-12">
+                                <div class="input-group mt-1">
                                     <label for="action_date">Action Date:</label>
                                 </div>
                                 <div class="mt-2">
@@ -39,15 +53,15 @@
                                     <div class="alert text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="my-1">
                             <div class="col-12">
                                 <div class="input-group mt-1">
-                                    <label for="action_type">Action Type:</label>
+                                    <label for="action_type_id">Action Type:</label>
                                 </div>
                                 <div class="mt-2">
-                                    <select wire:model.live='action_type' class="form-select" id="action_type">
+                                    <select wire:model.live='action_type_id' class="form-select" id="action_type_id">
                                         <option value="" selected>Select One</option>
                                         @foreach ($actionTypes as $actionType)
                                             <option value="{{ $actionType->id }}"
@@ -57,13 +71,13 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                @error('action_type')
+                                @error('action_type_id')
                                     <div class="alert text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
                         {{-- ---------------------------------------Send Email ---------------------------- --}}
-                        @if ($action_type == 5)
+                        @if ($action_type_id == 5)
                             <div class="new-holab-1" id="hide-hoalp-1">
                                 <div class="row mt-5">
                                     <div class="col-md-2 mt-2">
@@ -121,7 +135,7 @@
                             </div>
                         @endif
                         {{-- ---------------------------------------Send SMS ---------------------------- --}}
-                        @if ($action_type == 7)
+                        @if ($action_type_id == 7)
                             <div class="new-holab-1" id="hide-hoalp-1">
                                 <div class="row mt-5">
                                     <div class="col-md-2 mt-2">

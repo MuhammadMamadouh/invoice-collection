@@ -313,7 +313,7 @@
     width: 90vw;
     height: 90vh;
     overflow-y: scroll;
-    z-index: 10;
+    z-index: 9999999999999999;
     border-radius: 5px;
 }
 

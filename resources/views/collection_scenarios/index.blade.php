@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    <hr class="container-fluid">
+    <hr class="container">
     {{-- ------------------------------------------------------------------------------- --}}
     @include('collection_scenarios.predefined_collection_scenarios')
     {{-- ------------------------------------------------------------------------------- --}}
@@ -80,7 +80,7 @@
                                     </h6>
                                     <div class="open-serch">
                                         <a href="" class="text-black-50 text-center">
-                                            {{ $collection->client->count() }} {{ __('clients use this collection') }}
+                                            {{ $collection->client()->count() }} {{ __('clients use this collection') }}
                                             {{ __('scenarioLink') }}
                                             <span><i class="fa-regular fa-share-from-square"></i></span>
                                         </a>
@@ -175,7 +175,7 @@
                                     </div>
                                 </form> --}}
 
-                                @foreach ($collection->actionScenarios as $ActionScenario)
+                                @foreach ($collection->actions as $ActionScenario)
 
                                     {{-- ------------------------------------------------------------------------------- --}}
                                     <livewire:EditCollectionScenarioActionButton :actionScenario="$ActionScenario">
@@ -265,15 +265,15 @@
 
             //     else if (value1 == 4) {
             //     dunningLetter1.classList.remove("d-none")
-            //  //   mail_subject.style.display="none"; 
-            //     } else if (value1 == 5) { 
+            //  //   mail_subject.style.display="none";
+            //     } else if (value1 == 5) {
             //         dunningLetter1.classList.remove("d-none");
             //     document.getElementById('is_automatic_action_check').style.display="block";
             //     } else if (value1 == 7) {
-            //         dunningLetter1.classList.remove("d-none"); 
+            //         dunningLetter1.classList.remove("d-none");
             //     document.getElementById('sub_lb').style.display="none";
             //     document.getElementById('mail_subject').style.display="none";
-            //     document.getElementById('is_automatic_action_check').style.display="block";  
+            //     document.getElementById('is_automatic_action_check').style.display="block";
             //     }
             // });
         }

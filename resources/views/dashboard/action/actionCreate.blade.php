@@ -26,14 +26,14 @@
         {{ $message }}
         @enderror
         <br>
-        <label for="actionType_id">{{ __('action_type') }}:</label>
-        <select id="actionType_id" name="actionType_id" >
+        <label for="action_type_id">{{ __('action_type') }}:</label>
+        <select id="action_type_id" name="action_type_id" >
             <option selected> </option>
             @foreach($actionTypes as $type)
                 <option value="{{ $type->id }}">{{ $type->en_name }}</option>
             @endforeach
         </select>
-        @error('actionType_id')
+        @error('action_type_id')
         {{ $message }}
         @enderror
         <br>

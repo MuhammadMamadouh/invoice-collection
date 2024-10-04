@@ -4,7 +4,7 @@
         <li><a href="#"
             wire:click="$dispatch('showEditActionForm', { actionId: {{ $actionScenario->id }} })">{{ $actionScenario->action_name }}</a>
         </li>
-        <span>{{ $actionScenario->action_date }} day(s)
+        <span>{{ $actionScenario->no_of_days }} day(s)
             {{-- <img src="img/france.png"alt=""> --}}
         </span>
     </ul>

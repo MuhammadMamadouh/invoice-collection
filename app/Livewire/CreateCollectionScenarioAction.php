@@ -22,7 +22,8 @@ class CreateCollectionScenarioAction extends Component
     //------------------Action Table -----------
     public $action_name;
     public $action_date;
-    public $action_type;
+    public $no_of_days;
+    public $action_type_id;
     public $actionTypes;
     public $created_by = 1;
     public $selectedActionType = null;
@@ -53,14 +54,15 @@ class CreateCollectionScenarioAction extends Component
     public function editForm($actionId)
     {
         $action = Action::findOrFail($actionId);
-        $this->actionId = $action->id;
-        $this->action_name = $action->action_name;
-        $this->action_date = $action->action_date;
-        $this->action_type = $action->action_type;
-        $this->collection_scenario_id = $action->collection_scenario_id;
-        $this->automatic_action = $action->automatic_action;
-        $this->automatic_action_to_be_confirmed = $action->automatic_action_to_be_confirmed;
-        $this->internal_interactive_emailLink = $action->internal_interactive_emailLink;
+        $this->actionId                          = $action->id;
+        $this->action_name                       = $action->action_name;
+        $this->no_of_days                        = $action->no_of_days;
+        $this->action_date                       = $action->action_date;
+        $this->action_type_id                    = $action->action_type_id;
+        $this->collection_scenario_id            = $action->collection_scenario_id;
+        $this->automatic_action                  = $action->automatic_action;
+        $this->automatic_action_to_be_confirmed  = $action->automatic_action_to_be_confirmed;
+        $this->internal_interactive_emailLink    = $action->internal_interactive_emailLink;
         // Load email data if it exists
         if ($action->emails()->exists()) {
             $email = $action->emails()->first();
@@ -94,7 +96,7 @@ class CreateCollectionScenarioAction extends Component
 
     public function updatedselectedActionType($value)
     {
-        $this->action_type = $value;
+        $this->action_type_id = $value;
     }
 
 
@@ -123,16 +125,19 @@ class CreateCollectionScenarioAction extends Component
     {
         $this->validate([
             'action_name' => 'required',
-            'action_date' => 'required|date',
-            'action_type' => 'required',
+            // 'action_date' => 'required|date',
+            'no_of_days' => 'required|numeric',
+            'action_type_id' => 'required',
         ]);
+        // dd($this->action_date);
         DB::beginTransaction();
         $action = Action::updateOrCreate(
             ['id' => $this->actionId],
             [
                 'action_name' => $this->action_name,
                 'action_date' => $this->action_date,
-                'action_type' => $this->action_type,
+                'no_of_days' => $this->no_of_days ?? '',
+                'action_type_id' => $this->action_type_id,
                 'created_by' => $this->created_by,
                 'collection_scenario_id' => $this->collection_scenario_id,
                 'automatic_action' => $this->automatic_action,
@@ -140,7 +145,7 @@ class CreateCollectionScenarioAction extends Component
                 'internal_interactive_emailLink' => $this->internal_interactive_emailLink,
             ]
         );
-        if ($this->action_type == 5) {
+        if ($this->action_type_id == 5) {
             $newEmail = new Email([
                 'created_by' => $this->created_by,
                 // 'subject' => $this->subject,
@@ -148,7 +153,7 @@ class CreateCollectionScenarioAction extends Component
             ]);
             $action->emails()->save($newEmail);
         }
-        if ($this->action_type == 7) {
+        if ($this->action_type_id == 7) {
             $newSms = new SmsMessage([
                 'created_by' => $this->created_by,
                 // 'subject' => $this->subject,
@@ -157,7 +162,7 @@ class CreateCollectionScenarioAction extends Component
             $action->smsMessages()->save($newSms);
         }
         DB::commit();
-        $this->reset(['action_name', 'action_date', 'action_type']);
+        $this->reset(['action_name', 'action_date', 'action_type_id']);
         $this->hideForm();
         return to_route('collection_scenarios.index')->with(['message' => __('created successfully')]);
     }

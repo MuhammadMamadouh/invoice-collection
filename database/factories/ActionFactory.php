@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\ActionType;
+use App\Models\CollectionScenario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +18,10 @@ class ActionFactory extends Factory
     public function definition(): array
     {
         return [
-            'en_name'        => $this->faker->name,
-            'number_of_days' => $this->faker->numberBetween(1, 365),
-            'actionType_id'  => ActionType::get()->random()->id,
+            'action_name'            => $this->faker->name,
+            'no_of_days'             => $this->faker->numberBetween(1, 365),
+            'action_type_id'         => ActionType::get()->random()->id,
+            'collection_scenario_id' => CollectionScenario::get()->random()->id,
         ];
     }
 }

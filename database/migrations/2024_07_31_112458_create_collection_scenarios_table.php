@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('collection_scenarios', function (Blueprint $table) {
             $table->id();
             $table->string('en_name');
+            $table->boolean('is_active')->default(true);
+            $table->boolean('is_pre_defined')->default(false);
             $table->timestamps();
         });
     }

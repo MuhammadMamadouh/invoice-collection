@@ -69,7 +69,7 @@
 
 <body class="cairo-uniquifier">
     @include('dashboard.include.navbar')
-    <div class="container-fluid">
+    <div class="container-fluid col-10">
         @yield('content')
     </div>
     <!--scirpt Files-->

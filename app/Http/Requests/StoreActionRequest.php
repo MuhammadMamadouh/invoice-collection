@@ -24,7 +24,7 @@ class StoreActionRequest extends FormRequest
         return [
             'en_name'        => 'required|string|max:255',
             'number_of_days' => 'required|numeric|max:365',
-            'actionType_id'  => 'required|exists:action_types,id',
+            'action_type_id'  => 'required|exists:action_types,id',
         ];
     }
 
@@ -33,7 +33,7 @@ class StoreActionRequest extends FormRequest
         return [
             'en_name.required' => 'Please enter action name',
             'number_of_days.required' => 'Please enter no. of days',
-            'actionType_id.required' => 'please enter action type',
+            'action_type_id.required' => 'please enter action type',
         ];
     }
 }
