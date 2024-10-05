@@ -51,7 +51,7 @@ class ClientResource extends JsonResource
             'block_this_account'        => $this->block_this_account,
             'customer_custom_field_1'   => $this->customer_custom_field_1,
             'customer_custom_field_2'   => $this->customer_custom_field_2,
-            'items'                     => ItemResource::collection($this->items),
+            'items'                     => ItemResource::collection($this->items()->paginate(10)),
             'items_count'               => $this->items()->count(),
             'total_recievables'         => $this->items()->sum('initial_amount_inc_tax'),
             'total_overdue_60'          => $this->overDueItemsMoreThanTwoMonths()->sum('initial_amount_inc_tax'),
@@ -61,6 +61,7 @@ class ClientResource extends JsonResource
             'clientGroup'               => ClientGroupResource::collection($this->clientsGroups)->toArray($request) ?? [],
             'firstDueItem'              => $this->firstDueItem ? ItemResource::make($this->firstDueItem()->first()) : [],
             'contacts'                  => $this->contacts ? ContactResource::collection($this->contacts) : [],
+            'toTakeAction'              => $this->actions()->first(),
         ];
     }
 }

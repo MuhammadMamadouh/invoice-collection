@@ -9,6 +9,7 @@ use App\Models\ActionType;
 use App\Models\CollectionScenario;
 use App\Models\Item;
 use App\Models\Client;
+use App\Models\ClientAction;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -32,12 +33,9 @@ class CollectionController extends Controller
 
     public function manualActions()
     {
-        $manualActions = Action::with('item', 'Collection.client', 'actionTypes')
-        ->where('automatic_action', 0)
-        ->orderBy('action_date')->get();
-        $manualActionsCount = $manualActions->count();
-        //dd($manualActions);
-        return view('collection.manual_actions', compact('manualActions', 'manualActionsCount'));
+        $manualActions = ClientAction::all();
+        // dd($manualActions);
+        return view('collection.manual_actions', compact('manualActions'));
     }
 
 

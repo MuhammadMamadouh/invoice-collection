@@ -38,15 +38,15 @@
         <div class="col"></div>
     </div>
     <div class="row mt-2 text-center p-2 align-items-center" style="background-color: #006bff14;">
-        @php($firstDueItem = $client->firstDueItem)
-        <div class="col fw-bold">{{ $firstDueItem->due_date ?? '-' }}</div>
+        {{-- @php($firstDueItem = $client->firstDueItem) --}}
+        <div class="col fw-bold">{{ $client->toTakeAction->due_date ?? '-' }}</div>
         <div class="col fw-bold">
             <div class="btn openModalBtn btn-secondary">
-                {{ $firstDueItem->toTakeAction->action_type ?? 'email'}} </div>
+                {{ $client->toTakeAction->action_type_name}} </div>
         </div>
-        <div class="col fw-bold">{{-- optional($firstDueItem)->toTakeAction()->action_name ?? 'contact by email' --}}
-            {{-- optional($firstDueItem)->toTakeAction()->number_of_days ?? '2' --}}</div>
-        <div class="col fw-bold">0000</div>
+        <div class="col fw-bold">{{ $client->toTakeAction->action_name }}
+            {{ $client->toTakeAction->no_of_days ?? '2' }}</div>
+        <div class="col fw-bold">{{ $client->toTakeAction->remaining_amount_inc_tax ?? '0' }}</div>
         <div class="col">
             <div class="btn btn-secondary">
                 <i class="fa-solid fa-check"></i>
