@@ -75,7 +75,7 @@ class Item extends Model
     {
         $is_overdue = now()->gt($this->due_date) ? true : false;
         return $is_overdue;
-    } 
+    }
 
 
 
@@ -84,7 +84,7 @@ class Item extends Model
         $over_due_days = now()->diffInDays($this->due_date, false) * -1;
         $overdue = $over_due_days > 0 ? "+$over_due_days" : "$over_due_days";
         return $overdue;
-    } 
+    }
 
 
 
@@ -93,10 +93,28 @@ class Item extends Model
         return $this->hasMany(ItemsChangeStatus::class, 'item_id');
     }
 
-
-
     public function itemActions()
     {
         return $this->hasMany(Action::class, 'item_id');
+    }
+
+    public function takenActions()
+    {
+        return $this->belongsToMany(ActionsCollectionScenario::class, 'item_taken_actions',"scenario_action_id", 'item_id');
+    }
+
+    // public function toTakeAction()
+    // {
+    //     // get taken actions on first due item
+    //     $firstDueTakenAction = $this->firstDueItem()->takenActions()->pluck('collection_scenario_id');
+    //     return $this->collectionScenarios->scenariosActions()->whereNotIn('id', $firstDueTakenAction)
+    //     ->orderBy('number_of_days')->first();
+    // }
+
+    public function toTakeAction()
+    {
+        $action =  $this->takenActions()->pluck('collection_scenario_id');
+        return $this->client->collectionScenarios->scenariosActions()->whereNotIn('id',  $action)
+        ->orderBy('number_of_days')->first();
     }
 }

@@ -18,12 +18,12 @@ class ItemFactory extends Factory
     {
 
         return [
-            'item_type_id'             => $this->faker->numberBetween(1, 100),
-            'company_id'               => $this->faker->unique()->numberBetween(1, 100000),
-            'status_id'                => $this->faker->unique()->numberBetween(1, 100000),
-            'trans_no'                 => $this->faker->unique()->randomNumber(5, true),
-            'po_no'                    => $this->faker->unique()->randomNumber(5, true),
-            'file_no'                  => $this->faker->unique()->randomNumber(5, true),
+            'item_type_id'             => $this->faker->numberBetween(1, 8),
+            'company_id'               => $this->faker->numberBetween(1, 10),
+            'status_id'                => $this->faker->numberBetween(1, 10),
+            'trans_no'                 => $this->faker->randomNumber(5, true),
+            'po_no'                    => $this->faker->randomNumber(5, true),
+            'file_no'                  => $this->faker->randomNumber(5, true),
             'erp_item_type'            => $this->faker->word,
             'sales_manager'            => $this->faker->name,
             'business_case'            => $this->faker->sentence,
@@ -34,7 +34,7 @@ class ItemFactory extends Factory
             'issue_date'               => $this->faker->date(),
             'due_date'                 => $this->faker->date(),
             'payment_date'             => $this->faker->date(),
-            'currency_id'              => $this->faker->numberBetween(1, 100),
+            'currency_id'              => 1,
             'initial_amount_exc_tax'   => $this->faker->randomFloat(2, 100, 1000),
             'initial_amount_inc_tax'   => $this->faker->randomFloat(2, 110, 1100),
             'remaining_amount_exc_tax' => $this->faker->randomFloat(2, 50, 500),

@@ -113,7 +113,7 @@
                                             invoice
                                         </span>
                                     </div>
-                                </div> --}}
+                                </div>  --}}
                                 <div class="col">
                                     <div class="mouse-hovers d-flex justify-content-center">
                                         <p class="fw-bold">{{ $manualAction->action_date }}</p>
@@ -151,8 +151,7 @@
                                     <p class="fw-bold">{{ $client->company_code }}</p>
                                 </div>
                                 <div class="col">
-                                    <p class="fw-bold"><a href="#"
-                                            onclick="showHolap()">{{ $client->company_name }}</a></p>
+                                    <p class="fw-bold"><a href="#" onclick="showHolap()">{{ $client->company_name }}</a></p>
                                 </div>
                                 <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
                                     <i class="fa-solid fa-chevron-down"></i>
@@ -280,7 +279,7 @@
                                 </select>
                                 </li>
                                 <li class="mt-3 "><button type="button" class="btn" style="width: 100%;"><span><i
-                                                class="fa-solid fa-download"></i>&ensp;</span>download</button></li>
+                                    class="fa-solid fa-download"></i>&ensp;</span>download</button></li>
                             </ul>
                         </div>
                     </div>
@@ -290,8 +289,8 @@
     </section>
 @endsection
 @push('scripts')
-    <script src="/js/collection.js"></script>
-    <script src="/js/risk.js"></script>
-    <script src="/js/mange.js"></script>
-    <script src="/js/email.js"></script>
+    <script src="{{asset('js/collection.js')}}"></script>
+    <script src="{{asset('js/risk.js')}}"></script>
+    <script src="{{asset('js/mange.js')}}"></script>
+    <script src="{{asset('js/email.js')}}"></script>
 @endpush

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('emails', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('created_by');
-            $table->bigInteger('resolver');
-            $table->bigInteger('subject');
+            $table->bigInteger('resolver')->nullable();
+            $table->bigInteger('subject')->nullable();
             $table->longText('message');
             $table->boolean('get_a_copy')->default(0);
             $table->boolean('request_an_acknowledgment')->default(0);

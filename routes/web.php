@@ -89,7 +89,7 @@ Route::resource("/clients", ClientController::class);
 //-----------------CollectionScenarios--------------------------------
 Route::post('/collection_scenarios/add_pre-defined_collection', [CollectionScenarioController::class, 'addPreDefinedCollection'])->name('collection.add_pre_defined_collection');
 Route::post('/collection_scenarios/actions', [ActionController::class, 'store'])->name('collection.storeAction');
-Route::post('/collection_scenarios/actions/{id}', [ActionController::class, 'update'])->name('collection.update');
+Route::post('/collection_scenarios/actions/{id}', [ActionController::class, 'update'])->name('collection.updateAction');
 Route::post('/collection_scenarios/duplicate/{id}', [CollectionScenarioController::class, 'duplicateScenario'])->name('collection.duplicateScenario');
 Route::resource("/collection_scenarios", CollectionScenarioController::class);
 

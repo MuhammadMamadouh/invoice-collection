@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ClientRolesSeeder::class);
         $this->call(EmailTypeSeeder::class);
         $this->call(TypeToSeeder::class);
+        $this->call(CollectionScenarioSeeder::class);
 
 
     }

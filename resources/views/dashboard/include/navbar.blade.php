@@ -70,7 +70,7 @@
                         <!-- <i class="fa-solid fa-gear nav-link bg-dark" onclick="showSetts()" style="cursor:pointer ;padding: 12px;"></i> Font Awesome fontawesome.com -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('collection.automatic.actions')}}"><span><svg
+                        <a class="nav-link" href="{{route('collection.manual.actions')}}"><span><svg
                                     class="svg-inline--fa fa-clock" aria-hidden="true" focusable="false"
                                     data-prefix="fas" data-icon="clock" role="img" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 512 512" data-fa-i2svg="">

@@ -36,7 +36,7 @@ class CollectionController extends Controller
         ->where('automatic_action', 0)
         ->orderBy('action_date')->get();
         $manualActionsCount = $manualActions->count();
-        dd($manualActions);
+        //dd($manualActions);
         return view('collection.manual_actions', compact('manualActions', 'manualActionsCount'));
     }
 

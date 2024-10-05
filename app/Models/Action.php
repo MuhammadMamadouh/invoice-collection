@@ -11,17 +11,16 @@ class Action extends Model
     protected $fillable = [
         'action_name',
         'action_date',
-        'action_type',
+        'no_of_days',
+        'action_type_id',
         'collection_scenario_id',
-        'predefined_collection_scenario_id',
         'item_change_status_id',
         'item_id',
         'created_by',
         'automatic_action',
         'automatic_action_to_be_confirmed',
         'internal_interactive_emailLink',
-        'is_pre_defined',
-    ];
+        ];
 
 
     public function actionTypes()

@@ -24,8 +24,8 @@ class CollectionScenarioController extends Controller
         for ($i = -90; $i <= 365; $i++) {
             $days[] = $i;
         }
-        $collections = CollectionScenario::with('actionScenarios', 'client')->get();
-        $preCollections = PredefinedCollectionScenarios::with('scenarioActions')->get();
+        $collections = CollectionScenario::with('actions', 'client')->get();
+        $preCollections = CollectionScenario::preDefined()->get();
         $actionTypes = ActionType::all();
         return view('collection_scenarios.index', compact('collections', 'actionTypes', 'days', 'preCollections'));
     }

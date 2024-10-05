@@ -15,42 +15,42 @@ class ActionTypesSeeder extends Seeder
     {
         $actions = [
             [
-                'id' => 1,
+                // 'id' => 1,
                 'en_name' => 'Litigation',
                 'icon' => 'fa-bolt',
             ],
             [
-                'id' => 2,
+                // 'id' => 2,
                 'en_name' => 'Dunning letter (Standard letter)',
                 'icon' => 'fa-bolt',
             ],
             [
-                'id' => 3,
+                // 'id' => 3,
                 'en_name' => 'Dunning letter with AR (Acknowledgment of Receipt)',
                 'icon' => 'fa-bolt',
             ],
             [
-                'id' => 4,
+                // 'id' => 4,
                 'en_name' => 'Dunning letter via ERM (Electronic Registered Mail)',
                 'icon' => 'fa-lock',
             ],
             [
-                'id' => 5,
+                // 'id' => 5,
                 'en_name' => 'E-mail',
                 'icon' => 'fa-envelope',
             ],
             [
-                'id' => 6,
+                // 'id' => 6,
                 'en_name' => 'Fax',
                 'icon' => 'fa-fax',
             ],
             [
-                'id' => 7,
+                // 'id' => 7,
                 'en_name' => 'SMS',
                 'icon' => 'fa-mobile',
             ],
             [
-                'id' => 8,
+                // 'id' => 8,
                 'en_name' => 'Phone',
                 'icon' => 'fa-phone',
             ],
