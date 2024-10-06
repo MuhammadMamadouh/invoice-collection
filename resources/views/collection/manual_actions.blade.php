@@ -95,9 +95,9 @@
             </div>
             <div class="text-center mb-3 table-container p-2 p-md-4">
                 @forelse($manualActions as $key => $manualAction)
-                    @if ($manualAction->Collection && $manualAction->Collection->client)
-                        @foreach ($manualAction->Collection->client as $clientKey => $client)
-                            <div class="row align-items-center pt-3" style="background-color: {{ ($key + $clientKey) % 2 == 0 ? '#006bff14' : '#ffffff' }}">
+                    {{-- @if ($manualAction->Collection && $manualAction->Collection->client) --}}
+                        {{-- @foreach ($manualAction->Collection->client as $clientKey => $client) --}}
+                            <div class="row align-items-center pt-3" style="background-color: {{ ($key) % 2 == 0 ? '#006bff14' : '#ffffff' }}">
                                 <div class="col-1">
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input mb-3" id="exampleCheck1" />
@@ -127,17 +127,17 @@
                                 </div>
                                 <div class="col-md-2 col-5">
                                     <div class="btn openModalBtn btn-info text-white w-100 mb-3">
-                                        <i class="fa-solid {{ $manualAction->actionTypes->icon }}"></i>
-                                        {{ $manualAction->actionTypes->en_name }}
+                                        <i class="fa-solid {{ $manualAction->action_type_icon }}"></i>
+                                        {{ $manualAction->action_type_name }}
                                     </div>
                                 </div>
                                 <div class="col-2 hide">
-                                    <p><a href="#" class="openModalBtn">Relance par
-                                            {{ $manualAction->actionTypes->en_name }}
-                                            n°1</a></p>
+                                    <p><a href="#" class="openModalBtn">
+                                            {{ $manualAction->action_type_name }}
+                                            </a></p>
                                 </div>
                                 <div class="col-2 hide">
-                                    <p>12,916.00 €</p>
+                                    <p>{{ $manualAction->remaining_amount_inc_tax }}</p>
                                 </div>
                                 <div class="col-1 hide">
                                     <span class="onmouse-2"><i class="fa-solid fa-flag mb-2 text-secondary"></i></span>
@@ -148,10 +148,11 @@
                                             +28days (< 10days) </span>
                                 </div>
                                 <div class="col hide">
-                                    <p class="fw-bold">{{ $client->company_code }}</p>
+                                    <p class="fw-bold">{{ $manualAction
+                                    ->client_name }}</p>
                                 </div>
                                 <div class="col">
-                                    <p class="fw-bold"><a href="#" onclick="showHolap()">{{ $client->company_name }}</a></p>
+                                    <p class="fw-bold"><a href="#" onclick="showHolap()">{{ $manualAction->client_name }}</a></p>
                                 </div>
                                 <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
                                     <i class="fa-solid fa-chevron-down"></i>
@@ -163,7 +164,7 @@
                                     </div>
                                     <div class="d-flex bg-white">
                                         <p class="fw-bold">Action amount:</p>
-                                        <p>12,916.00 €</p>
+                                        <p>{{ $manualAction->remaining_amount_inc_tax }}</p>
                                     </div>
                                     <div class="d-flex bg-white">
                                         <p class="fw-bold">Flag:</p>
@@ -180,8 +181,8 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    @endif
+                        {{-- @endforeach --}}
+                    {{-- @endif --}}
                 @empty
                     No Actions Yet....
                 @endforelse

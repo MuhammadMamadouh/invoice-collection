@@ -113,10 +113,11 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = Client::findOrFail($id);
-        dd($client->collectionScenario->actions);
+        // dd();
         $client = new ClientResource($client);
         $client = $client->response()->getData()->data;
-        $clients = Client::all();
+        // dd($client);
+        $clients = Client::where('id', '>', $id)->get();
         // dd($client->firstDueItem);
         $collectors = User::collectors()->get();
         $collectionsScenario = CollectionScenario::all();

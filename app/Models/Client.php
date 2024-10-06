@@ -85,17 +85,10 @@ class Client extends Model
         return $this->hasOne(Item::class, 'company_id')->orderBy('due_date');
     }
 
-
-
-    public function toTakeAction()
+    public function actions()
     {
-        // get taken actions on first due item
-        $firstDueTakenAction = $this->firstDueItem()->takenActions()->pluck('collection_scenario_id');
-        return $this->collectionScenarios->scenariosActions()->whereNotIn('id', $firstDueTakenAction)
-            ->orderBy('number_of_days')->first();
+        return $this->hasMany(ClientAction::class, 'client_id');
     }
-
-
 
     public function contacts()
     {
@@ -108,5 +101,5 @@ class Client extends Model
     }
 
 
-    
+
 }
