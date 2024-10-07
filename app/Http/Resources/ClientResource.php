@@ -56,11 +56,11 @@ class ClientResource extends JsonResource
             'total_recievables'         => $this->items()->sum('initial_amount_inc_tax'),
             'total_overdue_60'          => $this->overDueItemsMoreThanTwoMonths()->sum('initial_amount_inc_tax'),
             'total_overdue'             => $this->overDueItems()->sum('initial_amount_inc_tax'),
-            'collectionScenarios'       => $this->collectionScenario ? CollectionScenarioResource::make($this->collectionScenario) : [],
+            'collectionScenario'        => CollectionScenarioResource::make($this->collectionScenario),
             'collector'                 => new UserResource($this->collector),
             'clientGroup'               => ClientGroupResource::collection($this->clientsGroups)->toArray($request) ?? [],
             'firstDueItem'              => $this->firstDueItem ? ItemResource::make($this->firstDueItem()->first()) : [],
-            'contacts'                  => $this->contacts ? ContactResource::collection($this->contacts) : [],
+            'contacts'                  => ContactResource::collection($this->contacts),
             'toTakeAction'              => $this->actions()->first(),
         ];
     }

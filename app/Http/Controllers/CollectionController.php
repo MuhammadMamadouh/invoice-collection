@@ -18,60 +18,21 @@ use Illuminate\Support\Facades\Log;
 
 class CollectionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    // public function index()
-    // {
-    //     $items = Item::with('client')->paginate(10);
-    //     $clients = Client::get();
-    //     $users = User::where('active', 1)->with('role')->get();
-    //     $combined = $clients->merge($users);
-    //     return view('collection.index', compact('items', 'combined'));
-    // }
-
-
     public function manualActions()
     {
-        $manualActions = ClientAction::all();
-        // dd($manualActions);
-        return view('collection.manual_actions', compact('manualActions'));
+        $manualActions = ClientAction::getManualActions();
+        $manualActionsCount = ClientAction::countManualActions();
+        $automaticActionsCount = ClientAction::countAutomaticActions();
+        return view('collection.manual_actions', compact('manualActions', 'manualActionsCount', 'automaticActionsCount'));
     }
 
-
-
-
-    // public function manualActions()
-    // {
-    //     $manualActions = Action::with('item.client', 'item.client.collectionScenario.client', 'actionTypes')
-    //     ->where('automatic_action', 0)
-    //     ->get();
-    //     dd($manualActions);
-    //     return view('collection.manual_actions', compact('manualActions'));
-    // }
-
-
-    // public function manualActions()
-    // {
-    //     $manualActions = Action::with('item.client', 'item.client.collectionScenario', 'actionTypes')
-    //     ->whereHas('item.client.collectionScenario')
-    //     ->whereHas('item', function($query) {
-    //         $query->where('company_id', 1);
-    //     })
-    //     ->orderBy('created_at', 'desc')
-    //     ->paginate(10);
-    //     //dd($manualActions);
-    //     return view('collection.manual_actions', compact('manualActions'));
-    // }
-
-    // public function manualActions()
-    // {
-    //     $manualActions = Item::with(['itemActions' => function ($query){
-    //         $query->where('automatic_action', 0);
-    //     }, 'client'])->whereNotNull('company_id')
-    //     ->get();
-    //     return view('collection.manual_actions', compact('manualActions'));
-    // }
+    public function automaticActions()
+    {
+        $automaticActions = ClientAction::getAutomaticActions();
+        $manualActionsCount = ClientAction::countManualActions();
+        $automaticActionsCount = ClientAction::countAutomaticActions();
+        return view('collection.automatic_actions', compact('automaticActions', 'automaticActionsCount', 'manualActionsCount'));
+    }
 
 
 }

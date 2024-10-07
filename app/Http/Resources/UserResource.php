@@ -33,6 +33,8 @@ class UserResource extends JsonResource
             // 'rememberToken' => $this->rememberToken,
             // 'created_at' => $this->created_at,
             // 'updated_at' => $this->updated_at,
+
+            "clientRole"  => new ClientRoleResource($this->role),
         ];
     }
 }

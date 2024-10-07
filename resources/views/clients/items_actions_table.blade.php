@@ -42,9 +42,9 @@
         <div class="col fw-bold">{{ $client->toTakeAction->due_date ?? '-' }}</div>
         <div class="col fw-bold">
             <div class="btn openModalBtn btn-secondary">
-                {{ $client->toTakeAction->action_type_name}} </div>
+                {{ $client->toTakeAction->action_type_name ?? 'aa'}} </div>
         </div>
-        <div class="col fw-bold">{{ $client->toTakeAction->action_name }}
+        <div class="col fw-bold">{{ $client->toTakeAction->action_name ?? 'aa'}}
             {{ $client->toTakeAction->no_of_days ?? '2' }}</div>
         <div class="col fw-bold">{{ $client->toTakeAction->remaining_amount_inc_tax ?? '0' }}</div>
         <div class="col">
@@ -61,15 +61,13 @@
     </div>
     <div class="row bg-light p-2 mt-3">
         <div class="col-sm-4">
-            {{ __(' Total Receivable') }}:<span class="fw-bold">00
-                €</span>
+            {{ __(' Total Receivable') }}:<span class="fw-bold">00€</span>
         </div>
         <div class="col-sm-4">
             {{ __('Overdue') }}:<span class="fw-bold">100.00 €</span>
         </div>
         <div class="col-sm-4">
-            {{ __('Current Receivable') }}:<span class="fw-bold">100,0
-                €</span>
+            {{ __('Current Receivable') }}:<span class="fw-bold">100,0€</span>
         </div>
     </div>
     <div class="d-flex flex-wrap justify-content-between mt-3">

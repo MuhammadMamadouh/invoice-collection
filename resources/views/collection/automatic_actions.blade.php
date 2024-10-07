@@ -93,7 +93,7 @@
                 <div class="col tavle-dropdown-icon"></div>
             </div>
             <div class="text-center mb-3 table-container p-2 p-md-4">
-                @forelse($manualActions as $key => $manualAction)
+                @forelse($automaticActions as $key => $automaticAction)
                     <div class="row align-items-center pt-3"
                         style="background-color: {{ $key % 2 == 0 ? '#006bff14' : '#ffffff' }}">
                         <div class="col-1">
@@ -103,7 +103,7 @@
                         </div>
                         <div class="col">
                             <div class="mouse-hovers d-flex justify-content-center">
-                                <p class="fw-bold">{{ $manualAction->action_date }}</p>
+                                <p class="fw-bold">{{ $automaticAction->action_date }}</p>
                                 <span class="onmouse">?</span>
                                 <span class="conttt">due date: sunday, may 2022 <br> / action 4 days after due date
                                     of <br>
@@ -114,17 +114,17 @@
                         </div>
                         <div class="col-md-2 col-5">
                             <div class="btn openModalBtn btn-info text-white w-100 mb-3">
-                                <i class="fa-solid {{ $manualAction->action_type_icon }}"></i>
-                                {{ $manualAction->action_type_name }}
+                                <i class="fa-solid {{ $automaticAction->action_type_icon }}"></i>
+                                {{ $automaticAction->action_type_name }}
                             </div>
                         </div>
                         <div class="col-2 hide">
                             <p><a href="#" class="openModalBtn">
-                                    {{ $manualAction->action_type_name }}
+                                    {{ $automaticAction->action_type_name }}
                                 </a></p>
                         </div>
                         <div class="col-2 hide">
-                            <p>{{ $manualAction->remaining_amount_inc_tax }}</p>
+                            <p>{{ $automaticAction->remaining_amount_inc_tax }}</p>
                         </div>
                         <div class="col-1 hide">
                             <span class="onmouse-2"><i class="fa-solid fa-flag mb-2 text-secondary"></i></span>
@@ -135,11 +135,11 @@
                                     +28days (< 10days) </span>
                         </div>
                         <div class="col hide">
-                            <p class="fw-bold">{{ $manualAction->client_code }}</p>
+                            <p class="fw-bold">{{ $automaticAction->client_code }}</p>
                         </div>
                         <div class="col">
-                            <p class="fw-bold"><a href="{{ route('clients.show', $manualAction->client_id) }}"
-                                    target="_blanck">{{ $manualAction->client_name }}</a></p>
+                            <p class="fw-bold"><a href="{{ route('clients.show', $automaticAction->client_id) }}"
+                                    target="_blanck">{{ $automaticAction->client_name }}</a></p>
                         </div>
                         <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
                             <i class="fa-solid fa-chevron-down"></i>
@@ -151,7 +151,7 @@
                             </div>
                             <div class="d-flex bg-white">
                                 <p class="fw-bold">Action amount:</p>
-                                <p>{{ $manualAction->remaining_amount_inc_tax }}</p>
+                                <p>{{ $automaticAction->remaining_amount_inc_tax }}</p>
                             </div>
                             <div class="d-flex bg-white">
                                 <p class="fw-bold">Flag:</p>

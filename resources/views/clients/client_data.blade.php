@@ -19,12 +19,12 @@
                     {{ $client->state }}, {{ $client->country }}</a>
             </p>
         </div>
-        <div class="d-flex align-items-center justify-content-between">
+        {{-- <div class="d-flex align-items-center justify-content-between">
             <p class="fw-bold">{{ __('Group') }}:</p>
             @foreach ($client->clientGroup as $group)
-                <p class=""><a href="">{{ $group->en_name }}</a></p>
+                <p class=""><a href="">{{ $group->en_name ?? 'not added to a group yet'}}</a></p>
             @endforeach
-        </div>
+        </div> --}}
         <div class="d-flex align-items-center justify-content-between">
             <p class="fw-bold">{{ __('Collector') }}:</p>
             <p class=""><a href="">{{ $client->collector->first_name ?? '' }}</a>
@@ -34,7 +34,7 @@
             <p class="fw-bold">{{ __('Collection senario') }}:</p>
             <select class="form-select m-2 w-100" aria-label="Default select example">
                 <option selected disabled>
-                    {{ $client->collectionScenarios->en_name ?? '' }}
+                    {{ $client->collectionScenario->en_name ?? '' }}
                 </option>
                 @foreach ($collectionsScenario as $collection)
                     <option value="{{ $collection->id }}">

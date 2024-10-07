@@ -191,8 +191,8 @@ class ItemChangeStatusSteps extends Component
             foreach ($this->recipients as $recipient) {
                 $typeTo = $recipient['type_to'] ?? null;
                 $resolverData = $recipient['resolverData'] ?? null;
-            $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
-            $newEmail = new Email([
+                $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
+                $newEmail = new Email([
                 'created_by' => $this->created_by,
                 'resolver' => $resolverData,
                 'subject' => $this->client->id,
@@ -225,7 +225,7 @@ class ItemChangeStatusSteps extends Component
             $tempAction = Action::create([
                 'action_name' => $this->action_name,
                 'action_date' => $this->action_date,
-                'action_type' => $this->action_type,
+                'action_type_id' => $this->action_type,
                 'collection_scenario_id' => $this->client->collectionScenarios->id,
                 // 'client_id' => $this->client->id,
                 'item_id' => $this->item->id,

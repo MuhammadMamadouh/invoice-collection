@@ -131,7 +131,7 @@ Route::delete("/pre-defined_collection_scenarios_actions/destroy/{id}", [ActionC
 
 
 
-Route::get('collection', [CollectionController::class,'index'])->name('collection.automatic.actions');
+Route::get('collection-automatic-actions', [CollectionController::class,'automaticActions'])->name('collection.automatic.actions');
 Route::get('collection-manual-actions', [CollectionController::class,'manualActions'])->name('collection.manual.actions');
 Route::post('send/invoice', [InvoiceMailController::class,'sendInvoice'])->name('send.invoice');
 
