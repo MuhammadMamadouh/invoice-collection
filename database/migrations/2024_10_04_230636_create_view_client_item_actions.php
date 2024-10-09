@@ -26,6 +26,7 @@ return new class extends Migration {
                     RankedActions.automatic_action,
                     RankedActions.automatic_action_to_be_confirmed,
                     RankedActions.internal_interactive_emailLink,
+                    RankedActions.action_id,
                     RankedActions.action_type_id,
                     RankedActions.action_type_name,
                     RankedActions.action_type_icon,
@@ -41,6 +42,7 @@ return new class extends Migration {
                         i.item_type_id,
                         i.remaining_amount_inc_tax,
                         i.due_date,
+                        a.id AS action_id,
                         a.action_name,
                         a.automatic_action,
                         a.automatic_action_to_be_confirmed,
@@ -131,3 +133,4 @@ return new class extends Migration {
         // Schema::dropIfExists('view_client_item_actions');
     }
 };
+

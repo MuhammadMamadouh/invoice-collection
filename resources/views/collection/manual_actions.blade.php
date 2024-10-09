@@ -112,27 +112,19 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-md-2 col-5">
-                            <div class="btn openModalBtn btn-info text-white w-100 mb-3">
-                                <i class="fa-solid {{ $manualAction->action_type_icon }}"></i>
-                                {{ $manualAction->action_type_name }}
-                            </div>
-                        </div>
-                        <div class="col-2 hide">
-                            <p><a href="#" class="openModalBtn">
-                                    {{ $manualAction->action_type_name }}
-                                </a></p>
-                        </div>
+                        {{-- ------------------------------------------------------------------------------- --}}
+                            <livewire:ActionDetailsButton :manualAction="$manualAction">
+                        {{-- ------------------------------------------------------------------------------- --}}
+                        {{-- ------------------------------------------------------------------------------- --}}
+                            <livewire:ActionDetailsButton2 :manualAction="$manualAction">
+                        {{-- ------------------------------------------------------------------------------- --}}
+
                         <div class="col-2 hide">
                             <p>{{ $manualAction->remaining_amount_inc_tax }}</p>
                         </div>
                         <div class="col-1 hide">
                             <span class="onmouse-2"><i class="fa-solid fa-flag mb-2 text-secondary"></i></span>
-                            <span class="conttt-2">payment profile < payeur correct / average payeur> <br> average
-                                    days
-                                    beyond
-                                    items
-                                    +28days (< 10days) </span>
+                            <span class="conttt-2">payment profile < payeur correct / average payeur> <br> average days beyond items +28days (< 10days) </span>
                         </div>
                         <div class="col hide">
                             <p class="fw-bold">{{ $manualAction->client_code }}</p>
@@ -264,14 +256,17 @@
                                     <option value="KOI8-R">KOI8-R</option>
                                 </select>
                                 </li>
-                                <li class="mt-3 "><button type="button" class="btn" style="width: 100%;"><span><i
-                                                class="fa-solid fa-download"></i>&ensp;</span>download</button></li>
+                                <li class="mt-3 "><button type="button" class="btn" style="width: 100%;">
+                                <span><i class="fa-solid fa-download"></i>&ensp;</span>download</button></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        {{-- ------------------------------------------------------------------------------- --}}
+        <livewire:ActionDetails>
+        {{-- ------------------------------------------------------------------------------- --}}
     </section>
 @endsection
 @push('scripts')

@@ -123,8 +123,8 @@
                         <div class="col-md-3 hide">
                             <div class=" w-100 mb-3">
                                 <select class="form-select" id="inputname19">
-                                    <option value="{{ $client->collectionScenarios->id ?? '' }}" selected disabled>{{
-                                        $client->collectionScenarios->en_name ?? '' }}</option>
+                                    <option value="{{ $client->collectionScenario->id ?? '' }}" selected disabled>{{
+                                        $client->collectionScenario->en_name ?? '' }}</option>
                                     @foreach ($collectionsScenario as $collection)
                                     <option value="{{ $collection->id }}">{{ $collection->en_name ?? '' }}
                                     </option>

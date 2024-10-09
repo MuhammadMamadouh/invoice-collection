@@ -226,7 +226,7 @@ class ItemChangeStatusSteps extends Component
                 'action_name' => $this->action_name,
                 'action_date' => $this->action_date,
                 'action_type_id' => $this->action_type,
-                'collection_scenario_id' => $this->client->collectionScenarios->id,
+                'collection_scenario_id' => $this->client->collectionScenario->id,
                 // 'client_id' => $this->client->id,
                 'item_id' => $this->item->id,
                 'created_by' => $this->created_by,
