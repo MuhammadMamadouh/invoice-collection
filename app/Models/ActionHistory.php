@@ -25,4 +25,16 @@ class ActionHistory extends Model
     {
         return $this->belongsTo(Item::class);
     }
+
+    public function emails()
+    {
+        return $this->morphMany(Email::class, 'emailable');
+    }
+
+
+    public function smsMessages()
+    {
+        return $this->morphMany(SmsMessage::class, 'messageable');
+    }
+
 }

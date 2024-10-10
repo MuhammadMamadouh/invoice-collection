@@ -3,6 +3,7 @@
         wire:click="$dispatch('showActionDetails', { 
             manualAction: {{ $manualAction->action_id }}, 
             clientId: {{ $manualAction->client_id }}, 
+            itemId: {{ $manualAction->item_type_id }}, 
             clientName: '{{ $manualAction->client_name }}',
             clientCode: '{{ $manualAction->client_code }}',
             })">

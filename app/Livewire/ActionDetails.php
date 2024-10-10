@@ -3,9 +3,13 @@
 namespace App\Livewire;
 
 use App\Models\Action;
+use App\Models\ActionHistory;
 use App\Models\Client;
+use App\Models\Email;
+use App\Models\SmsMessage;
 use App\Models\TypeTo;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
@@ -22,6 +26,8 @@ class ActionDetails extends Component
     public $clientContacts;
     public $client;
 
+    public $itemId;
+
     //------------------Action Table -----------
     public $action_name;
     public $action_date;
@@ -30,9 +36,6 @@ class ActionDetails extends Component
     public $actionTypes;
     public $created_by = 1;
     public $selectedActionType = null;
-    public $automatic_action = false;
-    public $automatic_action_to_be_confirmed = false;
-    public $internal_interactive_emailLink = false;
 
 
     //------------------Email / SMS Table -----------
@@ -41,86 +44,57 @@ class ActionDetails extends Component
     public $editorContent;
     public $get_a_copy;
     public $request_an_acknowledgment;
-
     public $resolvers;
     public $typesTo;
     public $recipients;
 
 
+
     #[On('showActionDetails')]
-    public function showForm($manualAction, $clientName, $clientCode, $clientId)
+    public function showForm($manualAction, $clientName, $clientCode, $clientId, $itemId)
     {
         $this->manualAction = $manualAction;
+        $this->itemId = $itemId;
         $action = Action::with('emails')->findOrFail($manualAction);
 
-        // Fetch the client and store it, handle the case where the client might not be found
-        $this->client = Client::with('contacts', 'collector')->find($clientId); // Use find instead of findOrFail
-
+        $this->client = Client::with('contacts', 'collector')->find($clientId);
         if ($this->client) {
             $this->clientContacts = $this->client->contacts;
 
             // Add collector's email if exists
             if ($this->client->collector) {
-                $this->recipients[] = [
-                    'type_to' => 'collector',
+                $this->recipients = [
                     'resolverData' => $this->client->collector->email,
                     'display' => $this->client->collector->first_name . ' ' . $this->client->collector->last_name . ' (Collector)',
                 ];
             }
-
             // Add client's contact emails
             foreach ($this->clientContacts as $contact) {
-                $this->recipients[] = [
-                    'type_to' => 'contact',
+                $this->recipients = [
                     'resolverData' => $contact->email,
                     'display' => $contact->name . ' (' . $contact->email . ')',
                 ];
             }
-
             // Add all users' emails
             foreach ($this->resolvers as $resolver) {
-                $this->recipients[] = [
-                    'type_to' => 'resolver',
+                $this->recipients = [
                     'resolverData' => $resolver->email,
                     'display' => $resolver->first_name . ' ' . $resolver->last_name . ' (' . $resolver->role->name . ')',
                 ];
             }
-
             if ($action->emails()->exists()) {
                 $email = $action->emails()->first();
                 $this->subject = $this->clientName = $clientName . " / " . $this->clientCode = $clientCode;
                 $this->editorContent = $email->message;
             }
         } else {
-            // Handle the case where the client is not found
-            // You can choose to throw an exception or set a flash message
             session()->flash('error', 'Client not found.');
-            $this->isVisible = false; // Optionally hide the form if the client is not found
-            return; // Exit early if no client
+            $this->isVisible = false;
+            return;
         }
 
         $this->isVisible = true;
     }
-    
-    
-    
-    // public function showForm($manualAction, $clientName, $clientCode, $clientId)
-    // {
-    //     $this->manualAction = $manualAction;
-    //     $action = Action::with('emails')->findOrFail($manualAction);
-
-    //     $clientContact = Client::with('contacts', 'collector')->findOrFail($clientId);
-    //     $this->resolvers = $clientContact->contacts->email;
-
-    //     if ($action->emails()->exists()) {
-    //         $email = $action->emails()->first();
-    //         $this->subject = $this->clientName = $clientName . " / " . $this->clientCode = $clientCode;
-    //         $this->editorContent = $email->message;
-    //     }
-        
-
-    //     $this->isVisible = true;
-    // }
 
 
 
@@ -129,23 +103,6 @@ class ActionDetails extends Component
         $this->action_type_id = $value;
     }
 
-
-    public function updatedAutomaticAction($value)
-    {
-        if ($value) {
-            $this->automatic_action_to_be_confirmed = true;
-            $this->internal_interactive_emailLink = false;
-        }
-    }
-
-
-    public function updatedInternalInteractiveEmailLink($value)
-    {
-        if ($value) {
-            $this->automatic_action = false;
-            $this->automatic_action_to_be_confirmed = false;
-        }
-    }
 
     public function addRecipient()
     {
@@ -161,8 +118,6 @@ class ActionDetails extends Component
     {
         $this->resolvers = User::with('role')->get();
         $this->typesTo = TypeTo::all();
-        // $this->clientContacts = [];
-        // $this->recipients = [];
     }
 
 
@@ -172,7 +127,46 @@ class ActionDetails extends Component
         $this->isVisible = false;
     }
 
-
+    public function submit()
+    {
+        DB::beginTransaction();
+        $actionHistory = ActionHistory::create(
+            [
+                'action_id' => $this->manualAction,
+                'item_id' => $this->itemId,
+                'client_id' => $this->client->id,
+                'item_change_status_id' => $this->selectedActionType,
+            ]
+        );
+        if ($this->action_type_id == 5) {
+            foreach ($this->recipients as $recipient) {
+                $typeTo = $recipient['type_to'] ?? null;
+                $resolverData = $recipient['resolverData'] ?? null;
+                $newEmail = new Email([
+                    'created_by' => $this->created_by,
+                    'resolver' => $resolverData,
+                    'subject' => $this->client->id,
+                    'message' => $this->editorContent,
+                    'get_a_copy' => $this->get_a_copy,
+                    'request_an_acknowledgment' => $this->request_an_acknowledgment,
+                    'email_type' => $this->email_type,
+                    'type_to' => $typeTo,
+                ]);
+            }
+            $actionHistory->emails()->save($newEmail);
+        }
+        // if ($this->action_type_id == 7) {
+        //     $newSms = new SmsMessage([
+        //         'created_by' => $this->created_by,
+        //         // 'subject' => $this->subject,
+        //         'message' => $this->editorContent,
+        //     ]);
+        //     $action->smsMessages()->save($newSms);
+        // }
+        DB::commit();
+        $this->hideForm();
+        return to_route('collection.manual.actions')->with(['message' => __('created successfully')]);
+    }
 
 
     public function render()
