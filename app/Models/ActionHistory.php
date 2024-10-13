@@ -26,6 +26,12 @@ class ActionHistory extends Model
         return $this->belongsTo(Item::class);
     }
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+
+
     public function emails()
     {
         return $this->morphMany(Email::class, 'emailable');
@@ -35,6 +41,14 @@ class ActionHistory extends Model
     public function smsMessages()
     {
         return $this->morphMany(SmsMessage::class, 'messageable');
+    }
+
+    public static function getActionHistory()
+    {
+        // return ActionHistory::with('item.client', 'action.actionTypes', 'client.items')
+        // ->orderBy('created_at')->get();
+        return ActionHistory::with('item.client', 'action.actionTypes')
+        ->orderBy('created_at')->get();
     }
 
 }

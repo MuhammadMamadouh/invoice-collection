@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CollectionScenarioRequest;
 use App\Models\Action;
+use App\Models\ActionHistory;
 use App\Models\ActionsCollectionScenario;
 use App\Models\ActionType;
 use App\Models\CollectionScenario;
@@ -21,18 +22,20 @@ class CollectionController extends Controller
     public function manualActions()
     {
         $manualActions = ClientAction::getManualActions();
-        $manualActionsCount = ClientAction::countManualActions();
-        $automaticActionsCount = ClientAction::countAutomaticActions();
-        return view('collection.manual_actions', compact('manualActions', 'manualActionsCount', 'automaticActionsCount'));
+        // $manualActionsCount = count($manualActions);
+        return view('collection.manual_actions', compact('manualActions'));
     }
+
 
     public function automaticActions()
     {
         $automaticActions = ClientAction::getAutomaticActions();
-        $manualActionsCount = ClientAction::countManualActions();
-        $automaticActionsCount = ClientAction::countAutomaticActions();
-        return view('collection.automatic_actions', compact('automaticActions', 'automaticActionsCount', 'manualActionsCount'));
+        return view('collection.automatic_actions', compact('automaticActions'));
     }
 
 
+    public function actionHistory(){
+        $actionHistories = ActionHistory::getActionHistory();
+        return view('collection.actions_history', compact('actionHistories'));
+    }
 }

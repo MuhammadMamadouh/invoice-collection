@@ -19,6 +19,7 @@ return new class extends Migration {
                     RankedActions.client_code,
                     RankedActions.collection_scenario_id,
                     RankedActions.collection_scenario_name,
+                    RankedActions.item_id,
                     RankedActions.item_type_id,
                     RankedActions.remaining_amount_inc_tax,
                     RankedActions.due_date,
@@ -39,6 +40,7 @@ return new class extends Migration {
                         c.company_code AS client_code,
                         c.collection_scenario_id AS collection_scenario_id,
                         cs.en_name AS collection_scenario_name,
+                        i.id AS item_id,
                         i.item_type_id,
                         i.remaining_amount_inc_tax,
                         i.due_date,
@@ -133,4 +135,3 @@ return new class extends Migration {
         // Schema::dropIfExists('view_client_item_actions');
     }
 };
-
