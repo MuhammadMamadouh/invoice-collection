@@ -25,15 +25,14 @@ class ActionDetails extends Component
     public $actionId;
     public $clientContacts;
     public $client;
-
     public $itemId;
 
     //------------------Action Table -----------
     public $action_name;
     public $action_date;
     public $no_of_days;
-    public $action_type_id;
-    public $actionTypes;
+    public $actionTypeId;
+    public $actionType;
     public $created_by = 1;
     public $selectedActionType = null;
 
@@ -42,51 +41,40 @@ class ActionDetails extends Component
 
     public $subject;
     public $editorContent;
-    public $get_a_copy;
-    public $request_an_acknowledgment;
+    public $get_a_copy = 0;
+    public $request_an_acknowledgment = 0;
     public $resolvers;
     public $typesTo;
-    public $recipients;
+    public $type_To;
+    public $resolver;
+    public $recipients = [];
+
 
 
 
     #[On('showActionDetails')]
-    public function showForm($manualAction, $clientName, $clientCode, $clientId, $itemId)
+    public function showForm($manualAction, $clientName, $clientCode, $clientId, $itemId, $actionTypeId)
     {
         $this->manualAction = $manualAction;
         $this->itemId = $itemId;
+        $this->actionTypeId = $actionTypeId;
+
         $action = Action::with('emails')->findOrFail($manualAction);
 
-        $this->client = Client::with('contacts', 'collector')->find($clientId);
+        $this->resolvers = User::with('role')->get();
+
+        $this->client = Client::with('contacts', 'collector')->findOrFail($clientId);
+        
         if ($this->client) {
             $this->clientContacts = $this->client->contacts;
 
-            // Add collector's email if exists
-            if ($this->client->collector) {
-                $this->recipients = [
-                    'resolverData' => $this->client->collector->email,
-                    'display' => $this->client->collector->first_name . ' ' . $this->client->collector->last_name . ' (Collector)',
-                ];
-            }
-            // Add client's contact emails
-            foreach ($this->clientContacts as $contact) {
-                $this->recipients = [
-                    'resolverData' => $contact->email,
-                    'display' => $contact->name . ' (' . $contact->email . ')',
-                ];
-            }
-            // Add all users' emails
-            foreach ($this->resolvers as $resolver) {
-                $this->recipients = [
-                    'resolverData' => $resolver->email,
-                    'display' => $resolver->first_name . ' ' . $resolver->last_name . ' (' . $resolver->role->name . ')',
-                ];
-            }
+            $this->subject = $this->clientName = $clientName . " / " . $this->clientCode = $clientCode;
+
             if ($action->emails()->exists()) {
                 $email = $action->emails()->first();
-                $this->subject = $this->clientName = $clientName . " / " . $this->clientCode = $clientCode;
                 $this->editorContent = $email->message;
             }
+
         } else {
             session()->flash('error', 'Client not found.');
             $this->isVisible = false;
@@ -98,25 +86,25 @@ class ActionDetails extends Component
 
 
 
-    public function updatedselectedActionType($value)
-    {
-        $this->action_type_id = $value;
-    }
+    // public function updatedselectedActionType($value)
+    // {
+    //     $this->action_type_id = $value;
+    // }
 
 
-    public function addRecipient()
-    {
-        $this->recipients[] = [
-            'type_to' => '',
-            'resolverData' => '',
-            'display' => '',
-        ];
-    }
+    // public function addRecipient()
+    // {
+    //     $this->recipients[] = [
+    //         'type_to' => '',
+    //         'resolverId' => '',
+    //         'resolverData' => '',
+    //         'display' => '',
+    //     ];
+    // }
 
 
     public function mount()
     {
-        $this->resolvers = User::with('role')->get();
         $this->typesTo = TypeTo::all();
     }
 
@@ -126,6 +114,8 @@ class ActionDetails extends Component
     {
         $this->isVisible = false;
     }
+
+
 
     public function submit()
     {
@@ -138,24 +128,19 @@ class ActionDetails extends Component
                 'item_change_status_id' => $this->selectedActionType,
             ]
         );
-        if ($this->action_type_id == 5) {
-            foreach ($this->recipients as $recipient) {
-                $typeTo = $recipient['type_to'] ?? null;
-                $resolverData = $recipient['resolverData'] ?? null;
-                $newEmail = new Email([
-                    'created_by' => $this->created_by,
-                    'resolver' => $resolverData,
-                    'subject' => $this->client->id,
-                    'message' => $this->editorContent,
-                    'get_a_copy' => $this->get_a_copy,
-                    'request_an_acknowledgment' => $this->request_an_acknowledgment,
-                    'email_type' => $this->email_type,
-                    'type_to' => $typeTo,
-                ]);
-            }
+        if ($this->actionTypeId == 5) {
+            $newEmail = new Email([
+                'created_by' => $this->created_by,
+                'resolver' => $this->resolver,
+                'subject' => $this->client->id,
+                'message' => $this->editorContent,
+                'get_a_copy' => $this->get_a_copy,
+                'request_an_acknowledgment' => $this->request_an_acknowledgment,
+                'type_to' => $this->type_To,
+            ]);
             $actionHistory->emails()->save($newEmail);
         }
-        // if ($this->action_type_id == 7) {
+        // if ($this->actionTypeId == 7) {
         //     $newSms = new SmsMessage([
         //         'created_by' => $this->created_by,
         //         // 'subject' => $this->subject,

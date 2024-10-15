@@ -22,7 +22,6 @@ class CollectionController extends Controller
     public function manualActions()
     {
         $manualActions = ClientAction::getManualActions();
-        // $manualActionsCount = count($manualActions);
         return view('collection.manual_actions', compact('manualActions'));
     }
 

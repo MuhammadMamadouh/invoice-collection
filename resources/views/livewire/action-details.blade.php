@@ -33,11 +33,11 @@
                                 </div>
                             </div><!--r-1-->
                             <!-- Recipients Section -->
-                            @foreach ($recipients as $index => $recipient)
                                 <div class="row">
                                     <!-- First column for type_to -->
                                     <div class="col-md-2 mt-2">
-                                        <select class="form-select" wire:model="recipients.{{ $index }}.type_to">
+                                        <select class="form-select" wire:model="type_To">
+                                            <option value="" selected>Select</option>
                                             @foreach ($typesTo as $typeTo)
                                                 <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
                                             @endforeach
@@ -45,44 +45,42 @@
                                     </div><!--l-2-->
                                     <!-- Second column for resolver -->
                                     <div class="col-md-10 mt-2">
-                                        <select class="form-select"
-                                            wire:model="recipients.{{ $index }}.resolverData">
+                                        <select class="form-select"  wire:model="resolver">
                                             <option value="" selected>Select Resolver</option>
                                             {{-- Display Client's Email --}}
                                             <option value="" disabled>External Contacts «
-                                                {{ $client->company_name }} »:</option>
-                                            @foreach ($clientContacts as $clientContact)
-                                                <option value="client:{{ $clientContact->email }}">
+                                                {{$client->company_name }} »:</option>
+                                            @foreach($clientContacts as $clientContact)
+                                                <option value="{{ $clientContact->id }}">
                                                     Client Email: {{ $clientContact->email }}
                                                 </option>
                                             @endforeach
                                             {{-- Display Collector's Email if it exists --}}
                                             <option disabled></option>
                                             <option value="" disabled>Internal contacts « Business Solutions » :
-                                                «{{ $client->company_name }}»</option>
-                                            @if ($client && $client->collector)
-                                                <option value="collector:{{ $client->collector->email }}">
+                                                «{{-- $client->company_name --}}»</option>
+
+                                                <option value="{{ $client->collector->id }}">
                                                     Collector: {{ $client->collector->first_name }}
                                                     {{ $client->collector->last_name }}
                                                     ({{ $client->collector->email }})
                                                 </option>
-                                            @endif
+
                                             {{-- Display Other Resolvers --}}
                                             <option disabled></option>
                                             <option value="" disabled>Internal Contacts « Business Solutions » :
                                             </option>
-                                            @foreach ($resolvers as $resolver)
-                                                <option value="resolver:{{ $resolver->id }}">
-                                                    {{ $resolver->first_name }} {{ $resolver->last_name }}
-                                                    ({{ $resolver->role->name }})
-                                                </option>
-                                            @endforeach
+                                                @foreach($resolvers as $resolver)
+                                                    <option value="{{ $resolver->id }}">
+                                                        {{ $resolver->first_name }} {{ $resolver->last_name }}
+                                                        ({{ $resolver->role->name }})
+                                                    </option>
+                                                @endforeach
                                         </select>
                                     </div><!--r-2-->
                                 </div><!--end-row-->
-                            @endforeach
                             <!-- Add another recipient button -->
-                            <div class="row mt-3">
+                            {{-- <div class="row mt-3">
                                 <div class="col-md-12">
                                     <a href="#" class="text-primary mx-3" style="text-decoration: none;"
                                         wire:click.prevent="addRecipient">
@@ -90,7 +88,7 @@
                                         another recipient
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-md-2 mt-2">
                                 <h4 for="">Subject :</h4>
                             </div><!--l-3-->

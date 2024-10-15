@@ -93,7 +93,6 @@
                 <div class="col tavle-dropdown-icon"></div>
             </div>
             <div class="text-center mb-3 table-container p-2 p-md-4">
-                {{--dd($actionHistories)--}}
                 @forelse($actionHistories as $key => $actionHistory)
                     <div class="row align-items-center pt-3"
                         style="background-color: {{ $key % 2 == 0 ? '#006bff14' : '#ffffff' }}">
