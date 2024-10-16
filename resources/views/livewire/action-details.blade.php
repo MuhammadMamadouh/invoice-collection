@@ -106,12 +106,12 @@
                                     <textarea id="editor" class="form-control" wire:model.lazy="editorContent"></textarea>
                                 </div>
                             </div><!--r-4-->
-                            <div class="d-flex">
+                            {{-- <div class="d-flex">
                                 <p style="margin-left: 95px;">{{ __('+ Add An Item') }}</p>
                                 <a href="DSOInformation.html"><i
                                         class="fa-solid fa-question bg-primary text-light p-1 ms-1"
                                         style="border-radius: 50%;width: 15px;height: 18px;font-size: 12px !important;"></i></a>
-                            </div>
+                            </div> --}}
                             <div class="addFileDiv-2">
                                 <div class="d-flex justify-content-around flex-wrap align-items-center mb-3">
                                     <input wire:model="file_name" type="file" id="upload-image-input2" multiple />

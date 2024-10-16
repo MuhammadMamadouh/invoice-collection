@@ -32,19 +32,28 @@ class Email extends Model
     {
         return $this->hasMany(EmailType::class, 'email_type');
     }
+    
 
     public function emailTypeTos()
     {
         return $this->hasMany(TypeTo::class, 'type_to');
     }
 
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
     
     public function resolver()
     {
         return $this->belongsTo(User::class, 'resolver');
     }
+
+    public function files()
+    {
+        return $this->morphMany(File::class, 'fileable');
+    }
+
 }

@@ -112,17 +112,14 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-md-2 col-5">
-                            <div class="btn openModalBtn btn-info text-white w-100 mb-3">
-                                <i class="fa-solid {{ $automaticAction->action_type_icon }}"></i>
-                                {{ $automaticAction->action_type_name }}
-                            </div>
-                        </div>
-                        <div class="col-2 hide">
-                            <p><a href="#" class="openModalBtn">
-                                    {{ $automaticAction->action_type_name }}
-                                </a></p>
-                        </div>
+                        
+                        {{-- ------------------------------------------------------------------------------- --}}
+                            <livewire:AutomaticActionDetailsButton :automaticAction="$automaticAction">
+                        {{-- ------------------------------------------------------------------------------- --}}
+
+                        {{-- ------------------------------------------------------------------------------- --}}
+                            <livewire:AutomaticActionDetailsButton2 :automaticAction="$automaticAction">
+                        {{-- ------------------------------------------------------------------------------- --}}
                         <div class="col-2 hide">
                             <p>{{ $automaticAction->remaining_amount_inc_tax }}</p>
                         </div>
@@ -264,14 +261,17 @@
                                     <option value="KOI8-R">KOI8-R</option>
                                 </select>
                                 </li>
-                                <li class="mt-3 "><button type="button" class="btn" style="width: 100%;"><span><i
-                                                class="fa-solid fa-download"></i>&ensp;</span>download</button></li>
+                                <li class="mt-3 "><button type="button" class="btn" style="width: 100%;">
+                                <span><i class="fa-solid fa-download"></i>&ensp;</span>download</button></li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        {{-- ------------------------------------------------------------------------------- --}}
+        <livewire:AutomaticActionDetails>
+        {{-- ------------------------------------------------------------------------------- --}}
     </section>
 @endsection
 @push('scripts')

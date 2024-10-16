@@ -6,15 +6,21 @@ use App\Models\Action;
 use App\Models\ActionHistory;
 use App\Models\Client;
 use App\Models\Email;
+use App\Models\File;
 use App\Models\SmsMessage;
 use App\Models\TypeTo;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithFileUploads;
+
 
 class ActionDetails extends Component
 {
+    use WithFileUploads;
+
+
     public $isVisible = false;
     public $collection_scenario_id;
     public $collection;
@@ -51,6 +57,14 @@ class ActionDetails extends Component
 
 
 
+    //---------------------files table data--------------------
+    public $file_name;
+    public $desc;
+    public $visiable_in_internal;
+    public $visiable_in_external;
+
+
+
 
     #[On('showActionDetails')]
     public function showForm($manualAction, $clientName, $clientCode, $clientId, $itemId, $actionTypeId)
@@ -64,7 +78,7 @@ class ActionDetails extends Component
         $this->resolvers = User::with('role')->get();
 
         $this->client = Client::with('contacts', 'collector')->findOrFail($clientId);
-        
+
         if ($this->client) {
             $this->clientContacts = $this->client->contacts;
 
@@ -139,6 +153,20 @@ class ActionDetails extends Component
                 'type_to' => $this->type_To,
             ]);
             $actionHistory->emails()->save($newEmail);
+            if ($this->file_name) {
+                foreach ($this->file_name as $file) {
+                    $filePath = $file->store('items_files', 'public');
+                    $newEmail = Email::findOrFail($newEmail->id);
+                    $newEmailFiles = new File([
+                        'file_name' => $filePath,
+                        'file_size' => $file->getSize(),
+                        'desc' => $this->desc,
+                        'visiable_in_internal' => $this->visiable_in_internal,
+                        'visiable_in_external' => $this->visiable_in_external,
+                    ]);
+                    $newEmail->files()->save($newEmailFiles);
+                }
+            }
         }
         // if ($this->actionTypeId == 7) {
         //     $newSms = new SmsMessage([
