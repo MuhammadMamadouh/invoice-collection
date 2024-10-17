@@ -1,6 +1,8 @@
 @extends('layouts.dashboard.app')
 @section('content')
+{{-- ------------------------------------------------------------------------------- --}}
 @include('clients.index_clients_filters')
+{{-- ------------------------------------------------------------------------------- --}}
 <section class="mt-2">
     <div class="container">
         <div class="row table-alerts-container">
@@ -121,8 +123,8 @@
                         <div class="col-md-3 hide">
                             <div class=" w-100 mb-3">
                                 <select class="form-select" id="inputname19">
-                                    <option value="{{ $client->collectionScenarios->id ?? '' }}" selected disabled>{{
-                                        $client->collectionScenarios->en_name ?? '' }}</option>
+                                    <option value="{{ $client->collectionScenario->id ?? '' }}" selected disabled>{{
+                                        $client->collectionScenario->en_name ?? '' }}</option>
                                     @foreach ($collectionsScenario as $collection)
                                     <option value="{{ $collection->id }}">{{ $collection->en_name ?? '' }}
                                     </option>
@@ -190,13 +192,14 @@
                     <div id="company-details-{{ $client->id }}">
                         <div class="company-details d-none" id="company-detail-{{ $client->id }}"
                             style="overflow-x: hidden;">
+                            {{-- ------------------------------------------------------------------------------- --}}
                             @include('clients.client_data_model')
+                            {{-- ------------------------------------------------------------------------------- --}}
                         </div>
                         <div class="row px-4 align-items-center m-0" style="background-color: white;">
                             <div class="col-lg-4 col-sm-6 col-12 mb-2">
                                 <div class="btn text-light btn-secondary px-2" onclick="showInvioce2()">
-                                    <i class="fa-solid fa-pen-to-square"></i>&ensp;{{ __('Change status >Add comment
-                                    >Set next action') }}
+                                    <i class="fa-solid fa-pen-to-square"></i>&ensp;{{ __('Change status >Add comment >Set next action') }}
                                 </div>
                             </div>
                             <div class="col-lg-2 col-sm-3 col-6 mb-2">
@@ -313,6 +316,9 @@
                                 </div>
                             </div>
                         </div>
+                        {{-- ------------------------------------------------------------------------------- --}}
+                        @include('clients.client_history')
+                        {{-- ------------------------------------------------------------------------------- --}}
                     </div>
                     <div class="sec-1 pb-5 bg-white text-capitalize d-none " id="riskDiv">
                         <div class="container">
@@ -1705,7 +1711,6 @@
                     </div>
                     <!--sec-2-->
                     <!--sec-3-->
-                    @include('clients.client_history')
                 </div>
                 @empty
                 <div class="row d-none text-center">
@@ -1716,7 +1721,9 @@
                 @endforelse
             </div>
         </div>
+        {{-- ------------------------------------------------------------------------------- --}}
         @include('clients.index_footer_btns')
+        {{-- ------------------------------------------------------------------------------- --}}
     </div>
 </section>
 @endsection

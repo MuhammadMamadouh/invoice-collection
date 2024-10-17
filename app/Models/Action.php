@@ -25,7 +25,7 @@ class Action extends Model
 
     public function actionTypes()
     {
-        return $this->belongsTo(ActionType::class, 'action_type');
+        return $this->belongsTo(ActionType::class, 'action_type_id');
     }
 
 
@@ -67,6 +67,11 @@ class Action extends Model
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function histories()
+    {
+        return $this->hasMany(ActionHistory::class);
     }
 
 }

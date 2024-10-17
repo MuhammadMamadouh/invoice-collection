@@ -4,11 +4,10 @@
             <div class="text-center my-auto small-icons-container">
                 {{ __('Key accounts scenario') }} (EN) :
             </div>
-            @foreach ($client->collectionScenarios->scenariosActions as $action)
+            @foreach ($client->collectionScenario->scenariosActions as $action)
             <div class="text-center small-icons-container" style="z-index: 2">
-                <span>{{$action->number_of_days }}d</span>
+                <span>{{$action->action_date }}d</span>
                 <div class="btn-warning small-icons text-light px-2 py-1">
-                {{-- {{dd($action)}} --}}
                     <i class="fa-solid fa-phone"></i>
                 </div>
             </div>

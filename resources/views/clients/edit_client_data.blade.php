@@ -865,8 +865,8 @@
                         </div>
                         <div class="col-7 ">
                             <select name='collection_scenario_id' class="form-select" id="inputname19">
-                                <option selected value="{{ $client->collectionScenarios->id }}">
-                                    {{ $client->collectionScenarios->en_name ?? '' }}</option>
+                                <option selected value="{{ $client->collectionScenario->id }}">
+                                    {{ $client->collectionScenario->en_name ?? '' }}</option>
                                 @foreach ($collectionsScenario as $collection)
                                     <option value={{ $collection->id }}>
                                         {{ $collection->en_name }}</option>

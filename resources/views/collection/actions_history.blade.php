@@ -58,7 +58,7 @@
                 <div class="col-2 hide">
                     <div class="d-flex align-items-center justify-content-center gap-1 ">
                         <i class="fa-solid fa-sort mb-3" style="cursor:pointer"></i>
-                        <p class="fw-bold">Action</p>
+                        <p class="fw-bold">Trans No.</p>
                     </div>
 
                 </div>
@@ -93,7 +93,7 @@
                 <div class="col tavle-dropdown-icon"></div>
             </div>
             <div class="text-center mb-3 table-container p-2 p-md-4">
-                @forelse($manualActions as $key => $manualAction)
+                @forelse($actionHistories as $key => $actionHistory)
                     <div class="row align-items-center pt-3"
                         style="background-color: {{ $key % 2 == 0 ? '#006bff14' : '#ffffff' }}">
                         <div class="col-1">
@@ -103,7 +103,7 @@
                         </div>
                         <div class="col">
                             <div class="mouse-hovers d-flex justify-content-center">
-                                <p class="fw-bold">{{ $manualAction->action_date }}</p>
+                                <p class="fw-bold">{{ $actionHistory->action->action_date }}</p>
                                 <span class="onmouse">?</span>
                                 <span class="conttt">due date: sunday, may 2022 <br> / action 4 days after due date
                                     of <br>
@@ -112,26 +112,32 @@
                                 </span>
                             </div>
                         </div>
-                        {{-- ------------------------------------------------------------------------------- --}}
-                            <livewire:ActionDetailsButton :manualAction="$manualAction">
-                        {{-- ------------------------------------------------------------------------------- --}}
-                        {{-- ------------------------------------------------------------------------------- --}}
-                            <livewire:ActionDetailsButton2 :manualAction="$manualAction">
-                        {{-- ------------------------------------------------------------------------------- --}}
-
+                        <div class="col-md-2 col-5">
+                            <button type="button" class="btn openModalBtn btn-info text-white w-100 mb-3">
+                                <i class="fa-solid {{ $actionHistory->action->actionTypes->icon }}"></i>
+                                {{ $actionHistory->action->actionTypes->en_name }}
+                            </button>
+                        </div>
                         <div class="col-2 hide">
-                            <p>{{ $manualAction->remaining_amount_inc_tax }}</p>
+                            <p><a href="#" class="openModalBtn">
+                                    {{ $actionHistory->item->trans_no }}
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-2 hide">
+                            <p>{{ $actionHistory->item->remaining_amount_inc_tax }}</p>
                         </div>
                         <div class="col-1 hide">
                             <span class="onmouse-2"><i class="fa-solid fa-flag mb-2 text-secondary"></i></span>
-                            <span class="conttt-2">payment profile < payeur correct / average payeur> <br> average days beyond items +28days (< 10days) </span>
+                            <span class="conttt-2">payment profile < payeur correct / average payeur> <br> average days
+                                    beyond items +28days (< 10days) </span>
                         </div>
                         <div class="col hide">
-                            <p class="fw-bold">{{ $manualAction->client_code }}</p>
+                            <p class="fw-bold">{{ $actionHistory->item->client->company_code }}</p>
                         </div>
                         <div class="col">
-                            <p class="fw-bold"><a href="{{ route('clients.show', $manualAction->client_id) }}"
-                                    target="_blanck">{{ $manualAction->client_name }}</a></p>
+                            <p class="fw-bold"><a href=""
+                                    target="_blanck">{{ $actionHistory->item->client->company_name }}</a></p>
                         </div>
                         <div class="col tavle-dropdown-icon" onclick="toggleFunction(this)">
                             <i class="fa-solid fa-chevron-down"></i>
@@ -143,7 +149,7 @@
                             </div>
                             <div class="d-flex bg-white">
                                 <p class="fw-bold">Action amount:</p>
-                                <p>{{ $manualAction->remaining_amount_inc_tax }}</p>
+                                <p>{{ $actionHistory->remaining_amount_inc_tax }}</p>
                             </div>
                             <div class="d-flex bg-white">
                                 <p class="fw-bold">Flag:</p>
@@ -257,7 +263,7 @@
                                 </select>
                                 </li>
                                 <li class="mt-3 "><button type="button" class="btn" style="width: 100%;">
-                                <span><i class="fa-solid fa-download"></i>&ensp;</span>download</button></li>
+                                        <span><i class="fa-solid fa-download"></i>&ensp;</span>download</button></li>
                             </ul>
                         </div>
                     </div>
@@ -266,7 +272,7 @@
         </div>
         {{-- ------------------------------------------------------------------------------- --}}
         <livewire:ActionDetails>
-        {{-- ------------------------------------------------------------------------------- --}}
+            {{-- ------------------------------------------------------------------------------- --}}
     </section>
 @endsection
 @push('scripts')

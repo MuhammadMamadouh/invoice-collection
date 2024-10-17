@@ -130,8 +130,8 @@ Route::patch("/pre-defined_collection_scenarios_actions/update/{id}", [ActionCon
 Route::delete("/pre-defined_collection_scenarios_actions/destroy/{id}", [ActionController::class, 'destroy'])->name('pre-defined_collection_scenarios_actions.destroy');
 
 
-
-Route::get('collection', [CollectionController::class,'index'])->name('collection.automatic.actions');
+Route::get('collection-actions-history', [CollectionController::class,'actionHistory'])->name('collection.actions.history');
+Route::get('collection-automatic-actions', [CollectionController::class,'automaticActions'])->name('collection.automatic.actions');
 Route::get('collection-manual-actions', [CollectionController::class,'manualActions'])->name('collection.manual.actions');
 Route::post('send/invoice', [InvoiceMailController::class,'sendInvoice'])->name('send.invoice');
 
