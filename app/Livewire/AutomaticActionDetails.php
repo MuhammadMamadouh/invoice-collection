@@ -49,15 +49,19 @@ class AutomaticActionDetails extends Component
         $this->colletorFirstName = $client->collector->first_name;
         $this->colletorLastName = $client->collector->last_name;
 
+        // -------------------------------client data---------------------------
         $this->clientItems = $client;
 
+        
+        // -------------------------------subject---------------------------
         $this->subject = $this->clientName = $clientName . " / " . $this->clientCode = $clientCode;
 
+
+        // -------------------------------email---------------------------
         if ($action->emails()->exists()) {
             $email = $action->emails()->first();
             $this->editorContent = $email->message;
         }
-
 
         $this->isVisible = true;
     }

@@ -500,7 +500,8 @@
                         </div>
                     </div><!--2-->
                     {{-- ---------------------------------------Send Email ---------------------------- --}}
-                    @if ($action_type == 5)
+
+                    @if ($action_type == App\Enum\ActionTypeEnum::Email)
                         <div class="new-holab-1" id="hide-hoalp-1">
                             <div class="row mt-5">
                                 <div class="col-md-2 mt-2">
@@ -558,7 +559,7 @@
                         </div>
                     @endif
                     {{-- ---------------------------------------Send SMS ---------------------------- --}}
-                    @if ($action_type == 7)
+                    @if ($action_type == App\Enum\ActionTypeEnum::SMS)
                         <div class="new-holab-1" id="hide-hoalp-1">
                             <div class="row mt-5">
                                 <div class="col-md-2 mt-2">

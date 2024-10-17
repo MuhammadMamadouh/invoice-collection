@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Enum\ActionTypeEnum;
 use App\Models\Action;
 use App\Models\ActionType;
 use App\Models\Email;
@@ -235,7 +236,7 @@ class ItemChangeStatusSteps extends Component
                 'automatic_action_to_be_confirmed' => $this->automatic_action_to_be_confirmed,
                 'internal_interactive_emailLink' => $this->internal_interactive_emailLink,
             ]);
-            if($this->action_type == 5){
+            if($this->action_type == ActionTypeEnum::Email){
                 $newEmail = new Email([
                     'created_by' => $this->created_by,
                     'resolver' => $this->resolver,
@@ -244,7 +245,7 @@ class ItemChangeStatusSteps extends Component
                 ]);
                 $tempAction->emails()->save($newEmail);
             }
-            if($this->action_type == 7){
+            if($this->action_type == ActionTypeEnum::SMS){
                 $newSms = new SmsMessage([
                     'created_by' => $this->created_by,
                     'subject' => $this->client->id,

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\ActionTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,7 @@ class ClientAction extends Model
     public static function getManualActions()
 {
     return ClientAction::where('automatic_action', 0)
+        ->where('action_type_id', ActionTypeEnum::Email)
         ->whereNotExists(function ($query) {
             $query->select(DB::raw(1))
                 ->from('action_histories')
@@ -32,6 +34,7 @@ class ClientAction extends Model
     public static function getAutomaticActions()
     {
         return ClientAction::where('automatic_action', 1)
+        // ->where('action_type_id', ActionTypeEnum::Email)
         ->whereNotExists(function ($query) {
             $query->select(DB::raw(1))
                 ->from('action_histories')
