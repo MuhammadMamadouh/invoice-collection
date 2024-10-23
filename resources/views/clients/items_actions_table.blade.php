@@ -1,14 +1,8 @@
 <div class="d-flex justify-content-between flex-wrap p-4 m-0">
     <h3>{{ __('Action to do') }}:</h3>
-    <select class="form-select w-auto" aria-label="Default select example">
-        <option selected disabled>New action:</option>
-        <option value="1">Send email</option>
-        <option value="1">Send internal interactive email</option>
-        <option value="1">Send a SMS</option>
-        <option value="1">Write a dunning letter</option>
-        <option value="1">Create a specific action</option>
-    </select>
+    <livewire:ClientDataActionSelection>
 </div>
+    <livewire:ClientDataActionHandler :clientData="$client">
 <div class="p-4 m-0 actions-row">
     <div class="row align-items-center text-center">
         <div class="col fw-bold">
