@@ -2,7 +2,6 @@
     <h3>{{ __('Action to do') }}:</h3>
     <livewire:ClientDataActionSelection>
 </div>
-    <livewire:ClientDataActionHandler :clientData="$client">
 <div class="p-4 m-0 actions-row">
     <div class="row align-items-center text-center">
         <div class="col fw-bold">
@@ -31,9 +30,11 @@
         </div>
         <div class="col"></div>
     </div>
+        <livewire:ClientDataCreateEmailAction :clientsData="$client" :itemId="$client->toTakeAction->item_id"> 
     <div class="row mt-2 text-center p-2 align-items-center" style="background-color: #006bff14;">
         {{-- @php($firstDueItem = $client->firstDueItem) --}}
         <div class="col fw-bold">{{ $client->toTakeAction->due_date ?? '-' }}</div>
+
         <div class="col fw-bold">
             <div class="btn openModalBtn btn-secondary">
                 {{ $client->toTakeAction->action_type_name ?? 'aa'}} </div>

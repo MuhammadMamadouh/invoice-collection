@@ -4,7 +4,8 @@
             style="position: fixed; top: 0; left: 50%; transform: translateX(-50%); z-index: 99999; width: 100%; height: 100%; overflow: auto;">
             <form wire:submit.prevent="submit">
                 <input type="hidden" wire:model="collection_scenario_id" class="form-control">
-                <div class="bg-white m-auto p-4 shadow-sm position-relative" style="border-radius: 10px;">
+                <div class="bg-white m-auto p-4  position-relative"
+                    style="border-radius: 10px;box-shadow: 14px 13px 9px #d9d9d9;">
                     <button type="button" class="btn btn-secondary position-absolute" wire:click="$dispatch('closeForm')"
                         style="border-radius:50%;top: -20px;right: -20px;">
                         X
@@ -32,8 +33,51 @@
                                     </p>
                                 </div>
                             </div><!--r-1-->
-                            <!-- Recipients Section -->
+                            <div class="row">
+                                <div class="col-md-2 mt-2">
+                                    <select class="form-select" wire:model="type_To">
+                                        <option value="" selected>Select</option>
+                                        @foreach ($typesTo as $typeTo)
+                                            <option value="{{ $typeTo->id }}">{{ $typeTo->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <!-- Recipients Section -->
+                                <div class="col-md-10 mt-2">
+                                    <select class="form-select" wire:model="resolver">
+                                        <option value="" selected>Select Resolver</option>
+                                        {{-- Display Client's Email --}}
+                                        <option value="" disabled>External Contacts «
+                                            {{ $clientsData->company_name }} »:</option>
+                                        @foreach ($clientContacts as $clientContact)
+                                            <option value="{{ $clientContact->id }}">
+                                                Client Email: {{ $clientContact->email }}
+                                            </option>
+                                        @endforeach
+                                        {{-- Display Collector's Email if it exists --}}
+                                        <option disabled></option>
+                                        <option value="" disabled>Internal contacts « Business Solutions » :
+                                            «{{-- $client->company_name --}}»</option>
 
+                                        <option value="{{ $clientsData->collector->id }}">
+                                            Collector: {{ $clientsData->collector->first_name }}
+                                            {{ $clientsData->collector->last_name }}
+                                            ({{ $clientsData->collector->email }})
+                                        </option>
+
+                                        {{-- Display Other Resolvers --}}
+                                        <option disabled></option>
+                                        <option value="" disabled>Internal Contacts « Business Solutions » :
+                                        </option>
+                                        @foreach ($resolvers as $resolver)
+                                            <option value="{{ $resolver->id }}">
+                                                {{ $resolver->first_name }} {{ $resolver->last_name }}
+                                                ({{ $resolver->role->name }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <!-- Add another recipient button -->
                             {{-- <div class="row mt-3">
                                 <div class="col-md-12">

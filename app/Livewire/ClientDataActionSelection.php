@@ -14,15 +14,19 @@ class ClientDataActionSelection extends Component
         $this->selectedAction = $value;
 
         if ($value === 'send-email') {
-            $this->dispatch('loadSendEmailComponent');
-        } elseif ($value === 'send-internal-email') {
-            $this->dispatch('loadSendInternalEmailComponent');
-        } elseif ($value === 'send-sms') {
-            $this->dispatch('loadSendSmsComponent');
-        } elseif ($value === 'dunning-letter') {
-            $this->dispatch('loadDunningLetterComponent');
-        } elseif ($value === 'specific-action') {
-            $this->dispatch('loadSpecificActionComponent');
+            $this->dispatch('loadSendEmail');
+
+        } elseif ($value === 'send-internal-interactive-email') {
+            $this->dispatch('loadSendInternalEmail');
+
+        } elseif ($value === 'send-a-SMS') {
+            $this->dispatch('loadSendSms');
+
+        } elseif ($value === 'write-a-dunning-letter') {
+            $this->dispatch('loadDunningLetter');
+
+        } elseif ($value === 'create-a-specific-action') {
+            $this->dispatch('loadSpecificAction');
         }
     }
 
