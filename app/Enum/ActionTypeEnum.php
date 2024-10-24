@@ -10,8 +10,17 @@ Cache::remember('action_types', 60, function () {
     return  ModelsActionType::all();
 });
 
-class ActionType
+class ActionTypeEnum
 {
+    const Litigation = 1;
+    const DunningLetter = 2;
+    const DunningLetterWithAR = 3;
+    const DunningLetterWithERM = 4;
+    const Email = 5;
+    const Fax = 6;
+    const SMS = 7;
+    const Phone = 8;
+
 
     public static function actionTypes()
     {

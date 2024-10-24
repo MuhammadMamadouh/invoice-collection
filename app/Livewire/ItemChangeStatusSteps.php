@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Enum\ActionTypeEnum;
 use App\Models\Action;
 use App\Models\ActionType;
 use App\Models\Email;
@@ -191,8 +192,8 @@ class ItemChangeStatusSteps extends Component
             foreach ($this->recipients as $recipient) {
                 $typeTo = $recipient['type_to'] ?? null;
                 $resolverData = $recipient['resolverData'] ?? null;
-            $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
-            $newEmail = new Email([
+                $newStatus = ItemsChangeStatus::findOrFail($changedStatus->id);
+                $newEmail = new Email([
                 'created_by' => $this->created_by,
                 'resolver' => $resolverData,
                 'subject' => $this->client->id,
@@ -225,8 +226,8 @@ class ItemChangeStatusSteps extends Component
             $tempAction = Action::create([
                 'action_name' => $this->action_name,
                 'action_date' => $this->action_date,
-                'action_type' => $this->action_type,
-                'collection_scenario_id' => $this->client->collectionScenarios->id,
+                'action_type_id' => $this->action_type,
+                'collection_scenario_id' => $this->client->collectionScenario->id,
                 // 'client_id' => $this->client->id,
                 'item_id' => $this->item->id,
                 'created_by' => $this->created_by,
@@ -235,7 +236,7 @@ class ItemChangeStatusSteps extends Component
                 'automatic_action_to_be_confirmed' => $this->automatic_action_to_be_confirmed,
                 'internal_interactive_emailLink' => $this->internal_interactive_emailLink,
             ]);
-            if($this->action_type == 5){
+            if($this->action_type == ActionTypeEnum::Email){
                 $newEmail = new Email([
                     'created_by' => $this->created_by,
                     'resolver' => $this->resolver,
@@ -244,7 +245,7 @@ class ItemChangeStatusSteps extends Component
                 ]);
                 $tempAction->emails()->save($newEmail);
             }
-            if($this->action_type == 7){
+            if($this->action_type == ActionTypeEnum::SMS){
                 $newSms = new SmsMessage([
                     'created_by' => $this->created_by,
                     'subject' => $this->client->id,

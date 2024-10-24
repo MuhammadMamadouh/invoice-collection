@@ -49,8 +49,8 @@ class ClientController extends Controller
         $clientRoles = ClientRole::all();
         $users = User::all(['id', 'first_name', 'last_name', 'role_id']);
         return view('clients.index', compact(
-            'collectionsScenario',
-            'clientResource',
+'collectionsScenario',
+'clientResource',
             'client_count',
             'clientGroups',
             'clientRoles',
@@ -89,27 +89,41 @@ class ClientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showClientData($id)
-    {
-        $client = Client::findOrFail($id);
-        $clientResource = new ClientResource($client);
-        $clients = Client::all();
-        $collectors = User::collectors()->get();
-        $collectionsScenario = CollectionScenario::all();
-        $currencies = Currency::all();
-        $itemTypes = ItemType::all();
-        return view('clients.client_data_model',
-        [
-                'clientResource' => $clientResource,
-                'collectors' => $collectors,
-                'client' => $client,
-                'clients' => $clients,
-                'itemTypes' => $itemTypes,
-                'currencies' => $currencies,
-                'collectionsScenario' => $collectionsScenario,
-            ]
-        );
-    }
+    // public function showClientData($id)
+    // {
+    //     $client = Client::with([
+    //         'collector',
+    //         'items',
+    //         'items.itemType',
+    //         'items.itemStatus',
+    //         'items.currency',
+    //         'collectionScenario',
+    //         'firstDueItem',
+    //         'contacts',
+    //         'items.itemChangeStatus',
+    //         //'items.itemActions'
+    //     ])->findOrFail($id);
+    //     $clientResource = new ClientResource($client);
+    //     //dd($clientResource);
+    //     $clients = Client::all();
+    //     $collectors = User::collectors()->get();
+    //     $clientRoles = ClientRole::all();
+    //     $collectionsScenario = CollectionScenario::all();
+    //     $currencies = Currency::all();
+    //     $itemTypes = ItemType::all();
+    //     return view('clients.client_data_model',
+    //     [
+    //             'clientResource' => $clientResource,
+    //             'clientRoles' => $clientRoles,
+    //             'collectors' => $collectors,
+    //             'client' => $client,
+    //             'clients' => $clients,
+    //             'itemTypes' => $itemTypes,
+    //             'currencies' => $currencies,
+    //             'collectionsScenario' => $collectionsScenario,
+    //         ]
+    //     );
+    // }
     public function show($id)
     {
         $client = Client::findOrFail($id);
@@ -125,7 +139,6 @@ class ClientController extends Controller
         $itemTypes = ItemType::all();
         $clientRoles = ClientRole::all();
         $users = User::all(['id', 'first_name', 'last_name', 'role_id']);
-
         return view('clients.show',
             [
                 'clientResource' => $client,

@@ -2,6 +2,7 @@
 @section('content')
     {{-- <div id="company-details-{{ $client->id }}"> --}}
     {{-- <div class="company-details" id="company-detail-{{ $client->id }}"> --}}
+    {{-- ------------------------------------------------------------------------------- --}}
     @include('clients.client_data_model')
     {{-- ------------------- End Items Table------------------------------------------------ --}}
     {{-- </div> --}}

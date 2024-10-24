@@ -18,7 +18,7 @@ class ActionsResource extends JsonResource
             'id' => $this->id,
             'action_name' => $this->action_name,
             'action_date' => $this->action_date,
-            'action_type' => $this->action_type,
+            'action_type_id' => $this->action_type_id,
             'collection_scenario_id' => $this->collection_scenario_id,
             // 'client_id' => $this->client_id,
             'item_id' => $this->item_id,

@@ -1,6 +1,5 @@
 <div class="bg-light holap-first-{{ $client->id }}" id="company-details-{{ $client->id }}">
-    <div class="row text-center m-0 p-3 w-100" id="company-details-{{ $client->id }}"
-        style="background-color: #006bff">
+    <div class="row text-center m-0 p-3 w-100" id="company-details-{{ $client->id }}" style="background-color: #006bff">
         <div class="d-flex justify-content-between align-items-center">
             <div class="d-flex w-25 gap-3" id="company-details-{{ $client->id }}">
                 <i class="fa-solid fa-flag text-warning" style="font-size: 25px"></i>
@@ -18,7 +17,7 @@
     </div>
 
     {{-- ------------------- Client's Data ------------------------------------------------ --}}
-    @include('clients.client_data')
+    @include('clients.client_data', [$client])
     {{-- -------------------End Client's Data ------------------------------------------------ --}}
 
     {{-- ------------------- Client's Data Buttons------------------------------------------------ --}}
@@ -48,18 +47,22 @@
     </div>
 
     {{-- ------------------- End Client's Data Buttons------------------------------------------------ --}}
+
+    {{-- ------------------- Edit Client Data------------------------------------------------ --}}
+    @include('clients.edit_client_data')
+    {{-- -------------------  End Edit Client Data------------------------------------------------ --}}
+
+    {{-- ------------------- Dates Line ------------------------------------------------ --}}
+    @include('clients.dates_line')
+    {{-- ------------------- End Dates Line ------------------------------------------------ --}}
+
+    {{-- ------------------- Actions Table ------------------------------------------------ --}}
+    @include('clients.items_actions_table')
+    {{-- ------------------- End Actions Table ------------------------------------------------ --}}
+
+    {{-- ------------------- Items Table------------------------------------------------ --}}
+    @include('clients.items_table', [$users])
+
+    
+
 </div>
-{{-- ------------------- Edit Client Data------------------------------------------------ --}}
-@include('clients.edit_client_data')
-{{-- -------------------  End Edit Client Data------------------------------------------------ --}}
-
-{{-- ------------------- Dates Line ------------------------------------------------ --}}
-@include('clients.dates_line')
-{{-- ------------------- End Dates Line ------------------------------------------------ --}}
-
-{{-- ------------------- Actions Table ------------------------------------------------ --}}
-@include('clients.items_actions_table')
-{{-- ------------------- End Actions Table ------------------------------------------------ --}}
-
-{{-- ------------------- Items Table------------------------------------------------ --}}
-@include('clients.items_table',[$users])

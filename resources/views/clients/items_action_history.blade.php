@@ -12,8 +12,8 @@
             </div>
         </div>
         <div class="text-center mb-3  p-2 p-md-4">
-            {{-- dd($item->itemActions) --}}
             @forelse($item->itemActions as $key => $tempAction)
+            {{-- dd($tempAction) --}}
                 <div class="row align-items-center"
                     style="{{ $key % 2 == 0 ? 'background-color:#ffffff;' : 'background-color:#006bff14' }}">
                     <div class="col-md-2 pt-2">
@@ -24,20 +24,19 @@
                     <div class="col-md-2 pt-3">
                         <div class="d-flex">
                             <div class="btn openModalBtn btn-secondary w-100" style="border-radius:5px 0 0 5px ">
-                                <i class="fa-solid {{ $tempAction->actionTypes->icon }}"></i>
-                                {{ $tempAction->actionTypes->name }}
+                                <i class="fa-solid {{ $tempAction->actionTypes->icon ?? 'ff' }}"></i>
+                                {{ $tempAction->actionTypes->name ?? 'k' }}
                             </div>
                             <div class="btn btn-success" style="border-radius:0 5px 5px 0">
                                 <i class="fa-solid fa-download"></i>
                             </div>
                         </div>
-                        <p><a href="#">Relance par {{ $tempAction->actionTypes->name }} n°1</a></p>
+                        <p><a href="#">Relance par {{ $tempAction->actionTypes->name ?? 'k' }} n°1</a></p>
                     </div>
                     <div class="col-5"></div>
                     <div class="col-md-3 mb-2 d-flex align-items-center gap-2 justify-content-center">
                         <img src="./img/person2.jpg" style="width:50px;height:50px;border-radius: 50%;" alt="">
-                        <p class="fw-bold"><a href="#">{{ $tempAction->createdBy->first_name }}</a> (Administrator
-                            {{-- $tempAction->createdBy->role->name --}})</p>
+                        <p class="fw-bold"><a href="#">{{ $tempAction->createdBy->first_name }}</a> ({{ $tempAction->createdBy->clientRole->name }})</p>
                     </div>
                 </div>
             @empty
